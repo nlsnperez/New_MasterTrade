@@ -19,7 +19,7 @@ namespace New_MasterTrade
                 conexion.con.Open();
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Splash());
+                Application.Run(new SesionIniciada());
                 conexion.con.Close();
             }
             catch (MySqlException ex)

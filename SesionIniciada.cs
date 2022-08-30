@@ -31,12 +31,15 @@ namespace New_MasterTrade
 
         private void bttnPersonas_Click(object sender, EventArgs e)
         {
+            FormPersonas.Clear();
+            FormPersonas.Config();
             FormPersonas.BringToFront();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             FormProductos.Clear();
+            FormProductos.Config();
             FormProductos.BringToFront();
         }
 
@@ -58,6 +61,8 @@ namespace New_MasterTrade
 
         private void bttnComprar_Click(object sender, EventArgs e)
         {
+            FormComprar.ClearData("RESET");
+            FormComprar.Config();
             FormComprar.BringToFront();
         }
     }

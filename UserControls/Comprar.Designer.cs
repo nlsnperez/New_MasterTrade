@@ -35,11 +35,13 @@ namespace New_MasterTrade.UserControls
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtDocumento = new System.Windows.Forms.TextBox();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.comboDocumento = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,31 +56,35 @@ namespace New_MasterTrade.UserControls
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtNombreProducto = new System.Windows.Forms.TextBox();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtNombreProducto = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnConfirmar = new System.Windows.Forms.Button();
-            this.btnAtras = new System.Windows.Forms.Button();
             this.tableCarrito = new System.Windows.Forms.DataGridView();
             this.columnCodigo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnNombre2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.btnAtras = new System.Windows.Forms.Button();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableProductos)).BeginInit();
@@ -88,8 +94,9 @@ namespace New_MasterTrade.UserControls
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
-            this.tableLayoutPanel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).BeginInit();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -161,11 +168,11 @@ namespace New_MasterTrade.UserControls
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.txtDocumento, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.txtRazonSocial, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.txtTelefono, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel15, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -188,18 +195,6 @@ namespace New_MasterTrade.UserControls
             this.label3.TabIndex = 20;
             this.label3.Text = "TELÉFONO";
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(18, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 32);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "DOCUMENTO DE\r\nIDENTIDAD:";
-            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -211,14 +206,6 @@ namespace New_MasterTrade.UserControls
             this.label2.Size = new System.Drawing.Size(105, 16);
             this.label2.TabIndex = 19;
             this.label2.Text = "RAZÓN SOCIAL";
-            // 
-            // txtDocumento
-            // 
-            this.txtDocumento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDocumento.Location = new System.Drawing.Point(152, 20);
-            this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(143, 20);
-            this.txtDocumento.TabIndex = 21;
             // 
             // txtRazonSocial
             // 
@@ -235,6 +222,53 @@ namespace New_MasterTrade.UserControls
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(143, 20);
             this.txtTelefono.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(18, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 32);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "DOCUMENTO DE\r\nIDENTIDAD:";
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 2;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.16783F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.83217F));
+            this.tableLayoutPanel15.Controls.Add(this.txtDocumento, 1, 0);
+            this.tableLayoutPanel15.Controls.Add(this.comboDocumento, 0, 0);
+            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(152, 3);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 1;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(143, 55);
+            this.tableLayoutPanel15.TabIndex = 24;
+            // 
+            // txtDocumento
+            // 
+            this.txtDocumento.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtDocumento.Location = new System.Drawing.Point(48, 17);
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(92, 20);
+            this.txtDocumento.TabIndex = 22;
+            this.txtDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDocumento_KeyDown);
+            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
+            // 
+            // comboDocumento
+            // 
+            this.comboDocumento.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.comboDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboDocumento.FormattingEnabled = true;
+            this.comboDocumento.Location = new System.Drawing.Point(3, 17);
+            this.comboDocumento.Name = "comboDocumento";
+            this.comboDocumento.Size = new System.Drawing.Size(39, 21);
+            this.comboDocumento.TabIndex = 23;
             // 
             // tableLayoutPanel5
             // 
@@ -293,6 +327,7 @@ namespace New_MasterTrade.UserControls
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(140, 20);
             this.txtBuscar.TabIndex = 22;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
             // 
             // label5
             // 
@@ -308,6 +343,10 @@ namespace New_MasterTrade.UserControls
             // 
             // tableProductos
             // 
+            this.tableProductos.AllowUserToAddRows = false;
+            this.tableProductos.AllowUserToDeleteRows = false;
+            this.tableProductos.AllowUserToResizeColumns = false;
+            this.tableProductos.AllowUserToResizeRows = false;
             this.tableProductos.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.tableProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.tableProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -318,6 +357,7 @@ namespace New_MasterTrade.UserControls
             this.tableProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableProductos.Location = new System.Drawing.Point(3, 109);
             this.tableProductos.Name = "tableProductos";
+            this.tableProductos.ReadOnly = true;
             this.tableProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tableProductos.Size = new System.Drawing.Size(292, 317);
             this.tableProductos.TabIndex = 36;
@@ -329,6 +369,7 @@ namespace New_MasterTrade.UserControls
             this.columnCodigo.DataPropertyName = "codigo_producto";
             this.columnCodigo.HeaderText = "Código";
             this.columnCodigo.Name = "columnCodigo";
+            this.columnCodigo.ReadOnly = true;
             // 
             // columnNombre
             // 
@@ -336,6 +377,7 @@ namespace New_MasterTrade.UserControls
             this.columnNombre.DataPropertyName = "nombre";
             this.columnNombre.HeaderText = "Nombre";
             this.columnNombre.Name = "columnNombre";
+            this.columnNombre.ReadOnly = true;
             // 
             // columnCosto
             // 
@@ -343,6 +385,7 @@ namespace New_MasterTrade.UserControls
             this.columnCosto.DataPropertyName = "costo";
             this.columnCosto.HeaderText = "Costo";
             this.columnCosto.Name = "columnCosto";
+            this.columnCosto.ReadOnly = true;
             // 
             // tableLayoutPanel7
             // 
@@ -433,6 +476,26 @@ namespace New_MasterTrade.UserControls
             this.tableLayoutPanel10.Size = new System.Drawing.Size(220, 214);
             this.tableLayoutPanel10.TabIndex = 0;
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCodigo.Location = new System.Drawing.Point(113, 16);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(104, 20);
+            this.txtCodigo.TabIndex = 27;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(25, 18);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 16);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "CÓDIGO";
+            // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -445,17 +508,13 @@ namespace New_MasterTrade.UserControls
             this.label8.TabIndex = 22;
             this.label8.Text = "PRECIO";
             // 
-            // label9
+            // txtPrecio
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(14, 71);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(81, 16);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "PRODUCTO";
+            this.txtPrecio.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPrecio.Location = new System.Drawing.Point(113, 176);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(104, 20);
+            this.txtPrecio.TabIndex = 25;
             // 
             // label10
             // 
@@ -469,14 +528,6 @@ namespace New_MasterTrade.UserControls
             this.label10.TabIndex = 21;
             this.label10.Text = "CANTIDAD";
             // 
-            // txtNombreProducto
-            // 
-            this.txtNombreProducto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNombreProducto.Location = new System.Drawing.Point(113, 69);
-            this.txtNombreProducto.Name = "txtNombreProducto";
-            this.txtNombreProducto.Size = new System.Drawing.Size(104, 20);
-            this.txtNombreProducto.TabIndex = 23;
-            // 
             // txtCantidad
             // 
             this.txtCantidad.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -484,14 +535,27 @@ namespace New_MasterTrade.UserControls
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(104, 20);
             this.txtCantidad.TabIndex = 24;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
-            // txtPrecio
+            // label9
             // 
-            this.txtPrecio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPrecio.Location = new System.Drawing.Point(113, 176);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(104, 20);
-            this.txtPrecio.TabIndex = 25;
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(14, 71);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(81, 16);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "PRODUCTO";
+            // 
+            // txtNombreProducto
+            // 
+            this.txtNombreProducto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtNombreProducto.Location = new System.Drawing.Point(113, 69);
+            this.txtNombreProducto.Name = "txtNombreProducto";
+            this.txtNombreProducto.Size = new System.Drawing.Size(104, 20);
+            this.txtNombreProducto.TabIndex = 23;
             // 
             // tableLayoutPanel11
             // 
@@ -537,15 +601,18 @@ namespace New_MasterTrade.UserControls
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 458F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.Controls.Add(this.label11, 0, 0);
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel13, 0, 2);
             this.tableLayoutPanel12.Controls.Add(this.tableCarrito, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel13, 0, 3);
+            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel14, 0, 2);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 259);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 3;
+            this.tableLayoutPanel12.RowCount = 4;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.906077F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.34807F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.74586F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.92208F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.25974F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(455, 363);
             this.tableLayoutPanel12.TabIndex = 1;
             // 
@@ -560,10 +627,61 @@ namespace New_MasterTrade.UserControls
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(3, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(452, 25);
+            this.label11.Size = new System.Drawing.Size(452, 21);
             this.label11.TabIndex = 36;
             this.label11.Text = "CARRITO";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // tableCarrito
+            // 
+            this.tableCarrito.AllowUserToAddRows = false;
+            this.tableCarrito.AllowUserToDeleteRows = false;
+            this.tableCarrito.AllowUserToResizeColumns = false;
+            this.tableCarrito.AllowUserToResizeRows = false;
+            this.tableCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableCarrito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.columnCodigo2,
+            this.columnNombre2,
+            this.columnCantidad,
+            this.columnPrecio});
+            this.tableCarrito.Location = new System.Drawing.Point(3, 24);
+            this.tableCarrito.Name = "tableCarrito";
+            this.tableCarrito.ReadOnly = true;
+            this.tableCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tableCarrito.Size = new System.Drawing.Size(452, 234);
+            this.tableCarrito.TabIndex = 38;
+            // 
+            // columnCodigo2
+            // 
+            this.columnCodigo2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnCodigo2.DataPropertyName = "Código";
+            this.columnCodigo2.HeaderText = "Código";
+            this.columnCodigo2.Name = "columnCodigo2";
+            this.columnCodigo2.ReadOnly = true;
+            // 
+            // columnNombre2
+            // 
+            this.columnNombre2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnNombre2.DataPropertyName = "Nombre";
+            this.columnNombre2.HeaderText = "Nombre";
+            this.columnNombre2.Name = "columnNombre2";
+            this.columnNombre2.ReadOnly = true;
+            // 
+            // columnCantidad
+            // 
+            this.columnCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnCantidad.DataPropertyName = "Cantidad";
+            this.columnCantidad.HeaderText = "Cantidad";
+            this.columnCantidad.Name = "columnCantidad";
+            this.columnCantidad.ReadOnly = true;
+            // 
+            // columnPrecio
+            // 
+            this.columnPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnPrecio.DataPropertyName = "Precio";
+            this.columnPrecio.HeaderText = "Precio";
+            this.columnPrecio.Name = "columnPrecio";
+            this.columnPrecio.ReadOnly = true;
             // 
             // tableLayoutPanel13
             // 
@@ -573,12 +691,12 @@ namespace New_MasterTrade.UserControls
             this.tableLayoutPanel13.Controls.Add(this.btnConfirmar, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.btnAtras, 0, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(255, 308);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(255, 311);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(200, 52);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(200, 49);
             this.tableLayoutPanel13.TabIndex = 37;
             // 
             // btnConfirmar
@@ -590,6 +708,7 @@ namespace New_MasterTrade.UserControls
             this.btnConfirmar.TabIndex = 2;
             this.btnConfirmar.Text = "CONFIRMAR";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnAtras
             // 
@@ -602,64 +721,48 @@ namespace New_MasterTrade.UserControls
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // tableCarrito
+            // tableLayoutPanel14
             // 
-            this.tableCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableCarrito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnCodigo2,
-            this.columnNombre2,
-            this.columnCantidad,
-            this.columnPrecio});
-            this.tableCarrito.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableCarrito.Location = new System.Drawing.Point(3, 28);
-            this.tableCarrito.Name = "tableCarrito";
-            this.tableCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableCarrito.Size = new System.Drawing.Size(452, 274);
-            this.tableCarrito.TabIndex = 38;
+            this.tableLayoutPanel14.ColumnCount = 2;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Controls.Add(this.lblTotal, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.label13, 0, 0);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 264);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 1;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(452, 41);
+            this.tableLayoutPanel14.TabIndex = 39;
             // 
-            // columnCodigo2
+            // lblTotal
             // 
-            this.columnCodigo2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnCodigo2.HeaderText = "Código";
-            this.columnCodigo2.Name = "columnCodigo2";
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotal.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(355, 0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(94, 41);
+            this.lblTotal.TabIndex = 37;
+            this.lblTotal.Text = "00,00 Bs";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // columnNombre2
+            // label13
             // 
-            this.columnNombre2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnNombre2.HeaderText = "Nombre";
-            this.columnNombre2.Name = "columnNombre2";
-            // 
-            // columnCantidad
-            // 
-            this.columnCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnCantidad.HeaderText = "Cantidad";
-            this.columnCantidad.Name = "columnCantidad";
-            // 
-            // columnPrecio
-            // 
-            this.columnPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnPrecio.HeaderText = "Precio";
-            this.columnPrecio.Name = "columnPrecio";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(25, 18);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 16);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "CÓDIGO";
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCodigo.Location = new System.Drawing.Point(113, 16);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(104, 20);
-            this.txtCodigo.TabIndex = 27;
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(3, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(220, 41);
+            this.label13.TabIndex = 36;
+            this.label13.Text = "TOTAL:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Comprar
             // 
@@ -676,6 +779,8 @@ namespace New_MasterTrade.UserControls
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
@@ -690,8 +795,10 @@ namespace New_MasterTrade.UserControls
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
-            this.tableLayoutPanel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).EndInit();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -705,7 +812,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.TextBox txtRazonSocial;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
@@ -738,11 +844,17 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCosto;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCodigo2;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnNombre2;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrecio;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.TextBox txtDocumento;
+        private System.Windows.Forms.ComboBox comboDocumento;
     }
 }

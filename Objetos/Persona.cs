@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace New_MasterTrade.Objetos
@@ -30,6 +31,12 @@ namespace New_MasterTrade.Objetos
                 return true;
             }
             return false;
+        }
+
+        public bool ValidEmail()
+        {
+            string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov|ve)$";
+            return Regex.IsMatch(this.Correo, regex, RegexOptions.IgnoreCase);
         }
     }
 }

@@ -30,13 +30,16 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@feliminado", MySqlDbType.DateTime).Value = null;
 
                     command.ExecuteNonQuery();
-                    con.Close();
                 }
                 MessageBox.Show("El registro se completó de manera satisfactoria.", "¡REGISTRO EXITOSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
         }
 

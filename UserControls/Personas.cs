@@ -18,7 +18,17 @@ namespace New_MasterTrade
 
         private void Personas_Load(object sender, EventArgs e)
         {
+            Config();
+        }
+
+        public void Config()
+        {
             crud = new CRUD();
+            txtDocumento.MaxLength = 9;
+            txtRazonSocial.MaxLength = 100;
+            txtDireccion.MaxLength = 500;
+            txtTelefono.MaxLength = 15;
+            txtCorreo.MaxLength = 100;
             Config_Botones("INICIO");
             tablaPersonas.AutoGenerateColumns = false;
             FillComboBoxes();
@@ -35,21 +45,28 @@ namespace New_MasterTrade
             }
             else
             {
-                if (MessageBox.Show("Desea registrar el " + comboOcupacion.SelectedItem.ToString().ToLower() + ": " + GetPersona().Documento + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (!GetPersona().ValidEmail())
                 {
-                    if (comboOcupacion.SelectedIndex == 0)
+                    MessageBox.Show("Introduzca una dirección de correo electrónico válida!");
+                }
+                else
+                {
+                    if (MessageBox.Show("Desea registrar el " + comboOcupacion.SelectedItem.ToString().ToLower() + ": " + GetPersona().Documento + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        crud.Create(GetPersona(), "clientes");
-                        Clear();
-                        comboTabla.SelectedIndex = 0;
-                        RefreshTable(1);
-                    }
-                    else
-                    {
-                        crud.Create(GetPersona(), "proveedores");
-                        Clear();
-                        comboTabla.SelectedIndex = 1;
-                        RefreshTable(2);
+                        if (comboOcupacion.SelectedIndex == 0)
+                        {
+                            crud.Create(GetPersona(), "clientes");
+                            Clear();
+                            comboTabla.SelectedIndex = 0;
+                            RefreshTable(1);
+                        }
+                        else
+                        {
+                            crud.Create(GetPersona(), "proveedores");
+                            Clear();
+                            comboTabla.SelectedIndex = 1;
+                            RefreshTable(2);
+                        }
                     }
                 }
                 
@@ -122,6 +139,8 @@ namespace New_MasterTrade
         
         public void FillComboBoxes()
         {
+            if (comboOcupacion.Items.Count > 0) comboOcupacion.Items.Clear();
+            if (comboTabla.Items.Count > 0) comboTabla.Items.Clear();
             comboDocumento.Items.Add("V");
             comboDocumento.Items.Add("E");
             comboDocumento.Items.Add("J");
@@ -242,8 +261,29 @@ namespace New_MasterTrade
         {
             Persona persona = new Persona(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, txtRazonSocial.Text, txtDireccion.Text, txtTelefono.Text, txtCorreo.Text);
             return persona;
-        }  
+        }
 
-        
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void OnlyLetters(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

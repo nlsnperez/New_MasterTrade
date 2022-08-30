@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,11 +23,31 @@ namespace New_MasterTrade
 
         private void Productos_Load(object sender, EventArgs e)
         {
+            Config();
+        }
+
+        public void Config()
+        {
             crud = new CRUDProductos();
+            txtCodigo.MaxLength = 100;
+            txtNombre.MaxLength = 200;
+            txtCosto.MaxLength = 13;
+            txtStockMin.MaxLength = 10;
+            txtStockMax.MaxLength = 10;
+            FillComboBoxes();
             tablaProductos.AutoGenerateColumns = false;
             txtCantidad.Enabled = false;
             Config_Botones("INICIO");
             RefreshTable(1);
+        }
+
+        public void FillComboBoxes()
+        {
+            if (comboProveedor.Items.Count > 0) comboProveedor.DataSource = null;
+            comboProveedor.ValueMember = "documento_identidad";
+            comboProveedor.DisplayMember = "proveedor";
+            comboProveedor.DataSource = crud.Proveedores();
+            comboProveedor.SelectedIndex = 0;
         }
 
         //BOTONES//
@@ -39,7 +60,7 @@ namespace New_MasterTrade
             }
             else
             {
-                if (GetProducto().CompararStock() == false)
+               if (GetProducto().CompararStock() == false)
                 {
                     MessageBox.Show("¡El stock máximo no puede ser menor al stock mínimo!", "INVÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -50,7 +71,7 @@ namespace New_MasterTrade
                         crud.Create(GetProducto());
                         Clear();
                         RefreshTable(1);
-                    }
+                  }
 
                 }
             }
@@ -123,7 +144,7 @@ namespace New_MasterTrade
 
         private Producto GetProducto()
         {
-            Producto producto = new Producto(txtCodigo.Text, txtNombre.Text, float.Parse(txtCosto.Text.Replace(',', '.')), Int32.Parse(txtStockMax.Text), Int32.Parse(txtStockMin.Text));
+            Producto producto = new Producto(txtCodigo.Text, txtNombre.Text, comboProveedor.SelectedValue.ToString().Substring(comboProveedor.SelectedItem.ToString().LastIndexOf('-') + 1), float.Parse(txtCosto.Text.Replace(',', '.'), CultureInfo.InvariantCulture), Int32.Parse(txtStockMax.Text), Int32.Parse(txtStockMin.Text));
             return producto;
         }        
 
@@ -134,7 +155,11 @@ namespace New_MasterTrade
             txtCosto.Text = "00,00";
             txtStockMax.Text = "0";
             txtStockMin.Text = "0";
+            txtBuscar.Text = "";
             txtCodigo.Enabled = true;
+            comboProveedor.SelectedIndex = 0;
+            comboProveedor.Enabled = true;
+            comboProveedor.SelectedIndex = 1;
             Config_Botones("INICIO");
             RefreshTable(1);
         }
@@ -143,9 +168,12 @@ namespace New_MasterTrade
         {
             txtCodigo.Text = tablaProductos.SelectedRows[0].Cells[0].Value.ToString();
             txtNombre.Text = tablaProductos.SelectedRows[0].Cells[1].Value.ToString();
-            txtCosto.Text = tablaProductos.SelectedRows[0].Cells[2].Value.ToString();
-            txtStockMax.Text = tablaProductos.SelectedRows[0].Cells[3].Value.ToString();
-            txtStockMin.Text = tablaProductos.SelectedRows[0].Cells[4].Value.ToString();
+            comboProveedor.SelectedValue = tablaProductos.SelectedRows[0].Cells[2].Value.ToString();
+            txtCosto.Text = tablaProductos.SelectedRows[0].Cells[3].Value.ToString().Replace('.', ',');
+            txtCantidad.Text = Convert.ToString(crud.ProductosComprados(txtCodigo.Text) - crud.ProductosVendidos(txtCodigo.Text));
+            txtStockMax.Text = tablaProductos.SelectedRows[0].Cells[4].Value.ToString();
+            txtStockMin.Text = tablaProductos.SelectedRows[0].Cells[5].Value.ToString();
+            comboProveedor.Enabled = false;
             txtCodigo.Enabled = false;
             Config_Botones("SELECCIÓN");
         }        
@@ -199,7 +227,22 @@ namespace New_MasterTrade
                 txtCosto.Text = "00,00";
             }
         }
-
+        
         //PLACEHOLDERS//
+
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
+
+
 }

@@ -51,6 +51,7 @@
     <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.8.0.29\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -106,6 +107,8 @@
     <Compile Include="Mensajes\ConfirmarForm.Designer.cs">
       <DependentUpon>ConfirmarForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Compra.cs" />
+    <Compile Include="Objetos\Detalle_Compra.cs" />
     <Compile Include="Objetos\Persona.cs" />
     <Compile Include="Objetos\Producto.cs" />
     <Compile Include="UserControls\Comprar.cs">
@@ -113,6 +116,12 @@
     </Compile>
     <Compile Include="UserControls\Comprar.Designer.cs">
       <DependentUpon>Comprar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NuevoRegistro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NuevoRegistro.Designer.cs">
+      <DependentUpon>NuevoRegistro.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Personas.cs">
       <SubType>UserControl</SubType>
@@ -151,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Comprar.resx">
       <DependentUpon>Comprar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\NuevoRegistro.resx">
+      <DependentUpon>NuevoRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Personas.resx">
       <DependentUpon>Personas.cs</DependentUpon>
