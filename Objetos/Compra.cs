@@ -10,16 +10,15 @@ namespace New_MasterTrade.Objetos
     {
         public string Numero_Control{ get; set; }
         public string Proveedor{ get; set; }
-        public List<Detalle_Compra> Detalle{ get; set; }
+        public List<Detalle> Detalle{ get; set; }
 
-        public Compra(/*string numero_Control,*/ string proveedor, List<Detalle_Compra> detalle)
+        public Compra(string proveedor, List<Detalle> detalle)
         {
-            //Numero_Control = numero_Control;
             Proveedor = proveedor;
             Detalle = detalle;
         }
 
-        public void Generar_Codigo(string documento, int x)
+        public void Generar_Codigo(int x)
         {
             Numero_Control = "MTC"+x.ToString("0000000");
         }

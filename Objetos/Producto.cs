@@ -39,7 +39,7 @@ namespace New_MasterTrade.Objetos
 
         public bool CompararStock()
         {
-            if (this.StockMax > this.StockMin)
+            if (this.StockMax < this.StockMin)
             {
                 return false;
             }

@@ -8,6 +8,8 @@ namespace New_MasterTrade.UserControls
     public partial class NuevoRegistro : UserControl
     {
         CRUD crud;
+        public Persona Registro { get; set; }
+
         public NuevoRegistro(string x, string documento, int y)
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace New_MasterTrade.UserControls
         public void Config(string x, string documento, int y)
         {
             crud = new CRUD();
+            Registro = null;
             FillComboBoxes();
             SelectComboBox(x);
             txtDocumento.Text = documento;
@@ -44,13 +47,12 @@ namespace New_MasterTrade.UserControls
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (txtDocumento.Text == "" && txtRazonSocial.Text == "" && txtDireccion.Text == "" && txtTelefono.Text == "" && txtCorreo.Text == "")
+            if (txtRazonSocial.Text == "" && txtDireccion.Text == "" && txtTelefono.Text == "" && txtCorreo.Text == "")
             {
                 this.ParentForm.Close();
             }
             else
             {
-                txtDocumento.Text = "";
                 txtRazonSocial.Text = "";
                 txtDireccion.Text = "";
                 txtTelefono.Text = "";
@@ -85,25 +87,65 @@ namespace New_MasterTrade.UserControls
             }
             else
             {
-                if (MessageBox.Show("¿Desea registrar el cliente: "+GetPersona().Documento+"?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (!GetPersona().ValidDocumento())
                 {
-                    if (comboOcupacion.SelectedIndex == 0)
+                    MessageBox.Show(GetPersona().Documento + " no es un número de documento válido. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDocumento.Enabled = true;
+                }
+                else
+                {
+                    if (!GetPersona().ValidPhone())
                     {
-                        crud.Create(GetPersona(), "clientes");
+                        MessageBox.Show(GetPersona().Telefono + " no es un número de teléfono válido. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        crud.Create(GetPersona(), "proveedores");
+                        if (!GetPersona().ValidEmail())
+                        {
+                            MessageBox.Show(GetPersona().Correo.ToUpper() + " no es una dirección de correo válida. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("¿Desea registrar el cliente: " + GetPersona().Documento + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                if (comboOcupacion.SelectedIndex == 0)
+                                {
+                                    crud.Create(GetPersona(), "clientes");
+                                    Registro = GetPersona();
+                                }
+                                else
+                                {
+                                    crud.Create(GetPersona(), "proveedores");
+                                    Registro = GetPersona();
+                                }
+                                this.ParentForm.Close();
+                            }
+                        }
                     }
-                    this.ParentForm.Close();
                 }
             }
         }
 
         private Persona GetPersona()
         {
-            Persona persona = new Persona(comboDocumento.SelectedItem.ToString()+txtDocumento.Text, txtRazonSocial.Text, txtDireccion.Text, txtTelefono.Text, txtCorreo.Text);
+            Persona persona = new Persona(comboDocumento.SelectedItem.ToString()+txtDocumento.Text, txtRazonSocial.Text.ToUpper(), txtDireccion.Text.ToUpper(), txtTelefono.Text, txtCorreo.Text.ToUpper());
             return persona;
+        }
+
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void OnlyLetters(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -45,7 +45,8 @@ namespace New_MasterTrade
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormVender.Clear();
+            FormVender.ClearData("RESET");
+            FormVender.Config();
             FormVender.BringToFront();
         }
 

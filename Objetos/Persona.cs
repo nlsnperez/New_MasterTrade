@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace New_MasterTrade.Objetos
 {
-    class Persona
+    public class Persona
     {
         public string Documento{ get; set; }
         public string RazonSocial{ get; set; }
@@ -33,10 +33,22 @@ namespace New_MasterTrade.Objetos
             return false;
         }
 
+        public bool ValidDocumento()
+        {
+            string regex = "^(V|E|J|G)+[0-9]{5,9}$";
+            return Regex.IsMatch(this.Documento, regex, RegexOptions.IgnoreCase);
+        }
+
         public bool ValidEmail()
         {
             string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov|ve)$";
             return Regex.IsMatch(this.Correo, regex, RegexOptions.IgnoreCase);
+        }
+
+        public bool ValidPhone()
+        {
+            string regex = "^(0251|0414|0424|0412|0416|0426)[0-9]{7}$";
+            return Regex.IsMatch(this.Telefono, regex, RegexOptions.IgnoreCase);
         }
     }
 }

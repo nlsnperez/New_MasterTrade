@@ -45,27 +45,41 @@ namespace New_MasterTrade
             }
             else
             {
-                if (!GetPersona().ValidEmail())
+                if (!GetPersona().ValidDocumento())
                 {
-                    MessageBox.Show("Introduzca una dirección de correo electrónico válida!");
+                    MessageBox.Show(GetPersona().Documento + " no es un número de documento válido. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    if (MessageBox.Show("Desea registrar el " + comboOcupacion.SelectedItem.ToString().ToLower() + ": " + GetPersona().Documento + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (!GetPersona().ValidPhone())
                     {
-                        if (comboOcupacion.SelectedIndex == 0)
+                        MessageBox.Show(GetPersona().Telefono + " no es un número de teléfono válido. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        if (!GetPersona().ValidEmail())
                         {
-                            crud.Create(GetPersona(), "clientes");
-                            Clear();
-                            comboTabla.SelectedIndex = 0;
-                            RefreshTable(1);
+                            MessageBox.Show(GetPersona().Correo.ToUpper()+" no es una dirección de correo válida. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else
                         {
-                            crud.Create(GetPersona(), "proveedores");
-                            Clear();
-                            comboTabla.SelectedIndex = 1;
-                            RefreshTable(2);
+                            if (MessageBox.Show("Desea registrar el " + comboOcupacion.SelectedItem.ToString().ToLower() + ": " + GetPersona().Documento + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                if (comboOcupacion.SelectedIndex == 0)
+                                {
+                                    crud.Create(GetPersona(), "clientes");
+                                    Clear();
+                                    comboTabla.SelectedIndex = 0;
+                                    RefreshTable(1);
+                                }
+                                else
+                                {
+                                    crud.Create(GetPersona(), "proveedores");
+                                    Clear();
+                                    comboTabla.SelectedIndex = 1;
+                                    RefreshTable(2);
+                                }
+                            }
                         }
                     }
                 }
@@ -139,6 +153,7 @@ namespace New_MasterTrade
         
         public void FillComboBoxes()
         {
+            if (comboDocumento.Items.Count > 0) comboDocumento.Items.Clear();
             if (comboOcupacion.Items.Count > 0) comboOcupacion.Items.Clear();
             if (comboTabla.Items.Count > 0) comboTabla.Items.Clear();
             comboDocumento.Items.Add("V");
@@ -259,20 +274,13 @@ namespace New_MasterTrade
 
         private Persona GetPersona()
         {
-            Persona persona = new Persona(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, txtRazonSocial.Text, txtDireccion.Text, txtTelefono.Text, txtCorreo.Text);
+            Persona persona = new Persona(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, txtRazonSocial.Text.ToUpper(), txtDireccion.Text.ToUpper(), txtTelefono.Text, txtCorreo.Text.ToUpper());
             return persona;
         }
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
-            // Verify that the pressed key isn't CTRL or any non-numeric digit
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // If you want, you can allow decimal (float) numbers
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }

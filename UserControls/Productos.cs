@@ -32,8 +32,8 @@ namespace New_MasterTrade
             txtCodigo.MaxLength = 100;
             txtNombre.MaxLength = 200;
             txtCosto.MaxLength = 13;
-            txtStockMin.MaxLength = 10;
             txtStockMax.MaxLength = 10;
+            txtStockMin.MaxLength = 10;
             FillComboBoxes();
             tablaProductos.AutoGenerateColumns = false;
             txtCantidad.Enabled = false;
@@ -153,8 +153,8 @@ namespace New_MasterTrade
             txtCodigo.Text = "";
             txtNombre.Text = "";
             txtCosto.Text = "00,00";
-            txtStockMax.Text = "0";
             txtStockMin.Text = "0";
+            txtStockMax.Text = "0";
             txtBuscar.Text = "";
             txtCodigo.Enabled = true;
             comboProveedor.SelectedIndex = 0;
@@ -182,33 +182,33 @@ namespace New_MasterTrade
 
         private void txtStockMax_Enter(object sender, EventArgs e)
         {
-            if (txtStockMax.Text == "0")
-            {
-                txtStockMax.Text = "";
-            }
-        }
-
-        private void txtStockMax_Leave(object sender, EventArgs e)
-        {
-            if (txtStockMax.Text == "")
-            {
-                txtStockMax.Text = "0";
-            }
-        }
-
-        private void txtStockMin_Enter(object sender, EventArgs e)
-        {
             if (txtStockMin.Text == "0")
             {
                 txtStockMin.Text = "";
             }
         }
 
-        private void txtStockMin_Leave(object sender, EventArgs e)
+        private void txtStockMax_Leave(object sender, EventArgs e)
         {
             if (txtStockMin.Text == "")
             {
                 txtStockMin.Text = "0";
+            }
+        }
+
+        private void txtStockMin_Enter(object sender, EventArgs e)
+        {
+            if (txtStockMax.Text == "0")
+            {
+                txtStockMax.Text = "";
+            }
+        }
+
+        private void txtStockMin_Leave(object sender, EventArgs e)
+        {
+            if (txtStockMax.Text == "")
+            {
+                txtStockMax.Text = "0";
             }
         }
 
@@ -232,12 +232,7 @@ namespace New_MasterTrade
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }

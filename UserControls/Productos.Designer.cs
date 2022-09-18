@@ -46,10 +46,10 @@ namespace New_MasterTrade
             this.btnCancelar = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtStockMin = new System.Windows.Forms.TextBox();
+            this.txtStockMax = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtStockMax = new System.Windows.Forms.TextBox();
+            this.txtStockMin = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -300,9 +300,9 @@ namespace New_MasterTrade
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.86956F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.13044F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel7.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.txtStockMin, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.txtStockMax, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 471);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -318,24 +318,24 @@ namespace New_MasterTrade
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(246, 34);
+            this.label3.Location = new System.Drawing.Point(245, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 15);
             this.label3.TabIndex = 20;
             this.label3.Text = "UNIDADES";
             // 
-            // txtStockMin
+            // txtStockMax
             // 
-            this.txtStockMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStockMin.Location = new System.Drawing.Point(124, 31);
-            this.txtStockMin.Name = "txtStockMin";
-            this.txtStockMin.Size = new System.Drawing.Size(110, 20);
-            this.txtStockMin.TabIndex = 19;
-            this.txtStockMin.Text = "0";
-            this.txtStockMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtStockMin.Enter += new System.EventHandler(this.txtStockMin_Enter);
-            this.txtStockMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
-            this.txtStockMin.Leave += new System.EventHandler(this.txtStockMin_Leave);
+            this.txtStockMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStockMax.Location = new System.Drawing.Point(123, 31);
+            this.txtStockMax.Name = "txtStockMax";
+            this.txtStockMax.Size = new System.Drawing.Size(110, 20);
+            this.txtStockMax.TabIndex = 19;
+            this.txtStockMax.Text = "0";
+            this.txtStockMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtStockMax.Enter += new System.EventHandler(this.txtStockMin_Enter);
+            this.txtStockMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
+            this.txtStockMax.Leave += new System.EventHandler(this.txtStockMin_Leave);
             // 
             // label12
             // 
@@ -343,7 +343,7 @@ namespace New_MasterTrade
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(5, 33);
+            this.label12.Location = new System.Drawing.Point(4, 33);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(111, 16);
             this.label12.TabIndex = 17;
@@ -354,8 +354,8 @@ namespace New_MasterTrade
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.86956F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.13044F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.tableLayoutPanel6.Controls.Add(this.txtStockMax, 1, 0);
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel6.Controls.Add(this.txtStockMin, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 393);
@@ -366,18 +366,18 @@ namespace New_MasterTrade
             this.tableLayoutPanel6.Size = new System.Drawing.Size(324, 72);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
-            // txtStockMax
+            // txtStockMin
             // 
-            this.txtStockMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStockMax.Location = new System.Drawing.Point(124, 31);
-            this.txtStockMax.Name = "txtStockMax";
-            this.txtStockMax.Size = new System.Drawing.Size(110, 20);
-            this.txtStockMax.TabIndex = 18;
-            this.txtStockMax.Text = "0";
-            this.txtStockMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtStockMax.Enter += new System.EventHandler(this.txtStockMax_Enter);
-            this.txtStockMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
-            this.txtStockMax.Leave += new System.EventHandler(this.txtStockMax_Leave);
+            this.txtStockMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStockMin.Location = new System.Drawing.Point(123, 31);
+            this.txtStockMin.Name = "txtStockMin";
+            this.txtStockMin.Size = new System.Drawing.Size(110, 20);
+            this.txtStockMin.TabIndex = 18;
+            this.txtStockMin.Text = "0";
+            this.txtStockMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtStockMin.Enter += new System.EventHandler(this.txtStockMax_Enter);
+            this.txtStockMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
+            this.txtStockMin.Leave += new System.EventHandler(this.txtStockMax_Leave);
             // 
             // label11
             // 
@@ -397,7 +397,7 @@ namespace New_MasterTrade
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(246, 34);
+            this.label2.Location = new System.Drawing.Point(245, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 15);
             this.label2.TabIndex = 19;
@@ -445,7 +445,7 @@ namespace New_MasterTrade
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.42373F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.57627F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
             this.tableLayoutPanel4.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.txtCosto, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label9, 0, 0);
@@ -472,7 +472,7 @@ namespace New_MasterTrade
             // txtCosto
             // 
             this.txtCosto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCosto.Location = new System.Drawing.Point(122, 31);
+            this.txtCosto.Location = new System.Drawing.Point(121, 31);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(110, 20);
             this.txtCosto.TabIndex = 19;
@@ -712,7 +712,7 @@ namespace New_MasterTrade
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.TextBox txtStockMax;
+        private System.Windows.Forms.TextBox txtStockMin;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TextBox txtCantidad;
@@ -729,7 +729,7 @@ namespace New_MasterTrade
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.TextBox txtStockMin;
+        private System.Windows.Forms.TextBox txtStockMax;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView tablaProductos;
         private System.Windows.Forms.Label label3;

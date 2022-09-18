@@ -13,7 +13,7 @@ namespace New_MasterTrade.UserControls
     {
         CRUDTransacciones crud;
         DataTable carrito = new DataTable();
-        float total = 0;
+        decimal total = 0;
 
         public Comprar()
         {
@@ -52,12 +52,13 @@ namespace New_MasterTrade.UserControls
                 else
                 {
                     //AGREGA LOS DATOS A UN ARREGLO DE STRING Y SE ENVÍAN A LA TABLA DE CARRITO
-                    string[] producto = { txtCodigo.Text, txtNombreProducto.Text, txtCantidad.Text, Calc_Precio(float.Parse(txtPrecio.Text, CultureInfo.InvariantCulture), float.Parse(txtCantidad.Text, CultureInfo.InvariantCulture)).ToString()};
+                    string[] producto = {txtCodigo.Text, txtNombreProducto.Text, txtCantidad.Text, Calc_Precio(decimal.Parse(txtPrecio.Text), decimal.Parse(txtCantidad.Text)).ToString()};
                     carrito.Rows.Add(producto);
+                    if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);                    
                     tableCarrito.DataSource = carrito;
 
                     //CALCULA EL PRECIO TOTAL DE LA COMPRA Y LO MUESTRA EN UN LABEL
-                    total = total + Calc_Precio(float.Parse(txtPrecio.Text, CultureInfo.InvariantCulture), float.Parse(txtCantidad.Text, CultureInfo.InvariantCulture));
+                    total = total + Calc_Precio(decimal.Parse(txtPrecio.Text), decimal.Parse(txtCantidad.Text));
                     lblTotal.Text = total.ToString() + " Bs";
 
                     btnAtras.Enabled = true;
@@ -66,6 +67,21 @@ namespace New_MasterTrade.UserControls
                 }
             }
             
+        }
+
+        public void Check_Duplicado(int y)
+        {
+            for (int x = 0; x < carrito.Rows.Count - 1; x++)
+            {
+                if (carrito.Rows[x][0].ToString() == carrito.Rows[y][0].ToString())
+                {
+                    carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) + int.Parse(carrito.Rows[y][2].ToString());
+                    if (int.Parse(carrito.Rows[x][2].ToString()) > txtCantidad.Maximum) carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) - (int.Parse(carrito.Rows[x][2].ToString()) - txtCantidad.Maximum);
+                    carrito.Rows[x][3] = decimal.Parse(carrito.Rows[x][3].ToString()) + decimal.Parse(carrito.Rows[y][3].ToString());
+                    carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
+                    break;
+                }
+            }
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -88,7 +104,7 @@ namespace New_MasterTrade.UserControls
 
         private void btnAtras_Click(object sender, EventArgs e)//BOTÓN PARA SUSTRAER UN PRODUCTO DE LA LISTA
         {
-            total = total - float.Parse(carrito.Rows[carrito.Rows.Count-1]["Precio"].ToString());//RESTA EL PRECIO DEL PRODUCTO ELIMINADO
+            total = total - decimal.Parse(carrito.Rows[carrito.Rows.Count-1]["Precio"].ToString());//RESTA EL PRECIO DEL PRODUCTO ELIMINADO
             carrito.Rows.RemoveAt(carrito.Rows.Count-1);//REMUEVE EL PRODUCTO DE LA TABLA
             lblTotal.Text = total.ToString() + " Bs";
             if (carrito.Rows.Count == 0)
@@ -102,24 +118,29 @@ namespace New_MasterTrade.UserControls
         {
             Cancel_Order();
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            BuscarProveedor();
+        }
         //BOTONES
 
         private Compra GetCompra()//GENERA UNA COMPRA CON LOS DATOS SUMINISTRADOS
         {
-            List<Detalle_Compra> detalle = new List<Detalle_Compra>();
+            List<Detalle> detalle = new List<Detalle>();
             for (int i = 0; i <= carrito.Rows.Count - 1; i++)
             {
-                Detalle_Compra x = new Detalle_Compra(carrito.Rows[i]["Código"].ToString(), Int32.Parse(carrito.Rows[i]["Cantidad"].ToString()), float.Parse(carrito.Rows[i]["Precio"].ToString()));
+                Detalle x = new Detalle(carrito.Rows[i]["Código"].ToString(), Int32.Parse(carrito.Rows[i]["Cantidad"].ToString()), float.Parse(carrito.Rows[i]["Precio"].ToString()));
                 detalle.Add(x);
             }
             Compra compra = new Compra(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, detalle);
-            compra.Generar_Codigo(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, crud.ComprasRealizadas());
+            compra.Generar_Codigo(crud.ComprasRealizadas());
             return compra;
         }
 
         public void Cancel_Order()//LIMPIA LOS CAMPOS ATENDIENDO A UN PARÁMETRO
         {
-            if(txtCodigo.Text == ""|| txtNombreProducto.Text == "" || txtCantidad.Text == "" || txtPrecio.Text == "")
+            if(txtCodigo.Text == ""|| txtNombreProducto.Text == "" || txtCantidad.Text == "" || txtPrecio.Text == "" /*|| carrito.Rows.Count > 0*/)
             {
                 ClearData("RESET");
             }
@@ -159,6 +180,7 @@ namespace New_MasterTrade.UserControls
                     lblTotal.Text = "00,00 Bs";
                     break;
                 case "PARTIAL":
+                    comboDocumento.SelectedIndex = 0;
                     tableCarrito.DataSource = null;
                     carrito.Rows.Clear();
                     total = 0;
@@ -168,9 +190,9 @@ namespace New_MasterTrade.UserControls
             
         }
 
-        public float Calc_Precio(float precio, float cantidad)//CALCULA EL PRECIO DE LA COMPRA
+        public decimal Calc_Precio(decimal precio, decimal cantidad)//CALCULA EL PRECIO DE LA COMPRA
         {
-            return (float) (precio * cantidad);
+            return precio * cantidad;
         }
 
         public void FillTables(int x)//BUSCA LOS REGISTROS EN LA BASE DE DATOS PARA LA TABLA DE PRODUCTOS
@@ -178,10 +200,10 @@ namespace New_MasterTrade.UserControls
             switch (x)
             {
                 case 1:
-                    tableProductos.DataSource = crud.FindProductos(comboDocumento.SelectedItem.ToString() + txtDocumento.Text);//BUSQUEDA GENERAL
+                    tableProductos.DataSource = crud.FindProductos(1);//BUSQUEDA GENERAL
                     break;
                 case 2:
-                    tableProductos.DataSource = crud.BuscarProductos(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, txtBuscar.Text);//BUSQUEDA ESPECÍFICA
+                    tableProductos.DataSource = crud.BuscarProductos(txtBuscar.Text, 1);//BUSQUEDA ESPECÍFICA
                     break;
             }
             
@@ -193,39 +215,44 @@ namespace New_MasterTrade.UserControls
             txtCodigo.Text = tableProductos.SelectedRows[0].Cells[0].Value.ToString();
             txtNombreProducto.Text = tableProductos.SelectedRows[0].Cells[1].Value.ToString();
             txtCantidad.Enabled = true;
-            txtCantidad.Text = "1";
-            txtPrecio.Text = tableProductos.SelectedRows[0].Cells[2].Value.ToString();
+            txtCantidad.Minimum = decimal.Parse(tableProductos.SelectedRows[0].Cells[2].Value.ToString());
+            txtCantidad.Maximum = decimal.Parse(tableProductos.SelectedRows[0].Cells[3].Value.ToString());
+            txtCantidad.Value = decimal.Parse(tableProductos.SelectedRows[0].Cells[2].Value.ToString());
+            txtPrecio.Text = tableProductos.SelectedRows[0].Cells[4].Value.ToString();
         }
 
         private void txtDocumento_KeyDown(object sender, KeyEventArgs e)//MÉTODO PARA BUSCAR UN PROVEEDOR EN LA BASE DE DATOS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (txtDocumento.Text == "")//VERIFICA QUE EL CAMPO NO ESTÉ VACÍO
-                {
-                    MessageBox.Show("¡Por favor ingrese un documento!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    Persona proveedor = crud.FindPersona(comboDocumento.SelectedItem.ToString()+txtDocumento.Text);//BUSCA UN PROOVEDOR EN LA BASE DE DATOS
-                    if (proveedor==null)//EN CASO QUE NO SE ENCUENTRE UN RESULTADO
-                    {
-                        if (MessageBox.Show("No hay un proveedor con el documento que introdujo ¿Desea registrar uno nuevo?", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                        {
-                            NuevoRegistro();
-                            txtDocumento.Text = "";
+                BuscarProveedor();
+            }
+        }
 
-                        }
-                    }
-                    else//EN CASO QUE SE ENCUENTRE UN RESULTADO
+        private void BuscarProveedor()
+        {
+            if (txtDocumento.Text == "")//VERIFICA QUE EL CAMPO NO ESTÉ VACÍO
+            {
+                MessageBox.Show("¡Por favor ingrese un documento!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Persona proveedor = crud.FindPersona(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, "proveedores");//BUSCA UN PROOVEDOR EN LA BASE DE DATOS
+                if (proveedor == null)//EN CASO QUE NO SE ENCUENTRE UN RESULTADO
+                {
+                    if (MessageBox.Show("No hay un proveedor con el documento que introdujo ¿Desea registrar uno nuevo?", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        System.Windows.Forms.MessageBox.Show("PROVEEDOR: " + proveedor.RazonSocial.ToUpper(), "¡PROVEEDOR ENCONTRADO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtRazonSocial.Text = proveedor.RazonSocial;
-                        txtTelefono.Text = proveedor.Telefono;
-                        txtDocumento.Enabled = false;
-                        comboDocumento.Enabled = false;
-                        FillTables(1);//LLENA LA TABLA CON LOS PRODUCTOS REGISTRADOS DE ESE PROVEEDOR
+                        NuevoRegistro();
                     }
+                }
+                else//EN CASO QUE SE ENCUENTRE UN RESULTADO
+                {
+                    System.Windows.Forms.MessageBox.Show("PROVEEDOR: " + proveedor.RazonSocial.ToUpper(), "¡PROVEEDOR ENCONTRADO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtRazonSocial.Text = proveedor.RazonSocial;
+                    txtTelefono.Text = proveedor.Telefono;
+                    txtDocumento.Enabled = false;
+                    comboDocumento.Enabled = false;
+                    FillTables(1);//LLENA LA TABLA CON LOS PRODUCTOS REGISTRADOS DE ESE PROVEEDOR
                 }
             }
         }
@@ -303,8 +330,20 @@ namespace New_MasterTrade.UserControls
             x.StartPosition = FormStartPosition.CenterParent;
             x.Controls.Add(y);
             x.ShowDialog();
+            if (y.Registro != null)
+            {
+                comboDocumento.Enabled = false;
+                txtDocumento.Enabled = false;
+                txtRazonSocial.Text = y.Registro.RazonSocial;
+                txtTelefono.Text = y.Registro.Telefono;
+                FillTables(1);
+            }
+            else
+            {
+                comboDocumento.SelectedIndex = 0;
+                txtDocumento.Text = "";
+            }
         }
-        
         //CONFIGURACIONES
     }
 }

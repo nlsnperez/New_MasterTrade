@@ -108,9 +108,10 @@
       <DependentUpon>ConfirmarForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Objetos\Compra.cs" />
-    <Compile Include="Objetos\Detalle_Compra.cs" />
+    <Compile Include="Objetos\Detalle.cs" />
     <Compile Include="Objetos\Persona.cs" />
     <Compile Include="Objetos\Producto.cs" />
+    <Compile Include="Objetos\Venta.cs" />
     <Compile Include="UserControls\Comprar.cs">
       <SubType>UserControl</SubType>
     </Compile>

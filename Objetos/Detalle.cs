@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace New_MasterTrade.Objetos
 {
-    class Detalle_Compra
+    class Detalle
     {
-        public string Compra{ get; set; }
         public string Producto{ get; set; }
         public int Cantidad{ get; set; }
         public float Precio{ get; set; }
 
-        public Detalle_Compra(/*string compra, */string producto, int cantidad, float precio)
+        public Detalle(string producto, int cantidad, float precio)
         {
-            //Compra = compra;
             Producto = producto;
             Cantidad = cantidad;
             Precio = precio;
