@@ -58,8 +58,7 @@ namespace New_MasterTrade.UserControls
                     tableCarrito.DataSource = carrito;
 
                     //CALCULA EL PRECIO TOTAL DE LA COMPRA Y LO MUESTRA EN UN LABEL
-                    total = total + Calc_Precio(decimal.Parse(txtPrecio.Text), decimal.Parse(txtCantidad.Text));
-                    lblTotal.Text = total.ToString() + " Bs";
+                    lblTotal.Text = GetTotal().ToString() + " Bs";
 
                     btnAtras.Enabled = true;
                     btnConfirmar.Enabled = true;
@@ -76,9 +75,14 @@ namespace New_MasterTrade.UserControls
                 if (carrito.Rows[x][0].ToString() == carrito.Rows[y][0].ToString())
                 {
                     carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) + int.Parse(carrito.Rows[y][2].ToString());
-                    if (int.Parse(carrito.Rows[x][2].ToString()) > txtCantidad.Maximum) carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) - (int.Parse(carrito.Rows[x][2].ToString()) - txtCantidad.Maximum);
                     carrito.Rows[x][3] = decimal.Parse(carrito.Rows[x][3].ToString()) + decimal.Parse(carrito.Rows[y][3].ToString());
                     carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
+                    if (int.Parse(carrito.Rows[x][2].ToString()) > txtCantidad.Maximum)
+                    {
+                        carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) - (int.Parse(carrito.Rows[x][2].ToString()) - txtCantidad.Maximum);
+                        carrito.Rows[x][3] = decimal.Parse(carrito.Rows[x][2].ToString()) * decimal.Parse(txtPrecio.Text);
+                        MessageBox.Show("La cantidad de productos ingresada excede a la cantidad disponible por lo que se ajustarán los datos automáticamente", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                     break;
                 }
             }
@@ -104,7 +108,7 @@ namespace New_MasterTrade.UserControls
 
         private void btnAtras_Click(object sender, EventArgs e)//BOTÓN PARA SUSTRAER UN PRODUCTO DE LA LISTA
         {
-            total = total - decimal.Parse(carrito.Rows[carrito.Rows.Count-1]["Precio"].ToString());//RESTA EL PRECIO DEL PRODUCTO ELIMINADO
+            total = GetTotal() - decimal.Parse(carrito.Rows[carrito.Rows.Count-1]["Precio"].ToString());//RESTA EL PRECIO DEL PRODUCTO ELIMINADO
             carrito.Rows.RemoveAt(carrito.Rows.Count-1);//REMUEVE EL PRODUCTO DE LA TABLA
             lblTotal.Text = total.ToString() + " Bs";
             if (carrito.Rows.Count == 0)
@@ -343,6 +347,16 @@ namespace New_MasterTrade.UserControls
                 comboDocumento.SelectedIndex = 0;
                 txtDocumento.Text = "";
             }
+        }
+
+        private decimal GetTotal()
+        {
+            decimal x = 0;
+            for (int i = 0; i <= carrito.Rows.Count - 1; i++)
+            {
+                x = x + decimal.Parse(carrito.Rows[i]["Precio"].ToString());
+            }
+            return x;
         }
         //CONFIGURACIONES
     }
