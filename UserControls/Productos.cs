@@ -16,6 +16,7 @@ namespace New_MasterTrade
     public partial class Productos : UserControl
     {
         CRUDProductos crud;
+        bool IsCollapsed;
         public Productos()
         {
             InitializeComponent();
@@ -29,30 +30,45 @@ namespace New_MasterTrade
         public void Config()
         {
             crud = new CRUDProductos();
-            txtCodigo.MaxLength = 100;
+            panelSlide.Size = panelSlide.MinimumSize;
             txtNombre.MaxLength = 200;
             txtCosto.MaxLength = 13;
             txtStockMax.MaxLength = 10;
             txtStockMin.MaxLength = 10;
             FillComboBoxes();
             tablaProductos.AutoGenerateColumns = false;
+            txtID.Enabled = false;
             txtCantidad.Enabled = false;
             Config_Botones("INICIO");
             RefreshTable(1);
+            panel1.Size = MaximumSize;
         }
 
         public void FillComboBoxes()
         {
-            if (comboProveedor.Items.Count > 0) comboProveedor.DataSource = null;
-            comboProveedor.ValueMember = "documento_identidad";
-            comboProveedor.DisplayMember = "proveedor";
-            comboProveedor.DataSource = crud.Proveedores();
-            comboProveedor.SelectedIndex = 0;
+            if (comboCategoría.Items.Count > 0) comboCategoría.DataSource = null;
+            comboCategoría.ValueMember = "id";
+            comboCategoría.DisplayMember = "nombre";
+            comboCategoría.DataSource = crud.Categorias();
+            comboCategoría.SelectedIndex = 0;
         }
 
         //BOTONES//
 
         private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            switch (btnGuardar.Text)
+            {
+                case "GUARDAR":
+                    Guardar();
+                    break;
+                case "ACTUALIZAR":
+                    Actualizar();
+                    break;
+            }
+        }
+
+        private void Guardar()
         {
             if (GetProducto().IsEmpty())
             {
@@ -60,7 +76,7 @@ namespace New_MasterTrade
             }
             else
             {
-               if (GetProducto().CompararStock() == false)
+                if (GetProducto().CompararStock() == false)
                 {
                     MessageBox.Show("¡El stock máximo no puede ser menor al stock mínimo!", "INVÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -71,23 +87,14 @@ namespace New_MasterTrade
                         crud.Create(GetProducto());
                         Clear();
                         RefreshTable(1);
-                  }
+                        timerSlide.Start();
+                    }
 
                 }
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Desea eliminar los datos del prodcuto: " + txtCodigo.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                crud.Delete(txtCodigo.Text);
-                Clear();
-                RefreshTable(1);
-            }
-        }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
+        private void Actualizar()
         {
             if (MessageBox.Show("Desea actualizar los datos del producto: " + GetProducto().Codigo + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -95,6 +102,21 @@ namespace New_MasterTrade
                 Clear();
                 RefreshTable(1);
             }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea eliminar los datos del prodcuto: " + lblCodigo.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                crud.Delete(lblCodigo.Text);
+                Clear();
+                RefreshTable(1);
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -144,37 +166,34 @@ namespace New_MasterTrade
 
         private Producto GetProducto()
         {
-            Producto producto = new Producto(txtCodigo.Text, txtNombre.Text, comboProveedor.SelectedValue.ToString().Substring(comboProveedor.SelectedItem.ToString().LastIndexOf('-') + 1), float.Parse(txtCosto.Text.Replace(',', '.'), CultureInfo.InvariantCulture), Int32.Parse(txtStockMax.Text), Int32.Parse(txtStockMin.Text));
+            Producto producto = new Producto(Int32.Parse(txtID.Text), lblCodigo.Text, txtNombre.Text, comboCategoría.SelectedValue.ToString(), float.Parse(txtCosto.Text.Replace(',', '.'), CultureInfo.InvariantCulture), Int32.Parse(txtStockMax.Text), Int32.Parse(txtStockMin.Text));
             return producto;
         }        
 
         public void Clear()
         {
-            txtCodigo.Text = "";
+            txtID.Text = "";
             txtNombre.Text = "";
             txtCosto.Text = "00,00";
             txtStockMin.Text = "0";
             txtStockMax.Text = "0";
             txtBuscar.Text = "";
-            txtCodigo.Enabled = true;
-            comboProveedor.SelectedIndex = 0;
-            comboProveedor.Enabled = true;
-            comboProveedor.SelectedIndex = 1;
+            comboCategoría.SelectedIndex = 0;
+            comboCategoría.Enabled = true;
             Config_Botones("INICIO");
             RefreshTable(1);
         }
 
         private void tablaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            txtCodigo.Text = tablaProductos.SelectedRows[0].Cells[0].Value.ToString();
+            lblCodigo.Text = tablaProductos.SelectedRows[0].Cells[0].Value.ToString();
             txtNombre.Text = tablaProductos.SelectedRows[0].Cells[1].Value.ToString();
-            comboProveedor.SelectedValue = tablaProductos.SelectedRows[0].Cells[2].Value.ToString();
+            comboCategoría.SelectedValue = tablaProductos.SelectedRows[0].Cells[2].Value.ToString();
             txtCosto.Text = tablaProductos.SelectedRows[0].Cells[3].Value.ToString().Replace('.', ',');
-            txtCantidad.Text = Convert.ToString(crud.ProductosComprados(txtCodigo.Text) - crud.ProductosVendidos(txtCodigo.Text));
+            txtCantidad.Text = Convert.ToString(crud.ProductosComprados(lblCodigo.Text) - crud.ProductosVendidos(lblCodigo.Text));
             txtStockMax.Text = tablaProductos.SelectedRows[0].Cells[4].Value.ToString();
             txtStockMin.Text = tablaProductos.SelectedRows[0].Cells[5].Value.ToString();
-            comboProveedor.Enabled = false;
-            txtCodigo.Enabled = false;
+            comboCategoría.Enabled = false;
             Config_Botones("SELECCIÓN");
         }        
 
@@ -235,6 +254,75 @@ namespace New_MasterTrade
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void bttnRegistrar_Click(object sender, EventArgs e)
+        {
+            txtID.Text = crud.GetLastID().ToString();
+            lblCodigo.Text = "MTP" + crud.GetLastID().ToString("0000000");
+            timerSlide.Start();
+        }
+
+        private void timerSlide_Tick(object sender, EventArgs e)
+        {
+            if (IsCollapsed)
+            {
+                panelSlide.Width += 50;
+                if (panelSlide.Size == panelSlide.MaximumSize)
+                {
+                    timerSlide.Stop();
+                    IsCollapsed = false;
+                }
+            }
+            else
+            {
+                panelSlide.Width -= 50;
+                if (panelSlide.Size == panelSlide.MinimumSize)
+                {
+                    timerSlide.Stop();
+                    IsCollapsed = true;
+                }
+            }
+        }
+
+        private void bttnAtras_Click(object sender, EventArgs e)
+        {
+            timerSlide.Start();
+            btnGuardar.Text = "GUARDAR";
+            Clear();
+            lblCodigo.Text = "MTP0000000";
+        }
+
+        private void tablaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                Producto producto = crud.FindProducto(tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                txtID.Text = producto.Id.ToString();
+                lblCodigo.Text = producto.Codigo;
+                txtNombre.Text = producto.Nombre;
+                comboCategoría.SelectedValue = producto.Categoria;
+                txtCosto.Text = producto.Costo.ToString().Replace('.', ',');
+                txtCantidad.Text = Convert.ToString(crud.ProductosComprados(lblCodigo.Text) - crud.ProductosVendidos(lblCodigo.Text));
+                txtStockMax.Text = producto.StockMax.ToString();
+                txtStockMin.Text = producto.StockMin.ToString();
+                comboCategoría.Enabled = false;
+                btnGuardar.Text = "ACTUALIZAR";
+                timerSlide.Start();
+            }
+            else
+            {
+                if (e.ColumnIndex == 5)
+                {
+                    if (MessageBox.Show("Desea eliminar los datos del prodcuto: " + tablaProductos.Rows[e.RowIndex].Cells[2].Value.ToString() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        crud.Delete(tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        Clear();
+                        RefreshTable(1);
+                    }
+                }
             }
         }
     }

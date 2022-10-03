@@ -2,6 +2,7 @@
 using New_MasterTrade.Mensajes;
 using New_MasterTrade.Objetos;
 using System;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
@@ -11,6 +12,7 @@ namespace New_MasterTrade
     public partial class Personas : UserControl
     {
         private CRUD crud;
+        bool IsCollapsed;
         public Personas()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace New_MasterTrade
         public void Config()
         {
             crud = new CRUD();
+            panelSlide.Size = panelSlide.MinimumSize;
             txtDocumento.MaxLength = 9;
             txtRazonSocial.MaxLength = 100;
             txtDireccion.MaxLength = 500;
@@ -71,6 +74,7 @@ namespace New_MasterTrade
                                     Clear();
                                     comboTabla.SelectedIndex = 0;
                                     RefreshTable(1);
+                                    timerSlide.Start();
                                 }
                                 else
                                 {
@@ -78,6 +82,7 @@ namespace New_MasterTrade
                                     Clear();
                                     comboTabla.SelectedIndex = 1;
                                     RefreshTable(2);
+                                    timerSlide.Start();
                                 }
                             }
                         }
@@ -96,40 +101,74 @@ namespace New_MasterTrade
                     crud.Update(GetPersona(), "clientes");
                     Clear();
                     RefreshTable(1);
+                    timerSlide.Start();
                 }
                 else
                 {
                     crud.Update(GetPersona(), "proveedores");
                     Clear();
                     RefreshTable(2);
+                    timerSlide.Start();
                 }
             }            
         }
-        
-        private void bttnCancelar_Click(object sender, EventArgs e)
-        {
-            Clear();
-        }
 
-        private void bttnEliminar_Click(object sender, EventArgs e)
+        private void tablaPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (MessageBox.Show("Desea eliminar los datos del " + comboOcupacion.SelectedItem.ToString().ToLower() + ": " + GetPersona().Documento + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (e.ColumnIndex == 5)
             {
-                if (comboOcupacion.SelectedIndex == 0)
+                comboDocumento.SelectedIndex = DocumentoIndex(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString()[0]);
+                txtDocumento.Text = tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString().Remove(0, 1);
+                txtRazonSocial.Text = tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtDireccion.Text = tablaPersonas.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txtTelefono.Text = tablaPersonas.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtCorreo.Text = tablaPersonas.Rows[e.RowIndex].Cells[4].Value.ToString();
+                txtDocumento.Enabled = false;
+                comboDocumento.Enabled = false;
+                comboTabla.Enabled = false;
+                comboOcupacion.Enabled = false;
+                Config_Botones("SELECCIÓN");
+                if (comboTabla.SelectedIndex == 0)
                 {
-                    crud.Delete(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, "clientes");
-                    Clear();
-                    RefreshTable(1);
+                    comboOcupacion.SelectedIndex = 0;
                 }
                 else
                 {
-                    crud.Delete(txtDocumento.Text, "proveedores");
-                    Clear();
-                    RefreshTable(2);
+                    comboOcupacion.SelectedIndex = 1;
                 }
-            }            
+                timerSlide.Start();
+            }
+            else
+            {
+                if (e.ColumnIndex == 6)
+                {
+                    if (MessageBox.Show("Desea eliminar los datos del" + comboTabla.SelectedItem.ToString().ToLower() + ": " + tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        if (comboTabla.SelectedIndex == 0)
+                        {
+                            MessageBox.Show(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString());
+                            crud.Delete(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString(), "clientes");
+                            Clear();
+                            RefreshTable(1);
+                            timerSlide.Start();
+                        }
+                        else
+                        {
+                            MessageBox.Show(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString());
+                            crud.Delete(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString(), "proveedores");
+                            Clear();
+                            RefreshTable(2);
+                            timerSlide.Start();
+                        }
+                    }
+                }
+            }
         }
 
+        private void bttnCancelar_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }     
         //BOTONES//
 
         //CONFIGURACIÓN///
@@ -178,13 +217,11 @@ namespace New_MasterTrade
                 case "INICIO":
                     bttnGuardar.Enabled = true;
                     bttnActualizar.Enabled = false;
-                    bttnEliminar.Enabled = false;
                     bttnCancelar.Enabled = true;
                     break;
                 case "SELECCIÓN":
                     bttnGuardar.Enabled = false;
                     bttnActualizar.Enabled = true;
-                    bttnEliminar.Enabled = true;
                     bttnCancelar.Enabled = true;
                     break;
             }
@@ -225,29 +262,6 @@ namespace New_MasterTrade
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             RefreshTable(3);
-        }
-
-        private void tablaPersonas_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            comboDocumento.SelectedIndex = DocumentoIndex(tablaPersonas.SelectedRows[0].Cells[0].Value.ToString()[0]);
-            txtDocumento.Text = tablaPersonas.SelectedRows[0].Cells[0].Value.ToString().Remove(0, 1);
-            txtRazonSocial.Text = tablaPersonas.SelectedRows[0].Cells[1].Value.ToString();
-            txtDireccion.Text = tablaPersonas.SelectedRows[0].Cells[2].Value.ToString();
-            txtTelefono.Text = tablaPersonas.SelectedRows[0].Cells[3].Value.ToString();
-            txtCorreo.Text = tablaPersonas.SelectedRows[0].Cells[4].Value.ToString();
-            txtDocumento.Enabled = false;
-            comboDocumento.Enabled = false;
-            comboTabla.Enabled = false;
-            comboOcupacion.Enabled = false;
-            Config_Botones("SELECCIÓN");
-            if (comboTabla.SelectedIndex == 0)
-            {
-                comboOcupacion.SelectedIndex = 0;
-            }
-            else
-            {
-                comboOcupacion.SelectedIndex = 1;
-            }
         }
 
         //TABLA//
@@ -292,6 +306,39 @@ namespace New_MasterTrade
             {
                 e.Handled = true;
             }
+        }
+
+        private void timerSlide_Tick(object sender, EventArgs e)
+        {
+            if (IsCollapsed)
+            {
+                panelSlide.Width += 50;
+                if (panelSlide.Size == panelSlide.MaximumSize)
+                {
+                    timerSlide.Stop();
+                    IsCollapsed = false;
+                }
+            }
+            else
+            {
+                panelSlide.Width -= 50;
+                if (panelSlide.Size == panelSlide.MinimumSize)
+                {
+                    timerSlide.Stop();
+                    IsCollapsed = true;
+                }
+            }
+        }
+
+        private void bttnRegistrar_Click(object sender, EventArgs e)
+        {
+            timerSlide.Start();
+        }
+
+        private void bttnAtras_Click(object sender, EventArgs e)
+        {
+            Clear();
+            timerSlide.Start();
         }
     }
 }

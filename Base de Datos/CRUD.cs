@@ -78,6 +78,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
+                    MessageBox.Show(documento + " " + tabla);
                     command.CommandText = "UPDATE `" + tabla + "` SET `visible` = '0', `fecha_eliminado`= @feliminado WHERE `" + tabla + "`.`documento_identidad` = @documento;";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;

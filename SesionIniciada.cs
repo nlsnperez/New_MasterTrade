@@ -13,10 +13,33 @@ namespace New_MasterTrade
 {
     public partial class SesionIniciada : Form
     {
-        
+        private bool IsCollapsed;
         public SesionIniciada()
         {
             InitializeComponent();
+            panelDropDown.Size = panelDropDown.MinimumSize;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (IsCollapsed)
+            {
+                panelDropDown.Height += 10;
+                if (panelDropDown.Size == panelDropDown.MaximumSize)
+                {
+                    timer1.Stop();
+                    IsCollapsed = false;
+                }
+            }
+            else
+            {
+                panelDropDown.Height -= 10;
+                if (panelDropDown.Size == panelDropDown.MinimumSize)
+                {
+                    timer1.Stop();
+                    IsCollapsed = true;
+                }
+            }
         }
 
         private void bttnCerrar_Click(object sender, EventArgs e)
@@ -36,14 +59,14 @@ namespace New_MasterTrade
             FormPersonas.BringToFront();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void bttnProductos_Click(object sender, EventArgs e)
         {
             FormProductos.Clear();
             FormProductos.Config();
             FormProductos.BringToFront();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void bttnVender_Click(object sender, EventArgs e)
         {
             FormVender.ClearData("RESET");
             FormVender.Config();
@@ -65,6 +88,18 @@ namespace New_MasterTrade
             FormComprar.ClearData("RESET");
             FormComprar.Config();
             FormComprar.BringToFront();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void bttnCategorias_Click(object sender, EventArgs e)
+        {
+            formCategorias.Clear();
+            formCategorias.Config();
+            formCategorias.BringToFront();
         }
     }
 }

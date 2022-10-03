@@ -8,18 +8,20 @@ namespace New_MasterTrade.Objetos
 {
     class Producto
     {
+        public int Id { get; set; }
         public String Codigo { get; set; }
         public String Nombre { get; set; }
-        public String Proveedor { get; set; }
+        public String Categoria { get; set; }
         public float Costo { get; set; }
         public int StockMax { get; set; }
         public int StockMin { get; set; }
 
-        public Producto(string codigo, string nombre, string proveedor, float costo, int stockMax, int stockMin)
+        public Producto(int id, string codigo, string nombre, string categoria, float costo, int stockMax, int stockMin)
         {
+            Id = id;
             Codigo = codigo;
             Nombre = nombre;
-            Proveedor = proveedor;
+            Categoria = categoria;
             Costo = costo;
             StockMax = stockMax;
             StockMin = stockMin;
@@ -27,7 +29,7 @@ namespace New_MasterTrade.Objetos
 
         public bool IsEmpty()
         {
-            if (this.Codigo == "" || this.Nombre == "" || this.Proveedor == "" || this.Costo == 0 || this.StockMax == 0 || this.StockMin == 0)
+            if (this.Codigo == "" || this.Nombre == "" || this.Categoria == "" || this.Costo == 0 || this.StockMax == 0 || this.StockMin == 0)
             {
                 return true;
             }
