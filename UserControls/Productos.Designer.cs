@@ -34,8 +34,6 @@ namespace New_MasterTrade
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtStockMax = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -58,14 +56,14 @@ namespace New_MasterTrade
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panelSlide = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.bttnAtras = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bttnRegistrar = new System.Windows.Forms.Button();
             this.timerSlide = new System.Windows.Forms.Timer(this.components);
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.panelSlide.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -119,35 +117,11 @@ namespace New_MasterTrade
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnActualizar
-            // 
-            this.btnActualizar.FlatAppearance.BorderSize = 0;
-            this.btnActualizar.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(673, 545);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(90, 40);
-            this.btnActualizar.TabIndex = 30;
-            this.btnActualizar.Text = "ACTUALIZAR";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(184, 570);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 83);
-            this.btnEliminar.TabIndex = 31;
-            this.btnEliminar.Text = "ELIMINAR";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
             // btnCancelar
             // 
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(577, 545);
+            this.btnCancelar.Location = new System.Drawing.Point(673, 545);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(90, 40);
             this.btnCancelar.TabIndex = 32;
@@ -363,6 +337,7 @@ namespace New_MasterTrade
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(621, 100);
@@ -370,17 +345,16 @@ namespace New_MasterTrade
             this.label4.Size = new System.Drawing.Size(64, 16);
             this.label4.TabIndex = 17;
             this.label4.Text = "BUSCAR";
-            this.label4.UseWaitCursor = true;
             // 
             // txtBuscar
             // 
             this.txtBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBuscar.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(703, 95);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(209, 26);
             this.txtBuscar.TabIndex = 18;
-            this.txtBuscar.UseWaitCursor = true;
             this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
             // 
             // label7
@@ -388,6 +362,7 @@ namespace New_MasterTrade
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(10, 17);
@@ -395,7 +370,6 @@ namespace New_MasterTrade
             this.label7.Size = new System.Drawing.Size(140, 25);
             this.label7.TabIndex = 39;
             this.label7.Text = "PRODUCTOS";
-            this.label7.UseWaitCursor = true;
             // 
             // panelSlide
             // 
@@ -407,9 +381,7 @@ namespace New_MasterTrade
             this.panelSlide.Controls.Add(this.label2);
             this.panelSlide.Controls.Add(this.btnGuardar);
             this.panelSlide.Controls.Add(this.comboCategoría);
-            this.panelSlide.Controls.Add(this.btnActualizar);
             this.panelSlide.Controls.Add(this.txtStockMin);
-            this.panelSlide.Controls.Add(this.btnEliminar);
             this.panelSlide.Controls.Add(this.txtStockMax);
             this.panelSlide.Controls.Add(this.btnCancelar);
             this.panelSlide.Controls.Add(this.txtCosto);
@@ -428,6 +400,29 @@ namespace New_MasterTrade
             this.panelSlide.Name = "panelSlide";
             this.panelSlide.Size = new System.Drawing.Size(922, 734);
             this.panelSlide.TabIndex = 40;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(148, 118);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(21, 16);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "ID";
+            // 
+            // txtID
+            // 
+            this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtID.Location = new System.Drawing.Point(749, 118);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(110, 26);
+            this.txtID.TabIndex = 43;
+            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblCodigo
             // 
@@ -492,29 +487,6 @@ namespace New_MasterTrade
             this.timerSlide.Interval = 1;
             this.timerSlide.Tick += new System.EventHandler(this.timerSlide_Tick);
             // 
-            // txtID
-            // 
-            this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtID.Location = new System.Drawing.Point(749, 118);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(110, 26);
-            this.txtID.TabIndex = 43;
-            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(148, 118);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(21, 16);
-            this.label3.TabIndex = 44;
-            this.label3.Text = "ID";
-            // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -545,8 +517,6 @@ namespace New_MasterTrade
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox txtStockMax;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtCosto;

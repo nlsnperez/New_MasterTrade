@@ -28,11 +28,10 @@ namespace New_MasterTrade.UserControls
         public void Config()
         {
             crud = new CRUDTransacciones();
-            tableProductos.AutoGenerateColumns = false;
             tableCarrito.AutoGenerateColumns = false;
             labelDisponible.Visible = false;
             FillComboBox();
-            ConfigControles("INICIO");
+            //ConfigControles("INICIO");
             ConfigCarrito();
         }
 
@@ -105,12 +104,10 @@ namespace New_MasterTrade.UserControls
                 case 1:
                     productos = crud.FindProductos(2);//BUSQUEDA GENERAL
                     ValidarCantidad();
-                    tableProductos.DataSource = productos;
                     break;
                 case 2:
                     productos = crud.BuscarProductos(txtBuscar.Text, 2);//BUSQUEDA ESPECÍFICA
                     ValidarCantidad();
-                    tableProductos.DataSource = productos;
                     break;
             }
 
@@ -135,18 +132,6 @@ namespace New_MasterTrade.UserControls
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             FillTables(2);
-        }
-
-        private void tableProductos_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            txtCodigo.Text = tableProductos.SelectedRows[0].Cells[0].Value.ToString();
-            txtNombreProducto.Text = tableProductos.SelectedRows[0].Cells[1].Value.ToString();
-            txtCantidad.Enabled = true;
-            labelDisponible.Visible = true;
-            txtCantidad.Maximum = decimal.Parse(crud.CantidadDisponible(tableProductos.SelectedRows[0].Cells[0].Value.ToString()).ToString());
-            labelDisponible.Text = "Disponibles: " + crud.CantidadDisponible(tableProductos.SelectedRows[0].Cells[0].Value.ToString()).ToString();
-            txtCantidad.Value = 1;
-            txtPrecio.Text = tableProductos.SelectedRows[0].Cells[2].Value.ToString();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -190,7 +175,6 @@ namespace New_MasterTrade.UserControls
                     txtCantidad.Enabled = false;
                     txtDocumento.Enabled = true;
                     comboDocumento.Enabled = true;
-                    tableProductos.DataSource = null;
                     carrito.Rows.Clear();
                     total = 0;
                     lblTotal.Text = "00,00 Bs";
@@ -243,12 +227,12 @@ namespace New_MasterTrade.UserControls
                 {
                     carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) + int.Parse(carrito.Rows[y][2].ToString());
                     carrito.Rows[x][3] = decimal.Parse(carrito.Rows[x][3].ToString()) + decimal.Parse(carrito.Rows[y][3].ToString());
-                    if (int.Parse(carrito.Rows[x][2].ToString()) > txtCantidad.Maximum)
-                    {
-                        MessageBox.Show("La cantidad de productos ingresada excede a la cantidad disponible por lo que se ajustarán los datos automáticamente", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) - (int.Parse(carrito.Rows[x][2].ToString()) - txtCantidad.Maximum);
-                        carrito.Rows[x][3] = decimal.Parse(carrito.Rows[x][2].ToString()) * decimal.Parse(txtPrecio.Text);
-                    }
+                    //if (int.Parse(carrito.Rows[x][2].ToString()) > txtCantidad.Maximum)
+                    //{
+                    //    MessageBox.Show("La cantidad de productos ingresada excede a la cantidad disponible por lo que se ajustarán los datos automáticamente", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) - (int.Parse(carrito.Rows[x][2].ToString()) - txtCantidad.Maximum);
+                    //    carrito.Rows[x][3] = decimal.Parse(carrito.Rows[x][2].ToString()) * decimal.Parse(txtPrecio.Text);
+                    //}
                     carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
                     break;
                 }
@@ -355,6 +339,30 @@ namespace New_MasterTrade.UserControls
                 x = x + decimal.Parse(carrito.Rows[i]["Precio"].ToString());
             }
             return x;
+        }
+
+        public void AddProduct(string[] producto) {
+            carrito.Rows.Add(producto);
+            tableCarrito.DataSource = carrito;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form x = new Form();
+            BuscarProductos y = new BuscarProductos(this);
+            x.Size = new Size(822, 634);
+            x.FormBorderStyle = FormBorderStyle.None;
+            x.StartPosition = FormStartPosition.CenterParent;
+            x.Controls.Add(y);
+            x.ShowDialog();
+        }
+
+        private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                tableCarrito.Rows.RemoveAt(e.RowIndex);
+            }
         }
     }
 }

@@ -108,6 +108,12 @@
     <Compile Include="Mensajes\ConfirmarForm.Designer.cs">
       <DependentUpon>ConfirmarForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\BuscarProductos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Objetos\BuscarProductos.Designer.cs">
+      <DependentUpon>BuscarProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Objetos\Compra.cs" />
     <Compile Include="Objetos\Detalle.cs" />
     <Compile Include="Objetos\Persona.cs" />
@@ -165,6 +171,9 @@
     </Compile>
     <EmbeddedResource Include="Mensajes\ConfirmarForm.resx">
       <DependentUpon>ConfirmarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Objetos\BuscarProductos.resx">
+      <DependentUpon>BuscarProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>

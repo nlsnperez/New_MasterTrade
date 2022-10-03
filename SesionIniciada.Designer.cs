@@ -31,11 +31,6 @@ namespace New_MasterTrade
         {
             this.components = new System.ComponentModel.Container();
             this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.formCategorias = new New_MasterTrade.UserControls.Categorias();
-            this.FormComprar = new New_MasterTrade.UserControls.Comprar();
-            this.FormProductos = new New_MasterTrade.Productos();
-            this.FormPersonas = new New_MasterTrade.Personas();
-            this.FormVender = new New_MasterTrade.UserControls.Vender();
             this.bttnMinimizar = new System.Windows.Forms.Button();
             this.bttnCerrar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -51,6 +46,11 @@ namespace New_MasterTrade
             this.bttnComprar = new System.Windows.Forms.Button();
             this.bttnAjustes = new System.Windows.Forms.Button();
             this.bttnSalir = new System.Windows.Forms.Button();
+            this.FormVender = new New_MasterTrade.UserControls.Vender();
+            this.FormPersonas = new New_MasterTrade.Personas();
+            this.FormProductos = new New_MasterTrade.Productos();
+            this.formCategorias = new New_MasterTrade.UserControls.Categorias();
+            this.FormComprar = new New_MasterTrade.UserControls.Comprar();
             this.PanelContenedor.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -60,7 +60,7 @@ namespace New_MasterTrade
             // 
             // PanelContenedor
             // 
-            this.PanelContenedor.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.PanelContenedor.BackColor = System.Drawing.Color.White;
             this.PanelContenedor.Controls.Add(this.FormVender);
             this.PanelContenedor.Controls.Add(this.FormPersonas);
             this.PanelContenedor.Controls.Add(this.FormProductos);
@@ -72,51 +72,6 @@ namespace New_MasterTrade
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Size = new System.Drawing.Size(922, 734);
             this.PanelContenedor.TabIndex = 0;
-            // 
-            // formCategorias
-            // 
-            this.formCategorias.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.formCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.formCategorias.Location = new System.Drawing.Point(0, 0);
-            this.formCategorias.Name = "formCategorias";
-            this.formCategorias.Size = new System.Drawing.Size(922, 734);
-            this.formCategorias.TabIndex = 6;
-            // 
-            // FormComprar
-            // 
-            this.FormComprar.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.FormComprar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FormComprar.Location = new System.Drawing.Point(0, 0);
-            this.FormComprar.Name = "FormComprar";
-            this.FormComprar.Size = new System.Drawing.Size(922, 734);
-            this.FormComprar.TabIndex = 5;
-            // 
-            // FormProductos
-            // 
-            this.FormProductos.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.FormProductos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FormProductos.Location = new System.Drawing.Point(0, 0);
-            this.FormProductos.Name = "FormProductos";
-            this.FormProductos.Size = new System.Drawing.Size(922, 734);
-            this.FormProductos.TabIndex = 2;
-            // 
-            // FormPersonas
-            // 
-            this.FormPersonas.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.FormPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FormPersonas.Location = new System.Drawing.Point(0, 0);
-            this.FormPersonas.Name = "FormPersonas";
-            this.FormPersonas.Size = new System.Drawing.Size(922, 734);
-            this.FormPersonas.TabIndex = 3;
-            // 
-            // FormVender
-            // 
-            this.FormVender.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.FormVender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FormVender.Location = new System.Drawing.Point(0, 0);
-            this.FormVender.Name = "FormVender";
-            this.FormVender.Size = new System.Drawing.Size(922, 734);
-            this.FormVender.TabIndex = 4;
             // 
             // bttnMinimizar
             // 
@@ -318,6 +273,51 @@ namespace New_MasterTrade
             this.bttnSalir.Text = "SALIR";
             this.bttnSalir.UseVisualStyleBackColor = false;
             this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
+            // 
+            // FormVender
+            // 
+            this.FormVender.BackColor = System.Drawing.Color.White;
+            this.FormVender.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FormVender.Location = new System.Drawing.Point(0, 0);
+            this.FormVender.Name = "FormVender";
+            this.FormVender.Size = new System.Drawing.Size(922, 734);
+            this.FormVender.TabIndex = 4;
+            // 
+            // FormPersonas
+            // 
+            this.FormPersonas.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.FormPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FormPersonas.Location = new System.Drawing.Point(0, 0);
+            this.FormPersonas.Name = "FormPersonas";
+            this.FormPersonas.Size = new System.Drawing.Size(922, 734);
+            this.FormPersonas.TabIndex = 3;
+            // 
+            // FormProductos
+            // 
+            this.FormProductos.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.FormProductos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FormProductos.Location = new System.Drawing.Point(0, 0);
+            this.FormProductos.Name = "FormProductos";
+            this.FormProductos.Size = new System.Drawing.Size(922, 734);
+            this.FormProductos.TabIndex = 2;
+            // 
+            // formCategorias
+            // 
+            this.formCategorias.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.formCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formCategorias.Location = new System.Drawing.Point(0, 0);
+            this.formCategorias.Name = "formCategorias";
+            this.formCategorias.Size = new System.Drawing.Size(922, 734);
+            this.formCategorias.TabIndex = 6;
+            // 
+            // FormComprar
+            // 
+            this.FormComprar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.FormComprar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FormComprar.Location = new System.Drawing.Point(0, 0);
+            this.FormComprar.Name = "FormComprar";
+            this.FormComprar.Size = new System.Drawing.Size(922, 734);
+            this.FormComprar.TabIndex = 5;
             // 
             // SesionIniciada
             // 

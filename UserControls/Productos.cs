@@ -101,22 +101,8 @@ namespace New_MasterTrade
                 crud.Update(GetProducto());
                 Clear();
                 RefreshTable(1);
+                timerSlide.Start();
             }
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Desea eliminar los datos del prodcuto: " + lblCodigo.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                crud.Delete(lblCodigo.Text);
-                Clear();
-                RefreshTable(1);
-            }
-        }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -130,14 +116,10 @@ namespace New_MasterTrade
             {
                 case "INICIO":
                     btnGuardar.Enabled = true;
-                    btnActualizar.Enabled = false;
-                    btnEliminar.Enabled = false;
                     btnCancelar.Enabled = true;
                     break;
                 case "SELECCIÓN":
                     btnGuardar.Enabled = false;
-                    btnActualizar.Enabled = true;
-                    btnEliminar.Enabled = true;
                     btnCancelar.Enabled = true;
                     break;
             }
