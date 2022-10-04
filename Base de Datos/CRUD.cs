@@ -105,7 +105,7 @@ namespace New_MasterTrade.Base_de_Datos
             DataTable resultados = new DataTable();
             using (MySqlCommand command = new MySqlCommand())
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `clientes` WHERE visible = 1", con);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `id_cliente`, `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `clientes` WHERE visible = 1", con);
                 adapter.Fill(resultados);
                 con.Close();
             }
@@ -127,7 +127,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `proveedores` WHERE visible = 1", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `id_proveedores`, `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `proveedores` WHERE visible = 1", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }

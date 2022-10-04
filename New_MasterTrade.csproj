@@ -108,10 +108,10 @@
     <Compile Include="Mensajes\ConfirmarForm.Designer.cs">
       <DependentUpon>ConfirmarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Objetos\BuscarProductos.cs">
+    <Compile Include="UserControls\BuscarProductos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Objetos\BuscarProductos.Designer.cs">
+    <Compile Include="UserControls\BuscarProductos.Designer.cs">
       <DependentUpon>BuscarProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="Objetos\Compra.cs" />
@@ -130,6 +130,12 @@
     </Compile>
     <Compile Include="UserControls\Comprar.Designer.cs">
       <DependentUpon>Comprar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ConfirmarTransaccion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ConfirmarTransaccion.Designer.cs">
+      <DependentUpon>ConfirmarTransaccion.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NuevoRegistro.cs">
       <SubType>UserControl</SubType>
@@ -172,7 +178,7 @@
     <EmbeddedResource Include="Mensajes\ConfirmarForm.resx">
       <DependentUpon>ConfirmarForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Objetos\BuscarProductos.resx">
+    <EmbeddedResource Include="UserControls\BuscarProductos.resx">
       <DependentUpon>BuscarProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Categorias.resx">
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Comprar.resx">
       <DependentUpon>Comprar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ConfirmarTransaccion.resx">
+      <DependentUpon>ConfirmarTransaccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NuevoRegistro.resx">
       <DependentUpon>NuevoRegistro.cs</DependentUpon>

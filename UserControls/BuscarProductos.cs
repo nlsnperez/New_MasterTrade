@@ -26,6 +26,7 @@ namespace New_MasterTrade.Objetos
 
         public void Config()
         {
+            lblAgregado.Hide();
             tablaProductos.AutoGenerateColumns = false;
             tablaProductos.DataSource = crud.GetTable();
         }
@@ -35,6 +36,7 @@ namespace New_MasterTrade.Objetos
             if (carrito.Columns.Count == 0)
             {
                 carrito = new DataTable();
+                carrito.Columns.Add("Id");
                 carrito.Columns.Add("Código");
                 carrito.Columns.Add("Nombre");
                 carrito.Columns.Add("Cantidad");
@@ -57,12 +59,25 @@ namespace New_MasterTrade.Objetos
         {
             if (e.ColumnIndex == 4)
             {
-                string[] producto = {tablaProductos.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                string[] producto = {tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                                     tablaProductos.Rows[e.RowIndex].Cells[1].Value.ToString(),
                                      tablaProductos.Rows[e.RowIndex].Cells[2].Value.ToString(),
                                      Convert.ToString(1),
+                                     tablaProductos.Rows[e.RowIndex].Cells[3].Value.ToString(),
                                      tablaProductos.Rows[e.RowIndex].Cells[3].Value.ToString()};
                 Venta.AddProduct(producto);
+                lblAgregado.Show();
             }
+        }
+
+        private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
+        {
+            tablaProductos.DataSource = crud.SearchTable(txtBuscar.Text);
+        }
+
+        private void timerFade_Tick(object sender, EventArgs e)
+        {
+            
         }
     }
 }

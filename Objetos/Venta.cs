@@ -9,18 +9,16 @@ namespace New_MasterTrade.Objetos
     class Venta
     {
         public string Numero_Control { get; set; }
-        public string Cliente { get; set; }
+        public int Cliente { get; set; }
+        public int MetodoPago { get; set; }
         public List<Detalle> Detalle { get; set; }
 
-        public Venta(string cliente, List<Detalle> detalle)
+        public Venta(string numero_Control, int cliente, int metodoPago, List<Detalle> detalle)
         {
+            Numero_Control = numero_Control;
             Cliente = cliente;
+            MetodoPago = metodoPago;
             Detalle = detalle;
-        }
-
-        public void Generar_Codigo(int x)
-        {
-            Numero_Control = "MTV" + x.ToString("0000000");
         }
     }
 }

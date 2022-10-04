@@ -92,7 +92,7 @@ namespace New_MasterTrade.UserControls
         {
             if (MessageBox.Show("¿Desea confirmar la compra?", "¿CONFIRMAR?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                crud.Create_Compra(GetCompra());
+                //crud.Create_Compra(GetCompra());
                 if (MessageBox.Show("¿Desea comprar más productos del mismo proveedor?", "¿CONFIRMAR?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     ClearData("RESET");
@@ -129,18 +129,18 @@ namespace New_MasterTrade.UserControls
         }
         //BOTONES
 
-        private Compra GetCompra()//GENERA UNA COMPRA CON LOS DATOS SUMINISTRADOS
-        {
-            List<Detalle> detalle = new List<Detalle>();
-            for (int i = 0; i <= carrito.Rows.Count - 1; i++)
-            {
-                Detalle x = new Detalle(carrito.Rows[i]["Código"].ToString(), Int32.Parse(carrito.Rows[i]["Cantidad"].ToString()), float.Parse(carrito.Rows[i]["Precio"].ToString()));
-                detalle.Add(x);
-            }
-            Compra compra = new Compra(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, detalle);
-            compra.Generar_Codigo(crud.ComprasRealizadas());
-            return compra;
-        }
+        //private Compra GetCompra()//GENERA UNA COMPRA CON LOS DATOS SUMINISTRADOS
+        //{
+        //    List<Detalle> detalle = new List<Detalle>();
+        //    for (int i = 0; i <= carrito.Rows.Count - 1; i++)
+        //    {
+        //        Detalle x = new Detalle(carrito.Rows[i]["Código"].ToString(), Int32.Parse(carrito.Rows[i]["Cantidad"].ToString()), float.Parse(carrito.Rows[i]["Precio"].ToString()));
+        //        detalle.Add(x);
+        //    }
+        //    Compra compra = new Compra(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, detalle);
+        //    compra.Generar_Codigo(crud.ComprasRealizadas());
+        //    return compra;
+        //}
 
         public void Cancel_Order()//LIMPIA LOS CAMPOS ATENDIENDO A UN PARÁMETRO
         {

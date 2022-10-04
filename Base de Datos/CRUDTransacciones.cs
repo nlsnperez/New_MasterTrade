@@ -42,7 +42,7 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
-            Create_Detalle(compra.Numero_Control, compra.Detalle, 1);
+            Create_Detalle(ComprasRealizadas()-1, compra.Detalle, 1);
         }
 
         public void Create_Venta(Venta venta)
@@ -52,12 +52,13 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `ventas`(`numero_control`, `cliente`, `visible`, `fecha_registro`, `fecha_eliminado`) VALUES (@numerocontrol,@cliente,@visible,@fregistro,@feliminado)";
+                    command.CommandText = "INSERT INTO `ventas`(`numero_control`, `cliente`, `metodo_pago`, `visible`, `fecha_registro`, `fecha_eliminado`) VALUES (@numerocontrol,@cliente,@metodopago,@visible,@fregistro,@feliminado)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
                     command.Parameters.Add("@numerocontrol", MySqlDbType.VarChar).Value = venta.Numero_Control;
-                    command.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = venta.Cliente;
+                    command.Parameters.Add("@cliente", MySqlDbType.Int32).Value = venta.Cliente;
+                    command.Parameters.Add("@metodopago", MySqlDbType.Int32).Value = venta.MetodoPago;
                     command.Parameters.Add("@visible", MySqlDbType.Int32).Value = 1;
                     command.Parameters.Add("@fregistro", MySqlDbType.DateTime).Value = System.DateTime.Now;
                     command.Parameters.Add("@feliminado", MySqlDbType.DateTime).Value = null;
@@ -72,10 +73,10 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
-            Create_Detalle(venta.Numero_Control, venta.Detalle, 2);
+            Create_Detalle(VentasRealizadas()-1, venta.Detalle, 2);
         }
 
-        public void Create_Detalle(string operacion, List<Detalle> detalle, int x)
+        public void Create_Detalle(int venta, List<Detalle> detalle, int x)
         {
             int y = 0;
             string comando = "";
@@ -100,7 +101,7 @@ namespace New_MasterTrade.Base_de_Datos
                         command.CommandType = CommandType.Text;
                         command.Connection = con;
 
-                        command.Parameters.Add("@operacion", MySqlDbType.VarChar).Value = operacion;
+                        command.Parameters.Add("@operacion", MySqlDbType.VarChar).Value = venta;
                         command.Parameters.Add("@producto", MySqlDbType.VarChar).Value = detalle[y].Producto;
                         command.Parameters.Add("@cantidad", MySqlDbType.Int32).Value = detalle[y].Cantidad;
                         command.Parameters.Add("@precio", MySqlDbType.Double).Value = detalle[y].Precio;
@@ -247,7 +248,7 @@ namespace New_MasterTrade.Base_de_Datos
             int x = 0;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id_venta`) AS ventas FROM ventas", con);
+                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id`) AS ventas FROM ventas", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -268,6 +269,30 @@ namespace New_MasterTrade.Base_de_Datos
         public int CantidadDisponible(string codigo)
         {
             return crud.ProductosComprados(codigo) - crud.ProductosVendidos(codigo);
+        }
+
+        public DataTable MetodosPago()
+        {
+            DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `metodos_pago` ORDER BY `metodos_pago`.`descripcion` ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
         }
     }
 }

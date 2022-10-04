@@ -13,6 +13,7 @@ namespace New_MasterTrade.UserControls
         CRUDTransacciones crud;
         DataTable carrito = new DataTable();
         DataTable productos = new DataTable();
+        int index = 0;
         decimal total = 0;
 
         public Vender()
@@ -29,20 +30,8 @@ namespace New_MasterTrade.UserControls
         {
             crud = new CRUDTransacciones();
             tableCarrito.AutoGenerateColumns = false;
-            labelDisponible.Visible = false;
-            FillComboBox();
-            //ConfigControles("INICIO");
+            ConfigControles("INICIO");
             ConfigCarrito();
-        }
-
-        private void FillComboBox()
-        {
-            if (comboDocumento.Items.Count > 0) comboDocumento.Items.Clear();
-            comboDocumento.Items.Add("V");
-            comboDocumento.Items.Add("E");
-            comboDocumento.Items.Add("J");
-            comboDocumento.Items.Add("G");
-            comboDocumento.SelectedIndex = 0;
         }
 
         private void ConfigControles(string modo)
@@ -50,67 +39,30 @@ namespace New_MasterTrade.UserControls
             switch (modo)
             {
                 case "INICIO":
+                    lblVenta.Hide();
                     txtCantidad.Enabled = false;
-                    txtRazonSocial.Enabled = false;
-                    txtTelefono.Enabled = false;
-
                     txtCodigo.Enabled = false;
                     txtNombreProducto.Enabled = false;
                     txtPrecio.Enabled = false;
+                    txtTotal.Enabled = false;
 
-                    btnAtras.Enabled = false;
+                    bttnNuevaVenta.Enabled = true;
+                    bttnBuscar.Enabled = false;
+                    bttnCancelar.Enabled = false;
                     btnConfirmar.Enabled = false;
                     break;
-            }
-        }
+                case "ACTIVAR":
+                    txtCantidad.Enabled = false;
+                    txtCodigo.Enabled = false;
+                    txtNombreProducto.Enabled = false;
+                    txtPrecio.Enabled = false;
+                    txtTotal.Enabled = false;
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            BuscarCliente();
-        }
-
-        private void BuscarCliente()
-        {
-            if (txtDocumento.Text == "")//VERIFICA QUE EL CAMPO NO ESTÉ VACÍO
-            {
-                MessageBox.Show("¡Por favor ingrese un documento!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                Persona cliente = crud.FindPersona(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, "clientes");//BUSCA UN CLIENTE EN LA BASE DE DATOS
-                if (cliente == null)//EN CASO QUE NO SE ENCUENTRE UN RESULTADO
-                {
-                    if (MessageBox.Show("No hay un proveedor con el documento que introdujo ¿Desea registrar uno nuevo?", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        NuevoRegistro();
-                    }
-                }
-                else//EN CASO QUE SE ENCUENTRE UN RESULTADO
-                {
-                    MessageBox.Show("CLIENTE: " + cliente.RazonSocial.ToUpper(), "¡CLIENTE ENCONTRADO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtRazonSocial.Text = cliente.RazonSocial;
-                    txtTelefono.Text = cliente.Telefono;
-                    txtDocumento.Enabled = false;
-                    comboDocumento.Enabled = false;
-                    FillTables(1); ///LLENA LA TABLA CON LOS PRODUCTOS REGISTRADOS
-                }
-            }
-        }
-
-        public void FillTables(int x)//BUSCA LOS REGISTROS EN LA BASE DE DATOS PARA LA TABLA DE PRODUCTOS
-        {
-            switch (x)
-            {
-                case 1:
-                    productos = crud.FindProductos(2);//BUSQUEDA GENERAL
-                    ValidarCantidad();
-                    break;
-                case 2:
-                    productos = crud.BuscarProductos(txtBuscar.Text, 2);//BUSQUEDA ESPECÍFICA
-                    ValidarCantidad();
+                    bttnBuscar.Enabled = true;
+                    bttnCancelar.Enabled = true;
+                    bttnNuevaVenta.Enabled = false;
                     break;
             }
-
         }
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)//LIMITA LOS TEXBOXES PARA QUE ACEPTEN SÓLO NÚMEROS
@@ -121,34 +73,10 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        private void txtDocumento_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BuscarCliente();
-            }
-        }
-
-        private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
-        {
-            FillTables(2);
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Cancel_Order();
-        }
-
-        private void Cancel_Order()
-        {
-            if (txtCodigo.Text == "" || txtNombreProducto.Text == "" || txtCantidad.Text == "" || txtPrecio.Text == "")
-            {
-                ClearData("RESET");
-            }
-            else
-            {
-                ClearData("CLEAN");
-            }
+            ClearData("RESET");
+            ConfigControles("INICIO");
         }
 
         public void ClearData(string modo)
@@ -160,27 +88,20 @@ namespace New_MasterTrade.UserControls
                     txtNombreProducto.Text = "";
                     txtCantidad.Text = "";
                     txtPrecio.Text = "";
-                    labelDisponible.Text = "Disponible: 0";
-                    txtCantidad.Enabled = false;
-                    labelDisponible.Visible = false;
+                    txtTotal.Text = "";
                     break;
                 case "RESET":
                     txtCodigo.Text = "";
                     txtNombreProducto.Text = "";
                     txtCantidad.Text = "";
                     txtPrecio.Text = "";
-                    txtDocumento.Text = "";
-                    txtRazonSocial.Text = "";
-                    txtTelefono.Text = "";
-                    txtCantidad.Enabled = false;
-                    txtDocumento.Enabled = true;
-                    comboDocumento.Enabled = true;
+                    txtTotal.Text = "";
                     carrito.Rows.Clear();
+                    tableCarrito.DataSource = null;
                     total = 0;
-                    lblTotal.Text = "00,00 Bs";
+                    lblTotal.Text = "00,00Bs";
                     break;
                 case "PARTIAL":
-                    comboDocumento.SelectedIndex = 0;
                     tableCarrito.DataSource = null;
                     carrito.Rows.Clear();
                     total = 0;
@@ -189,44 +110,14 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            if (txtCodigo.Text == "" || txtNombreProducto.Text == "" || txtCantidad.Text == "" || txtPrecio.Text == "")//REVISA LOS CAMPOS VACÍOS
-            {
-                MessageBox.Show("¡Por favor complete todos los campos!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                if (txtCantidad.Text == "0")
-                {
-                    MessageBox.Show("¡Por favor ingrese una cantidad mayor a 0!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    //AGREGA LOS DATOS A UN ARREGLO DE STRING Y SE ENVÍAN A LA TABLA DE CARRITO
-                    string[] producto = { txtCodigo.Text, txtNombreProducto.Text, txtCantidad.Text, Calc_Precio(decimal.Parse(txtPrecio.Text), decimal.Parse(txtCantidad.Text)).ToString() };
-                    carrito.Rows.Add(producto);
-                    if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);
-                    tableCarrito.DataSource = carrito;
-
-                    //CALCULA EL PRECIO TOTAL DE LA COMPRA Y LO MUESTRA EN UN LABEL
-                    total = GetTotal();
-                    lblTotal.Text = total.ToString() + " Bs";
-
-                    btnAtras.Enabled = true;
-                    btnConfirmar.Enabled = true;
-                    Cancel_Order();
-                }
-            }
-        }
         public void Check_Duplicado(int y)
         {
             for (int x = 0; x < carrito.Rows.Count - 1; x++)
             {
                 if (carrito.Rows[x][0].ToString() == carrito.Rows[y][0].ToString())
                 {
-                    carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) + int.Parse(carrito.Rows[y][2].ToString());
-                    carrito.Rows[x][3] = decimal.Parse(carrito.Rows[x][3].ToString()) + decimal.Parse(carrito.Rows[y][3].ToString());
+                    carrito.Rows[x][3] = int.Parse(carrito.Rows[x][3].ToString()) + int.Parse(carrito.Rows[y][3].ToString());
+                    carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][5].ToString()) + decimal.Parse(carrito.Rows[y][5].ToString());
                     //if (int.Parse(carrito.Rows[x][2].ToString()) > txtCantidad.Maximum)
                     //{
                     //    MessageBox.Show("La cantidad de productos ingresada excede a la cantidad disponible por lo que se ajustarán los datos automáticamente", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -244,10 +135,12 @@ namespace New_MasterTrade.UserControls
             if (carrito.Columns.Count == 0)
             {
                 carrito = new DataTable();
+                carrito.Columns.Add("Id");
                 carrito.Columns.Add("Código");
                 carrito.Columns.Add("Nombre");
                 carrito.Columns.Add("Cantidad");
                 carrito.Columns.Add("Precio");
+                carrito.Columns.Add("PrecioTotal");
             }
         }
 
@@ -256,71 +149,26 @@ namespace New_MasterTrade.UserControls
             return precio * cantidad;
         }
 
-        private void btnAtras_Click(object sender, EventArgs e)
-        {
-            total = GetTotal() - decimal.Parse(carrito.Rows[carrito.Rows.Count - 1]["Precio"].ToString());//RESTA EL PRECIO DEL PRODUCTO ELIMINADO
-            carrito.Rows.RemoveAt(carrito.Rows.Count - 1);//REMUEVE EL PRODUCTO DE LA TABLA
-            lblTotal.Text = total.ToString() + " Bs";
-            if (carrito.Rows.Count == 0)
-            {
-                btnAtras.Enabled = false;
-                btnConfirmar.Enabled = false;
-            }
-        }
-
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea confirmar la venta?", "¿CONFIRMAR?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                crud.Create_Venta(GetVenta());
-                if (MessageBox.Show("¿Desea vender más productos al mismo cliente?", "¿CONFIRMAR?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                {
-                    ClearData("RESET");
-                }
-                else
-                {
-                    ClearData("PARTIAL");
-                    FillTables(1);
-                }
-
-            }
-        }
-
-        private Venta GetVenta()//GENERA UNA VENTA CON LOS DATOS SUMINISTRADOS
-        {
-            List<Detalle> detalle = new List<Detalle>();
-            for (int i = 0; i <= carrito.Rows.Count - 1; i++)
-            {
-                Detalle x = new Detalle(carrito.Rows[i]["Código"].ToString(), Int32.Parse(carrito.Rows[i]["Cantidad"].ToString()), float.Parse(carrito.Rows[i]["Precio"].ToString()));
-                detalle.Add(x);
-            }
-            Venta venta = new Venta(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, detalle);
-            venta.Generar_Codigo(crud.VentasRealizadas());
-            return venta;
-        }
-
-        public void NuevoRegistro()
-        {
             Form x = new Form();
-            NuevoRegistro y = new NuevoRegistro(comboDocumento.SelectedItem.ToString(), txtDocumento.Text, 0);
-            x.Size = new Size(400, 720);
+            ConfirmarTransaccion y = new ConfirmarTransaccion(1, GetDetalle());
+            x.Size = new Size(600, 350);
             x.FormBorderStyle = FormBorderStyle.None;
             x.StartPosition = FormStartPosition.CenterParent;
             x.Controls.Add(y);
             x.ShowDialog();
-            if (y.Registro != null)
+        }
+
+        private List<Detalle> GetDetalle()//GENERA UNA VENTA CON LOS DATOS SUMINISTRADOS
+        {
+            List<Detalle> detalle = new List<Detalle>();
+            for (int i = 0; i <= carrito.Rows.Count - 1; i++)
             {
-                comboDocumento.Enabled = false;
-                txtDocumento.Enabled = false;
-                txtRazonSocial.Text = y.Registro.RazonSocial;
-                txtTelefono.Text = y.Registro.Telefono;
-                FillTables(1);
+                Detalle x = new Detalle(lblVenta.Text, carrito.Rows[i]["Código"].ToString(), Int32.Parse(carrito.Rows[i]["Cantidad"].ToString()), float.Parse(carrito.Rows[i]["PrecioTotal"].ToString()));
+                detalle.Add(x);
             }
-            else
-            {
-                comboDocumento.SelectedIndex = 0;
-                txtDocumento.Text = "";
-            }
+            return detalle;
         }
 
         public void ValidarCantidad()
@@ -334,19 +182,53 @@ namespace New_MasterTrade.UserControls
         private decimal GetTotal()
         {
             decimal x = 0;
-            for (int i = 0; i <= carrito.Rows.Count - 1; i++)
+            for (int i = 0; i <= carrito.Rows.Count-1; i++)
             {
-                x = x + decimal.Parse(carrito.Rows[i]["Precio"].ToString());
+                x = x + decimal.Parse(carrito.Rows[i]["PrecioTotal"].ToString());
             }
             return x;
         }
 
         public void AddProduct(string[] producto) {
             carrito.Rows.Add(producto);
+            if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);
             tableCarrito.DataSource = carrito;
+            txtCantidad.Enabled = true;
+            btnConfirmar.Enabled = true;
+
+            total = GetTotal();
+            lblTotal.Text = total.ToString() + "Bs";
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6)
+            {
+                if (MessageBox.Show("¿Desea eliminar este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    total = GetTotal() - decimal.Parse(carrito.Rows[carrito.Rows.Count - 1]["PrecioTotal"].ToString());//RESTA EL PRECIO DEL PRODUCTO ELIMINADO
+                    lblTotal.Text = total.ToString() + " Bs";
+                    tableCarrito.Rows.RemoveAt(e.RowIndex);
+                    if (tableCarrito.Rows.Count == 0)
+                    {
+                        txtCantidad.Enabled = false;
+                        btnConfirmar.Enabled = false;
+                    }
+                    ClearData("CLEAN");
+                }                
+            }
+            else
+            {
+                index = e.RowIndex;
+                txtCodigo.Text = tableCarrito.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtNombreProducto.Text = tableCarrito.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txtCantidad.Text = tableCarrito.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtPrecio.Text = tableCarrito.Rows[e.RowIndex].Cells[4].Value.ToString();
+                txtTotal.Text = tableCarrito.Rows[e.RowIndex].Cells[5].Value.ToString();
+            }
+        }
+
+        private void bttnBuscar_Click(object sender, EventArgs e)
         {
             Form x = new Form();
             BuscarProductos y = new BuscarProductos(this);
@@ -357,12 +239,30 @@ namespace New_MasterTrade.UserControls
             x.ShowDialog();
         }
 
-        private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void txtCantidad_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.KeyCode == Keys.Enter)
             {
-                tableCarrito.Rows.RemoveAt(e.RowIndex);
+                if (txtCantidad.Text == "" || txtCantidad.Text == "0")
+                {
+                    MessageBox.Show("Ingrese una cantidad válida", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    carrito.Rows[index]["Cantidad"] = txtCantidad.Text;
+                    carrito.Rows[index]["PrecioTotal"] = Calc_Precio(decimal.Parse(txtCantidad.Text), decimal.Parse(txtPrecio.Text));
+                    total = GetTotal();
+                    lblTotal.Text = total.ToString() + "Bs";
+                    ClearData("CLEAN");
+                }
             }
+        }
+
+        private void bttnNuevaVenta_Click(object sender, EventArgs e)
+        {
+            lblVenta.Text = "MTV"+crud.VentasRealizadas().ToString("0000000");
+            lblVenta.Show();
+            ConfigControles("ACTIVAR");
         }
     }
 }
