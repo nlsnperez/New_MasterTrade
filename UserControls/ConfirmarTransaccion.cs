@@ -52,14 +52,14 @@ namespace New_MasterTrade.UserControls
             switch (x)
             {
                 case 1:
-                    comboRazonSocial.DataSource = crud2.GetTable();
-                    comboRazonSocial.ValueMember = "id_cliente";
+                    comboRazonSocial.DataSource = crud2.GetTableProveedores();
+                    comboRazonSocial.ValueMember = "id_proveedores";
                     comboRazonSocial.DisplayMember = "razon_social";
                     comboRazonSocial.SelectedIndex = 0;
                     break;
                 case 2:
-                    comboRazonSocial.DataSource = crud2.GetTableProveedores();
-                    comboRazonSocial.ValueMember = "id_proveedores";
+                    comboRazonSocial.DataSource = crud2.GetTable();
+                    comboRazonSocial.ValueMember = "id_cliente";
                     comboRazonSocial.DisplayMember = "razon_social";
                     comboRazonSocial.SelectedIndex = 0;
                     break;
@@ -77,6 +77,7 @@ namespace New_MasterTrade.UserControls
             if (MessageBox.Show("¿Desea confirmar la venta?", "¿CONFIRMAR?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 crud.Create_Venta(GetVenta());
+                this.ParentForm.Close();
             }
         }
 

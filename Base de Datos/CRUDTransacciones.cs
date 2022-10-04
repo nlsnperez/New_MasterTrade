@@ -73,7 +73,7 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
-            Create_Detalle(VentasRealizadas()-1, venta.Detalle, 2);
+            Create_Detalle(ID(), venta.Detalle, 2);
         }
 
         public void Create_Detalle(int venta, List<Detalle> detalle, int x)
@@ -293,6 +293,29 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return categorias;
+        }
+
+        private int ID()
+        {
+            int x = 0;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `ventas` ORDER BY id DESC", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = Int32.Parse(reader["id"].ToString());
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
         }
     }
 }
