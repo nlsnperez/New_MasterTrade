@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.UserControls;
+using New_MasterTrade.Custom_Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -100,6 +101,12 @@ namespace New_MasterTrade
             formCategorias.Clear();
             formCategorias.Config();
             formCategorias.BringToFront();
+        }
+
+        private void bttnVentas_Click(object sender, EventArgs e)
+        {
+            FormVentas.LoadVentas();
+            FormVentas.BringToFront();
         }
     }
 }

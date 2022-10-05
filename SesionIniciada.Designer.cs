@@ -38,6 +38,7 @@ namespace New_MasterTrade
             this.bttnProductos = new System.Windows.Forms.Button();
             this.bttnPersonas = new System.Windows.Forms.Button();
             this.panelDropDown = new System.Windows.Forms.Panel();
+            this.bttnVentas = new System.Windows.Forms.Button();
             this.bttnCatalogo = new System.Windows.Forms.Button();
             this.bttnCategorias = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -47,10 +48,11 @@ namespace New_MasterTrade
             this.bttnAjustes = new System.Windows.Forms.Button();
             this.bttnSalir = new System.Windows.Forms.Button();
             this.FormVender = new New_MasterTrade.UserControls.Vender();
+            this.FormComprar = new New_MasterTrade.UserControls.Comprar();
             this.FormPersonas = new New_MasterTrade.Personas();
             this.FormProductos = new New_MasterTrade.Productos();
             this.formCategorias = new New_MasterTrade.UserControls.Categorias();
-            this.FormComprar = new New_MasterTrade.UserControls.Comprar();
+            this.FormVentas = new New_MasterTrade.UserControls.Ventas();
             this.PanelContenedor.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -62,10 +64,11 @@ namespace New_MasterTrade
             // 
             this.PanelContenedor.BackColor = System.Drawing.Color.White;
             this.PanelContenedor.Controls.Add(this.FormVender);
+            this.PanelContenedor.Controls.Add(this.FormComprar);
             this.PanelContenedor.Controls.Add(this.FormPersonas);
             this.PanelContenedor.Controls.Add(this.FormProductos);
             this.PanelContenedor.Controls.Add(this.formCategorias);
-            this.PanelContenedor.Controls.Add(this.FormComprar);
+            this.PanelContenedor.Controls.Add(this.FormVentas);
             this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Right;
             this.PanelContenedor.Location = new System.Drawing.Point(102, 34);
             this.PanelContenedor.Margin = new System.Windows.Forms.Padding(5);
@@ -160,16 +163,31 @@ namespace New_MasterTrade
             // panelDropDown
             // 
             this.panelDropDown.BackColor = System.Drawing.Color.White;
+            this.panelDropDown.Controls.Add(this.bttnVentas);
             this.panelDropDown.Controls.Add(this.bttnCatalogo);
             this.panelDropDown.Controls.Add(this.bttnPersonas);
             this.panelDropDown.Controls.Add(this.bttnProductos);
             this.panelDropDown.Controls.Add(this.bttnCategorias);
-            this.panelDropDown.Location = new System.Drawing.Point(3, 39);
-            this.panelDropDown.MaximumSize = new System.Drawing.Size(95, 120);
+            this.panelDropDown.Location = new System.Drawing.Point(3, 75);
+            this.panelDropDown.MaximumSize = new System.Drawing.Size(95, 150);
             this.panelDropDown.MinimumSize = new System.Drawing.Size(95, 29);
             this.panelDropDown.Name = "panelDropDown";
-            this.panelDropDown.Size = new System.Drawing.Size(95, 120);
+            this.panelDropDown.Size = new System.Drawing.Size(95, 150);
             this.panelDropDown.TabIndex = 14;
+            // 
+            // bttnVentas
+            // 
+            this.bttnVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(130)))), ((int)(((byte)(101)))));
+            this.bttnVentas.FlatAppearance.BorderSize = 0;
+            this.bttnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnVentas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnVentas.Location = new System.Drawing.Point(0, 120);
+            this.bttnVentas.Name = "bttnVentas";
+            this.bttnVentas.Size = new System.Drawing.Size(95, 30);
+            this.bttnVentas.TabIndex = 16;
+            this.bttnVentas.Text = "VENTAS";
+            this.bttnVentas.UseVisualStyleBackColor = false;
+            this.bttnVentas.Click += new System.EventHandler(this.bttnVentas_Click);
             // 
             // bttnCatalogo
             // 
@@ -209,8 +227,8 @@ namespace New_MasterTrade
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(59)))), ((int)(((byte)(64)))));
             this.flowLayoutPanel1.Controls.Add(this.bttnVender);
-            this.flowLayoutPanel1.Controls.Add(this.panelDropDown);
             this.flowLayoutPanel1.Controls.Add(this.bttnComprar);
+            this.flowLayoutPanel1.Controls.Add(this.panelDropDown);
             this.flowLayoutPanel1.Controls.Add(this.bttnAjustes);
             this.flowLayoutPanel1.Controls.Add(this.bttnSalir);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -239,7 +257,7 @@ namespace New_MasterTrade
             this.bttnComprar.FlatAppearance.BorderSize = 0;
             this.bttnComprar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnComprar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnComprar.Location = new System.Drawing.Point(3, 165);
+            this.bttnComprar.Location = new System.Drawing.Point(3, 39);
             this.bttnComprar.Name = "bttnComprar";
             this.bttnComprar.Size = new System.Drawing.Size(95, 30);
             this.bttnComprar.TabIndex = 8;
@@ -253,7 +271,7 @@ namespace New_MasterTrade
             this.bttnAjustes.FlatAppearance.BorderSize = 0;
             this.bttnAjustes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnAjustes.Font = new System.Drawing.Font("Arial", 9F);
-            this.bttnAjustes.Location = new System.Drawing.Point(3, 201);
+            this.bttnAjustes.Location = new System.Drawing.Point(3, 231);
             this.bttnAjustes.Name = "bttnAjustes";
             this.bttnAjustes.Size = new System.Drawing.Size(95, 30);
             this.bttnAjustes.TabIndex = 13;
@@ -266,7 +284,7 @@ namespace New_MasterTrade
             this.bttnSalir.FlatAppearance.BorderSize = 0;
             this.bttnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnSalir.Font = new System.Drawing.Font("Arial", 9F);
-            this.bttnSalir.Location = new System.Drawing.Point(3, 237);
+            this.bttnSalir.Location = new System.Drawing.Point(3, 267);
             this.bttnSalir.Name = "bttnSalir";
             this.bttnSalir.Size = new System.Drawing.Size(95, 30);
             this.bttnSalir.TabIndex = 12;
@@ -282,6 +300,15 @@ namespace New_MasterTrade
             this.FormVender.Name = "FormVender";
             this.FormVender.Size = new System.Drawing.Size(922, 734);
             this.FormVender.TabIndex = 4;
+            // 
+            // FormComprar
+            // 
+            this.FormComprar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.FormComprar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FormComprar.Location = new System.Drawing.Point(0, 0);
+            this.FormComprar.Name = "FormComprar";
+            this.FormComprar.Size = new System.Drawing.Size(922, 734);
+            this.FormComprar.TabIndex = 5;
             // 
             // FormPersonas
             // 
@@ -310,14 +337,13 @@ namespace New_MasterTrade
             this.formCategorias.Size = new System.Drawing.Size(922, 734);
             this.formCategorias.TabIndex = 6;
             // 
-            // FormComprar
+            // FormVentas
             // 
-            this.FormComprar.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.FormComprar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FormComprar.Location = new System.Drawing.Point(0, 0);
-            this.FormComprar.Name = "FormComprar";
-            this.FormComprar.Size = new System.Drawing.Size(922, 734);
-            this.FormComprar.TabIndex = 5;
+            this.FormVentas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FormVentas.Location = new System.Drawing.Point(0, 0);
+            this.FormVentas.Name = "FormVentas";
+            this.FormVentas.Size = new System.Drawing.Size(922, 734);
+            this.FormVentas.TabIndex = 7;
             // 
             // SesionIniciada
             // 
@@ -363,5 +389,7 @@ namespace New_MasterTrade
         private System.Windows.Forms.Button bttnSalir;
         private UserControls.Categorias formCategorias;
         private System.Windows.Forms.Button bttnCategorias;
+        private System.Windows.Forms.Button bttnVentas;
+        private UserControls.Ventas FormVentas;
     }
 }
