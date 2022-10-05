@@ -100,6 +100,7 @@ namespace New_MasterTrade.UserControls
                     tableCarrito.DataSource = null;
                     total = 0;
                     lblTotal.Text = "00,00Bs";
+                    ConfigControles("INICIO");
                     break;
                 case "PARTIAL":
                     tableCarrito.DataSource = null;
@@ -152,12 +153,13 @@ namespace New_MasterTrade.UserControls
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             Form x = new Form();
-            ConfirmarTransaccion y = new ConfirmarTransaccion(1, GetDetalle());
+            ConfirmarTransaccion y = new ConfirmarTransaccion(2, GetDetalle());
             x.Size = new Size(600, 350);
             x.FormBorderStyle = FormBorderStyle.None;
             x.StartPosition = FormStartPosition.CenterParent;
             x.Controls.Add(y);
             x.ShowDialog();
+            ClearData("RESET");
         }
 
         private List<Detalle> GetDetalle()//GENERA UNA VENTA CON LOS DATOS SUMINISTRADOS
