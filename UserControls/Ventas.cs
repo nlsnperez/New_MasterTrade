@@ -30,6 +30,7 @@ namespace New_MasterTrade.UserControls
         {
             crud = new CRUDTransacciones();
             PickerFecha.MaxDate = System.DateTime.Today;
+            flowRegistros.AutoScroll = true;
         }
 
         public void LoadVentas()
@@ -39,13 +40,32 @@ namespace New_MasterTrade.UserControls
             ventas = crud.Ventas();
             for (int i = 0; i <= ventas.Rows.Count - 1; i++)
             {
-                flowRegistros.FlowDirection = FlowDirection.TopDown;
-                RegistroVenta registro = new RegistroVenta(ventas.Rows[i]["numero_control"].ToString());
+                flowRegistros.FlowDirection = FlowDirection.LeftToRight;
+                RegistroVenta registro = new RegistroVenta(ventas.Rows[i]["id"].ToString(),
+                                                           ventas.Rows[i]["numero_control"].ToString(),
+                                                           ventas.Rows[i]["fecha_registro"].ToString());
                 PickerFecha.MinDate = DateTime.Parse(ventas.Rows[i]["fecha_registro"].ToString());
                 this.flowRegistros.Controls.Add(registro);
+                this.flowRegistros.SetFlowBreak(registro, true);
                 registro.Tag = i;
                 registro.BringToFront();
             }
+        }
+
+        private void PickerFecha_ValueChanged(object sender, EventArgs e)
+        {
+            //ventas.Clear();
+            //ventas = crud.VentasByDate(PickerFecha.Value.ToShortDateString());
+            //for (int i = 0; i <= ventas.Rows.Count - 1; i++)
+            //{
+            //    flowRegistros.FlowDirection = FlowDirection.LeftToRight;
+            //    RegistroVenta registro = new RegistroVenta(ventas.Rows[i]["numero_control"].ToString(), ventas.Rows[i]["fecha_registro"].ToString());
+            //    PickerFecha.MinDate = DateTime.Parse(ventas.Rows[i]["fecha_registro"].ToString());
+            //    this.flowRegistros.Controls.Add(registro);
+            //    this.flowRegistros.SetFlowBreak(registro, true);
+            //    registro.Tag = i;
+            //    registro.BringToFront();
+            //}
         }
     }
 }

@@ -49,19 +49,23 @@ namespace New_MasterTrade.UserControls
             // 
             // flowRegistros
             // 
-            this.flowRegistros.Location = new System.Drawing.Point(51, 90);
+            this.flowRegistros.AutoSize = true;
+            this.flowRegistros.Location = new System.Drawing.Point(55, 106);
+            this.flowRegistros.Margin = new System.Windows.Forms.Padding(5);
+            this.flowRegistros.MaximumSize = new System.Drawing.Size(800, 600);
             this.flowRegistros.Name = "flowRegistros";
-            this.flowRegistros.Size = new System.Drawing.Size(821, 628);
+            this.flowRegistros.Size = new System.Drawing.Size(800, 600);
             this.flowRegistros.TabIndex = 23;
             // 
             // PickerFecha
             // 
             this.PickerFecha.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PickerFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.PickerFecha.Location = new System.Drawing.Point(672, 64);
+            this.PickerFecha.Location = new System.Drawing.Point(693, 37);
             this.PickerFecha.Name = "PickerFecha";
             this.PickerFecha.Size = new System.Drawing.Size(200, 20);
             this.PickerFecha.TabIndex = 24;
+            this.PickerFecha.ValueChanged += new System.EventHandler(this.PickerFecha_ValueChanged);
             // 
             // Ventas
             // 

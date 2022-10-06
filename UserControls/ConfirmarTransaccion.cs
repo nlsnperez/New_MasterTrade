@@ -86,6 +86,7 @@ namespace New_MasterTrade.UserControls
             Venta venta = new Venta(lblTransaccion.Text,
                                     int.Parse(comboRazonSocial.SelectedValue.ToString()),
                                     int.Parse(comboMetodoPago.SelectedValue.ToString()),
+                                    System.DateTime.Now,
                                     this.Detalle);
             return venta;
         }

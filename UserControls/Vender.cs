@@ -167,6 +167,7 @@ namespace New_MasterTrade.UserControls
             List<Detalle> detalle = new List<Detalle>();
             for (int i = 0; i <= carrito.Rows.Count - 1; i++)
             {
+                
                 Detalle x = new Detalle(lblVenta.Text, carrito.Rows[i]["Código"].ToString(), Int32.Parse(carrito.Rows[i]["Cantidad"].ToString()), float.Parse(carrito.Rows[i]["PrecioTotal"].ToString()));
                 detalle.Add(x);
             }

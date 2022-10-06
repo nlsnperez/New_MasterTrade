@@ -148,6 +148,31 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
+        public DataTable VentasByDate(string fecha)
+        {
+            string comando = "SELECT `id`, `numero_control`, `cliente`, `metodo_pago`, `visible`, DATE_FORMAT(`fecha_registro`,'%d/%m/%Y') AS fecha_registro, `fecha_eliminado` FROM `ventas` ORDER BY `ventas`.`fecha_registro` DESC WHERE `ventas`.`fecha_registro` = @fregistro";
+
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.Parameters.Add("@fregistro", MySqlDbType.Date).Value = DateTime.Parse(fecha);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(comando, con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla ventas encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
+
         public DataTable FindProductos(int x)
         {
             string comando = "";
@@ -340,6 +365,62 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return x;
+        }
+
+        public Venta TransaccionV(int id)
+        {
+            Venta venta = new Venta(); 
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT v.id, v.numero_control, v.fecha_registro, c.razon_social, mp.descripcion FROM ventas v INNER JOIN clientes c ON v.cliente = c.id_cliente INNER JOIN metodos_pago mp ON v.metodo_pago = mp.id WHERE v.id = "+id.ToString(), con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                venta.Id = Int32.Parse(reader["id"].ToString());
+                venta.Numero_Control = reader["numero_control"].ToString();
+                venta.FechaRegistro = DateTime.Parse(reader["fecha_registro"].ToString());
+                venta.ClienteNombre = reader["razon_social"].ToString();
+                venta.MetodoPagoDescripcion = reader["descripcion"].ToString();
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            venta.Detalle = TransaccionD(venta.Id);
+            return venta;
+        }
+
+        private List<Detalle> TransaccionD(int id)//ARREGLAR
+        {
+            List<Detalle> detalle = new List<Detalle>();
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT dv.venta, p.nombre, dv.cantidad, dv.precio FROM detalle_ventas dv INNER JOIN productos p ON dv.producto = p.codigo_producto WHERE dv.venta = " + id.ToString(), con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                while (reader.HasRows)
+                {
+                    Detalle x = new Detalle("1", reader["nombre"].ToString(), Int32.Parse(reader["cantidad"].ToString()), float.Parse(reader["precio"].ToString()));
+                    detalle.Add(x);
+                    reader.Read();
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return detalle;
         }
     }
 }
