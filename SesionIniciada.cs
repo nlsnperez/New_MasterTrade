@@ -105,6 +105,7 @@ namespace New_MasterTrade
 
         private void bttnVentas_Click(object sender, EventArgs e)
         {
+            FormVentas.Config();
             FormVentas.LoadVentas();
             FormVentas.BringToFront();
         }

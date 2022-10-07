@@ -367,7 +367,7 @@ namespace New_MasterTrade.Base_de_Datos
             return x;
         }
 
-        public Venta TransaccionV(int id)
+        public Venta GetVenta(int id)
         {
             Venta venta = new Venta(); 
             try
@@ -391,8 +391,31 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
-            venta.Detalle = TransaccionD(venta.Id);
             return venta;
+        }
+
+        public DataTable GetDetalle(int id)
+        {
+            DataTable categorias = new DataTable();
+            String sql = "SELECT dv.venta, p.nombre, dv.cantidad, dv.precio FROM detalle_ventas dv INNER JOIN productos p ON dv.producto = p.codigo_producto WHERE dv.venta = " + id.ToString();
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
         }
 
         private List<Detalle> TransaccionD(int id)//ARREGLAR
