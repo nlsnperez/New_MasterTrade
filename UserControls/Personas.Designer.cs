@@ -444,7 +444,7 @@ namespace New_MasterTrade
             this.panelSlide.Controls.Add(this.label10);
             this.panelSlide.Controls.Add(this.label9);
             this.panelSlide.Controls.Add(this.label8);
-            this.panelSlide.Location = new System.Drawing.Point(0, 1);
+            this.panelSlide.Location = new System.Drawing.Point(0, 0);
             this.panelSlide.MaximumSize = new System.Drawing.Size(922, 734);
             this.panelSlide.MinimumSize = new System.Drawing.Size(2, 734);
             this.panelSlide.Name = "panelSlide";

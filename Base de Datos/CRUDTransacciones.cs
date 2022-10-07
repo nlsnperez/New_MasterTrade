@@ -150,7 +150,7 @@ namespace New_MasterTrade.Base_de_Datos
 
         public DataTable VentasByDate(string fecha)
         {
-            string comando = "SELECT `id`, `numero_control`, `cliente`, `metodo_pago`, `visible`, DATE_FORMAT(`fecha_registro`,'%d/%m/%Y') AS fecha_registro, `fecha_eliminado` FROM `ventas` ORDER BY `ventas`.`fecha_registro` DESC WHERE `ventas`.`fecha_registro` = @fregistro";
+            string comando = "SELECT `id`, `numero_control`, `cliente`, `metodo_pago`, `visible`, DATE_FORMAT(`fecha_registro`,'%d/%m/%Y') AS fecha_registro, `fecha_eliminado` FROM `ventas` WHERE `fecha_registro` LIKE '" + fecha + "%' ORDER BY `ventas`.`fecha_registro` DESC";
 
             try
             {
@@ -158,7 +158,6 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.Parameters.Add("@fregistro", MySqlDbType.Date).Value = DateTime.Parse(fecha);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(comando, con);
                     adapter.Fill(resultados);
                     con.Close();
@@ -397,7 +396,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable GetDetalle(int id)
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT dv.venta, p.nombre, dv.cantidad, dv.precio FROM detalle_ventas dv INNER JOIN productos p ON dv.producto = p.codigo_producto WHERE dv.venta = " + id.ToString();
+            String sql = "SELECT dv.venta, p.nombre, dv.cantidad, p.costo, dv.precio FROM detalle_ventas dv INNER JOIN productos p ON dv.producto = p.codigo_producto WHERE dv.venta = " + id.ToString();
             con.Open();
             try
             {
@@ -416,34 +415,6 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return categorias;
-        }
-
-        private List<Detalle> TransaccionD(int id)//ARREGLAR
-        {
-            List<Detalle> detalle = new List<Detalle>();
-            try
-            {
-                MySqlCommand command = new MySqlCommand("SELECT dv.venta, p.nombre, dv.cantidad, dv.precio FROM detalle_ventas dv INNER JOIN productos p ON dv.producto = p.codigo_producto WHERE dv.venta = " + id.ToString(), con);
-                con.Open();
-                MySqlDataReader reader = command.ExecuteReader();
-                reader.Read();
-                while (reader.HasRows)
-                {
-                    Detalle x = new Detalle("1", reader["nombre"].ToString(), Int32.Parse(reader["cantidad"].ToString()), float.Parse(reader["precio"].ToString()));
-                    detalle.Add(x);
-                    reader.Read();
-                }
-                reader.Close();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                con.Close();
-            }
-            return detalle;
         }
     }
 }

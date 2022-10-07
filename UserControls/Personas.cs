@@ -1,5 +1,4 @@
 ﻿using New_MasterTrade.Base_de_Datos;
-using New_MasterTrade.Mensajes;
 using New_MasterTrade.Objetos;
 using System;
 using System.Drawing;
@@ -146,19 +145,15 @@ namespace New_MasterTrade
                     {
                         if (comboTabla.SelectedIndex == 0)
                         {
-                            MessageBox.Show(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString());
                             crud.Delete(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString(), "clientes");
                             Clear();
                             RefreshTable(1);
-                            timerSlide.Start();
                         }
                         else
                         {
-                            MessageBox.Show(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString());
                             crud.Delete(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString(), "proveedores");
                             Clear();
                             RefreshTable(2);
-                            timerSlide.Start();
                         }
                     }
                 }
