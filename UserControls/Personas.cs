@@ -10,7 +10,7 @@ namespace New_MasterTrade
 {
     public partial class Personas : UserControl
     {
-        private CRUD crud;
+        private CRUDPersonas crud;
         bool IsCollapsed;
         public Personas()
         {
@@ -24,7 +24,7 @@ namespace New_MasterTrade
 
         public void Config()
         {
-            crud = new CRUD();
+            crud = new CRUDPersonas();
             panelSlide.Size = panelSlide.MinimumSize;
             txtDocumento.MaxLength = 9;
             txtRazonSocial.MaxLength = 100;

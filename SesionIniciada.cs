@@ -16,12 +16,14 @@ namespace New_MasterTrade
     public partial class SesionIniciada : Form
     {
         private bool IsCollapsed;
+        private bool IsCollapsed2;
         public SesionIniciada()
         {
             InitializeComponent();
             panelDropDown.Size = panelDropDown.MinimumSize;
-            Usuario.Nombre = "Nelson";
-            lblUsuario.Text = Usuario.Nombre;
+            panelDropDown2.Size = panelDropDown2.MinimumSize;
+            UserData.Nombre = "Nelson";
+            lblUsuario.Text = UserData.Nombre;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -111,6 +113,38 @@ namespace New_MasterTrade
             FormVentas.Config();
             FormVentas.LoadVentas();
             FormVentas.BringToFront();
+        }
+
+        private void bttnUsuarios_Click(object sender, EventArgs e)
+        {
+            FormUsuarios.BringToFront();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (IsCollapsed2)
+            {
+                panelDropDown2.Height += 10;
+                if (panelDropDown2.Size == panelDropDown2.MaximumSize)
+                {
+                    timer2.Stop();
+                    IsCollapsed2 = false;
+                }
+            }
+            else
+            {
+                panelDropDown2.Height -= 10;
+                if (panelDropDown2.Size == panelDropDown2.MinimumSize)
+                {
+                    timer2.Stop();
+                    IsCollapsed2 = true;
+                }
+            }
+        }
+
+        private void bttnAjustes_Click(object sender, EventArgs e)
+        {
+            timer2.Start();
         }
     }
 }

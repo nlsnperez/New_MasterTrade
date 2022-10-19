@@ -15,7 +15,7 @@ namespace New_MasterTrade.UserControls
     public partial class ConfirmarTransaccion : UserControl
     {
         List<Detalle> Detalle;
-        CRUD crud2;
+        CRUDPersonas crud2;
         CRUDTransacciones crud;        
 
         public ConfirmarTransaccion(int x, List<Detalle> detalle)
@@ -28,7 +28,7 @@ namespace New_MasterTrade.UserControls
         public void Config(int x)
         {
             crud = new CRUDTransacciones();
-            crud2 = new CRUD();
+            crud2 = new CRUDPersonas();
             lblTransaccion.Text = Detalle[0].Venta;
             switch (x)
             {

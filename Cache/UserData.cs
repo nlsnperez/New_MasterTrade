@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace New_MasterTrade.Cache
 {
-    public static class Usuario
+    public static class UserData
     {
         public static int Id { get; set; }
         public static string NombreUsuario { get; set; }

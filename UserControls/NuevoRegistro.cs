@@ -7,7 +7,7 @@ namespace New_MasterTrade.UserControls
 {
     public partial class NuevoRegistro : UserControl
     {
-        CRUD crud;
+        CRUDPersonas crud;
         public Persona Registro { get; set; }
 
         public NuevoRegistro(string x, string documento, int y)
@@ -23,7 +23,7 @@ namespace New_MasterTrade.UserControls
 
         public void Config(string x, string documento, int y)
         {
-            crud = new CRUD();
+            crud = new CRUDPersonas();
             Registro = null;
             FillComboBoxes();
             SelectComboBox(x);

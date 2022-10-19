@@ -92,11 +92,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\Conexion.cs" />
-    <Compile Include="Base de Datos\CRUD.cs" />
+    <Compile Include="Base de Datos\CRUDPersonas.cs" />
     <Compile Include="Base de Datos\CRUDExtras.cs" />
     <Compile Include="Base de Datos\CRUDProductos.cs" />
     <Compile Include="Base de Datos\CRUDTransacciones.cs" />
-    <Compile Include="Cache\Usuario.cs" />
+    <Compile Include="Base de Datos\CRUDUsuarios.cs" />
+    <Compile Include="Cache\UserData.cs" />
     <Compile Include="Custom Controls\RegistroVenta.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +110,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Usuario.cs" />
     <Compile Include="UserControls\BuscarProductos.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -170,6 +172,12 @@
     <Compile Include="Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Usuarios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Vender.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Vender.resx">
       <DependentUpon>Vender.cs</DependentUpon>

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.Base_de_Datos
 {
-    class CRUD : Conexion
+    class CRUDPersonas : Conexion
     {
         
         public void Create(Persona cliente, String tabla)
