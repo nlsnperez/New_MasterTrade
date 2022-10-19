@@ -96,6 +96,7 @@
     <Compile Include="Base de Datos\CRUDExtras.cs" />
     <Compile Include="Base de Datos\CRUDProductos.cs" />
     <Compile Include="Base de Datos\CRUDTransacciones.cs" />
+    <Compile Include="Cache\Usuario.cs" />
     <Compile Include="Custom Controls\RegistroVenta.cs">
       <SubType>UserControl</SubType>
     </Compile>

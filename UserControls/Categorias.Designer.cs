@@ -31,6 +31,10 @@ namespace New_MasterTrade.UserControls
         {
             this.components = new System.ComponentModel.Container();
             this.tablaCategorias = new System.Windows.Forms.DataGridView();
+            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.columnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panelDropDown = new System.Windows.Forms.Panel();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -40,12 +44,10 @@ namespace New_MasterTrade.UserControls
             this.label4 = new System.Windows.Forms.Label();
             this.bttnAgregar = new System.Windows.Forms.Button();
             this.timerDropDown = new System.Windows.Forms.Timer(this.components);
-            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.columnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).BeginInit();
             this.panelDropDown.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tablaCategorias
@@ -60,12 +62,49 @@ namespace New_MasterTrade.UserControls
             this.columnNombre,
             this.columnEditar,
             this.columnEliminar});
-            this.tablaCategorias.Location = new System.Drawing.Point(12, 306);
+            this.tablaCategorias.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tablaCategorias.Location = new System.Drawing.Point(3, 109);
             this.tablaCategorias.Name = "tablaCategorias";
             this.tablaCategorias.ReadOnly = true;
-            this.tablaCategorias.Size = new System.Drawing.Size(898, 413);
+            this.tablaCategorias.Size = new System.Drawing.Size(898, 480);
             this.tablaCategorias.TabIndex = 0;
             this.tablaCategorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCategorias_CellClick);
+            // 
+            // columnId
+            // 
+            this.columnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnId.DataPropertyName = "id";
+            this.columnId.HeaderText = "ID";
+            this.columnId.Name = "columnId";
+            this.columnId.ReadOnly = true;
+            // 
+            // columnNombre
+            // 
+            this.columnNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnNombre.DataPropertyName = "nombre";
+            this.columnNombre.HeaderText = "Nombre";
+            this.columnNombre.Name = "columnNombre";
+            this.columnNombre.ReadOnly = true;
+            // 
+            // columnEditar
+            // 
+            this.columnEditar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnEditar.HeaderText = "Editar";
+            this.columnEditar.Name = "columnEditar";
+            this.columnEditar.ReadOnly = true;
+            this.columnEditar.Text = "EDITAR";
+            this.columnEditar.UseColumnTextForButtonValue = true;
+            // 
+            // columnEliminar
+            // 
+            this.columnEliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnEliminar.HeaderText = "Eliminar";
+            this.columnEliminar.Name = "columnEliminar";
+            this.columnEliminar.ReadOnly = true;
+            this.columnEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.columnEliminar.Text = "ELIMINAR";
+            this.columnEliminar.UseColumnTextForButtonValue = true;
             // 
             // panelDropDown
             // 
@@ -74,7 +113,7 @@ namespace New_MasterTrade.UserControls
             this.panelDropDown.Controls.Add(this.label2);
             this.panelDropDown.Controls.Add(this.txtId);
             this.panelDropDown.Controls.Add(this.label1);
-            this.panelDropDown.Location = new System.Drawing.Point(12, 200);
+            this.panelDropDown.Location = new System.Drawing.Point(3, 3);
             this.panelDropDown.MaximumSize = new System.Drawing.Size(898, 100);
             this.panelDropDown.MinimumSize = new System.Drawing.Size(898, 0);
             this.panelDropDown.Name = "panelDropDown";
@@ -170,56 +209,29 @@ namespace New_MasterTrade.UserControls
             this.timerDropDown.Interval = 10;
             this.timerDropDown.Tick += new System.EventHandler(this.timerDropDown_Tick);
             // 
-            // columnId
+            // flowLayoutPanel1
             // 
-            this.columnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnId.DataPropertyName = "id";
-            this.columnId.HeaderText = "ID";
-            this.columnId.Name = "columnId";
-            this.columnId.ReadOnly = true;
-            // 
-            // columnNombre
-            // 
-            this.columnNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnNombre.DataPropertyName = "nombre";
-            this.columnNombre.HeaderText = "Nombre";
-            this.columnNombre.Name = "columnNombre";
-            this.columnNombre.ReadOnly = true;
-            // 
-            // columnEditar
-            // 
-            this.columnEditar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnEditar.HeaderText = "Editar";
-            this.columnEditar.Name = "columnEditar";
-            this.columnEditar.ReadOnly = true;
-            this.columnEditar.Text = "EDITAR";
-            this.columnEditar.UseColumnTextForButtonValue = true;
-            // 
-            // columnEliminar
-            // 
-            this.columnEliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnEliminar.HeaderText = "Eliminar";
-            this.columnEliminar.Name = "columnEliminar";
-            this.columnEliminar.ReadOnly = true;
-            this.columnEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnEliminar.Text = "ELIMINAR";
-            this.columnEliminar.UseColumnTextForButtonValue = true;
+            this.flowLayoutPanel1.Controls.Add(this.panelDropDown);
+            this.flowLayoutPanel1.Controls.Add(this.tablaCategorias);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 132);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(902, 592);
+            this.flowLayoutPanel1.TabIndex = 23;
             // 
             // Categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.bttnAgregar);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.panelDropDown);
-            this.Controls.Add(this.tablaCategorias);
             this.Name = "Categorias";
             this.Size = new System.Drawing.Size(922, 734);
             this.Load += new System.EventHandler(this.Categorias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).EndInit();
             this.panelDropDown.ResumeLayout(false);
             this.panelDropDown.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,5 +253,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn columnNombre;
         private System.Windows.Forms.DataGridViewButtonColumn columnEditar;
         private System.Windows.Forms.DataGridViewButtonColumn columnEliminar;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

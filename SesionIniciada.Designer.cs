@@ -53,6 +53,7 @@ namespace New_MasterTrade
             this.bttnComprar = new System.Windows.Forms.Button();
             this.bttnAjustes = new System.Windows.Forms.Button();
             this.bttnSalir = new System.Windows.Forms.Button();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.PanelContenedor.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -114,7 +115,7 @@ namespace New_MasterTrade
             // 
             // formCategorias
             // 
-            this.formCategorias.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.formCategorias.BackColor = System.Drawing.Color.White;
             this.formCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.formCategorias.Location = new System.Drawing.Point(0, 0);
             this.formCategorias.Name = "formCategorias";
@@ -162,6 +163,7 @@ namespace New_MasterTrade
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(41)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.lblUsuario);
             this.panel2.Controls.Add(this.tableLayoutPanel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -345,6 +347,16 @@ namespace New_MasterTrade
             this.bttnSalir.UseVisualStyleBackColor = false;
             this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(12, 10);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
+            this.lblUsuario.TabIndex = 1;
+            this.lblUsuario.Text = "Usuario";
+            // 
             // SesionIniciada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +371,7 @@ namespace New_MasterTrade
             this.Text = "SesionIniciada";
             this.PanelContenedor.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panelDropDown.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -391,5 +404,6 @@ namespace New_MasterTrade
         private System.Windows.Forms.Button bttnCategorias;
         private System.Windows.Forms.Button bttnVentas;
         private UserControls.Ventas FormVentas;
+        private System.Windows.Forms.Label lblUsuario;
     }
 }

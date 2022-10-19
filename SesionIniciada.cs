@@ -1,5 +1,6 @@
 ﻿using New_MasterTrade.UserControls;
 using New_MasterTrade.Custom_Controls;
+using New_MasterTrade.Cache;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,8 @@ namespace New_MasterTrade
         {
             InitializeComponent();
             panelDropDown.Size = panelDropDown.MinimumSize;
+            Usuario.Nombre = "Nelson";
+            lblUsuario.Text = Usuario.Nombre;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
