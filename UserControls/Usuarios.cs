@@ -25,6 +25,8 @@ namespace New_MasterTrade.UserControls
         {
             crud = new CRUDUsuarios();
             tablaUsuarios.AutoGenerateColumns = false;
+            txtContrasegna.PasswordChar = '*';
+            txtContrasegna2.PasswordChar = '*';
             tablaUsuarios.DataSource = crud.GetTable();
             Controles("OFF");
             ConfigCombos();
@@ -42,10 +44,12 @@ namespace New_MasterTrade.UserControls
                     txtApellido.Enabled = true;
                     txtUsuario.Enabled = true;
                     txtContrasegna.Enabled = true;
+                    txtContrasegna2.Enabled = true;
                     comboNivel.Enabled = true;
                     bttnGuardar.Enabled = true;
                     bttnCancelar.Enabled = true;
                     bttnNuevo.Enabled = false;
+                    checkMostrar.Enabled = true;
                     break;
                 case "OFF":
                     txtID.Enabled = false;
@@ -55,10 +59,12 @@ namespace New_MasterTrade.UserControls
                     txtApellido.Enabled = false;
                     txtUsuario.Enabled = false;
                     txtContrasegna.Enabled = false;
+                    txtContrasegna2.Enabled = false;
                     comboNivel.Enabled = false;
                     bttnGuardar.Enabled = false;
                     bttnCancelar.Enabled = false;
                     bttnNuevo.Enabled = true;
+                    checkMostrar.Enabled = false;
                     break;
             }
         }
@@ -72,7 +78,9 @@ namespace New_MasterTrade.UserControls
             txtApellido.Text = "";
             txtUsuario.Text = "";
             txtContrasegna.Text = "";
+            txtContrasegna2.Text = "";
             comboNivel.SelectedIndex = 1;
+            checkMostrar.Checked = false;
             bttnGuardar.Text = "GUARDAR";
         }
 
@@ -115,12 +123,12 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        private Usuario GetUsuario() 
+        private Usuario GetUsuario()
         {
             Usuario user = new Usuario(Int32.Parse(txtID.Text),
                                         txtUsuario.Text,
                                         txtContrasegna.Text,
-                                        comboDocumento.SelectedItem.ToString()+txtDocumento.Text,
+                                        comboDocumento.SelectedItem.ToString() + txtDocumento.Text,
                                         txtNombre.Text,
                                         txtApellido.Text,
                                         comboNivel.SelectedItem.ToString());
@@ -132,12 +140,19 @@ namespace New_MasterTrade.UserControls
             switch (bttnGuardar.Text)
             {
                 case "GUARDAR":
-                    if (MessageBox.Show("¿Desea registrar el usuario " + txtUsuario.Text + "?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (txtContrasegna.Text != txtContrasegna2.Text)
                     {
-                        crud.Create(GetUsuario());
-                        Clear();
-                        Controles("OFF");
-                        tablaUsuarios.DataSource = crud.GetTable();
+                        MessageBox.Show("Las contraseñas ingresadas no coinciden", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("¿Desea registrar el usuario " + txtUsuario.Text + "?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            crud.Create(GetUsuario());
+                            Clear();
+                            Controles("OFF");
+                            tablaUsuarios.DataSource = crud.GetTable();
+                        }
                     }
                     break;
                 case "ACTUALIZAR":
@@ -152,14 +167,38 @@ namespace New_MasterTrade.UserControls
             }
         }
 
+        private int GetIndex(char x)
+        {
+            switch (x)
+            {
+                case 'V':
+                    return 0;
+                    break;
+                case 'E':
+                    return 1;
+                    break;
+                case 'J':
+                    return 2;
+                    break;
+                case 'G':
+                    return 3;
+                    break;
+                default:
+                    return 0;
+                    break;
+            }
+        }  
+
         private void tablaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Controles("ON");
             txtID.Text = tablaUsuarios.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtUsuario.Text = tablaUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtContrasegna.Text = tablaUsuarios.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtNombre.Text = tablaUsuarios.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txtApellido.Text = tablaUsuarios.Rows[e.RowIndex].Cells[4].Value.ToString();
+            comboDocumento.SelectedIndex = GetIndex(tablaUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString()[0]);
+            txtDocumento.Text = tablaUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString().Remove(0,1); ;
+            txtUsuario.Text = tablaUsuarios.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txtContrasegna.Text = tablaUsuarios.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtNombre.Text = tablaUsuarios.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txtApellido.Text = tablaUsuarios.Rows[e.RowIndex].Cells[5].Value.ToString();
             if (tablaUsuarios.Rows[e.RowIndex].Cells[5].Value.ToString() == "ADMINISTRADOR")
             {
                 comboNivel.SelectedIndex = 0;
@@ -168,7 +207,26 @@ namespace New_MasterTrade.UserControls
             {
                 comboNivel.SelectedIndex = 1;
             }
+            comboDocumento.Enabled = false;
+            txtDocumento.Enabled = false;
+            txtContrasegna2.Enabled = false;
             bttnGuardar.Text = "ACTUALIZAR";            
+        }
+
+        private void checkMostrar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkMostrar.Checked == true)
+            {
+                txtContrasegna.PasswordChar = (char)0;
+                txtContrasegna2.PasswordChar = (char)0;
+                checkMostrar.Text = "Ocultar";
+            }
+            else
+            {
+                txtContrasegna.PasswordChar = '*';
+                txtContrasegna2.PasswordChar = '*';
+                checkMostrar.Text = "Mostrar";
+            }
         }
     }
 }

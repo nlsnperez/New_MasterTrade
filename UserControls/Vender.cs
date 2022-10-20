@@ -257,6 +257,7 @@ namespace New_MasterTrade.UserControls
                     total = GetTotal();
                     lblTotal.Text = total.ToString() + "Bs";
                     ClearData("CLEAN");
+                    txtCantidad.Enabled = false;
                 }
             }
         }
