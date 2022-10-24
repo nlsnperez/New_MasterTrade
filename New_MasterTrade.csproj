@@ -92,11 +92,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\Conexion.cs" />
+    <Compile Include="Base de Datos\Conexion2.cs" />
     <Compile Include="Base de Datos\CRUDPersonas.cs" />
     <Compile Include="Base de Datos\CRUDExtras.cs" />
     <Compile Include="Base de Datos\CRUDProductos.cs" />
     <Compile Include="Base de Datos\CRUDTransacciones.cs" />
     <Compile Include="Base de Datos\CRUDUsuarios.cs" />
+    <Compile Include="Base de Datos\CRUD_Productos.cs" />
     <Compile Include="Cache\UserData.cs" />
     <Compile Include="Custom Controls\RegistroVenta.cs">
       <SubType>UserControl</SubType>
@@ -110,6 +112,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Producto2.cs" />
     <Compile Include="Objetos\Usuario.cs" />
     <Compile Include="UserControls\BuscarProductos.cs">
       <SubType>UserControl</SubType>
