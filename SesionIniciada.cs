@@ -67,9 +67,7 @@ namespace New_MasterTrade
 
         private void bttnProductos_Click(object sender, EventArgs e)
         {
-            FormProductos.Clear();
-            FormProductos.Config();
-            FormProductos.BringToFront();
+            formProductos.BringToFront();
         }
 
         private void bttnVender_Click(object sender, EventArgs e)
@@ -103,9 +101,9 @@ namespace New_MasterTrade
 
         private void bttnCategorias_Click(object sender, EventArgs e)
         {
-            formCategorias.Clear();
-            formCategorias.Config();
-            formCategorias.BringToFront();
+            //formCategorias.Clear();
+            //formCategorias.Config();
+            //formCategorias.BringToFront();
         }
 
         private void bttnVentas_Click(object sender, EventArgs e)

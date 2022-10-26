@@ -9,43 +9,25 @@ namespace New_MasterTrade.Objetos
     class Producto
     {
         public int Id { get; set; }
-        public String Codigo { get; set; }
-        public String Nombre { get; set; }
-        public String Categoria { get; set; }
-        public float Costo { get; set; }
-        public int StockMax { get; set; }
-        public int StockMin { get; set; }
+        public string Serial { get; set; }
+        public string Descripcion { get; set; }
+        public int Marca { get; set; }
+        public int Categoria { get; set; }
+        public decimal Precio_Compra { get; set; }
+        public decimal Precio_Venta { get; set; }
+        public bool Estado { get; set; }
+        public byte[] Imagen { get; set; }
 
-        public Producto(int id, string codigo, string nombre, string categoria, float costo, int stockMax, int stockMin)
+        public Producto(string serial, string descripcion, int marca, int categoria, decimal precio_Compra, decimal precio_Venta, bool estado, byte[] imagen)
         {
-            Id = id;
-            Codigo = codigo;
-            Nombre = nombre;
+            Serial = serial;
+            Descripcion = descripcion;
+            Marca = marca;
             Categoria = categoria;
-            Costo = costo;
-            StockMax = stockMax;
-            StockMin = stockMin;
-        }
-
-        public bool IsEmpty()
-        {
-            if (this.Codigo == "" || this.Nombre == "" || this.Categoria == "" || this.Costo == 0 || this.StockMax == 0 || this.StockMin == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool CompararStock()
-        {
-            if (this.StockMax < this.StockMin)
-            {
-                return false;
-            }
-            else return true;
+            Precio_Compra = precio_Compra;
+            Precio_Venta = precio_Venta;
+            Estado = estado;
+            Imagen = imagen;
         }
     }
 }

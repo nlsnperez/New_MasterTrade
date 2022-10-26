@@ -15,7 +15,7 @@ namespace New_MasterTrade.Objetos
     public partial class BuscarProductos : UserControl
     {
         private Vender Venta;
-        CRUDProductos crud;
+        //CRUDProductos crud;
         DataTable carrito = new DataTable();
 
         public BuscarProductos(Vender venta)
@@ -28,7 +28,7 @@ namespace New_MasterTrade.Objetos
         {
             lblAgregado.Hide();
             tablaProductos.AutoGenerateColumns = false;
-            tablaProductos.DataSource = crud.GetTable();
+            //tablaProductos.DataSource = crud.GetTable();
         }
 
         public void ConfigCarrito()//CONFIGURA LAS COLUMNAS DE LA TABLA CARRITO
@@ -51,7 +51,7 @@ namespace New_MasterTrade.Objetos
 
         private void BuscarProductos_Load(object sender, EventArgs e)
         {
-            crud = new CRUDProductos();
+            //crud = new CRUDProductos();
             Config();
         }
 
@@ -72,7 +72,7 @@ namespace New_MasterTrade.Objetos
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-            tablaProductos.DataSource = crud.SearchTable(txtBuscar.Text);
+            //tablaProductos.DataSource = crud.SearchTable(txtBuscar.Text);
         }
 
         private void timerFade_Tick(object sender, EventArgs e)

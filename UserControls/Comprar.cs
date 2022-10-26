@@ -22,7 +22,7 @@ namespace New_MasterTrade.UserControls
 
         private void Comprar_Load(object sender, EventArgs e)
         {
-            Config();
+            //Config();
         }
 
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA

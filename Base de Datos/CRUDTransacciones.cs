@@ -13,7 +13,7 @@ namespace New_MasterTrade.Base_de_Datos
 {
     class CRUDTransacciones : Conexion
     {
-        CRUDProductos crud = new CRUDProductos();
+        //CRUDProductos crud = new CRUDProductos();
         public void Create_Compra(Compra compra)
         {
             try
@@ -316,7 +316,7 @@ namespace New_MasterTrade.Base_de_Datos
 
         public int CantidadDisponible(string codigo)
         {
-            return crud.ProductosComprados(codigo) - crud.ProductosVendidos(codigo);
+            return 0;
         }
 
         public DataTable MetodosPago()

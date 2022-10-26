@@ -5,309 +5,194 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace New_MasterTrade
+namespace New_MasterTrade.UserControls
 {
-    public partial class Productos : UserControl
+    public partial class Productos_Prot : UserControl
     {
-        CRUDProductos crud;
-        bool IsCollapsed;
-        public Productos()
+        CRUD_Productos crud;
+
+        public Productos_Prot()
         {
             InitializeComponent();
         }
 
-        private void Productos_Load(object sender, EventArgs e)
+        private void Productos_Prot_Load(object sender, EventArgs e)
         {
             Config();
         }
 
         public void Config()
         {
-            crud = new CRUDProductos();
-            panelSlide.Size = panelSlide.MinimumSize;
-            txtNombre.MaxLength = 200;
-            txtCosto.MaxLength = 13;
-            txtStockMax.MaxLength = 10;
-            txtStockMin.MaxLength = 10;
-            FillComboBoxes();
-            tablaProductos.AutoGenerateColumns = false;
+            crud = new CRUD_Productos();
+            txtID.Text = crud.GetLastID().ToString();
             txtID.Enabled = false;
             txtCantidad.Enabled = false;
-            Config_Botones("INICIO");
-            RefreshTable(1);
-            panel1.Size = MaximumSize;
+            bttnActualizar.Enabled = false;
+            bttnEliminar2.Enabled = false;
+            ConfigCombos();
         }
 
-        public void FillComboBoxes()
+        private void bttnAgregar_Click(object sender, EventArgs e)
         {
-            if (comboCategoría.Items.Count > 0) comboCategoría.DataSource = null;
-            comboCategoría.ValueMember = "id";
-            comboCategoría.DisplayMember = "nombre";
-            comboCategoría.DataSource = crud.Categorias();
-            comboCategoría.SelectedIndex = 0;
-        }
-
-        //BOTONES//
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            switch (btnGuardar.Text)
+            if (openImage.ShowDialog() == DialogResult.OK)
             {
-                case "GUARDAR":
-                    Guardar();
-                    break;
-                case "ACTUALIZAR":
-                    Actualizar();
-                    break;
-            }
+                string imagen = openImage.FileName;
+                pbImagen.Image = Image.FromFile(imagen);
+            }            
         }
 
-        private void Guardar()
+        private void bttnEliminar_Click(object sender, EventArgs e)
         {
-            if (GetProducto().IsEmpty())
+            if (pbImagen.Image != null)
             {
-                MessageBox.Show("Complete todos los campos!");
-            }
-            else
-            {
-                if (GetProducto().CompararStock() == false)
-                {
-                    MessageBox.Show("¡El stock máximo no puede ser menor al stock mínimo!", "INVÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    if (MessageBox.Show("¿Desea registrar el producto: " + GetProducto().Codigo + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        crud.Create(GetProducto());
-                        Clear();
-                        RefreshTable(1);
-                        timerSlide.Start();
-                    }
-
-                }
-            }
+                pbImagen.Image = null;
+            }            
         }
 
-        private void Actualizar()
+        public void ConfigCombos()
         {
-            if (MessageBox.Show("Desea actualizar los datos del producto: " + GetProducto().Codigo + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                crud.Update(GetProducto());
-                Clear();
-                RefreshTable(1);
-                timerSlide.Start();
-            }
-        }
+            comboMarca.ValueMember = "id";
+            comboMarca.DisplayMember = "nombre";
+            comboMarca.DataSource = crud.Marcas();
+            comboMarca.SelectedIndex = 0;
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Clear();
-        }
+            comboCategoria.ValueMember = "id";
+            comboCategoria.DisplayMember = "nombre";
+            comboCategoria.DataSource = crud.Categorias();
+            comboCategoria.SelectedIndex = 0;
 
-        public void Config_Botones(String estado)
-        {
-            switch (estado)
-            {
-                case "INICIO":
-                    btnGuardar.Enabled = true;
-                    btnCancelar.Enabled = true;
-                    break;
-                case "SELECCIÓN":
-                    btnGuardar.Enabled = false;
-                    btnCancelar.Enabled = true;
-                    break;
-            }
-        }
-
-        //BOTONES//
-
-        public void RefreshTable(int x)
-        {
-            switch (x)
-            {
-                case 1:
-                    tablaProductos.DataSource = crud.GetTable();
-                    break;
-                case 2:
-                    tablaProductos.DataSource = crud.SearchTable(txtBuscar.Text);
-                    break;
-            }
-
-        }
-
-        private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
-        {
-            RefreshTable(2);
+            comboEstado.Items.Add("No Disponible");
+            comboEstado.Items.Add("Disponible");
+            comboEstado.SelectedIndex = 0;
         }
 
         private Producto GetProducto()
         {
-            Producto producto = new Producto(Int32.Parse(txtID.Text), lblCodigo.Text, txtNombre.Text, comboCategoría.SelectedValue.ToString(), float.Parse(txtCosto.Text.Replace(',', '.'), CultureInfo.InvariantCulture), Int32.Parse(txtStockMax.Text), Int32.Parse(txtStockMin.Text));
+            bool estado = false;
+            if (comboEstado.SelectedIndex == 1) estado = true;
+            MemoryStream ms = new MemoryStream();
+            pbImagen.Image.Save(ms, pbImagen.Image.RawFormat);
+            byte[] imagen = ms.ToArray();
+
+            Producto producto = new Producto(txtSerial.Text,
+                                                txtDescripcion.Text,
+                                                int.Parse(comboMarca.SelectedValue.ToString()),
+                                                int.Parse(comboCategoria.SelectedValue.ToString()),
+                                                decimal.Parse(txtPrecioCompra.Text),
+                                                decimal.Parse(txtPrecioVenta.Text),
+                                                estado,
+                                                imagen);
             return producto;
-        }        
-
-        public void Clear()
-        {
-            txtID.Text = "";
-            txtNombre.Text = "";
-            txtCosto.Text = "00,00";
-            txtStockMin.Text = "0";
-            txtStockMax.Text = "0";
-            txtBuscar.Text = "";
-            comboCategoría.SelectedIndex = 0;
-            comboCategoría.Enabled = true;
-            Config_Botones("INICIO");
-            RefreshTable(1);
         }
 
-        private void tablaProductos_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void bttnGuardar_Click(object sender, EventArgs e)
         {
-            lblCodigo.Text = tablaProductos.SelectedRows[0].Cells[0].Value.ToString();
-            txtNombre.Text = tablaProductos.SelectedRows[0].Cells[1].Value.ToString();
-            comboCategoría.SelectedValue = tablaProductos.SelectedRows[0].Cells[2].Value.ToString();
-            txtCosto.Text = tablaProductos.SelectedRows[0].Cells[3].Value.ToString().Replace('.', ',');
-            txtCantidad.Text = Convert.ToString(crud.ProductosComprados(lblCodigo.Text) - crud.ProductosVendidos(lblCodigo.Text));
-            txtStockMax.Text = tablaProductos.SelectedRows[0].Cells[4].Value.ToString();
-            txtStockMin.Text = tablaProductos.SelectedRows[0].Cells[5].Value.ToString();
-            comboCategoría.Enabled = false;
-            Config_Botones("SELECCIÓN");
-        }        
-
-        //PLACEHOLDERS//
-
-        private void txtStockMax_Enter(object sender, EventArgs e)
-        {
-            if (txtStockMin.Text == "0")
+            if (MessageBox.Show("¿Desea registrar el producto: "+txtSerial.Text+"?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                txtStockMin.Text = "";
+                crud.Create(GetProducto());
+                Limpiar();
             }
         }
 
-        private void txtStockMax_Leave(object sender, EventArgs e)
+        private void bttnBuscar_Click(object sender, EventArgs e)
         {
-            if (txtStockMin.Text == "")
+            if (crud.ProductoDatos(txtBuscar.Text).Rows.Count > 0)
             {
-                txtStockMin.Text = "0";
+                DataTable resultado = crud.ProductoDatos(txtBuscar.Text);
+                byte[] imagen = (byte[])resultado.Rows[0][8];
+                MemoryStream ms = new MemoryStream(imagen);
+
+                txtID.Text = resultado.Rows[0][0].ToString();
+                txtSerial.Text = resultado.Rows[0][1].ToString();
+                txtDescripcion.Text = resultado.Rows[0][2].ToString();
+                comboMarca.SelectedValue = Int32.Parse(resultado.Rows[0][3].ToString());
+                comboCategoria.SelectedValue = Int32.Parse(resultado.Rows[0][4].ToString());
+                txtPrecioCompra.Text = resultado.Rows[0][5].ToString();
+                txtPrecioVenta.Text = resultado.Rows[0][6].ToString();
+                //if (Int32.Parse(resultado.Rows[0][7].ToString()) == 0) comboEstado.SelectedIndex = 0;
+                //else comboEstado.SelectedIndex = 1;
+                pbImagen.Image = Image.FromStream(ms);
+
+                txtBuscar.Text = "";
+                txtSerial.Enabled = false;
+                bttnGuardar.Enabled = false;
+                bttnActualizar.Enabled = true;
+                bttnEliminar2.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("No se encontró ningún producto con el serial introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void txtStockMin_Enter(object sender, EventArgs e)
-        {
-            if (txtStockMax.Text == "0")
-            {
-                txtStockMax.Text = "";
-            }
-        }
-
-        private void txtStockMin_Leave(object sender, EventArgs e)
-        {
-            if (txtStockMax.Text == "")
-            {
-                txtStockMax.Text = "0";
-            }
-        }
-
-        private void txtCosto_Enter(object sender, EventArgs e)
-        {
-            if (txtCosto.Text == "00,00")
-            {
-                txtCosto.Text = "";
-            }
-        }
-
-        private void txtCosto_Leave(object sender, EventArgs e)
-        {
-            if (txtCosto.Text == "")
-            {
-                txtCosto.Text = "00,00";
-            }
-        }
-        
-        //PLACEHOLDERS//
-
-        private void OnlyNumbers(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void bttnRegistrar_Click(object sender, EventArgs e)
+        public void Limpiar()
         {
             txtID.Text = crud.GetLastID().ToString();
-            lblCodigo.Text = "MTP" + crud.GetLastID().ToString("0000000");
-            timerSlide.Start();
+            txtSerial.Text = "";
+            txtSerial.Enabled = true;
+            txtDescripcion.Text = "";
+            txtPrecioCompra.Text = "0";
+            txtPrecioVenta.Text = "0";
+            txtCantidad.Text = "0";
+            txtBuscar.Text = "";
+            comboMarca.SelectedIndex = 0;
+            comboCategoria.SelectedIndex = 0;
+            comboEstado.SelectedIndex = 0;
+            pbImagen.Image = null;
+            bttnGuardar.Enabled = true;
+            bttnActualizar.Enabled = false;
+            bttnEliminar2.Enabled = false;
         }
 
-        private void timerSlide_Tick(object sender, EventArgs e)
+        private void bttnCancelar_Click(object sender, EventArgs e)
         {
-            if (IsCollapsed)
+            Limpiar();
+        }
+
+        private void txtPrecioVenta_Enter(object sender, EventArgs e)
+        {
+            if (txtPrecioVenta.Text == "0")
             {
-                panelSlide.Width += 50;
-                if (panelSlide.Size == panelSlide.MaximumSize)
-                {
-                    timerSlide.Stop();
-                    IsCollapsed = false;
-                }
-            }
-            else
-            {
-                panelSlide.Width -= 50;
-                if (panelSlide.Size == panelSlide.MinimumSize)
-                {
-                    timerSlide.Stop();
-                    IsCollapsed = true;
-                }
+                txtPrecioVenta.Text = "";
             }
         }
 
-        private void bttnAtras_Click(object sender, EventArgs e)
+        private void txtPrecioVenta_Leave(object sender, EventArgs e)
         {
-            timerSlide.Start();
-            btnGuardar.Text = "GUARDAR";
-            Clear();
-            lblCodigo.Text = "MTP0000000";
+            if (txtPrecioVenta.Text == "")
+            {
+                txtPrecioVenta.Text = "0";
+            }
         }
 
-        private void tablaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void txtPrecioCompra_Enter(object sender, EventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (txtPrecioCompra.Text == "0")
             {
-                Producto producto = crud.FindProducto(tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-                txtID.Text = producto.Id.ToString();
-                lblCodigo.Text = producto.Codigo;
-                txtNombre.Text = producto.Nombre;
-                comboCategoría.SelectedValue = producto.Categoria;
-                txtCosto.Text = producto.Costo.ToString().Replace('.', ',');
-                txtCantidad.Text = Convert.ToString(crud.ProductosComprados(lblCodigo.Text) - crud.ProductosVendidos(lblCodigo.Text));
-                txtStockMax.Text = producto.StockMax.ToString();
-                txtStockMin.Text = producto.StockMin.ToString();
-                comboCategoría.Enabled = false;
-                btnGuardar.Text = "ACTUALIZAR";
-                timerSlide.Start();
+                txtPrecioCompra.Text = "";
             }
-            else
+        }
+
+        private void txtPrecioCompra_Leave(object sender, EventArgs e)
+        {
+            if (txtPrecioCompra.Text == "")
             {
-                if (e.ColumnIndex == 5)
-                {
-                    if (MessageBox.Show("Desea eliminar los datos del prodcuto: " + tablaProductos.Rows[e.RowIndex].Cells[2].Value.ToString() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        crud.Delete(tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString());
-                        Clear();
-                        RefreshTable(1);
-                    }
-                }
+                txtPrecioCompra.Text = "0";
+            }
+        }
+
+        private void bttnActualizar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea actualizar el producto: " + txtSerial.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                crud.Update(GetProducto(), Int32.Parse(txtID.Text));
             }
         }
     }
-
-
 }
