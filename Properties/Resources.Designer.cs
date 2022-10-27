@@ -63,9 +63,9 @@ namespace New_MasterTrade.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _282279787_817724342770685_5999003673308156929_n {
+        internal static System.Drawing.Bitmap descripcion_del_producto {
             get {
-                object obj = ResourceManager.GetObject("282279787_817724342770685_5999003673308156929_n", resourceCulture);
+                object obj = ResourceManager.GetObject("descripcion-del-producto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

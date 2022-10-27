@@ -27,7 +27,7 @@ namespace New_MasterTrade.UserControls
 
         private void Ventas_Load(object sender, EventArgs e)
         {
-            Config();
+            //Config();
         }
 
         public void Config()

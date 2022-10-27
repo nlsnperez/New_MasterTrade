@@ -12,9 +12,10 @@ namespace New_MasterTrade.UserControls
     public partial class Comprar : UserControl
     {
         CRUDTransacciones crud;
+        CRUDPersonas personas;
         DataTable carrito = new DataTable();
-        decimal total = 0;
-
+        int Id = 0;
+        
         public Comprar()
         {
             InitializeComponent();
@@ -22,51 +23,21 @@ namespace New_MasterTrade.UserControls
 
         private void Comprar_Load(object sender, EventArgs e)
         {
-            //Config();
+            Config();
         }
 
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
         {
             crud = new CRUDTransacciones();
-            ClearData("RESET");
-            ConfigControles("INICIO");
+            personas = new CRUDPersonas();
+            tableCarrito.AutoGenerateColumns = false;
+            dpFecha.MinDate = System.DateTime.Today;
+            ConfigControles("OFF");
             ConfigCarrito();
-            FillComboBoxes();            
-            Config_Tables();
         }
 
 
         //BOTONES
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            if(txtCodigo.Text == "" || txtNombreProducto.Text == "" || txtCantidad.Text == "" || txtPrecio.Text == "")//REVISA LOS CAMPOS VACÍOS
-            {
-                MessageBox.Show("¡Por favor complete todos los campos!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                if (txtCantidad.Text == "0")
-                {
-                    MessageBox.Show("¡Por favor ingrese una cantidad mayor a 0!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    //AGREGA LOS DATOS A UN ARREGLO DE STRING Y SE ENVÍAN A LA TABLA DE CARRITO
-                    string[] producto = {txtCodigo.Text, txtNombreProducto.Text, txtCantidad.Text, Calc_Precio(decimal.Parse(txtPrecio.Text), decimal.Parse(txtCantidad.Text)).ToString()};
-                    carrito.Rows.Add(producto);
-                    if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);                    
-                    tableCarrito.DataSource = carrito;
-
-                    //CALCULA EL PRECIO TOTAL DE LA COMPRA Y LO MUESTRA EN UN LABEL
-                    lblTotal.Text = GetTotal().ToString() + " Bs";
-
-                    btnAtras.Enabled = true;
-                    btnConfirmar.Enabled = true;
-                    Cancel_Order();
-                }
-            }
-            
-        }
 
         public void Check_Duplicado(int y)
         {
@@ -74,192 +45,18 @@ namespace New_MasterTrade.UserControls
             {
                 if (carrito.Rows[x][0].ToString() == carrito.Rows[y][0].ToString())
                 {
-                    carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) + int.Parse(carrito.Rows[y][2].ToString());
-                    carrito.Rows[x][3] = decimal.Parse(carrito.Rows[x][3].ToString()) + decimal.Parse(carrito.Rows[y][3].ToString());
+                    carrito.Rows[x][4] = int.Parse(carrito.Rows[x][4].ToString()) + int.Parse(carrito.Rows[y][4].ToString());
+                    carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][5].ToString()) + decimal.Parse(carrito.Rows[y][5].ToString());
                     carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
-                    if (int.Parse(carrito.Rows[x][2].ToString()) > txtCantidad.Maximum)
-                    {
-                        carrito.Rows[x][2] = int.Parse(carrito.Rows[x][2].ToString()) - (int.Parse(carrito.Rows[x][2].ToString()) - txtCantidad.Maximum);
-                        carrito.Rows[x][3] = decimal.Parse(carrito.Rows[x][2].ToString()) * decimal.Parse(txtPrecio.Text);
-                        MessageBox.Show("La cantidad de productos ingresada excede a la cantidad disponible por lo que se ajustarán los datos automáticamente", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                     break;
                 }
             }
         }
 
-        private void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("¿Desea confirmar la compra?", "¿CONFIRMAR?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                //crud.Create_Compra(GetCompra());
-                if (MessageBox.Show("¿Desea comprar más productos del mismo proveedor?", "¿CONFIRMAR?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                {
-                    ClearData("RESET");
-                }
-                else
-                {
-                    ClearData("PARTIAL");
-                }
-
-            }
-
-        }
-
-        private void btnAtras_Click(object sender, EventArgs e)//BOTÓN PARA SUSTRAER UN PRODUCTO DE LA LISTA
-        {
-            total = GetTotal() - decimal.Parse(carrito.Rows[carrito.Rows.Count-1]["Precio"].ToString());//RESTA EL PRECIO DEL PRODUCTO ELIMINADO
-            carrito.Rows.RemoveAt(carrito.Rows.Count-1);//REMUEVE EL PRODUCTO DE LA TABLA
-            lblTotal.Text = total.ToString() + " Bs";
-            if (carrito.Rows.Count == 0)
-            {
-                btnAtras.Enabled = false;
-                btnConfirmar.Enabled = false;
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Cancel_Order();
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            BuscarProveedor();
-        }
         //BOTONES
 
-        //private Compra GetCompra()//GENERA UNA COMPRA CON LOS DATOS SUMINISTRADOS
-        //{
-        //    List<Detalle> detalle = new List<Detalle>();
-        //    for (int i = 0; i <= carrito.Rows.Count - 1; i++)
-        //    {
-        //        Detalle x = new Detalle(carrito.Rows[i]["Código"].ToString(), Int32.Parse(carrito.Rows[i]["Cantidad"].ToString()), float.Parse(carrito.Rows[i]["Precio"].ToString()));
-        //        detalle.Add(x);
-        //    }
-        //    Compra compra = new Compra(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, detalle);
-        //    compra.Generar_Codigo(crud.ComprasRealizadas());
-        //    return compra;
-        //}
-
-        public void Cancel_Order()//LIMPIA LOS CAMPOS ATENDIENDO A UN PARÁMETRO
-        {
-            if(txtCodigo.Text == ""|| txtNombreProducto.Text == "" || txtCantidad.Text == "" || txtPrecio.Text == "" /*|| carrito.Rows.Count > 0*/)
-            {
-                ClearData("RESET");
-            }
-            else
-            {
-                ClearData("CLEAN");
-            }
-            
-        }
-
-        public void ClearData(string modo)//REINICIA COMPLETAMENTE LOS COMPONENTES DEL FORMULARIO
-        {
-            switch (modo)
-            {
-                case "CLEAN":
-                    txtCodigo.Text = "";
-                    txtNombreProducto.Text = "";
-                    txtCantidad.Text = "";
-                    txtPrecio.Text = "";
-                    txtCantidad.Enabled = false;
-                    break;
-                case "RESET":
-                    txtCodigo.Text = "";
-                    txtNombreProducto.Text = "";
-                    txtCantidad.Text = "";
-                    txtPrecio.Text = "";
-                    txtDocumento.Text = "";
-                    txtRazonSocial.Text = "";
-                    txtTelefono.Text = "";
-                    tableCarrito.DataSource = null;
-                    tableProductos.DataSource = null;
-                    txtCantidad.Enabled = false;
-                    txtDocumento.Enabled = true;
-                    comboDocumento.Enabled = true;
-                    carrito.Rows.Clear();
-                    total = 0;
-                    lblTotal.Text = "00,00 Bs";
-                    break;
-                case "PARTIAL":
-                    comboDocumento.SelectedIndex = 0;
-                    tableCarrito.DataSource = null;
-                    carrito.Rows.Clear();
-                    total = 0;
-                    lblTotal.Text = "00,00 Bs";
-                    break;
-            }
-            
-        }
-
-        public decimal Calc_Precio(decimal precio, decimal cantidad)//CALCULA EL PRECIO DE LA COMPRA
-        {
-            return precio * cantidad;
-        }
-
-        public void FillTables(int x)//BUSCA LOS REGISTROS EN LA BASE DE DATOS PARA LA TABLA DE PRODUCTOS
-        {
-            switch (x)
-            {
-                case 1:
-                    tableProductos.DataSource = crud.FindProductos(1);//BUSQUEDA GENERAL
-                    break;
-                case 2:
-                    tableProductos.DataSource = crud.BuscarProductos(txtBuscar.Text, 1);//BUSQUEDA ESPECÍFICA
-                    break;
-            }
-            
-        }
         //CLICKS & KEYPRESS
 
-        private void tableProductos_MouseDoubleClick(object sender, MouseEventArgs e)//ORDENA LOS DATOS DE LA TABLA PRODUCTOS EN LOS TEXTBOXES CORRESPONDIENTES
-        {
-            txtCodigo.Text = tableProductos.SelectedRows[0].Cells[0].Value.ToString();
-            txtNombreProducto.Text = tableProductos.SelectedRows[0].Cells[1].Value.ToString();
-            txtCantidad.Enabled = true;
-            txtCantidad.Minimum = decimal.Parse(tableProductos.SelectedRows[0].Cells[2].Value.ToString());
-            txtCantidad.Maximum = decimal.Parse(tableProductos.SelectedRows[0].Cells[3].Value.ToString());
-            txtCantidad.Value = decimal.Parse(tableProductos.SelectedRows[0].Cells[2].Value.ToString());
-            txtPrecio.Text = tableProductos.SelectedRows[0].Cells[4].Value.ToString();
-        }
-
-        private void txtDocumento_KeyDown(object sender, KeyEventArgs e)//MÉTODO PARA BUSCAR UN PROVEEDOR EN LA BASE DE DATOS
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BuscarProveedor();
-            }
-        }
-
-        private void BuscarProveedor()
-        {
-            if (txtDocumento.Text == "")//VERIFICA QUE EL CAMPO NO ESTÉ VACÍO
-            {
-                MessageBox.Show("¡Por favor ingrese un documento!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                Persona proveedor = crud.FindPersona(comboDocumento.SelectedItem.ToString() + txtDocumento.Text, "proveedores");//BUSCA UN PROOVEDOR EN LA BASE DE DATOS
-                if (proveedor == null)//EN CASO QUE NO SE ENCUENTRE UN RESULTADO
-                {
-                    if (MessageBox.Show("No hay un proveedor con el documento que introdujo ¿Desea registrar uno nuevo?", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        NuevoRegistro();
-                    }
-                }
-                else//EN CASO QUE SE ENCUENTRE UN RESULTADO
-                {
-                    System.Windows.Forms.MessageBox.Show("PROVEEDOR: " + proveedor.RazonSocial.ToUpper(), "¡PROVEEDOR ENCONTRADO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtRazonSocial.Text = proveedor.RazonSocial;
-                    txtTelefono.Text = proveedor.Telefono;
-                    txtDocumento.Enabled = false;
-                    comboDocumento.Enabled = false;
-                    FillTables(1);//LLENA LA TABLA CON LOS PRODUCTOS REGISTRADOS DE ESE PROVEEDOR
-                }
-            }
-        }
         //CLICKS & KEYPRESS
 
         //CONFIGURACIONES
@@ -268,48 +65,74 @@ namespace New_MasterTrade.UserControls
             if (carrito.Columns.Count == 0)
             {
                 carrito = new DataTable();
-                carrito.Columns.Add("Código");
-                carrito.Columns.Add("Nombre");
+                carrito.Columns.Add("Id");
+                carrito.Columns.Add("Serial");
+                carrito.Columns.Add("Descripcion");
+                carrito.Columns.Add("P.Unitario");
                 carrito.Columns.Add("Cantidad");
-                carrito.Columns.Add("Precio");
+                carrito.Columns.Add("P.Total");
             }
-        }
-
-        public void FillComboBoxes()//INTRODUCE LOS ITEMS AL COMBOBOX
-        {
-            if (comboDocumento.Items.Count > 0) comboDocumento.Items.Clear();
-            comboDocumento.Items.Add("V");
-            comboDocumento.Items.Add("E");
-            comboDocumento.Items.Add("J");
-            comboDocumento.Items.Add("G");
-            comboDocumento.SelectedIndex = 0;
         }
 
         public void ConfigControles(string modo)//CONFIGURACIÓN DE LOS BOTONES
         {
             switch (modo)
             {
-                case "INICIO":
-                    txtCantidad.Enabled = false;
+                case "ON":
+                    dpFecha.Enabled = true;
+
+                    txtProveedor.Enabled = true;
+
+                    bttnNuevaCompra.Enabled = false;
+                    bttnBuscarProductos.Enabled = true;
+                    bttnBuscar.Enabled = true;
+                    bttnCancelar.Enabled = true;                    
+                    break;
+                case "OFF":
+                    txtNumeroOrden.Enabled = false;
+                    dpFecha.Enabled = false;
+                    
+                    txtProveedor.Enabled = false;
                     txtRazonSocial.Enabled = false;
+                    txtDireccion.Enabled = false;
                     txtTelefono.Enabled = false;
+                    txtCorreo.Enabled = false;
 
-                    txtCodigo.Enabled = false;
-                    txtNombreProducto.Enabled = false;
-                    txtPrecio.Enabled = false;
+                    comboImpuesto.Enabled = false;
+                    txtImpuesto.Enabled = false;
+                    txtSubTotalBs.Enabled = false;
+                    txtSubTotalUs.Enabled = false;
+                    txtTotalBs.Enabled = false;
+                    txtTotalUs.Enabled = false;
 
-                    btnAtras.Enabled = false;
-                    btnConfirmar.Enabled = false;
+                    bttnNuevaCompra.Enabled = true;
+                    bttnBuscarProductos.Enabled = false;
+                    bttnBuscar.Enabled = false;
+                    bttnCancelar.Enabled = false;
+                    bttnGuardar.Enabled = false;
+                    tableCarrito.DataSource = null;
+                    carrito.Rows.Clear();
+                    LimpiarCampos();
+                    comboImpuesto.DataSource = null;
                     break;
             }
         }
 
-        public void Config_Tables()//CONFIGURACIÓN DE LAS TABLAS
+        public void LimpiarCampos()
         {
-            tableProductos.AutoGenerateColumns = false;
-            tableCarrito.AutoGenerateColumns = false;
-            tableProductos.AllowUserToAddRows = false;
-            tableCarrito.AllowUserToAddRows = false;
+            txtNumeroOrden.Text = "";
+            dpFecha.Value = System.DateTime.Today;
+
+            txtProveedor.Text = "";
+            txtRazonSocial.Text = "";
+            txtDireccion.Text = "";
+            txtTelefono.Text = "";
+            txtCorreo.Text = "";
+
+            txtSubTotalBs.Text = "0";
+            txtSubTotalUs.Text = "0";
+            txtTotalBs.Text = "0";
+            txtTotalUs.Text = "0";
         }
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)//LIMITA LOS TEXBOXES PARA QUE ACEPTEN SÓLO NÚMEROS
@@ -320,43 +143,119 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        private void txtBuscar_KeyUp(object sender, KeyEventArgs e)//MÉTODO PARA BUSCAR PRODUCTOS ESPECÍFICOS EN LA BASE DE DATOS
+        public void ConfigCombo()
         {
-            FillTables(2);
+            comboImpuesto.DataSource = crud.Impuestos();
+            comboImpuesto.ValueMember = "id";
+            comboImpuesto.DisplayMember = "porcentaje";
+
+            CalcPorcentaje();
         }
 
-        public void NuevoRegistro()
-        {
-            Form x = new Form();
-            NuevoRegistro y = new NuevoRegistro(comboDocumento.SelectedItem.ToString(), txtDocumento.Text, 1);
-            x.Size = new Size(400, 720);
-            x.FormBorderStyle = FormBorderStyle.None;
-            x.StartPosition = FormStartPosition.CenterParent;
-            x.Controls.Add(y);
-            x.ShowDialog();
-            if (y.Registro != null)
-            {
-                comboDocumento.Enabled = false;
-                txtDocumento.Enabled = false;
-                txtRazonSocial.Text = y.Registro.RazonSocial;
-                txtTelefono.Text = y.Registro.Telefono;
-                FillTables(1);
-            }
-            else
-            {
-                comboDocumento.SelectedIndex = 0;
-                txtDocumento.Text = "";
-            }
-        }
-
-        private decimal GetTotal()
+        public void GetTotal()
         {
             decimal x = 0;
             for (int i = 0; i <= carrito.Rows.Count - 1; i++)
             {
-                x = x + decimal.Parse(carrito.Rows[i]["Precio"].ToString());
+                x = x + decimal.Parse(carrito.Rows[i]["P.Total"].ToString());
             }
-            return x;
+            txtSubTotalBs.Text = x.ToString("0.00");
+
+            x = 0;
+            x = decimal.Parse(txtSubTotalBs.Text) / (decimal)8.40;
+            txtSubTotalUs.Text = x.ToString("0.00");
+
+            x = 0;
+            x = (decimal.Parse(txtSubTotalBs.Text) + decimal.Parse(txtImpuesto.Text));
+            txtTotalBs.Text = x.ToString("0.00");
+
+            x = 0;
+            x = decimal.Parse(txtSubTotalUs.Text) + (decimal.Parse(txtImpuesto.Text) / (decimal)8.40);
+            txtTotalUs.Text = x.ToString("0.00");
+        }
+
+
+        private void bttnNuevaCompra_Click(object sender, EventArgs e)
+        {
+            ConfigControles("ON");
+            Id = crud.GetIdCompras();
+            txtNumeroOrden.Text = "MT-C"+Id.ToString("00");
+        }
+
+        private void bttnCancelar_Click(object sender, EventArgs e)
+        {
+            ConfigControles("OFF");
+        }
+
+        public void AddProduct(string[] producto)
+        {
+            carrito.Rows.Add(producto);
+            comboImpuesto.Enabled = true;
+            ConfigCombo();
+            GetTotal();
+            CalcPorcentaje();
+            GetTotal();
+            if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);
+            tableCarrito.DataSource = carrito;
+        }
+
+        private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6)
+            {
+                if (MessageBox.Show("¿Desea remover este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    tableCarrito.Rows.RemoveAt(e.RowIndex);
+                    GetTotal();
+                    CalcPorcentaje();
+                    GetTotal();
+                    if (tableCarrito.Rows.Count < 1)
+                    {
+                        comboImpuesto.DataSource = null;
+                        comboImpuesto.Enabled = false;
+                    }
+                }
+            }
+        }
+
+        private void bttnBuscar_Click_1(object sender, EventArgs e)
+        {
+            if (personas.ProveeedorDatos(txtProveedor.Text).Rows.Count > 0)
+            {
+                MessageBox.Show("¡Proveedor encontrado!", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DataTable proveedor = personas.ProveeedorDatos(txtProveedor.Text);
+                txtRazonSocial.Text = proveedor.Rows[0][2].ToString();
+                txtDireccion.Text = proveedor.Rows[0][3].ToString();
+                txtTelefono.Text = proveedor.Rows[0][4].ToString();
+                txtCorreo.Text = proveedor.Rows[0][5].ToString();
+            }
+            else
+            {
+                if (MessageBox.Show("¡Proveedor no encontrado! ¿Desea registrarlo?", "PROVEEDOR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                }
+            }
+        }
+
+        private void bttnBuscarProductos_Click(object sender, EventArgs e)
+        {
+            Form x = new Form();
+            BuscarProductos y = new BuscarProductos(this);
+            x.StartPosition = FormStartPosition.CenterScreen;
+            x.Size = new Size(y.Width + 15, y.Height + 10);
+            x.Controls.Add(y);
+            x.ShowDialog();
+        }
+
+        public void CalcPorcentaje()
+        {
+            decimal porcentaje = decimal.Parse(comboImpuesto.Text);
+            decimal total = decimal.Parse(txtSubTotalBs.Text);
+
+            decimal drantotal = (total * porcentaje) / 100;
+
+            txtImpuesto.Text = drantotal.ToString("0.00");
         }
         //CONFIGURACIONES
     }

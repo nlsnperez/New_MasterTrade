@@ -23,7 +23,7 @@ namespace New_MasterTrade.UserControls
 
         private void Vender_Load(object sender, EventArgs e)
         {
-            Config();
+            //Config();
         }
 
         public void Config()
@@ -234,11 +234,11 @@ namespace New_MasterTrade.UserControls
         private void bttnBuscar_Click(object sender, EventArgs e)
         {
             Form x = new Form();
-            BuscarProductos y = new BuscarProductos(this);
+            //BuscarProductos y = new BuscarProductos(this);
             x.Size = new Size(822, 634);
             x.FormBorderStyle = FormBorderStyle.None;
             x.StartPosition = FormStartPosition.CenterParent;
-            x.Controls.Add(y);
+            //x.Controls.Add(y);
             x.ShowDialog();
         }
 

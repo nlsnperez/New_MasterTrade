@@ -94,7 +94,7 @@
             // pbImagen
             // 
             this.pbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImagen.Image = global::New_MasterTrade.Properties.Resources._282279787_817724342770685_5999003673308156929_n;
+            this.pbImagen.Image = global::New_MasterTrade.Properties.Resources.descripcion_del_producto;
             this.pbImagen.Location = new System.Drawing.Point(15, 73);
             this.pbImagen.Margin = new System.Windows.Forms.Padding(2);
             this.pbImagen.Name = "pbImagen";

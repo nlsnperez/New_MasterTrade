@@ -19,7 +19,7 @@ namespace New_MasterTrade
 
         private void Personas_Load(object sender, EventArgs e)
         {
-            Config();
+            //Config();
         }
 
         public void Config()
@@ -34,7 +34,7 @@ namespace New_MasterTrade
             Config_Botones("INICIO");
             tablaPersonas.AutoGenerateColumns = false;
             FillComboBoxes();
-            RefreshTable(1);
+            //RefreshTable(1);
         }
 
         //BOTONES//
@@ -231,13 +231,13 @@ namespace New_MasterTrade
             switch (x)
             {
                 case 1:
-                    tablaPersonas.DataSource = crud.GetTable();
+                    //tablaPersonas.DataSource = crud.GetTable();
                     break;
                 case 2:
-                    tablaPersonas.DataSource = crud.GetTableProveedores();
+                    //tablaPersonas.DataSource = crud.GetTableProveedores();
                     break;
                 case 3:
-                    tablaPersonas.DataSource = crud.SearchTable(comboTabla.SelectedItem.ToString().ToLower(), txtBuscar.Text);
+                    //tablaPersonas.DataSource = crud.SearchTable(comboTabla.SelectedItem.ToString().ToLower(), txtBuscar.Text);
                     break;
             }
         }

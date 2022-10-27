@@ -104,7 +104,7 @@ namespace New_MasterTrade.Base_de_Datos
             DataTable resultados = new DataTable();
             using (MySqlCommand command = new MySqlCommand())
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `id_cliente`, `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `clientes` WHERE visible = 1", con);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `id`, `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `clientes` WHERE visible = 1", con);
                 adapter.Fill(resultados);
                 con.Close();
             }
@@ -126,7 +126,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `id_proveedores`, `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `proveedores` WHERE visible = 1", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `id`, `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `proveedores` WHERE visible = 1", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -160,6 +160,30 @@ namespace New_MasterTrade.Base_de_Datos
                 MessageBox.Show(ex.Message);
             }
             return null;
+        }
+
+        public DataTable ProveeedorDatos(string id)
+        {
+            DataTable proveedor = new DataTable();
+            String sql = "SELECT * FROM `proveedores` p WHERE p.`documento_identidad` = '" + id + "'";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(proveedor);
+                return proveedor;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return proveedor;
         }
     }
 }

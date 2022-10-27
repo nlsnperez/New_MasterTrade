@@ -42,7 +42,7 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
-            Create_Detalle(ComprasRealizadas()-1, compra.Detalle, 1);
+            //Create_Detalle(ComprasRealizadas()-1, compra.Detalle, 1);
         }
 
         public void Create_Venta(Venta venta)
@@ -238,42 +238,12 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
-        public Persona FindPersona (String documento, string tabla)
-        {
-
-            Persona proveedor = null; 
-            try
-            {
-                MySqlCommand command = new MySqlCommand("SELECT `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `" + tabla + "` WHERE `documento_identidad` = '" + documento + "' AND `visible` = 1", con);
-                con.Open();
-                MySqlDataReader reader = command.ExecuteReader();
-                reader.Read();
-                if (reader.HasRows)
-                {
-                    proveedor = new Persona(reader["documento_identidad"].ToString(),
-                                            reader["razon_social"].ToString(),
-                                            reader["direccion"].ToString(),
-                                            reader["telefono"].ToString(),
-                                            reader["correo"].ToString());
-                }
-                reader.Close();
-                con.Close();
-                Console.WriteLine("Proveedor encontrado!");
-                return proveedor;
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return proveedor;
-        }
-
-        public int ComprasRealizadas()
+        public int GetIdCompras()
         {
             int x = 0;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id_compra`) AS compras FROM compras", con);
+                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id`) AS compras FROM compras", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -371,7 +341,7 @@ namespace New_MasterTrade.Base_de_Datos
             Venta venta = new Venta(); 
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT v.id, v.numero_control, v.fecha_registro, c.razon_social, mp.descripcion FROM ventas v INNER JOIN clientes c ON v.cliente = c.id_cliente INNER JOIN metodos_pago mp ON v.metodo_pago = mp.id WHERE v.id = "+id.ToString(), con);
+                MySqlCommand command = new MySqlCommand("SELECT v.id, v.numero_control, v.fecha_registro, c.razon_social, mp.descripcion FROM ventas v INNER JOIN clientes c ON v.cliente = c.id INNER JOIN metodos_pago mp ON v.metodo_pago = mp.id WHERE v.id = "+id.ToString(), con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -397,6 +367,30 @@ namespace New_MasterTrade.Base_de_Datos
         {
             DataTable categorias = new DataTable();
             String sql = "SELECT dv.venta, p.nombre, dv.cantidad, p.costo, dv.precio FROM detalle_ventas dv INNER JOIN productos p ON dv.producto = p.codigo_producto WHERE dv.venta = " + id.ToString();
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
+        }
+
+        public DataTable Impuestos()
+        {
+            DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `impuestos`";
             con.Open();
             try
             {

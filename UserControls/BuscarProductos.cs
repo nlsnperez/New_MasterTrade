@@ -14,44 +14,25 @@ namespace New_MasterTrade.Objetos
 {
     public partial class BuscarProductos : UserControl
     {
-        private Vender Venta;
-        //CRUDProductos crud;
+        private Comprar Compra;
+        CRUD_Productos crud;
         DataTable carrito = new DataTable();
 
-        public BuscarProductos(Vender venta)
+        public BuscarProductos(Comprar compra)
         {
             InitializeComponent();
-            this.Venta = venta;
+            this.Compra = compra;
         }
 
         public void Config()
         {
-            lblAgregado.Hide();
+            crud = new CRUD_Productos();
             tablaProductos.AutoGenerateColumns = false;
-            //tablaProductos.DataSource = crud.GetTable();
-        }
-
-        public void ConfigCarrito()//CONFIGURA LAS COLUMNAS DE LA TABLA CARRITO
-        {
-            if (carrito.Columns.Count == 0)
-            {
-                carrito = new DataTable();
-                carrito.Columns.Add("Id");
-                carrito.Columns.Add("Código");
-                carrito.Columns.Add("Nombre");
-                carrito.Columns.Add("Cantidad");
-                carrito.Columns.Add("Precio total");
-            }
-        }
-
-        private void bttnCerrar_Click(object sender, EventArgs e)
-        {
-            this.ParentForm.Close();
+            tablaProductos.DataSource = crud.TablaProductos();
         }
 
         private void BuscarProductos_Load(object sender, EventArgs e)
         {
-            //crud = new CRUDProductos();
             Config();
         }
 
@@ -62,11 +43,10 @@ namespace New_MasterTrade.Objetos
                 string[] producto = {tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString(),
                                      tablaProductos.Rows[e.RowIndex].Cells[1].Value.ToString(),
                                      tablaProductos.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                                     Convert.ToString(1),
                                      tablaProductos.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                                     Convert.ToString(1),
                                      tablaProductos.Rows[e.RowIndex].Cells[3].Value.ToString()};
-                Venta.AddProduct(producto);
-                lblAgregado.Show();
+                Compra.AddProduct(producto);
             }
         }
 

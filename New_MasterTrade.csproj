@@ -178,11 +178,11 @@
     <Compile Include="Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ResgistrosProductos-Prototipo.cs">
+    <Compile Include="UserControls\ResgistrosProductos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ResgistrosProductos-Prototipo.Designer.cs">
-      <DependentUpon>ResgistrosProductos-Prototipo.cs</DependentUpon>
+    <Compile Include="UserControls\ResgistrosProductos.Designer.cs">
+      <DependentUpon>ResgistrosProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Usuarios.cs">
       <SubType>UserControl</SubType>
@@ -240,8 +240,8 @@
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ResgistrosProductos-Prototipo.resx">
-      <DependentUpon>ResgistrosProductos-Prototipo.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ResgistrosProductos.resx">
+      <DependentUpon>ResgistrosProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
@@ -270,7 +270,7 @@
     <None Include="Resources\pngwing.com.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\282279787_817724342770685_5999003673308156929_n.jpg" />
+    <None Include="Resources\descripcion-del-producto.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

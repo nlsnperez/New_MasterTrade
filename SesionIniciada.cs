@@ -1,14 +1,5 @@
-﻿using New_MasterTrade.UserControls;
-using New_MasterTrade.Custom_Controls;
-using New_MasterTrade.Cache;
+﻿using New_MasterTrade.Cache;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace New_MasterTrade
@@ -60,8 +51,8 @@ namespace New_MasterTrade
 
         private void bttnPersonas_Click(object sender, EventArgs e)
         {
-            FormPersonas.Clear();
-            FormPersonas.Config();
+            //FormPersonas.Clear();
+            //FormPersonas.Config();
             FormPersonas.BringToFront();
         }
 
@@ -72,8 +63,8 @@ namespace New_MasterTrade
 
         private void bttnVender_Click(object sender, EventArgs e)
         {
-            FormVender.ClearData("RESET");
-            FormVender.Config();
+            //FormVender.ClearData("RESET");
+            //FormVender.Config();
             FormVender.BringToFront();
         }
 
@@ -89,8 +80,9 @@ namespace New_MasterTrade
 
         private void bttnComprar_Click(object sender, EventArgs e)
         {
-            FormComprar.ClearData("RESET");
-            FormComprar.Config();
+            //FormComprar.ClearData("RESET");
+            //FormComprar.Config();
+            FormComprar.ConfigControles("OFF");
             FormComprar.BringToFront();
         }
 
@@ -108,8 +100,8 @@ namespace New_MasterTrade
 
         private void bttnVentas_Click(object sender, EventArgs e)
         {
-            FormVentas.Config();
-            FormVentas.LoadVentas();
+            //FormVentas.Config();
+            //FormVentas.LoadVentas();
             FormVentas.BringToFront();
         }
 
