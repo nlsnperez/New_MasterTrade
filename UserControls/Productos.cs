@@ -51,7 +51,7 @@ namespace New_MasterTrade.UserControls
         {
             if (pbImagen.Image != null)
             {
-                pbImagen.Image = null;
+                pbImagen.Image = Properties.Resources.descripcion_del_producto;
             }            
         }
 
