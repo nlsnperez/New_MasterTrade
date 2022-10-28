@@ -13,17 +13,19 @@ namespace New_MasterTrade.Objetos
         public string Descripcion { get; set; }
         public int Marca { get; set; }
         public int Categoria { get; set; }
+        public int Modelo { get; set; }
         public decimal Precio_Compra { get; set; }
         public decimal Precio_Venta { get; set; }
         public bool Estado { get; set; }
         public byte[] Imagen { get; set; }
 
-        public Producto(string serial, string descripcion, int marca, int categoria, decimal precio_Compra, decimal precio_Venta, bool estado, byte[] imagen)
+        public Producto(string serial, string descripcion, int marca, int categoria, int modelo, decimal precio_Compra, decimal precio_Venta, bool estado, byte[] imagen)
         {
             Serial = serial;
             Descripcion = descripcion;
             Marca = marca;
             Categoria = categoria;
+            Modelo = modelo;
             Precio_Compra = precio_Compra;
             Precio_Venta = precio_Venta;
             Estado = estado;

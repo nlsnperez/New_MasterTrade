@@ -47,14 +47,7 @@ namespace New_MasterTrade
         private void bttnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }        
-
-        private void bttnPersonas_Click(object sender, EventArgs e)
-        {
-            //FormPersonas.Clear();
-            //FormPersonas.Config();
-            FormPersonas.BringToFront();
-        }
+        }    
 
         private void bttnProductos_Click(object sender, EventArgs e)
         {
@@ -63,9 +56,7 @@ namespace New_MasterTrade
 
         private void bttnVender_Click(object sender, EventArgs e)
         {
-            //FormVender.ClearData("RESET");
-            //FormVender.Config();
-            FormVender.BringToFront();
+            
         }
 
         private void bttnSalir_Click(object sender, EventArgs e)
@@ -96,41 +87,7 @@ namespace New_MasterTrade
             //formCategorias.Clear();
             //formCategorias.Config();
             //formCategorias.BringToFront();
-        }
-
-        private void bttnVentas_Click(object sender, EventArgs e)
-        {
-            //FormVentas.Config();
-            //FormVentas.LoadVentas();
-            FormVentas.BringToFront();
-        }
-
-        private void bttnUsuarios_Click(object sender, EventArgs e)
-        {
-            FormUsuarios.BringToFront();
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            if (IsCollapsed2)
-            {
-                panelDropDown2.Height += 10;
-                if (panelDropDown2.Size == panelDropDown2.MaximumSize)
-                {
-                    timer2.Stop();
-                    IsCollapsed2 = false;
-                }
-            }
-            else
-            {
-                panelDropDown2.Height -= 10;
-                if (panelDropDown2.Size == panelDropDown2.MinimumSize)
-                {
-                    timer2.Stop();
-                    IsCollapsed2 = true;
-                }
-            }
-        }
+        }        
 
         private void bttnAjustes_Click(object sender, EventArgs e)
         {

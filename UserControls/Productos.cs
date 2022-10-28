@@ -20,11 +20,12 @@ namespace New_MasterTrade.UserControls
         public Productos_Prot()
         {
             InitializeComponent();
+            Config();
         }
 
         private void Productos_Prot_Load(object sender, EventArgs e)
         {
-            Config();
+            //Config();
         }
 
         public void Config()
@@ -32,10 +33,20 @@ namespace New_MasterTrade.UserControls
             crud = new CRUD_Productos();
             txtID.Text = crud.GetLastID().ToString();
             txtID.Enabled = false;
+            comboCategoria.Focus();
             txtCantidad.Enabled = false;
             bttnActualizar.Enabled = false;
             bttnEliminar2.Enabled = false;
             ConfigCombos();
+            ConfigLongitud();
+        }
+
+        public void ConfigLongitud()
+        {
+            txtSerial.MaxLength = 100;
+            txtDescripcion.MaxLength = 500;
+            txtPrecioVenta.MaxLength = 13;
+            txtPrecioCompra.MaxLength = 13;
         }
 
         private void bttnAgregar_Click(object sender, EventArgs e)
@@ -67,6 +78,11 @@ namespace New_MasterTrade.UserControls
             comboCategoria.DataSource = crud.Categorias();
             comboCategoria.SelectedIndex = 0;
 
+            comboModelo.ValueMember = "id";
+            comboModelo.DisplayMember = "nombre";
+            comboModelo.DataSource = crud.Modelos();
+            comboModelo.SelectedIndex = 0;
+
             comboEstado.Items.Add("No Disponible");
             comboEstado.Items.Add("Disponible");
             comboEstado.SelectedIndex = 0;
@@ -84,6 +100,7 @@ namespace New_MasterTrade.UserControls
                                                 txtDescripcion.Text,
                                                 int.Parse(comboMarca.SelectedValue.ToString()),
                                                 int.Parse(comboCategoria.SelectedValue.ToString()),
+                                                int.Parse(comboModelo.SelectedValue.ToString()),
                                                 decimal.Parse(txtPrecioCompra.Text),
                                                 decimal.Parse(txtPrecioVenta.Text),
                                                 estado,
@@ -104,31 +121,44 @@ namespace New_MasterTrade.UserControls
         {
             if (crud.ProductoDatos(txtBuscar.Text).Rows.Count > 0)
             {
-                DataTable resultado = crud.ProductoDatos(txtBuscar.Text);
-                byte[] imagen = (byte[])resultado.Rows[0][8];
-                MemoryStream ms = new MemoryStream(imagen);
-
-                txtID.Text = resultado.Rows[0][0].ToString();
-                txtSerial.Text = resultado.Rows[0][1].ToString();
-                txtDescripcion.Text = resultado.Rows[0][2].ToString();
-                comboMarca.SelectedValue = Int32.Parse(resultado.Rows[0][3].ToString());
-                comboCategoria.SelectedValue = Int32.Parse(resultado.Rows[0][4].ToString());
-                txtPrecioCompra.Text = resultado.Rows[0][5].ToString();
-                txtPrecioVenta.Text = resultado.Rows[0][6].ToString();
-                //if (Int32.Parse(resultado.Rows[0][7].ToString()) == 0) comboEstado.SelectedIndex = 0;
-                //else comboEstado.SelectedIndex = 1;
-                pbImagen.Image = Image.FromStream(ms);
-
-                txtBuscar.Text = "";
-                txtSerial.Enabled = false;
-                bttnGuardar.Enabled = false;
-                bttnActualizar.Enabled = true;
-                bttnEliminar2.Enabled = true;
+                SetDatos(crud.ProductoDatos(txtBuscar.Text));
             }
             else
             {
                 MessageBox.Show("No se encontró ningún producto con el serial introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        public void OpenProducto(string filtro)
+        {
+            if (crud.ProductoDatos(filtro).Rows.Count > 0)
+            {
+                Console.WriteLine("¡Yei2!");
+                SetDatos(crud.ProductoDatos(filtro));
+            }
+        }
+
+        public void SetDatos(DataTable x)
+        {
+            DataTable resultado = x;
+            byte[] imagen = (byte[])resultado.Rows[0][9];
+            MemoryStream ms = new MemoryStream(imagen);
+
+            txtID.Text = resultado.Rows[0][0].ToString();
+            comboCategoria.SelectedValue = Int32.Parse(resultado.Rows[0][1].ToString());
+            comboMarca.SelectedValue = Int32.Parse(resultado.Rows[0][2].ToString());
+            comboModelo.SelectedValue = Int32.Parse(resultado.Rows[0][3].ToString());
+            txtSerial.Text = resultado.Rows[0][4].ToString();
+            txtDescripcion.Text = resultado.Rows[0][5].ToString();
+            txtPrecioCompra.Text = resultado.Rows[0][6].ToString();
+            txtPrecioVenta.Text = resultado.Rows[0][7].ToString();
+            pbImagen.Image = Image.FromStream(ms);
+
+            txtBuscar.Text = "";
+            txtSerial.Enabled = false;
+            bttnGuardar.Enabled = false;
+            bttnActualizar.Enabled = true;
+            bttnEliminar2.Enabled = true;
         }
 
         public void Limpiar()
@@ -144,7 +174,7 @@ namespace New_MasterTrade.UserControls
             comboMarca.SelectedIndex = 0;
             comboCategoria.SelectedIndex = 0;
             comboEstado.SelectedIndex = 0;
-            pbImagen.Image = null;
+            pbImagen.Image = Properties.Resources.descripcion_del_producto;
             bttnGuardar.Enabled = true;
             bttnActualizar.Enabled = false;
             bttnEliminar2.Enabled = false;

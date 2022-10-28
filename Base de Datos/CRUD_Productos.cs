@@ -15,7 +15,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `productos`(`serial`, `descripcion`, `marca`, `categoria`, `precio_compra`, `precio_venta`, `estado`, `imagen`) VALUES (@serial,@descripcion,@marca,@categoria,@preciocompra,@precioventa,@estado,@imagen)";
+                    command.CommandText = "INSERT INTO `producto`(`id_cat`, `id_mar`, `id_mod`, `serial`, `descr`, `p_com`, `p_ven`, `estado`, `imagen`) VALUES (@categoria,@marca,@modelo,@serial,@descripcion,@preciocompra,@precioventa,@estado,@imagen)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -23,6 +23,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@descripcion", MySqlDbType.VarChar).Value = producto.Descripcion;
                     command.Parameters.Add("@marca", MySqlDbType.Int32).Value = producto.Marca;
                     command.Parameters.Add("@categoria", MySqlDbType.Int32).Value = producto.Categoria;
+                    command.Parameters.Add("@modelo", MySqlDbType.Int32).Value = producto.Modelo;
                     command.Parameters.Add("@preciocompra", MySqlDbType.Decimal).Value = producto.Precio_Compra;
                     command.Parameters.Add("@precioventa", MySqlDbType.Decimal).Value = producto.Precio_Venta;
                     command.Parameters.Add("@estado", MySqlDbType.Int32).Value = producto.Estado;
@@ -50,7 +51,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `productos` SET `serial`=@serial,`descripcion`=@descripcion,`marca`=@marca,`categoria`=@categoria,`precio_compra`=@preciocompra,`precio_venta`=@precioventa,`estado`=@estado,`imagen`=@imagen WHERE `id`=@id";
+                    command.CommandText = "UPDATE `producto` SET `serial`=@serial,`descr`=@descripcion,`id_mar`=@marca,`id_cat`=@categoria, `id_mod`=@modelo,`p_com`=@preciocompra,`p_ven`=@precioventa,`estado`=@estado,`imagen`=@imagen WHERE `id`=@id";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -59,6 +60,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@descripcion", MySqlDbType.VarChar).Value = producto.Descripcion;
                     command.Parameters.Add("@marca", MySqlDbType.Int32).Value = producto.Marca;
                     command.Parameters.Add("@categoria", MySqlDbType.Int32).Value = producto.Categoria;
+                    command.Parameters.Add("@modelo", MySqlDbType.Int32).Value = producto.Modelo;
                     command.Parameters.Add("@preciocompra", MySqlDbType.Decimal).Value = producto.Precio_Compra;
                     command.Parameters.Add("@precioventa", MySqlDbType.Decimal).Value = producto.Precio_Venta;
                     command.Parameters.Add("@estado", MySqlDbType.Int32).Value = producto.Estado;
@@ -82,7 +84,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Categorias()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `categorias` ORDER BY nombre ASC";
+            String sql = "SELECT * FROM `categoria` ORDER BY nombre ASC";
             con.Open();
             try
             {
@@ -106,7 +108,31 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Marcas()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `marcas` ORDER BY nombre ASC";
+            String sql = "SELECT * FROM `marca` ORDER BY nombre ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
+        }
+
+        public DataTable Modelos()
+        {
+            DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `modelo` ORDER BY nombre ASC";
             con.Open();
             try
             {
@@ -130,7 +156,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable TablaProductos()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `productos`";
+            String sql = "SELECT p.*, c.nombre AS categoria, m.nombre AS marca, mo.nombre as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id INNER JOIN marca m ON p.`id_mar` = m.id INNER JOIN modelo mo ON p.`id_mod` = mo.id ORDER BY id ASC";
             con.Open();
             try
             {
@@ -151,7 +177,7 @@ namespace New_MasterTrade.Base_de_Datos
             return categorias;
         }
 
-        public DataTable SearchTable(String filtro)
+        public DataTable BuscarProductos(String filtro)
         {
             try
             {
@@ -159,7 +185,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `productos` WHERE visible = 1 AND (`serial` LIKE '" + filtro + "%' OR `descripcion` LIKE '%" + filtro + "%')", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nombre AS categoria, m.nombre AS marca, mo.nombre as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id INNER JOIN marca m ON p.`id_mar` = m.id INNER JOIN modelo mo ON p.`id_mod` = mo.id WHERE `serial` LIKE '" + filtro + "%' OR `descr` LIKE '%" + filtro + "%' ORDER BY id ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -173,16 +199,17 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
-        public DataTable ProductoDatos(string serial)
+        public DataTable ProductoDatos(string filtro)
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `productos` WHERE `serial` =" + serial;
+            String sql = "SELECT * FROM `producto` WHERE `serial` LIKE '" + filtro + "%' OR `descr` LIKE '%" + filtro + "%'";
             con.Open();
             try
             {
                 MySqlCommand comando = new MySqlCommand(sql, con);
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 adaptador.Fill(categorias);
+                Console.WriteLine("¡Yei!");
                 return categorias;
             }
             catch (MySqlException ex)
@@ -202,7 +229,7 @@ namespace New_MasterTrade.Base_de_Datos
             int x = 0;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id`) AS productos FROM productos", con);
+                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id`) AS productos FROM producto", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
