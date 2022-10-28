@@ -147,7 +147,7 @@ namespace New_MasterTrade.UserControls
         {
             comboImpuesto.DataSource = crud.Impuestos();
             comboImpuesto.ValueMember = "id";
-            comboImpuesto.DisplayMember = "porcentaje";
+            comboImpuesto.DisplayMember = "porc";
 
             CalcPorcentaje();
         }
@@ -197,6 +197,7 @@ namespace New_MasterTrade.UserControls
             GetTotal();
             if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);
             tableCarrito.DataSource = carrito;
+            bttnGuardar.Enabled = true;
         }
 
         private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -213,6 +214,7 @@ namespace New_MasterTrade.UserControls
                     {
                         comboImpuesto.DataSource = null;
                         comboImpuesto.Enabled = false;
+                        bttnGuardar.Enabled = false;
                     }
                 }
             }
@@ -243,7 +245,7 @@ namespace New_MasterTrade.UserControls
             Form x = new Form();
             BuscarProductos y = new BuscarProductos(this);
             x.StartPosition = FormStartPosition.CenterScreen;
-            x.Size = new Size(y.Width + 15, y.Height + 10);
+            x.Size = new Size(y.Width + 15, y.Height + 30);
             x.Controls.Add(y);
             x.ShowDialog();
         }

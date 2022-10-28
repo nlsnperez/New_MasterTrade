@@ -38,26 +38,23 @@ namespace New_MasterTrade.Objetos
 
         private void tablaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 7)
             {
+                Console.WriteLine("Yei1");
                 string[] producto = {tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                                     tablaProductos.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                                     tablaProductos.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                                     tablaProductos.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                                     tablaProductos.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                                     tablaProductos.Rows[e.RowIndex].Cells[5].Value.ToString(),
+                                     tablaProductos.Rows[e.RowIndex].Cells[6].Value.ToString(),
                                      Convert.ToString(1),
-                                     tablaProductos.Rows[e.RowIndex].Cells[3].Value.ToString()};
+                                     tablaProductos.Rows[e.RowIndex].Cells[6].Value.ToString()};
+                Console.WriteLine("Yei2");
                 Compra.AddProduct(producto);
             }
         }
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-            //tablaProductos.DataSource = crud.SearchTable(txtBuscar.Text);
-        }
-
-        private void timerFade_Tick(object sender, EventArgs e)
-        {
-            
+            tablaProductos.DataSource = crud.BuscarProductos(txtBuscar.Text);
         }
     }
 }

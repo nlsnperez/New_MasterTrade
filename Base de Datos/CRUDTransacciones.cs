@@ -243,7 +243,7 @@ namespace New_MasterTrade.Base_de_Datos
             int x = 0;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id`) AS compras FROM compras", con);
+                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id`) AS compras FROM orden_compra", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -390,7 +390,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Impuestos()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `impuestos`";
+            String sql = "SELECT * FROM `impuesto`";
             con.Open();
             try
             {
