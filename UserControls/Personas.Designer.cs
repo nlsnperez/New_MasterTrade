@@ -513,8 +513,8 @@ namespace New_MasterTrade
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelSlide);
+            this.Controls.Add(this.panel2);
             this.Name = "Personas";
             this.Size = new System.Drawing.Size(922, 734);
             this.Load += new System.EventHandler(this.Personas_Load);

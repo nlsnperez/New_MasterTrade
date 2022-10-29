@@ -31,8 +31,6 @@ namespace New_MasterTrade
         {
             this.components = new System.ComponentModel.Container();
             this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.FormComprar = new New_MasterTrade.UserControls.Comprar();
-            this.formProductos = new New_MasterTrade.UserControls.ResgistrosProductos_Prototipo();
             this.bttnMinimizar = new System.Windows.Forms.Button();
             this.bttnCerrar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -56,6 +54,9 @@ namespace New_MasterTrade
             this.bttnSalir = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.FormComprar = new New_MasterTrade.UserControls.Comprar();
+            this.formProductos = new New_MasterTrade.UserControls.ResgistrosProductos_Prototipo();
+            this.formularioPersonas1 = new New_MasterTrade.UserControls.FormularioPersonas();
             this.PanelContenedor.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelDropDown.SuspendLayout();
@@ -67,6 +68,7 @@ namespace New_MasterTrade
             // PanelContenedor
             // 
             this.PanelContenedor.BackColor = System.Drawing.Color.White;
+            this.PanelContenedor.Controls.Add(this.formularioPersonas1);
             this.PanelContenedor.Controls.Add(this.FormComprar);
             this.PanelContenedor.Controls.Add(this.formProductos);
             this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Right;
@@ -75,25 +77,6 @@ namespace New_MasterTrade
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Size = new System.Drawing.Size(858, 552);
             this.PanelContenedor.TabIndex = 0;
-            // 
-            // FormComprar
-            // 
-            this.FormComprar.BackColor = System.Drawing.SystemColors.Control;
-            this.FormComprar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FormComprar.Location = new System.Drawing.Point(0, 0);
-            this.FormComprar.Margin = new System.Windows.Forms.Padding(4);
-            this.FormComprar.Name = "FormComprar";
-            this.FormComprar.Size = new System.Drawing.Size(858, 552);
-            this.FormComprar.TabIndex = 5;
-            // 
-            // formProductos
-            // 
-            this.formProductos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.formProductos.Location = new System.Drawing.Point(0, 0);
-            this.formProductos.Margin = new System.Windows.Forms.Padding(2);
-            this.formProductos.Name = "formProductos";
-            this.formProductos.Size = new System.Drawing.Size(858, 552);
-            this.formProductos.TabIndex = 10;
             // 
             // bttnMinimizar
             // 
@@ -381,6 +364,33 @@ namespace New_MasterTrade
             this.panel1.Size = new System.Drawing.Size(960, 552);
             this.panel1.TabIndex = 11;
             // 
+            // FormComprar
+            // 
+            this.FormComprar.BackColor = System.Drawing.SystemColors.Control;
+            this.FormComprar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FormComprar.Location = new System.Drawing.Point(0, 0);
+            this.FormComprar.Margin = new System.Windows.Forms.Padding(4);
+            this.FormComprar.Name = "FormComprar";
+            this.FormComprar.Size = new System.Drawing.Size(858, 552);
+            this.FormComprar.TabIndex = 5;
+            // 
+            // formProductos
+            // 
+            this.formProductos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formProductos.Location = new System.Drawing.Point(0, 0);
+            this.formProductos.Margin = new System.Windows.Forms.Padding(2);
+            this.formProductos.Name = "formProductos";
+            this.formProductos.Size = new System.Drawing.Size(858, 552);
+            this.formProductos.TabIndex = 10;
+            // 
+            // formularioPersonas1
+            // 
+            this.formularioPersonas1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formularioPersonas1.Location = new System.Drawing.Point(0, 0);
+            this.formularioPersonas1.Name = "formularioPersonas1";
+            this.formularioPersonas1.Size = new System.Drawing.Size(858, 552);
+            this.formularioPersonas1.TabIndex = 11;
+            // 
             // SesionIniciada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,5 +441,6 @@ namespace New_MasterTrade
         private UserControls.ResgistrosProductos_Prototipo formProductos;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
+        private UserControls.FormularioPersonas formularioPersonas1;
     }
 }

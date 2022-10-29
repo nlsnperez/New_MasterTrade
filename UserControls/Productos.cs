@@ -173,6 +173,7 @@ namespace New_MasterTrade.UserControls
             txtBuscar.Text = "";
             comboMarca.SelectedIndex = 0;
             comboCategoria.SelectedIndex = 0;
+            comboModelo.SelectedIndex = 0;
             comboEstado.SelectedIndex = 0;
             pbImagen.Image = Properties.Resources.descripcion_del_producto;
             bttnGuardar.Enabled = true;

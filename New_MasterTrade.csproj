@@ -146,6 +146,12 @@
     <Compile Include="UserControls\ConfirmarTransaccion.Designer.cs">
       <DependentUpon>ConfirmarTransaccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FormularioPersonas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FormularioPersonas.Designer.cs">
+      <DependentUpon>FormularioPersonas.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NuevoRegistro.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ConfirmarTransaccion.resx">
       <DependentUpon>ConfirmarTransaccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FormularioPersonas.resx">
+      <DependentUpon>FormularioPersonas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NuevoRegistro.resx">
       <DependentUpon>NuevoRegistro.cs</DependentUpon>

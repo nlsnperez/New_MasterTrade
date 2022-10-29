@@ -9,6 +9,7 @@ namespace New_MasterTrade.Objetos
 {
     public class Persona
     {
+        public int Id{ get; set; }
         public string Documento{ get; set; }
         public string RazonSocial{ get; set; }
         public string Direccion{ get; set; }
