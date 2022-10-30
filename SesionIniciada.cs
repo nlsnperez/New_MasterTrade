@@ -93,5 +93,10 @@ namespace New_MasterTrade
         {
             timer2.Start();
         }
+
+        private void bttnPersonas_Click(object sender, EventArgs e)
+        {
+            FormPersonas.BringToFront();
+        }
     }
 }

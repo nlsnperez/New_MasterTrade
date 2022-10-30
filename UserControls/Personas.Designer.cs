@@ -29,12 +29,8 @@ namespace New_MasterTrade
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaPersonas = new System.Windows.Forms.DataGridView();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bttnCargar = new System.Windows.Forms.Button();
-            this.bttnAgregar = new System.Windows.Forms.Button();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +38,10 @@ namespace New_MasterTrade
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bttnCargar = new System.Windows.Forms.Button();
+            this.bttnAgregar = new System.Windows.Forms.Button();
             this.comboTabla = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             this.SuspendLayout();
@@ -52,9 +52,9 @@ namespace New_MasterTrade
             this.tablaPersonas.AllowUserToDeleteRows = false;
             this.tablaPersonas.AllowUserToResizeColumns = false;
             this.tablaPersonas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tablaPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tablaPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaPersonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -73,48 +73,6 @@ namespace New_MasterTrade
             this.tablaPersonas.Size = new System.Drawing.Size(858, 494);
             this.tablaPersonas.TabIndex = 32;
             this.tablaPersonas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaPersonas_CellClick);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 38;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(597, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "BUSCAR: ";
-            // 
-            // bttnCargar
-            // 
-            this.bttnCargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCargar.Location = new System.Drawing.Point(101, 510);
-            this.bttnCargar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnCargar.Name = "bttnCargar";
-            this.bttnCargar.Size = new System.Drawing.Size(85, 24);
-            this.bttnCargar.TabIndex = 40;
-            this.bttnCargar.Text = "CARGAR";
-            this.bttnCargar.UseVisualStyleBackColor = true;
-            this.bttnCargar.Click += new System.EventHandler(this.bttnCargar_Click);
-            // 
-            // bttnAgregar
-            // 
-            this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnAgregar.Location = new System.Drawing.Point(12, 510);
-            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnAgregar.Name = "bttnAgregar";
-            this.bttnAgregar.Size = new System.Drawing.Size(85, 24);
-            this.bttnAgregar.TabIndex = 39;
-            this.bttnAgregar.Text = "REGISTRAR";
-            this.bttnAgregar.UseVisualStyleBackColor = true;
             // 
             // columnId
             // 
@@ -173,6 +131,50 @@ namespace New_MasterTrade
             this.btnEliminar.ReadOnly = true;
             this.btnEliminar.Text = "DETALLES";
             this.btnEliminar.UseColumnTextForButtonValue = true;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
+            this.txtBuscar.TabIndex = 38;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(597, 516);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "BUSCAR: ";
+            // 
+            // bttnCargar
+            // 
+            this.bttnCargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnCargar.Location = new System.Drawing.Point(101, 510);
+            this.bttnCargar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnCargar.Name = "bttnCargar";
+            this.bttnCargar.Size = new System.Drawing.Size(85, 24);
+            this.bttnCargar.TabIndex = 40;
+            this.bttnCargar.Text = "CARGAR";
+            this.bttnCargar.UseVisualStyleBackColor = true;
+            this.bttnCargar.Click += new System.EventHandler(this.bttnCargar_Click);
+            // 
+            // bttnAgregar
+            // 
+            this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAgregar.Location = new System.Drawing.Point(12, 510);
+            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAgregar.Name = "bttnAgregar";
+            this.bttnAgregar.Size = new System.Drawing.Size(85, 24);
+            this.bttnAgregar.TabIndex = 39;
+            this.bttnAgregar.Text = "REGISTRAR";
+            this.bttnAgregar.UseVisualStyleBackColor = true;
+            this.bttnAgregar.Click += new System.EventHandler(this.bttnAgregar_Click);
             // 
             // comboTabla
             // 

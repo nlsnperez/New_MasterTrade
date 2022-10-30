@@ -160,6 +160,14 @@ namespace New_MasterTrade.UserControls
             }
         }
 
+        public void OpenPersona(string tabla, string filtro)
+        {
+            if (crud.PersonaDatos(tabla, filtro).Rows.Count > 0)
+            {
+                SetDatos(crud.PersonaDatos(tabla, filtro));
+            }
+        }
+
         public void SetDatos(DataTable x)
         {
             DataTable resultado = x;

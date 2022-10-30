@@ -1,5 +1,6 @@
 ﻿using New_MasterTrade.Base_de_Datos;
 using New_MasterTrade.Objetos;
+using New_MasterTrade.UserControls;
 using System;
 using System.Drawing;
 using System.Windows;
@@ -27,6 +28,8 @@ namespace New_MasterTrade
         {
             crud = new CRUDPersonas();
             tablaPersonas.AutoGenerateColumns = false;
+            comboTabla.Enabled = false;
+            txtBuscar.Enabled = false;
             FillComboBoxes();
         }
 
@@ -35,43 +38,20 @@ namespace New_MasterTrade
 
         private void tablaPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 6)
             {
-                
+                Form x = new Form();
+                FormularioPersonas y = new FormularioPersonas();
+                y.OpenPersona(comboTabla.Text, tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString());
+                x.Controls.Add(y);
+                x.Size = new Size(y.Width + 30, y.Height + 40);                
+                x.StartPosition = FormStartPosition.CenterScreen;
+                x.ShowDialog();
             }
-            else
-            {
-                if (e.ColumnIndex == 6)
-                {
-                    if (MessageBox.Show("Desea eliminar los datos del" + comboTabla.SelectedItem.ToString().ToLower() + ": " + tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        if (comboTabla.SelectedIndex == 0)
-                        {
-                            crud.Delete(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString(), "clientes");
-                            Clear();
-                        }
-                        else
-                        {
-                            crud.Delete(tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString(), "proveedores");
-                            Clear();
-                        }
-                    }
-                }
-            }
-        }
-
-        private void bttnCancelar_Click(object sender, EventArgs e)
-        {
-            Clear();
-        }     
+        }    
         //BOTONES//
 
         //CONFIGURACIÓN///
-
-        public void Clear()
-        {
-            
-        }
 
         
         public void FillComboBoxes()
@@ -85,21 +65,32 @@ namespace New_MasterTrade
 
         //TABLA//
 
-        private void comboTabla_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
-        {
-            
-        }
-
         private void bttnCargar_Click(object sender, EventArgs e)
         {
             tablaPersonas.DataSource = crud.Tabla(comboTabla.Text.ToLower());
+            comboTabla.Enabled = true;
             txtBuscar.Enabled = true;
             txtBuscar.Focus();
+        }
+
+        private void txtBuscar_KeyUp_1(object sender, KeyEventArgs e)
+        {
+            tablaPersonas.DataSource = crud.BuscarTabla(comboTabla.Text, txtBuscar.Text);
+        }
+
+        private void comboTabla_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tablaPersonas.DataSource = crud.Tabla(comboTabla.Text.ToLower());
+        }
+
+        private void bttnAgregar_Click(object sender, EventArgs e)
+        {
+            Form x = new Form();
+            FormularioPersonas y = new FormularioPersonas();
+            x.Size = new Size(y.Width + 30, y.Height + 40);
+            x.Controls.Add(y);
+            x.StartPosition = FormStartPosition.CenterScreen;
+            x.ShowDialog();
         }
 
         //TABLA//

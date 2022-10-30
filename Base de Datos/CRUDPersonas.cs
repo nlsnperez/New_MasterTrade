@@ -119,6 +119,28 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
+        public DataTable BuscarTabla(string tabla, string filtro)
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `"+tabla+ "`  WHERE `doc_id` LIKE '" + filtro + "%' OR `raz_soc` LIKE '%" + filtro + "%' ORDER BY id ASC", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla productos encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
+
         public DataTable GetTableProveedores()
         {
             try
@@ -166,7 +188,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable PersonaDatos(string tabla, string filtro)
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `"+tabla+ "` WHERE `doc_id` LIKE '" + filtro + "%' OR `raz_soc` LIKE '%" + filtro + "%'";
+            String sql = "SELECT * FROM `"+tabla+"` WHERE id = "+filtro;
             con.Open();
             try
             {
