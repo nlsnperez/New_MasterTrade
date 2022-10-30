@@ -222,10 +222,10 @@ namespace New_MasterTrade.UserControls
 
         private void bttnBuscar_Click_1(object sender, EventArgs e)
         {
-            if (personas.ProveeedorDatos(txtProveedor.Text).Rows.Count > 0)
+            if (personas.PersonaDatos("proveedor", txtProveedor.Text).Rows.Count > 0)
             {
                 MessageBox.Show("¡Proveedor encontrado!", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataTable proveedor = personas.ProveeedorDatos(txtProveedor.Text);
+                DataTable proveedor = personas.PersonaDatos("proveedor", txtProveedor.Text);
                 txtRazonSocial.Text = proveedor.Rows[0][2].ToString();
                 txtDireccion.Text = proveedor.Rows[0][3].ToString();
                 txtTelefono.Text = proveedor.Rows[0][4].ToString();

@@ -94,9 +94,90 @@ namespace New_MasterTrade.UserControls
             txtBuscar.Text = "";
             comboDocumento.SelectedIndex = 0;
             comboOcupacion.SelectedIndex = 0;
+            comboOcupacion.Enabled = true;
+            comboDocumento.Enabled = true;
+            txtDocumento.Enabled = true;
             bttnGuardar.Enabled = true;
             bttnActualizar.Enabled = false;
             bttnEliminar2.Enabled = false;
+        }
+
+        private void bttnGuardar_Click(object sender, EventArgs e)
+        {
+            if (GetPersona().IsEmpty())
+            {
+                MessageBox.Show("Complete todos los campos!");
+            }
+            else
+            {
+                if (!GetPersona().ValidDocumento())
+                {
+                    MessageBox.Show(GetPersona().Documento + " no es un número de documento válido. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    if (!GetPersona().ValidPhone())
+                    {
+                        MessageBox.Show(GetPersona().Telefono + " no es un número de teléfono válido. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        if (!GetPersona().ValidEmail())
+                        {
+                            MessageBox.Show(GetPersona().Correo.ToUpper() + " no es una dirección de correo válida. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("¿Desea registrar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                crud.Create(GetPersona(), comboOcupacion.Text);
+                                Limpiar();
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void bttnActualizar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea actualizar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                crud.Update(GetPersona(), comboOcupacion.Text);
+            }
+        }
+
+        private void bttnBuscar_Click(object sender, EventArgs e)
+        {
+            if (crud.PersonaDatos(comboOcupacion.Text, txtBuscar.Text).Rows.Count > 0)
+            {
+                SetDatos(crud.PersonaDatos(comboOcupacion.Text, txtBuscar.Text));
+            }
+            else
+            {
+                MessageBox.Show("No se encontró ningún producto con el serial introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void SetDatos(DataTable x)
+        {
+            DataTable resultado = x;
+
+            comboDocumento.Text = resultado.Rows[0][1].ToString().Substring(0, 1);
+            txtDocumento.Text = resultado.Rows[0][1].ToString().Remove(0, 1);
+            txtRazonSocial.Text = resultado.Rows[0][2].ToString();
+            txtDireccion.Text = resultado.Rows[0][3].ToString();
+            txtTelefono.Text = resultado.Rows[0][4].ToString();
+            txtCorreo.Text = resultado.Rows[0][5].ToString();
+
+            txtBuscar.Text = "";
+            comboOcupacion.Enabled = false;
+            comboDocumento.Enabled = false;
+            txtDocumento.Enabled = false;
+            bttnGuardar.Enabled = false;
+            bttnActualizar.Enabled = true;
+            bttnEliminar2.Enabled = true;
         }
     }
 }

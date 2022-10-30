@@ -84,6 +84,7 @@ namespace New_MasterTrade.UserControls
             this.bttnActualizar.TabIndex = 37;
             this.bttnActualizar.Text = "ACTUALIZAR";
             this.bttnActualizar.UseVisualStyleBackColor = true;
+            this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
             // 
             // bttnGuardar
             // 
@@ -95,6 +96,7 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar.TabIndex = 36;
             this.bttnGuardar.Text = "GUARDAR";
             this.bttnGuardar.UseVisualStyleBackColor = true;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // bttnBuscar
             // 
@@ -106,6 +108,7 @@ namespace New_MasterTrade.UserControls
             this.bttnBuscar.TabIndex = 42;
             this.bttnBuscar.Text = "BUSCAR";
             this.bttnBuscar.UseVisualStyleBackColor = true;
+            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click);
             // 
             // txtBuscar
             // 

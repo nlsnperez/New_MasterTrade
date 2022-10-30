@@ -9,25 +9,22 @@ namespace New_MasterTrade.Base_de_Datos
     class CRUDPersonas : Conexion
     {
         
-        public void Create(Persona cliente, String tabla)
+        public void Create(Persona persona, String tabla)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `"+tabla+ "`(`documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo`, `visible`, `fecha_registro`, `fecha_eliminado`) VALUES (@documento,@nombre,@direccion,@telefono,@correo,@visible,@fregistro,@feliminado)";
+                    command.CommandText = "INSERT INTO `"+tabla+ "`(`doc_id`, `raz_soc`, `direcc`, `telefono`, `email`) VALUES (@documento,@nombre,@direccion,@telefono,@email)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = cliente.Documento;
-                    command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = cliente.RazonSocial;
-                    command.Parameters.Add("@direccion", MySqlDbType.VarChar).Value = cliente.Direccion;
-                    command.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = cliente.Telefono;
-                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = cliente.Correo;
-                    command.Parameters.Add("@visible", MySqlDbType.Int32).Value = 1;
-                    command.Parameters.Add("@fregistro", MySqlDbType.DateTime).Value = System.DateTime.Now;
-                    command.Parameters.Add("@feliminado", MySqlDbType.DateTime).Value = null;
+                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = persona.Documento;
+                    command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = persona.RazonSocial;
+                    command.Parameters.Add("@direccion", MySqlDbType.VarChar).Value = persona.Direccion;
+                    command.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = persona.Telefono;
+                    command.Parameters.Add("@email", MySqlDbType.VarChar).Value = persona.Correo;
 
                     command.ExecuteNonQuery();
                 }
@@ -43,31 +40,35 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public void Update(Persona usuario, String tabla)
+        public void Update(Persona persona, String tabla)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `" + tabla + "` SET `razon_social`=@razonsocial,`direccion`=@direccion,`telefono`=@telefono,`correo`=@correo WHERE `" + tabla + "`.`documento_identidad` = @documento;";
+                    command.CommandText = "UPDATE `" + tabla + "` SET `raz_soc`=@razonsocial,`direcc`=@direccion,`telefono`=@telefono,`email`=@correo WHERE `" + tabla + "`.`doc_id` = @documento;";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@razonsocial", MySqlDbType.VarChar).Value = usuario.RazonSocial;
-                    command.Parameters.Add("@direccion", MySqlDbType.VarChar).Value = usuario.Direccion;
-                    command.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = usuario.Telefono;
-                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = usuario.Correo;
-                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = usuario.Documento;
+                    command.Parameters.Add("@razonsocial", MySqlDbType.VarChar).Value = persona.RazonSocial;
+                    command.Parameters.Add("@direccion", MySqlDbType.VarChar).Value = persona.Direccion;
+                    command.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = persona.Telefono;
+                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = persona.Correo;
+                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = persona.Documento;
 
                     command.ExecuteNonQuery();
-                    con.Close();
                 }
                 MessageBox.Show("La actualización se completó de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+
+                con.Close();
             }
         }
 
@@ -96,7 +97,7 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public DataTable GetTable()
+        public DataTable Tabla(string tabla)
         {
             try
             {
@@ -104,11 +105,11 @@ namespace New_MasterTrade.Base_de_Datos
             DataTable resultados = new DataTable();
             using (MySqlCommand command = new MySqlCommand())
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `id`, `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `clientes` WHERE visible = 1", con);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `"+tabla+"`", con);
                 adapter.Fill(resultados);
                 con.Close();
             }
-            Console.WriteLine("Tabla clientes encontrada!");
+            Console.WriteLine("Tabla encontrada!");
             return resultados;
             }
             catch (MySqlException ex)
@@ -162,17 +163,18 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
-        public DataTable ProveeedorDatos(string id)
+        public DataTable PersonaDatos(string tabla, string filtro)
         {
-            DataTable proveedor = new DataTable();
-            String sql = "SELECT * FROM `proveedores` p WHERE p.`documento_identidad` = '" + id + "'";
+            DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `"+tabla+ "` WHERE `doc_id` LIKE '" + filtro + "%' OR `raz_soc` LIKE '%" + filtro + "%'";
             con.Open();
             try
             {
                 MySqlCommand comando = new MySqlCommand(sql, con);
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(proveedor);
-                return proveedor;
+                adaptador.Fill(categorias);
+                Console.WriteLine("¡Yei!");
+                return categorias;
             }
             catch (MySqlException ex)
             {
@@ -183,7 +185,7 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
-            return proveedor;
+            return categorias;
         }
     }
 }

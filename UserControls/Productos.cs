@@ -110,10 +110,17 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGuardar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea registrar el producto: "+txtSerial.Text+"?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (GetProducto().IsEmpty())
             {
-                crud.Create(GetProducto());
-                Limpiar();
+                MessageBox.Show("Complete todos los campos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (MessageBox.Show("¿Desea registrar el producto: " + txtSerial.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    crud.Create(GetProducto());
+                    Limpiar();
+                }
             }
         }
 

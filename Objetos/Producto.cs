@@ -31,5 +31,14 @@ namespace New_MasterTrade.Objetos
             Estado = estado;
             Imagen = imagen;
         }
+
+        public bool IsEmpty()
+        {
+            if (this.Serial == "" || this.Descripcion == "" || this.Precio_Compra == 0 || this.Precio_Venta == 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

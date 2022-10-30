@@ -52,13 +52,13 @@ namespace New_MasterTrade.UserControls
             switch (x)
             {
                 case 1:
-                    comboRazonSocial.DataSource = crud2.GetTableProveedores();
+                    //comboRazonSocial.DataSource = crud2.GetTableProveedores();
                     comboRazonSocial.ValueMember = "id_proveedores";
                     comboRazonSocial.DisplayMember = "razon_social";
                     comboRazonSocial.SelectedIndex = 0;
                     break;
                 case 2:
-                    comboRazonSocial.DataSource = crud2.GetTable();
+                    //comboRazonSocial.DataSource = crud2.GetTable();
                     comboRazonSocial.ValueMember = "id_cliente";
                     comboRazonSocial.DisplayMember = "razon_social";
                     comboRazonSocial.SelectedIndex = 0;
