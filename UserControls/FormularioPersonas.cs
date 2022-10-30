@@ -53,7 +53,7 @@ namespace New_MasterTrade.UserControls
             txtCorreo.MaxLength = 100;
         }
 
-        private Persona GetPersona()
+        public Persona GetPersona()
         {
             Persona persona = new Persona(comboDocumento.SelectedItem.ToString() + txtDocumento.Text,
                                           txtRazonSocial.Text,

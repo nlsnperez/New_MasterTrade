@@ -188,7 +188,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable PersonaDatos(string tabla, string filtro)
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `"+tabla+"` WHERE id = "+filtro;
+            String sql = "SELECT * FROM `"+tabla+ "` WHERE `id` LIKE '" + filtro + "%' OR `doc_id` LIKE '%" + filtro + "%' OR `raz_soc` LIKE '%" + filtro + "%'";
             con.Open();
             try
             {

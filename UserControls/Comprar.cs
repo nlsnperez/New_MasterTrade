@@ -222,22 +222,49 @@ namespace New_MasterTrade.UserControls
 
         private void bttnBuscar_Click_1(object sender, EventArgs e)
         {
-            if (personas.PersonaDatos("proveedor", txtProveedor.Text).Rows.Count > 0)
+            if (txtProveedor.Text == "")
             {
-                MessageBox.Show("¡Proveedor encontrado!", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataTable proveedor = personas.PersonaDatos("proveedor", txtProveedor.Text);
-                txtRazonSocial.Text = proveedor.Rows[0][2].ToString();
-                txtDireccion.Text = proveedor.Rows[0][3].ToString();
-                txtTelefono.Text = proveedor.Rows[0][4].ToString();
-                txtCorreo.Text = proveedor.Rows[0][5].ToString();
+                Form x = new Form();
+                Personas y = new Personas();
+                x.StartPosition = FormStartPosition.CenterScreen;
+                x.Size = new Size(y.Width + 15, y.Height + 30);
+                x.Controls.Add(y);
+                x.ShowDialog();
             }
             else
             {
-                if (MessageBox.Show("¡Proveedor no encontrado! ¿Desea registrarlo?", "PROVEEDOR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (personas.PersonaDatos("proveedor", txtProveedor.Text).Rows.Count > 0)
                 {
-
+                    SetDatos(personas.PersonaDatos("proveedor", txtProveedor.Text));
+                }
+                else
+                {
+                    if (MessageBox.Show("Proveedor no encontrado, ¿Desea registrarlo?", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        Form x = new Form();
+                        FormularioPersonas y = new FormularioPersonas();
+                        x.StartPosition = FormStartPosition.CenterScreen;
+                        x.Size = new Size(y.Width + 15, y.Height + 30);
+                        x.Controls.Add(y);
+                        x.ShowDialog();
+                        if (!y.GetPersona().IsEmpty())
+                        {
+                            SetDatos(personas.PersonaDatos("proveedor", txtProveedor.Text));
+                        }                        
+                    }
                 }
             }
+        }
+
+        public void SetDatos(DataTable resultado)
+        {
+            resultado = personas.PersonaDatos("proveedor", txtProveedor.Text);
+
+            txtProveedor.Text = resultado.Rows[0][1].ToString();
+            txtRazonSocial.Text = resultado.Rows[0][2].ToString();
+            txtDireccion.Text = resultado.Rows[0][3].ToString();
+            txtTelefono.Text = resultado.Rows[0][4].ToString();
+            txtCorreo.Text = resultado.Rows[0][5].ToString();
         }
 
         private void bttnBuscarProductos_Click(object sender, EventArgs e)
