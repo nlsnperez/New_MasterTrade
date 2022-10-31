@@ -14,24 +14,23 @@ namespace New_MasterTrade.Base_de_Datos
     class CRUDTransacciones : Conexion
     {
         //CRUDProductos crud = new CRUDProductos();
-        public void Create_Compra(Compra compra)
+        public void Crear(Compra compra)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `compras`(`numero_control`, `proveedor`, `visible`, `fecha_registro`, `fecha_eliminado`) VALUES (@numerocontrol,@proveedor,@visible,@fregistro,@feliminado)";
+                    command.CommandText = "INSERT INTO `orden_compra`(`n_orden`, `id_prov`, `fecha`) VALUES (@norden,@proveedor,@fecha)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@numerocontrol", MySqlDbType.VarChar).Value = compra.Numero_Control;
+                    command.Parameters.Add("@norden", MySqlDbType.VarChar).Value = compra.NumeroOrden;
                     command.Parameters.Add("@proveedor", MySqlDbType.VarChar).Value = compra.Proveedor;
-                    command.Parameters.Add("@visible", MySqlDbType.Int32).Value = 1;
-                    command.Parameters.Add("@fregistro", MySqlDbType.DateTime).Value = System.DateTime.Now;
-                    command.Parameters.Add("@feliminado", MySqlDbType.DateTime).Value = null;
+                    command.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = compra.Fecha;
 
                     command.ExecuteNonQuery();
+                    MessageBox.Show("La orden de compra fue registrada con éxito.", "¡REGISTRO EXITOSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (MySqlException ex)
@@ -42,7 +41,40 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
-            //Create_Detalle(ComprasRealizadas()-1, compra.Detalle, 1);
+        }
+
+        public void CrearDetalle(List<Detalle> detalle)
+        {
+            for (int i = 0; i <= detalle.Count - 1; i++)
+            {
+                try
+                {
+                    con.Open();
+                    using (MySqlCommand command = new MySqlCommand())
+                    {
+                        command.CommandText = "INSERT INTO `detalle_compra`(`id_ordc`, `id_pro`, `cantidad`, `total`, `tot_usd`) VALUES (@ocompra,@producto,@cantidad,@totBs,@totUsd)";
+                        command.CommandType = CommandType.Text;
+                        command.Connection = con;
+
+                        command.Parameters.Add("@ocompra", MySqlDbType.Int32).Value = detalle[i].IdOrden;
+                        command.Parameters.Add("@producto", MySqlDbType.Int32).Value = detalle[i].Producto;
+                        command.Parameters.Add("@cantidad", MySqlDbType.Int32).Value = detalle[i].Cantidad;
+                        command.Parameters.Add("@totBs", MySqlDbType.Decimal).Value = detalle[i].TotalBs;
+                        command.Parameters.Add("@totUsd", MySqlDbType.Decimal).Value = detalle[i].TotalUSD;
+
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("Detalle registrado");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
         }
 
         public void Create_Venta(Venta venta)
@@ -78,50 +110,7 @@ namespace New_MasterTrade.Base_de_Datos
 
         public void Create_Detalle(int venta, List<Detalle> detalle, int x)
         {
-            int y = 0;
-            string comando = "";
-            switch (x)
-            {
-                case 1:
-                    comando = "INSERT INTO `detalle_compras`(`compra`, `producto`, `cantidad`, `precio`) VALUES (@operacion,@producto,@cantidad,@precio)";
-                    break;
-                case 2:
-                    comando = "INSERT INTO `detalle_ventas`(`venta`, `producto`, `cantidad`, `precio`) VALUES (@operacion,@producto,@cantidad,@precio)";
-                    break;
-            }
-
-            try
-            {
-                con.Open();
-                foreach (Detalle producto in detalle)
-                {
-                    using (MySqlCommand command = new MySqlCommand())
-                    {
-                        command.CommandText = comando;
-                        command.CommandType = CommandType.Text;
-                        command.Connection = con;
-
-                        command.Parameters.Add("@operacion", MySqlDbType.VarChar).Value = venta;
-                        command.Parameters.Add("@producto", MySqlDbType.VarChar).Value = detalle[y].Producto;
-                        command.Parameters.Add("@cantidad", MySqlDbType.Int32).Value = detalle[y].Cantidad;
-                        command.Parameters.Add("@precio", MySqlDbType.Double).Value = detalle[y].Precio;
-
-                        command.ExecuteNonQuery();
-                        Console.WriteLine(detalle[y].Producto);
-                        y++;
-                    }
-                }
-                
-                MessageBox.Show("La operación se registró de manera satisfactoria.", "¡REGISTRO EXITOSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
+            
         }
 
         public DataTable Ventas()

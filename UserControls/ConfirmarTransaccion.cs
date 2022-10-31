@@ -29,7 +29,7 @@ namespace New_MasterTrade.UserControls
         {
             crud = new CRUDTransacciones();
             crud2 = new CRUDPersonas();
-            lblTransaccion.Text = Detalle[0].Venta;
+            //lblTransaccion.Text = Detalle[0].Venta;
             switch (x)
             {
                 case 1:

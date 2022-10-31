@@ -8,17 +8,20 @@ namespace New_MasterTrade.Objetos
 {
     public class Detalle
     {
-        public string Venta{ get; set; }
-        public string Producto{ get; set; }
-        public int Cantidad{ get; set; }
-        public float Precio{ get; set; }
+        public int Id { get; set; }
+        public int IdOrden { get; set; }
+        public int Producto { get; set; }
+        public int Cantidad { get; set; }
+        public decimal TotalBs { get; set; }
+        public decimal TotalUSD { get; set; }
 
-        public Detalle(string venta, string producto, int cantidad, float precio)
+        public Detalle(int idOrden, int producto, int cantidad, decimal totalBs, decimal totalUSD)
         {
-            Venta = venta;
+            IdOrden = idOrden;
             Producto = producto;
             Cantidad = cantidad;
-            Precio = precio;
+            TotalBs = totalBs;
+            TotalUSD = totalUSD;
         }
     }
 }

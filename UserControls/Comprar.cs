@@ -14,7 +14,8 @@ namespace New_MasterTrade.UserControls
         CRUDTransacciones crud;
         CRUDPersonas personas;
         DataTable carrito = new DataTable();
-        int Id = 0;
+        int IdCompra = 0;
+        int IdProveedor = 0;
         
         public Comprar()
         {
@@ -178,8 +179,8 @@ namespace New_MasterTrade.UserControls
         private void bttnNuevaCompra_Click(object sender, EventArgs e)
         {
             ConfigControles("ON");
-            Id = crud.GetIdCompras();
-            txtNumeroOrden.Text = "MT-C"+Id.ToString("00");
+            IdCompra = crud.GetIdCompras();
+            txtNumeroOrden.Text = "MT-C"+ IdCompra.ToString("00");
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
@@ -225,11 +226,12 @@ namespace New_MasterTrade.UserControls
             if (txtProveedor.Text == "")
             {
                 Form x = new Form();
-                Personas y = new Personas();
+                BuscarPersonas y = new BuscarPersonas(1);
                 x.StartPosition = FormStartPosition.CenterScreen;
                 x.Size = new Size(y.Width + 15, y.Height + 30);
                 x.Controls.Add(y);
                 x.ShowDialog();
+                SetDatos(personas.PersonaDatos("proveedor", y.x));
             }
             else
             {
@@ -256,10 +258,11 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        public void SetDatos(DataTable resultado)
+        public void SetDatos(DataTable tabla)
         {
-            resultado = personas.PersonaDatos("proveedor", txtProveedor.Text);
+            DataTable resultado = tabla;
 
+            IdProveedor = Int32.Parse(resultado.Rows[0][0].ToString());
             txtProveedor.Text = resultado.Rows[0][1].ToString();
             txtRazonSocial.Text = resultado.Rows[0][2].ToString();
             txtDireccion.Text = resultado.Rows[0][3].ToString();
@@ -285,6 +288,47 @@ namespace New_MasterTrade.UserControls
             decimal drantotal = (total * porcentaje) / 100;
 
             txtImpuesto.Text = drantotal.ToString("0.00");
+        }
+
+        private Compra GetCompra()
+        {
+            Compra compra = new Compra(IdCompra,
+                                       txtNumeroOrden.Text,
+                                       IdProveedor,
+                                       System.DateTime.Today);
+            return compra;
+        }
+        
+        private List<Detalle> GetDetalle()
+        {
+            List<Detalle> detalle = new List<Detalle>();
+            
+            for (int i = 0; i <= tableCarrito.Rows.Count - 1; i++)
+            {
+                Detalle x = new Detalle(IdCompra,
+                                        Int32.Parse(tableCarrito.Rows[i].Cells[0].Value.ToString()),
+                                        Int32.Parse(tableCarrito.Rows[i].Cells[4].Value.ToString()),
+                                        decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()),
+                                        decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()));
+                detalle.Add(x);
+            }
+            return detalle;
+        }
+
+        private void bttnGuardar_Click(object sender, EventArgs e)
+        {
+            if (GetCompra().IsEmpty())
+            {
+                MessageBox.Show("Debe seleccionar un proveedor", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (MessageBox.Show("¿Desea registrar esta orden?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    crud.Crear(GetCompra());
+                    crud.CrearDetalle(GetDetalle());
+                }
+            }            
         }
         //CONFIGURACIONES
     }

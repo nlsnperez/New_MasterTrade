@@ -8,19 +8,26 @@ namespace New_MasterTrade.Objetos
 {
     class Compra
     {
-        public string Numero_Control{ get; set; }
-        public string Proveedor{ get; set; }
-        public List<Detalle> Detalle{ get; set; }
+        public int Id { get; set; }
+        public string NumeroOrden{ get; set; }
+        public int Proveedor { get; set; }
+        public DateTime Fecha { get; set; }
 
-        public Compra(string proveedor, List<Detalle> detalle)
+        public Compra(int id, string numeroOrden, int proveedor, DateTime fecha)
         {
+            Id = id;
+            NumeroOrden = numeroOrden;
             Proveedor = proveedor;
-            Detalle = detalle;
+            Fecha = fecha;
         }
 
-        public void Generar_Codigo(int x)
+        public bool IsEmpty()
         {
-            Numero_Control = "MTC"+x.ToString("0000000");
+            if (this.Id == 0 || this.Proveedor == 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

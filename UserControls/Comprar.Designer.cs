@@ -227,6 +227,7 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar.TabIndex = 55;
             this.bttnGuardar.Text = "REGISTRAR";
             this.bttnGuardar.UseVisualStyleBackColor = true;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // bttnBuscarProductos
             // 
@@ -394,7 +395,6 @@ namespace New_MasterTrade.UserControls
             this.columnId.MinimumWidth = 6;
             this.columnId.Name = "columnId";
             this.columnId.ReadOnly = true;
-            this.columnId.Visible = false;
             this.columnId.Width = 125;
             // 
             // columnSerial
