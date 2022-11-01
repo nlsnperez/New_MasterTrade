@@ -26,8 +26,8 @@ namespace New_MasterTrade.UserControls
         public void Config()
         {
             crud = new CRUD_Usuarios();
-            txtContrasegna.PasswordChar = '*';
-            txtConfirmar.PasswordChar = '*';
+            txtContrasegna.PasswordChar = '●';
+            txtConfirmar.PasswordChar = '●';
             ConfigCombos();
             bttnActualizar.Enabled = false;
             bttnEliminar2.Enabled = false;
@@ -84,8 +84,8 @@ namespace New_MasterTrade.UserControls
             }
             else
             {
-                txtContrasegna.PasswordChar = '*';
-                txtConfirmar.PasswordChar = '*';
+                txtContrasegna.PasswordChar = '●';
+                txtConfirmar.PasswordChar = '●';
                 chckMostrar.Text = "Mostrar contraseña";
             }
         }

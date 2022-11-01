@@ -308,5 +308,8 @@
   <ItemGroup>
     <None Include="Resources\descripcion-del-producto.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MasterTradeLogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,31 +14,37 @@ namespace New_MasterTrade
 {
     public partial class Login : Form
     {
+        CRUD_Usuarios crud;
         public Login()
         {
             InitializeComponent();
+            crud = new CRUD_Usuarios();
+            txtPassword.PasswordChar = '●';
         }
 
-        private void Splash_Load(object sender, EventArgs e)
+        private void bttnLogin_Click(object sender, EventArgs e)
         {
-
+            if (crud.CanLogin(txtUser.Text, txtPassword.Text))
+            {
+                MessageBox.Show("Bienvenido "+UserData.Nombre, "¡BIENVENIDO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SesionIniciada sesion_iniciada = new SesionIniciada();
+                this.Hide();
+                sesion_iniciada.Show();
+            }
+            else
+            {
+                MessageBox.Show("No existe un usuario registrado con los datos introducidos.", "USUARIO NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }            
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void bttnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void bttnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SesionIniciada sesion_iniciada = new SesionIniciada();
-            this.Hide();
-            sesion_iniciada.Show();
         }
     }
 }

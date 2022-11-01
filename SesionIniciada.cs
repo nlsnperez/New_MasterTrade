@@ -13,8 +13,16 @@ namespace New_MasterTrade
             InitializeComponent();
             panelDropDown.Size = panelDropDown.MinimumSize;
             panelDropDown2.Size = panelDropDown2.MinimumSize;
-            UserData.Nombre = "Nelson";
-            lblUsuario.Text = UserData.Nombre;
+            lblUsuario.Text = UserData.NombreUsuario;
+            lblNombre.Text = UserData.Nombre;
+            if (UserData.Nivel == 0)
+            {
+                lblNivel.Text = "ADMINISTRADOR";
+            }
+            else
+            {
+                lblNivel.Text = "OPERADOR";
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)

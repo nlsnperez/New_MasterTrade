@@ -10,6 +10,7 @@ namespace New_MasterTrade.Cache
     {
         public static int Id { get; set; }
         public static string NombreUsuario { get; set; }
+        public static string Contrasegna { get; set; }
         public static string Nombre { get; set; }
         public static int Nivel { get; set; }
     }

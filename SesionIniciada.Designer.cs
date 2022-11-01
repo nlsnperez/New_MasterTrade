@@ -31,6 +31,7 @@ namespace New_MasterTrade
         {
             this.components = new System.ComponentModel.Container();
             this.PanelContenedor = new System.Windows.Forms.Panel();
+            this.usuarios1 = new New_MasterTrade.UserControls.Usuarios();
             this.FormComprar = new New_MasterTrade.UserControls.Comprar();
             this.FormPersonas = new New_MasterTrade.Personas();
             this.formProductos = new New_MasterTrade.UserControls.ResgistrosProductos_Prototipo();
@@ -57,7 +58,8 @@ namespace New_MasterTrade
             this.bttnSalir = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.usuarios1 = new New_MasterTrade.UserControls.Usuarios();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblNivel = new System.Windows.Forms.Label();
             this.PanelContenedor.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelDropDown.SuspendLayout();
@@ -79,6 +81,14 @@ namespace New_MasterTrade
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Size = new System.Drawing.Size(858, 552);
             this.PanelContenedor.TabIndex = 0;
+            // 
+            // usuarios1
+            // 
+            this.usuarios1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usuarios1.Location = new System.Drawing.Point(0, 0);
+            this.usuarios1.Name = "usuarios1";
+            this.usuarios1.Size = new System.Drawing.Size(858, 552);
+            this.usuarios1.TabIndex = 12;
             // 
             // FormComprar
             // 
@@ -140,6 +150,8 @@ namespace New_MasterTrade
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(41)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.lblNivel);
+            this.panel2.Controls.Add(this.lblNombre);
             this.panel2.Controls.Add(this.bttnMinimizar);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.bttnCerrar);
@@ -166,7 +178,7 @@ namespace New_MasterTrade
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(12, 10);
+            this.lblUsuario.Location = new System.Drawing.Point(12, 11);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(43, 13);
             this.lblUsuario.TabIndex = 1;
@@ -395,13 +407,25 @@ namespace New_MasterTrade
             this.panel1.Size = new System.Drawing.Size(960, 552);
             this.panel1.TabIndex = 11;
             // 
-            // usuarios1
+            // lblNombre
             // 
-            this.usuarios1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usuarios1.Location = new System.Drawing.Point(0, 0);
-            this.usuarios1.Name = "usuarios1";
-            this.usuarios1.Size = new System.Drawing.Size(858, 552);
-            this.usuarios1.TabIndex = 12;
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(99, 11);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.TabIndex = 3;
+            this.lblNombre.Text = "Nombre";
+            // 
+            // lblNivel
+            // 
+            this.lblNivel.AutoSize = true;
+            this.lblNivel.ForeColor = System.Drawing.Color.White;
+            this.lblNivel.Location = new System.Drawing.Point(185, 11);
+            this.lblNivel.Name = "lblNivel";
+            this.lblNivel.Size = new System.Drawing.Size(31, 13);
+            this.lblNivel.TabIndex = 4;
+            this.lblNivel.Text = "Nivel";
             // 
             // SesionIniciada
             // 
@@ -455,5 +479,7 @@ namespace New_MasterTrade
         private System.Windows.Forms.Panel panel1;
         private Personas FormPersonas;
         private UserControls.Usuarios usuarios1;
+        private System.Windows.Forms.Label lblNivel;
+        private System.Windows.Forms.Label lblNombre;
     }
 }

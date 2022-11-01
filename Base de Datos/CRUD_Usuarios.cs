@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using New_MasterTrade.Cache;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -119,6 +120,38 @@ namespace New_MasterTrade.Base_de_Datos
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return null;
+        }
+
+        public bool CanLogin(string user, string password)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `user` = '"+user+"' AND `passwr` = '"+password+"'", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (!reader.HasRows)
+                {
+                    reader.Close();
+                    con.Close();
+                    return false;
+                }
+                UserData.Id = Int32.Parse(reader["id"].ToString());
+                UserData.NombreUsuario = reader["user"].ToString();
+                UserData.Contrasegna = reader["passwr"].ToString();
+                UserData.Nombre = reader["nombre"].ToString();
+                UserData.Nivel = Int32.Parse(reader["nivel"].ToString());
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return true;
         }
 
         public DataTable UsuarioDatos(string id)
