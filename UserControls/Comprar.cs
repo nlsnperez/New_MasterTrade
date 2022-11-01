@@ -11,7 +11,7 @@ namespace New_MasterTrade.UserControls
 {
     public partial class Comprar : UserControl
     {
-        CRUDTransacciones crud;
+        CRUD_Compras crud;
         CRUDPersonas personas;
         DataTable carrito = new DataTable();
         int IdCompra = 0;
@@ -29,7 +29,7 @@ namespace New_MasterTrade.UserControls
 
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
         {
-            crud = new CRUDTransacciones();
+            crud = new CRUD_Compras();
             personas = new CRUDPersonas();
             tableCarrito.AutoGenerateColumns = false;
             dpFecha.MinDate = System.DateTime.Today;
@@ -156,6 +156,17 @@ namespace New_MasterTrade.UserControls
         public void GetTotal()
         {
             decimal x = 0;
+            x = (decimal.Parse(txtSubTotalBs.Text) + decimal.Parse(txtImpuesto.Text));
+            txtTotalBs.Text = x.ToString("0.00");
+
+            x = 0;
+            x = decimal.Parse(txtSubTotalUs.Text) + (decimal.Parse(txtImpuesto.Text) / (decimal)8.40);
+            txtTotalUs.Text = x.ToString("0.00");
+        }
+
+        public void GetSubTotal()
+        {
+            decimal x = 0;
             for (int i = 0; i <= carrito.Rows.Count - 1; i++)
             {
                 x = x + decimal.Parse(carrito.Rows[i]["P.Total"].ToString());
@@ -165,20 +176,13 @@ namespace New_MasterTrade.UserControls
             x = 0;
             x = decimal.Parse(txtSubTotalBs.Text) / (decimal)8.40;
             txtSubTotalUs.Text = x.ToString("0.00");
-
-            x = 0;
-            x = (decimal.Parse(txtSubTotalBs.Text) + decimal.Parse(txtImpuesto.Text));
-            txtTotalBs.Text = x.ToString("0.00");
-
-            x = 0;
-            x = decimal.Parse(txtSubTotalUs.Text) + (decimal.Parse(txtImpuesto.Text) / (decimal)8.40);
-            txtTotalUs.Text = x.ToString("0.00");
         }
 
 
         private void bttnNuevaCompra_Click(object sender, EventArgs e)
         {
             ConfigControles("ON");
+            txtProveedor.Focus();
             IdCompra = crud.GetIdCompras();
             txtNumeroOrden.Text = "MT-C"+ IdCompra.ToString("00");
         }
@@ -193,7 +197,7 @@ namespace New_MasterTrade.UserControls
             carrito.Rows.Add(producto);
             comboImpuesto.Enabled = true;
             ConfigCombo();
-            GetTotal();
+            GetSubTotal();
             CalcPorcentaje();
             GetTotal();
             if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);
@@ -208,7 +212,7 @@ namespace New_MasterTrade.UserControls
                 if (MessageBox.Show("¿Desea remover este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     tableCarrito.Rows.RemoveAt(e.RowIndex);
-                    GetTotal();
+                    GetSubTotal();
                     CalcPorcentaje();
                     GetTotal();
                     if (tableCarrito.Rows.Count < 1)
@@ -245,14 +249,23 @@ namespace New_MasterTrade.UserControls
                     {
                         Form x = new Form();
                         FormularioPersonas y = new FormularioPersonas();
+                        y.RegistroExterno(2);
                         x.StartPosition = FormStartPosition.CenterScreen;
                         x.Size = new Size(y.Width + 15, y.Height + 30);
                         x.Controls.Add(y);
                         x.ShowDialog();
-                        if (!y.GetPersona().IsEmpty())
+                        if (personas.PersonaDatos("proveedor", txtProveedor.Text).Rows.Count > 0)
                         {
                             SetDatos(personas.PersonaDatos("proveedor", txtProveedor.Text));
-                        }                        
+                        }
+                        else 
+                        {
+                            txtProveedor.Text = "";
+                            txtRazonSocial.Text = "";
+                            txtDireccion.Text = "";
+                            txtTelefono.Text = "";
+                            txtCorreo.Text = "";
+                        }                
                     }
                 }
             }
@@ -327,6 +340,7 @@ namespace New_MasterTrade.UserControls
                 {
                     crud.Crear(GetCompra());
                     crud.CrearDetalle(GetDetalle());
+                    ConfigControles("OFF");
                 }
             }            
         }

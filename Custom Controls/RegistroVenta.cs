@@ -14,13 +14,13 @@ namespace New_MasterTrade.Custom_Controls
 {
     public partial class RegistroVenta : UserControl
     {
-        CRUDTransacciones crud;
+        CRUD_Compras crud;
         Ventas parentVentas;
 
         public RegistroVenta(string id, string numero_operacion, string fecha, Ventas venta)
         {
             InitializeComponent();
-            crud = new CRUDTransacciones();
+            crud = new CRUD_Compras();
             lblID.Text = "#"+id;
             lblNumeroOrden.Text = numero_operacion;
             lblFecha.Text = fecha;

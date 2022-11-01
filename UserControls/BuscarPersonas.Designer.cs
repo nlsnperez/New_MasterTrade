@@ -29,18 +29,18 @@ namespace New_MasterTrade.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaPersonas = new System.Windows.Forms.DataGridView();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboTabla = new System.Windows.Forms.ComboBox();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboTabla = new System.Windows.Forms.ComboBox();
+            this.columnSelec = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,9 +50,9 @@ namespace New_MasterTrade.UserControls
             this.tablaPersonas.AllowUserToDeleteRows = false;
             this.tablaPersonas.AllowUserToResizeColumns = false;
             this.tablaPersonas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tablaPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tablaPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaPersonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -61,7 +61,7 @@ namespace New_MasterTrade.UserControls
             this.Direccion,
             this.Telefono,
             this.Correo,
-            this.btnEliminar});
+            this.columnSelec});
             this.tablaPersonas.Location = new System.Drawing.Point(0, 0);
             this.tablaPersonas.Margin = new System.Windows.Forms.Padding(10);
             this.tablaPersonas.MultiSelect = false;
@@ -71,6 +71,35 @@ namespace New_MasterTrade.UserControls
             this.tablaPersonas.Size = new System.Drawing.Size(858, 494);
             this.tablaPersonas.TabIndex = 33;
             this.tablaPersonas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaPersonas_CellClick);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
+            this.txtBuscar.TabIndex = 40;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(600, 516);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "BUSCAR: ";
+            // 
+            // comboTabla
+            // 
+            this.comboTabla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboTabla.FormattingEnabled = true;
+            this.comboTabla.Location = new System.Drawing.Point(12, 510);
+            this.comboTabla.Name = "comboTabla";
+            this.comboTabla.Size = new System.Drawing.Size(129, 21);
+            this.comboTabla.TabIndex = 57;
             // 
             // columnId
             // 
@@ -120,43 +149,16 @@ namespace New_MasterTrade.UserControls
             this.Correo.Name = "Correo";
             this.Correo.ReadOnly = true;
             // 
-            // btnEliminar
+            // columnSelec
             // 
-            this.btnEliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.HeaderText = "";
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.ReadOnly = true;
-            this.btnEliminar.Text = "SELECCIONAR";
-            this.btnEliminar.UseColumnTextForButtonValue = true;
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 40;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(600, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "BUSCAR: ";
-            // 
-            // comboTabla
-            // 
-            this.comboTabla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboTabla.FormattingEnabled = true;
-            this.comboTabla.Location = new System.Drawing.Point(12, 510);
-            this.comboTabla.Name = "comboTabla";
-            this.comboTabla.Size = new System.Drawing.Size(129, 21);
-            this.comboTabla.TabIndex = 57;
+            this.columnSelec.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnSelec.HeaderText = "";
+            this.columnSelec.Name = "columnSelec";
+            this.columnSelec.ReadOnly = true;
+            this.columnSelec.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnSelec.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.columnSelec.Text = "SELECCIONAR";
+            this.columnSelec.UseColumnTextForButtonValue = true;
             // 
             // BuscarPersonas
             // 
@@ -177,15 +179,15 @@ namespace New_MasterTrade.UserControls
         #endregion
 
         private System.Windows.Forms.DataGridView tablaPersonas;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboTabla;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
         private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocial;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Correo;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEliminar;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboTabla;
+        private System.Windows.Forms.DataGridViewButtonColumn columnSelec;
     }
 }

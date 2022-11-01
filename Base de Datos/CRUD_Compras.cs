@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.Base_de_Datos
 {
-    class CRUDTransacciones : Conexion
+    class CRUD_Compras : Conexion
     {
         //CRUDProductos crud = new CRUDProductos();
         public void Crear(Compra compra)

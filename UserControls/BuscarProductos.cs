@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Custom_Controls;
 using New_MasterTrade.UserControls;
 using System;
 using System.Collections.Generic;
@@ -22,13 +23,18 @@ namespace New_MasterTrade.Objetos
         {
             InitializeComponent();
             this.Compra = compra;
+            txtBuscar.Focus();
         }
 
         public void Config()
         {
             crud = new CRUD_Productos();
             tablaProductos.AutoGenerateColumns = false;
-            tablaProductos.DataSource = crud.TablaProductos();
+            if (crud.TablaProductos().Rows.Count > 0)
+            {
+                tablaProductos.DataSource = crud.TablaProductos();
+            }
+            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void BuscarProductos_Load(object sender, EventArgs e)
@@ -40,15 +46,20 @@ namespace New_MasterTrade.Objetos
         {
             if (e.ColumnIndex == 7)
             {
-                Console.WriteLine("Yei1");
                 string[] producto = {tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString(),
                                      tablaProductos.Rows[e.RowIndex].Cells[4].Value.ToString(),
                                      tablaProductos.Rows[e.RowIndex].Cells[5].Value.ToString(),
-                                     tablaProductos.Rows[e.RowIndex].Cells[6].Value.ToString(),
                                      Convert.ToString(1),
                                      tablaProductos.Rows[e.RowIndex].Cells[6].Value.ToString()};
-                Console.WriteLine("Yei2");
-                Compra.AddProduct(producto);
+
+                Form x = new Form();
+                AgregarProducto y = new AgregarProducto(Compra);
+                y.SetTexts(producto);
+                x.Size = new Size(y.Width, y.Height);
+                x.Controls.Add(y);
+                x.StartPosition = FormStartPosition.CenterScreen;
+                x.FormBorderStyle = FormBorderStyle.None;
+                x.ShowDialog();
             }
         }
 

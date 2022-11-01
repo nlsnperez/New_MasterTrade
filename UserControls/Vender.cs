@@ -10,7 +10,7 @@ namespace New_MasterTrade.UserControls
 {
     public partial class Vender : UserControl
     {
-        CRUDTransacciones crud;
+        CRUD_Compras crud;
         DataTable carrito = new DataTable();
         DataTable productos = new DataTable();
         int index = 0;
@@ -28,7 +28,7 @@ namespace New_MasterTrade.UserControls
 
         public void Config()
         {
-            crud = new CRUDTransacciones();
+            crud = new CRUD_Compras();
             tableCarrito.AutoGenerateColumns = false;
             ConfigControles("INICIO");
             ConfigCarrito();

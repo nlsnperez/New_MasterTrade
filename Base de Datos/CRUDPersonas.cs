@@ -127,7 +127,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `"+tabla+ "`  WHERE `doc_id` LIKE '" + filtro + "%' OR `raz_soc` LIKE '%" + filtro + "%' ORDER BY id ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `"+tabla+ "`  WHERE `doc_id` LIKE '%" + filtro + "%' OR `raz_soc` LIKE '%" + filtro + "%' ORDER BY id ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }

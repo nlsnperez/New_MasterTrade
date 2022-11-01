@@ -48,9 +48,13 @@ namespace New_MasterTrade.UserControls
 
         private void bttnCargar_Click(object sender, EventArgs e)
         {
-            tablaProductos.DataSource = crud.TablaProductos();
-            txtBuscar.Enabled = true;
-            txtBuscar.Focus();
+            if (crud.TablaProductos().Rows.Count > 0)
+            {
+                tablaProductos.DataSource = crud.TablaProductos();
+                txtBuscar.Enabled = true;
+                txtBuscar.Focus();
+            }
+            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);            
         }
 
         private void tablaProductos_CellClick(object sender, DataGridViewCellEventArgs e)

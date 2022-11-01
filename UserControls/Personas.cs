@@ -19,18 +19,15 @@ namespace New_MasterTrade
             Config();
         }
 
-        private void Personas_Load(object sender, EventArgs e)
-        {
-            //Config();
-        }
-
         public void Config()
         {
             crud = new CRUDPersonas();
+            FillComboBoxes();
             tablaPersonas.AutoGenerateColumns = false;
+            tablaPersonas.DataSource = null;
             comboTabla.Enabled = false;
             txtBuscar.Enabled = false;
-            FillComboBoxes();
+            
         }
 
         //BOTONES//
@@ -67,10 +64,14 @@ namespace New_MasterTrade
 
         private void bttnCargar_Click(object sender, EventArgs e)
         {
-            tablaPersonas.DataSource = crud.Tabla(comboTabla.Text.ToLower());
-            comboTabla.Enabled = true;
-            txtBuscar.Enabled = true;
-            txtBuscar.Focus();
+            if (crud.Tabla(comboTabla.Text).Rows.Count > 0)
+            {
+                tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);
+                comboTabla.Enabled = true;
+                txtBuscar.Enabled = true;
+                txtBuscar.Focus();
+            }
+            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);            
         }
 
         private void txtBuscar_KeyUp_1(object sender, KeyEventArgs e)
@@ -91,6 +92,18 @@ namespace New_MasterTrade
             x.Controls.Add(y);
             x.StartPosition = FormStartPosition.CenterScreen;
             x.ShowDialog();
+        }
+
+        private void comboTabla_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (crud.Tabla(comboTabla.Text).Rows.Count > 0)
+            {
+                tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);
+                comboTabla.Enabled = true;
+                txtBuscar.Enabled = true;
+                txtBuscar.Focus();
+            }
+            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         //TABLA//

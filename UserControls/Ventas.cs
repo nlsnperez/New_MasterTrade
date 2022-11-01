@@ -15,7 +15,7 @@ namespace New_MasterTrade.UserControls
 {
     public partial class Ventas : UserControl
     {
-        CRUDTransacciones crud;
+        CRUD_Compras crud;
         DataTable ventas = new DataTable();
         decimal total = 0;
         bool IsCollapsed = true;
@@ -32,7 +32,7 @@ namespace New_MasterTrade.UserControls
 
         public void Config()
         {
-            crud = new CRUDTransacciones();
+            crud = new CRUD_Compras();
             tablaDetalle.AutoGenerateColumns = false;
             panelSlide.Size = panelSlide.MinimumSize;
             total = 0;

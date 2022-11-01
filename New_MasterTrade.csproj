@@ -95,10 +95,16 @@
     <Compile Include="Base de Datos\Conexion2.cs" />
     <Compile Include="Base de Datos\CRUDPersonas.cs" />
     <Compile Include="Base de Datos\CRUDExtras.cs" />
-    <Compile Include="Base de Datos\CRUDTransacciones.cs" />
+    <Compile Include="Base de Datos\CRUD_Compras.cs" />
     <Compile Include="Base de Datos\CRUDUsuarios.cs" />
     <Compile Include="Base de Datos\CRUD_Productos.cs" />
     <Compile Include="Cache\UserData.cs" />
+    <Compile Include="Custom Controls\AgregarProducto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\AgregarProducto.Designer.cs">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Custom Controls\RegistroVenta.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -214,6 +220,9 @@
     <Compile Include="UserControls\Ventas.Designer.cs">
       <DependentUpon>Ventas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Custom Controls\AgregarProducto.resx">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\RegistroVenta.resx">
       <DependentUpon>RegistroVenta.cs</DependentUpon>
     </EmbeddedResource>

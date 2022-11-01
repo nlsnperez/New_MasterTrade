@@ -20,6 +20,7 @@ namespace New_MasterTrade.UserControls
         {
             InitializeComponent();
             Config(x);
+            txtBuscar.Focus();
         }
 
         public void Config(int x)
@@ -28,7 +29,13 @@ namespace New_MasterTrade.UserControls
             comboTabla.Enabled = false;
             FillComboBoxes();
             comboTabla.SelectedIndex = x - 1;
-            tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);            
+            if (crud.Tabla(comboTabla.Text).Rows.Count > 0)
+            {
+                tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);
+                tablaPersonas.ClearSelection();
+            }
+            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     
         }
 
         public void FillComboBoxes()
@@ -41,10 +48,14 @@ namespace New_MasterTrade.UserControls
         {
             if (e.ColumnIndex == 6)
             {
-                this.x = tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString();
-                MessageBox.Show(tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString());
+                this.x = tablaPersonas.Rows[e.RowIndex].Cells[2].Value.ToString();
                 this.ParentForm.Close();
             }
+        }
+
+        private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
+        {
+            tablaPersonas.DataSource = crud.BuscarTabla(comboTabla.Text, txtBuscar.Text);
         }
     }
 }

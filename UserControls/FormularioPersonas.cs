@@ -187,5 +187,16 @@ namespace New_MasterTrade.UserControls
             bttnActualizar.Enabled = true;
             bttnEliminar2.Enabled = true;
         }
+
+        public void RegistroExterno(int x)
+        {
+            txtDocumento.Focus();
+            label1.Visible = false;
+            txtBuscar.Visible = false;
+            bttnBuscar.Visible = false;
+
+            comboOcupacion.SelectedIndex = x - 1;
+            comboOcupacion.Enabled = false;
+        }
     }
 }

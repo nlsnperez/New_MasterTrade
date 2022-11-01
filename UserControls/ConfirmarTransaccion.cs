@@ -16,7 +16,7 @@ namespace New_MasterTrade.UserControls
     {
         List<Detalle> Detalle;
         CRUDPersonas crud2;
-        CRUDTransacciones crud;        
+        CRUD_Compras crud;        
 
         public ConfirmarTransaccion(int x, List<Detalle> detalle)
         {
@@ -27,7 +27,7 @@ namespace New_MasterTrade.UserControls
 
         public void Config(int x)
         {
-            crud = new CRUDTransacciones();
+            crud = new CRUD_Compras();
             crud2 = new CRUDPersonas();
             //lblTransaccion.Text = Detalle[0].Venta;
             switch (x)
