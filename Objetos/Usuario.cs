@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace New_MasterTrade.Objetos
@@ -13,18 +14,30 @@ namespace New_MasterTrade.Objetos
         public string Contrasegna { get; set; }
         public string Documento { get; set; }
         public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Nivel { get; set; }
+        public int Nivel { get; set; }
 
-        public Usuario(int iD, string userName, string contrasegna, string documento, string nombre, string apellido, string nivel)
+        public Usuario(string userName, string contrasegna, string documento, string nombre, int nivel)
         {
-            ID = iD;
             UserName = userName;
             Contrasegna = contrasegna;
             Documento = documento;
             Nombre = nombre;
-            Apellido = apellido;
             Nivel = nivel;
+        }
+
+        public bool IsEmpty()
+        {
+            if (this.UserName == "" || this.Contrasegna == "" || this.Documento == "" || this.Nombre == "")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ValidDocumento()
+        {
+            string regex = "^(V|E|J|G)+[0-9]{5,9}$";
+            return Regex.IsMatch(this.Documento, regex, RegexOptions.IgnoreCase);
         }
     }
 }

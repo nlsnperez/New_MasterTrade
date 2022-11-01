@@ -10,28 +10,25 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.Base_de_Datos
 {
-    class CRUDUsuarios : Conexion
+    class CRUD_Usuarios : Conexion
     {
-        public void Create(Usuario user)
+        public void Crear(Usuario user)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `usuarios`(`usuario`, `contrasegna`, `documento_identidad`, `nombre`, `apellido`, `nivel`, `estatus`, `fecha_registro`, `fecha_eliminado`) VALUES (@usuario,@contrasegna,@documento,@nombre,@apellido,@nivel,@visible,@fregistro,@feliminado)";
+                    command.CommandText = "INSERT INTO `usuario`(`user`, `passwr`, `doc_id`, `nombre`, `nivel`, `estatus`) VALUES (@user,@password,@documento,@nombre,@nivel,@estatus)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = user.UserName;
-                    command.Parameters.Add("@contrasegna", MySqlDbType.VarChar).Value = user.Contrasegna;
+                    command.Parameters.Add("@user", MySqlDbType.VarChar).Value = user.UserName;
+                    command.Parameters.Add("@password", MySqlDbType.VarChar).Value = user.Contrasegna;
                     command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = user.Documento;
                     command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = user.Nombre;
-                    command.Parameters.Add("@apellido", MySqlDbType.VarChar).Value = user.Apellido;
-                    command.Parameters.Add("@nivel", MySqlDbType.VarChar).Value = user.Nivel;
-                    command.Parameters.Add("@visible", MySqlDbType.Int32).Value = 1;
-                    command.Parameters.Add("@fregistro", MySqlDbType.DateTime).Value = DateTime.Now;
-                    command.Parameters.Add("@feliminado", MySqlDbType.DateTime).Value = null;
+                    command.Parameters.Add("@nivel", MySqlDbType.Int32).Value = user.Nivel;
+                    command.Parameters.Add("@estatus", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
                 }
@@ -62,7 +59,6 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = user.UserName;
                     command.Parameters.Add("@contrasegna", MySqlDbType.VarChar).Value = user.Contrasegna;
                     command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = user.Nombre;
-                    command.Parameters.Add("@apellido", MySqlDbType.VarChar).Value = user.Apellido;
                     command.Parameters.Add("@nivel", MySqlDbType.VarChar).Value = user.Nivel;
 
                     command.ExecuteNonQuery();
@@ -77,7 +73,7 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public DataTable GetTable()
+        public DataTable Usuarios()
         {
             try
             {
@@ -85,7 +81,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `usuarios`", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `usuario`", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -101,6 +97,51 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return null;
+        }
+
+        public DataTable BuscarTabla(string filtro)
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `usuario`  WHERE `user` LIKE '%" + filtro + "%' OR `doc_id` LIKE '%" + filtro + "%' OR `nombre` LIKE '%" + filtro + "%' ORDER BY id ASC", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla productos encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
+
+        public DataTable UsuarioDatos(string id)
+        {
+            DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `usuario` WHERE `id` = '"+id+"'";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
         }
     }
 }

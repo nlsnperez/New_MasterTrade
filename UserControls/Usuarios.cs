@@ -14,7 +14,7 @@ namespace New_MasterTrade.UserControls
 {
     public partial class Usuarios : UserControl
     {
-        CRUDUsuarios crud;
+        CRUD_Usuarios crud;
         public Usuarios()
         {
             InitializeComponent();
@@ -23,13 +23,10 @@ namespace New_MasterTrade.UserControls
 
         public void Config()
         {
-            crud = new CRUDUsuarios();
+            crud = new CRUD_Usuarios();
             tablaUsuarios.AutoGenerateColumns = false;
-            txtContrasegna.PasswordChar = '*';
-            txtContrasegna2.PasswordChar = '*';
-            tablaUsuarios.DataSource = crud.GetTable();
+            txtBuscar.Enabled = false;
             Controles("OFF");
-            ConfigCombos();
         }
 
         public void Controles(string modo)
@@ -37,196 +34,57 @@ namespace New_MasterTrade.UserControls
             switch (modo)
             {
                 case "ON":
-                    txtID.Text = "0";
-                    comboDocumento.Enabled = true;
-                    txtDocumento.Enabled = true;
-                    txtNombre.Enabled = true;
-                    txtApellido.Enabled = true;
-                    txtUsuario.Enabled = true;
-                    txtContrasegna.Enabled = true;
-                    txtContrasegna2.Enabled = true;
-                    comboNivel.Enabled = true;
                     bttnGuardar.Enabled = true;
                     bttnCancelar.Enabled = true;
-                    bttnNuevo.Enabled = false;
-                    checkMostrar.Enabled = true;
+                    bttnRegistrar.Enabled = false;
                     break;
                 case "OFF":
-                    txtID.Enabled = false;
-                    comboDocumento.Enabled = false;
-                    txtDocumento.Enabled = false;
-                    txtNombre.Enabled = false;
-                    txtApellido.Enabled = false;
-                    txtUsuario.Enabled = false;
-                    txtContrasegna.Enabled = false;
-                    txtContrasegna2.Enabled = false;
-                    comboNivel.Enabled = false;
                     bttnGuardar.Enabled = false;
                     bttnCancelar.Enabled = false;
-                    bttnNuevo.Enabled = true;
-                    checkMostrar.Enabled = false;
+                    bttnRegistrar.Enabled = true;
                     break;
             }
         }
-
-        public void Clear()
-        {
-            txtID.Text = "";
-            comboDocumento.SelectedIndex = 0;
-            txtDocumento.Text = "";
-            txtNombre.Text = "";
-            txtApellido.Text = "";
-            txtUsuario.Text = "";
-            txtContrasegna.Text = "";
-            txtContrasegna2.Text = "";
-            comboNivel.SelectedIndex = 1;
-            checkMostrar.Checked = false;
-            bttnGuardar.Text = "GUARDAR";
-        }
-
-        public void ConfigCombos()
-        {
-            comboDocumento.Items.Add("V");
-            comboDocumento.Items.Add("E");
-            comboDocumento.Items.Add("J");
-            comboDocumento.Items.Add("G");
-            comboDocumento.SelectedIndex = 0;
-
-            comboNivel.Items.Add("ADMINISTRADOR");
-            comboNivel.Items.Add("OPERADOR");
-            comboNivel.SelectedIndex = 1;
-        }
-
-        private void bttnNuevo_Click(object sender, EventArgs e)
-        {
-            Controles("ON");
-        }
-
-        private void bttnCancelar_Click(object sender, EventArgs e)
-        {
-            Clear();
-            Controles("OFF");
-        }
-        private void OnlyNumbers(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void OnlyLetters(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private Usuario GetUsuario()
-        {
-            Usuario user = new Usuario(Int32.Parse(txtID.Text),
-                                        txtUsuario.Text,
-                                        txtContrasegna.Text,
-                                        comboDocumento.SelectedItem.ToString() + txtDocumento.Text,
-                                        txtNombre.Text,
-                                        txtApellido.Text,
-                                        comboNivel.SelectedItem.ToString());
-            return user;
-        }
-
-        private void bttnGuardar_Click(object sender, EventArgs e)
-        {
-            switch (bttnGuardar.Text)
-            {
-                case "GUARDAR":
-                    if (txtContrasegna.Text != txtContrasegna2.Text)
-                    {
-                        MessageBox.Show("Las contraseñas ingresadas no coinciden", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        if (MessageBox.Show("¿Desea registrar el usuario " + txtUsuario.Text + "?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            crud.Create(GetUsuario());
-                            Clear();
-                            Controles("OFF");
-                            tablaUsuarios.DataSource = crud.GetTable();
-                        }
-                    }
-                    break;
-                case "ACTUALIZAR":
-                    if (MessageBox.Show("¿Desea actualizar los datos del usuario " + txtUsuario.Text + "?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        crud.Update(GetUsuario());
-                        Clear();
-                        Controles("OFF");
-                        tablaUsuarios.DataSource = crud.GetTable();
-                    }
-                    break;
-            }
-        }
-
-        private int GetIndex(char x)
-        {
-            switch (x)
-            {
-                case 'V':
-                    return 0;
-                    break;
-                case 'E':
-                    return 1;
-                    break;
-                case 'J':
-                    return 2;
-                    break;
-                case 'G':
-                    return 3;
-                    break;
-                default:
-                    return 0;
-                    break;
-            }
-        }  
 
         private void tablaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Controles("ON");
-            txtID.Text = tablaUsuarios.Rows[e.RowIndex].Cells[0].Value.ToString();
-            comboDocumento.SelectedIndex = GetIndex(tablaUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString()[0]);
-            txtDocumento.Text = tablaUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString().Remove(0,1); ;
-            txtUsuario.Text = tablaUsuarios.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtContrasegna.Text = tablaUsuarios.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txtNombre.Text = tablaUsuarios.Rows[e.RowIndex].Cells[4].Value.ToString();
-            txtApellido.Text = tablaUsuarios.Rows[e.RowIndex].Cells[5].Value.ToString();
-            if (tablaUsuarios.Rows[e.RowIndex].Cells[5].Value.ToString() == "ADMINISTRADOR")
+            if (e.ColumnIndex == 5)
             {
-                comboNivel.SelectedIndex = 0;
-            }
-            else
-            {
-                comboNivel.SelectedIndex = 1;
-            }
-            comboDocumento.Enabled = false;
-            txtDocumento.Enabled = false;
-            txtContrasegna2.Enabled = false;
-            bttnGuardar.Text = "ACTUALIZAR";            
+                Form x = new Form();
+                FormularioUsuarios y = new FormularioUsuarios();
+                y.SetDatos(tablaUsuarios.Rows[e.RowIndex].Cells[0].Value.ToString());
+                x.Size = new Size(y.Width, y.Height);
+                x.Controls.Add(y);
+                x.StartPosition = FormStartPosition.CenterScreen;
+                x.FormBorderStyle = FormBorderStyle.None;
+                x.ShowDialog();
+            }     
         }
 
-        private void checkMostrar_CheckedChanged(object sender, EventArgs e)
+        private void bttnCargar_Click(object sender, EventArgs e)
         {
-            if (checkMostrar.Checked == true)
+            if (crud.Usuarios().Rows.Count > 0)
             {
-                txtContrasegna.PasswordChar = (char)0;
-                txtContrasegna2.PasswordChar = (char)0;
-                checkMostrar.Text = "Ocultar";
+                tablaUsuarios.DataSource = crud.Usuarios();
+                txtBuscar.Enabled = true;
             }
-            else
-            {
-                txtContrasegna.PasswordChar = '*';
-                txtContrasegna2.PasswordChar = '*';
-                checkMostrar.Text = "Mostrar";
-            }
+            else MessageBox.Show("No se encontraron registros en la base de datos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
+        {
+            tablaUsuarios.DataSource = crud.BuscarTabla(txtBuscar.Text);
+        }
+
+        private void bttnRegistrar_Click(object sender, EventArgs e)
+        {
+            Form x = new Form();
+            FormularioUsuarios y = new FormularioUsuarios();
+            x.Size = new Size(y.Width, y.Height);
+            x.Controls.Add(y);
+            x.StartPosition = FormStartPosition.CenterScreen;
+            x.FormBorderStyle = FormBorderStyle.None;
+            x.ShowDialog();
         }
     }
 }

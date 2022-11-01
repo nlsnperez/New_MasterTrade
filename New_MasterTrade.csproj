@@ -96,7 +96,7 @@
     <Compile Include="Base de Datos\CRUDPersonas.cs" />
     <Compile Include="Base de Datos\CRUDExtras.cs" />
     <Compile Include="Base de Datos\CRUD_Compras.cs" />
-    <Compile Include="Base de Datos\CRUDUsuarios.cs" />
+    <Compile Include="Base de Datos\CRUD_Usuarios.cs" />
     <Compile Include="Base de Datos\CRUD_Productos.cs" />
     <Compile Include="Cache\UserData.cs" />
     <Compile Include="Custom Controls\AgregarProducto.cs">
@@ -163,6 +163,12 @@
     </Compile>
     <Compile Include="UserControls\FormularioPersonas.Designer.cs">
       <DependentUpon>FormularioPersonas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FormularioUsuarios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FormularioUsuarios.Designer.cs">
+      <DependentUpon>FormularioUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NuevoRegistro.cs">
       <SubType>UserControl</SubType>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FormularioPersonas.resx">
       <DependentUpon>FormularioPersonas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FormularioUsuarios.resx">
+      <DependentUpon>FormularioUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NuevoRegistro.resx">
       <DependentUpon>NuevoRegistro.cs</DependentUpon>

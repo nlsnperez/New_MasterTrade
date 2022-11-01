@@ -31,8 +31,8 @@ namespace New_MasterTrade
         {
             this.components = new System.ComponentModel.Container();
             this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.FormPersonas = new New_MasterTrade.Personas();
             this.FormComprar = new New_MasterTrade.UserControls.Comprar();
+            this.FormPersonas = new New_MasterTrade.Personas();
             this.formProductos = new New_MasterTrade.UserControls.ResgistrosProductos_Prototipo();
             this.bttnMinimizar = new System.Windows.Forms.Button();
             this.bttnCerrar = new System.Windows.Forms.Button();
@@ -57,6 +57,7 @@ namespace New_MasterTrade
             this.bttnSalir = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.usuarios1 = new New_MasterTrade.UserControls.Usuarios();
             this.PanelContenedor.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelDropDown.SuspendLayout();
@@ -68,6 +69,7 @@ namespace New_MasterTrade
             // PanelContenedor
             // 
             this.PanelContenedor.BackColor = System.Drawing.Color.White;
+            this.PanelContenedor.Controls.Add(this.usuarios1);
             this.PanelContenedor.Controls.Add(this.FormComprar);
             this.PanelContenedor.Controls.Add(this.FormPersonas);
             this.PanelContenedor.Controls.Add(this.formProductos);
@@ -78,15 +80,6 @@ namespace New_MasterTrade
             this.PanelContenedor.Size = new System.Drawing.Size(858, 552);
             this.PanelContenedor.TabIndex = 0;
             // 
-            // FormPersonas
-            // 
-            this.FormPersonas.BackColor = System.Drawing.Color.White;
-            this.FormPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FormPersonas.Location = new System.Drawing.Point(0, 0);
-            this.FormPersonas.Name = "FormPersonas";
-            this.FormPersonas.Size = new System.Drawing.Size(858, 552);
-            this.FormPersonas.TabIndex = 11;
-            // 
             // FormComprar
             // 
             this.FormComprar.BackColor = System.Drawing.SystemColors.Control;
@@ -96,6 +89,15 @@ namespace New_MasterTrade
             this.FormComprar.Name = "FormComprar";
             this.FormComprar.Size = new System.Drawing.Size(858, 552);
             this.FormComprar.TabIndex = 5;
+            // 
+            // FormPersonas
+            // 
+            this.FormPersonas.BackColor = System.Drawing.Color.White;
+            this.FormPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FormPersonas.Location = new System.Drawing.Point(0, 0);
+            this.FormPersonas.Name = "FormPersonas";
+            this.FormPersonas.Size = new System.Drawing.Size(858, 552);
+            this.FormPersonas.TabIndex = 11;
             // 
             // formProductos
             // 
@@ -393,6 +395,14 @@ namespace New_MasterTrade
             this.panel1.Size = new System.Drawing.Size(960, 552);
             this.panel1.TabIndex = 11;
             // 
+            // usuarios1
+            // 
+            this.usuarios1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usuarios1.Location = new System.Drawing.Point(0, 0);
+            this.usuarios1.Name = "usuarios1";
+            this.usuarios1.Size = new System.Drawing.Size(858, 552);
+            this.usuarios1.TabIndex = 12;
+            // 
             // SesionIniciada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,5 +454,6 @@ namespace New_MasterTrade
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private Personas FormPersonas;
+        private UserControls.Usuarios usuarios1;
     }
 }
