@@ -106,5 +106,37 @@ namespace New_MasterTrade
         {
             FormPersonas.BringToFront();
         }
+
+        private void bttnAjustes_Click_1(object sender, EventArgs e)
+        {
+            timer2.Start();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (IsCollapsed2)
+            {
+                panelDropDown2.Height += 10;
+                if (panelDropDown2.Size == panelDropDown2.MaximumSize)
+                {
+                    timer2.Stop();
+                    IsCollapsed2 = false;
+                }
+            }
+            else
+            {
+                panelDropDown2.Height -= 10;
+                if (panelDropDown2.Size == panelDropDown2.MinimumSize)
+                {
+                    timer2.Stop();
+                    IsCollapsed2 = true;
+                }
+            }
+        }
+
+        private void bttnUsuarios_Click(object sender, EventArgs e)
+        {
+            FormUsuarios.BringToFront();
+        }
     }
 }
