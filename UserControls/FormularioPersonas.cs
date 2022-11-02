@@ -165,6 +165,7 @@ namespace New_MasterTrade.UserControls
             if (crud.PersonaDatos(tabla, filtro).Rows.Count > 0)
             {
                 SetDatos(crud.PersonaDatos(tabla, filtro));
+                comboOcupacion.Text = tabla.ToUpper();
             }
         }
 

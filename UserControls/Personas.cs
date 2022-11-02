@@ -35,11 +35,11 @@ namespace New_MasterTrade
 
         private void tablaPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 0)
             {
                 Form x = new Form();
                 FormularioPersonas y = new FormularioPersonas();
-                y.OpenPersona(comboTabla.Text, tablaPersonas.Rows[e.RowIndex].Cells[0].Value.ToString());
+                y.OpenPersona(comboTabla.Text, tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString());
                 x.Controls.Add(y);
                 x.Size = new Size(y.Width + 30, y.Height + 40);                
                 x.StartPosition = FormStartPosition.CenterScreen;

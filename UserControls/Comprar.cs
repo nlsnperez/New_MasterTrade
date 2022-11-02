@@ -32,7 +32,6 @@ namespace New_MasterTrade.UserControls
             crud = new CRUD_Compras();
             personas = new CRUDPersonas();
             tableCarrito.AutoGenerateColumns = false;
-            dpFecha.MinDate = System.DateTime.Today;
             ConfigControles("OFF");
             ConfigCarrito();
         }
@@ -80,8 +79,6 @@ namespace New_MasterTrade.UserControls
             switch (modo)
             {
                 case "ON":
-                    dpFecha.Enabled = true;
-
                     txtProveedor.Enabled = true;
 
                     bttnNuevaCompra.Enabled = false;
@@ -91,7 +88,6 @@ namespace New_MasterTrade.UserControls
                     break;
                 case "OFF":
                     txtNumeroOrden.Enabled = false;
-                    dpFecha.Enabled = false;
                     
                     txtProveedor.Enabled = false;
                     txtRazonSocial.Enabled = false;
@@ -122,7 +118,6 @@ namespace New_MasterTrade.UserControls
         public void LimpiarCampos()
         {
             txtNumeroOrden.Text = "";
-            dpFecha.Value = System.DateTime.Today;
 
             txtProveedor.Text = "";
             txtRazonSocial.Text = "";
@@ -235,7 +230,10 @@ namespace New_MasterTrade.UserControls
                 x.Size = new Size(y.Width + 15, y.Height + 30);
                 x.Controls.Add(y);
                 x.ShowDialog();
-                SetDatos(personas.PersonaDatos("proveedor", y.x));
+                if (y.x != "")
+                {
+                    SetDatos(personas.PersonaDatos("proveedor", y.x));
+                }
             }
             else
             {
@@ -308,7 +306,7 @@ namespace New_MasterTrade.UserControls
             Compra compra = new Compra(IdCompra,
                                        txtNumeroOrden.Text,
                                        IdProveedor,
-                                       System.DateTime.Today);
+                                       System.DateTime.Now);
             return compra;
         }
         

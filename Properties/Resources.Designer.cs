@@ -73,9 +73,9 @@ namespace New_MasterTrade.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MasterTradeLogo {
+        internal static System.Drawing.Bitmap FlechaAbajo {
             get {
-                object obj = ResourceManager.GetObject("MasterTradeLogo", resourceCulture);
+                object obj = ResourceManager.GetObject("FlechaAbajo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,19 @@ namespace New_MasterTrade.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pngwing_com {
+        internal static System.Drawing.Bitmap FlechaArriba {
             get {
-                object obj = ResourceManager.GetObject("pngwing.com", resourceCulture);
+                object obj = ResourceManager.GetObject("FlechaArriba", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MasterTradeLogo {
+            get {
+                object obj = ResourceManager.GetObject("MasterTradeLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

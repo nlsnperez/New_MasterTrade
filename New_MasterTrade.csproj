@@ -182,11 +182,11 @@
     <Compile Include="UserControls\Personas.Designer.cs">
       <DependentUpon>Personas.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Productos.cs">
+    <Compile Include="UserControls\FormularioProductos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Productos.Designer.cs">
-      <DependentUpon>Productos.cs</DependentUpon>
+    <Compile Include="UserControls\FormularioProductos.Designer.cs">
+      <DependentUpon>FormularioProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -202,11 +202,11 @@
     <Compile Include="Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ResgistrosProductos.cs">
+    <Compile Include="UserControls\Productos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ResgistrosProductos.Designer.cs">
-      <DependentUpon>ResgistrosProductos.cs</DependentUpon>
+    <Compile Include="UserControls\Productos.Designer.cs">
+      <DependentUpon>Productos.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Usuarios.cs">
       <SubType>UserControl</SubType>
@@ -259,8 +259,8 @@
     <EmbeddedResource Include="UserControls\Personas.resx">
       <DependentUpon>Personas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Productos.resx">
-      <DependentUpon>Productos.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\FormularioProductos.resx">
+      <DependentUpon>FormularioProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -276,8 +276,8 @@
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ResgistrosProductos.resx">
-      <DependentUpon>ResgistrosProductos.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Productos.resx">
+      <DependentUpon>Productos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
@@ -310,6 +310,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MasterTradeLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlechaAbajo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlechaArriba.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

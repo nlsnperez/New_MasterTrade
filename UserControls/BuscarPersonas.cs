@@ -16,19 +16,20 @@ namespace New_MasterTrade.UserControls
         public string x { get; set; }
         CRUDPersonas crud;
 
-        public BuscarPersonas(int x)
+        public BuscarPersonas(int y)
         {
             InitializeComponent();
-            Config(x);
+            Config(y);
             txtBuscar.Focus();
         }
 
-        public void Config(int x)
+        public void Config(int y)
         {
             crud = new CRUDPersonas();
+            this.x = "";
             comboTabla.Enabled = false;
             FillComboBoxes();
-            comboTabla.SelectedIndex = x - 1;
+            comboTabla.SelectedIndex = y - 1;
             if (crud.Tabla(comboTabla.Text).Rows.Count > 0)
             {
                 tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);
@@ -46,7 +47,7 @@ namespace New_MasterTrade.UserControls
 
         private void tablaPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 0)
             {
                 this.x = tablaPersonas.Rows[e.RowIndex].Cells[2].Value.ToString();
                 this.ParentForm.Close();

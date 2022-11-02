@@ -30,6 +30,13 @@ namespace New_MasterTrade.UserControls
         private void InitializeComponent()
         {
             this.tableCarrito = new System.Windows.Forms.DataGridView();
+            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrecioU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrecioT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtProveedor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,12 +50,10 @@ namespace New_MasterTrade.UserControls
             this.bttnBuscar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNumeroOrden = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.bttnBuscarProductos = new System.Windows.Forms.Button();
             this.bttnCancelar = new System.Windows.Forms.Button();
             this.bttnNuevaCompra = new System.Windows.Forms.Button();
-            this.dpFecha = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalBs = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -61,13 +66,6 @@ namespace New_MasterTrade.UserControls
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrecioU = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrecioT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +93,71 @@ namespace New_MasterTrade.UserControls
             this.tableCarrito.Size = new System.Drawing.Size(858, 304);
             this.tableCarrito.TabIndex = 38;
             this.tableCarrito.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableCarrito_CellClick);
+            // 
+            // columnId
+            // 
+            this.columnId.DataPropertyName = "Id";
+            this.columnId.HeaderText = "ID";
+            this.columnId.MinimumWidth = 6;
+            this.columnId.Name = "columnId";
+            this.columnId.ReadOnly = true;
+            this.columnId.Width = 125;
+            // 
+            // columnSerial
+            // 
+            this.columnSerial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnSerial.DataPropertyName = "Serial";
+            this.columnSerial.HeaderText = "Serial";
+            this.columnSerial.MinimumWidth = 6;
+            this.columnSerial.Name = "columnSerial";
+            this.columnSerial.ReadOnly = true;
+            // 
+            // columnDescripcion
+            // 
+            this.columnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnDescripcion.DataPropertyName = "Descripcion";
+            this.columnDescripcion.HeaderText = "Descripcion";
+            this.columnDescripcion.MinimumWidth = 6;
+            this.columnDescripcion.Name = "columnDescripcion";
+            this.columnDescripcion.ReadOnly = true;
+            // 
+            // columnPrecioU
+            // 
+            this.columnPrecioU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnPrecioU.DataPropertyName = "P.Unitario";
+            this.columnPrecioU.HeaderText = "P. Unitario";
+            this.columnPrecioU.MinimumWidth = 6;
+            this.columnPrecioU.Name = "columnPrecioU";
+            this.columnPrecioU.ReadOnly = true;
+            // 
+            // columnCantidad
+            // 
+            this.columnCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnCantidad.DataPropertyName = "Cantidad";
+            this.columnCantidad.HeaderText = "Cantidad";
+            this.columnCantidad.MinimumWidth = 6;
+            this.columnCantidad.Name = "columnCantidad";
+            this.columnCantidad.ReadOnly = true;
+            // 
+            // columnPrecioT
+            // 
+            this.columnPrecioT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnPrecioT.DataPropertyName = "P.Total";
+            this.columnPrecioT.HeaderText = "P. Total";
+            this.columnPrecioT.MinimumWidth = 6;
+            this.columnPrecioT.Name = "columnPrecioT";
+            this.columnPrecioT.ReadOnly = true;
+            // 
+            // columnEliminar
+            // 
+            this.columnEliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.columnEliminar.HeaderText = "";
+            this.columnEliminar.MinimumWidth = 6;
+            this.columnEliminar.Name = "columnEliminar";
+            this.columnEliminar.ReadOnly = true;
+            this.columnEliminar.Text = "REMOVER";
+            this.columnEliminar.UseColumnTextForButtonValue = true;
             // 
             // txtProveedor
             // 
@@ -209,15 +272,6 @@ namespace New_MasterTrade.UserControls
             this.txtNumeroOrden.Size = new System.Drawing.Size(217, 20);
             this.txtNumeroOrden.TabIndex = 51;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 51);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
-            this.label7.TabIndex = 54;
-            this.label7.Text = "FECHA";
-            // 
             // bttnGuardar
             // 
             this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -261,16 +315,6 @@ namespace New_MasterTrade.UserControls
             this.bttnNuevaCompra.Text = "NUEVO (+)";
             this.bttnNuevaCompra.UseVisualStyleBackColor = true;
             this.bttnNuevaCompra.Click += new System.EventHandler(this.bttnNuevaCompra_Click);
-            // 
-            // dpFecha
-            // 
-            this.dpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpFecha.Location = new System.Drawing.Point(90, 47);
-            this.dpFecha.MinDate = new System.DateTime(2022, 10, 24, 0, 0, 0, 0);
-            this.dpFecha.Name = "dpFecha";
-            this.dpFecha.Size = new System.Drawing.Size(216, 20);
-            this.dpFecha.TabIndex = 58;
-            this.dpFecha.Value = new System.DateTime(2022, 10, 25, 0, 0, 0, 0);
             // 
             // label9
             // 
@@ -388,71 +432,6 @@ namespace New_MasterTrade.UserControls
             this.label14.TabIndex = 71;
             this.label14.Text = "TOTAL";
             // 
-            // columnId
-            // 
-            this.columnId.DataPropertyName = "Id";
-            this.columnId.HeaderText = "ID";
-            this.columnId.MinimumWidth = 6;
-            this.columnId.Name = "columnId";
-            this.columnId.ReadOnly = true;
-            this.columnId.Width = 125;
-            // 
-            // columnSerial
-            // 
-            this.columnSerial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnSerial.DataPropertyName = "Serial";
-            this.columnSerial.HeaderText = "Serial";
-            this.columnSerial.MinimumWidth = 6;
-            this.columnSerial.Name = "columnSerial";
-            this.columnSerial.ReadOnly = true;
-            // 
-            // columnDescripcion
-            // 
-            this.columnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDescripcion.DataPropertyName = "Descripcion";
-            this.columnDescripcion.HeaderText = "Descripcion";
-            this.columnDescripcion.MinimumWidth = 6;
-            this.columnDescripcion.Name = "columnDescripcion";
-            this.columnDescripcion.ReadOnly = true;
-            // 
-            // columnPrecioU
-            // 
-            this.columnPrecioU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnPrecioU.DataPropertyName = "P.Unitario";
-            this.columnPrecioU.HeaderText = "P. Unitario";
-            this.columnPrecioU.MinimumWidth = 6;
-            this.columnPrecioU.Name = "columnPrecioU";
-            this.columnPrecioU.ReadOnly = true;
-            // 
-            // columnCantidad
-            // 
-            this.columnCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnCantidad.DataPropertyName = "Cantidad";
-            this.columnCantidad.HeaderText = "Cantidad";
-            this.columnCantidad.MinimumWidth = 6;
-            this.columnCantidad.Name = "columnCantidad";
-            this.columnCantidad.ReadOnly = true;
-            // 
-            // columnPrecioT
-            // 
-            this.columnPrecioT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnPrecioT.DataPropertyName = "P.Total";
-            this.columnPrecioT.HeaderText = "P. Total";
-            this.columnPrecioT.MinimumWidth = 6;
-            this.columnPrecioT.Name = "columnPrecioT";
-            this.columnPrecioT.ReadOnly = true;
-            // 
-            // columnEliminar
-            // 
-            this.columnEliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.columnEliminar.HeaderText = "";
-            this.columnEliminar.MinimumWidth = 6;
-            this.columnEliminar.Name = "columnEliminar";
-            this.columnEliminar.ReadOnly = true;
-            this.columnEliminar.Text = "REMOVER";
-            this.columnEliminar.UseColumnTextForButtonValue = true;
-            // 
             // Comprar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,10 +442,8 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.label13);
             this.Controls.Add(this.bttnGuardar);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.dpFecha);
             this.Controls.Add(this.txtSubTotalUs);
             this.Controls.Add(this.txtSubTotalBs);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.comboImpuesto);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label11);
@@ -514,11 +491,9 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.Button bttnBuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNumeroOrden;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Button bttnCancelar;
         private System.Windows.Forms.Button bttnNuevaCompra;
-        private System.Windows.Forms.DateTimePicker dpFecha;
         private System.Windows.Forms.Button bttnBuscarProductos;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTotalBs;
