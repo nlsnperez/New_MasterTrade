@@ -124,38 +124,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\BuscarPersonas.cs">
+    <Compile Include="Custom Controls\BuscarPersonas.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\BuscarPersonas.Designer.cs">
+    <Compile Include="Custom Controls\BuscarPersonas.Designer.cs">
       <DependentUpon>BuscarPersonas.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\BuscarProductos.cs">
+    <Compile Include="Custom Controls\BuscarProductos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\BuscarProductos.Designer.cs">
+    <Compile Include="Custom Controls\BuscarProductos.Designer.cs">
       <DependentUpon>BuscarProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="Objetos\Compra.cs" />
     <Compile Include="Objetos\Detalle.cs" />
     <Compile Include="Objetos\Persona.cs" />
     <Compile Include="Objetos\Venta.cs" />
-    <Compile Include="UserControls\Categorias.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Categorias.Designer.cs">
-      <DependentUpon>Categorias.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Comprar.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\Comprar.Designer.cs">
       <DependentUpon>Comprar.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ConfirmarTransaccion.cs">
+    <Compile Include="Custom Controls\ConfirmarTransaccion.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ConfirmarTransaccion.Designer.cs">
+    <Compile Include="Custom Controls\ConfirmarTransaccion.Designer.cs">
       <DependentUpon>ConfirmarTransaccion.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\FormularioPersonas.cs">
@@ -169,12 +163,6 @@
     </Compile>
     <Compile Include="UserControls\FormularioUsuarios.Designer.cs">
       <DependentUpon>FormularioUsuarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\NuevoRegistro.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\NuevoRegistro.Designer.cs">
-      <DependentUpon>NuevoRegistro.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Personas.cs">
       <SubType>UserControl</SubType>
@@ -232,19 +220,16 @@
     <EmbeddedResource Include="Custom Controls\RegistroVenta.resx">
       <DependentUpon>RegistroVenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\BuscarPersonas.resx">
+    <EmbeddedResource Include="Custom Controls\BuscarPersonas.resx">
       <DependentUpon>BuscarPersonas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\BuscarProductos.resx">
+    <EmbeddedResource Include="Custom Controls\BuscarProductos.resx">
       <DependentUpon>BuscarProductos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Categorias.resx">
-      <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Comprar.resx">
       <DependentUpon>Comprar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ConfirmarTransaccion.resx">
+    <EmbeddedResource Include="Custom Controls\ConfirmarTransaccion.resx">
       <DependentUpon>ConfirmarTransaccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FormularioPersonas.resx">
@@ -252,9 +237,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FormularioUsuarios.resx">
       <DependentUpon>FormularioUsuarios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\NuevoRegistro.resx">
-      <DependentUpon>NuevoRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Personas.resx">
       <DependentUpon>Personas.cs</DependentUpon>
