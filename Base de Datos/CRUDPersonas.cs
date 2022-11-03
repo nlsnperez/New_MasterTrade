@@ -16,7 +16,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `"+tabla+ "`(`doc_id`, `raz_soc`, `direcc`, `telefono`, `email`) VALUES (@documento,@nombre,@direccion,@telefono,@email)";
+                    command.CommandText = "INSERT INTO `"+tabla+ "`(`doc_cli`, `raz_cli`, `dir_cli`, `tel_cli`, `cor_cli`) VALUES (@documento,@nombre,@direccion,@telefono,@email)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -47,7 +47,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `" + tabla + "` SET `raz_soc`=@razonsocial,`direcc`=@direccion,`telefono`=@telefono,`email`=@correo WHERE `" + tabla + "`.`doc_id` = @documento;";
+                    command.CommandText = "UPDATE `" + tabla + "` SET `raz_cli`=@razonsocial,`dir_cli`=@direccion,`tel_cli`=@telefono,`cor_cli`=@correo WHERE `" + tabla + "`.`doc_id` = @documento;";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -127,7 +127,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `"+tabla+ "`  WHERE `doc_id` LIKE '%" + filtro + "%' OR `raz_soc` LIKE '%" + filtro + "%' ORDER BY id ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `"+tabla+ "`  WHERE `doc_cli` LIKE '%" + filtro + "%' OR `raz_cli` LIKE '%" + filtro + "%' ORDER BY id_cli ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -141,54 +141,10 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
-        public DataTable GetTableProveedores()
-        {
-            try
-            {
-                con.Open();
-                DataTable resultados = new DataTable();
-                using (MySqlCommand command = new MySqlCommand())
-                {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT `id`, `documento_identidad`, `razon_social`, `direccion`, `telefono`, `correo` FROM `proveedores` WHERE visible = 1", con);
-                    adapter.Fill(resultados);
-                    con.Close();
-                }
-                Console.WriteLine("Tabla clientes encontrada!");
-                return resultados;
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return null;
-        }
-
-        public DataTable SearchTable(String tabla, String filtro)
-        {
-            try
-            {
-                con.Open();
-                DataTable resultados = new DataTable();
-                using (MySqlCommand command = new MySqlCommand())
-                {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM "+tabla+ " p WHERE p.visible = 1 AND (p.documento_identidad LIKE '%" + filtro + "%' OR p.razon_social LIKE '" + filtro + "%' OR p.direccion LIKE '" + filtro + "%' OR p.telefono LIKE '" + filtro + "%' OR p.correo LIKE '" + filtro + "%')", con);
-                    adapter.Fill(resultados);
-                    con.Close();
-                }
-                Console.WriteLine("Tabla clientes encontrada!");
-                return resultados;
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return null;
-        }
-
         public DataTable PersonaDatos(string tabla, string filtro)
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `"+tabla+ "` WHERE `id` LIKE '" + filtro + "%' OR `doc_id` LIKE '%" + filtro + "%' OR `raz_soc` LIKE '%" + filtro + "%'";
+            String sql = "SELECT * FROM `"+tabla+ "` WHERE `id_cli` LIKE '" + filtro + "%' OR `doc_cli` LIKE '%" + filtro + "%' OR `raz_cli` LIKE '%" + filtro + "%'";
             con.Open();
             try
             {

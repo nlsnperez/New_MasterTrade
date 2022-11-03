@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.tablaProductos = new System.Windows.Forms.DataGridView();
+            this.bttnAgregar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,9 +42,6 @@
             this.columnPVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnImagen = new System.Windows.Forms.DataGridViewImageColumn();
             this.columnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.bttnAgregar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,90 +75,6 @@
             this.tablaProductos.TabIndex = 0;
             this.tablaProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProductos_CellClick);
             // 
-            // columnId
-            // 
-            this.columnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnId.DataPropertyName = "id";
-            this.columnId.HeaderText = "ID";
-            this.columnId.Name = "columnId";
-            this.columnId.ReadOnly = true;
-            // 
-            // columnCategoria
-            // 
-            this.columnCategoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnCategoria.DataPropertyName = "categoria";
-            this.columnCategoria.HeaderText = "Categoría";
-            this.columnCategoria.Name = "columnCategoria";
-            this.columnCategoria.ReadOnly = true;
-            // 
-            // columnMarca
-            // 
-            this.columnMarca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnMarca.DataPropertyName = "marca";
-            this.columnMarca.HeaderText = "Marca";
-            this.columnMarca.Name = "columnMarca";
-            this.columnMarca.ReadOnly = true;
-            // 
-            // columnModelo
-            // 
-            this.columnModelo.DataPropertyName = "modelo";
-            this.columnModelo.HeaderText = "Modelo";
-            this.columnModelo.Name = "columnModelo";
-            this.columnModelo.ReadOnly = true;
-            // 
-            // columnSerial
-            // 
-            this.columnSerial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnSerial.DataPropertyName = "serial";
-            this.columnSerial.HeaderText = "Serial";
-            this.columnSerial.Name = "columnSerial";
-            this.columnSerial.ReadOnly = true;
-            // 
-            // columnDescripcion
-            // 
-            this.columnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDescripcion.DataPropertyName = "descr";
-            this.columnDescripcion.HeaderText = "Descripción";
-            this.columnDescripcion.Name = "columnDescripcion";
-            this.columnDescripcion.ReadOnly = true;
-            // 
-            // columPCompra
-            // 
-            this.columPCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columPCompra.DataPropertyName = "p_com";
-            this.columPCompra.HeaderText = "P. Compra";
-            this.columPCompra.Name = "columPCompra";
-            this.columPCompra.ReadOnly = true;
-            // 
-            // columnPVenta
-            // 
-            this.columnPVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnPVenta.DataPropertyName = "p_ven";
-            this.columnPVenta.HeaderText = "P. Venta";
-            this.columnPVenta.Name = "columnPVenta";
-            this.columnPVenta.ReadOnly = true;
-            // 
-            // columnImagen
-            // 
-            this.columnImagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnImagen.DataPropertyName = "imagen";
-            this.columnImagen.HeaderText = "Imagen";
-            this.columnImagen.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.columnImagen.Name = "columnImagen";
-            this.columnImagen.ReadOnly = true;
-            this.columnImagen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnImagen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // columnEliminar
-            // 
-            this.columnEliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.columnEliminar.HeaderText = "";
-            this.columnEliminar.Name = "columnEliminar";
-            this.columnEliminar.ReadOnly = true;
-            this.columnEliminar.Text = "DETALLES";
-            this.columnEliminar.UseColumnTextForButtonValue = true;
-            // 
             // bttnAgregar
             // 
             this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -190,6 +106,90 @@
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 35;
             this.label1.Text = "BUSCAR: ";
+            // 
+            // columnId
+            // 
+            this.columnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnId.DataPropertyName = "id_pro";
+            this.columnId.HeaderText = "ID";
+            this.columnId.Name = "columnId";
+            this.columnId.ReadOnly = true;
+            // 
+            // columnCategoria
+            // 
+            this.columnCategoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnCategoria.DataPropertyName = "categoria";
+            this.columnCategoria.HeaderText = "Categoría";
+            this.columnCategoria.Name = "columnCategoria";
+            this.columnCategoria.ReadOnly = true;
+            // 
+            // columnMarca
+            // 
+            this.columnMarca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnMarca.DataPropertyName = "marca";
+            this.columnMarca.HeaderText = "Marca";
+            this.columnMarca.Name = "columnMarca";
+            this.columnMarca.ReadOnly = true;
+            // 
+            // columnModelo
+            // 
+            this.columnModelo.DataPropertyName = "modelo";
+            this.columnModelo.HeaderText = "Modelo";
+            this.columnModelo.Name = "columnModelo";
+            this.columnModelo.ReadOnly = true;
+            // 
+            // columnSerial
+            // 
+            this.columnSerial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnSerial.DataPropertyName = "ser_pro";
+            this.columnSerial.HeaderText = "Serial";
+            this.columnSerial.Name = "columnSerial";
+            this.columnSerial.ReadOnly = true;
+            // 
+            // columnDescripcion
+            // 
+            this.columnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnDescripcion.DataPropertyName = "des_pro";
+            this.columnDescripcion.HeaderText = "Descripción";
+            this.columnDescripcion.Name = "columnDescripcion";
+            this.columnDescripcion.ReadOnly = true;
+            // 
+            // columPCompra
+            // 
+            this.columPCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columPCompra.DataPropertyName = "pco_pro";
+            this.columPCompra.HeaderText = "P. Compra";
+            this.columPCompra.Name = "columPCompra";
+            this.columPCompra.ReadOnly = true;
+            // 
+            // columnPVenta
+            // 
+            this.columnPVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnPVenta.DataPropertyName = "pve_pro";
+            this.columnPVenta.HeaderText = "P. Venta";
+            this.columnPVenta.Name = "columnPVenta";
+            this.columnPVenta.ReadOnly = true;
+            // 
+            // columnImagen
+            // 
+            this.columnImagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnImagen.DataPropertyName = "img_pro";
+            this.columnImagen.HeaderText = "Imagen";
+            this.columnImagen.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.columnImagen.Name = "columnImagen";
+            this.columnImagen.ReadOnly = true;
+            this.columnImagen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnImagen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // columnEliminar
+            // 
+            this.columnEliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.columnEliminar.HeaderText = "";
+            this.columnEliminar.Name = "columnEliminar";
+            this.columnEliminar.ReadOnly = true;
+            this.columnEliminar.Text = "DETALLES";
+            this.columnEliminar.UseColumnTextForButtonValue = true;
             // 
             // Productos
             // 

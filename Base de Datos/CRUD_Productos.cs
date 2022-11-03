@@ -15,7 +15,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `producto`(`id_cat`, `id_mar`, `id_mod`, `serial`, `descr`, `p_com`, `p_ven`, `estado`, `imagen`) VALUES (@categoria,@marca,@modelo,@serial,@descripcion,@preciocompra,@precioventa,@estado,@imagen)";
+                    command.CommandText = "INSERT INTO `producto`(`id_cat`, `id_mar`, `id_mod`, `ser_pro`, `des_pro`, `pco_pro`, `pve_pro`, `img_pro`, `est_pro`) VALUES (@categoria,@marca,@modelo,@serial,@descripcion,@preciocompra,@precioventa,@estado,@imagen)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -51,7 +51,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `producto` SET `serial`=@serial,`descr`=@descripcion,`id_mar`=@marca,`id_cat`=@categoria, `id_mod`=@modelo,`p_com`=@preciocompra,`p_ven`=@precioventa,`estado`=@estado,`imagen`=@imagen WHERE `id`=@id";
+                    command.CommandText = "UPDATE `producto` SET `ser_pro`=@serial,`des_pro`=@descripcion,`id_mar`=@marca,`id_cat`=@categoria, `id_mod`=@modelo,`pco_pro`=@preciocompra,`pve_pro`=@precioventa,`est_pro`=@estado,`img_pro`=@imagen WHERE `id_pro`=@id";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -84,7 +84,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Categorias()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `categoria` ORDER BY nombre ASC";
+            String sql = "SELECT * FROM `categoria` ORDER BY nom_cat ASC";
             con.Open();
             try
             {
@@ -108,7 +108,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Marcas()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `marca` ORDER BY nombre ASC";
+            String sql = "SELECT * FROM `marca` ORDER BY nom_mar ASC";
             con.Open();
             try
             {
@@ -132,7 +132,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Modelos()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `modelo` ORDER BY nombre ASC";
+            String sql = "SELECT * FROM `modelo` ORDER BY nom_mod ASC";
             con.Open();
             try
             {
@@ -156,7 +156,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable TablaProductos()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT p.*, c.nombre AS categoria, m.nombre AS marca, mo.nombre as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id INNER JOIN marca m ON p.`id_mar` = m.id INNER JOIN modelo mo ON p.`id_mod` = mo.id ORDER BY id ASC";
+            String sql = "SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod ORDER BY id_pro ASC";
             con.Open();
             try
             {
@@ -185,7 +185,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nombre AS categoria, m.nombre AS marca, mo.nombre as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id INNER JOIN marca m ON p.`id_mar` = m.id INNER JOIN modelo mo ON p.`id_mod` = mo.id WHERE `serial` LIKE '" + filtro + "%' OR `descr` LIKE '%" + filtro + "%' ORDER BY id ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod WHERE `ser_pro` LIKE '" + filtro + "%' OR `des_pro` LIKE '%" + filtro + "%' ORDER BY id_pro ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -202,7 +202,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable ProductoDatos(string filtro)
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `producto` WHERE `serial` LIKE '" + filtro + "%' OR `descr` LIKE '%" + filtro + "%'";
+            String sql = "SELECT * FROM `producto` WHERE `ser_pro` LIKE '" + filtro + "%' OR `des_pro` LIKE '%" + filtro + "%'";
             con.Open();
             try
             {
@@ -229,7 +229,7 @@ namespace New_MasterTrade.Base_de_Datos
             int x = 0;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id`) AS productos FROM producto", con);
+                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id_pro`) AS productos FROM producto", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();

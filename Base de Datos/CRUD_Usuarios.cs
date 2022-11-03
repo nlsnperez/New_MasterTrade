@@ -20,7 +20,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `usuario`(`user`, `passwr`, `doc_id`, `nombre`, `nivel`, `estatus`) VALUES (@user,@password,@documento,@nombre,@nivel,@estatus)";
+                    command.CommandText = "INSERT INTO `usuario`(`usr_usu`, `pas_usu`, `nom_usu`, `cor_usu`, `niv_usu`, `est_usu`) VALUES (@user,@password,@documento,@nombre,@nivel,@estatus)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -78,15 +78,15 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `usuario` SET `user`=@user,`passwr`=@password,`doc_id`=@documento,`nombre`=@nombre,`nivel`=@nivel,`estatus`=@estatus WHERE `id`=@id";
+                    command.CommandText = "UPDATE `usuario` SET `usr_usu`=@user,`pas_usu`=@password,`nom_usu`=@nombre,`cor_usu`=@correo,`niv_usu`=@nivel,`est_usu`=@estatus WHERE `id_usu`=@id";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
                     command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
                     command.Parameters.Add("@user", MySqlDbType.VarChar).Value = user.UserName;
                     command.Parameters.Add("@password", MySqlDbType.VarChar).Value = user.Contrasegna;
-                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = user.Documento;
-                    command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = user.Nombre;
+                    command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = user.Documento;
+                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = user.Nombre;
                     command.Parameters.Add("@nivel", MySqlDbType.Int32).Value = user.Nivel;
                     command.Parameters.Add("@estatus", MySqlDbType.Int32).Value = 1;
 
@@ -132,7 +132,7 @@ namespace New_MasterTrade.Base_de_Datos
         {
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `vendedor` WHERE `id_user` = '"+id+"'", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `vendedor` WHERE `id_usu` = '"+id+"'", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -163,7 +163,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `usuario`  WHERE `user` LIKE '%" + filtro + "%' OR `doc_id` LIKE '%" + filtro + "%' OR `nombre` LIKE '%" + filtro + "%' ORDER BY id ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `usuario`  WHERE `id_usu` LIKE '%" + filtro + "%' OR `nom_usu` LIKE '%" + filtro + "%' OR `cor_usu` LIKE '%" + filtro + "%' ORDER BY id ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -181,7 +181,7 @@ namespace New_MasterTrade.Base_de_Datos
         {
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `user` = '"+user+"' AND `passwr` = '"+password+"'", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `usr_usu` = '"+user+"' AND `pas_usu` = '"+password+"'", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -191,11 +191,11 @@ namespace New_MasterTrade.Base_de_Datos
                     con.Close();
                     return false;
                 }
-                UserData.Id = Int32.Parse(reader["id"].ToString());
-                UserData.NombreUsuario = reader["user"].ToString();
-                UserData.Contrasegna = reader["passwr"].ToString();
-                UserData.Nombre = reader["nombre"].ToString();
-                UserData.Nivel = Int32.Parse(reader["nivel"].ToString());
+                UserData.Id = Int32.Parse(reader["id_usu"].ToString());
+                UserData.NombreUsuario = reader["usr_usu"].ToString();
+                UserData.Contrasegna = reader["pas_usu"].ToString();
+                UserData.Nombre = reader["nom_usu"].ToString();
+                UserData.Nivel = Int32.Parse(reader["niv_usu"].ToString());
                 reader.Close();
             }
             catch (MySqlException ex)
@@ -212,7 +212,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable UsuarioDatos(string id)
         {
             DataTable usuario = new DataTable();
-            String sql = "SELECT * FROM `usuario` WHERE `id` = '"+id+"'";
+            String sql = "SELECT * FROM `usuario` WHERE `id_usu` = '"+id+"'";
             con.Open();
             try
             {
@@ -237,7 +237,7 @@ namespace New_MasterTrade.Base_de_Datos
             int x = 0;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` ORDER BY id DESC", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` ORDER BY id_usu DESC", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();

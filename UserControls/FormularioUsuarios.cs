@@ -151,9 +151,9 @@ namespace New_MasterTrade.UserControls
             user_id = (int)resultado.Rows[0][0];
             txtUsuario.Text = resultado.Rows[0][1].ToString();
             txtContrasegna.Text = resultado.Rows[0][2].ToString();
-            comboDocumento.Text = resultado.Rows[0][3].ToString().Substring(0,1);
-            txtDocumento.Text = resultado.Rows[0][3].ToString().Remove(0,1);
-            txtNombre.Text = resultado.Rows[0][4].ToString();
+            comboDocumento.Text = resultado.Rows[0][4].ToString().Substring(0,1);
+            txtDocumento.Text = resultado.Rows[0][4].ToString().Remove(0,1);
+            txtNombre.Text = resultado.Rows[0][3].ToString();
             if ((int)resultado.Rows[0][5] == 1)
             {
                 comboNivel.SelectedIndex = 0;

@@ -30,18 +30,18 @@ namespace New_MasterTrade.UserControls
         private void InitializeComponent()
         {
             this.tablaUsuarios = new System.Windows.Forms.DataGridView();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnContrasegna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.bttnCancelar = new System.Windows.Forms.Button();
             this.bttnRegistrar = new System.Windows.Forms.Button();
             this.bttnCargar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnContrasegna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,63 +68,6 @@ namespace New_MasterTrade.UserControls
             this.tablaUsuarios.Size = new System.Drawing.Size(858, 494);
             this.tablaUsuarios.TabIndex = 23;
             this.tablaUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaUsuarios_CellClick);
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnId.DataPropertyName = "id";
-            this.ColumnId.HeaderText = "ID";
-            this.ColumnId.MinimumWidth = 6;
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            // 
-            // columnNombre
-            // 
-            this.columnNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnNombre.DataPropertyName = "nombre";
-            this.columnNombre.HeaderText = "Nombre";
-            this.columnNombre.MinimumWidth = 6;
-            this.columnNombre.Name = "columnNombre";
-            this.columnNombre.ReadOnly = true;
-            // 
-            // columnDocumento
-            // 
-            this.columnDocumento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDocumento.DataPropertyName = "doc_id";
-            this.columnDocumento.HeaderText = "Documento de identidad";
-            this.columnDocumento.MinimumWidth = 6;
-            this.columnDocumento.Name = "columnDocumento";
-            this.columnDocumento.ReadOnly = true;
-            // 
-            // ColumnUsuario
-            // 
-            this.ColumnUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnUsuario.DataPropertyName = "user";
-            this.ColumnUsuario.HeaderText = "Usuario";
-            this.ColumnUsuario.MinimumWidth = 6;
-            this.ColumnUsuario.Name = "ColumnUsuario";
-            this.ColumnUsuario.ReadOnly = true;
-            // 
-            // columnContrasegna
-            // 
-            this.columnContrasegna.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnContrasegna.DataPropertyName = "passwr";
-            this.columnContrasegna.HeaderText = "Contraseña";
-            this.columnContrasegna.MinimumWidth = 6;
-            this.columnContrasegna.Name = "columnContrasegna";
-            this.columnContrasegna.ReadOnly = true;
-            // 
-            // columnDetalle
-            // 
-            this.columnDetalle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDetalle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.columnDetalle.HeaderText = "";
-            this.columnDetalle.Name = "columnDetalle";
-            this.columnDetalle.ReadOnly = true;
-            this.columnDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnDetalle.Text = "DETALLE";
-            this.columnDetalle.UseColumnTextForButtonValue = true;
             // 
             // bttnGuardar
             // 
@@ -172,6 +115,7 @@ namespace New_MasterTrade.UserControls
             this.bttnCargar.TabIndex = 63;
             this.bttnCargar.Text = "CARGAR";
             this.bttnCargar.UseVisualStyleBackColor = true;
+            this.bttnCargar.Click += new System.EventHandler(this.bttnCargar_Click);
             // 
             // txtBuscar
             // 
@@ -192,6 +136,63 @@ namespace New_MasterTrade.UserControls
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 64;
             this.label1.Text = "BUSCAR: ";
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnId.DataPropertyName = "id_usu";
+            this.ColumnId.HeaderText = "ID";
+            this.ColumnId.MinimumWidth = 6;
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            // 
+            // columnNombre
+            // 
+            this.columnNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnNombre.DataPropertyName = "nom_usu";
+            this.columnNombre.HeaderText = "Nombre";
+            this.columnNombre.MinimumWidth = 6;
+            this.columnNombre.Name = "columnNombre";
+            this.columnNombre.ReadOnly = true;
+            // 
+            // columnDocumento
+            // 
+            this.columnDocumento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnDocumento.DataPropertyName = "cor_usu";
+            this.columnDocumento.HeaderText = "Correo";
+            this.columnDocumento.MinimumWidth = 6;
+            this.columnDocumento.Name = "columnDocumento";
+            this.columnDocumento.ReadOnly = true;
+            // 
+            // ColumnUsuario
+            // 
+            this.ColumnUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnUsuario.DataPropertyName = "usr_usu";
+            this.ColumnUsuario.HeaderText = "Usuario";
+            this.ColumnUsuario.MinimumWidth = 6;
+            this.ColumnUsuario.Name = "ColumnUsuario";
+            this.ColumnUsuario.ReadOnly = true;
+            // 
+            // columnContrasegna
+            // 
+            this.columnContrasegna.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnContrasegna.DataPropertyName = "pas_usu";
+            this.columnContrasegna.HeaderText = "Contraseña";
+            this.columnContrasegna.MinimumWidth = 6;
+            this.columnContrasegna.Name = "columnContrasegna";
+            this.columnContrasegna.ReadOnly = true;
+            // 
+            // columnDetalle
+            // 
+            this.columnDetalle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnDetalle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.columnDetalle.HeaderText = "";
+            this.columnDetalle.Name = "columnDetalle";
+            this.columnDetalle.ReadOnly = true;
+            this.columnDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.columnDetalle.Text = "DETALLE";
+            this.columnDetalle.UseColumnTextForButtonValue = true;
             // 
             // Usuarios
             // 

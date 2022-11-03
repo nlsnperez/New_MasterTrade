@@ -68,18 +68,18 @@ namespace New_MasterTrade.UserControls
 
         public void ConfigCombos()
         {
-            comboMarca.ValueMember = "id";
-            comboMarca.DisplayMember = "nombre";
+            comboMarca.ValueMember = "id_mar";
+            comboMarca.DisplayMember = "nom_mar";
             comboMarca.DataSource = crud.Marcas();
             comboMarca.SelectedIndex = 0;
 
-            comboCategoria.ValueMember = "id";
-            comboCategoria.DisplayMember = "nombre";
+            comboCategoria.ValueMember = "id_cat";
+            comboCategoria.DisplayMember = "nom_cat";
             comboCategoria.DataSource = crud.Categorias();
             comboCategoria.SelectedIndex = 0;
 
-            comboModelo.ValueMember = "id";
-            comboModelo.DisplayMember = "nombre";
+            comboModelo.ValueMember = "id_mod";
+            comboModelo.DisplayMember = "nom_mod";
             comboModelo.DataSource = crud.Modelos();
             comboModelo.SelectedIndex = 0;
 
@@ -148,7 +148,7 @@ namespace New_MasterTrade.UserControls
         public void SetDatos(DataTable x)
         {
             DataTable resultado = x;
-            byte[] imagen = (byte[])resultado.Rows[0][9];
+            byte[] imagen = (byte[])resultado.Rows[0][8];
             MemoryStream ms = new MemoryStream(imagen);
 
             txtID.Text = resultado.Rows[0][0].ToString();
