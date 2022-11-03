@@ -153,11 +153,11 @@ namespace New_MasterTrade.UserControls
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             Form x = new Form();
-            ConfirmarTransaccion y = new ConfirmarTransaccion(2, GetDetalle());
+            //ConfirmarTransaccion y = new ConfirmarTransaccion(2, GetDetalle());
             x.Size = new Size(600, 350);
             x.FormBorderStyle = FormBorderStyle.None;
             x.StartPosition = FormStartPosition.CenterParent;
-            x.Controls.Add(y);
+            //x.Controls.Add(y);
             x.ShowDialog();
             ClearData("RESET");
         }

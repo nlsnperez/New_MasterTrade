@@ -48,6 +48,7 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.chckMostrar = new System.Windows.Forms.CheckBox();
             this.bttnSalir = new System.Windows.Forms.Button();
+            this.chckVendedor = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // comboDocumento
@@ -208,6 +209,7 @@ namespace New_MasterTrade.UserControls
             this.bttnActualizar.TabIndex = 76;
             this.bttnActualizar.Text = "ACTUALIZAR";
             this.bttnActualizar.UseVisualStyleBackColor = true;
+            this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
             // 
             // bttnGuardar
             // 
@@ -224,7 +226,7 @@ namespace New_MasterTrade.UserControls
             // chckMostrar
             // 
             this.chckMostrar.AutoSize = true;
-            this.chckMostrar.Location = new System.Drawing.Point(89, 98);
+            this.chckMostrar.Location = new System.Drawing.Point(379, 98);
             this.chckMostrar.Name = "chckMostrar";
             this.chckMostrar.Size = new System.Drawing.Size(117, 17);
             this.chckMostrar.TabIndex = 79;
@@ -244,10 +246,21 @@ namespace New_MasterTrade.UserControls
             this.bttnSalir.UseVisualStyleBackColor = true;
             this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
             // 
+            // chckVendedor
+            // 
+            this.chckVendedor.AutoSize = true;
+            this.chckVendedor.Location = new System.Drawing.Point(89, 98);
+            this.chckVendedor.Name = "chckVendedor";
+            this.chckVendedor.Size = new System.Drawing.Size(138, 17);
+            this.chckVendedor.TabIndex = 81;
+            this.chckVendedor.Text = "Asignar cómo vendedor";
+            this.chckVendedor.UseVisualStyleBackColor = true;
+            // 
             // FormularioUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chckVendedor);
             this.Controls.Add(this.bttnSalir);
             this.Controls.Add(this.chckMostrar);
             this.Controls.Add(this.bttnCancelar);
@@ -295,5 +308,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.CheckBox chckMostrar;
         private System.Windows.Forms.Button bttnSalir;
+        private System.Windows.Forms.CheckBox chckVendedor;
     }
 }

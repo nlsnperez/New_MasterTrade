@@ -53,8 +53,8 @@ namespace New_MasterTrade.UserControls
             comboDocumento.Items.Add("G");
             comboDocumento.SelectedIndex = 0;
 
-            comboNivel.Items.Add("OPERADOR");
             comboNivel.Items.Add("ADMINISTRADOR");
+            comboNivel.Items.Add("OPERADOR");
             comboNivel.SelectedIndex = 0;
         }
 
@@ -113,6 +113,10 @@ namespace New_MasterTrade.UserControls
                         if (MessageBox.Show("¿Desea registrar este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             crud.Crear(GetUsuario());
+                            if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
+                            {
+                                crud.CrearVendedor(crud.GetId());
+                            }
                             Limpiar();
                         }
                     }
@@ -126,7 +130,7 @@ namespace New_MasterTrade.UserControls
                                           txtContrasegna.Text,
                                           comboDocumento.Text+txtDocumento.Text,
                                           txtNombre.Text,
-                                          comboDocumento.SelectedIndex);
+                                          Nivel(comboNivel.SelectedIndex));
             return usuario;
         }
 
@@ -150,7 +154,14 @@ namespace New_MasterTrade.UserControls
             comboDocumento.Text = resultado.Rows[0][3].ToString().Substring(0,1);
             txtDocumento.Text = resultado.Rows[0][3].ToString().Remove(0,1);
             txtNombre.Text = resultado.Rows[0][4].ToString();
-            comboNivel.SelectedIndex = (int)resultado.Rows[0][5];
+            if ((int)resultado.Rows[0][5] == 1)
+            {
+                comboNivel.SelectedIndex = 0;
+            }
+            else
+            {
+                comboNivel.SelectedIndex = 1;
+            }
 
             comboDocumento.Enabled = false;
             txtDocumento.Enabled = false;
@@ -160,6 +171,28 @@ namespace New_MasterTrade.UserControls
             bttnActualizar.Enabled = true;
             bttnEliminar2.Enabled = true;
             bttnCancelar.Enabled = false;
+        }
+
+        private void bttnActualizar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea actualizar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                crud.Actualizar(GetUsuario(), user_id);
+                if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
+                {
+                    if (crud.VendedorRegistrado(user_id))
+                    {
+
+                    }
+                    else crud.CrearVendedor(user_id);
+                }
+            }
+        }
+
+        private int Nivel(int x)
+        {
+            if (x == 0) return 1;
+            else return 2;
         }
     }
 }

@@ -162,7 +162,6 @@ namespace New_MasterTrade
             this.bttnCargar.TabIndex = 40;
             this.bttnCargar.Text = "CARGAR";
             this.bttnCargar.UseVisualStyleBackColor = true;
-            this.bttnCargar.Click += new System.EventHandler(this.bttnCargar_Click);
             // 
             // bttnAgregar
             // 

@@ -27,6 +27,7 @@ namespace New_MasterTrade.UserControls
             tablaUsuarios.AutoGenerateColumns = false;
             txtBuscar.Enabled = false;
             Controles("OFF");
+            CargarTabla();
         }
 
         public void Controles(string modo)
@@ -61,7 +62,7 @@ namespace New_MasterTrade.UserControls
             }     
         }
 
-        private void bttnCargar_Click(object sender, EventArgs e)
+        private void CargarTabla()
         {
             if (crud.Usuarios().Rows.Count > 0)
             {

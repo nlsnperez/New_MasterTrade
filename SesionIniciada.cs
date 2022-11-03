@@ -14,6 +14,11 @@ namespace New_MasterTrade
             InitializeComponent();
         }
 
+        private void SesionIniciada_Load(object sender, EventArgs e)
+        {
+            bttnPersonas_Click(null, e);
+        }
+
         private void bttnMouseEnter(object sender, EventArgs e)
         {
             Button bttn = sender as Button;
@@ -85,6 +90,7 @@ namespace New_MasterTrade
             {
                 panelArchivo.Visible = true;
                 bttnArchivo.Image = Properties.Resources.FlechaArriba;
+                panelArchivo.Focus();
             }
             else
             {
@@ -119,11 +125,6 @@ namespace New_MasterTrade
                 panelMantenimiento.Visible = false;
                 bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
             }
-        }
-
-        private void SesionIniciada_Load(object sender, EventArgs e)
-        {
-            bttnPersonas_Click(null, e);
         }
     }
 }

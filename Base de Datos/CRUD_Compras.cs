@@ -105,12 +105,6 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
-            Create_Detalle(ID(), venta.Detalle, 2);
-        }
-
-        public void Create_Detalle(int venta, List<Detalle> detalle, int x)
-        {
-            
         }
 
         public DataTable Ventas()

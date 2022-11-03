@@ -27,6 +27,7 @@ namespace New_MasterTrade
             tablaPersonas.DataSource = null;
             comboTabla.Enabled = false;
             txtBuscar.Enabled = false;
+            CargarTabla();
             
         }
 
@@ -64,6 +65,10 @@ namespace New_MasterTrade
 
         private void bttnCargar_Click(object sender, EventArgs e)
         {
+                       
+        }
+        private void CargarTabla()
+        {
             if (crud.Tabla(comboTabla.Text).Rows.Count > 0)
             {
                 tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);
@@ -71,17 +76,12 @@ namespace New_MasterTrade
                 txtBuscar.Enabled = true;
                 txtBuscar.Focus();
             }
-            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);            
+            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void txtBuscar_KeyUp_1(object sender, KeyEventArgs e)
         {
             tablaPersonas.DataSource = crud.BuscarTabla(comboTabla.Text, txtBuscar.Text);
-        }
-
-        private void comboTabla_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            tablaPersonas.DataSource = crud.Tabla(comboTabla.Text.ToLower());
         }
 
         private void bttnAgregar_Click(object sender, EventArgs e)

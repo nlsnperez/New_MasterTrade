@@ -45,22 +45,50 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public void Update(Usuario user)
+        public void CrearVendedor(int user)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `usuarios` SET `usuario`=@usuario,`contrasegna`=@contrasegna,`nombre`=@nombre,`apellido`=@apellido,`nivel`=@nivel WHERE `id_usuario`= @Id";
+                    command.CommandText = "INSERT INTO `vendedor`(`id_user`) VALUES (@user)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@Id", MySqlDbType.Int32).Value = user.ID;
-                    command.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = user.UserName;
-                    command.Parameters.Add("@contrasegna", MySqlDbType.VarChar).Value = user.Contrasegna;
+                    command.Parameters.Add("@user", MySqlDbType.VarChar).Value = user;
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void Actualizar(Usuario user, int id)
+        {
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE `usuario` SET `user`=@user,`passwr`=@password,`doc_id`=@documento,`nombre`=@nombre,`nivel`=@nivel,`estatus`=@estatus WHERE `id`=@id";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                    command.Parameters.Add("@user", MySqlDbType.VarChar).Value = user.UserName;
+                    command.Parameters.Add("@password", MySqlDbType.VarChar).Value = user.Contrasegna;
+                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = user.Documento;
                     command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = user.Nombre;
-                    command.Parameters.Add("@nivel", MySqlDbType.VarChar).Value = user.Nivel;
+                    command.Parameters.Add("@nivel", MySqlDbType.Int32).Value = user.Nivel;
+                    command.Parameters.Add("@estatus", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
                     con.Close();
@@ -98,6 +126,33 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return null;
+        }
+
+        public bool VendedorRegistrado(int id)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `vendedor` WHERE `id_user` = '"+id+"'", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (!reader.HasRows)
+                {
+                    reader.Close();
+                    con.Close();
+                    return false;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return true;
         }
 
         public DataTable BuscarTabla(string filtro)
@@ -156,15 +211,15 @@ namespace New_MasterTrade.Base_de_Datos
 
         public DataTable UsuarioDatos(string id)
         {
-            DataTable categorias = new DataTable();
+            DataTable usuario = new DataTable();
             String sql = "SELECT * FROM `usuario` WHERE `id` = '"+id+"'";
             con.Open();
             try
             {
                 MySqlCommand comando = new MySqlCommand(sql, con);
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(categorias);
-                return categorias;
+                adaptador.Fill(usuario);
+                return usuario;
             }
             catch (MySqlException ex)
             {
@@ -174,7 +229,30 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
-            return categorias;
+            return usuario;
+        }
+
+        public int GetId()
+        {
+            int x = 0;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` ORDER BY id DESC", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = reader.GetInt32(0);
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
         }
     }
 }

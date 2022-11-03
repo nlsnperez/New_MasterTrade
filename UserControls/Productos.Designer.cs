@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.tablaProductos = new System.Windows.Forms.DataGridView();
-            this.bttnAgregar = new System.Windows.Forms.Button();
-            this.bttnCargar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +39,9 @@
             this.columnPVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnImagen = new System.Windows.Forms.DataGridViewImageColumn();
             this.columnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.bttnAgregar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,50 +74,6 @@
             this.tablaProductos.Size = new System.Drawing.Size(858, 494);
             this.tablaProductos.TabIndex = 0;
             this.tablaProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProductos_CellClick);
-            // 
-            // bttnAgregar
-            // 
-            this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnAgregar.Location = new System.Drawing.Point(12, 510);
-            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnAgregar.Name = "bttnAgregar";
-            this.bttnAgregar.Size = new System.Drawing.Size(85, 24);
-            this.bttnAgregar.TabIndex = 33;
-            this.bttnAgregar.Text = "REGISTRAR";
-            this.bttnAgregar.UseVisualStyleBackColor = true;
-            this.bttnAgregar.Click += new System.EventHandler(this.bttnAgregar_Click);
-            // 
-            // bttnCargar
-            // 
-            this.bttnCargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCargar.Location = new System.Drawing.Point(101, 510);
-            this.bttnCargar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnCargar.Name = "bttnCargar";
-            this.bttnCargar.Size = new System.Drawing.Size(85, 24);
-            this.bttnCargar.TabIndex = 34;
-            this.bttnCargar.Text = "CARGAR";
-            this.bttnCargar.UseVisualStyleBackColor = true;
-            this.bttnCargar.Click += new System.EventHandler(this.bttnCargar_Click);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 36;
-            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(597, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "BUSCAR: ";
             // 
             // columnId
             // 
@@ -204,17 +159,48 @@
             this.columnEliminar.Text = "DETALLES";
             this.columnEliminar.UseColumnTextForButtonValue = true;
             // 
-            // ResgistrosProductos_Prototipo
+            // bttnAgregar
+            // 
+            this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAgregar.Location = new System.Drawing.Point(12, 510);
+            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAgregar.Name = "bttnAgregar";
+            this.bttnAgregar.Size = new System.Drawing.Size(85, 24);
+            this.bttnAgregar.TabIndex = 33;
+            this.bttnAgregar.Text = "REGISTRAR";
+            this.bttnAgregar.UseVisualStyleBackColor = true;
+            this.bttnAgregar.Click += new System.EventHandler(this.bttnAgregar_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
+            this.txtBuscar.TabIndex = 36;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(597, 516);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "BUSCAR: ";
+            // 
+            // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.bttnCargar);
             this.Controls.Add(this.bttnAgregar);
             this.Controls.Add(this.tablaProductos);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "ResgistrosProductos_Prototipo";
+            this.Name = "Productos";
             this.Size = new System.Drawing.Size(858, 551);
             this.Load += new System.EventHandler(this.ResgistrosProductos_Prototipo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).EndInit();
@@ -227,7 +213,6 @@
 
         private System.Windows.Forms.DataGridView tablaProductos;
         private System.Windows.Forms.Button bttnAgregar;
-        private System.Windows.Forms.Button bttnCargar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnId;
