@@ -1,5 +1,6 @@
 ﻿using New_MasterTrade.Base_de_Datos;
 using New_MasterTrade.Cache;
+using New_MasterTrade.Custom_Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +46,17 @@ namespace New_MasterTrade
         private void bttnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form x = new Form();
+            RecuperarContrasegna y = new RecuperarContrasegna();
+            x.Controls.Add(y);
+            x.Size = y.Size;
+            x.FormBorderStyle = FormBorderStyle.None;
+            x.StartPosition = FormStartPosition.CenterScreen;
+            x.ShowDialog();
         }
     }
 }

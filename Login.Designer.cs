@@ -31,17 +31,18 @@ namespace New_MasterTrade
         {
             this.bttnLogin = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.bttnSalir = new System.Windows.Forms.Button();
             this.bttnMinimizar = new System.Windows.Forms.Button();
+            this.bttnSalir = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -52,7 +53,7 @@ namespace New_MasterTrade
             // 
             this.bttnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnLogin.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnLogin.Location = new System.Drawing.Point(162, 163);
+            this.bttnLogin.Location = new System.Drawing.Point(164, 133);
             this.bttnLogin.Name = "bttnLogin";
             this.bttnLogin.Size = new System.Drawing.Size(105, 23);
             this.bttnLogin.TabIndex = 5;
@@ -71,50 +72,6 @@ namespace New_MasterTrade
             this.panel1.Size = new System.Drawing.Size(200, 200);
             this.panel1.TabIndex = 9;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 76);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "USUARIO";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 120);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(81, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "CONTRASEÑA";
-            // 
-            // txtUser
-            // 
-            this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUser.Location = new System.Drawing.Point(120, 73);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(259, 20);
-            this.txtUser.TabIndex = 12;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPassword.Location = new System.Drawing.Point(120, 118);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(259, 20);
-            this.txtPassword.TabIndex = 13;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::New_MasterTrade.Properties.Resources.MasterTradeLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(50, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -126,8 +83,53 @@ namespace New_MasterTrade
             this.label2.Text = "INVERSIONES\r\nMASTERTRADE C.A.\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::New_MasterTrade.Properties.Resources.MasterTradeLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(50, 25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 67);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "USUARIO";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 102);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "CONTRASEÑA";
+            // 
+            // txtUser
+            // 
+            this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUser.Location = new System.Drawing.Point(120, 63);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(259, 20);
+            this.txtUser.TabIndex = 12;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassword.Location = new System.Drawing.Point(120, 98);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(259, 20);
+            this.txtPassword.TabIndex = 13;
+            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.bttnLogin);
@@ -141,17 +143,6 @@ namespace New_MasterTrade
             this.panel2.Size = new System.Drawing.Size(400, 200);
             this.panel2.TabIndex = 14;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(191, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 17);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "LOGIN";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -162,6 +153,18 @@ namespace New_MasterTrade
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(400, 25);
             this.panel3.TabIndex = 16;
+            // 
+            // bttnMinimizar
+            // 
+            this.bttnMinimizar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bttnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnMinimizar.Location = new System.Drawing.Point(356, 2);
+            this.bttnMinimizar.Name = "bttnMinimizar";
+            this.bttnMinimizar.Size = new System.Drawing.Size(20, 20);
+            this.bttnMinimizar.TabIndex = 1;
+            this.bttnMinimizar.Text = "-";
+            this.bttnMinimizar.UseVisualStyleBackColor = false;
+            this.bttnMinimizar.Click += new System.EventHandler(this.bttnMinimizar_Click);
             // 
             // bttnSalir
             // 
@@ -175,17 +178,30 @@ namespace New_MasterTrade
             this.bttnSalir.UseVisualStyleBackColor = false;
             this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
             // 
-            // bttnMinimizar
+            // label1
             // 
-            this.bttnMinimizar.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.bttnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnMinimizar.Location = new System.Drawing.Point(356, 2);
-            this.bttnMinimizar.Name = "bttnMinimizar";
-            this.bttnMinimizar.Size = new System.Drawing.Size(20, 20);
-            this.bttnMinimizar.TabIndex = 1;
-            this.bttnMinimizar.Text = "-";
-            this.bttnMinimizar.UseVisualStyleBackColor = false;
-            this.bttnMinimizar.Click += new System.EventHandler(this.bttnMinimizar_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(191, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "LOGIN";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.White;
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel1.Location = new System.Drawing.Point(142, 171);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(149, 13);
+            this.linkLabel1.TabIndex = 17;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "¿Has olvidado tu contraseña?";
+            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Login
             // 
@@ -222,6 +238,7 @@ namespace New_MasterTrade
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button bttnSalir;
         private System.Windows.Forms.Button bttnMinimizar;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

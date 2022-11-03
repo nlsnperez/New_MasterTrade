@@ -110,6 +110,12 @@
     <Compile Include="Custom Controls\Confirmar.Designer.cs">
       <DependentUpon>Confirmar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Custom Controls\RecuperarContraseña.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\RecuperarContraseña.Designer.cs">
+      <DependentUpon>RecuperarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="Custom Controls\RegistroVenta.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +151,8 @@
     <Compile Include="Objetos\Detalle.cs" />
     <Compile Include="Objetos\Persona.cs" />
     <Compile Include="Objetos\Venta.cs" />
+    <Compile Include="Servicios de Correo\ServidorCorreoMaestro.cs" />
+    <Compile Include="Servicios de Correo\SistemaSoporteCorreo.cs" />
     <Compile Include="UserControls\Comprar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -218,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\Confirmar.resx">
       <DependentUpon>Confirmar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Controls\RecuperarContraseña.resx">
+      <DependentUpon>RecuperarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\RegistroVenta.resx">
       <DependentUpon>RegistroVenta.cs</DependentUpon>

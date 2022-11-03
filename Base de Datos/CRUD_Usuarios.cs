@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using New_MasterTrade.Cache;
 using New_MasterTrade.Objetos;
+using New_MasterTrade.Servicios_de_Correo;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -207,6 +208,43 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return true;
+        }
+
+        public void RecuperarContrasegna(string parametro)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `usr_usu` = '"+ parametro + "' OR `cor_usu` = '"+ parametro + "'", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    string contrasegna = reader.GetString(2);
+                    string nombre = reader.GetString(3);
+                    string correo = reader.GetString(4);
+
+                    SistemaSoporteCorreo servicioCorreo = new SistemaSoporteCorreo();
+                    servicioCorreo.EnviarCorreo(asunto: "SOLICITUD PARA RECUPERAR CONTRASEÑA",
+                                                cuerpo: "¡Hola! "+nombre+".\n\nRecibimos tu solicitud para recuperar tu contraseña. Tu actual contraseña es: "+contrasegna+"\nPor favor cambia tu contraseña al ingresar de nuevo en el sistema.\n\nInversiones MasterTrade C. A.",
+                                                destinatario: correo);
+
+                    MessageBox.Show("Solicitud recibida, por favor revise su correo electrónico.", "¡Solicitud recibida!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No existe una cuenta registrada con los datos suministrados", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public DataTable UsuarioDatos(string id)
