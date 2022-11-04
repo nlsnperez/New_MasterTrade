@@ -33,8 +33,32 @@ namespace New_MasterTrade.Custom_Controls
             }
             else
             {
-                crud.RecuperarContrasegna(txtParametro.Text);
-                this.ParentForm.Close();
+                if (!crud.RecuperarContrasegna(txtParametro.Text))
+                {
+                    MessageBox.Show("No hay un usuario registrado con los datos suministrados", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    this.ParentForm.Close();
+                }                
+            }
+        }
+
+        private void txtParametro_Enter(object sender, EventArgs e)
+        {
+            if (txtParametro.Text == "Usuario o correo electrónico")
+            {
+                txtParametro.ForeColor = Color.Black;
+                txtParametro.Text = "";
+            }
+        }
+
+        private void txtParametro_Leave(object sender, EventArgs e)
+        {
+            if (txtParametro.Text == "")
+            {
+                txtParametro.ForeColor = SystemColors.InactiveCaptionText;
+                txtParametro.Text = "Usuario o correo electrónico";
             }
         }
     }

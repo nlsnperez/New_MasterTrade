@@ -210,7 +210,7 @@ namespace New_MasterTrade.Base_de_Datos
             return true;
         }
 
-        public void RecuperarContrasegna(string parametro)
+        public bool RecuperarContrasegna(string parametro)
         {
             try
             {
@@ -230,10 +230,9 @@ namespace New_MasterTrade.Base_de_Datos
                                                 destinatario: correo);
 
                     MessageBox.Show("Solicitud recibida, por favor revise su correo electrónico.", "¡Solicitud recibida!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("No existe una cuenta registrada con los datos suministrados", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    reader.Close();
+                    con.Close();
+                    return true;
                 }
                 reader.Close();
             }
@@ -245,6 +244,7 @@ namespace New_MasterTrade.Base_de_Datos
             {
                 con.Close();
             }
+            return false;
         }
 
         public DataTable UsuarioDatos(string id)

@@ -10,8 +10,8 @@ namespace New_MasterTrade.Servicios_de_Correo
     {
         public SistemaSoporteCorreo()
         {
-            Remitente = "sagitario20120@gmail.com";
-            Contrasegna = "whoedqanieopdojs";
+            Remitente = "noreply.mastertrade@gmail.com";
+            Contrasegna = "lsvjwgsajwlcjkta";
             Servidor = "smtp.gmail.com";
             Puerto = 587;
             ssl = true;

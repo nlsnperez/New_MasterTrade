@@ -99,5 +99,15 @@ namespace New_MasterTrade.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RecuperarContrasegna {
+            get {
+                object obj = ResourceManager.GetObject("RecuperarContrasegna", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
