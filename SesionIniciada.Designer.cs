@@ -29,7 +29,6 @@ namespace New_MasterTrade
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SesionIniciada));
             this.panelPapa = new System.Windows.Forms.Panel();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
@@ -54,8 +53,6 @@ namespace New_MasterTrade
             this.bttnMantenimiento = new System.Windows.Forms.Button();
             this.bttnReportes = new System.Windows.Forms.Button();
             this.bttnArchivo = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panelPapa.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
             this.panelTransacciones.SuspendLayout();
@@ -117,6 +114,7 @@ namespace New_MasterTrade
             this.bttnBitacora.TabIndex = 20;
             this.bttnBitacora.Text = "BITACORA";
             this.bttnBitacora.UseVisualStyleBackColor = false;
+            this.bttnBitacora.Click += new System.EventHandler(this.bttnBitacora_Click);
             // 
             // bttnUsuarios
             // 
@@ -146,6 +144,7 @@ namespace New_MasterTrade
             this.bttnAjustes.TabIndex = 18;
             this.bttnAjustes.Text = "IMPUESTOS \r\nTASA DOLAR\r\n";
             this.bttnAjustes.UseVisualStyleBackColor = false;
+            this.bttnAjustes.Click += new System.EventHandler(this.bttnAjustes_Click);
             // 
             // panelTransacciones
             // 
@@ -171,6 +170,7 @@ namespace New_MasterTrade
             this.bttnVender.TabIndex = 9;
             this.bttnVender.Text = "VENDER";
             this.bttnVender.UseVisualStyleBackColor = false;
+            this.bttnVender.Click += new System.EventHandler(this.bttnVender_Click);
             // 
             // bttnComprar
             // 
@@ -215,6 +215,7 @@ namespace New_MasterTrade
             this.bttnVentas.TabIndex = 17;
             this.bttnVentas.Text = "VENTAS";
             this.bttnVentas.UseVisualStyleBackColor = false;
+            this.bttnVentas.Click += new System.EventHandler(this.bttnVentas_Click);
             // 
             // bttnCompras
             // 
@@ -229,6 +230,7 @@ namespace New_MasterTrade
             this.bttnCompras.TabIndex = 16;
             this.bttnCompras.Text = "COMPRAS";
             this.bttnCompras.UseVisualStyleBackColor = false;
+            this.bttnCompras.Click += new System.EventHandler(this.bttnCompras_Click);
             // 
             // bttnPersonas
             // 
@@ -400,14 +402,6 @@ namespace New_MasterTrade
             this.bttnArchivo.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
             this.bttnArchivo.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 15;
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 15;
-            // 
             // SesionIniciada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,7 +433,6 @@ namespace New_MasterTrade
         private System.Windows.Forms.Button bttnProductos;
         private System.Windows.Forms.Button bttnPersonas;
         private System.Windows.Forms.Panel panelArchivo;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button bttnVender;
         private System.Windows.Forms.Button bttnArchivo;
         private System.Windows.Forms.Button bttnComprar;
@@ -449,7 +442,6 @@ namespace New_MasterTrade
         private System.Windows.Forms.Panel panelMantenimiento;
         private System.Windows.Forms.Button bttnUsuarios;
         private System.Windows.Forms.Button bttnAjustes;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Panel panelTransacciones;
         private System.Windows.Forms.Button bttnTransacciones;
         private System.Windows.Forms.Button bttnVentas;

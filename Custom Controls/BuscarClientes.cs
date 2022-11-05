@@ -9,45 +9,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace New_MasterTrade.UserControls
+namespace New_MasterTrade.Custom_Controls
 {
-    public partial class BuscarPersonas : UserControl
+    public partial class BuscarClientes : UserControl
     {
         public string x { get; set; }
-        CRUDProveedores crud;
+        CRUD_Clientes crud;
 
-        public BuscarPersonas(int y)
+        public BuscarClientes()
         {
             InitializeComponent();
-            Config(y);
-            txtBuscar.Focus();
+            Config();
         }
 
-        public void Config(int y)
+        public void Config()
         {
-            crud = new CRUDProveedores();
+            crud = new CRUD_Clientes();
             this.x = "";
-            comboTabla.Enabled = false;
-            FillComboBoxes();
-            comboTabla.SelectedIndex = y - 1;
-            if (crud.Tabla(comboTabla.Text).Rows.Count > 0)
+            if (crud.Tabla().Rows.Count > 0)
             {
-                tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);
+                tablaPersonas.AutoGenerateColumns = false;
+                tablaPersonas.DataSource = crud.Tabla();
                 tablaPersonas.ClearSelection();
             }
             else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                     
-        }
 
-        public void FillComboBoxes()
-        {
-            comboTabla.Items.Add("PROVEEDOR");
-            comboTabla.Items.Add("CLIENTE");            
         }
 
         private void tablaPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 6)
             {
                 this.x = tablaPersonas.Rows[e.RowIndex].Cells[2].Value.ToString();
                 this.ParentForm.Close();
@@ -56,7 +47,7 @@ namespace New_MasterTrade.UserControls
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-            tablaPersonas.DataSource = crud.BuscarTabla(comboTabla.Text, txtBuscar.Text);
+            tablaPersonas.DataSource = crud.BuscarTabla(txtBuscar.Text);
         }
     }
 }

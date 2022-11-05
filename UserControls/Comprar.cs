@@ -12,7 +12,7 @@ namespace New_MasterTrade.UserControls
     public partial class Comprar : UserControl
     {
         CRUD_Compras crud;
-        CRUDPersonas personas;
+        CRUDProveedores personas;
         DataTable carrito = new DataTable();
         int IdCompra = 0;
         int IdProveedor = 0;
@@ -30,7 +30,7 @@ namespace New_MasterTrade.UserControls
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
         {
             crud = new CRUD_Compras();
-            personas = new CRUDPersonas();
+            personas = new CRUDProveedores();
             tableCarrito.AutoGenerateColumns = false;
             ConfigControles("OFF");
             ConfigCarrito();
@@ -142,8 +142,8 @@ namespace New_MasterTrade.UserControls
         public void ConfigCombo()
         {
             comboImpuesto.DataSource = crud.Impuestos();
-            comboImpuesto.ValueMember = "id";
-            comboImpuesto.DisplayMember = "porc";
+            comboImpuesto.ValueMember = "id_imp";
+            comboImpuesto.DisplayMember = "por_imp";
 
             CalcPorcentaje();
         }
@@ -284,7 +284,7 @@ namespace New_MasterTrade.UserControls
         private void bttnBuscarProductos_Click(object sender, EventArgs e)
         {
             Form x = new Form();
-            BuscarProductos y = new BuscarProductos(this);
+            BuscarProductos y = new BuscarProductos(this, null);
             x.StartPosition = FormStartPosition.CenterScreen;
             x.Size = new Size(y.Width + 15, y.Height + 30);
             x.Controls.Add(y);

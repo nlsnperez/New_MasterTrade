@@ -14,7 +14,9 @@ namespace New_MasterTrade.UserControls
 {
     public partial class FormularioPersonas : UserControl
     {
-        CRUDPersonas crud;
+        CRUDProveedores crud;
+        CRUD_Clientes crud2;
+
         public FormularioPersonas()
         {
             InitializeComponent();
@@ -23,7 +25,8 @@ namespace New_MasterTrade.UserControls
 
         public void Config()
         {
-            crud = new CRUDPersonas();
+            crud = new CRUDProveedores();
+            crud2 = new CRUD_Clientes();
             comboOcupacion.Focus();
             ConfigLongitud();
             ConfigCombos();
@@ -130,8 +133,16 @@ namespace New_MasterTrade.UserControls
                         {
                             if (MessageBox.Show("¿Desea registrar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                crud.Create(GetPersona(), comboOcupacion.Text);
-                                Limpiar();
+                                if (comboOcupacion.SelectedIndex == 0)
+                                {
+                                    crud2.Create(GetPersona());
+                                    Limpiar();
+                                }
+                                else
+                                {
+                                    crud.Create(GetPersona(), comboOcupacion.Text);
+                                    Limpiar();
+                                }                                
                             }
                         }
                     }

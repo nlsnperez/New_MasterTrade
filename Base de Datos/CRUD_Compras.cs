@@ -77,36 +77,6 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public void Create_Venta(Venta venta)
-        {
-            try
-            {
-                con.Open();
-                using (MySqlCommand command = new MySqlCommand())
-                {
-                    command.CommandText = "INSERT INTO `ventas`(`numero_control`, `cliente`, `metodo_pago`, `visible`, `fecha_registro`, `fecha_eliminado`) VALUES (@numerocontrol,@cliente,@metodopago,@visible,@fregistro,@feliminado)";
-                    command.CommandType = CommandType.Text;
-                    command.Connection = con;
-
-                    command.Parameters.Add("@numerocontrol", MySqlDbType.VarChar).Value = venta.Numero_Control;
-                    command.Parameters.Add("@cliente", MySqlDbType.Int32).Value = venta.Cliente;
-                    command.Parameters.Add("@metodopago", MySqlDbType.Int32).Value = venta.MetodoPago;
-                    command.Parameters.Add("@visible", MySqlDbType.Int32).Value = 1;
-                    command.Parameters.Add("@fregistro", MySqlDbType.DateTime).Value = System.DateTime.Now;
-                    command.Parameters.Add("@feliminado", MySqlDbType.DateTime).Value = null;
-                    command.ExecuteNonQuery();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
-
         public DataTable Ventas()
         {
             string comando = "SELECT `id`, `numero_control`, `cliente`, `metodo_pago`, `visible`, DATE_FORMAT(`fecha_registro`,'%d/%m/%Y') AS fecha_registro, `fecha_eliminado` FROM `ventas` ORDER BY `ventas`.`fecha_registro` DESC";
@@ -317,33 +287,6 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return x;
-        }
-
-        public Venta GetVenta(int id)
-        {
-            Venta venta = new Venta(); 
-            try
-            {
-                MySqlCommand command = new MySqlCommand("SELECT v.id, v.numero_control, v.fecha_registro, c.razon_social, mp.descripcion FROM ventas v INNER JOIN clientes c ON v.cliente = c.id INNER JOIN metodos_pago mp ON v.metodo_pago = mp.id WHERE v.id = "+id.ToString(), con);
-                con.Open();
-                MySqlDataReader reader = command.ExecuteReader();
-                reader.Read();
-                venta.Id = Int32.Parse(reader["id"].ToString());
-                venta.Numero_Control = reader["numero_control"].ToString();
-                venta.FechaRegistro = DateTime.Parse(reader["fecha_registro"].ToString());
-                venta.ClienteNombre = reader["razon_social"].ToString();
-                venta.MetodoPagoDescripcion = reader["descripcion"].ToString();
-                reader.Close();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                con.Close();
-            }
-            return venta;
         }
 
         public DataTable GetDetalle(int id)

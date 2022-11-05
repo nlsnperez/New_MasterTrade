@@ -11,7 +11,7 @@ namespace New_MasterTrade
 {
     public partial class Personas : UserControl
     {
-        private CRUDPersonas crud;
+        private CRUDProveedores crud;
         bool IsCollapsed;
         public Personas()
         {
@@ -21,7 +21,7 @@ namespace New_MasterTrade
 
         public void Config()
         {
-            crud = new CRUDPersonas();
+            crud = new CRUDProveedores();
             FillComboBoxes();
             tablaPersonas.AutoGenerateColumns = false;
             tablaPersonas.DataSource = null;

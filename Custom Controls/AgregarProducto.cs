@@ -14,11 +14,13 @@ namespace New_MasterTrade.Custom_Controls
     public partial class AgregarProducto : UserControl
     {
         private Comprar Compra;
-        public AgregarProducto(Comprar compra)
+        private Vender Venta;
+        public AgregarProducto(Comprar compra, Vender venta)
         {
             InitializeComponent();
             Config();
             this.Compra = compra;
+            this.Venta = venta;
         }
 
         public void Config()
@@ -36,7 +38,11 @@ namespace New_MasterTrade.Custom_Controls
             txtSerial.Text = producto[1];
             txtDescripcion.Text = producto[2];
             txtCantidad.Text = producto[3];
-            txtPrecio.Text = producto[4];
+            if (Venta == null)
+            {
+                txtPrecio.Text = producto[4];
+            }else txtPrecio.Text = producto[5];
+
         }
 
         private void txtCantidad_Enter(object sender, EventArgs e)
@@ -59,7 +65,14 @@ namespace New_MasterTrade.Custom_Controls
         {
             decimal x = decimal.Parse(txtPrecio.Text) * decimal.Parse(txtCantidad.Text);
             string[] producto = {txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString()};
-            Compra.AddProduct(producto);
+            if (Venta == null)
+            {
+                Compra.AddProduct(producto);
+            }
+            else
+            {
+                Venta.AddProduct(producto);
+            }
             this.ParentForm.Close();
         }
 

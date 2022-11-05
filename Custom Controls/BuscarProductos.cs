@@ -16,13 +16,14 @@ namespace New_MasterTrade.Objetos
     public partial class BuscarProductos : UserControl
     {
         private Comprar Compra;
+        private Vender Venta;
         CRUD_Productos crud;
-        DataTable carrito = new DataTable();
 
-        public BuscarProductos(Comprar compra)
+        public BuscarProductos(Comprar compra, Vender venta)
         {
             InitializeComponent();
             this.Compra = compra;
+            this.Venta = venta;
             txtBuscar.Focus();
         }
 
@@ -44,16 +45,17 @@ namespace New_MasterTrade.Objetos
 
         private void tablaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 8)
             {
                 string[] producto = {tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString(),
                                      tablaProductos.Rows[e.RowIndex].Cells[4].Value.ToString(),
                                      tablaProductos.Rows[e.RowIndex].Cells[5].Value.ToString(),
                                      Convert.ToString(1),
-                                     tablaProductos.Rows[e.RowIndex].Cells[6].Value.ToString()};
+                                     tablaProductos.Rows[e.RowIndex].Cells[6].Value.ToString(),
+                                     tablaProductos.Rows[e.RowIndex].Cells[7].Value.ToString()};
 
                 Form x = new Form();
-                AgregarProducto y = new AgregarProducto(Compra);
+                AgregarProducto y = new AgregarProducto(Compra, Venta);
                 y.SetTexts(producto);
                 x.Size = new Size(y.Width, y.Height);
                 x.Controls.Add(y);

@@ -9,25 +9,25 @@ namespace New_MasterTrade.Objetos
     public class Venta
     {
         public int Id { get; set; }
-        public string Numero_Control { get; set; }
+        public string NumeroOrden { get; set; }
         public int Cliente { get; set; }
-        public string ClienteNombre { get; set; }
-        public int MetodoPago { get; set; }
-        public string MetodoPagoDescripcion { get; set; }
-        public DateTime FechaRegistro { get; set; }
-        public List<Detalle> Detalle { get; set; }
+        public DateTime Fecha { get; set; }
 
-        public Venta(string numero_Control, int cliente, int metodoPago, DateTime fechaRegistro, List<Detalle> detalle)
+        public Venta(int id, string numeroOrden, int cliente, DateTime fecha)
         {
-            Numero_Control = numero_Control;
+            Id = id;
+            NumeroOrden = numeroOrden;
             Cliente = cliente;
-            MetodoPago = metodoPago;
-            FechaRegistro = fechaRegistro;
-            Detalle = detalle;
+            Fecha = fecha;
         }
 
-        public Venta()
+        public bool IsEmpty()
         {
+            if (this.Id == 0 || this.Cliente == 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

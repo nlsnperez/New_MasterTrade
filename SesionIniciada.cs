@@ -67,21 +67,25 @@ namespace New_MasterTrade
         private void bttnProductos_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Productos());
+            panelArchivo.Visible = false;
         }
 
         private void bttnComprar_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Comprar());
+            panelTransacciones.Visible = false;
         }
 
         private void bttnPersonas_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Personas());
+            panelArchivo.Visible = false;
         }
 
         private void bttnUsuarios_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Usuarios());
+            panelMantenimiento.Visible = false;
         }
 
         private void bttnArchivo_Click(object sender, EventArgs e)
@@ -89,6 +93,8 @@ namespace New_MasterTrade
             if (panelArchivo.Visible == false)
             {
                 panelArchivo.Visible = true;
+                panelTransacciones.Visible = false;
+                panelMantenimiento.Visible = false;
                 bttnArchivo.Image = Properties.Resources.FlechaArriba;
                 panelArchivo.Focus();
             }
@@ -104,6 +110,8 @@ namespace New_MasterTrade
             if (panelTransacciones.Visible == false)
             {
                 panelTransacciones.Visible = true;
+                panelArchivo.Visible = false;
+                panelMantenimiento.Visible = false;
                 bttnTransacciones.Image = Properties.Resources.FlechaArriba;
             }
             else
@@ -118,6 +126,8 @@ namespace New_MasterTrade
             if (panelMantenimiento.Visible == false)
             {
                 panelMantenimiento.Visible = true;
+                panelTransacciones.Visible = false;
+                panelArchivo.Visible = false;
                 bttnMantenimiento.Image = Properties.Resources.FlechaArriba;
             }
             else
@@ -125,6 +135,32 @@ namespace New_MasterTrade
                 panelMantenimiento.Visible = false;
                 bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
             }
+        }
+
+        private void bttnVender_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new Vender());
+            panelTransacciones.Visible = false;
+        }
+
+        private void bttnCompras_Click(object sender, EventArgs e)
+        {
+            panelArchivo.Visible = false;
+        }
+
+        private void bttnVentas_Click(object sender, EventArgs e)
+        {
+            panelArchivo.Visible = false;
+        }
+
+        private void bttnBitacora_Click(object sender, EventArgs e)
+        {
+            panelMantenimiento.Visible = false;
+        }
+
+        private void bttnAjustes_Click(object sender, EventArgs e)
+        {
+            panelMantenimiento.Visible = false;
         }
     }
 }

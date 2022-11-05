@@ -77,9 +77,9 @@ namespace New_MasterTrade.Custom_Controls
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(448, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 26);
+            this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 50;
-            this.label3.Text = "P. VENTA\r\n(Bs)";
+            this.label3.Text = "Precio (Bs)";
             // 
             // label4
             // 

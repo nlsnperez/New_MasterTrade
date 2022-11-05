@@ -32,6 +32,8 @@ namespace New_MasterTrade.Objetos
             this.components = new System.ComponentModel.Container();
             this.timerFade = new System.Windows.Forms.Timer(this.components);
             this.tablaProductos = new System.Windows.Forms.DataGridView();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,9 +41,8 @@ namespace New_MasterTrade.Objetos
             this.columnSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columPCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +65,7 @@ namespace New_MasterTrade.Objetos
             this.columnSerial,
             this.columnDescripcion,
             this.columPCompra,
+            this.columnPrecioVenta,
             this.columnEliminar});
             this.tablaProductos.Dock = System.Windows.Forms.DockStyle.Top;
             this.tablaProductos.Location = new System.Drawing.Point(0, 0);
@@ -77,10 +79,30 @@ namespace New_MasterTrade.Objetos
             this.tablaProductos.TabIndex = 21;
             this.tablaProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProductos_CellClick);
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
+            this.txtBuscar.TabIndex = 38;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(600, 516);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "BUSCAR: ";
+            // 
             // columnId
             // 
             this.columnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnId.DataPropertyName = "id";
+            this.columnId.DataPropertyName = "id_pro";
             this.columnId.HeaderText = "ID";
             this.columnId.Name = "columnId";
             this.columnId.ReadOnly = true;
@@ -111,7 +133,7 @@ namespace New_MasterTrade.Objetos
             // columnSerial
             // 
             this.columnSerial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnSerial.DataPropertyName = "serial";
+            this.columnSerial.DataPropertyName = "ser_pro";
             this.columnSerial.HeaderText = "Serial";
             this.columnSerial.Name = "columnSerial";
             this.columnSerial.ReadOnly = true;
@@ -119,7 +141,7 @@ namespace New_MasterTrade.Objetos
             // columnDescripcion
             // 
             this.columnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDescripcion.DataPropertyName = "descr";
+            this.columnDescripcion.DataPropertyName = "des_pro";
             this.columnDescripcion.HeaderText = "Descripción";
             this.columnDescripcion.Name = "columnDescripcion";
             this.columnDescripcion.ReadOnly = true;
@@ -127,10 +149,18 @@ namespace New_MasterTrade.Objetos
             // columPCompra
             // 
             this.columPCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columPCompra.DataPropertyName = "p_com";
+            this.columPCompra.DataPropertyName = "pco_pro";
             this.columPCompra.HeaderText = "P. Compra";
             this.columPCompra.Name = "columPCompra";
             this.columPCompra.ReadOnly = true;
+            // 
+            // columnPrecioVenta
+            // 
+            this.columnPrecioVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnPrecioVenta.DataPropertyName = "pve_pro";
+            this.columnPrecioVenta.HeaderText = "P. Venta";
+            this.columnPrecioVenta.Name = "columnPrecioVenta";
+            this.columnPrecioVenta.ReadOnly = true;
             // 
             // columnEliminar
             // 
@@ -141,26 +171,6 @@ namespace New_MasterTrade.Objetos
             this.columnEliminar.ReadOnly = true;
             this.columnEliminar.Text = "AGREGAR";
             this.columnEliminar.UseColumnTextForButtonValue = true;
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 38;
-            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(600, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "BUSCAR: ";
             // 
             // BuscarProductos
             // 
@@ -190,6 +200,7 @@ namespace New_MasterTrade.Objetos
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSerial;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn columPCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnPrecioVenta;
         private System.Windows.Forms.DataGridViewButtonColumn columnEliminar;
     }
 }
