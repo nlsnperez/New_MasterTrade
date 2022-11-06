@@ -30,10 +30,10 @@ namespace New_MasterTrade.UserControls
             comboTabla.Enabled = false;
             FillComboBoxes();
             comboTabla.SelectedIndex = y - 1;
-            if (crud.Tabla(comboTabla.Text).Rows.Count > 0)
+            if (crud.Tabla().Rows.Count > 0)
             {
                 tablaPersonas.AutoGenerateColumns = false;
-                tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);
+                tablaPersonas.DataSource = crud.Tabla();
                 tablaPersonas.ClearSelection();
             }
             else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -57,7 +57,7 @@ namespace New_MasterTrade.UserControls
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-            tablaPersonas.DataSource = crud.BuscarTabla(comboTabla.Text, txtBuscar.Text);
+            tablaPersonas.DataSource = crud.BuscarTabla(txtBuscar.Text);
         }
     }
 }

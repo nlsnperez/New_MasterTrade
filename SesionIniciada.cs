@@ -159,7 +159,7 @@ namespace New_MasterTrade
 
         private void bttnProveedores_Click(object sender, EventArgs e)
         {
-            MostrarUserControl(new Personas());
+            MostrarUserControl(new Proveedores());
             panelArchivo.Visible = false;
         }
     }

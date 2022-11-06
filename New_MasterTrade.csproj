@@ -176,11 +176,11 @@
     <Compile Include="UserControls\FormularioUsuarios.Designer.cs">
       <DependentUpon>FormularioUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Personas.cs">
+    <Compile Include="UserControls\Proveedores.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Personas.Designer.cs">
-      <DependentUpon>Personas.cs</DependentUpon>
+    <Compile Include="UserControls\Proveedores.Designer.cs">
+      <DependentUpon>Proveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\FormularioProductos.cs">
       <SubType>UserControl</SubType>
@@ -247,8 +247,8 @@
     <EmbeddedResource Include="UserControls\FormularioUsuarios.resx">
       <DependentUpon>FormularioUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Personas.resx">
-      <DependentUpon>Personas.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Proveedores.resx">
+      <DependentUpon>Proveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FormularioProductos.resx">
       <DependentUpon>FormularioProductos.cs</DependentUpon>

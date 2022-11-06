@@ -98,7 +98,7 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public DataTable Tabla(string tabla)
+        public DataTable Tabla()
         {
             try
             {
@@ -120,7 +120,7 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
-        public DataTable BuscarTabla(string tabla, string filtro)
+        public DataTable BuscarTabla(string filtro)
         {
             try
             {

@@ -9,11 +9,10 @@ using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace New_MasterTrade
 {
-    public partial class Personas : UserControl
+    public partial class Proveedores : UserControl
     {
         private CRUD_Proveedores crud;
-        bool IsCollapsed;
-        public Personas()
+        public Proveedores()
         {
             InitializeComponent();
             Config();
@@ -22,10 +21,8 @@ namespace New_MasterTrade
         public void Config()
         {
             crud = new CRUD_Proveedores();
-            FillComboBoxes();
             tablaPersonas.AutoGenerateColumns = false;
             tablaPersonas.DataSource = null;
-            comboTabla.Enabled = false;
             txtBuscar.Enabled = false;
             CargarTabla();
             
@@ -40,7 +37,7 @@ namespace New_MasterTrade
             {
                 Form x = new Form();
                 FormularioPersonas y = new FormularioPersonas();
-                y.OpenProveedor(comboTabla.Text, tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString());
+                //y.OpenProveedor(comboTabla.Text, tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString());
                 x.Controls.Add(y);
                 x.Size = new Size(y.Width + 30, y.Height + 40);                
                 x.StartPosition = FormStartPosition.CenterScreen;
@@ -52,12 +49,7 @@ namespace New_MasterTrade
         //CONFIGURACIÓN///
 
         
-        public void FillComboBoxes()
-        {
-            comboTabla.Items.Add("CLIENTE");
-            comboTabla.Items.Add("PROVEEDOR");
-            comboTabla.SelectedIndex = 0;
-        }
+        
 
         //CONFIGURACIÓN///
 
@@ -69,11 +61,9 @@ namespace New_MasterTrade
         }
         private void CargarTabla()
         {
-            if (crud.Tabla(comboTabla.Text).Rows.Count > 0)
+            if (crud.Tabla().Rows.Count > 0)
             {
-                tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);
-                comboTabla.Enabled = true;
-                txtBuscar.Enabled = true;
+                tablaPersonas.DataSource = crud.Tabla();
                 txtBuscar.Focus();
             }
             else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -81,7 +71,7 @@ namespace New_MasterTrade
 
         private void txtBuscar_KeyUp_1(object sender, KeyEventArgs e)
         {
-            tablaPersonas.DataSource = crud.BuscarTabla(comboTabla.Text, txtBuscar.Text);
+            tablaPersonas.DataSource = crud.BuscarTabla(txtBuscar.Text);
         }
 
         private void bttnAgregar_Click(object sender, EventArgs e)
@@ -93,12 +83,6 @@ namespace New_MasterTrade
             x.StartPosition = FormStartPosition.CenterScreen;
             x.ShowDialog();
         }
-
-        private void comboTabla_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
         //TABLA//
     }
 }
