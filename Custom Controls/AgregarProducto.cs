@@ -1,4 +1,5 @@
-﻿using New_MasterTrade.UserControls;
+﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,13 @@ namespace New_MasterTrade.Custom_Controls
     {
         private Comprar Compra;
         private Vender Venta;
+        CRUD_Ventas crud;
+        int CantMax = 0;
         public AgregarProducto(Comprar compra, Vender venta)
         {
             InitializeComponent();
             Config();
+            crud = new CRUD_Ventas();
             this.Compra = compra;
             this.Venta = venta;
         }
@@ -35,6 +39,7 @@ namespace New_MasterTrade.Custom_Controls
         public void SetTexts(string[] producto)
         {
             txtId.Text = producto[0];
+            if (Compra == null) CantMax = crud.CantidadMax(Int32.Parse(txtId.Text));
             txtSerial.Text = producto[1];
             txtDescripcion.Text = producto[2];
             txtCantidad.Text = producto[3];
@@ -63,15 +68,18 @@ namespace New_MasterTrade.Custom_Controls
 
         private void bttnAceptar_Click(object sender, EventArgs e)
         {
-            decimal x = decimal.Parse(txtPrecio.Text) * decimal.Parse(txtCantidad.Text);
-            string[] producto = {txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString()};
             if (Venta == null)
             {
+                decimal x = decimal.Parse(txtPrecio.Text) * decimal.Parse(txtCantidad.Text);
+                string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString()};
                 Compra.AddProduct(producto);
             }
             else
             {
-                Venta.AddProduct(producto);
+                if (Int32.Parse(txtCantidad.Text) > CantMax) txtCantidad.Text = CantMax.ToString();
+                decimal x = decimal.Parse(txtPrecio.Text) * decimal.Parse(txtCantidad.Text);
+                string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString()};
+                Venta.AddProduct(producto, CantMax);
             }
             this.ParentForm.Close();
         }

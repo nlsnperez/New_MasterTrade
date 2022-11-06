@@ -42,7 +42,7 @@ namespace New_MasterTrade
             this.panelArchivo = new System.Windows.Forms.Panel();
             this.bttnVentas = new System.Windows.Forms.Button();
             this.bttnCompras = new System.Windows.Forms.Button();
-            this.bttnPersonas = new System.Windows.Forms.Button();
+            this.bttnProveedores = new System.Windows.Forms.Button();
             this.bttnProductos = new System.Windows.Forms.Button();
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.bttnMinimizar = new System.Windows.Forms.Button();
@@ -193,7 +193,7 @@ namespace New_MasterTrade
             this.panelArchivo.BackColor = System.Drawing.Color.DimGray;
             this.panelArchivo.Controls.Add(this.bttnVentas);
             this.panelArchivo.Controls.Add(this.bttnCompras);
-            this.panelArchivo.Controls.Add(this.bttnPersonas);
+            this.panelArchivo.Controls.Add(this.bttnProveedores);
             this.panelArchivo.Controls.Add(this.bttnProductos);
             this.panelArchivo.Location = new System.Drawing.Point(100, 43);
             this.panelArchivo.MinimumSize = new System.Drawing.Size(160, 152);
@@ -232,20 +232,20 @@ namespace New_MasterTrade
             this.bttnCompras.UseVisualStyleBackColor = false;
             this.bttnCompras.Click += new System.EventHandler(this.bttnCompras_Click);
             // 
-            // bttnPersonas
+            // bttnProveedores
             // 
-            this.bttnPersonas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnPersonas.FlatAppearance.BorderSize = 0;
-            this.bttnPersonas.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
-            this.bttnPersonas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnPersonas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnPersonas.Location = new System.Drawing.Point(0, 0);
-            this.bttnPersonas.Name = "bttnPersonas";
-            this.bttnPersonas.Size = new System.Drawing.Size(160, 38);
-            this.bttnPersonas.TabIndex = 11;
-            this.bttnPersonas.Text = "CLIENTES Y\r\nPROVEEDORES";
-            this.bttnPersonas.UseVisualStyleBackColor = false;
-            this.bttnPersonas.Click += new System.EventHandler(this.bttnPersonas_Click);
+            this.bttnProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnProveedores.FlatAppearance.BorderSize = 0;
+            this.bttnProveedores.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.bttnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnProveedores.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnProveedores.Location = new System.Drawing.Point(0, 0);
+            this.bttnProveedores.Name = "bttnProveedores";
+            this.bttnProveedores.Size = new System.Drawing.Size(160, 38);
+            this.bttnProveedores.TabIndex = 11;
+            this.bttnProveedores.Text = "PROVEEDORES";
+            this.bttnProveedores.UseVisualStyleBackColor = false;
+            this.bttnProveedores.Click += new System.EventHandler(this.bttnProveedores_Click);
             // 
             // bttnProductos
             // 
@@ -431,7 +431,7 @@ namespace New_MasterTrade
         private System.Windows.Forms.Button bttnMinimizar;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button bttnProductos;
-        private System.Windows.Forms.Button bttnPersonas;
+        private System.Windows.Forms.Button bttnProveedores;
         private System.Windows.Forms.Panel panelArchivo;
         private System.Windows.Forms.Button bttnVender;
         private System.Windows.Forms.Button bttnArchivo;

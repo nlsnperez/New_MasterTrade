@@ -11,7 +11,7 @@ namespace New_MasterTrade
 {
     public partial class Personas : UserControl
     {
-        private CRUDProveedores crud;
+        private CRUD_Proveedores crud;
         bool IsCollapsed;
         public Personas()
         {
@@ -21,7 +21,7 @@ namespace New_MasterTrade
 
         public void Config()
         {
-            crud = new CRUDProveedores();
+            crud = new CRUD_Proveedores();
             FillComboBoxes();
             tablaPersonas.AutoGenerateColumns = false;
             tablaPersonas.DataSource = null;
@@ -40,7 +40,7 @@ namespace New_MasterTrade
             {
                 Form x = new Form();
                 FormularioPersonas y = new FormularioPersonas();
-                y.OpenPersona(comboTabla.Text, tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString());
+                y.OpenProveedor(comboTabla.Text, tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString());
                 x.Controls.Add(y);
                 x.Size = new Size(y.Width + 30, y.Height + 40);                
                 x.StartPosition = FormStartPosition.CenterScreen;
@@ -96,14 +96,7 @@ namespace New_MasterTrade
 
         private void comboTabla_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (crud.Tabla(comboTabla.Text).Rows.Count > 0)
-            {
-                tablaPersonas.DataSource = crud.Tabla(comboTabla.Text);
-                comboTabla.Enabled = true;
-                txtBuscar.Enabled = true;
-                txtBuscar.Focus();
-            }
-            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
 
         //TABLA//

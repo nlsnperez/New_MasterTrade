@@ -25,22 +25,44 @@ namespace New_MasterTrade.Objetos
             this.Compra = compra;
             this.Venta = venta;
             txtBuscar.Focus();
+            Config();
         }
 
         public void Config()
         {
             crud = new CRUD_Productos();
             tablaProductos.AutoGenerateColumns = false;
-            if (crud.TablaProductos().Rows.Count > 0)
+            if (Venta == null)
             {
-                tablaProductos.DataSource = crud.TablaProductos();
+                if (crud.TablaProductos().Rows.Count > 0)
+                {
+                    tablaProductos.DataSource = crud.TablaProductos();
+                }
+                else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else ConfigTablaVenta();
+
+
         }
 
         private void BuscarProductos_Load(object sender, EventArgs e)
         {
-            Config();
+            
+        }
+
+        public void ConfigTablaVenta()
+        {            
+            if (crud.TablaProductos().Rows.Count > 0)
+            {
+                DataTable x = crud.TablaProductos();
+                for (int i = 0; i <= x.Rows.Count-1; i++)
+                {
+                    int y = crud.ProductosComprados((int)x.Rows[i][0]) - crud.ProductosVendidos((int)x.Rows[i][0]);
+                    if (y <= 0) x.Rows.RemoveAt(i);
+                }
+                tablaProductos.DataSource = x;
+            }
+            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void tablaProductos_CellClick(object sender, DataGridViewCellEventArgs e)

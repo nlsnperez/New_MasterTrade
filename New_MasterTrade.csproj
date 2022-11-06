@@ -95,7 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\Conexion.cs" />
-    <Compile Include="Base de Datos\CRUDProveedores.cs" />
+    <Compile Include="Base de Datos\CRUD_Proveedores.cs" />
     <Compile Include="Base de Datos\CRUDExtras.cs" />
     <Compile Include="Base de Datos\CRUD_Compras.cs" />
     <Compile Include="Base de Datos\CRUD_Clientes.cs" />

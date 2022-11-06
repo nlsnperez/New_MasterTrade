@@ -29,7 +29,7 @@ namespace New_MasterTrade
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaPersonas = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,9 +52,9 @@ namespace New_MasterTrade
             this.tablaPersonas.AllowUserToDeleteRows = false;
             this.tablaPersonas.AllowUserToResizeColumns = false;
             this.tablaPersonas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tablaPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tablaPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaPersonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -125,12 +125,11 @@ namespace New_MasterTrade
             this.comboTabla.Name = "comboTabla";
             this.comboTabla.Size = new System.Drawing.Size(129, 21);
             this.comboTabla.TabIndex = 56;
-            this.comboTabla.SelectedIndexChanged += new System.EventHandler(this.comboTabla_SelectedIndexChanged_1);
             // 
             // columnId
             // 
             this.columnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnId.DataPropertyName = "id_cli";
+            this.columnId.DataPropertyName = "id_prv";
             this.columnId.HeaderText = "ID";
             this.columnId.Name = "columnId";
             this.columnId.ReadOnly = true;
@@ -138,7 +137,7 @@ namespace New_MasterTrade
             // Documento
             // 
             this.Documento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Documento.DataPropertyName = "doc_cli";
+            this.Documento.DataPropertyName = "doc_prv";
             this.Documento.HeaderText = "Documento de identidad";
             this.Documento.Name = "Documento";
             this.Documento.ReadOnly = true;
@@ -146,7 +145,7 @@ namespace New_MasterTrade
             // RazonSocial
             // 
             this.RazonSocial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RazonSocial.DataPropertyName = "raz_cli";
+            this.RazonSocial.DataPropertyName = "raz_prv";
             this.RazonSocial.HeaderText = "Razón social";
             this.RazonSocial.Name = "RazonSocial";
             this.RazonSocial.ReadOnly = true;
@@ -154,7 +153,7 @@ namespace New_MasterTrade
             // Direccion
             // 
             this.Direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Direccion.DataPropertyName = "dir_cli";
+            this.Direccion.DataPropertyName = "dir_prv";
             this.Direccion.HeaderText = "Dirección";
             this.Direccion.Name = "Direccion";
             this.Direccion.ReadOnly = true;
@@ -162,7 +161,7 @@ namespace New_MasterTrade
             // Telefono
             // 
             this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Telefono.DataPropertyName = "tel_cli";
+            this.Telefono.DataPropertyName = "tel_prv";
             this.Telefono.HeaderText = "Teléfono";
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
@@ -170,7 +169,7 @@ namespace New_MasterTrade
             // Correo
             // 
             this.Correo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Correo.DataPropertyName = "cor_cli";
+            this.Correo.DataPropertyName = "cor_prv";
             this.Correo.HeaderText = "Correo";
             this.Correo.Name = "Correo";
             this.Correo.ReadOnly = true;

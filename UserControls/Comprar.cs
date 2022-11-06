@@ -12,7 +12,7 @@ namespace New_MasterTrade.UserControls
     public partial class Comprar : UserControl
     {
         CRUD_Compras crud;
-        CRUDProveedores personas;
+        CRUD_Proveedores personas;
         DataTable carrito = new DataTable();
         int IdCompra = 0;
         int IdProveedor = 0;
@@ -30,7 +30,7 @@ namespace New_MasterTrade.UserControls
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
         {
             crud = new CRUD_Compras();
-            personas = new CRUDProveedores();
+            personas = new CRUD_Proveedores();
             tableCarrito.AutoGenerateColumns = false;
             ConfigControles("OFF");
             ConfigCarrito();
@@ -232,14 +232,14 @@ namespace New_MasterTrade.UserControls
                 x.ShowDialog();
                 if (y.x != "")
                 {
-                    SetDatos(personas.PersonaDatos("proveedor", y.x));
+                    SetDatos(personas.ProveedorDatos(y.x));
                 }
             }
             else
             {
-                if (personas.PersonaDatos("proveedor", txtProveedor.Text).Rows.Count > 0)
+                if (personas.ProveedorDatos(txtProveedor.Text).Rows.Count > 0)
                 {
-                    SetDatos(personas.PersonaDatos("proveedor", txtProveedor.Text));
+                    SetDatos(personas.ProveedorDatos(txtProveedor.Text));
                 }
                 else
                 {
@@ -252,9 +252,9 @@ namespace New_MasterTrade.UserControls
                         x.Size = new Size(y.Width + 15, y.Height + 30);
                         x.Controls.Add(y);
                         x.ShowDialog();
-                        if (personas.PersonaDatos("proveedor", txtProveedor.Text).Rows.Count > 0)
+                        if (personas.ProveedorDatos(txtProveedor.Text).Rows.Count > 0)
                         {
-                            SetDatos(personas.PersonaDatos("proveedor", txtProveedor.Text));
+                            SetDatos(personas.ProveedorDatos(txtProveedor.Text));
                         }
                         else 
                         {

@@ -16,7 +16,7 @@ namespace New_MasterTrade
 
         private void SesionIniciada_Load(object sender, EventArgs e)
         {
-            bttnPersonas_Click(null, e);
+            bttnProveedores_Click(null, e);
         }
 
         private void bttnMouseEnter(object sender, EventArgs e)
@@ -74,12 +74,6 @@ namespace New_MasterTrade
         {
             MostrarUserControl(new Comprar());
             panelTransacciones.Visible = false;
-        }
-
-        private void bttnPersonas_Click(object sender, EventArgs e)
-        {
-            MostrarUserControl(new Personas());
-            panelArchivo.Visible = false;
         }
 
         private void bttnUsuarios_Click(object sender, EventArgs e)
@@ -161,6 +155,12 @@ namespace New_MasterTrade
         private void bttnAjustes_Click(object sender, EventArgs e)
         {
             panelMantenimiento.Visible = false;
+        }
+
+        private void bttnProveedores_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new Personas());
+            panelArchivo.Visible = false;
         }
     }
 }

@@ -104,7 +104,7 @@ namespace New_MasterTrade.UserControls
             // columnId
             // 
             this.columnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnId.DataPropertyName = "id";
+            this.columnId.DataPropertyName = "id_prv";
             this.columnId.HeaderText = "ID";
             this.columnId.Name = "columnId";
             this.columnId.ReadOnly = true;
@@ -112,7 +112,7 @@ namespace New_MasterTrade.UserControls
             // Documento
             // 
             this.Documento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Documento.DataPropertyName = "doc_id";
+            this.Documento.DataPropertyName = "doc_prv";
             this.Documento.HeaderText = "Documento de identidad";
             this.Documento.Name = "Documento";
             this.Documento.ReadOnly = true;
@@ -120,7 +120,7 @@ namespace New_MasterTrade.UserControls
             // RazonSocial
             // 
             this.RazonSocial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RazonSocial.DataPropertyName = "raz_soc";
+            this.RazonSocial.DataPropertyName = "raz_prv";
             this.RazonSocial.HeaderText = "Razón social";
             this.RazonSocial.Name = "RazonSocial";
             this.RazonSocial.ReadOnly = true;
@@ -128,7 +128,7 @@ namespace New_MasterTrade.UserControls
             // Direccion
             // 
             this.Direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Direccion.DataPropertyName = "direcc";
+            this.Direccion.DataPropertyName = "dir_prv";
             this.Direccion.HeaderText = "Dirección";
             this.Direccion.Name = "Direccion";
             this.Direccion.ReadOnly = true;
@@ -136,7 +136,7 @@ namespace New_MasterTrade.UserControls
             // Telefono
             // 
             this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Telefono.DataPropertyName = "telefono";
+            this.Telefono.DataPropertyName = "tel_prv";
             this.Telefono.HeaderText = "Teléfono";
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
@@ -144,7 +144,7 @@ namespace New_MasterTrade.UserControls
             // Correo
             // 
             this.Correo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Correo.DataPropertyName = "email";
+            this.Correo.DataPropertyName = "cor_prv";
             this.Correo.HeaderText = "Correo";
             this.Correo.Name = "Correo";
             this.Correo.ReadOnly = true;

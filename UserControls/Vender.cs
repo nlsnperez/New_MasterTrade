@@ -34,19 +34,26 @@ namespace New_MasterTrade.UserControls
             tableCarrito.AutoGenerateColumns = false;
             ConfigControles("OFF");
             ConfigCarrito();
+
+            comboPago.DataSource = crud.MetodosPago();
+            comboPago.ValueMember = "id_mpa";
+            comboPago.DisplayMember = "des_mpa";
+            comboPago.SelectedIndex = 0;
         }
 
 
         //BOTONES
 
-        public void Check_Duplicado(int y)
+        public void Check_Duplicado(int y, int z)
         {
             for (int x = 0; x < carrito.Rows.Count - 1; x++)
             {
                 if (carrito.Rows[x][0].ToString() == carrito.Rows[y][0].ToString())
                 {
-                    carrito.Rows[x][4] = int.Parse(carrito.Rows[x][4].ToString()) + int.Parse(carrito.Rows[y][4].ToString());
-                    carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][5].ToString()) + decimal.Parse(carrito.Rows[y][5].ToString());
+                    int cant = int.Parse(carrito.Rows[x][4].ToString()) + int.Parse(carrito.Rows[y][4].ToString());
+                    if (cant > z) carrito.Rows[x][4] = z;
+                    else carrito.Rows[x][4] = cant;
+                    carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][3].ToString()) * decimal.Parse(carrito.Rows[y][4].ToString());
                     carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
                     break;
                 }
@@ -85,6 +92,7 @@ namespace New_MasterTrade.UserControls
                     bttnBuscarProductos.Enabled = true;
                     bttnBuscar.Enabled = true;
                     bttnCancelar.Enabled = true;
+                    comboPago.Enabled = true;
                     break;
                 case "OFF":
                     txtNumeroOrden.Enabled = false;
@@ -95,6 +103,7 @@ namespace New_MasterTrade.UserControls
                     txtTelefono.Enabled = false;
                     txtCorreo.Enabled = false;
 
+                    comboPago.Enabled = false;
                     comboImpuesto.Enabled = false;
                     txtImpuesto.Enabled = false;
                     txtSubTotalBs.Enabled = false;
@@ -110,6 +119,7 @@ namespace New_MasterTrade.UserControls
                     tableCarrito.DataSource = null;
                     carrito.Rows.Clear();
                     LimpiarCampos();
+                    comboPago.DataSource = null;
                     comboImpuesto.DataSource = null;
                     break;
             }
@@ -127,6 +137,7 @@ namespace New_MasterTrade.UserControls
 
             txtSubTotalBs.Text = "0";
             txtSubTotalUs.Text = "0";
+            txtImpuesto.Text = "";
             txtTotalBs.Text = "0";
             txtTotalUs.Text = "0";
         }
@@ -187,7 +198,7 @@ namespace New_MasterTrade.UserControls
             ConfigControles("OFF");
         }
 
-        public void AddProduct(string[] producto)
+        public void AddProduct(string[] producto, int cantmanx)
         {
             carrito.Rows.Add(producto);
             comboImpuesto.Enabled = true;
@@ -195,7 +206,7 @@ namespace New_MasterTrade.UserControls
             GetSubTotal();
             CalcPorcentaje();
             GetTotal();
-            if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);
+            if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1, cantmanx);
             tableCarrito.DataSource = carrito;
             bttnGuardar.Enabled = true;
         }

@@ -14,7 +14,7 @@ namespace New_MasterTrade.UserControls
 {
     public partial class FormularioPersonas : UserControl
     {
-        CRUDProveedores crud;
+        CRUD_Proveedores crud;
         CRUD_Clientes crud2;
 
         public FormularioPersonas()
@@ -25,7 +25,7 @@ namespace New_MasterTrade.UserControls
 
         public void Config()
         {
-            crud = new CRUDProveedores();
+            crud = new CRUD_Proveedores();
             crud2 = new CRUD_Clientes();
             comboOcupacion.Focus();
             ConfigLongitud();
@@ -161,9 +161,9 @@ namespace New_MasterTrade.UserControls
 
         private void bttnBuscar_Click(object sender, EventArgs e)
         {
-            if (crud.PersonaDatos(comboOcupacion.Text, txtBuscar.Text).Rows.Count > 0)
+            if (crud.ProveedorDatos(txtBuscar.Text).Rows.Count > 0)
             {
-                SetDatos(crud.PersonaDatos(comboOcupacion.Text, txtBuscar.Text));
+                SetDatos(crud.ProveedorDatos(txtBuscar.Text));
             }
             else
             {
@@ -171,11 +171,11 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        public void OpenPersona(string tabla, string filtro)
+        public void OpenProveedor(string tabla, string filtro)
         {
-            if (crud.PersonaDatos(tabla, filtro).Rows.Count > 0)
+            if (crud.ProveedorDatos(filtro).Rows.Count > 0)
             {
-                SetDatos(crud.PersonaDatos(tabla, filtro));
+                SetDatos(crud.ProveedorDatos(filtro));
                 comboOcupacion.Text = tabla.ToUpper();
             }
         }

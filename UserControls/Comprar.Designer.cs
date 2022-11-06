@@ -66,8 +66,6 @@ namespace New_MasterTrade.UserControls
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboPago = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -434,31 +432,11 @@ namespace New_MasterTrade.UserControls
             this.label14.TabIndex = 71;
             this.label14.Text = "TOTAL";
             // 
-            // comboPago
-            // 
-            this.comboPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboPago.FormattingEnabled = true;
-            this.comboPago.Location = new System.Drawing.Point(90, 47);
-            this.comboPago.Name = "comboPago";
-            this.comboPago.Size = new System.Drawing.Size(216, 21);
-            this.comboPago.TabIndex = 74;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 26);
-            this.label7.TabIndex = 73;
-            this.label7.Text = "MÉTODO DE\r\nPAGO\r\n";
-            // 
             // Comprar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.comboPago);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.bttnBuscarProductos);
             this.Controls.Add(this.label13);
@@ -536,7 +514,5 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrecioT;
         private System.Windows.Forms.DataGridViewButtonColumn columnEliminar;
-        private System.Windows.Forms.ComboBox comboPago;
-        private System.Windows.Forms.Label label7;
     }
 }

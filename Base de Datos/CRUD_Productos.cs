@@ -247,16 +247,16 @@ namespace New_MasterTrade.Base_de_Datos
             return x + 1;
         }
 
-        public int ProductosComprados(string documento)
+        public int ProductosComprados(int id)
         {
             int x = 0;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT COALESCE(SUM(dc.cantidad), 0) AS productos_comprados FROM detalle_compras dc INNER JOIN productos p ON dc.producto = p.codigo_producto WHERE p.codigo_producto = '" + documento + "'", con);
+                MySqlCommand command = new MySqlCommand("SELECT COALESCE(SUM(dc.can_dco), 0) AS productos_comprados FROM detalle_compra dc INNER JOIN producto p ON dc.id_pro = p.id_pro WHERE p.id_pro = '"+id+"'", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
-                if (reader.HasRows) x = Int32.Parse(reader["productos_comprados"].ToString());
+                if (reader.HasRows) x = reader.GetInt32(0);
                 reader.Close();
             }
             catch (MySqlException ex)
@@ -270,16 +270,16 @@ namespace New_MasterTrade.Base_de_Datos
             return x;
         }
 
-        public int ProductosVendidos(string documento)
+        public int ProductosVendidos(int id)
         {
             int x = 0;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT COALESCE(SUM(dv.cantidad), 0) AS productos_vendidos FROM detalle_ventas dv INNER JOIN productos p ON dv.producto = p.codigo_producto WHERE p.codigo_producto = '" + documento + "'", con);
+                MySqlCommand command = new MySqlCommand("SELECT COALESCE(SUM(dv.can_dve), 0) AS productos_vendidos FROM detalle_venta dv INNER JOIN producto p ON dv.id_pro = p.id_pro WHERE p.id_pro = '"+id+"'", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
-                if (reader.HasRows) x = Int32.Parse(reader["productos_vendidos"].ToString());
+                if (reader.HasRows) x = reader.GetInt32(0);
                 reader.Close();
             }
             catch (MySqlException ex)

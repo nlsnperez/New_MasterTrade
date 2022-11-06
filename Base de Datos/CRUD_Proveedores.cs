@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.Base_de_Datos
 {
-    class CRUDProveedores : Conexion
+    class CRUD_Proveedores : Conexion
     {
         
         public void Create(Persona persona, String tabla)
@@ -16,7 +16,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `"+tabla+ "`(`doc_cli`, `raz_cli`, `dir_cli`, `tel_cli`, `cor_cli`) VALUES (@documento,@nombre,@direccion,@telefono,@email)";
+                    command.CommandText = "INSERT INTO `proveedor`(`doc_prv`, `raz_prv`, `dir_prv`, `tel_prv`, `cor_prv`, `act_prv`) VALUES (@documento,@nombre,@direccion,@telefono,@email,@act)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -25,6 +25,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@direccion", MySqlDbType.VarChar).Value = persona.Direccion;
                     command.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = persona.Telefono;
                     command.Parameters.Add("@email", MySqlDbType.VarChar).Value = persona.Correo;
+                    command.Parameters.Add("@act", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
                 }
@@ -47,7 +48,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `" + tabla + "` SET `raz_cli`=@razonsocial,`dir_cli`=@direccion,`tel_cli`=@telefono,`cor_cli`=@correo WHERE `" + tabla + "`.`doc_id` = @documento;";
+                    command.CommandText = "UPDATE `" + tabla + "` SET `raz_prv`=@razonsocial,`dir_prv`=@direccion,`tel_prv`=@telefono,`cor_prv`=@correo WHERE `" + tabla + "`.`doc_prv` = @documento;";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -105,7 +106,7 @@ namespace New_MasterTrade.Base_de_Datos
             DataTable resultados = new DataTable();
             using (MySqlCommand command = new MySqlCommand())
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `"+tabla+"`", con);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `proveedor`", con);
                 adapter.Fill(resultados);
                 con.Close();
             }
@@ -127,7 +128,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `"+tabla+ "`  WHERE `doc_cli` LIKE '%" + filtro + "%' OR `raz_cli` LIKE '%" + filtro + "%' ORDER BY id_cli ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `proveedor`  WHERE `doc_prv` LIKE '%" + filtro + "%' OR `raz_prv` LIKE '%" + filtro + "%' ORDER BY id_prv ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -141,10 +142,10 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
-        public DataTable PersonaDatos(string tabla, string filtro)
+        public DataTable ProveedorDatos(string filtro)
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `"+tabla+ "` WHERE `id_cli` LIKE '" + filtro + "%' OR `doc_cli` LIKE '%" + filtro + "%' OR `raz_cli` LIKE '%" + filtro + "%'";
+            String sql = "SELECT * FROM `proveedor` WHERE `id_prv` LIKE '" + filtro + "%' OR `doc_prv` LIKE '%" + filtro + "%' OR `raz_prv` LIKE '%" + filtro + "%'";
             con.Open();
             try
             {

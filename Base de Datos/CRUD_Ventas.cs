@@ -3,15 +3,13 @@ using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace New_MasterTrade.Base_de_Datos
 {
     class CRUD_Ventas : Conexion
     {
+        CRUD_Productos crud = new CRUD_Productos();
         public void Crear(Venta venta)
         {
             try
@@ -102,6 +100,35 @@ namespace New_MasterTrade.Base_de_Datos
         {
             DataTable categorias = new DataTable();
             String sql = "SELECT * FROM `impuesto`";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
+        }
+
+        public int CantidadMax(int id)
+        {
+            return crud.ProductosComprados(id) - crud.ProductosVendidos(id);
+        }
+
+        public DataTable MetodosPago()
+        {
+            DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `metodo_pago` ORDER BY des_mpa ASC";
             con.Open();
             try
             {
