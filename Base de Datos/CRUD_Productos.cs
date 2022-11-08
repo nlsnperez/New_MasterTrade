@@ -15,19 +15,20 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `producto`(`id_cat`, `id_mar`, `id_mod`, `ser_pro`, `des_pro`, `pco_pro`, `pve_pro`, `img_pro`, `est_pro`) VALUES (@categoria,@marca,@modelo,@serial,@descripcion,@preciocompra,@precioventa,@estado,@imagen)";
+                    command.CommandText = "INSERT INTO `producto`(`id_cat`, `id_mar`, `id_mod`, `ser_pro`, `des_pro`, `pco_pro`, `pve_pro`, `img_pro`, `gar_pro`, `act_pro`) VALUES (@categoria,@marca,@modelo,@serial,@descripcion,@precioventa,@preciocompra,@imagen,@garantia,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@serial", MySqlDbType.VarChar).Value = producto.Serial;
-                    command.Parameters.Add("@descripcion", MySqlDbType.VarChar).Value = producto.Descripcion;
-                    command.Parameters.Add("@marca", MySqlDbType.Int32).Value = producto.Marca;
                     command.Parameters.Add("@categoria", MySqlDbType.Int32).Value = producto.Categoria;
+                    command.Parameters.Add("@marca", MySqlDbType.Int32).Value = producto.Marca;                    
                     command.Parameters.Add("@modelo", MySqlDbType.Int32).Value = producto.Modelo;
-                    command.Parameters.Add("@preciocompra", MySqlDbType.Decimal).Value = producto.Precio_Compra;
+                    command.Parameters.Add("@serial", MySqlDbType.VarChar).Value = producto.Serial;
+                    command.Parameters.Add("@descripcion", MySqlDbType.VarChar).Value = producto.Descripcion;                    
                     command.Parameters.Add("@precioventa", MySqlDbType.Decimal).Value = producto.Precio_Venta;
-                    command.Parameters.Add("@estado", MySqlDbType.Int32).Value = producto.Estado;
+                    command.Parameters.Add("@preciocompra", MySqlDbType.Decimal).Value = producto.Precio_Compra;                    
                     command.Parameters.Add("@imagen", MySqlDbType.LongBlob).Value = producto.Imagen;
+                    command.Parameters.Add("@garantia", MySqlDbType.String).Value = producto.Garantia;
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
                     
@@ -63,7 +64,6 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@modelo", MySqlDbType.Int32).Value = producto.Modelo;
                     command.Parameters.Add("@preciocompra", MySqlDbType.Decimal).Value = producto.Precio_Compra;
                     command.Parameters.Add("@precioventa", MySqlDbType.Decimal).Value = producto.Precio_Venta;
-                    command.Parameters.Add("@estado", MySqlDbType.Int32).Value = producto.Estado;
                     command.Parameters.Add("@imagen", MySqlDbType.LongBlob).Value = producto.Imagen;
 
                     command.ExecuteNonQuery();
@@ -303,6 +303,29 @@ namespace New_MasterTrade.Base_de_Datos
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 if (reader.HasRows) x = Int32.Parse(reader["productos_comprados"].ToString()) - Int32.Parse(reader["productos_vendidos"].ToString());
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
+        }
+
+        public string Garantia(int id)
+        {
+            string x = "";
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `producto` WHERE  id_pro = "+id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = reader.GetString(9);
                 reader.Close();
             }
             catch (MySqlException ex)

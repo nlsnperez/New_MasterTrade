@@ -83,27 +83,27 @@ namespace New_MasterTrade.UserControls
             comboModelo.DataSource = crud.Modelos();
             comboModelo.SelectedIndex = 0;
 
-            comboEstado.Items.Add("No Disponible");
-            comboEstado.Items.Add("Disponible");
-            comboEstado.SelectedIndex = 0;
+            comboGarantia.Items.Add("DÍAS");
+            comboGarantia.Items.Add("SEMANAS");
+            comboGarantia.Items.Add("MESES");
+            comboGarantia.Items.Add("AÑOS");
+            comboGarantia.SelectedIndex = 0;
         }
 
         private Producto GetProducto()
         {
-            bool estado = false;
-            if (comboEstado.SelectedIndex == 1) estado = true;
             MemoryStream ms = new MemoryStream();
             pbImagen.Image.Save(ms, pbImagen.Image.RawFormat);
             byte[] imagen = ms.ToArray();
 
-            Producto producto = new Producto(txtSerial.Text,
+            Producto producto = new Producto(0, txtSerial.Text,
                                                 txtDescripcion.Text,
                                                 int.Parse(comboMarca.SelectedValue.ToString()),
                                                 int.Parse(comboCategoria.SelectedValue.ToString()),
                                                 int.Parse(comboModelo.SelectedValue.ToString()),
                                                 decimal.Parse(txtPrecioCompra.Text),
                                                 decimal.Parse(txtPrecioVenta.Text),
-                                                estado,
+                                                txtGarantia.Text+" "+comboGarantia.Text,
                                                 imagen);
             return producto;
         }
@@ -178,10 +178,11 @@ namespace New_MasterTrade.UserControls
             txtPrecioVenta.Text = "0";
             txtCantidad.Text = "0";
             txtBuscar.Text = "";
+            txtGarantia.Text = "1";
             comboMarca.SelectedIndex = 0;
             comboCategoria.SelectedIndex = 0;
             comboModelo.SelectedIndex = 0;
-            comboEstado.SelectedIndex = 0;
+            comboGarantia.SelectedIndex = 0;
             pbImagen.Image = Properties.Resources.descripcion_del_producto;
             bttnGuardar.Enabled = true;
             bttnActualizar.Enabled = false;
@@ -230,6 +231,22 @@ namespace New_MasterTrade.UserControls
             if (MessageBox.Show("¿Desea actualizar el producto: " + txtSerial.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 crud.Update(GetProducto(), Int32.Parse(txtID.Text));
+            }
+        }
+
+        private void txtGarantia_Enter_1(object sender, EventArgs e)
+        {
+            if (txtGarantia.Text == "1")
+            {
+                txtGarantia.Text = "";
+            }
+        }
+
+        private void txtGarantia_Leave(object sender, EventArgs e)
+        {
+            if (txtGarantia.Text == "")
+            {
+                txtGarantia.Text = "1";
             }
         }
     }

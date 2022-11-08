@@ -209,7 +209,7 @@ namespace New_MasterTrade
             this.bttnVentas.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
             this.bttnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnVentas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnVentas.Location = new System.Drawing.Point(0, 114);
+            this.bttnVentas.Location = new System.Drawing.Point(0, 76);
             this.bttnVentas.Name = "bttnVentas";
             this.bttnVentas.Size = new System.Drawing.Size(160, 38);
             this.bttnVentas.TabIndex = 17;
@@ -224,7 +224,7 @@ namespace New_MasterTrade
             this.bttnCompras.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
             this.bttnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnCompras.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnCompras.Location = new System.Drawing.Point(0, 76);
+            this.bttnCompras.Location = new System.Drawing.Point(0, 114);
             this.bttnCompras.Name = "bttnCompras";
             this.bttnCompras.Size = new System.Drawing.Size(160, 38);
             this.bttnCompras.TabIndex = 16;

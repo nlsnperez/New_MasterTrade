@@ -144,6 +144,7 @@ namespace New_MasterTrade
 
         private void bttnVentas_Click(object sender, EventArgs e)
         {
+            MostrarUserControl(new Ventas());
             panelArchivo.Visible = false;
         }
 

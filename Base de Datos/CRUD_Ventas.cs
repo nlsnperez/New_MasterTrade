@@ -10,6 +10,8 @@ namespace New_MasterTrade.Base_de_Datos
     class CRUD_Ventas : Conexion
     {
         CRUD_Productos crud = new CRUD_Productos();
+        CRUD_Usuarios crudv = new CRUD_Usuarios();
+
         public void Crear(Venta venta)
         {
             try
@@ -60,6 +62,70 @@ namespace New_MasterTrade.Base_de_Datos
 
                         command.ExecuteNonQuery();
                         Console.WriteLine("Detalle registrado "+i+"!");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+        }
+
+        public void CrearFactura(Factura factura)
+        {
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "INSERT INTO `factura_venta`(`id_ven`, `id_ove`, `id_mpa`, `tbs_fve`, `tus_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@metodopago,@tbs,@tus,@activo)";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@vendedor", MySqlDbType.Int32).Value = factura.Vendedor;
+                    command.Parameters.Add("@ordenventa", MySqlDbType.Int32).Value = factura.OrdenVenta;
+                    command.Parameters.Add("@metodopago", MySqlDbType.Int32).Value = factura.MetodoPago;
+                    command.Parameters.Add("@tbs", MySqlDbType.Decimal).Value = factura.Total_Bs;
+                    command.Parameters.Add("@tus", MySqlDbType.Decimal).Value = factura.Total_Us;
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Factura registrada");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void CrearGarantia(List<int> detalles, List<int> dias)
+        {
+            for (int i = 0; i <= detalles.Count - 1; i++)
+            {
+                try
+                {
+                    con.Open();
+                    using (MySqlCommand command = new MySqlCommand())
+                    {
+                        command.CommandText = "INSERT INTO `garantia`(`id_dve`, `fin_gar`, `ffi_gar`) VALUES (@detalle,@fechainicio,@fechafinal)";
+                        command.CommandType = CommandType.Text;
+                        command.Connection = con;
+
+                        command.Parameters.Add("@detalle", MySqlDbType.Int32).Value = detalles[i];
+                        command.Parameters.Add("@fechainicio", MySqlDbType.DateTime).Value = System.DateTime.Now;
+                        command.Parameters.Add("@fechafinal", MySqlDbType.DateTime).Value = System.DateTime.Now.AddDays(dias[i]);
+
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("Garantía registrada " + i + "!");
                     }
                 }
                 catch (MySqlException ex)
@@ -147,6 +213,64 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return categorias;
+        }
+
+        public DataTable Facturas()
+        {
+            DataTable facturas = new DataTable();
+            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tbs_fve, fv.tus_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(facturas);
+                return facturas;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return facturas;
+        }
+
+        public DataTable BuscarFacuras(string filtro)
+        {
+            DataTable facturas = new DataTable();
+            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tbs_fve, fv.tus_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli WHERE fv.id_fve LIKE '" + filtro + "%' OR ov.num_ove LIKE '" + filtro + "%' OR c.raz_cli LIKE '" + filtro+"%'";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(facturas);
+                return facturas;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return facturas;
+        }
+
+        public int Vendedor(int id)
+        {
+            return crudv.VendedorId(id);
+        }
+
+        public string Garantia(int id)
+        {
+            return crud.Garantia(id);
         }
     }
 }

@@ -133,6 +133,8 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Factura.cs" />
+    <Compile Include="Objetos\Garantia.cs" />
     <Compile Include="Objetos\Producto.cs" />
     <Compile Include="Objetos\Usuario.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -220,6 +222,12 @@
     <Compile Include="UserControls\Vender.Designer.cs">
       <DependentUpon>Vender.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Ventas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Ventas.Designer.cs">
+      <DependentUpon>Ventas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Custom Controls\AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Vender.resx">
       <DependentUpon>Vender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Ventas.resx">
+      <DependentUpon>Ventas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

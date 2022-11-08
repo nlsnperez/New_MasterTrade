@@ -51,7 +51,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.comboMarca = new System.Windows.Forms.ComboBox();
             this.comboCategoria = new System.Windows.Forms.ComboBox();
-            this.comboEstado = new System.Windows.Forms.ComboBox();
+            this.comboGarantia = new System.Windows.Forms.ComboBox();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnEliminar2 = new System.Windows.Forms.Button();
@@ -60,6 +60,7 @@
             this.comboModelo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtGarantia = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -278,9 +279,9 @@
             this.label11.Location = new System.Drawing.Point(578, 114);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 13);
+            this.label11.Size = new System.Drawing.Size(62, 13);
             this.label11.TabIndex = 26;
-            this.label11.Text = "ESTADO";
+            this.label11.Text = "GARANTÍA";
             // 
             // comboMarca
             // 
@@ -302,15 +303,15 @@
             this.comboCategoria.Size = new System.Drawing.Size(186, 21);
             this.comboCategoria.TabIndex = 29;
             // 
-            // comboEstado
+            // comboGarantia
             // 
-            this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(662, 110);
-            this.comboEstado.Margin = new System.Windows.Forms.Padding(2);
-            this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(186, 21);
-            this.comboEstado.TabIndex = 30;
+            this.comboGarantia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboGarantia.FormattingEnabled = true;
+            this.comboGarantia.Location = new System.Drawing.Point(702, 110);
+            this.comboGarantia.Margin = new System.Windows.Forms.Padding(2);
+            this.comboGarantia.Name = "comboGarantia";
+            this.comboGarantia.Size = new System.Drawing.Size(144, 21);
+            this.comboGarantia.TabIndex = 30;
             // 
             // bttnGuardar
             // 
@@ -395,10 +396,23 @@
             this.label12.Text = "IMAGEN DEL PRODUCTO";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Productos_Prot
+            // txtGarantia
+            // 
+            this.txtGarantia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtGarantia.Location = new System.Drawing.Point(663, 110);
+            this.txtGarantia.Margin = new System.Windows.Forms.Padding(2);
+            this.txtGarantia.Name = "txtGarantia";
+            this.txtGarantia.Size = new System.Drawing.Size(35, 20);
+            this.txtGarantia.TabIndex = 39;
+            this.txtGarantia.Text = "1";
+            this.txtGarantia.Enter += new System.EventHandler(this.txtGarantia_Enter_1);
+            this.txtGarantia.Leave += new System.EventHandler(this.txtGarantia_Leave);
+            // 
+            // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtGarantia);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboModelo);
             this.Controls.Add(this.label10);
@@ -406,7 +420,7 @@
             this.Controls.Add(this.bttnEliminar2);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.bttnGuardar);
-            this.Controls.Add(this.comboEstado);
+            this.Controls.Add(this.comboGarantia);
             this.Controls.Add(this.comboCategoria);
             this.Controls.Add(this.comboMarca);
             this.Controls.Add(this.label11);
@@ -431,7 +445,7 @@
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Productos_Prot";
+            this.Name = "FormularioProductos";
             this.Size = new System.Drawing.Size(858, 551);
             this.Load += new System.EventHandler(this.Productos_Prot_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
@@ -464,7 +478,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboMarca;
         private System.Windows.Forms.ComboBox comboCategoria;
-        private System.Windows.Forms.ComboBox comboEstado;
+        private System.Windows.Forms.ComboBox comboGarantia;
         private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Button bttnActualizar;
         private System.Windows.Forms.Button bttnEliminar2;
@@ -473,5 +487,6 @@
         private System.Windows.Forms.ComboBox comboModelo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtGarantia;
     }
 }

@@ -35,6 +35,7 @@ namespace New_MasterTrade.UserControls
             x.Controls.Add(y);
             x.StartPosition = FormStartPosition.CenterScreen;
             x.ShowDialog();
+            tablaProductos.DataSource = crud.TablaProductos();
         }
 
         private void ResgistrosProductos_Prototipo_Load(object sender, EventArgs e)

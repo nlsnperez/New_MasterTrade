@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
 using New_MasterTrade.Custom_Controls;
 using New_MasterTrade.Objetos;
 using System;
@@ -18,6 +19,7 @@ namespace New_MasterTrade.UserControls
         CRUD_Ventas crud;
         CRUD_Clientes crud_clientes;
         DataTable carrito = new DataTable();
+        List<int> dias_garantia;
         int IdVenta = 0;
         int IdCliente = 0;
 
@@ -31,6 +33,7 @@ namespace New_MasterTrade.UserControls
         {
             crud = new CRUD_Ventas();
             crud_clientes = new CRUD_Clientes();
+            dias_garantia = new List<int>();
             tableCarrito.AutoGenerateColumns = false;
             ConfigControles("OFF");
             ConfigCarrito();
@@ -208,7 +211,37 @@ namespace New_MasterTrade.UserControls
             GetTotal();
             if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1, cantmanx);
             tableCarrito.DataSource = carrito;
+            SumarGarantia();
+            Console.WriteLine(dias_garantia[0]);
             bttnGuardar.Enabled = true;
+        }
+
+        public void SumarGarantia()
+        {
+            int id = Int32.Parse(tableCarrito.Rows[tableCarrito.Rows.Count - 1].Cells[0].Value.ToString());
+            Console.WriteLine(id);
+            string x = crud.Garantia(id);
+            Console.WriteLine(x);
+            int y = 0;
+            switch (x.Remove(0,1))
+            {
+                case "DÍAS":
+                    y = Int32.Parse(x.Substring(0, 2));
+                    dias_garantia.Add(y);
+                    break;
+                case "SEMANAS":
+                    y = Int32.Parse(x.Substring(0, 2));
+                    dias_garantia.Add(y * 7);
+                    break;
+                case "MESES":
+                    y = Int32.Parse(x.Substring(0, 2));
+                    dias_garantia.Add(y * 30);
+                    break;
+                case "AÑOS":
+                    y = Int32.Parse(x.Substring(0, 2));
+                    dias_garantia.Add(y * 365);
+                    break;
+            }
         }
 
         private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -218,6 +251,7 @@ namespace New_MasterTrade.UserControls
                 if (MessageBox.Show("¿Desea remover este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     tableCarrito.Rows.RemoveAt(e.RowIndex);
+                    dias_garantia.RemoveAt(e.RowIndex);
                     GetSubTotal();
                     CalcPorcentaje();
                     GetTotal();
@@ -349,6 +383,7 @@ namespace New_MasterTrade.UserControls
                 {
                     crud.Crear(GetVenta());
                     crud.CrearDetalle(GetDetalle());
+                    crud.CrearFactura(new Factura(id: 0, vendedor: crud.Vendedor(UserData.Id), ordenVenta: IdVenta, metodoPago: (int)comboPago.SelectedValue, total_Bs: decimal.Parse(txtTotalBs.Text), total_Us: decimal.Parse(txtTotalUs.Text)));
                     ConfigControles("OFF");
                 }
             }

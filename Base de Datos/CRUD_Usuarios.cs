@@ -292,5 +292,28 @@ namespace New_MasterTrade.Base_de_Datos
             }
             return x;
         }
+
+        public int VendedorId(int user_id)
+        {
+            int x = 0;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `vendedor` WHERE `id_usu` = "+user_id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = reader.GetInt32(0);
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
+        }
     }
 }
