@@ -139,6 +139,31 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
+        public List<int> Detalles(int id)
+        {
+            List<int> x = new List<int>();
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `detalle_venta` WHERE  id_ove = " + id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    x.Add(reader.GetInt32(0));
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
+        }
+
         public int GetIdVentas()
         {
             int x = 0;
@@ -218,7 +243,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Facturas()
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tbs_fve, fv.tus_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli";
+            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tbs_fve, fv.tus_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli ORDER BY id_fve ASC";
             con.Open();
             try
             {
@@ -242,7 +267,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable BuscarFacuras(string filtro)
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tbs_fve, fv.tus_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli WHERE fv.id_fve LIKE '" + filtro + "%' OR ov.num_ove LIKE '" + filtro + "%' OR c.raz_cli LIKE '" + filtro+"%'";
+            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tbs_fve, fv.tus_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli WHERE fv.id_fve LIKE '" + filtro + "%' OR ov.num_ove LIKE '" + filtro + "%' OR c.raz_cli LIKE '" + filtro+ "%' ORDER BY id_fve ASC";
             con.Open();
             try
             {
@@ -268,7 +293,7 @@ namespace New_MasterTrade.Base_de_Datos
             return crudv.VendedorId(id);
         }
 
-        public string Garantia(int id)
+        public int Garantia(int id)
         {
             return crud.Garantia(id);
         }

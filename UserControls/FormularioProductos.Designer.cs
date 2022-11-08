@@ -60,7 +60,6 @@
             this.comboModelo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtGarantia = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -307,10 +306,10 @@
             // 
             this.comboGarantia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboGarantia.FormattingEnabled = true;
-            this.comboGarantia.Location = new System.Drawing.Point(702, 110);
+            this.comboGarantia.Location = new System.Drawing.Point(663, 110);
             this.comboGarantia.Margin = new System.Windows.Forms.Padding(2);
             this.comboGarantia.Name = "comboGarantia";
-            this.comboGarantia.Size = new System.Drawing.Size(144, 21);
+            this.comboGarantia.Size = new System.Drawing.Size(183, 21);
             this.comboGarantia.TabIndex = 30;
             // 
             // bttnGuardar
@@ -396,23 +395,10 @@
             this.label12.Text = "IMAGEN DEL PRODUCTO";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtGarantia
-            // 
-            this.txtGarantia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtGarantia.Location = new System.Drawing.Point(663, 110);
-            this.txtGarantia.Margin = new System.Windows.Forms.Padding(2);
-            this.txtGarantia.Name = "txtGarantia";
-            this.txtGarantia.Size = new System.Drawing.Size(35, 20);
-            this.txtGarantia.TabIndex = 39;
-            this.txtGarantia.Text = "1";
-            this.txtGarantia.Enter += new System.EventHandler(this.txtGarantia_Enter_1);
-            this.txtGarantia.Leave += new System.EventHandler(this.txtGarantia_Leave);
-            // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtGarantia);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboModelo);
             this.Controls.Add(this.label10);
@@ -487,6 +473,5 @@
         private System.Windows.Forms.ComboBox comboModelo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtGarantia;
     }
 }

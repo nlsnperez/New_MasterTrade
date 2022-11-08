@@ -51,14 +51,16 @@ namespace New_MasterTrade.Objetos
         }
 
         public void ConfigTablaVenta()
-        {            
-            if (crud.TablaProductos().Rows.Count > 0)
-            {
-                DataTable x = crud.TablaProductos();
+        {
+            DataTable x = crud.TablaProductos();
+            if (x.Rows.Count > 0)
+            {                
                 for (int i = 0; i <= x.Rows.Count-1; i++)
                 {
-                    int y = crud.ProductosComprados((int)x.Rows[i][0]) - crud.ProductosVendidos((int)x.Rows[i][0]);
-                    if (y <= 0) x.Rows.RemoveAt(i);
+                    int id = (int)x.Rows[i][0];
+                    Console.WriteLine(id);
+                    int y = crud.ProductosComprados(id) - crud.ProductosVendidos(id);
+                    if (y == 0) x.Rows.RemoveAt(i);
                 }
                 tablaProductos.DataSource = x;
             }

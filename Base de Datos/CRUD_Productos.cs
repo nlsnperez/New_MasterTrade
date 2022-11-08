@@ -27,7 +27,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@precioventa", MySqlDbType.Decimal).Value = producto.Precio_Venta;
                     command.Parameters.Add("@preciocompra", MySqlDbType.Decimal).Value = producto.Precio_Compra;                    
                     command.Parameters.Add("@imagen", MySqlDbType.LongBlob).Value = producto.Imagen;
-                    command.Parameters.Add("@garantia", MySqlDbType.String).Value = producto.Garantia;
+                    command.Parameters.Add("@garantia", MySqlDbType.Int32).Value = producto.Garantia;
                     command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
@@ -316,16 +316,16 @@ namespace New_MasterTrade.Base_de_Datos
             return x;
         }
 
-        public string Garantia(int id)
+        public int Garantia(int id)
         {
-            string x = "";
+            int x = 0;
             try
             {
                 MySqlCommand command = new MySqlCommand("SELECT * FROM `producto` WHERE  id_pro = "+id, con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
-                if (reader.HasRows) x = reader.GetString(9);
+                if (reader.HasRows) x = reader.GetInt32(9);
                 reader.Close();
             }
             catch (MySqlException ex)

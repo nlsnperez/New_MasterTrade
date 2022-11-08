@@ -83,10 +83,10 @@ namespace New_MasterTrade.UserControls
             comboModelo.DataSource = crud.Modelos();
             comboModelo.SelectedIndex = 0;
 
-            comboGarantia.Items.Add("DÍAS");
-            comboGarantia.Items.Add("SEMANAS");
-            comboGarantia.Items.Add("MESES");
-            comboGarantia.Items.Add("AÑOS");
+            comboGarantia.Items.Add("3 DÍAS");
+            comboGarantia.Items.Add("1 SEMANA");
+            comboGarantia.Items.Add("1 MES");
+            comboGarantia.Items.Add("1 AÑO");
             comboGarantia.SelectedIndex = 0;
         }
 
@@ -103,7 +103,7 @@ namespace New_MasterTrade.UserControls
                                                 int.Parse(comboModelo.SelectedValue.ToString()),
                                                 decimal.Parse(txtPrecioCompra.Text),
                                                 decimal.Parse(txtPrecioVenta.Text),
-                                                txtGarantia.Text+" "+comboGarantia.Text,
+                                                DiasDeGarantía(),
                                                 imagen);
             return producto;
         }
@@ -122,6 +122,22 @@ namespace New_MasterTrade.UserControls
                     Limpiar();
                 }
             }
+        }
+
+        public int DiasDeGarantía()
+        {
+            switch (comboGarantia.SelectedIndex)
+            {
+                case 0:
+                    return 5;
+                case 1:
+                    return 7;
+                case 2:
+                    return 30;
+                case 3:
+                    return 365;
+            }
+            return 0;
         }
 
         private void bttnBuscar_Click(object sender, EventArgs e)
@@ -178,7 +194,6 @@ namespace New_MasterTrade.UserControls
             txtPrecioVenta.Text = "0";
             txtCantidad.Text = "0";
             txtBuscar.Text = "";
-            txtGarantia.Text = "1";
             comboMarca.SelectedIndex = 0;
             comboCategoria.SelectedIndex = 0;
             comboModelo.SelectedIndex = 0;
@@ -231,22 +246,6 @@ namespace New_MasterTrade.UserControls
             if (MessageBox.Show("¿Desea actualizar el producto: " + txtSerial.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 crud.Update(GetProducto(), Int32.Parse(txtID.Text));
-            }
-        }
-
-        private void txtGarantia_Enter_1(object sender, EventArgs e)
-        {
-            if (txtGarantia.Text == "1")
-            {
-                txtGarantia.Text = "";
-            }
-        }
-
-        private void txtGarantia_Leave(object sender, EventArgs e)
-        {
-            if (txtGarantia.Text == "")
-            {
-                txtGarantia.Text = "1";
             }
         }
     }
