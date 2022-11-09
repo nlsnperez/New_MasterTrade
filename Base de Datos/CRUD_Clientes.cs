@@ -44,6 +44,65 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
+        public void Update(Persona persona)
+        {
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE `cliente` SET `raz_cli`=@razonsocial,`dir_cli`=@direccion,`tel_cli`=@telefono,`cor_cli`=@correo WHERE `doc_cli` = @documento";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = persona.RazonSocial;
+                    command.Parameters.Add("@direccion", MySqlDbType.VarChar).Value = persona.Direccion;
+                    command.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = persona.Telefono;
+                    command.Parameters.Add("@email", MySqlDbType.VarChar).Value = persona.Correo;
+                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = persona.Documento;
+
+                    command.ExecuteNonQuery();
+                }
+                MessageBox.Show("El registro se actualizó de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void Delete(Persona cliente)
+        {
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE `cliente` SET `act_cli`=@activo WHERE `doc_cli`=@documento";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 0;
+                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = cliente.Documento;
+
+                    command.ExecuteNonQuery();
+                }
+                MessageBox.Show("El registro se eliminó de manera satisfactoria.", "¡DATOS ELIMINADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public DataTable Tabla()
         {
             try
@@ -52,7 +111,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `cliente`", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `cliente` WHERE act_cli = 1", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }

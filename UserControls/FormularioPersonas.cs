@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace New_MasterTrade.UserControls
     {
         CRUD_Proveedores crud;
         CRUD_Clientes crud2;
+        CRUD_Bitacora bitacora = new CRUD_Bitacora();
 
         public FormularioPersonas()
         {
@@ -94,7 +96,6 @@ namespace New_MasterTrade.UserControls
             txtDireccion.Text = "";
             txtTelefono.Text = "";
             txtCorreo.Text = "";
-            txtBuscar.Text = "";
             comboDocumento.SelectedIndex = 0;
             comboOcupacion.SelectedIndex = 0;
             comboOcupacion.Enabled = true;
@@ -136,11 +137,13 @@ namespace New_MasterTrade.UserControls
                                 if (comboOcupacion.SelectedIndex == 0)
                                 {
                                     crud2.Create(GetPersona());
+                                    bitacora.Create(UserData.Id, Modulos.Clientes, Accion.NuevoRegistro(UserData.NombreUsuario, GetPersona().Documento));
                                     Limpiar();
                                 }
                                 else
                                 {
-                                    crud.Create(GetPersona(), comboOcupacion.Text);
+                                    crud.Create(GetPersona());
+                                    bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.NuevoRegistro(UserData.NombreUsuario, GetPersona().Documento));
                                     Limpiar();
                                 }                                
                             }
@@ -155,28 +158,27 @@ namespace New_MasterTrade.UserControls
         {
             if (MessageBox.Show("¿Desea actualizar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                crud.Update(GetPersona(), comboOcupacion.Text);
-            }
+                if (comboOcupacion.SelectedIndex == 0)
+                {
+                    crud2.Update(GetPersona());
+                    bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
+                    Limpiar();
+                }
+                else
+                {
+                    crud.Update(GetPersona());
+                    bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
+                    Limpiar();
+                }
+            }            
         }
 
-        private void bttnBuscar_Click(object sender, EventArgs e)
-        {
-            if (crud.ProveedorDatos(txtBuscar.Text).Rows.Count > 0)
-            {
-                SetDatos(crud.ProveedorDatos(txtBuscar.Text));
-            }
-            else
-            {
-                MessageBox.Show("No se encontró ningún producto con el serial introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        public void OpenProveedor(string tabla, string filtro)
+        public void OpenProveedor(int x, string filtro)
         {
             if (crud.ProveedorDatos(filtro).Rows.Count > 0)
             {
+                comboOcupacion.SelectedIndex = x;
                 SetDatos(crud.ProveedorDatos(filtro));
-                comboOcupacion.Text = tabla.ToUpper();
             }
         }
 
@@ -191,7 +193,6 @@ namespace New_MasterTrade.UserControls
             txtTelefono.Text = resultado.Rows[0][4].ToString();
             txtCorreo.Text = resultado.Rows[0][5].ToString();
 
-            txtBuscar.Text = "";
             comboOcupacion.Enabled = false;
             comboDocumento.Enabled = false;
             txtDocumento.Enabled = false;
@@ -203,12 +204,28 @@ namespace New_MasterTrade.UserControls
         public void RegistroExterno(int x)
         {
             txtDocumento.Focus();
-            label1.Visible = false;
-            txtBuscar.Visible = false;
-            bttnBuscar.Visible = false;
 
             comboOcupacion.SelectedIndex = x - 1;
             comboOcupacion.Enabled = false;
+        }
+
+        private void bttnEliminar2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea eliminar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (comboOcupacion.SelectedIndex == 0)
+                {
+                    crud2.Delete(GetPersona());
+                    bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroDesactivado(UserData.NombreUsuario, GetPersona().Documento));
+                    this.ParentForm.Close();
+                }
+                else
+                {
+                    crud.Delete(GetPersona());
+                    bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroDesactivado(UserData.NombreUsuario, GetPersona().Documento));
+                    this.ParentForm.Close();
+                }
+            }
         }
     }
 }

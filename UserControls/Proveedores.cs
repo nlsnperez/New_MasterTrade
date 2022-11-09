@@ -28,37 +28,21 @@ namespace New_MasterTrade
             
         }
 
-        //BOTONES//
-
-
         private void tablaPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 6)
             {
                 Form x = new Form();
                 FormularioPersonas y = new FormularioPersonas();
-                //y.OpenProveedor(comboTabla.Text, tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString());
+                y.OpenProveedor(1, tablaPersonas.Rows[e.RowIndex].Cells[1].Value.ToString());
                 x.Controls.Add(y);
                 x.Size = new Size(y.Width + 30, y.Height + 40);                
                 x.StartPosition = FormStartPosition.CenterScreen;
                 x.ShowDialog();
+                CargarTabla();
             }
-        }    
-        //BOTONES//
-
-        //CONFIGURACIÓN///
-
-        
-        
-
-        //CONFIGURACIÓN///
-
-        //TABLA//
-
-        private void bttnCargar_Click(object sender, EventArgs e)
-        {
-                       
         }
+
         private void CargarTabla()
         {
             if (crud.Tabla().Rows.Count > 0)
@@ -83,6 +67,5 @@ namespace New_MasterTrade
             x.StartPosition = FormStartPosition.CenterScreen;
             x.ShowDialog();
         }
-        //TABLA//
     }
 }

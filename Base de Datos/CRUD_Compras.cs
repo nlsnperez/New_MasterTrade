@@ -122,5 +122,53 @@ namespace New_MasterTrade.Base_de_Datos
             }
             return categorias;
         }
+
+        public DataTable Compras()
+        {
+            DataTable facturas = new DataTable();
+            String sql = "SELECT oc.*, p.raz_prv FROM orden_compra oc INNER JOIN proveedor p ON oc.id_prv = p.id_prv ORDER BY id_oco ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(facturas);
+                return facturas;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return facturas;
+        }
+
+        public DataTable BuscarCompras(string filtro)
+        {
+            DataTable facturas = new DataTable();
+            String sql = "SELECT oc.*, p.raz_prv FROM orden_compra oc INNER JOIN proveedor p ON oc.id_prv = p.id_prv WHERE oc.id_oco LIKE '%" + filtro + "%' OR p.raz_prv LIKE '%" + filtro + "%' OR oc.num_oco LIKE '%" + filtro+"%' ORDER BY id_oco ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(facturas);
+                return facturas;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return facturas;
+        }
     }
 }

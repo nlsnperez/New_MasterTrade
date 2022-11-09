@@ -1,4 +1,5 @@
-﻿using New_MasterTrade.Cache;
+﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
 using New_MasterTrade.UserControls;
 using System;
 using System.Drawing;
@@ -8,10 +9,12 @@ namespace New_MasterTrade
 {
     public partial class SesionIniciada : Form
     {
+        CRUD_Bitacora bitacora = new CRUD_Bitacora();
         Panel p = new Panel();
         public SesionIniciada()
         {
             InitializeComponent();
+            bitacora.Create(UserData.Id, Modulos.InicioSesion, Accion.IniciarSesion(UserData.NombreUsuario));
         }
 
         private void SesionIniciada_Load(object sender, EventArgs e)
@@ -48,6 +51,7 @@ namespace New_MasterTrade
             if (MessageBox.Show("¿Desea cerrar sesión?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Login salir_al_login = new Login();
+                bitacora.Create(UserData.Id, Modulos.CerrarSesion, Accion.CerrarSesion(UserData.NombreUsuario));
                 this.Hide();
                 this.Dispose();
                 salir_al_login.Show();
@@ -56,6 +60,7 @@ namespace New_MasterTrade
 
         private void bttnCerrar_Click(object sender, EventArgs e)
         {
+            bitacora.Create(UserData.Id, Modulos.CerrarSesion, Accion.CerrarSesion(UserData.NombreUsuario));
             Application.Exit();
         }
 
@@ -139,6 +144,7 @@ namespace New_MasterTrade
 
         private void bttnCompras_Click(object sender, EventArgs e)
         {
+            MostrarUserControl(new Compras());
             panelArchivo.Visible = false;
         }
 
@@ -150,6 +156,7 @@ namespace New_MasterTrade
 
         private void bttnBitacora_Click(object sender, EventArgs e)
         {
+            MostrarUserControl(new RegistrosBitacora());
             panelMantenimiento.Visible = false;
         }
 

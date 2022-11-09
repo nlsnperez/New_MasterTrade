@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace New_MasterTrade.UserControls
         CRUD_Compras crud;
         CRUD_Proveedores personas;
         DataTable carrito = new DataTable();
+        CRUD_Bitacora bitacora = new CRUD_Bitacora();
         int IdCompra = 0;
         int IdProveedor = 0;
         
@@ -338,6 +340,7 @@ namespace New_MasterTrade.UserControls
                 {
                     crud.Crear(GetCompra());
                     crud.CrearDetalle(GetDetalle());
+                    bitacora.Create(UserData.Id, Modulos.Comprar, Accion.NuevaCompra(UserData.NombreUsuario, txtNumeroOrden.Text));
                     ConfigControles("OFF");
                 }
             }            

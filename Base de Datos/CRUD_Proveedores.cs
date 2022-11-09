@@ -9,7 +9,7 @@ namespace New_MasterTrade.Base_de_Datos
     class CRUD_Proveedores : Conexion
     {
         
-        public void Create(Persona persona, String tabla)
+        public void Create(Persona persona)
         {
             try
             {
@@ -41,14 +41,14 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public void Update(Persona persona, String tabla)
+        public void Update(Persona persona)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `" + tabla + "` SET `raz_prv`=@razonsocial,`dir_prv`=@direccion,`tel_prv`=@telefono,`cor_prv`=@correo WHERE `" + tabla + "`.`doc_prv` = @documento;";
+                    command.CommandText = "UPDATE `proveedor` SET `raz_prv`=@razonsocial,`dir_prv`=@direccion,`tel_prv`=@telefono,`cor_prv`=@correo WHERE doc_prv = @documento;";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -73,22 +73,21 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public void Delete(String documento, String tabla)
+        public void Delete(Persona proveedor)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `" + tabla + "` SET `visible` = '0', `fecha_eliminado`= @feliminado WHERE `" + tabla + "`.`documento_identidad` = @documento;";
+                    command.CommandText = "UPDATE `proveedor` SET `act_prv`=@activo WHERE `doc_prv`=@documento";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@feliminado", MySqlDbType.DateTime).Value = System.DateTime.Now;
-                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = documento;
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 0;
+                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = proveedor.Documento;
 
                     command.ExecuteNonQuery();
-                    con.Close();
                 }
                 MessageBox.Show("El registro se eliminó de manera satisfactoria.", "¡DATOS ELIMINADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -106,7 +105,7 @@ namespace New_MasterTrade.Base_de_Datos
             DataTable resultados = new DataTable();
             using (MySqlCommand command = new MySqlCommand())
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `proveedor`", con);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `proveedor` WHERE act_prv", con);
                 adapter.Fill(resultados);
                 con.Close();
             }

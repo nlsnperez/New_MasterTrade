@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\Conexion.cs" />
+    <Compile Include="Base de Datos\CRUD_Bitacora.cs" />
     <Compile Include="Base de Datos\CRUD_Proveedores.cs" />
     <Compile Include="Base de Datos\CRUDExtras.cs" />
     <Compile Include="Base de Datos\CRUD_Compras.cs" />
@@ -102,6 +103,8 @@
     <Compile Include="Base de Datos\CRUD_Usuarios.cs" />
     <Compile Include="Base de Datos\CRUD_Productos.cs" />
     <Compile Include="Base de Datos\CRUD_Ventas.cs" />
+    <Compile Include="Cache\Accion.cs" />
+    <Compile Include="Cache\Modulos.cs" />
     <Compile Include="Cache\UserData.cs" />
     <Compile Include="Custom Controls\AgregarProducto.cs">
       <SubType>UserControl</SubType>
@@ -166,6 +169,12 @@
     <Compile Include="UserControls\Comprar.Designer.cs">
       <DependentUpon>Comprar.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Compras.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Compras.Designer.cs">
+      <DependentUpon>Compras.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FormularioPersonas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -210,6 +219,12 @@
     <Compile Include="UserControls\Productos.Designer.cs">
       <DependentUpon>Productos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\RegistrosBitacora.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RegistrosBitacora.Designer.cs">
+      <DependentUpon>RegistrosBitacora.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Usuarios.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -249,6 +264,9 @@
     <EmbeddedResource Include="UserControls\Comprar.resx">
       <DependentUpon>Comprar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Compras.resx">
+      <DependentUpon>Compras.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FormularioPersonas.resx">
       <DependentUpon>FormularioPersonas.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RegistrosBitacora.resx">
+      <DependentUpon>RegistrosBitacora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>

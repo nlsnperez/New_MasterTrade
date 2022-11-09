@@ -19,6 +19,7 @@ namespace New_MasterTrade.UserControls
         CRUD_Ventas crud;
         CRUD_Clientes crud_clientes;
         DataTable carrito = new DataTable();
+        CRUD_Bitacora bitacora = new CRUD_Bitacora();
         List<int> dias_garantia;
         int IdVenta = 0;
         int IdCliente = 0;
@@ -357,6 +358,7 @@ namespace New_MasterTrade.UserControls
                     crud.CrearDetalle(GetDetalle());
                     crud.CrearGarantia(crud.Detalles(IdVenta), dias_garantia);
                     crud.CrearFactura(new Factura(id: 0, vendedor: crud.Vendedor(UserData.Id), ordenVenta: IdVenta, metodoPago: (int)comboPago.SelectedValue, total_Bs: decimal.Parse(txtTotalBs.Text), total_Us: decimal.Parse(txtTotalUs.Text)));
+                    bitacora.Create(UserData.Id, Modulos.Vender, Accion.NuevaVenta(UserData.NombreUsuario, txtNumeroOrden.Text));
                     ConfigControles("OFF");
                 }
             }

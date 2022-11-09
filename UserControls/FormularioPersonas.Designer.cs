@@ -33,9 +33,6 @@ namespace New_MasterTrade.UserControls
             this.bttnEliminar2 = new System.Windows.Forms.Button();
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
-            this.bttnBuscar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
@@ -73,6 +70,7 @@ namespace New_MasterTrade.UserControls
             this.bttnEliminar2.TabIndex = 38;
             this.bttnEliminar2.Text = "ELIMINAR";
             this.bttnEliminar2.UseVisualStyleBackColor = true;
+            this.bttnEliminar2.Click += new System.EventHandler(this.bttnEliminar2_Click);
             // 
             // bttnActualizar
             // 
@@ -97,37 +95,6 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar.Text = "GUARDAR";
             this.bttnGuardar.UseVisualStyleBackColor = true;
             this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
-            // 
-            // bttnBuscar
-            // 
-            this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnBuscar.Location = new System.Drawing.Point(761, 15);
-            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnBuscar.Name = "bttnBuscar";
-            this.bttnBuscar.Size = new System.Drawing.Size(85, 24);
-            this.bttnBuscar.TabIndex = 42;
-            this.bttnBuscar.Text = "BUSCAR";
-            this.bttnBuscar.UseVisualStyleBackColor = true;
-            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(569, 17);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 41;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(505, 21);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "BUSCAR: ";
             // 
             // txtDocumento
             // 
@@ -273,9 +240,6 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.bttnBuscar);
-            this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.bttnCancelar);
             this.Controls.Add(this.bttnEliminar2);
             this.Controls.Add(this.bttnActualizar);
@@ -293,9 +257,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.Button bttnEliminar2;
         private System.Windows.Forms.Button bttnActualizar;
         private System.Windows.Forms.Button bttnGuardar;
-        private System.Windows.Forms.Button bttnBuscar;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtRazonSocial;
