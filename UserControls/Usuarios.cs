@@ -87,10 +87,5 @@ namespace New_MasterTrade.UserControls
             x.FormBorderStyle = FormBorderStyle.None;
             x.ShowDialog();
         }
-
-        private void bttnCargar_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

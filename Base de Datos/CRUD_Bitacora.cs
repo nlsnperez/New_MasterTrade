@@ -44,7 +44,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable RegistrosBitacora()
         {
             DataTable bitacora = new DataTable();
-            String sql = "SELECT b.*, u.usr_usu FROM bitacora b INNER JOIN usuario u ON b.id_usu = u.id_usu ORDER BY id_bit ASC";
+            String sql = "SELECT b.*, u.usr_usu FROM bitacora b INNER JOIN usuario u ON b.id_usu = u.id_usu WHERE fec_bit LIKE '%"+ System.DateTime.Now.Date.ToString("yyyy-MM-dd") + "%' ORDER BY id_bit ASC";
             con.Open();
             try
             {

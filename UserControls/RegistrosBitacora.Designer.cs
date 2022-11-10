@@ -30,13 +30,13 @@ namespace New_MasterTrade.UserControls
         private void InitializeComponent()
         {
             this.tablaBitacora = new System.Windows.Forms.DataGridView();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnNFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaBitacora)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,26 +54,7 @@ namespace New_MasterTrade.UserControls
             this.tablaBitacora.Name = "tablaBitacora";
             this.tablaBitacora.Size = new System.Drawing.Size(858, 494);
             this.tablaBitacora.TabIndex = 42;
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 44;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(597, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "BUSCAR: ";
+            this.tablaBitacora.MouseEnter += new System.EventHandler(this.tablaBitacora_MouseEnter);
             // 
             // columnId
             // 
@@ -111,6 +92,26 @@ namespace New_MasterTrade.UserControls
             this.columnDetalle.Name = "columnDetalle";
             this.columnDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
+            this.txtBuscar.TabIndex = 44;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(597, 516);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "BUSCAR: ";
             // 
             // RegistrosBitacora
             // 

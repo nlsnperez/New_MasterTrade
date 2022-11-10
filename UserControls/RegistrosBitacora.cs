@@ -39,5 +39,10 @@ namespace New_MasterTrade.UserControls
         {
             tablaBitacora.DataSource = crud.BuscarBitacora(txtBuscar.Text);
         }
+
+        private void tablaBitacora_MouseEnter(object sender, EventArgs e)
+        {
+            tablaBitacora.Focus();
+        }
     }
 }

@@ -52,14 +52,14 @@
             this.comboMarca = new System.Windows.Forms.ComboBox();
             this.comboCategoria = new System.Windows.Forms.ComboBox();
             this.comboGarantia = new System.Windows.Forms.ComboBox();
-            this.bttnGuardar = new System.Windows.Forms.Button();
-            this.bttnActualizar = new System.Windows.Forms.Button();
-            this.bttnEliminar2 = new System.Windows.Forms.Button();
             this.openImage = new System.Windows.Forms.OpenFileDialog();
-            this.bttnCancelar = new System.Windows.Forms.Button();
             this.comboModelo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.bttnCancelar = new System.Windows.Forms.Button();
+            this.bttnEliminar2 = new System.Windows.Forms.Button();
+            this.bttnActualizar = new System.Windows.Forms.Button();
+            this.bttnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,7 +97,7 @@
             // pbImagen
             // 
             this.pbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImagen.Image = global::New_MasterTrade.Properties.Resources.descripcion_del_producto;
+            this.pbImagen.Image = global::New_MasterTrade.Properties.Resources.upload;
             this.pbImagen.Location = new System.Drawing.Point(14, 95);
             this.pbImagen.Margin = new System.Windows.Forms.Padding(2);
             this.pbImagen.Name = "pbImagen";
@@ -312,57 +312,10 @@
             this.comboGarantia.Size = new System.Drawing.Size(183, 21);
             this.comboGarantia.TabIndex = 30;
             // 
-            // bttnGuardar
-            // 
-            this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuardar.Location = new System.Drawing.Point(14, 515);
-            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnGuardar.Name = "bttnGuardar";
-            this.bttnGuardar.Size = new System.Drawing.Size(85, 24);
-            this.bttnGuardar.TabIndex = 32;
-            this.bttnGuardar.Text = "GUARDAR";
-            this.bttnGuardar.UseVisualStyleBackColor = true;
-            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
-            // 
-            // bttnActualizar
-            // 
-            this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnActualizar.Location = new System.Drawing.Point(105, 515);
-            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnActualizar.Name = "bttnActualizar";
-            this.bttnActualizar.Size = new System.Drawing.Size(85, 24);
-            this.bttnActualizar.TabIndex = 33;
-            this.bttnActualizar.Text = "ACTUALIZAR";
-            this.bttnActualizar.UseVisualStyleBackColor = true;
-            this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
-            // 
-            // bttnEliminar2
-            // 
-            this.bttnEliminar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnEliminar2.Location = new System.Drawing.Point(196, 515);
-            this.bttnEliminar2.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnEliminar2.Name = "bttnEliminar2";
-            this.bttnEliminar2.Size = new System.Drawing.Size(85, 24);
-            this.bttnEliminar2.TabIndex = 34;
-            this.bttnEliminar2.Text = "ELIMINAR";
-            this.bttnEliminar2.UseVisualStyleBackColor = true;
-            // 
             // openImage
             // 
             this.openImage.FileName = "openFileDialog1";
             this.openImage.Filter = "Image Files|*.jpg;*.jpeg;*.png";
-            // 
-            // bttnCancelar
-            // 
-            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCancelar.Location = new System.Drawing.Point(287, 515);
-            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnCancelar.Name = "bttnCancelar";
-            this.bttnCancelar.Size = new System.Drawing.Size(85, 24);
-            this.bttnCancelar.TabIndex = 35;
-            this.bttnCancelar.Text = "CANCELAR";
-            this.bttnCancelar.UseVisualStyleBackColor = true;
-            this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
             // 
             // comboModelo
             // 
@@ -395,17 +348,73 @@
             this.label12.Text = "IMAGEN DEL PRODUCTO";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // bttnCancelar
+            // 
+            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.forbidden;
+            this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnCancelar.Location = new System.Drawing.Point(329, 510);
+            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnCancelar.Name = "bttnCancelar";
+            this.bttnCancelar.Size = new System.Drawing.Size(100, 24);
+            this.bttnCancelar.TabIndex = 43;
+            this.bttnCancelar.Text = "CANCELAR";
+            this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // bttnEliminar2
+            // 
+            this.bttnEliminar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnEliminar2.Image = global::New_MasterTrade.Properties.Resources.trash_can;
+            this.bttnEliminar2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnEliminar2.Location = new System.Drawing.Point(223, 510);
+            this.bttnEliminar2.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnEliminar2.Name = "bttnEliminar2";
+            this.bttnEliminar2.Size = new System.Drawing.Size(100, 24);
+            this.bttnEliminar2.TabIndex = 42;
+            this.bttnEliminar2.Text = "ELIMINAR";
+            this.bttnEliminar2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnEliminar2.UseVisualStyleBackColor = true;
+            // 
+            // bttnActualizar
+            // 
+            this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnActualizar.Image = global::New_MasterTrade.Properties.Resources.reload;
+            this.bttnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnActualizar.Location = new System.Drawing.Point(118, 510);
+            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnActualizar.Name = "bttnActualizar";
+            this.bttnActualizar.Size = new System.Drawing.Size(100, 24);
+            this.bttnActualizar.TabIndex = 41;
+            this.bttnActualizar.Text = "ACTUALIZAR";
+            this.bttnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnActualizar.UseVisualStyleBackColor = true;
+            // 
+            // bttnGuardar
+            // 
+            this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk;
+            this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnGuardar.Location = new System.Drawing.Point(14, 510);
+            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(100, 24);
+            this.bttnGuardar.TabIndex = 40;
+            this.bttnGuardar.Text = "GUARDAR";
+            this.bttnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnGuardar.UseVisualStyleBackColor = true;
+            // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.comboModelo);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.bttnCancelar);
             this.Controls.Add(this.bttnEliminar2);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.bttnGuardar);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.comboModelo);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.comboGarantia);
             this.Controls.Add(this.comboCategoria);
             this.Controls.Add(this.comboMarca);
@@ -465,13 +474,13 @@
         private System.Windows.Forms.ComboBox comboMarca;
         private System.Windows.Forms.ComboBox comboCategoria;
         private System.Windows.Forms.ComboBox comboGarantia;
-        private System.Windows.Forms.Button bttnGuardar;
-        private System.Windows.Forms.Button bttnActualizar;
-        private System.Windows.Forms.Button bttnEliminar2;
         private System.Windows.Forms.OpenFileDialog openImage;
-        private System.Windows.Forms.Button bttnCancelar;
         private System.Windows.Forms.ComboBox comboModelo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button bttnCancelar;
+        private System.Windows.Forms.Button bttnEliminar2;
+        private System.Windows.Forms.Button bttnActualizar;
+        private System.Windows.Forms.Button bttnGuardar;
     }
 }

@@ -47,13 +47,8 @@ namespace New_MasterTrade.UserControls
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.bttnBuscar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNumeroOrden = new System.Windows.Forms.TextBox();
-            this.bttnGuardar = new System.Windows.Forms.Button();
-            this.bttnBuscarProductos = new System.Windows.Forms.Button();
-            this.bttnCancelar = new System.Windows.Forms.Button();
-            this.bttnNuevaCompra = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalBs = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -66,6 +61,11 @@ namespace New_MasterTrade.UserControls
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.bttnBuscarProductos = new System.Windows.Forms.Button();
+            this.bttnGuardar = new System.Windows.Forms.Button();
+            this.bttnBuscar = new System.Windows.Forms.Button();
+            this.bttnCancelar = new System.Windows.Forms.Button();
+            this.bttnNuevaCompra = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,7 +164,7 @@ namespace New_MasterTrade.UserControls
             this.txtProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProveedor.Location = new System.Drawing.Point(393, 11);
             this.txtProveedor.Name = "txtProveedor";
-            this.txtProveedor.Size = new System.Drawing.Size(157, 20);
+            this.txtProveedor.Size = new System.Drawing.Size(183, 20);
             this.txtProveedor.TabIndex = 41;
             // 
             // label1
@@ -244,17 +244,6 @@ namespace New_MasterTrade.UserControls
             this.label6.TabIndex = 49;
             this.label6.Text = "CORREO";
             // 
-            // bttnBuscar
-            // 
-            this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnBuscar.Location = new System.Drawing.Point(556, 10);
-            this.bttnBuscar.Name = "bttnBuscar";
-            this.bttnBuscar.Size = new System.Drawing.Size(54, 23);
-            this.bttnBuscar.TabIndex = 50;
-            this.bttnBuscar.Text = "Buscar";
-            this.bttnBuscar.UseVisualStyleBackColor = true;
-            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click_1);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -271,50 +260,6 @@ namespace New_MasterTrade.UserControls
             this.txtNumeroOrden.Name = "txtNumeroOrden";
             this.txtNumeroOrden.Size = new System.Drawing.Size(217, 20);
             this.txtNumeroOrden.TabIndex = 51;
-            // 
-            // bttnGuardar
-            // 
-            this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuardar.Location = new System.Drawing.Point(285, 510);
-            this.bttnGuardar.Name = "bttnGuardar";
-            this.bttnGuardar.Size = new System.Drawing.Size(85, 24);
-            this.bttnGuardar.TabIndex = 55;
-            this.bttnGuardar.Text = "REGISTRAR";
-            this.bttnGuardar.UseVisualStyleBackColor = true;
-            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
-            // 
-            // bttnBuscarProductos
-            // 
-            this.bttnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnBuscarProductos.Location = new System.Drawing.Point(103, 510);
-            this.bttnBuscarProductos.Name = "bttnBuscarProductos";
-            this.bttnBuscarProductos.Size = new System.Drawing.Size(85, 24);
-            this.bttnBuscarProductos.TabIndex = 72;
-            this.bttnBuscarProductos.Text = "PRODUCTOS";
-            this.bttnBuscarProductos.UseVisualStyleBackColor = true;
-            this.bttnBuscarProductos.Click += new System.EventHandler(this.bttnBuscarProductos_Click);
-            // 
-            // bttnCancelar
-            // 
-            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCancelar.Location = new System.Drawing.Point(194, 510);
-            this.bttnCancelar.Name = "bttnCancelar";
-            this.bttnCancelar.Size = new System.Drawing.Size(85, 24);
-            this.bttnCancelar.TabIndex = 63;
-            this.bttnCancelar.Text = "CANCELAR";
-            this.bttnCancelar.UseVisualStyleBackColor = true;
-            this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
-            // 
-            // bttnNuevaCompra
-            // 
-            this.bttnNuevaCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnNuevaCompra.Location = new System.Drawing.Point(12, 510);
-            this.bttnNuevaCompra.Name = "bttnNuevaCompra";
-            this.bttnNuevaCompra.Size = new System.Drawing.Size(85, 24);
-            this.bttnNuevaCompra.TabIndex = 61;
-            this.bttnNuevaCompra.Text = "NUEVO (+)";
-            this.bttnNuevaCompra.UseVisualStyleBackColor = true;
-            this.bttnNuevaCompra.Click += new System.EventHandler(this.bttnNuevaCompra_Click);
             // 
             // label9
             // 
@@ -431,6 +376,73 @@ namespace New_MasterTrade.UserControls
             this.label14.Size = new System.Drawing.Size(64, 20);
             this.label14.TabIndex = 71;
             this.label14.Text = "TOTAL";
+            // 
+            // bttnBuscarProductos
+            // 
+            this.bttnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnBuscarProductos.Image = global::New_MasterTrade.Properties.Resources.packages;
+            this.bttnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnBuscarProductos.Location = new System.Drawing.Point(118, 510);
+            this.bttnBuscarProductos.Name = "bttnBuscarProductos";
+            this.bttnBuscarProductos.Size = new System.Drawing.Size(100, 24);
+            this.bttnBuscarProductos.TabIndex = 72;
+            this.bttnBuscarProductos.Text = "PRODUCTOS";
+            this.bttnBuscarProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnBuscarProductos.UseVisualStyleBackColor = true;
+            this.bttnBuscarProductos.Click += new System.EventHandler(this.bttnBuscarProductos_Click);
+            // 
+            // bttnGuardar
+            // 
+            this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk;
+            this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnGuardar.Location = new System.Drawing.Point(330, 510);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(100, 24);
+            this.bttnGuardar.TabIndex = 55;
+            this.bttnGuardar.Text = "REGISTRAR";
+            this.bttnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnGuardar.UseVisualStyleBackColor = true;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
+            // 
+            // bttnBuscar
+            // 
+            this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnBuscar.Image = global::New_MasterTrade.Properties.Resources.search;
+            this.bttnBuscar.Location = new System.Drawing.Point(582, 10);
+            this.bttnBuscar.Name = "bttnBuscar";
+            this.bttnBuscar.Size = new System.Drawing.Size(28, 23);
+            this.bttnBuscar.TabIndex = 50;
+            this.bttnBuscar.UseVisualStyleBackColor = true;
+            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click_1);
+            // 
+            // bttnCancelar
+            // 
+            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.forbidden;
+            this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnCancelar.Location = new System.Drawing.Point(224, 510);
+            this.bttnCancelar.Name = "bttnCancelar";
+            this.bttnCancelar.Size = new System.Drawing.Size(100, 24);
+            this.bttnCancelar.TabIndex = 63;
+            this.bttnCancelar.Text = "CANCELAR";
+            this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnCancelar.UseVisualStyleBackColor = true;
+            this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
+            // 
+            // bttnNuevaCompra
+            // 
+            this.bttnNuevaCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnNuevaCompra.Image = global::New_MasterTrade.Properties.Resources.plus;
+            this.bttnNuevaCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnNuevaCompra.Location = new System.Drawing.Point(12, 510);
+            this.bttnNuevaCompra.Name = "bttnNuevaCompra";
+            this.bttnNuevaCompra.Size = new System.Drawing.Size(100, 24);
+            this.bttnNuevaCompra.TabIndex = 61;
+            this.bttnNuevaCompra.Text = "NUEVO";
+            this.bttnNuevaCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnNuevaCompra.UseVisualStyleBackColor = true;
+            this.bttnNuevaCompra.Click += new System.EventHandler(this.bttnNuevaCompra_Click);
             // 
             // Comprar
             // 

@@ -29,10 +29,7 @@ namespace New_MasterTrade.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.bttnCancelar = new System.Windows.Forms.Button();
             this.bttnEliminar2 = new System.Windows.Forms.Button();
-            this.bttnActualizar = new System.Windows.Forms.Button();
-            this.bttnGuardar = new System.Windows.Forms.Button();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
@@ -46,55 +43,25 @@ namespace New_MasterTrade.UserControls
             this.comboDocumento = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.bttnCancelar = new System.Windows.Forms.Button();
+            this.bttnActualizar = new System.Windows.Forms.Button();
+            this.bttnGuardar = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // bttnCancelar
-            // 
-            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCancelar.Location = new System.Drawing.Point(287, 515);
-            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnCancelar.Name = "bttnCancelar";
-            this.bttnCancelar.Size = new System.Drawing.Size(85, 24);
-            this.bttnCancelar.TabIndex = 39;
-            this.bttnCancelar.Text = "CANCELAR";
-            this.bttnCancelar.UseVisualStyleBackColor = true;
-            this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
             // 
             // bttnEliminar2
             // 
             this.bttnEliminar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnEliminar2.Location = new System.Drawing.Point(196, 515);
+            this.bttnEliminar2.Image = global::New_MasterTrade.Properties.Resources.trash_can;
+            this.bttnEliminar2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnEliminar2.Location = new System.Drawing.Point(224, 510);
             this.bttnEliminar2.Margin = new System.Windows.Forms.Padding(2);
             this.bttnEliminar2.Name = "bttnEliminar2";
-            this.bttnEliminar2.Size = new System.Drawing.Size(85, 24);
+            this.bttnEliminar2.Size = new System.Drawing.Size(100, 24);
             this.bttnEliminar2.TabIndex = 38;
             this.bttnEliminar2.Text = "ELIMINAR";
+            this.bttnEliminar2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bttnEliminar2.UseVisualStyleBackColor = true;
             this.bttnEliminar2.Click += new System.EventHandler(this.bttnEliminar2_Click);
-            // 
-            // bttnActualizar
-            // 
-            this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnActualizar.Location = new System.Drawing.Point(105, 515);
-            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnActualizar.Name = "bttnActualizar";
-            this.bttnActualizar.Size = new System.Drawing.Size(85, 24);
-            this.bttnActualizar.TabIndex = 37;
-            this.bttnActualizar.Text = "ACTUALIZAR";
-            this.bttnActualizar.UseVisualStyleBackColor = true;
-            this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
-            // 
-            // bttnGuardar
-            // 
-            this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuardar.Location = new System.Drawing.Point(14, 515);
-            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnGuardar.Name = "bttnGuardar";
-            this.bttnGuardar.Size = new System.Drawing.Size(85, 24);
-            this.bttnGuardar.TabIndex = 36;
-            this.bttnGuardar.Text = "GUARDAR";
-            this.bttnGuardar.UseVisualStyleBackColor = true;
-            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // txtDocumento
             // 
@@ -222,6 +189,51 @@ namespace New_MasterTrade.UserControls
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(639, 20);
             this.txtCorreo.TabIndex = 56;
+            // 
+            // bttnCancelar
+            // 
+            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.forbidden;
+            this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnCancelar.Location = new System.Drawing.Point(329, 510);
+            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnCancelar.Name = "bttnCancelar";
+            this.bttnCancelar.Size = new System.Drawing.Size(100, 24);
+            this.bttnCancelar.TabIndex = 39;
+            this.bttnCancelar.Text = "CANCELAR";
+            this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnCancelar.UseVisualStyleBackColor = true;
+            this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
+            // 
+            // bttnActualizar
+            // 
+            this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnActualizar.Image = global::New_MasterTrade.Properties.Resources.reload;
+            this.bttnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnActualizar.Location = new System.Drawing.Point(119, 510);
+            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnActualizar.Name = "bttnActualizar";
+            this.bttnActualizar.Size = new System.Drawing.Size(100, 24);
+            this.bttnActualizar.TabIndex = 37;
+            this.bttnActualizar.Text = "ACTUALIZAR";
+            this.bttnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnActualizar.UseVisualStyleBackColor = true;
+            this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
+            // 
+            // bttnGuardar
+            // 
+            this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk;
+            this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnGuardar.Location = new System.Drawing.Point(14, 510);
+            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(100, 24);
+            this.bttnGuardar.TabIndex = 36;
+            this.bttnGuardar.Text = "GUARDAR";
+            this.bttnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnGuardar.UseVisualStyleBackColor = true;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // FormularioPersonas
             // 

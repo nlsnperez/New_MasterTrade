@@ -19,7 +19,7 @@ namespace New_MasterTrade
 
         private void SesionIniciada_Load(object sender, EventArgs e)
         {
-            bttnProveedores_Click(null, e);
+            bttnClientes_Click(null, e);
         }
 
         private void bttnMouseEnter(object sender, EventArgs e)
@@ -56,12 +56,6 @@ namespace New_MasterTrade
                 this.Dispose();
                 salir_al_login.Show();
             }
-        }
-
-        private void bttnCerrar_Click(object sender, EventArgs e)
-        {
-            bitacora.Create(UserData.Id, Modulos.CerrarSesion, Accion.CerrarSesion(UserData.NombreUsuario));
-            Application.Exit();
         }
 
         private void bttnMinimizar_Click(object sender, EventArgs e)
@@ -168,6 +162,12 @@ namespace New_MasterTrade
         private void bttnProveedores_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Proveedores());
+            panelArchivo.Visible = false;
+        }
+
+        private void bttnClientes_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new Clientes());
             panelArchivo.Visible = false;
         }
     }
