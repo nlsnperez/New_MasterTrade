@@ -35,13 +35,10 @@ namespace New_MasterTrade.Base_de_Datos
         {
             try
             {
-                string cadena = "datasource =localhost; database =new_mastertrade_backup; port =3306; user =root; password =; sslMode = none";
-                MySqlConnection new_con = new MySqlConnection(cadena);
-
                 MySqlCommand comando = new MySqlCommand();
                 MySqlBackup respaldo = new MySqlBackup(comando);
-                comando.Connection = new_con;
-                new_con.Open();
+                comando.Connection = con;
+                con.Open();
                 respaldo.ImportFromFile(ruta);
             }
             catch (MySqlException ex)
