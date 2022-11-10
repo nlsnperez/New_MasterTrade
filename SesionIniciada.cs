@@ -170,5 +170,11 @@ namespace New_MasterTrade
             MostrarUserControl(new Clientes());
             panelArchivo.Visible = false;
         }
+
+        private void bttnRespaldo_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new Respaldos());
+            panelMantenimiento.Visible = false;
+        }
     }
 }

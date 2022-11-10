@@ -32,6 +32,14 @@ namespace New_MasterTrade.Cache
         {
             return "El usuario " + x + " registró la compra " + y + " en el sistema";
         }
+        public static string GenerarRespaldo(string x)
+        {
+            return "El usuario " + x + " generó una copia de la base de datos";
+        }
+        public static string RestaurarBaseDeDatos(string x)
+        {
+            return "El usuario " + x + " restauró copia de la base de datos";
+        }
         public static string CerrarSesion(string x)
         {
             return "El usuario " + x + " cerró su sesión en el sistema";

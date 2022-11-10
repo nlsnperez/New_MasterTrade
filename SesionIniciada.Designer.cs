@@ -32,28 +32,29 @@ namespace New_MasterTrade
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SesionIniciada));
             this.panelPapa = new System.Windows.Forms.Panel();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
-            this.panelTransacciones = new System.Windows.Forms.Panel();
-            this.panelArchivo = new System.Windows.Forms.Panel();
-            this.panelContenedor = new System.Windows.Forms.Panel();
-            this.bttnMinimizar = new System.Windows.Forms.Button();
-            this.panelMenu = new System.Windows.Forms.Panel();
-            this.bttnReportes = new System.Windows.Forms.Button();
-            this.bttnSalir = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.bttnTransacciones = new System.Windows.Forms.Button();
-            this.bttnMantenimiento = new System.Windows.Forms.Button();
-            this.bttnArchivo = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.bttnBitacora = new System.Windows.Forms.Button();
             this.bttnUsuarios = new System.Windows.Forms.Button();
             this.bttnPerfil = new System.Windows.Forms.Button();
+            this.panelTransacciones = new System.Windows.Forms.Panel();
             this.bttnVender = new System.Windows.Forms.Button();
             this.bttnComprar = new System.Windows.Forms.Button();
+            this.panelArchivo = new System.Windows.Forms.Panel();
             this.bttnClientes = new System.Windows.Forms.Button();
             this.bttnVentas = new System.Windows.Forms.Button();
             this.bttnCompras = new System.Windows.Forms.Button();
             this.bttnProveedores = new System.Windows.Forms.Button();
             this.bttnProductos = new System.Windows.Forms.Button();
+            this.panelContenedor = new System.Windows.Forms.Panel();
+            this.bttnMinimizar = new System.Windows.Forms.Button();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.bttnSalir = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bttnTransacciones = new System.Windows.Forms.Button();
+            this.bttnMantenimiento = new System.Windows.Forms.Button();
+            this.bttnReportes = new System.Windows.Forms.Button();
+            this.bttnArchivo = new System.Windows.Forms.Button();
+            this.bttnRespaldo = new System.Windows.Forms.Button();
             this.panelPapa.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
             this.panelTransacciones.SuspendLayout();
@@ -77,6 +78,7 @@ namespace New_MasterTrade
             // 
             // panelMantenimiento
             // 
+            this.panelMantenimiento.Controls.Add(this.bttnRespaldo);
             this.panelMantenimiento.Controls.Add(this.button1);
             this.panelMantenimiento.Controls.Add(this.bttnBitacora);
             this.panelMantenimiento.Controls.Add(this.bttnUsuarios);
@@ -84,177 +86,9 @@ namespace New_MasterTrade
             this.panelMantenimiento.Location = new System.Drawing.Point(580, 43);
             this.panelMantenimiento.MinimumSize = new System.Drawing.Size(160, 152);
             this.panelMantenimiento.Name = "panelMantenimiento";
-            this.panelMantenimiento.Size = new System.Drawing.Size(160, 152);
+            this.panelMantenimiento.Size = new System.Drawing.Size(160, 190);
             this.panelMantenimiento.TabIndex = 15;
             this.panelMantenimiento.Visible = false;
-            // 
-            // panelTransacciones
-            // 
-            this.panelTransacciones.Controls.Add(this.bttnVender);
-            this.panelTransacciones.Controls.Add(this.bttnComprar);
-            this.panelTransacciones.Location = new System.Drawing.Point(260, 43);
-            this.panelTransacciones.MinimumSize = new System.Drawing.Size(160, 76);
-            this.panelTransacciones.Name = "panelTransacciones";
-            this.panelTransacciones.Size = new System.Drawing.Size(160, 76);
-            this.panelTransacciones.TabIndex = 16;
-            this.panelTransacciones.Visible = false;
-            // 
-            // panelArchivo
-            // 
-            this.panelArchivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelArchivo.BackColor = System.Drawing.Color.DimGray;
-            this.panelArchivo.Controls.Add(this.bttnClientes);
-            this.panelArchivo.Controls.Add(this.bttnVentas);
-            this.panelArchivo.Controls.Add(this.bttnCompras);
-            this.panelArchivo.Controls.Add(this.bttnProveedores);
-            this.panelArchivo.Controls.Add(this.bttnProductos);
-            this.panelArchivo.Location = new System.Drawing.Point(100, 43);
-            this.panelArchivo.MinimumSize = new System.Drawing.Size(160, 152);
-            this.panelArchivo.Name = "panelArchivo";
-            this.panelArchivo.Size = new System.Drawing.Size(160, 190);
-            this.panelArchivo.TabIndex = 14;
-            this.panelArchivo.Visible = false;
-            // 
-            // panelContenedor
-            // 
-            this.panelContenedor.Location = new System.Drawing.Point(0, 43);
-            this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(858, 551);
-            this.panelContenedor.TabIndex = 17;
-            // 
-            // bttnMinimizar
-            // 
-            this.bttnMinimizar.BackColor = System.Drawing.Color.Transparent;
-            this.bttnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.bttnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnMinimizar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnMinimizar.ForeColor = System.Drawing.Color.White;
-            this.bttnMinimizar.Location = new System.Drawing.Point(784, 7);
-            this.bttnMinimizar.Name = "bttnMinimizar";
-            this.bttnMinimizar.Size = new System.Drawing.Size(29, 28);
-            this.bttnMinimizar.TabIndex = 1;
-            this.bttnMinimizar.Text = "-";
-            this.bttnMinimizar.UseVisualStyleBackColor = false;
-            this.bttnMinimizar.Click += new System.EventHandler(this.bttnMinimizar_Click);
-            // 
-            // panelMenu
-            // 
-            this.panelMenu.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelMenu.Controls.Add(this.bttnSalir);
-            this.panelMenu.Controls.Add(this.pictureBox1);
-            this.panelMenu.Controls.Add(this.bttnMinimizar);
-            this.panelMenu.Controls.Add(this.bttnTransacciones);
-            this.panelMenu.Controls.Add(this.bttnMantenimiento);
-            this.panelMenu.Controls.Add(this.bttnReportes);
-            this.panelMenu.Controls.Add(this.bttnArchivo);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(858, 43);
-            this.panelMenu.TabIndex = 4;
-            // 
-            // bttnReportes
-            // 
-            this.bttnReportes.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bttnReportes.FlatAppearance.BorderSize = 0;
-            this.bttnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.bttnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnReportes.Font = new System.Drawing.Font("Arial", 9F);
-            this.bttnReportes.ForeColor = System.Drawing.SystemColors.Control;
-            this.bttnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnReportes.Location = new System.Drawing.Point(420, 0);
-            this.bttnReportes.Name = "bttnReportes";
-            this.bttnReportes.Size = new System.Drawing.Size(160, 38);
-            this.bttnReportes.TabIndex = 17;
-            this.bttnReportes.Text = "REPORTES";
-            this.bttnReportes.UseVisualStyleBackColor = false;
-            this.bttnReportes.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
-            this.bttnReportes.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
-            // 
-            // bttnSalir
-            // 
-            this.bttnSalir.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bttnSalir.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.bttnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnSalir.Font = new System.Drawing.Font("Arial", 9F);
-            this.bttnSalir.Image = global::New_MasterTrade.Properties.Resources.Salir;
-            this.bttnSalir.Location = new System.Drawing.Point(819, 7);
-            this.bttnSalir.Name = "bttnSalir";
-            this.bttnSalir.Size = new System.Drawing.Size(29, 28);
-            this.bttnSalir.TabIndex = 12;
-            this.bttnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnSalir.UseVisualStyleBackColor = false;
-            this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::New_MasterTrade.Properties.Resources.MasterTradeLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            // 
-            // bttnTransacciones
-            // 
-            this.bttnTransacciones.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bttnTransacciones.FlatAppearance.BorderSize = 0;
-            this.bttnTransacciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.bttnTransacciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnTransacciones.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnTransacciones.ForeColor = System.Drawing.SystemColors.Control;
-            this.bttnTransacciones.Image = ((System.Drawing.Image)(resources.GetObject("bttnTransacciones.Image")));
-            this.bttnTransacciones.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnTransacciones.Location = new System.Drawing.Point(260, 0);
-            this.bttnTransacciones.Name = "bttnTransacciones";
-            this.bttnTransacciones.Size = new System.Drawing.Size(160, 38);
-            this.bttnTransacciones.TabIndex = 17;
-            this.bttnTransacciones.Text = "TRANSACCIONES";
-            this.bttnTransacciones.UseVisualStyleBackColor = false;
-            this.bttnTransacciones.Click += new System.EventHandler(this.bttnTransacciones_Click);
-            this.bttnTransacciones.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
-            this.bttnTransacciones.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
-            // 
-            // bttnMantenimiento
-            // 
-            this.bttnMantenimiento.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bttnMantenimiento.FlatAppearance.BorderSize = 0;
-            this.bttnMantenimiento.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.bttnMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnMantenimiento.Font = new System.Drawing.Font("Arial", 9F);
-            this.bttnMantenimiento.ForeColor = System.Drawing.SystemColors.Control;
-            this.bttnMantenimiento.Image = global::New_MasterTrade.Properties.Resources.FlechaAbajo;
-            this.bttnMantenimiento.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnMantenimiento.Location = new System.Drawing.Point(580, 0);
-            this.bttnMantenimiento.Name = "bttnMantenimiento";
-            this.bttnMantenimiento.Size = new System.Drawing.Size(160, 38);
-            this.bttnMantenimiento.TabIndex = 13;
-            this.bttnMantenimiento.Text = "MANTENIMIENTO";
-            this.bttnMantenimiento.UseVisualStyleBackColor = false;
-            this.bttnMantenimiento.Click += new System.EventHandler(this.bttnMantenimiento_Click);
-            this.bttnMantenimiento.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
-            this.bttnMantenimiento.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
-            // 
-            // bttnArchivo
-            // 
-            this.bttnArchivo.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bttnArchivo.FlatAppearance.BorderSize = 0;
-            this.bttnArchivo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.bttnArchivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnArchivo.Font = new System.Drawing.Font("Arial", 9F);
-            this.bttnArchivo.ForeColor = System.Drawing.SystemColors.Control;
-            this.bttnArchivo.Image = global::New_MasterTrade.Properties.Resources.FlechaAbajo;
-            this.bttnArchivo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnArchivo.Location = new System.Drawing.Point(100, 0);
-            this.bttnArchivo.Name = "bttnArchivo";
-            this.bttnArchivo.Size = new System.Drawing.Size(160, 38);
-            this.bttnArchivo.TabIndex = 14;
-            this.bttnArchivo.Text = "ARCHIVO";
-            this.bttnArchivo.UseVisualStyleBackColor = false;
-            this.bttnArchivo.Click += new System.EventHandler(this.bttnArchivo_Click);
-            this.bttnArchivo.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
-            this.bttnArchivo.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
             // 
             // button1
             // 
@@ -315,12 +149,23 @@ namespace New_MasterTrade
             this.bttnPerfil.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnPerfil.Image = global::New_MasterTrade.Properties.Resources.personal_data;
             this.bttnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnPerfil.Location = new System.Drawing.Point(0, 114);
+            this.bttnPerfil.Location = new System.Drawing.Point(0, 152);
             this.bttnPerfil.Name = "bttnPerfil";
             this.bttnPerfil.Size = new System.Drawing.Size(160, 38);
             this.bttnPerfil.TabIndex = 18;
             this.bttnPerfil.Text = "PERFIL";
             this.bttnPerfil.UseVisualStyleBackColor = false;
+            // 
+            // panelTransacciones
+            // 
+            this.panelTransacciones.Controls.Add(this.bttnVender);
+            this.panelTransacciones.Controls.Add(this.bttnComprar);
+            this.panelTransacciones.Location = new System.Drawing.Point(260, 43);
+            this.panelTransacciones.MinimumSize = new System.Drawing.Size(160, 76);
+            this.panelTransacciones.Name = "panelTransacciones";
+            this.panelTransacciones.Size = new System.Drawing.Size(160, 76);
+            this.panelTransacciones.TabIndex = 16;
+            this.panelTransacciones.Visible = false;
             // 
             // bttnVender
             // 
@@ -355,6 +200,22 @@ namespace New_MasterTrade
             this.bttnComprar.Text = "COMPRAR";
             this.bttnComprar.UseVisualStyleBackColor = false;
             this.bttnComprar.Click += new System.EventHandler(this.bttnComprar_Click);
+            // 
+            // panelArchivo
+            // 
+            this.panelArchivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelArchivo.BackColor = System.Drawing.Color.DimGray;
+            this.panelArchivo.Controls.Add(this.bttnClientes);
+            this.panelArchivo.Controls.Add(this.bttnVentas);
+            this.panelArchivo.Controls.Add(this.bttnCompras);
+            this.panelArchivo.Controls.Add(this.bttnProveedores);
+            this.panelArchivo.Controls.Add(this.bttnProductos);
+            this.panelArchivo.Location = new System.Drawing.Point(100, 43);
+            this.panelArchivo.MinimumSize = new System.Drawing.Size(160, 152);
+            this.panelArchivo.Name = "panelArchivo";
+            this.panelArchivo.Size = new System.Drawing.Size(160, 190);
+            this.panelArchivo.TabIndex = 14;
+            this.panelArchivo.Visible = false;
             // 
             // bttnClientes
             // 
@@ -441,6 +302,163 @@ namespace New_MasterTrade
             this.bttnProductos.UseVisualStyleBackColor = false;
             this.bttnProductos.Click += new System.EventHandler(this.bttnProductos_Click);
             // 
+            // panelContenedor
+            // 
+            this.panelContenedor.Location = new System.Drawing.Point(0, 43);
+            this.panelContenedor.Name = "panelContenedor";
+            this.panelContenedor.Size = new System.Drawing.Size(858, 551);
+            this.panelContenedor.TabIndex = 17;
+            // 
+            // bttnMinimizar
+            // 
+            this.bttnMinimizar.BackColor = System.Drawing.Color.Transparent;
+            this.bttnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bttnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnMinimizar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnMinimizar.ForeColor = System.Drawing.Color.White;
+            this.bttnMinimizar.Location = new System.Drawing.Point(784, 7);
+            this.bttnMinimizar.Name = "bttnMinimizar";
+            this.bttnMinimizar.Size = new System.Drawing.Size(29, 28);
+            this.bttnMinimizar.TabIndex = 1;
+            this.bttnMinimizar.Text = "-";
+            this.bttnMinimizar.UseVisualStyleBackColor = false;
+            this.bttnMinimizar.Click += new System.EventHandler(this.bttnMinimizar_Click);
+            // 
+            // panelMenu
+            // 
+            this.panelMenu.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panelMenu.Controls.Add(this.bttnSalir);
+            this.panelMenu.Controls.Add(this.pictureBox1);
+            this.panelMenu.Controls.Add(this.bttnMinimizar);
+            this.panelMenu.Controls.Add(this.bttnTransacciones);
+            this.panelMenu.Controls.Add(this.bttnMantenimiento);
+            this.panelMenu.Controls.Add(this.bttnReportes);
+            this.panelMenu.Controls.Add(this.bttnArchivo);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(858, 43);
+            this.panelMenu.TabIndex = 4;
+            // 
+            // bttnSalir
+            // 
+            this.bttnSalir.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bttnSalir.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bttnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnSalir.Font = new System.Drawing.Font("Arial", 9F);
+            this.bttnSalir.Image = global::New_MasterTrade.Properties.Resources.Salir;
+            this.bttnSalir.Location = new System.Drawing.Point(819, 7);
+            this.bttnSalir.Name = "bttnSalir";
+            this.bttnSalir.Size = new System.Drawing.Size(29, 28);
+            this.bttnSalir.TabIndex = 12;
+            this.bttnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnSalir.UseVisualStyleBackColor = false;
+            this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::New_MasterTrade.Properties.Resources.MasterTradeLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(5, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // bttnTransacciones
+            // 
+            this.bttnTransacciones.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bttnTransacciones.FlatAppearance.BorderSize = 0;
+            this.bttnTransacciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.bttnTransacciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnTransacciones.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnTransacciones.ForeColor = System.Drawing.SystemColors.Control;
+            this.bttnTransacciones.Image = ((System.Drawing.Image)(resources.GetObject("bttnTransacciones.Image")));
+            this.bttnTransacciones.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnTransacciones.Location = new System.Drawing.Point(260, 0);
+            this.bttnTransacciones.Name = "bttnTransacciones";
+            this.bttnTransacciones.Size = new System.Drawing.Size(160, 38);
+            this.bttnTransacciones.TabIndex = 17;
+            this.bttnTransacciones.Text = "TRANSACCIONES";
+            this.bttnTransacciones.UseVisualStyleBackColor = false;
+            this.bttnTransacciones.Click += new System.EventHandler(this.bttnTransacciones_Click);
+            this.bttnTransacciones.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
+            this.bttnTransacciones.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
+            // 
+            // bttnMantenimiento
+            // 
+            this.bttnMantenimiento.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bttnMantenimiento.FlatAppearance.BorderSize = 0;
+            this.bttnMantenimiento.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.bttnMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnMantenimiento.Font = new System.Drawing.Font("Arial", 9F);
+            this.bttnMantenimiento.ForeColor = System.Drawing.SystemColors.Control;
+            this.bttnMantenimiento.Image = global::New_MasterTrade.Properties.Resources.FlechaAbajo;
+            this.bttnMantenimiento.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnMantenimiento.Location = new System.Drawing.Point(580, 0);
+            this.bttnMantenimiento.Name = "bttnMantenimiento";
+            this.bttnMantenimiento.Size = new System.Drawing.Size(160, 38);
+            this.bttnMantenimiento.TabIndex = 13;
+            this.bttnMantenimiento.Text = "MANTENIMIENTO";
+            this.bttnMantenimiento.UseVisualStyleBackColor = false;
+            this.bttnMantenimiento.Click += new System.EventHandler(this.bttnMantenimiento_Click);
+            this.bttnMantenimiento.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
+            this.bttnMantenimiento.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
+            // 
+            // bttnReportes
+            // 
+            this.bttnReportes.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bttnReportes.FlatAppearance.BorderSize = 0;
+            this.bttnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.bttnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnReportes.Font = new System.Drawing.Font("Arial", 9F);
+            this.bttnReportes.ForeColor = System.Drawing.SystemColors.Control;
+            this.bttnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnReportes.Location = new System.Drawing.Point(420, 0);
+            this.bttnReportes.Name = "bttnReportes";
+            this.bttnReportes.Size = new System.Drawing.Size(160, 38);
+            this.bttnReportes.TabIndex = 17;
+            this.bttnReportes.Text = "REPORTES";
+            this.bttnReportes.UseVisualStyleBackColor = false;
+            this.bttnReportes.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
+            this.bttnReportes.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
+            // 
+            // bttnArchivo
+            // 
+            this.bttnArchivo.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bttnArchivo.FlatAppearance.BorderSize = 0;
+            this.bttnArchivo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.bttnArchivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnArchivo.Font = new System.Drawing.Font("Arial", 9F);
+            this.bttnArchivo.ForeColor = System.Drawing.SystemColors.Control;
+            this.bttnArchivo.Image = global::New_MasterTrade.Properties.Resources.FlechaAbajo;
+            this.bttnArchivo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnArchivo.Location = new System.Drawing.Point(100, 0);
+            this.bttnArchivo.Name = "bttnArchivo";
+            this.bttnArchivo.Size = new System.Drawing.Size(160, 38);
+            this.bttnArchivo.TabIndex = 14;
+            this.bttnArchivo.Text = "ARCHIVO";
+            this.bttnArchivo.UseVisualStyleBackColor = false;
+            this.bttnArchivo.Click += new System.EventHandler(this.bttnArchivo_Click);
+            this.bttnArchivo.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
+            this.bttnArchivo.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
+            // 
+            // bttnRespaldo
+            // 
+            this.bttnRespaldo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnRespaldo.FlatAppearance.BorderSize = 0;
+            this.bttnRespaldo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnRespaldo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnRespaldo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnRespaldo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnRespaldo.Location = new System.Drawing.Point(0, 114);
+            this.bttnRespaldo.Name = "bttnRespaldo";
+            this.bttnRespaldo.Size = new System.Drawing.Size(160, 38);
+            this.bttnRespaldo.TabIndex = 22;
+            this.bttnRespaldo.Text = "RESPALDO";
+            this.bttnRespaldo.UseVisualStyleBackColor = false;
+            this.bttnRespaldo.Click += new System.EventHandler(this.bttnRespaldo_Click);
+            // 
             // SesionIniciada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,5 +507,6 @@ namespace New_MasterTrade
         private System.Windows.Forms.Panel panelContenedor;
         private System.Windows.Forms.Button bttnClientes;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bttnRespaldo;
     }
 }

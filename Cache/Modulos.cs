@@ -20,6 +20,7 @@ namespace New_MasterTrade.Cache
         public static string Comprar = "COMPRAR";
         
         public static string Usuarios = "USUARIOS";
+        public static string Respaldos = "RESPALDOS";
         
         public static string CerrarSesion = "CIERRE DE SESIÓN";
     }
