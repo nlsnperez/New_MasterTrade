@@ -8,40 +8,38 @@ namespace New_MasterTrade.Objetos
 {
     class Producto
     {
-        public String Codigo { get; set; }
-        public String Nombre { get; set; }
-        public float Costo { get; set; }
-        public int StockMax { get; set; }
-        public int StockMin { get; set; }
+        public int Id { get; set; }
+        public string Serial { get; set; }
+        public string Descripcion { get; set; }
+        public int Marca { get; set; }
+        public int Categoria { get; set; }
+        public int Modelo { get; set; }
+        public decimal Precio_Compra { get; set; }
+        public decimal Precio_Venta { get; set; }
+        public int Garantia { get; set; }
+        public byte[] Imagen { get; set; }
 
-        public Producto(string codigo, string nombre, float costo, int stockMax, int stockMin)
+        public Producto(int id, string serial, string descripcion, int marca, int categoria, int modelo, decimal precio_Compra, decimal precio_Venta, int garantia, byte[] imagen)
         {
-            Codigo = codigo;
-            Nombre = nombre;
-            Costo = costo;
-            StockMax = stockMax;
-            StockMin = stockMin;
+            Id = id;
+            Serial = serial;
+            Descripcion = descripcion;
+            Marca = marca;
+            Categoria = categoria;
+            Modelo = modelo;
+            Precio_Compra = precio_Compra;
+            Precio_Venta = precio_Venta;
+            Garantia = garantia;
+            Imagen = imagen;
         }
 
         public bool IsEmpty()
         {
-            if (this.Codigo == "" || this.Nombre == "" || this.Costo == 0 || this.StockMax == 0 || this.StockMin == 0)
+            if (this.Serial == "" || this.Descripcion == "" || this.Precio_Compra == 0 || this.Precio_Venta == 0)
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool CompararStock()
-        {
-            if (this.StockMax > this.StockMin)
-            {
-                return false;
-            }
-            else return true;
+            return false;
         }
     }
 }

@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace New_MasterTrade.Mensajes
+namespace New_MasterTrade.Custom_Controls
 {
-    public partial class ConfirmarForm : Form
+    public partial class Confirmar : UserControl
     {
-        public ConfirmarForm()
+        public Confirmar()
         {
             InitializeComponent();
-        }
-
-        public ConfirmarForm(string titulo, string mensaje)
-        {
-            labelMensaje.Text = mensaje;
-            this.Text = titulo;
         }
     }
 }
