@@ -29,7 +29,8 @@ namespace New_MasterTrade
                 Login login = new Login();
                 this.Hide();
                 login.Show();
-            }
+            }          
+
         }
 
         private void Splash_Load(object sender, EventArgs e)

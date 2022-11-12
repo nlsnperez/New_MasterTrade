@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Reportes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,9 @@ namespace New_MasterTrade.UserControls
     public partial class Clientes : UserControl
     {
         CRUD_Clientes crud = new CRUD_Clientes();
+        DS_Reportes ds_reportes = new DS_Reportes();
+        DS_ReportesTableAdapters.DataTableClientesTableAdapter dta_clientes = new DS_ReportesTableAdapters.DataTableClientesTableAdapter();
+
         public Clientes()
         {
             InitializeComponent();
@@ -69,6 +73,12 @@ namespace New_MasterTrade.UserControls
             x.StartPosition = FormStartPosition.CenterScreen;
             x.ShowDialog();
             tablaPersonas.DataSource = crud.Tabla();
+        }
+
+        private void bttnReporte_Click(object sender, EventArgs e)
+        {
+            Form1 reportes = new Form1();
+            reportes.Show();
         }
     }
 }
