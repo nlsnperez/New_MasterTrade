@@ -30,6 +30,9 @@ namespace New_MasterTrade.Objetos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timerFade = new System.Windows.Forms.Timer(this.components);
             this.tablaProductos = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -42,7 +45,7 @@ namespace New_MasterTrade.Objetos
             this.columnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columPCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Agregar = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,6 +59,23 @@ namespace New_MasterTrade.Objetos
             this.tablaProductos.AllowUserToDeleteRows = false;
             this.tablaProductos.AllowUserToResizeColumns = false;
             this.tablaProductos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.tablaProductos.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.tablaProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tablaProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.tablaProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -66,12 +86,22 @@ namespace New_MasterTrade.Objetos
             this.columnDescripcion,
             this.columPCompra,
             this.columnPrecioVenta,
-            this.columnEliminar});
+            this.Agregar});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaProductos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tablaProductos.EnableHeadersVisualStyles = false;
             this.tablaProductos.Location = new System.Drawing.Point(0, 0);
             this.tablaProductos.Margin = new System.Windows.Forms.Padding(2);
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.ReadOnly = true;
+            this.tablaProductos.RowHeadersVisible = false;
             this.tablaProductos.RowHeadersWidth = 51;
             this.tablaProductos.RowTemplate.Height = 24;
             this.tablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -92,6 +122,7 @@ namespace New_MasterTrade.Objetos
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(600, 516);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -162,20 +193,21 @@ namespace New_MasterTrade.Objetos
             this.columnPrecioVenta.Name = "columnPrecioVenta";
             this.columnPrecioVenta.ReadOnly = true;
             // 
-            // columnEliminar
+            // Agregar
             // 
-            this.columnEliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.columnEliminar.HeaderText = "";
-            this.columnEliminar.Name = "columnEliminar";
-            this.columnEliminar.ReadOnly = true;
-            this.columnEliminar.Text = "AGREGAR";
-            this.columnEliminar.UseColumnTextForButtonValue = true;
+            this.Agregar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Agregar.HeaderText = "Agregar";
+            this.Agregar.Image = global::New_MasterTrade.Properties.Resources.add_to_basket;
+            this.Agregar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Agregar.Name = "Agregar";
+            this.Agregar.ReadOnly = true;
+            this.Agregar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // BuscarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaProductos);
@@ -201,6 +233,6 @@ namespace New_MasterTrade.Objetos
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn columPCompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrecioVenta;
-        private System.Windows.Forms.DataGridViewButtonColumn columnEliminar;
+        private System.Windows.Forms.DataGridViewImageColumn Agregar;
     }
 }

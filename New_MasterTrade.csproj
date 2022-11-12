@@ -146,11 +146,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Custom Controls\BuscarPersonas.cs">
+    <Compile Include="Custom Controls\BuscarProveedores.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Custom Controls\BuscarPersonas.Designer.cs">
-      <DependentUpon>BuscarPersonas.cs</DependentUpon>
+    <Compile Include="Custom Controls\BuscarProveedores.Designer.cs">
+      <DependentUpon>BuscarProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\BuscarProductos.cs">
       <SubType>UserControl</SubType>
@@ -268,8 +268,8 @@
     <EmbeddedResource Include="Custom Controls\RecuperarContraseña.resx">
       <DependentUpon>RecuperarContraseña.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Controls\BuscarPersonas.resx">
-      <DependentUpon>BuscarPersonas.cs</DependentUpon>
+    <EmbeddedResource Include="Custom Controls\BuscarProveedores.resx">
+      <DependentUpon>BuscarProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\BuscarProductos.resx">
       <DependentUpon>BuscarProductos.cs</DependentUpon>
@@ -452,6 +452,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\add-to-basket.png" />
+    <None Include="Resources\add-user.png" />
+    <None Include="Resources\browsing.png" />
+    <None Include="Resources\floppy-disk1.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\boxes.png" />
+    <None Include="Resources\plus1.png" />
+    <None Include="Resources\copy1.png" />
+    <None Include="Resources\delete %282%29.png" />
+    <None Include="Resources\edit %282%29.png" />
+    <None Include="Resources\pencil.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

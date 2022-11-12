@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
 {
-    public partial class BuscarPersonas : UserControl
+    public partial class BuscarProveedores : UserControl
     {
         public string x { get; set; }
         CRUD_Proveedores crud;
 
-        public BuscarPersonas(int y)
+        public BuscarProveedores(int y)
         {
             InitializeComponent();
             Config(y);
@@ -27,9 +27,6 @@ namespace New_MasterTrade.UserControls
         {
             crud = new CRUD_Proveedores();
             this.x = "";
-            comboTabla.Enabled = false;
-            FillComboBoxes();
-            comboTabla.SelectedIndex = y - 1;
             if (crud.Tabla().Rows.Count > 0)
             {
                 tablaPersonas.AutoGenerateColumns = false;
@@ -38,12 +35,6 @@ namespace New_MasterTrade.UserControls
             }
             else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                      
-        }
-
-        public void FillComboBoxes()
-        {
-            comboTabla.Items.Add("PROVEEDOR");
-            comboTabla.Items.Add("CLIENTE");            
         }
 
         private void tablaPersonas_CellClick(object sender, DataGridViewCellEventArgs e)

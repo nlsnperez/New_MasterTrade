@@ -227,7 +227,7 @@ namespace New_MasterTrade.UserControls
             if (txtProveedor.Text == "")
             {
                 Form x = new Form();
-                BuscarPersonas y = new BuscarPersonas(1);
+                BuscarProveedores y = new BuscarProveedores(1);
                 x.StartPosition = FormStartPosition.CenterScreen;
                 x.Size = new Size(y.Width + 15, y.Height + 30);
                 x.Controls.Add(y);

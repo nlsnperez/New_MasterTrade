@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaProductos = new System.Windows.Forms.DataGridView();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,10 +43,11 @@
             this.columPCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnImagen = new System.Windows.Forms.DataGridViewImageColumn();
-            this.columnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.bttnAgregar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +57,24 @@
             this.tablaProductos.AllowUserToDeleteRows = false;
             this.tablaProductos.AllowUserToResizeColumns = false;
             this.tablaProductos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.tablaProductos.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.tablaProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tablaProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.tablaProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -62,18 +86,51 @@
             this.columPCompra,
             this.columnPVenta,
             this.columnImagen,
-            this.columnEliminar});
+            this.Editar,
+            this.Eliminar});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaProductos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tablaProductos.EnableHeadersVisualStyles = false;
             this.tablaProductos.Location = new System.Drawing.Point(0, 0);
             this.tablaProductos.Margin = new System.Windows.Forms.Padding(2);
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.ReadOnly = true;
+            this.tablaProductos.RowHeadersVisible = false;
             this.tablaProductos.RowHeadersWidth = 51;
             this.tablaProductos.RowTemplate.Height = 24;
             this.tablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaProductos.Size = new System.Drawing.Size(858, 494);
             this.tablaProductos.TabIndex = 0;
             this.tablaProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProductos_CellClick);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
+            this.txtBuscar.TabIndex = 36;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(597, 516);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "BUSCAR: ";
             // 
             // columnId
             // 
@@ -149,20 +206,29 @@
             this.columnImagen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnImagen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // columnEliminar
+            // dataGridViewImageColumn1
             // 
-            this.columnEliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.columnEliminar.HeaderText = "";
-            this.columnEliminar.Name = "columnEliminar";
-            this.columnEliminar.ReadOnly = true;
-            this.columnEliminar.Text = "DETALLES";
-            this.columnEliminar.UseColumnTextForButtonValue = true;
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn1.HeaderText = "Editar";
+            this.dataGridViewImageColumn1.Image = global::New_MasterTrade.Properties.Resources.edit__2_;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn2.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             // 
             // bttnAgregar
             // 
+            this.bttnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAgregar.FlatAppearance.BorderSize = 0;
             this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnAgregar.Image = global::New_MasterTrade.Properties.Resources.edit;
+            this.bttnAgregar.Image = global::New_MasterTrade.Properties.Resources.pencil;
             this.bttnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnAgregar.Location = new System.Drawing.Point(12, 510);
             this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
@@ -171,33 +237,33 @@
             this.bttnAgregar.TabIndex = 33;
             this.bttnAgregar.Text = "REGISTRAR";
             this.bttnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnAgregar.UseVisualStyleBackColor = true;
+            this.bttnAgregar.UseVisualStyleBackColor = false;
             this.bttnAgregar.Click += new System.EventHandler(this.bttnAgregar_Click);
             // 
-            // txtBuscar
+            // Editar
             // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 36;
-            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
+            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::New_MasterTrade.Properties.Resources.edit__2_;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // label1
+            // Eliminar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(597, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "BUSCAR: ";
+            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
             // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bttnAgregar);
@@ -227,6 +293,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columPCompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPVenta;
         private System.Windows.Forms.DataGridViewImageColumn columnImagen;
-        private System.Windows.Forms.DataGridViewButtonColumn columnEliminar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
     }
 }

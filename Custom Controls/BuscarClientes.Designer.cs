@@ -29,7 +29,9 @@ namespace New_MasterTrade.Custom_Controls
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaPersonas = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,7 +41,7 @@ namespace New_MasterTrade.Custom_Controls
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSelec = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,9 +51,23 @@ namespace New_MasterTrade.Custom_Controls
             this.tablaPersonas.AllowUserToDeleteRows = false;
             this.tablaPersonas.AllowUserToResizeColumns = false;
             this.tablaPersonas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tablaPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.tablaPersonas.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.tablaPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tablaPersonas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.tablaPersonas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaPersonas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaPersonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -60,12 +76,22 @@ namespace New_MasterTrade.Custom_Controls
             this.Direccion,
             this.Telefono,
             this.Correo,
-            this.columnSelec});
+            this.Seleccionar});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaPersonas.DefaultCellStyle = dataGridViewCellStyle3;
+            this.tablaPersonas.EnableHeadersVisualStyles = false;
             this.tablaPersonas.Location = new System.Drawing.Point(0, 0);
             this.tablaPersonas.Margin = new System.Windows.Forms.Padding(10);
             this.tablaPersonas.MultiSelect = false;
             this.tablaPersonas.Name = "tablaPersonas";
             this.tablaPersonas.ReadOnly = true;
+            this.tablaPersonas.RowHeadersVisible = false;
             this.tablaPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaPersonas.Size = new System.Drawing.Size(858, 494);
             this.tablaPersonas.TabIndex = 58;
@@ -84,6 +110,7 @@ namespace New_MasterTrade.Custom_Controls
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(600, 516);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -139,22 +166,22 @@ namespace New_MasterTrade.Custom_Controls
             this.Correo.Name = "Correo";
             this.Correo.ReadOnly = true;
             // 
-            // columnSelec
+            // Seleccionar
             // 
-            this.columnSelec.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnSelec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.columnSelec.HeaderText = "";
-            this.columnSelec.Name = "columnSelec";
-            this.columnSelec.ReadOnly = true;
-            this.columnSelec.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnSelec.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnSelec.Text = "SELECCIONAR";
-            this.columnSelec.UseColumnTextForButtonValue = true;
+            this.Seleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Image = global::New_MasterTrade.Properties.Resources.add_user;
+            this.Seleccionar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // BuscarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.tablaPersonas);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
@@ -177,6 +204,6 @@ namespace New_MasterTrade.Custom_Controls
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Correo;
-        private System.Windows.Forms.DataGridViewButtonColumn columnSelec;
+        private System.Windows.Forms.DataGridViewImageColumn Seleccionar;
     }
 }
