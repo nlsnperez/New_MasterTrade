@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,16 @@ namespace New_MasterTrade.UserControls
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             tablaCompras.DataSource = crud.BuscarCompras(txtBuscar.Text);
+        }
+
+        private void tablaCompras_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                int x = Convert.ToInt32(tablaCompras.Rows[e.RowIndex].Cells[0].Value);
+                Reporte reporte = new Reporte();
+                reporte.Reporte_Orden_Compra(x);
+            }
         }
     }
 }

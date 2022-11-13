@@ -1,13 +1,7 @@
 ﻿using New_MasterTrade.Base_de_Datos;
-using New_MasterTrade.Reportes;
+using New_MasterTrade.Objetos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
@@ -15,9 +9,7 @@ namespace New_MasterTrade.UserControls
     public partial class Clientes : UserControl
     {
         CRUD_Clientes crud = new CRUD_Clientes();
-        DS_Reportes ds_reportes = new DS_Reportes();
-        DS_ReportesTableAdapters.DataTableClientesTableAdapter dta_clientes = new DS_ReportesTableAdapters.DataTableClientesTableAdapter();
-
+        
         public Clientes()
         {
             InitializeComponent();
@@ -77,8 +69,8 @@ namespace New_MasterTrade.UserControls
 
         private void bttnReporte_Click(object sender, EventArgs e)
         {
-            Form1 reportes = new Form1();
-            reportes.Show();
+            Reporte reporte = new Reporte();
+            reporte.Reporte_Orden_Compra(6);
         }
     }
 }

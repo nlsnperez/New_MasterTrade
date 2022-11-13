@@ -35,10 +35,10 @@ namespace New_MasterTrade.UserControls
             this.tablaCompras = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnNFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOrden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalle = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCompras)).BeginInit();
             this.SuspendLayout();
@@ -65,10 +65,10 @@ namespace New_MasterTrade.UserControls
             this.tablaCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnId,
-            this.columnNFactura,
-            this.columnCliente,
-            this.columnFecha,
+            this.Id,
+            this.NOrden,
+            this.Proveedor,
+            this.Fecha,
             this.Detalle});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -80,20 +80,23 @@ namespace New_MasterTrade.UserControls
             this.tablaCompras.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaCompras.EnableHeadersVisualStyles = false;
             this.tablaCompras.Location = new System.Drawing.Point(0, 0);
+            this.tablaCompras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tablaCompras.Name = "tablaCompras";
             this.tablaCompras.RowHeadersVisible = false;
+            this.tablaCompras.RowHeadersWidth = 51;
             this.tablaCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaCompras.Size = new System.Drawing.Size(858, 494);
+            this.tablaCompras.Size = new System.Drawing.Size(1144, 608);
             this.tablaCompras.TabIndex = 39;
+            this.tablaCompras.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCompras_CellClick);
             // 
             // txtBuscar
             // 
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Location = new System.Drawing.Point(881, 630);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(246, 22);
             this.txtBuscar.TabIndex = 41;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -101,40 +104,45 @@ namespace New_MasterTrade.UserControls
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(597, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(796, 635);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(69, 16);
             this.label1.TabIndex = 40;
             this.label1.Text = "BUSCAR: ";
             // 
-            // columnId
+            // Id
             // 
-            this.columnId.DataPropertyName = "id_oco";
-            this.columnId.HeaderText = "ID";
-            this.columnId.Name = "columnId";
+            this.Id.DataPropertyName = "id_oco";
+            this.Id.HeaderText = "ID";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.Width = 125;
             // 
-            // columnNFactura
+            // NOrden
             // 
-            this.columnNFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnNFactura.DataPropertyName = "num_oco";
-            this.columnNFactura.HeaderText = "N. Orden";
-            this.columnNFactura.Name = "columnNFactura";
-            this.columnNFactura.ReadOnly = true;
+            this.NOrden.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOrden.DataPropertyName = "num_oco";
+            this.NOrden.HeaderText = "N. Orden";
+            this.NOrden.MinimumWidth = 6;
+            this.NOrden.Name = "NOrden";
+            this.NOrden.ReadOnly = true;
             // 
-            // columnCliente
+            // Proveedor
             // 
-            this.columnCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnCliente.DataPropertyName = "raz_prv";
-            this.columnCliente.HeaderText = "Proveedor";
-            this.columnCliente.Name = "columnCliente";
-            this.columnCliente.ReadOnly = true;
+            this.Proveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Proveedor.DataPropertyName = "raz_prv";
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.MinimumWidth = 6;
+            this.Proveedor.Name = "Proveedor";
+            this.Proveedor.ReadOnly = true;
             // 
-            // columnFecha
+            // Fecha
             // 
-            this.columnFecha.DataPropertyName = "fec_oco";
-            this.columnFecha.HeaderText = "Fecha";
-            this.columnFecha.Name = "columnFecha";
+            this.Fecha.DataPropertyName = "fec_oco";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 6;
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 125;
             // 
             // Detalle
             // 
@@ -142,19 +150,21 @@ namespace New_MasterTrade.UserControls
             this.Detalle.HeaderText = "Detalle";
             this.Detalle.Image = global::New_MasterTrade.Properties.Resources.copy1;
             this.Detalle.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Detalle.MinimumWidth = 6;
             this.Detalle.Name = "Detalle";
             this.Detalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Compras
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.tablaCompras);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Compras";
-            this.Size = new System.Drawing.Size(858, 551);
+            this.Size = new System.Drawing.Size(1144, 678);
             ((System.ComponentModel.ISupportInitialize)(this.tablaCompras)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -166,10 +176,10 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridView tablaCompras;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnNFactura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NOrden;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewImageColumn Detalle;
     }
 }

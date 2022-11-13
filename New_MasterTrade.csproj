@@ -109,6 +109,11 @@
     <Compile Include="Base de Datos\CRUD_Usuarios.cs" />
     <Compile Include="Base de Datos\CRUD_Productos.cs" />
     <Compile Include="Base de Datos\CRUD_Ventas.cs" />
+    <Compile Include="Base de Datos\DataSet_Reportes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet_Reportes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Base de Datos\Respaldo.cs" />
     <Compile Include="Cache\Accion.cs" />
     <Compile Include="Cache\Modulos.cs" />
@@ -137,19 +142,11 @@
     <Compile Include="Custom Controls\RecuperarContraseña.Designer.cs">
       <DependentUpon>RecuperarContraseña.cs</DependentUpon>
     </Compile>
-    <Compile Include="DS_Reportes.cs">
-      <DependentUpon>DS_Reportes.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DS_Reportes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DS_Reportes.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormReportes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormReportes.Designer.cs">
+      <DependentUpon>FormReportes.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -160,6 +157,7 @@
     <Compile Include="Objetos\Factura.cs" />
     <Compile Include="Objetos\Garantia.cs" />
     <Compile Include="Objetos\Producto.cs" />
+    <Compile Include="Objetos\Reporte.cs" />
     <Compile Include="Objetos\Usuario.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -192,6 +190,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CR_OrdenCompra.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\OrdenCompra_Reporte.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrdenCompra_Reporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\Proveedores.cs">
@@ -318,8 +322,8 @@
     <EmbeddedResource Include="Custom Controls\BuscarProductos.resx">
       <DependentUpon>BuscarProductos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormReportes.resx">
+      <DependentUpon>FormReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\CR_Clientes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -328,6 +332,10 @@
     <EmbeddedResource Include="Reportes\CR_OrdenCompra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CR_OrdenCompra.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\OrdenCompra_Reporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OrdenCompra_Reporte.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Proveedores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -390,16 +398,16 @@
     <EmbeddedResource Include="UserControls\Ventas.resx">
       <DependentUpon>Ventas.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DS_Reportes.xsc">
-      <DependentUpon>DS_Reportes.xsd</DependentUpon>
+    <None Include="Base de Datos\DataSet_Reportes.xsc">
+      <DependentUpon>DataSet_Reportes.xsd</DependentUpon>
     </None>
-    <None Include="DS_Reportes.xsd">
+    <None Include="Base de Datos\DataSet_Reportes.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_Reportes.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSet_Reportes.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DS_Reportes.xss">
-      <DependentUpon>DS_Reportes.xsd</DependentUpon>
+    <None Include="Base de Datos\DataSet_Reportes.xss">
+      <DependentUpon>DataSet_Reportes.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
