@@ -34,14 +34,19 @@
             // CRV_Ventana
             // 
             this.CRV_Ventana.ActiveViewIndex = -1;
-            this.CRV_Ventana.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CRV_Ventana.Cursor = System.Windows.Forms.Cursors.Default;
             this.CRV_Ventana.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CRV_Ventana.EnableToolTips = false;
             this.CRV_Ventana.Location = new System.Drawing.Point(0, 0);
             this.CRV_Ventana.Name = "CRV_Ventana";
+            this.CRV_Ventana.ShowCloseButton = false;
+            this.CRV_Ventana.ShowGroupTreeButton = false;
+            this.CRV_Ventana.ShowParameterPanelButton = false;
+            this.CRV_Ventana.ShowRefreshButton = false;
+            this.CRV_Ventana.ShowTextSearchButton = false;
             this.CRV_Ventana.Size = new System.Drawing.Size(1126, 631);
             this.CRV_Ventana.TabIndex = 0;
-            this.CRV_Ventana.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.ParameterPanel;
+            this.CRV_Ventana.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // FormReportes
             // 

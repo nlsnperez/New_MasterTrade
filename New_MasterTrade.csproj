@@ -180,16 +180,10 @@
     <Compile Include="Objetos\Detalle.cs" />
     <Compile Include="Objetos\Persona.cs" />
     <Compile Include="Objetos\Venta.cs" />
-    <Compile Include="Reportes\CR_Clientes.cs">
+    <Compile Include="Reportes\Cliente_Reporte.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CR_Clientes.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reportes\CR_OrdenCompra.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CR_OrdenCompra.rpt</DependentUpon>
+      <DependentUpon>Cliente_Reporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\OrdenCompra_Reporte.cs">
@@ -198,16 +192,10 @@
       <DependentUpon>OrdenCompra_Reporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\Proveedores.cs">
+    <Compile Include="Reportes\Proveedor_Reporte.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Proveedores.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reportes\Reporte_OC.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reporte_OC.rpt</DependentUpon>
+      <DependentUpon>Proveedor_Reporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Servicios de Correo\ServidorCorreoMaestro.cs" />
@@ -325,25 +313,17 @@
     <EmbeddedResource Include="FormReportes.resx">
       <DependentUpon>FormReportes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\CR_Clientes.rpt">
+    <EmbeddedResource Include="Reportes\Cliente_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CR_Clientes.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\CR_OrdenCompra.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CR_OrdenCompra.cs</LastGenOutput>
+      <LastGenOutput>Cliente_Reporte.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\OrdenCompra_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>OrdenCompra_Reporte.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Proveedores.rpt">
+    <EmbeddedResource Include="Reportes\Proveedor_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Proveedores.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Reporte_OC.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Reporte_OC.cs</LastGenOutput>
+      <LastGenOutput>Proveedor_Reporte.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
@@ -533,6 +513,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\archivo-pdf %281%29.png" />
+    <None Include="Resources\archivo-pdf.png" />
     <None Include="Resources\LogoDark.png" />
     <None Include="Resources\add-to-basket.png" />
     <None Include="Resources\add-user.png" />

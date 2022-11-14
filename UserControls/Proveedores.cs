@@ -67,5 +67,11 @@ namespace New_MasterTrade
             x.StartPosition = FormStartPosition.CenterScreen;
             x.ShowDialog();
         }
+
+        private void bttnReporte_Click(object sender, EventArgs e)
+        {
+            Reporte reporte = new Reporte();
+            reporte.Reporte_Proveedor();
+        }
     }
 }

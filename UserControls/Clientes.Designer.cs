@@ -207,7 +207,7 @@ namespace New_MasterTrade.UserControls
             this.bttnReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnReporte.FlatAppearance.BorderSize = 0;
             this.bttnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnReporte.Image = global::New_MasterTrade.Properties.Resources.pencil;
+            this.bttnReporte.Image = global::New_MasterTrade.Properties.Resources.archivo_pdf__1_;
             this.bttnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnReporte.Location = new System.Drawing.Point(155, 628);
             this.bttnReporte.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -269,7 +269,7 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.bttnAgregar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Clientes";
             this.Size = new System.Drawing.Size(1144, 678);
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).EndInit();

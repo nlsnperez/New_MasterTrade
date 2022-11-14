@@ -9,7 +9,7 @@ namespace New_MasterTrade.UserControls
     public partial class Clientes : UserControl
     {
         CRUD_Clientes crud = new CRUD_Clientes();
-        
+
         public Clientes()
         {
             InitializeComponent();
@@ -70,7 +70,7 @@ namespace New_MasterTrade.UserControls
         private void bttnReporte_Click(object sender, EventArgs e)
         {
             Reporte reporte = new Reporte();
-            reporte.Reporte_Orden_Compra(6);
+            reporte.Reporte_Cliente();
         }
     }
 }
