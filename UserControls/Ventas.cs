@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Objetos;
 
 namespace New_MasterTrade.UserControls
 {
@@ -39,6 +40,12 @@ namespace New_MasterTrade.UserControls
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             tablaVentas.DataSource = crud.BuscarFacuras(txtBuscar.Text);
+        }
+
+        private void bttnReporte_Click(object sender, EventArgs e)
+        {
+            Reporte reporte = new Reporte();
+            reporte.Reporte_Venta();
         }
     }
 }

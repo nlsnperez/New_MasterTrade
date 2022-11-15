@@ -15,6 +15,8 @@ namespace New_MasterTrade.Objetos
         Orden_CompraTableAdapter orden_compra = new Orden_CompraTableAdapter();
         ClienteTableAdapter cliente = new ClienteTableAdapter();
         ProveedorTableAdapter proveedor = new ProveedorTableAdapter();
+        ProductoTableAdapter producto = new ProductoTableAdapter();
+        VentaTableAdapter venta = new VentaTableAdapter();
         //TableAdapters
 
         public void Reporte_Orden_Compra(int id)
@@ -70,5 +72,41 @@ namespace New_MasterTrade.Objetos
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public void Reporte_Producto()
+        {
+            try
+            {
+                producto.Fill(dataset.Producto);
+                Producto_Reporte reporte = new Producto_Reporte();  
+                string direccion = @"~\Reportes\Producto_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_Venta()
+        {
+            try
+            {
+                venta.Fill(dataset.Venta);
+                Venta_Reporte reporte = new Venta_Reporte();
+                string direccion = @"~\Reportes\Venta_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
-}
+}   

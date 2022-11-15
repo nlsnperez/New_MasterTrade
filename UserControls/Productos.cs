@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,6 +72,12 @@ namespace New_MasterTrade.UserControls
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             tablaProductos.DataSource = crud.BuscarProductos(txtBuscar.Text);
+        }
+
+        private void bttnReporte_Click(object sender, EventArgs e)
+        {
+            Reporte reporte = new Reporte();
+            reporte.Reporte_Producto();
         }
     }
 }
