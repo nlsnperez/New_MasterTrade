@@ -47,5 +47,15 @@ namespace New_MasterTrade.UserControls
             Reporte reporte = new Reporte();
             reporte.Reporte_Venta();
         }
+
+        private void tablaVentas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                int x = Convert.ToInt32(tablaVentas.Rows[e.RowIndex].Cells["NFactura"].Value);
+                Reporte reporte = new Reporte();
+                reporte.Reporte_Orden_Venta(x);
+            }
+        }
     }
 }
