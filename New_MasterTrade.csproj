@@ -182,7 +182,7 @@
     <Compile Include="Objetos\Detalle.cs" />
     <Compile Include="Objetos\Persona.cs" />
     <Compile Include="Objetos\Venta.cs" />
-    <Compile Include="Reportes\Cliente_Reporte.cs">
+    <Compile Include="Reportes\Cliente_Reporte1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Cliente_Reporte.rpt</DependentUpon>
@@ -204,6 +204,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OrdenVenta_Reporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ProductoVendido_Reporte.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductoVendido_Reporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\Producto_Reporte.cs">
@@ -294,6 +300,12 @@
     <Compile Include="UserControls\RegistrosBitacora.Designer.cs">
       <DependentUpon>RegistrosBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\VentanaReportes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\VentanaReportes.Designer.cs">
+      <DependentUpon>VentanaReportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Respaldos.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -341,7 +353,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Cliente_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Cliente_Reporte.cs</LastGenOutput>
+      <LastGenOutput>Cliente_Reporte1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Compra_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -354,6 +366,10 @@
     <EmbeddedResource Include="Reportes\OrdenVenta_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>OrdenVenta_Reporte.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ProductoVendido_Reporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductoVendido_Reporte.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Producto_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -407,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegistrosBitacora.resx">
       <DependentUpon>RegistrosBitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\VentanaReportes.resx">
+      <DependentUpon>VentanaReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Respaldos.resx">
       <DependentUpon>Respaldos.cs</DependentUpon>

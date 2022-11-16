@@ -39,13 +39,13 @@ namespace New_MasterTrade.UserControls
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDetalles = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.bttnReporte = new System.Windows.Forms.Button();
-            this.btnDetalles = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.bttnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             this.SuspendLayout();
@@ -159,6 +159,29 @@ namespace New_MasterTrade.UserControls
             this.Correo.Name = "Correo";
             this.Correo.ReadOnly = true;
             // 
+            // btnDetalles
+            // 
+            this.btnDetalles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btnDetalles.HeaderText = "Editar";
+            this.btnDetalles.Image = global::New_MasterTrade.Properties.Resources.edit__2_;
+            this.btnDetalles.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnDetalles.MinimumWidth = 6;
+            this.btnDetalles.Name = "btnDetalles";
+            this.btnDetalles.ReadOnly = true;
+            this.btnDetalles.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.MinimumWidth = 6;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // txtBuscar
             // 
             this.txtBuscar.BackColor = System.Drawing.SystemColors.Control;
@@ -214,33 +237,10 @@ namespace New_MasterTrade.UserControls
             this.bttnReporte.Name = "bttnReporte";
             this.bttnReporte.Size = new System.Drawing.Size(133, 30);
             this.bttnReporte.TabIndex = 44;
-            this.bttnReporte.Text = "REPORTE";
+            this.bttnReporte.Text = "IMPRIMIR";
             this.bttnReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bttnReporte.UseVisualStyleBackColor = false;
             this.bttnReporte.Click += new System.EventHandler(this.bttnReporte_Click);
-            // 
-            // btnDetalles
-            // 
-            this.btnDetalles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btnDetalles.HeaderText = "Editar";
-            this.btnDetalles.Image = global::New_MasterTrade.Properties.Resources.edit__2_;
-            this.btnDetalles.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnDetalles.MinimumWidth = 6;
-            this.btnDetalles.Name = "btnDetalles";
-            this.btnDetalles.ReadOnly = true;
-            this.btnDetalles.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.MinimumWidth = 6;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // bttnAgregar
             // 

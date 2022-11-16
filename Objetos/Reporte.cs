@@ -19,6 +19,7 @@ namespace New_MasterTrade.Objetos
         ProductoTableAdapter producto = new ProductoTableAdapter();
         VentaTableAdapter venta = new VentaTableAdapter();
         CompraTableAdapter compra = new CompraTableAdapter();
+        Producto_VendidoTableAdapter producto_vendido = new Producto_VendidoTableAdapter();
         //TableAdapters
 
         public void Reporte_Orden_Compra(int id)
@@ -136,6 +137,24 @@ namespace New_MasterTrade.Objetos
                 compra.Fill(dataset.Compra);
                 Compra_Reporte reporte = new Compra_Reporte();
                 string direccion = @"~\Reportes\Compra_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_ProductoMasVendido()
+        {
+            try
+            {
+                producto_vendido.Fill(dataset.Producto_Vendido);
+                ProductoVendido_Reporte reporte = new ProductoVendido_Reporte();
+                string direccion = @"~\Reportes\ProductoVendido_Reporte.rpt";
                 reporte.Load(direccion);
                 reporte.SetDataSource(dataset);
                 FormReportes ventana = new FormReportes(reporte);
