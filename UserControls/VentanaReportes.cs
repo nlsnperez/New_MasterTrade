@@ -54,7 +54,8 @@ namespace New_MasterTrade.UserControls
 
         private void bttnReporte_Click(object sender, EventArgs e)
         {
-            reporte.Reporte_ProductoMasVendido();
+            //reporte.Reporte_ProductoMasVendido();
+            reporte.Reporte_VendedorEficiente();
         }
     }
 }

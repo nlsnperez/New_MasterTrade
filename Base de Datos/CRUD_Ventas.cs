@@ -82,12 +82,13 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `factura_venta`(`id_ven`, `id_ove`, `id_mpa`, `tbs_fve`, `tus_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@metodopago,@tbs,@tus,@activo)";
+                    command.CommandText = "INSERT INTO `factura_venta`(`id_ven`, `id_ove`, `id_imp`, `id_mpa`, `tbs_fve`, `tus_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@impuesto,@metodopago,@tbs,@tus,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
                     command.Parameters.Add("@vendedor", MySqlDbType.Int32).Value = factura.Vendedor;
                     command.Parameters.Add("@ordenventa", MySqlDbType.Int32).Value = factura.OrdenVenta;
+                    command.Parameters.Add("@impuesto", MySqlDbType.Int32).Value = factura.Impuesto;
                     command.Parameters.Add("@metodopago", MySqlDbType.Int32).Value = factura.MetodoPago;
                     command.Parameters.Add("@tbs", MySqlDbType.Decimal).Value = factura.Total_Bs;
                     command.Parameters.Add("@tus", MySqlDbType.Decimal).Value = factura.Total_Us;

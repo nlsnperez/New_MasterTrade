@@ -20,6 +20,7 @@ namespace New_MasterTrade.Objetos
         VentaTableAdapter venta = new VentaTableAdapter();
         CompraTableAdapter compra = new CompraTableAdapter();
         Producto_VendidoTableAdapter producto_vendido = new Producto_VendidoTableAdapter();
+        Vendedor_EficienteTableAdapter vendedor_eficiente = new Vendedor_EficienteTableAdapter();
         //TableAdapters
 
         public void Reporte_Orden_Compra(int id)
@@ -155,6 +156,24 @@ namespace New_MasterTrade.Objetos
                 producto_vendido.Fill(dataset.Producto_Vendido);
                 ProductoVendido_Reporte reporte = new ProductoVendido_Reporte();
                 string direccion = @"~\Reportes\ProductoVendido_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_VendedorEficiente()
+        {
+            try
+            {
+                vendedor_eficiente.Fill(dataset.Vendedor_Eficiente);
+                VendedorEficiencia_Reporte reporte = new VendedorEficiencia_Reporte();
+                string direccion = @"~\Reportes\VendedorEficiencia_Reporte.rpt";
                 reporte.Load(direccion);
                 reporte.SetDataSource(dataset);
                 FormReportes ventana = new FormReportes(reporte);

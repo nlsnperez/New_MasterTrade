@@ -238,6 +238,31 @@ WHERE  p.id_pro = dv.id_pro AND dv.id_ove = ov.id_ove AND ov.id_ove = fv.id_ove<
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Vendedor_EficienteTableAdapter" GeneratorDataComponentClassName="Vendedor_EficienteTableAdapter" Name="Vendedor_Eficiente" UserDataComponentName="Vendedor_EficienteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT v.id_ven, u.nom_usu, u.doc_usu, ov.num_ove, ov.fec_ove, ov.hor_ove, fv.tbs_fve, fv.tus_fve
+FROM     vendedor v, usuario u, factura_venta fv, orden_venta ov
+WHERE  v.id_usu = u.id_usu AND fv.id_ven = v.id_ven AND fv.id_ove = ov.id_ove</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_ven" DataSetColumn="id_ven" />
+              <Mapping SourceColumn="nom_usu" DataSetColumn="nom_usu" />
+              <Mapping SourceColumn="doc_usu" DataSetColumn="doc_usu" />
+              <Mapping SourceColumn="num_ove" DataSetColumn="num_ove" />
+              <Mapping SourceColumn="fec_ove" DataSetColumn="fec_ove" />
+              <Mapping SourceColumn="hor_ove" DataSetColumn="hor_ove" />
+              <Mapping SourceColumn="tbs_fve" DataSetColumn="tbs_fve" />
+              <Mapping SourceColumn="tus_fve" DataSetColumn="tus_fve" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -598,39 +623,76 @@ WHERE  p.id_pro = dv.id_pro AND dv.id_ove = ov.id_ove AND ov.id_ove = fv.id_ove<
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Producto_Vendido" msprop:Generator_RowClassName="Producto_VendidoRow" msprop:Generator_RowEvHandlerName="Producto_VendidoRowChangeEventHandler" msprop:Generator_RowDeletedName="Producto_VendidoRowDeleted" msprop:Generator_RowDeletingName="Producto_VendidoRowDeleting" msprop:Generator_RowEvArgName="Producto_VendidoRowChangeEvent" msprop:Generator_TablePropName="Producto_Vendido" msprop:Generator_RowChangedName="Producto_VendidoRowChanged" msprop:Generator_UserTableName="Producto_Vendido" msprop:Generator_RowChangingName="Producto_VendidoRowChanging" msprop:Generator_TableClassName="Producto_VendidoDataTable" msprop:Generator_TableVarName="tableProducto_Vendido">
+        <xs:element name="Producto_Vendido" msprop:Generator_RowEvHandlerName="Producto_VendidoRowChangeEventHandler" msprop:Generator_RowDeletedName="Producto_VendidoRowDeleted" msprop:Generator_RowDeletingName="Producto_VendidoRowDeleting" msprop:Generator_RowEvArgName="Producto_VendidoRowChangeEvent" msprop:Generator_TablePropName="Producto_Vendido" msprop:Generator_RowChangedName="Producto_VendidoRowChanged" msprop:Generator_UserTableName="Producto_Vendido" msprop:Generator_RowChangingName="Producto_VendidoRowChanging" msprop:Generator_RowClassName="Producto_VendidoRow" msprop:Generator_TableClassName="Producto_VendidoDataTable" msprop:Generator_TableVarName="tableProducto_Vendido">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ser_pro" msprop:Generator_UserColumnName="ser_pro" msprop:Generator_ColumnPropNameInTable="ser_proColumn" msprop:Generator_ColumnPropNameInRow="ser_pro" msprop:Generator_ColumnVarNameInTable="columnser_pro">
+              <xs:element name="ser_pro" msprop:Generator_ColumnPropNameInTable="ser_proColumn" msprop:Generator_ColumnPropNameInRow="ser_pro" msprop:Generator_UserColumnName="ser_pro" msprop:Generator_ColumnVarNameInTable="columnser_pro">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="can_dve" msprop:Generator_UserColumnName="can_dve" msprop:Generator_ColumnPropNameInTable="can_dveColumn" msprop:Generator_ColumnPropNameInRow="can_dve" msprop:Generator_ColumnVarNameInTable="columncan_dve" type="xs:int" />
-              <xs:element name="des_pro" msprop:Generator_UserColumnName="des_pro" msprop:Generator_ColumnPropNameInTable="des_proColumn" msprop:Generator_ColumnPropNameInRow="des_pro" msprop:Generator_ColumnVarNameInTable="columndes_pro">
+              <xs:element name="can_dve" msprop:Generator_ColumnPropNameInTable="can_dveColumn" msprop:Generator_ColumnPropNameInRow="can_dve" msprop:Generator_UserColumnName="can_dve" msprop:Generator_ColumnVarNameInTable="columncan_dve" type="xs:int" />
+              <xs:element name="des_pro" msprop:Generator_ColumnPropNameInTable="des_proColumn" msprop:Generator_ColumnPropNameInRow="des_pro" msprop:Generator_UserColumnName="des_pro" msprop:Generator_ColumnVarNameInTable="columndes_pro">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="500" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="id_pro" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="id_pro" msprop:Generator_ColumnPropNameInTable="id_proColumn" msprop:Generator_ColumnPropNameInRow="id_pro" msprop:Generator_ColumnVarNameInTable="columnid_pro" type="xs:int" />
-              <xs:element name="id_cat" msprop:Generator_ColumnPropNameInRow="id_cat" msprop:Generator_ColumnPropNameInTable="id_catColumn" msprop:Generator_ColumnVarNameInTable="columnid_cat" msprop:Generator_UserColumnName="id_cat" type="xs:int" />
-              <xs:element name="id_mar" msprop:Generator_ColumnPropNameInRow="id_mar" msprop:Generator_ColumnPropNameInTable="id_marColumn" msprop:Generator_ColumnVarNameInTable="columnid_mar" msprop:Generator_UserColumnName="id_mar" type="xs:int" />
-              <xs:element name="id_mod" msprop:Generator_ColumnPropNameInRow="id_mod" msprop:Generator_ColumnPropNameInTable="id_modColumn" msprop:Generator_ColumnVarNameInTable="columnid_mod" msprop:Generator_UserColumnName="id_mod" type="xs:int" />
-              <xs:element name="pco_pro" msprop:Generator_ColumnPropNameInRow="pco_pro" msprop:Generator_ColumnPropNameInTable="pco_proColumn" msprop:Generator_ColumnVarNameInTable="columnpco_pro" msprop:Generator_UserColumnName="pco_pro" type="xs:double" />
-              <xs:element name="pve_pro" msprop:Generator_ColumnPropNameInRow="pve_pro" msprop:Generator_ColumnPropNameInTable="pve_proColumn" msprop:Generator_ColumnVarNameInTable="columnpve_pro" msprop:Generator_UserColumnName="pve_pro" type="xs:double" />
-              <xs:element name="img_pro" msprop:Generator_ColumnPropNameInRow="img_pro" msprop:Generator_ColumnPropNameInTable="img_proColumn" msprop:Generator_ColumnVarNameInTable="columnimg_pro" msprop:Generator_UserColumnName="img_pro" type="xs:base64Binary" />
-              <xs:element name="gar_pro" msprop:Generator_ColumnPropNameInRow="gar_pro" msprop:Generator_ColumnPropNameInTable="gar_proColumn" msprop:Generator_ColumnVarNameInTable="columngar_pro" msprop:Generator_UserColumnName="gar_pro" type="xs:int" />
-              <xs:element name="id_dve" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id_dve" msprop:Generator_ColumnPropNameInTable="id_dveColumn" msprop:Generator_ColumnVarNameInTable="columnid_dve" msprop:Generator_UserColumnName="id_dve" type="xs:int" />
-              <xs:element name="id_ove" msprop:Generator_ColumnPropNameInRow="id_ove" msprop:Generator_ColumnPropNameInTable="id_oveColumn" msprop:Generator_ColumnVarNameInTable="columnid_ove" msprop:Generator_UserColumnName="id_ove" type="xs:int" />
-              <xs:element name="Expr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_UserColumnName="Expr1" type="xs:int" />
-              <xs:element name="tbs_dve" msprop:Generator_ColumnPropNameInRow="tbs_dve" msprop:Generator_ColumnPropNameInTable="tbs_dveColumn" msprop:Generator_ColumnVarNameInTable="columntbs_dve" msprop:Generator_UserColumnName="tbs_dve" type="xs:double" />
-              <xs:element name="tus_dve" msprop:Generator_ColumnPropNameInRow="tus_dve" msprop:Generator_ColumnPropNameInTable="tus_dveColumn" msprop:Generator_ColumnVarNameInTable="columntus_dve" msprop:Generator_UserColumnName="tus_dve" type="xs:double" />
-              <xs:element name="Expr2" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_UserColumnName="Expr2" type="xs:int" />
-              <xs:element name="id_cli" msprop:Generator_ColumnPropNameInRow="id_cli" msprop:Generator_ColumnPropNameInTable="id_cliColumn" msprop:Generator_ColumnVarNameInTable="columnid_cli" msprop:Generator_UserColumnName="id_cli" type="xs:int" />
+              <xs:element name="id_pro" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="id_proColumn" msprop:Generator_ColumnPropNameInRow="id_pro" msprop:Generator_UserColumnName="id_pro" msprop:Generator_ColumnVarNameInTable="columnid_pro" type="xs:int" />
+              <xs:element name="id_cat" msprop:Generator_UserColumnName="id_cat" msprop:Generator_ColumnPropNameInTable="id_catColumn" msprop:Generator_ColumnPropNameInRow="id_cat" msprop:Generator_ColumnVarNameInTable="columnid_cat" type="xs:int" />
+              <xs:element name="id_mar" msprop:Generator_UserColumnName="id_mar" msprop:Generator_ColumnPropNameInTable="id_marColumn" msprop:Generator_ColumnPropNameInRow="id_mar" msprop:Generator_ColumnVarNameInTable="columnid_mar" type="xs:int" />
+              <xs:element name="id_mod" msprop:Generator_UserColumnName="id_mod" msprop:Generator_ColumnPropNameInTable="id_modColumn" msprop:Generator_ColumnPropNameInRow="id_mod" msprop:Generator_ColumnVarNameInTable="columnid_mod" type="xs:int" />
+              <xs:element name="pco_pro" msprop:Generator_UserColumnName="pco_pro" msprop:Generator_ColumnPropNameInTable="pco_proColumn" msprop:Generator_ColumnPropNameInRow="pco_pro" msprop:Generator_ColumnVarNameInTable="columnpco_pro" type="xs:double" />
+              <xs:element name="pve_pro" msprop:Generator_UserColumnName="pve_pro" msprop:Generator_ColumnPropNameInTable="pve_proColumn" msprop:Generator_ColumnPropNameInRow="pve_pro" msprop:Generator_ColumnVarNameInTable="columnpve_pro" type="xs:double" />
+              <xs:element name="img_pro" msprop:Generator_UserColumnName="img_pro" msprop:Generator_ColumnPropNameInTable="img_proColumn" msprop:Generator_ColumnPropNameInRow="img_pro" msprop:Generator_ColumnVarNameInTable="columnimg_pro" type="xs:base64Binary" />
+              <xs:element name="gar_pro" msprop:Generator_UserColumnName="gar_pro" msprop:Generator_ColumnPropNameInTable="gar_proColumn" msprop:Generator_ColumnPropNameInRow="gar_pro" msprop:Generator_ColumnVarNameInTable="columngar_pro" type="xs:int" />
+              <xs:element name="id_dve" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="id_dve" msprop:Generator_ColumnPropNameInTable="id_dveColumn" msprop:Generator_ColumnPropNameInRow="id_dve" msprop:Generator_ColumnVarNameInTable="columnid_dve" type="xs:int" />
+              <xs:element name="id_ove" msprop:Generator_UserColumnName="id_ove" msprop:Generator_ColumnPropNameInTable="id_oveColumn" msprop:Generator_ColumnPropNameInRow="id_ove" msprop:Generator_ColumnVarNameInTable="columnid_ove" type="xs:int" />
+              <xs:element name="Expr1" msprop:Generator_UserColumnName="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" type="xs:int" />
+              <xs:element name="tbs_dve" msprop:Generator_UserColumnName="tbs_dve" msprop:Generator_ColumnPropNameInTable="tbs_dveColumn" msprop:Generator_ColumnPropNameInRow="tbs_dve" msprop:Generator_ColumnVarNameInTable="columntbs_dve" type="xs:double" />
+              <xs:element name="tus_dve" msprop:Generator_UserColumnName="tus_dve" msprop:Generator_ColumnPropNameInTable="tus_dveColumn" msprop:Generator_ColumnPropNameInRow="tus_dve" msprop:Generator_ColumnVarNameInTable="columntus_dve" type="xs:double" />
+              <xs:element name="Expr2" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" type="xs:int" />
+              <xs:element name="id_cli" msprop:Generator_UserColumnName="id_cli" msprop:Generator_ColumnPropNameInTable="id_cliColumn" msprop:Generator_ColumnPropNameInRow="id_cli" msprop:Generator_ColumnVarNameInTable="columnid_cli" type="xs:int" />
+              <xs:element name="num_ove" msprop:Generator_UserColumnName="num_ove" msprop:Generator_ColumnPropNameInTable="num_oveColumn" msprop:Generator_ColumnPropNameInRow="num_ove" msprop:Generator_ColumnVarNameInTable="columnnum_ove">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fec_ove" msprop:Generator_UserColumnName="fec_ove" msprop:Generator_ColumnPropNameInTable="fec_oveColumn" msprop:Generator_ColumnPropNameInRow="fec_ove" msprop:Generator_ColumnVarNameInTable="columnfec_ove" type="xs:dateTime" />
+              <xs:element name="hor_ove" msprop:Generator_UserColumnName="hor_ove" msprop:Generator_ColumnPropNameInTable="hor_oveColumn" msprop:Generator_ColumnPropNameInRow="hor_ove" msprop:Generator_ColumnVarNameInTable="columnhor_ove" type="xs:duration" />
+              <xs:element name="id_fve" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="id_fve" msprop:Generator_ColumnPropNameInTable="id_fveColumn" msprop:Generator_ColumnPropNameInRow="id_fve" msprop:Generator_ColumnVarNameInTable="columnid_fve" type="xs:int" />
+              <xs:element name="id_ven" msprop:Generator_UserColumnName="id_ven" msprop:Generator_ColumnPropNameInTable="id_venColumn" msprop:Generator_ColumnPropNameInRow="id_ven" msprop:Generator_ColumnVarNameInTable="columnid_ven" type="xs:int" />
+              <xs:element name="Expr3" msprop:Generator_UserColumnName="Expr3" msprop:Generator_ColumnPropNameInTable="Expr3Column" msprop:Generator_ColumnPropNameInRow="Expr3" msprop:Generator_ColumnVarNameInTable="columnExpr3" type="xs:int" />
+              <xs:element name="id_imp" msprop:Generator_UserColumnName="id_imp" msprop:Generator_ColumnPropNameInTable="id_impColumn" msprop:Generator_ColumnPropNameInRow="id_imp" msprop:Generator_ColumnVarNameInTable="columnid_imp" type="xs:int" />
+              <xs:element name="id_mpa" msprop:Generator_UserColumnName="id_mpa" msprop:Generator_ColumnPropNameInTable="id_mpaColumn" msprop:Generator_ColumnPropNameInRow="id_mpa" msprop:Generator_ColumnVarNameInTable="columnid_mpa" type="xs:int" />
+              <xs:element name="tbs_fve" msprop:Generator_UserColumnName="tbs_fve" msprop:Generator_ColumnPropNameInTable="tbs_fveColumn" msprop:Generator_ColumnPropNameInRow="tbs_fve" msprop:Generator_ColumnVarNameInTable="columntbs_fve" type="xs:double" />
+              <xs:element name="tus_fve" msprop:Generator_UserColumnName="tus_fve" msprop:Generator_ColumnPropNameInTable="tus_fveColumn" msprop:Generator_ColumnPropNameInRow="tus_fve" msprop:Generator_ColumnVarNameInTable="columntus_fve" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Vendedor_Eficiente" msprop:Generator_RowEvHandlerName="Vendedor_EficienteRowChangeEventHandler" msprop:Generator_RowDeletedName="Vendedor_EficienteRowDeleted" msprop:Generator_RowDeletingName="Vendedor_EficienteRowDeleting" msprop:Generator_RowEvArgName="Vendedor_EficienteRowChangeEvent" msprop:Generator_TablePropName="Vendedor_Eficiente" msprop:Generator_RowChangedName="Vendedor_EficienteRowChanged" msprop:Generator_RowChangingName="Vendedor_EficienteRowChanging" msprop:Generator_TableClassName="Vendedor_EficienteDataTable" msprop:Generator_RowClassName="Vendedor_EficienteRow" msprop:Generator_TableVarName="tableVendedor_Eficiente" msprop:Generator_UserTableName="Vendedor_Eficiente">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_ven" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id_ven" msprop:Generator_ColumnPropNameInTable="id_venColumn" msprop:Generator_ColumnVarNameInTable="columnid_ven" msprop:Generator_UserColumnName="id_ven" type="xs:int" />
+              <xs:element name="nom_usu" msprop:Generator_ColumnPropNameInRow="nom_usu" msprop:Generator_ColumnPropNameInTable="nom_usuColumn" msprop:Generator_ColumnVarNameInTable="columnnom_usu" msprop:Generator_UserColumnName="nom_usu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="doc_usu" msprop:Generator_ColumnPropNameInRow="doc_usu" msprop:Generator_ColumnPropNameInTable="doc_usuColumn" msprop:Generator_ColumnVarNameInTable="columndoc_usu" msprop:Generator_UserColumnName="doc_usu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="num_ove" msprop:Generator_ColumnPropNameInRow="num_ove" msprop:Generator_ColumnPropNameInTable="num_oveColumn" msprop:Generator_ColumnVarNameInTable="columnnum_ove" msprop:Generator_UserColumnName="num_ove">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -640,11 +702,6 @@ WHERE  p.id_pro = dv.id_pro AND dv.id_ove = ov.id_ove AND ov.id_ove = fv.id_ove<
               </xs:element>
               <xs:element name="fec_ove" msprop:Generator_ColumnPropNameInRow="fec_ove" msprop:Generator_ColumnPropNameInTable="fec_oveColumn" msprop:Generator_ColumnVarNameInTable="columnfec_ove" msprop:Generator_UserColumnName="fec_ove" type="xs:dateTime" />
               <xs:element name="hor_ove" msprop:Generator_ColumnPropNameInRow="hor_ove" msprop:Generator_ColumnPropNameInTable="hor_oveColumn" msprop:Generator_ColumnVarNameInTable="columnhor_ove" msprop:Generator_UserColumnName="hor_ove" type="xs:duration" />
-              <xs:element name="id_fve" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id_fve" msprop:Generator_ColumnPropNameInTable="id_fveColumn" msprop:Generator_ColumnVarNameInTable="columnid_fve" msprop:Generator_UserColumnName="id_fve" type="xs:int" />
-              <xs:element name="id_ven" msprop:Generator_ColumnPropNameInRow="id_ven" msprop:Generator_ColumnPropNameInTable="id_venColumn" msprop:Generator_ColumnVarNameInTable="columnid_ven" msprop:Generator_UserColumnName="id_ven" type="xs:int" />
-              <xs:element name="Expr3" msprop:Generator_ColumnPropNameInRow="Expr3" msprop:Generator_ColumnPropNameInTable="Expr3Column" msprop:Generator_ColumnVarNameInTable="columnExpr3" msprop:Generator_UserColumnName="Expr3" type="xs:int" />
-              <xs:element name="id_imp" msprop:Generator_ColumnPropNameInRow="id_imp" msprop:Generator_ColumnPropNameInTable="id_impColumn" msprop:Generator_ColumnVarNameInTable="columnid_imp" msprop:Generator_UserColumnName="id_imp" type="xs:int" />
-              <xs:element name="id_mpa" msprop:Generator_ColumnPropNameInRow="id_mpa" msprop:Generator_ColumnPropNameInTable="id_mpaColumn" msprop:Generator_ColumnVarNameInTable="columnid_mpa" msprop:Generator_UserColumnName="id_mpa" type="xs:int" />
               <xs:element name="tbs_fve" msprop:Generator_ColumnPropNameInRow="tbs_fve" msprop:Generator_ColumnPropNameInTable="tbs_fveColumn" msprop:Generator_ColumnVarNameInTable="columntbs_fve" msprop:Generator_UserColumnName="tbs_fve" type="xs:double" />
               <xs:element name="tus_fve" msprop:Generator_ColumnPropNameInRow="tus_fve" msprop:Generator_ColumnPropNameInTable="tus_fveColumn" msprop:Generator_ColumnVarNameInTable="columntus_fve" msprop:Generator_UserColumnName="tus_fve" type="xs:double" />
             </xs:sequence>
