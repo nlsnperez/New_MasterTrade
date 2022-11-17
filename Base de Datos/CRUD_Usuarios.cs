@@ -21,13 +21,14 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `usuario`(`usr_usu`, `pas_usu`, `nom_usu`, `cor_usu`, `niv_usu`, `est_usu`) VALUES (@user,@password,@documento,@nombre,@nivel,@estatus)";
+                    command.CommandText = "INSERT INTO `usuario`(`usr_usu`, `pas_usu`, `nom_usu`, `doc_usu`, `cor_usu`, `niv_usu`, `est_usu`) VALUES (@user,@password,@documento,@correo,@nombre,@nivel,@estatus)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
                     command.Parameters.Add("@user", MySqlDbType.VarChar).Value = user.UserName;
                     command.Parameters.Add("@password", MySqlDbType.VarChar).Value = user.Contrasegna;
                     command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = user.Documento;
+                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = user.Correo;
                     command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = user.Nombre;
                     command.Parameters.Add("@nivel", MySqlDbType.Int32).Value = user.Nivel;
                     command.Parameters.Add("@estatus", MySqlDbType.Int32).Value = 1;

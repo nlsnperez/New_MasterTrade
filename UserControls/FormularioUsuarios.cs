@@ -128,6 +128,7 @@ namespace New_MasterTrade.UserControls
         {
             Usuario usuario = new Usuario(txtUsuario.Text,
                                           txtContrasegna.Text,
+                                          txtCorreo.Text,
                                           comboDocumento.Text+txtDocumento.Text,
                                           txtNombre.Text,
                                           Nivel(comboNivel.SelectedIndex));
@@ -193,6 +194,11 @@ namespace New_MasterTrade.UserControls
         {
             if (x == 0) return 1;
             else return 2;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
