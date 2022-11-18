@@ -138,6 +138,12 @@
     <Compile Include="Custom Controls\Confirmar.Designer.cs">
       <DependentUpon>Confirmar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Custom Controls\ConfirmarFactura.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\ConfirmarFactura.Designer.cs">
+      <DependentUpon>ConfirmarFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Custom Controls\RecuperarContraseña.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -350,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\Confirmar.resx">
       <DependentUpon>Confirmar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Controls\ConfirmarFactura.resx">
+      <DependentUpon>ConfirmarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\RecuperarContraseña.resx">
       <DependentUpon>RecuperarContraseña.cs</DependentUpon>

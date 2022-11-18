@@ -321,7 +321,6 @@ namespace New_MasterTrade.UserControls
                 Detalle x = new Detalle(IdCompra,
                                         Int32.Parse(tableCarrito.Rows[i].Cells[0].Value.ToString()),
                                         Int32.Parse(tableCarrito.Rows[i].Cells[4].Value.ToString()),
-                                        decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()),
                                         decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()));
                 detalle.Add(x);
             }

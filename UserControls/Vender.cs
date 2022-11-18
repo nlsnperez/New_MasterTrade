@@ -1,4 +1,5 @@
-﻿using New_MasterTrade.Base_de_Datos;
+﻿using CrystalDecisions.Shared;
+using New_MasterTrade.Base_de_Datos;
 using New_MasterTrade.Cache;
 using New_MasterTrade.Custom_Controls;
 using New_MasterTrade.Objetos;
@@ -39,10 +40,10 @@ namespace New_MasterTrade.UserControls
             ConfigControles("OFF");
             ConfigCarrito();
 
-            comboPago.DataSource = crud.MetodosPago();
-            comboPago.ValueMember = "id_mpa";
-            comboPago.DisplayMember = "des_mpa";
-            comboPago.SelectedIndex = 0;
+            comboMoneda.DataSource = crud.Moneda();
+            comboMoneda.ValueMember = "id_mon";
+            comboMoneda.DisplayMember = "nom_mon";
+            comboMoneda.SelectedIndex = 0;
         }
 
 
@@ -96,7 +97,7 @@ namespace New_MasterTrade.UserControls
                     bttnBuscarProductos.Enabled = true;
                     bttnBuscar.Enabled = true;
                     bttnCancelar.Enabled = true;
-                    comboPago.Enabled = true;
+                    comboMoneda.Enabled = true;
                     break;
                 case "OFF":
                     txtNumeroOrden.Enabled = false;
@@ -107,7 +108,7 @@ namespace New_MasterTrade.UserControls
                     txtTelefono.Enabled = false;
                     txtCorreo.Enabled = false;
 
-                    comboPago.Enabled = false;
+                    comboMoneda.Enabled = false;
                     comboImpuesto.Enabled = false;
                     txtImpuesto.Enabled = false;
                     txtSubTotalBs.Enabled = false;
@@ -123,7 +124,7 @@ namespace New_MasterTrade.UserControls
                     tableCarrito.DataSource = null;
                     carrito.Rows.Clear();
                     LimpiarCampos();
-                    comboPago.DataSource = null;
+                    comboMoneda.DataSource = null;
                     comboImpuesto.DataSource = null;
                     break;
             }
@@ -322,8 +323,9 @@ namespace New_MasterTrade.UserControls
         private Venta GetVenta()
         {
             Venta venta = new Venta(IdVenta,
-                                    txtNumeroOrden.Text,
                                     IdCliente,
+                                    Convert.ToInt32(comboMoneda.SelectedValue),
+                                    txtNumeroOrden.Text,
                                     System.DateTime.Now);
             return venta;
         }
@@ -337,7 +339,6 @@ namespace New_MasterTrade.UserControls
                 Detalle x = new Detalle(IdVenta,
                                         Int32.Parse(tableCarrito.Rows[i].Cells[0].Value.ToString()),
                                         Int32.Parse(tableCarrito.Rows[i].Cells[4].Value.ToString()),
-                                        decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()),
                                         decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()));
                 detalle.Add(x);
             }
@@ -354,12 +355,20 @@ namespace New_MasterTrade.UserControls
             {
                 if (MessageBox.Show("¿Desea registrar esta orden?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    crud.Crear(GetVenta());
-                    crud.CrearDetalle(GetDetalle());
-                    crud.CrearGarantia(crud.Detalles(IdVenta), dias_garantia);
-                    crud.CrearFactura(new Factura(id: 0, vendedor: crud.Vendedor(UserData.Id), ordenVenta: IdVenta, metodoPago: (int)comboPago.SelectedValue, impuesto: Convert.ToInt32(comboImpuesto.SelectedValue), total_Bs: decimal.Parse(txtTotalBs.Text), total_Us: decimal.Parse(txtTotalUs.Text)));
-                    bitacora.Create(UserData.Id, Modulos.Vender, Accion.NuevaVenta(UserData.NombreUsuario, txtNumeroOrden.Text));
-                    ConfigControles("OFF");
+                    Form x = new Form();
+                    ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), Convert.ToDecimal(txtSubTotalBs.Text));
+                    x.Size = factura.Size;
+                    x.Controls.Add(factura);
+                    x.StartPosition = FormStartPosition.CenterParent;
+                    x.FormBorderStyle = FormBorderStyle.None;
+                    x.Show();
+                   
+                    //crud.Crear(GetVenta());
+                    //crud.CrearDetalle(GetDetalle());
+                    //crud.CrearGarantia(crud.Detalles(IdVenta), dias_garantia);
+                    //crud.CrearFactura(new Factura(id: 0, vendedor: crud.Vendedor(UserData.Id), ordenVenta: IdVenta, metodoPago: (int)comboMoneda.SelectedValue, impuesto: Convert.ToInt32(comboImpuesto.SelectedValue), total_Bs: decimal.Parse(txtTotalBs.Text), total_Us: decimal.Parse(txtTotalUs.Text)));
+                    //bitacora.Create(UserData.Id, Modulos.Vender, Accion.NuevaVenta(UserData.NombreUsuario, txtNumeroOrden.Text));
+                    //ConfigControles("OFF");
                 }
             }
         }

@@ -59,7 +59,6 @@ namespace New_MasterTrade.Base_de_Datos
                         command.Parameters.Add("@producto", MySqlDbType.Int32).Value = detalle[i].Producto;
                         command.Parameters.Add("@cantidad", MySqlDbType.Int32).Value = detalle[i].Cantidad;
                         command.Parameters.Add("@totBs", MySqlDbType.Decimal).Value = detalle[i].TotalBs;
-                        command.Parameters.Add("@totUsd", MySqlDbType.Decimal).Value = detalle[i].TotalUSD;
 
                         command.ExecuteNonQuery();
                         Console.WriteLine("Detalle registrado "+i+"!");

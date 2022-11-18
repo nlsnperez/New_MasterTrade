@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,15 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `orden_venta`(`id_cli`, `num_ove`, `fec_ove`) VALUES (@cliente,@norden,@fecha)";
+                    command.CommandText = "INSERT INTO `orden_venta`(`id_cli`, `id_mon`, `num_ove`, `fec_ove`, `hor_ove`) VALUES (@cliente,@moneda,@norden,@fecha,@hora)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
                     command.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = venta.Cliente; 
+                    command.Parameters.Add("@moneda", MySqlDbType.VarChar).Value = venta.Moneda; 
                     command.Parameters.Add("@norden", MySqlDbType.VarChar).Value = venta.NumeroOrden;
-                    command.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = venta.Fecha;
+                    command.Parameters.Add("@fecha", MySqlDbType.Date).Value = System.DateTime.Now.Date.ToString("yyyy-MM-dd");
+                    command.Parameters.Add("@hora", MySqlDbType.Time).Value = System.DateTime.Now.TimeOfDay;
 
                     command.ExecuteNonQuery();
                     MessageBox.Show("La orden de venta fue registrada con éxito.", "¡REGISTRO EXITOSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -50,7 +53,7 @@ namespace New_MasterTrade.Base_de_Datos
                     con.Open();
                     using (MySqlCommand command = new MySqlCommand())
                     {
-                        command.CommandText = "INSERT INTO `detalle_venta`(`id_ove`, `id_pro`, `can_dve`, `tbs_dve`, `tus_dve`) VALUES (@oventa,@producto,@cantidad,@totBs,@totUsd)";
+                        command.CommandText = "INSERT INTO `detalle_venta`(`id_ove`, `id_pro`, `can_dve`, `tot_dve`) VALUES (@oventa,@producto,@cantidad,@totBs)";
                         command.CommandType = CommandType.Text;
                         command.Connection = con;
 
@@ -58,7 +61,6 @@ namespace New_MasterTrade.Base_de_Datos
                         command.Parameters.Add("@producto", MySqlDbType.Int32).Value = detalle[i].Producto;
                         command.Parameters.Add("@cantidad", MySqlDbType.Int32).Value = detalle[i].Cantidad;
                         command.Parameters.Add("@totBs", MySqlDbType.Decimal).Value = detalle[i].TotalBs;
-                        command.Parameters.Add("@totUsd", MySqlDbType.Decimal).Value = detalle[i].TotalUSD;
 
                         command.ExecuteNonQuery();
                         Console.WriteLine("Detalle registrado "+i+"!");
@@ -212,6 +214,29 @@ namespace New_MasterTrade.Base_de_Datos
             return categorias;
         }
 
+        public decimal PorcentajeImpuesto(int id)
+        {
+            decimal x = 0;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM impuesto WHERE id_imp = "+id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = reader.GetDecimal(2);
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
+        }
+
         public int CantidadMax(int id)
         {
             return crud.ProductosComprados(id) - crud.ProductosVendidos(id);
@@ -239,6 +264,30 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return categorias;
+        }
+
+        public DataTable Moneda()
+        {
+            DataTable moneda = new DataTable();
+            String sql = "SELECT * FROM `moneda` ORDER BY id_mon ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(moneda);
+                return moneda;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return moneda;
         }
 
         public DataTable Facturas()
