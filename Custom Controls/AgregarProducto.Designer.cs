@@ -41,12 +41,17 @@ namespace New_MasterTrade.Custom_Controls
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.bttnAceptar = new System.Windows.Forms.Button();
             this.bttnCancelar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 18);
+            this.label2.Location = new System.Drawing.Point(218, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 13);
             this.label2.TabIndex = 46;
@@ -55,7 +60,7 @@ namespace New_MasterTrade.Custom_Controls
             // txtCantidad
             // 
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCantidad.Location = new System.Drawing.Point(530, 52);
+            this.txtCantidad.Location = new System.Drawing.Point(508, 52);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(121, 20);
             this.txtCantidad.TabIndex = 45;
@@ -66,7 +71,7 @@ namespace New_MasterTrade.Custom_Controls
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 52);
+            this.label1.Location = new System.Drawing.Point(218, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 48;
@@ -75,16 +80,16 @@ namespace New_MasterTrade.Custom_Controls
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(448, 14);
+            this.label3.Location = new System.Drawing.Point(218, 56);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 50;
-            this.label3.Text = "Precio (Bs)";
+            this.label3.Text = "PRECIO (Bs)";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(243, 18);
+            this.label4.Location = new System.Drawing.Point(441, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 52;
@@ -93,7 +98,7 @@ namespace New_MasterTrade.Custom_Controls
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(448, 56);
+            this.label5.Location = new System.Drawing.Point(441, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 13);
             this.label5.TabIndex = 54;
@@ -102,7 +107,7 @@ namespace New_MasterTrade.Custom_Controls
             // txtId
             // 
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtId.Location = new System.Drawing.Point(105, 14);
+            this.txtId.Location = new System.Drawing.Point(303, 26);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(121, 20);
             this.txtId.TabIndex = 55;
@@ -110,7 +115,7 @@ namespace New_MasterTrade.Custom_Controls
             // txtSerial
             // 
             this.txtSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSerial.Location = new System.Drawing.Point(310, 14);
+            this.txtSerial.Location = new System.Drawing.Point(508, 26);
             this.txtSerial.Name = "txtSerial";
             this.txtSerial.Size = new System.Drawing.Size(121, 20);
             this.txtSerial.TabIndex = 56;
@@ -118,7 +123,7 @@ namespace New_MasterTrade.Custom_Controls
             // txtDescripcion
             // 
             this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescripcion.Location = new System.Drawing.Point(105, 52);
+            this.txtDescripcion.Location = new System.Drawing.Point(303, 78);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(326, 67);
@@ -127,15 +132,16 @@ namespace New_MasterTrade.Custom_Controls
             // txtPrecio
             // 
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrecio.Location = new System.Drawing.Point(530, 14);
+            this.txtPrecio.Location = new System.Drawing.Point(303, 52);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(121, 20);
             this.txtPrecio.TabIndex = 58;
             // 
             // bttnAceptar
             // 
+            this.bttnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.bttnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnAceptar.Location = new System.Drawing.Point(566, 95);
+            this.bttnAceptar.Location = new System.Drawing.Point(544, 151);
             this.bttnAceptar.Name = "bttnAceptar";
             this.bttnAceptar.Size = new System.Drawing.Size(85, 24);
             this.bttnAceptar.TabIndex = 62;
@@ -145,8 +151,9 @@ namespace New_MasterTrade.Custom_Controls
             // 
             // bttnCancelar
             // 
+            this.bttnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(85)))), ((int)(((byte)(93)))));
             this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCancelar.Location = new System.Drawing.Point(475, 95);
+            this.bttnCancelar.Location = new System.Drawing.Point(453, 151);
             this.bttnCancelar.Name = "bttnCancelar";
             this.bttnCancelar.Size = new System.Drawing.Size(85, 24);
             this.bttnCancelar.TabIndex = 63;
@@ -154,10 +161,41 @@ namespace New_MasterTrade.Custom_Controls
             this.bttnCancelar.UseVisualStyleBackColor = true;
             this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 200);
+            this.panel1.TabIndex = 64;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::New_MasterTrade.Properties.Resources.add_to_basket1;
+            this.pictureBox1.Location = new System.Drawing.Point(47, 40);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(44, 148);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "AÑADIR PRODUCTO";
+            // 
             // AgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.bttnCancelar);
             this.Controls.Add(this.bttnAceptar);
             this.Controls.Add(this.txtPrecio);
@@ -171,7 +209,10 @@ namespace New_MasterTrade.Custom_Controls
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCantidad);
             this.Name = "AgregarProducto";
-            this.Size = new System.Drawing.Size(671, 133);
+            this.Size = new System.Drawing.Size(650, 200);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,5 +232,8 @@ namespace New_MasterTrade.Custom_Controls
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Button bttnAceptar;
         private System.Windows.Forms.Button bttnCancelar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

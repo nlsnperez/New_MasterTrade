@@ -603,6 +603,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\add-to-basket1.png" />
+    <None Include="Resources\invoice.png" />
     <None Include="Resources\archivo-pdf %281%29.png" />
     <None Include="Resources\archivo-pdf.png" />
     <None Include="Resources\LogoDark.png" />
