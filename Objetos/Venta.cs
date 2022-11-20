@@ -10,15 +10,15 @@ namespace New_MasterTrade.Objetos
     {
         public int Id { get; set; }
         public int Cliente { get; set; }
-        public int Moneda { get; set; }
+        public int Tasa_Cambio { get; set; }
         public string NumeroOrden { get; set; }
         public DateTime FechaYHora { get; set; }
 
-        public Venta(int id, int cliente, int moneda, string numeroOrden, DateTime fechaYHora)
+        public Venta(int id, int cliente, int tasa_cambio, string numeroOrden, DateTime fechaYHora)
         {
             Id = id;
             Cliente = cliente;
-            Moneda = moneda;
+            Tasa_Cambio = tasa_cambio;
             NumeroOrden = numeroOrden;
             FechaYHora = fechaYHora;
         }

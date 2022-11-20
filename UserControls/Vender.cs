@@ -24,6 +24,7 @@ namespace New_MasterTrade.UserControls
         List<int> dias_garantia;
         int IdVenta = 0;
         int IdCliente = 0;
+        decimal tasa_cambio = 0;
 
         public Vender()
         {
@@ -43,7 +44,6 @@ namespace New_MasterTrade.UserControls
             comboMoneda.DataSource = crud.Moneda();
             comboMoneda.ValueMember = "id_mon";
             comboMoneda.DisplayMember = "nom_mon";
-            comboMoneda.SelectedIndex = 0;
         }
 
 
@@ -109,12 +109,6 @@ namespace New_MasterTrade.UserControls
                     txtCorreo.Enabled = false;
 
                     comboMoneda.Enabled = false;
-                    comboImpuesto.Enabled = false;
-                    txtImpuesto.Enabled = false;
-                    txtSubTotalBs.Enabled = false;
-                    txtSubTotalUs.Enabled = false;
-                    txtTotalBs.Enabled = false;
-                    txtTotalUs.Enabled = false;
 
                     bttnNuevaVenta.Enabled = true;
                     bttnBuscarProductos.Enabled = false;
@@ -124,8 +118,6 @@ namespace New_MasterTrade.UserControls
                     tableCarrito.DataSource = null;
                     carrito.Rows.Clear();
                     LimpiarCampos();
-                    comboMoneda.DataSource = null;
-                    comboImpuesto.DataSource = null;
                     break;
             }
         }
@@ -141,10 +133,6 @@ namespace New_MasterTrade.UserControls
             txtCorreo.Text = "";
 
             txtSubTotalBs.Text = "0";
-            txtSubTotalUs.Text = "0";
-            txtImpuesto.Text = "";
-            txtTotalBs.Text = "0";
-            txtTotalUs.Text = "0";
         }
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)//LIMITA LOS TEXBOXES PARA QUE ACEPTEN SÓLO NÚMEROS
@@ -155,26 +143,6 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        public void ConfigCombo()
-        {
-            comboImpuesto.DataSource = crud.Impuestos();
-            comboImpuesto.ValueMember = "id_imp";
-            comboImpuesto.DisplayMember = "por_imp";
-
-            CalcPorcentaje();
-        }
-
-        public void GetTotal()
-        {
-            decimal x = 0;
-            x = (decimal.Parse(txtSubTotalBs.Text) + decimal.Parse(txtImpuesto.Text));
-            txtTotalBs.Text = x.ToString("0.00");
-
-            x = 0;
-            x = decimal.Parse(txtSubTotalUs.Text) + (decimal.Parse(txtImpuesto.Text) / (decimal)8.40);
-            txtTotalUs.Text = x.ToString("0.00");
-        }
-
         public void GetSubTotal()
         {
             decimal x = 0;
@@ -182,11 +150,8 @@ namespace New_MasterTrade.UserControls
             {
                 x = x + decimal.Parse(carrito.Rows[i]["P.Total"].ToString());
             }
+            x = x / tasa_cambio;
             txtSubTotalBs.Text = x.ToString("0.00");
-
-            x = 0;
-            x = decimal.Parse(txtSubTotalBs.Text) / (decimal)8.40;
-            txtSubTotalUs.Text = x.ToString("0.00");
         }
 
 
@@ -196,6 +161,7 @@ namespace New_MasterTrade.UserControls
             txtCliente.Focus();
             IdVenta = crud.GetIdVentas();
             txtNumeroOrden.Text = "MT-V" + IdVenta.ToString("000");
+            comboMoneda.SelectedIndex = 0;
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
@@ -206,11 +172,7 @@ namespace New_MasterTrade.UserControls
         public void AddProduct(string[] producto, int cantmanx)
         {
             carrito.Rows.Add(producto);
-            comboImpuesto.Enabled = true;
-            ConfigCombo();
             GetSubTotal();
-            CalcPorcentaje();
-            GetTotal();
             if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1, cantmanx);
             tableCarrito.DataSource = carrito;
             bttnGuardar.Enabled = true;
@@ -227,12 +189,8 @@ namespace New_MasterTrade.UserControls
                     tableCarrito.Rows.RemoveAt(e.RowIndex);
                     dias_garantia.RemoveAt(e.RowIndex);
                     GetSubTotal();
-                    CalcPorcentaje();
-                    GetTotal();
                     if (tableCarrito.Rows.Count < 1)
                     {
-                        comboImpuesto.DataSource = null;
-                        comboImpuesto.Enabled = false;
                         bttnGuardar.Enabled = false;
                     }
                 }
@@ -310,16 +268,6 @@ namespace New_MasterTrade.UserControls
             x.ShowDialog();
         }
 
-        public void CalcPorcentaje()
-        {
-            decimal porcentaje = decimal.Parse(comboImpuesto.Text);
-            decimal total = decimal.Parse(txtSubTotalBs.Text);
-
-            decimal drantotal = (total * porcentaje) / 100;
-
-            txtImpuesto.Text = drantotal.ToString("0.00");
-        }
-
         private Venta GetVenta()
         {
             Venta venta = new Venta(IdVenta,
@@ -356,20 +304,52 @@ namespace New_MasterTrade.UserControls
                 if (MessageBox.Show("¿Desea registrar esta orden?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Form x = new Form();
-                    ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), Convert.ToDecimal(txtSubTotalBs.Text));
+                    ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), dias_garantia,Convert.ToDecimal(txtSubTotalBs.Text));
                     x.Size = factura.Size;
                     x.Controls.Add(factura);
-                    x.StartPosition = FormStartPosition.CenterParent;
+                    x.StartPosition = FormStartPosition.CenterScreen;
                     x.FormBorderStyle = FormBorderStyle.None;
-                    x.Show();
-                   
-                    //crud.Crear(GetVenta());
-                    //crud.CrearDetalle(GetDetalle());
-                    //crud.CrearGarantia(crud.Detalles(IdVenta), dias_garantia);
-                    //crud.CrearFactura(new Factura(id: 0, vendedor: crud.Vendedor(UserData.Id), ordenVenta: IdVenta, metodoPago: (int)comboMoneda.SelectedValue, impuesto: Convert.ToInt32(comboImpuesto.SelectedValue), total_Bs: decimal.Parse(txtTotalBs.Text), total_Us: decimal.Parse(txtTotalUs.Text)));
-                    //bitacora.Create(UserData.Id, Modulos.Vender, Accion.NuevaVenta(UserData.NombreUsuario, txtNumeroOrden.Text));
-                    //ConfigControles("OFF");
+                    x.ShowDialog();
+                    if (factura.VentaCompletada == true)
+                    {
+                        ConfigControles("OFF");
+                        factura.Dispose();
+                        x.Dispose();
+                    }
+                    else
+                    {
+                        factura.Dispose();
+                        x.Dispose();
+                    }    
                 }
+            }
+        }
+
+        private void comboMoneda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboMoneda.ValueMember == "id_mon")
+            {
+                try
+                {
+                    comboTasaCambio.DataSource = crud.Tasa_Cambio((int)comboMoneda.SelectedValue);
+                    comboTasaCambio.ValueMember = "id_tca";
+                    comboTasaCambio.DisplayMember = "des_tca";
+                    comboTasaCambio.SelectedIndex = 0;
+                    txtMoneda.Text = comboMoneda.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void comboTasaCambio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboTasaCambio.ValueMember == "id_tca")
+            {
+                tasa_cambio = crud.Valor_TasaCambio((int)comboTasaCambio.SelectedValue);
+                if (tableCarrito.Rows.Count > 0) GetSubTotal();
             }
         }
     }

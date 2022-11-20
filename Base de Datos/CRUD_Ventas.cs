@@ -20,12 +20,12 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `orden_venta`(`id_cli`, `id_mon`, `num_ove`, `fec_ove`, `hor_ove`) VALUES (@cliente,@moneda,@norden,@fecha,@hora)";
+                    command.CommandText = "INSERT INTO `orden_venta`(`id_cli`, `id_tca`, `num_ove`, `fec_ove`, `hor_ove`) VALUES (@cliente,@tasacambio,@norden,@fecha,@hora)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
                     command.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = venta.Cliente; 
-                    command.Parameters.Add("@moneda", MySqlDbType.VarChar).Value = venta.Moneda; 
+                    command.Parameters.Add("@tasacambio", MySqlDbType.VarChar).Value = venta.Tasa_Cambio; 
                     command.Parameters.Add("@norden", MySqlDbType.VarChar).Value = venta.NumeroOrden;
                     command.Parameters.Add("@fecha", MySqlDbType.Date).Value = System.DateTime.Now.Date.ToString("yyyy-MM-dd");
                     command.Parameters.Add("@hora", MySqlDbType.Time).Value = System.DateTime.Now.TimeOfDay;
@@ -84,7 +84,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `factura_venta`(`id_ven`, `id_ove`, `id_imp`, `id_mpa`, `tbs_fve`, `tus_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@impuesto,@metodopago,@tbs,@tus,@activo)";
+                    command.CommandText = "INSERT INTO `factura_venta`(`id_ven`, `id_ove`, `id_imp`, `id_mpa`, `tot_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@impuesto,@metodopago,@total,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -92,8 +92,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@ordenventa", MySqlDbType.Int32).Value = factura.OrdenVenta;
                     command.Parameters.Add("@impuesto", MySqlDbType.Int32).Value = factura.Impuesto;
                     command.Parameters.Add("@metodopago", MySqlDbType.Int32).Value = factura.MetodoPago;
-                    command.Parameters.Add("@tbs", MySqlDbType.Decimal).Value = factura.Total_Bs;
-                    command.Parameters.Add("@tus", MySqlDbType.Decimal).Value = factura.Total_Us;
+                    command.Parameters.Add("@total", MySqlDbType.Decimal).Value = factura.Total;
                     command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
@@ -288,6 +287,53 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return moneda;
+        }
+
+        public DataTable Tasa_Cambio(int id)
+        {
+            DataTable tasa_cambio = new DataTable();
+            String sql = "SELECT * FROM `tasa_cambio` WHERE id_mon = "+id;
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(tasa_cambio);
+                return tasa_cambio;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return tasa_cambio;
+        }
+
+        public decimal Valor_TasaCambio(int id)
+        {
+            decimal x = 0;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM tasa_cambio WHERE id_tca = " + id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = reader.GetDecimal(3);
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
         }
 
         public DataTable Facturas()

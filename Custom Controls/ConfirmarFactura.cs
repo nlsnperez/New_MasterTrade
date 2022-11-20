@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -16,18 +17,23 @@ namespace New_MasterTrade.Custom_Controls
 {
     public partial class ConfirmarFactura : UserControl
     {
+        public bool VentaCompletada { get; set; }
+
         Venta OrdenVenta;
         List<Detalle> DetalleVenta;
+        List<int> Garantias;
         decimal Total;
 
         CRUD_Ventas crud = new CRUD_Ventas();
+        CRUD_Bitacora bitacora = new CRUD_Bitacora();
 
-        public ConfirmarFactura(Venta venta, List<Detalle> detalle, decimal total)
+        public ConfirmarFactura(Venta venta, List<Detalle> detalle, List<int> garantias, decimal total)
         {
             InitializeComponent();
 
             OrdenVenta = venta;
             DetalleVenta = detalle;
+            Garantias = garantias;
             Total = total;
             Config();
         }
@@ -36,6 +42,14 @@ namespace New_MasterTrade.Custom_Controls
         {
             ConfigComboBoxes();
             txtSubTotal.Text = Total.ToString();
+        }
+
+        public void ConfigTextBoxes()
+        {
+            txtCantidadImpuesto.Enabled = false;
+            txtImpuesto.Enabled = false;
+            txtSubTotal.Enabled = false;
+            txtTotal.Enabled = false;
         }
 
         public void ConfigComboBoxes()
@@ -80,7 +94,7 @@ namespace New_MasterTrade.Custom_Controls
             decimal total = Total + drantotal;
 
             txtCantidadImpuesto.Text = drantotal.ToString("0.00");
-            txtTotal.Text = total.ToString();
+            txtTotal.Text = total.ToString("0.00");
         }
 
         private void comboImpuesto_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,6 +102,33 @@ namespace New_MasterTrade.Custom_Controls
             if (comboImpuesto.ValueMember == "id_imp")
             {
                 Calcular();
+            }
+        }
+
+        private void bttnCancelar_Click(object sender, EventArgs e)
+        {
+            this.ParentForm.Close();
+            VentaCompletada = false;
+        }
+
+        private void bttnAceptar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea registrar esta factura?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    crud.Crear(OrdenVenta);
+                    crud.CrearDetalle(DetalleVenta);
+                    crud.CrearGarantia(crud.Detalles(OrdenVenta.Id), Garantias);
+                    crud.CrearFactura(new Factura(id: 0, vendedor: crud.Vendedor(UserData.Id), ordenVenta: OrdenVenta.Id, metodoPago: (int)comboMetodoPago.SelectedValue, impuesto: (int)comboImpuesto.SelectedValue, total: decimal.Parse(txtTotal.Text)));
+                    bitacora.Create(UserData.Id, Modulos.Vender, Accion.NuevaVenta(UserData.NombreUsuario, OrdenVenta.NumeroOrden));
+                    VentaCompletada = true;
+                    this.ParentForm.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
