@@ -41,6 +41,17 @@ namespace New_MasterTrade
             control.Show();
         }
 
+        private void MostrarDialog(object pantalla)
+        {
+            UserControl control = pantalla as UserControl;
+            Form x = new Form();
+            x.Size = control.Size;
+            x.StartPosition = FormStartPosition.CenterScreen;
+            x.FormBorderStyle = FormBorderStyle.None;
+            x.Controls.Add(control);
+            x.ShowDialog();
+        }
+
         private void bttnMouseLeave(object sender, EventArgs e)
         {
             panelMenu.Controls.Remove(p);
@@ -180,6 +191,27 @@ namespace New_MasterTrade
         private void bttnReportes_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new VentanaReportes());
+        }
+
+        private void bttnAjustes_Click_1(object sender, EventArgs e)
+        {
+            if (panelAjustes.Visible == false)
+            {
+                panelAjustes.Visible = true;
+                panelArchivo.Visible = false;
+                panelTransacciones.Visible = false;
+                panelMantenimiento.Visible = false;
+            }
+            else
+            {
+                panelAjustes.Visible = false;
+            }
+        }
+
+        private void bttnCategorias_Click(object sender, EventArgs e)
+        {
+            panelArchivo.Visible = false;
+            MostrarDialog(new Categorias());            
         }
     }
 }

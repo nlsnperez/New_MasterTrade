@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="Base de Datos\Conexion.cs" />
     <Compile Include="Base de Datos\CRUD_Bitacora.cs" />
+    <Compile Include="Base de Datos\CRUD_CAMAMO.cs" />
     <Compile Include="Base de Datos\CRUD_Proveedores.cs" />
     <Compile Include="Base de Datos\CRUDExtras.cs" />
     <Compile Include="Base de Datos\CRUD_Compras.cs" />
@@ -250,6 +251,12 @@
     </Compile>
     <Compile Include="Servicios de Correo\ServidorCorreoMaestro.cs" />
     <Compile Include="Servicios de Correo\SistemaSoporteCorreo.cs" />
+    <Compile Include="UserControls\Categorias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Categorias.Designer.cs">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Clientes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -411,6 +418,9 @@
     <EmbeddedResource Include="Reportes\Venta_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Venta_Reporte.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Categorias.resx">
+      <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
@@ -603,6 +613,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\cloud-backup-up-arrow.png" />
+    <None Include="Resources\coin.png" />
+    <None Include="Resources\new-product.png" />
+    <None Include="Resources\label.png" />
+    <None Include="Resources\categories.png" />
+    <None Include="Resources\settings.png" />
     <None Include="Resources\add-to-basket1.png" />
     <None Include="Resources\invoice.png" />
     <None Include="Resources\archivo-pdf %281%29.png" />
