@@ -84,7 +84,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Categorias()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `categoria` ORDER BY nom_cat ASC";
+            String sql = "SELECT * FROM `categoria` WHERE act_cat = 1 ORDER BY nom_cat ASC";
             con.Open();
             try
             {
@@ -108,7 +108,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Marcas()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `marca` ORDER BY nom_mar ASC";
+            String sql = "SELECT * FROM `marca` WHERE act_mar = 1 ORDER BY nom_mar ASC";
             con.Open();
             try
             {
@@ -132,7 +132,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Modelos()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `modelo` ORDER BY nom_mod ASC";
+            String sql = "SELECT * FROM `modelo` WHERE act_mod = 1 ORDER BY nom_mod ASC";
             con.Open();
             try
             {

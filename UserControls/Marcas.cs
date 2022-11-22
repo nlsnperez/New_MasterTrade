@@ -1,24 +1,30 @@
 ﻿using New_MasterTrade.Base_de_Datos;
 using New_MasterTrade.Cache;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
 {
-    public partial class Categorias : UserControl
+    public partial class Marcas : UserControl
     {
         CRUD_CAMAMO crud = new CRUD_CAMAMO();
-        public Categorias()
+        public Marcas()
         {
             InitializeComponent();
-            tablaCategorias.AutoGenerateColumns = false;
             Config();
         }
 
         public void Config()
         {
-          TablaCategorias_Refresh();
+            TablaMarcas_Refresh();
+            ConfigControles("INICIO");
         }
 
         public void ConfigControles(string x)
@@ -36,7 +42,7 @@ namespace New_MasterTrade.UserControls
                     bttnNuevo.Enabled = false;
                     bttnGuardar.Enabled = true;
                     bttnActualizar.Enabled = false;
-                    txtID.Text = crud.NuevoId_Categoria().ToString();
+                    txtID.Text = crud.NuevoId_Marca().ToString();
                     txtNombre.Text = "";
                     break;
                 case "ACTUALIZAR":
@@ -47,11 +53,11 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        public void TablaCategorias_Refresh()
+        public void TablaMarcas_Refresh()
         {
             try
             {
-                tablaCategorias.DataSource = crud.TablaCategoria();
+                tablaMarcas.DataSource = crud.TablaMarca();
             }
             catch (Exception ex)
             {
@@ -65,11 +71,11 @@ namespace New_MasterTrade.UserControls
             this.Dispose();
         }
 
-        private void tablaCategorias_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void tablaMarcas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                if (e.ColumnIndex == 3 && Convert.ToBoolean(tablaCategorias.Rows[e.RowIndex].Cells["Activo"].Value) == true)
+                if (e.ColumnIndex == 3 && Convert.ToBoolean(tablaMarcas.Rows[e.RowIndex].Cells["ACTIVO"].Value) == true)
                 {
                     if (MessageBox.Show("Desea eliminar los datos de este registro?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
@@ -78,7 +84,7 @@ namespace New_MasterTrade.UserControls
                 }
                 else
                 {
-                    if ((e.ColumnIndex == 3 && Convert.ToBoolean(tablaCategorias.Rows[e.RowIndex].Cells["Activo"].Value) == false))
+                    if ((e.ColumnIndex == 3 && Convert.ToBoolean(tablaMarcas.Rows[e.RowIndex].Cells["ACTIVO"].Value) == false))
                     {
                         if (MessageBox.Show("Desea restaurar los datos de este registro?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
@@ -90,32 +96,31 @@ namespace New_MasterTrade.UserControls
                         try
                         {
                             ConfigControles("ACTUALIZAR");
-                            txtID.Text = tablaCategorias.Rows[e.RowIndex].Cells["ID"].Value.ToString(); ;
-                            txtNombre.Text = tablaCategorias.Rows[e.RowIndex].Cells["CATEGORIA"].Value.ToString();
+                            txtID.Text = tablaMarcas.Rows[e.RowIndex].Cells["ID"].Value.ToString(); ;
+                            txtNombre.Text = tablaMarcas.Rows[e.RowIndex].Cells["MARCA"].Value.ToString();
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
                         }
-                    }                    
-                }                
-            }            
+                    }
+                }
+            }
         }
 
         public void Eliminar(DataGridViewCellEventArgs e, int x)
         {
             try
             {
-                int id = Convert.ToInt32(tablaCategorias.Rows[e.RowIndex].Cells["ID"].Value);
-                crud.Delete_Categoria(id, x);
-                tablaCategorias.DataSource = null;
-                TablaCategorias_Refresh();
+                int id = Convert.ToInt32(tablaMarcas.Rows[e.RowIndex].Cells["ID"].Value);
+                crud.Delete_Marca(id, x);
+                TablaMarcas_Refresh();
                 ConfigControles("INICIO");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }            
+            }
         }
 
         private void bttnActualizar_Click(object sender, EventArgs e)
@@ -129,9 +134,9 @@ namespace New_MasterTrade.UserControls
                 if (MessageBox.Show("Desea actualizar los datos de este registro?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     int id = Convert.ToInt32(txtID.Text);
-                    string categoria = txtNombre.Text;
-                    crud.Update_Categoria(id, categoria);
-                    TablaCategorias_Refresh();
+                    string marca = txtNombre.Text;
+                    crud.Update_Marca(id, marca);
+                    TablaMarcas_Refresh();
                     ConfigControles("INICIO");
                 }
             }
@@ -139,7 +144,7 @@ namespace New_MasterTrade.UserControls
 
         private void bttnNuevo_Click(object sender, EventArgs e)
         {
-            tablaCategorias.ClearSelection();
+            tablaMarcas.ClearSelection();
             ConfigControles("NUEVO");
         }
 
@@ -151,31 +156,31 @@ namespace New_MasterTrade.UserControls
             }
             else
             {
-                if (MessageBox.Show("Desea registrar esta nueva categoría?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Desea registrar esta marca?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string categoria = txtNombre.Text;
-                    crud.Create_Categoria(categoria);
-                    TablaCategorias_Refresh();
+                    string marca = txtNombre.Text;
+                    crud.Create_Marca(marca);
+                    TablaMarcas_Refresh();
                     ConfigControles("INICIO");
                 }
             }
         }
 
-        private void tablaCategorias_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void tablaMarcas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (tablaCategorias.Columns[e.ColumnIndex].Name == "ACTIVO")
+            if (tablaMarcas.Columns[e.ColumnIndex].Name == "ACTIVO")
             {
                 if (Convert.ToBoolean(e.Value) == false)
                 {
                     if (UserData.Nivel == 1)
                     {
-                        tablaCategorias.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
-                        tablaCategorias.Rows[e.RowIndex].Cells["ELIMINAR"].Value = Properties.Resources.restore;
+                        tablaMarcas.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                        tablaMarcas.Rows[e.RowIndex].Cells["DELETE"].Value = Properties.Resources.restore;
                     }
                     else
                     {
-                        tablaCategorias.Rows[e.RowIndex].Visible = false;
-                    }                    
+                        tablaMarcas.Rows[e.RowIndex].Visible = false;
+                    }
                 }
             }
         }

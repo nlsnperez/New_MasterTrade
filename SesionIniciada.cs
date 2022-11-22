@@ -213,5 +213,11 @@ namespace New_MasterTrade
             panelArchivo.Visible = false;
             MostrarDialog(new Categorias());            
         }
+
+        private void bttnMarcas_Click(object sender, EventArgs e)
+        {
+            panelArchivo.Visible = false;
+            MostrarDialog(new Marcas());
+        }
     }
 }

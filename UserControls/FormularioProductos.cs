@@ -68,26 +68,33 @@ namespace New_MasterTrade.UserControls
 
         public void ConfigCombos()
         {
-            comboMarca.ValueMember = "id_mar";
-            comboMarca.DisplayMember = "nom_mar";
-            comboMarca.DataSource = crud.Marcas();
-            comboMarca.SelectedIndex = 0;
+            try
+            {
+                comboMarca.ValueMember = "id_mar";
+                comboMarca.DisplayMember = "nom_mar";
+                comboMarca.DataSource = crud.Marcas();
+                comboMarca.SelectedIndex = 0;
 
-            comboCategoria.ValueMember = "id_cat";
-            comboCategoria.DisplayMember = "nom_cat";
-            comboCategoria.DataSource = crud.Categorias();
-            comboCategoria.SelectedIndex = 0;
+                comboCategoria.ValueMember = "id_cat";
+                comboCategoria.DisplayMember = "nom_cat";
+                comboCategoria.DataSource = crud.Categorias();
+                comboCategoria.SelectedIndex = 0;
 
-            comboModelo.ValueMember = "id_mod";
-            comboModelo.DisplayMember = "nom_mod";
-            comboModelo.DataSource = crud.Modelos();
-            comboModelo.SelectedIndex = 0;
+                comboModelo.ValueMember = "id_mod";
+                comboModelo.DisplayMember = "nom_mod";
+                comboModelo.DataSource = crud.Modelos();
+                comboModelo.SelectedIndex = 0;
 
-            comboGarantia.Items.Add("3 DÍAS");
-            comboGarantia.Items.Add("1 SEMANA");
-            comboGarantia.Items.Add("1 MES");
-            comboGarantia.Items.Add("1 AÑO");
-            comboGarantia.SelectedIndex = 0;
+                comboGarantia.Items.Add("3 DÍAS");
+                comboGarantia.Items.Add("1 SEMANA");
+                comboGarantia.Items.Add("1 MES");
+                comboGarantia.Items.Add("1 AÑO");
+                comboGarantia.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private Producto GetProducto()
