@@ -75,7 +75,7 @@ namespace New_MasterTrade.UserControls
         {
             if (e.RowIndex >= 0)
             {
-                if (e.ColumnIndex == 3 && Convert.ToBoolean(tablaMarcas.Rows[e.RowIndex].Cells["ACTIVO"].Value) == true)
+                if (tablaMarcas.Columns[e.ColumnIndex].Name == "DELETE" && Convert.ToBoolean(tablaMarcas.Rows[e.RowIndex].Cells["ACTIVO"].Value) == true)
                 {
                     if (MessageBox.Show("Desea eliminar los datos de este registro?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
@@ -84,7 +84,7 @@ namespace New_MasterTrade.UserControls
                 }
                 else
                 {
-                    if ((e.ColumnIndex == 3 && Convert.ToBoolean(tablaMarcas.Rows[e.RowIndex].Cells["ACTIVO"].Value) == false))
+                    if ((tablaMarcas.Columns[e.ColumnIndex].Name == "DELETE" && Convert.ToBoolean(tablaMarcas.Rows[e.RowIndex].Cells["ACTIVO"].Value) == false))
                     {
                         if (MessageBox.Show("Desea restaurar los datos de este registro?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {

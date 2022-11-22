@@ -29,7 +29,6 @@ namespace New_MasterTrade.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.bttnEliminar2 = new System.Windows.Forms.Button();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
@@ -43,25 +42,10 @@ namespace New_MasterTrade.UserControls
             this.comboDocumento = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
-            this.bttnCancelar = new System.Windows.Forms.Button();
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
+            this.bttnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // bttnEliminar2
-            // 
-            this.bttnEliminar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnEliminar2.Image = global::New_MasterTrade.Properties.Resources.trash_can;
-            this.bttnEliminar2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnEliminar2.Location = new System.Drawing.Point(224, 510);
-            this.bttnEliminar2.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnEliminar2.Name = "bttnEliminar2";
-            this.bttnEliminar2.Size = new System.Drawing.Size(100, 24);
-            this.bttnEliminar2.TabIndex = 38;
-            this.bttnEliminar2.Text = "ELIMINAR";
-            this.bttnEliminar2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnEliminar2.UseVisualStyleBackColor = true;
-            this.bttnEliminar2.Click += new System.EventHandler(this.bttnEliminar2_Click);
             // 
             // txtDocumento
             // 
@@ -190,21 +174,6 @@ namespace New_MasterTrade.UserControls
             this.txtCorreo.Size = new System.Drawing.Size(639, 20);
             this.txtCorreo.TabIndex = 56;
             // 
-            // bttnCancelar
-            // 
-            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.forbidden;
-            this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnCancelar.Location = new System.Drawing.Point(329, 510);
-            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnCancelar.Name = "bttnCancelar";
-            this.bttnCancelar.Size = new System.Drawing.Size(100, 24);
-            this.bttnCancelar.TabIndex = 39;
-            this.bttnCancelar.Text = "CANCELAR";
-            this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnCancelar.UseVisualStyleBackColor = true;
-            this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
-            // 
             // bttnActualizar
             // 
             this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -235,6 +204,21 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar.UseVisualStyleBackColor = true;
             this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
+            // bttnCancelar
+            // 
+            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.forbidden;
+            this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnCancelar.Location = new System.Drawing.Point(223, 510);
+            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnCancelar.Name = "bttnCancelar";
+            this.bttnCancelar.Size = new System.Drawing.Size(100, 24);
+            this.bttnCancelar.TabIndex = 39;
+            this.bttnCancelar.Text = "CANCELAR";
+            this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnCancelar.UseVisualStyleBackColor = true;
+            this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
+            // 
             // FormularioPersonas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,7 +237,6 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.bttnCancelar);
-            this.Controls.Add(this.bttnEliminar2);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.bttnGuardar);
             this.Name = "FormularioPersonas";
@@ -264,9 +247,6 @@ namespace New_MasterTrade.UserControls
         }
 
         #endregion
-
-        private System.Windows.Forms.Button bttnCancelar;
-        private System.Windows.Forms.Button bttnEliminar2;
         private System.Windows.Forms.Button bttnActualizar;
         private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.TextBox txtDocumento;
@@ -282,5 +262,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.ComboBox comboDocumento;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.Button bttnCancelar;
     }
 }

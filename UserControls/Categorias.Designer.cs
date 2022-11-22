@@ -40,12 +40,12 @@
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnNuevo = new System.Windows.Forms.Button();
             this.bttnCerrar = new System.Windows.Forms.Button();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label3 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CATEGORIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ACTIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label3 = new System.Windows.Forms.Label();
+            this.DELETE = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +75,7 @@
             this.ID,
             this.CATEGORIA,
             this.ACTIVO,
-            this.ELIMINAR});
+            this.DELETE});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDark;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -85,14 +85,15 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaCategorias.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaCategorias.EnableHeadersVisualStyles = false;
-            this.tablaCategorias.Location = new System.Drawing.Point(0, 30);
+            this.tablaCategorias.Location = new System.Drawing.Point(0, 24);
+            this.tablaCategorias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tablaCategorias.Name = "tablaCategorias";
             this.tablaCategorias.ReadOnly = true;
             this.tablaCategorias.RowHeadersVisible = false;
             this.tablaCategorias.RowHeadersWidth = 51;
             this.tablaCategorias.RowTemplate.Height = 24;
             this.tablaCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaCategorias.Size = new System.Drawing.Size(572, 233);
+            this.tablaCategorias.Size = new System.Drawing.Size(429, 189);
             this.tablaCategorias.TabIndex = 0;
             this.tablaCategorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCategorias_CellClick);
             this.tablaCategorias.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaCategorias_CellFormatting);
@@ -101,9 +102,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(25, 276);
+            this.label1.Location = new System.Drawing.Point(19, 224);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 16);
+            this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "ID";
             // 
@@ -111,26 +113,29 @@
             // 
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(58, 273);
+            this.txtID.Location = new System.Drawing.Point(44, 222);
+            this.txtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(86, 22);
+            this.txtID.Size = new System.Drawing.Size(65, 20);
             this.txtID.TabIndex = 2;
             // 
             // txtNombre
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombre.Location = new System.Drawing.Point(239, 273);
+            this.txtNombre.Location = new System.Drawing.Point(179, 222);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(302, 22);
+            this.txtNombre.Size = new System.Drawing.Size(227, 20);
             this.txtNombre.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(157, 276);
+            this.label2.Location = new System.Drawing.Point(118, 224);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 16);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "NOMBRE:";
             // 
@@ -138,9 +143,10 @@
             // 
             this.bttnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuardar.Location = new System.Drawing.Point(234, 312);
+            this.bttnGuardar.Location = new System.Drawing.Point(176, 254);
+            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bttnGuardar.Name = "bttnGuardar";
-            this.bttnGuardar.Size = new System.Drawing.Size(105, 30);
+            this.bttnGuardar.Size = new System.Drawing.Size(79, 24);
             this.bttnGuardar.TabIndex = 5;
             this.bttnGuardar.Text = "GUARDAR";
             this.bttnGuardar.UseVisualStyleBackColor = false;
@@ -150,9 +156,10 @@
             // 
             this.bttnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnActualizar.Location = new System.Drawing.Point(345, 312);
+            this.bttnActualizar.Location = new System.Drawing.Point(259, 254);
+            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bttnActualizar.Name = "bttnActualizar";
-            this.bttnActualizar.Size = new System.Drawing.Size(105, 30);
+            this.bttnActualizar.Size = new System.Drawing.Size(79, 24);
             this.bttnActualizar.TabIndex = 6;
             this.bttnActualizar.Text = "ACTUALIZAR";
             this.bttnActualizar.UseVisualStyleBackColor = false;
@@ -162,9 +169,10 @@
             // 
             this.bttnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnNuevo.Location = new System.Drawing.Point(123, 312);
+            this.bttnNuevo.Location = new System.Drawing.Point(92, 254);
+            this.bttnNuevo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bttnNuevo.Name = "bttnNuevo";
-            this.bttnNuevo.Size = new System.Drawing.Size(105, 30);
+            this.bttnNuevo.Size = new System.Drawing.Size(79, 24);
             this.bttnNuevo.TabIndex = 7;
             this.bttnNuevo.Text = "NUEVO";
             this.bttnNuevo.UseVisualStyleBackColor = false;
@@ -175,13 +183,34 @@
             this.bttnCerrar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bttnCerrar.FlatAppearance.BorderSize = 0;
             this.bttnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCerrar.Location = new System.Drawing.Point(543, 0);
+            this.bttnCerrar.Location = new System.Drawing.Point(407, 0);
+            this.bttnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bttnCerrar.Name = "bttnCerrar";
-            this.bttnCerrar.Size = new System.Drawing.Size(30, 30);
+            this.bttnCerrar.Size = new System.Drawing.Size(22, 24);
             this.bttnCerrar.TabIndex = 8;
             this.bttnCerrar.Text = "X";
             this.bttnCerrar.UseVisualStyleBackColor = false;
             this.bttnCerrar.Click += new System.EventHandler(this.bttnCerrar_Click);
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn1.HeaderText = "ELIMINAR";
+            this.dataGridViewImageColumn1.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(3, 6);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "CATEGORÍAS";
             // 
             // ID
             // 
@@ -200,7 +229,7 @@
             this.CATEGORIA.MinimumWidth = 6;
             this.CATEGORIA.Name = "CATEGORIA";
             this.CATEGORIA.ReadOnly = true;
-            this.CATEGORIA.Width = 121;
+            this.CATEGORIA.Width = 97;
             // 
             // ACTIVO
             // 
@@ -210,40 +239,21 @@
             this.ACTIVO.MinimumWidth = 6;
             this.ACTIVO.Name = "ACTIVO";
             this.ACTIVO.ReadOnly = true;
-            this.ACTIVO.Width = 88;
+            this.ACTIVO.Width = 71;
             // 
-            // dataGridViewImageColumn1
+            // DELETE
             // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewImageColumn1.HeaderText = "ELIMINAR";
-            this.dataGridViewImageColumn1.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.MinimumWidth = 6;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // ELIMINAR
-            // 
-            this.ELIMINAR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ELIMINAR.HeaderText = "ELIMINAR";
-            this.ELIMINAR.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
-            this.ELIMINAR.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.ELIMINAR.MinimumWidth = 6;
-            this.ELIMINAR.Name = "ELIMINAR";
-            this.ELIMINAR.ReadOnly = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(4, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 16);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "CATEGORÍAS";
+            this.DELETE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DELETE.HeaderText = "ELIMINAR";
+            this.DELETE.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
+            this.DELETE.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.DELETE.MinimumWidth = 6;
+            this.DELETE.Name = "DELETE";
+            this.DELETE.ReadOnly = true;
             // 
             // Categorias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.label3);
@@ -256,8 +266,9 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaCategorias);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Categorias";
-            this.Size = new System.Drawing.Size(572, 349);
+            this.Size = new System.Drawing.Size(429, 284);
             ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -275,11 +286,11 @@
         private System.Windows.Forms.Button bttnActualizar;
         private System.Windows.Forms.Button bttnNuevo;
         private System.Windows.Forms.Button bttnCerrar;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CATEGORIA;
         private System.Windows.Forms.DataGridViewTextBoxColumn ACTIVO;
-        private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewImageColumn DELETE;
     }
 }

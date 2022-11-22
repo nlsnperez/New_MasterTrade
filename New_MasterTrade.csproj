@@ -293,6 +293,12 @@
     <Compile Include="UserControls\Marcas.Designer.cs">
       <DependentUpon>Marcas.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Modelos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Modelos.Designer.cs">
+      <DependentUpon>Modelos.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Proveedores.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -445,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Marcas.resx">
       <DependentUpon>Marcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Modelos.resx">
+      <DependentUpon>Modelos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Proveedores.resx">
       <DependentUpon>Proveedores.cs</DependentUpon>

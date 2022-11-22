@@ -19,28 +19,28 @@ namespace New_MasterTrade.UserControls
         CRUD_Clientes crud2;
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
 
-        public FormularioPersonas()
+        public FormularioPersonas(int x)
         {
             InitializeComponent();
-            Config();
+            Config(x);
         }
 
-        public void Config()
+        public void Config(int x)
         {
             crud = new CRUD_Proveedores();
             crud2 = new CRUD_Clientes();
             comboOcupacion.Focus();
             ConfigLongitud();
-            ConfigCombos();
+            ConfigCombos(x);
             bttnActualizar.Enabled = false;
-            bttnEliminar2.Enabled = false;
         }
 
-        public void ConfigCombos()
+        public void ConfigCombos(int x)
         {
             comboOcupacion.Items.Add("CLIENTE");
             comboOcupacion.Items.Add("PROVEEDOR");
-            comboOcupacion.SelectedIndex = 0;
+            comboOcupacion.SelectedIndex = x;
+            comboOcupacion.Enabled = false;
             
             comboDocumento.Items.Add("V");
             comboDocumento.Items.Add("E");
@@ -60,7 +60,7 @@ namespace New_MasterTrade.UserControls
 
         public Persona GetPersona()
         {
-            Persona persona = new Persona(comboDocumento.SelectedItem.ToString() + txtDocumento.Text,
+            Persona persona = new Persona(comboDocumento.Text + txtDocumento.Text,
                                           txtRazonSocial.Text,
                                           txtDireccion.Text,
                                           txtTelefono.Text,
@@ -103,7 +103,6 @@ namespace New_MasterTrade.UserControls
             txtDocumento.Enabled = true;
             bttnGuardar.Enabled = true;
             bttnActualizar.Enabled = false;
-            bttnEliminar2.Enabled = false;
         }
 
         private void bttnGuardar_Click(object sender, EventArgs e)
@@ -162,43 +161,38 @@ namespace New_MasterTrade.UserControls
                 {
                     crud2.Update(GetPersona());
                     bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
-                    Limpiar();
                 }
                 else
                 {
                     crud.Update(GetPersona());
                     bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
-                    Limpiar();
                 }
             }            
         }
 
-        public void OpenProveedor(int x, string filtro)
+        public void DatosPersona(Persona persona, int x)
         {
-            if (crud.ProveedorDatos(filtro).Rows.Count > 0)
+            try
             {
                 comboOcupacion.SelectedIndex = x;
-                SetDatos(crud.ProveedorDatos(filtro));
+
+                comboDocumento.Text = persona.Documento.Substring(0, 1);
+                txtDocumento.Text = persona.Documento.Remove(0, 1);
+                txtRazonSocial.Text = persona.RazonSocial;
+                txtDireccion.Text = persona.Direccion;
+                txtTelefono.Text = persona.Telefono;
+                txtCorreo.Text = persona.Correo;
+
+                comboOcupacion.Enabled = false;
+                comboDocumento.Enabled = false;
+                txtDocumento.Enabled = false;
+                bttnGuardar.Enabled = false;
+                bttnActualizar.Enabled = true;
             }
-        }
-
-        public void SetDatos(DataTable x)
-        {
-            DataTable resultado = x;
-
-            comboDocumento.Text = resultado.Rows[0][1].ToString().Substring(0, 1);
-            txtDocumento.Text = resultado.Rows[0][1].ToString().Remove(0, 1);
-            txtRazonSocial.Text = resultado.Rows[0][2].ToString();
-            txtDireccion.Text = resultado.Rows[0][3].ToString();
-            txtTelefono.Text = resultado.Rows[0][4].ToString();
-            txtCorreo.Text = resultado.Rows[0][5].ToString();
-
-            comboOcupacion.Enabled = false;
-            comboDocumento.Enabled = false;
-            txtDocumento.Enabled = false;
-            bttnGuardar.Enabled = false;
-            bttnActualizar.Enabled = true;
-            bttnEliminar2.Enabled = true;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void RegistroExterno(int x)
@@ -207,25 +201,6 @@ namespace New_MasterTrade.UserControls
 
             comboOcupacion.SelectedIndex = x - 1;
             comboOcupacion.Enabled = false;
-        }
-
-        private void bttnEliminar2_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("¿Desea eliminar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (comboOcupacion.SelectedIndex == 0)
-                {
-                    crud2.Delete(GetPersona());
-                    bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroDesactivado(UserData.NombreUsuario, GetPersona().Documento));
-                    this.ParentForm.Close();
-                }
-                else
-                {
-                    crud.Delete(GetPersona());
-                    bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroDesactivado(UserData.NombreUsuario, GetPersona().Documento));
-                    this.ParentForm.Close();
-                }
-            }
         }
     }
 }

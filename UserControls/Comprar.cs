@@ -248,7 +248,7 @@ namespace New_MasterTrade.UserControls
                     if (MessageBox.Show("Proveedor no encontrado, ¿Desea registrarlo?", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         Form x = new Form();
-                        FormularioPersonas y = new FormularioPersonas();
+                        FormularioPersonas y = new FormularioPersonas(1);
                         y.RegistroExterno(2);
                         x.StartPosition = FormStartPosition.CenterScreen;
                         x.Size = new Size(y.Width + 15, y.Height + 30);

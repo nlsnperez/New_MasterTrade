@@ -10,6 +10,7 @@ namespace New_MasterTrade
     public partial class SesionIniciada : Form
     {
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
+        CRUD_Usuarios usuario = new CRUD_Usuarios();
         Panel p = new Panel();
         public SesionIniciada()
         {
@@ -20,6 +21,25 @@ namespace New_MasterTrade
         private void SesionIniciada_Load(object sender, EventArgs e)
         {
             bttnClientes_Click(null, e);
+            Config();
+        }
+
+        public void Config()
+        {
+            if (UserData.Nivel == 2)
+            {
+                bttnReportes.Visible = false;
+                bttnMantenimiento.Visible = false;
+                bttnAjustes.Visible = false;
+                if (usuario.IsVendedor(UserData.Id))
+                {
+                    panelTransacciones.Size = new Size(160, 38);
+                }
+                else
+                {
+                    bttnTransacciones.Visible = false;
+                }
+            }
         }
 
         private void bttnMouseEnter(object sender, EventArgs e)
@@ -218,6 +238,12 @@ namespace New_MasterTrade
         {
             panelArchivo.Visible = false;
             MostrarDialog(new Marcas());
+        }
+
+        private void bttnModelos_Click(object sender, EventArgs e)
+        {
+            panelArchivo.Visible = false;
+            MostrarDialog(new Modelos());
         }
     }
 }

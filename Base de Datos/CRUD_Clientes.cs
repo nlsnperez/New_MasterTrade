@@ -75,8 +75,18 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public void Delete(Persona cliente)
+        public void Delete(string documento, int x)
         {
+            string mensaje = "";
+            if (x == 0)
+            {
+                mensaje = "El registro se eliminó de manera satisfactoria.";
+            }
+            else
+            {
+                mensaje = "El registro se restauró de manera satisfactoria.";
+            }
+
             try
             {
                 con.Open();
@@ -86,12 +96,12 @@ namespace New_MasterTrade.Base_de_Datos
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 0;
-                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = cliente.Documento;
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = x;
+                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = documento;
 
                     command.ExecuteNonQuery();
                 }
-                MessageBox.Show("El registro se eliminó de manera satisfactoria.", "¡DATOS ELIMINADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(mensaje, "¡DATOS ELIMINADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
@@ -111,7 +121,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `cliente` WHERE act_cli = 1", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `cliente`", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -169,6 +179,37 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return cliente;
+        }
+
+        public Persona Cliente(int id)
+        {
+            Persona resultado = null;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM cliente WHERE id_cli = "+id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    Persona cliente = new Persona(reader.GetString(1),
+                                                  reader.GetString(2),
+                                                  reader.GetString(3),
+                                                  reader.GetString(4),
+                                                  reader.GetString(5));
+                    resultado = cliente;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return resultado;
         }
     }
 }
