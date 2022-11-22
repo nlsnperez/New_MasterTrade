@@ -32,6 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaCategorias = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CATEGORIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACTIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DELETE = new System.Windows.Forms.DataGridViewImageColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -42,10 +46,6 @@
             this.bttnCerrar = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.label3 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CATEGORIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACTIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DELETE = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +86,7 @@
             this.tablaCategorias.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaCategorias.EnableHeadersVisualStyles = false;
             this.tablaCategorias.Location = new System.Drawing.Point(0, 24);
-            this.tablaCategorias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tablaCategorias.Margin = new System.Windows.Forms.Padding(2);
             this.tablaCategorias.Name = "tablaCategorias";
             this.tablaCategorias.ReadOnly = true;
             this.tablaCategorias.RowHeadersVisible = false;
@@ -97,6 +97,44 @@
             this.tablaCategorias.TabIndex = 0;
             this.tablaCategorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCategorias_CellClick);
             this.tablaCategorias.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaCategorias_CellFormatting);
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID.DataPropertyName = "id_cat";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 2;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // CATEGORIA
+            // 
+            this.CATEGORIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CATEGORIA.DataPropertyName = "nom_cat";
+            this.CATEGORIA.HeaderText = "CATEGORÍA";
+            this.CATEGORIA.MinimumWidth = 6;
+            this.CATEGORIA.Name = "CATEGORIA";
+            this.CATEGORIA.ReadOnly = true;
+            this.CATEGORIA.Width = 97;
+            // 
+            // ACTIVO
+            // 
+            this.ACTIVO.DataPropertyName = "act_cat";
+            this.ACTIVO.HeaderText = "ACTIVO";
+            this.ACTIVO.MinimumWidth = 2;
+            this.ACTIVO.Name = "ACTIVO";
+            this.ACTIVO.ReadOnly = true;
+            this.ACTIVO.Width = 2;
+            // 
+            // DELETE
+            // 
+            this.DELETE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DELETE.HeaderText = "ELIMINAR";
+            this.DELETE.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
+            this.DELETE.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.DELETE.MinimumWidth = 6;
+            this.DELETE.Name = "DELETE";
+            this.DELETE.ReadOnly = true;
             // 
             // label1
             // 
@@ -114,7 +152,7 @@
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(44, 222);
-            this.txtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtID.Margin = new System.Windows.Forms.Padding(2);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(65, 20);
             this.txtID.TabIndex = 2;
@@ -123,7 +161,7 @@
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Location = new System.Drawing.Point(179, 222);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(227, 20);
             this.txtNombre.TabIndex = 4;
@@ -142,11 +180,12 @@
             // bttnGuardar
             // 
             this.bttnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuardar.Location = new System.Drawing.Point(176, 254);
-            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnGuardar.Location = new System.Drawing.Point(171, 254);
+            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnGuardar.Name = "bttnGuardar";
-            this.bttnGuardar.Size = new System.Drawing.Size(79, 24);
+            this.bttnGuardar.Size = new System.Drawing.Size(86, 24);
             this.bttnGuardar.TabIndex = 5;
             this.bttnGuardar.Text = "GUARDAR";
             this.bttnGuardar.UseVisualStyleBackColor = false;
@@ -155,11 +194,12 @@
             // bttnActualizar
             // 
             this.bttnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(150)))), ((int)(((byte)(242)))));
             this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnActualizar.Location = new System.Drawing.Point(259, 254);
-            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnActualizar.Location = new System.Drawing.Point(261, 254);
+            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnActualizar.Name = "bttnActualizar";
-            this.bttnActualizar.Size = new System.Drawing.Size(79, 24);
+            this.bttnActualizar.Size = new System.Drawing.Size(86, 24);
             this.bttnActualizar.TabIndex = 6;
             this.bttnActualizar.Text = "ACTUALIZAR";
             this.bttnActualizar.UseVisualStyleBackColor = false;
@@ -169,10 +209,10 @@
             // 
             this.bttnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnNuevo.Location = new System.Drawing.Point(92, 254);
-            this.bttnNuevo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnNuevo.Location = new System.Drawing.Point(81, 254);
+            this.bttnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.bttnNuevo.Name = "bttnNuevo";
-            this.bttnNuevo.Size = new System.Drawing.Size(79, 24);
+            this.bttnNuevo.Size = new System.Drawing.Size(86, 24);
             this.bttnNuevo.TabIndex = 7;
             this.bttnNuevo.Text = "NUEVO";
             this.bttnNuevo.UseVisualStyleBackColor = false;
@@ -184,7 +224,7 @@
             this.bttnCerrar.FlatAppearance.BorderSize = 0;
             this.bttnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnCerrar.Location = new System.Drawing.Point(407, 0);
-            this.bttnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnCerrar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnCerrar.Name = "bttnCerrar";
             this.bttnCerrar.Size = new System.Drawing.Size(22, 24);
             this.bttnCerrar.TabIndex = 8;
@@ -212,45 +252,6 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "CATEGORÍAS";
             // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID.DataPropertyName = "id_cat";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // CATEGORIA
-            // 
-            this.CATEGORIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CATEGORIA.DataPropertyName = "nom_cat";
-            this.CATEGORIA.HeaderText = "CATEGORÍA";
-            this.CATEGORIA.MinimumWidth = 6;
-            this.CATEGORIA.Name = "CATEGORIA";
-            this.CATEGORIA.ReadOnly = true;
-            this.CATEGORIA.Width = 97;
-            // 
-            // ACTIVO
-            // 
-            this.ACTIVO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ACTIVO.DataPropertyName = "act_cat";
-            this.ACTIVO.HeaderText = "ACTIVO";
-            this.ACTIVO.MinimumWidth = 6;
-            this.ACTIVO.Name = "ACTIVO";
-            this.ACTIVO.ReadOnly = true;
-            this.ACTIVO.Width = 71;
-            // 
-            // DELETE
-            // 
-            this.DELETE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DELETE.HeaderText = "ELIMINAR";
-            this.DELETE.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
-            this.DELETE.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.DELETE.MinimumWidth = 6;
-            this.DELETE.Name = "DELETE";
-            this.DELETE.ReadOnly = true;
-            // 
             // Categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,7 +267,7 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaCategorias);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Categorias";
             this.Size = new System.Drawing.Size(429, 284);
             ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).EndInit();

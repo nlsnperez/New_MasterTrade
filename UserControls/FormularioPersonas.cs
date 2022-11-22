@@ -202,5 +202,19 @@ namespace New_MasterTrade.UserControls
             comboOcupacion.SelectedIndex = x - 1;
             comboOcupacion.Enabled = false;
         }
+
+        private void txtDocumento_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
+        }
+
+        private void txtDocumento_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = SystemColors.Window;
+            textBox.ForeColor = SystemColors.WindowText;
+        }
     }
 }
