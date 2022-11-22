@@ -50,10 +50,10 @@ namespace New_MasterTrade.UserControls
             // txtDocumento
             // 
             this.txtDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDocumento.Location = new System.Drawing.Point(242, 106);
-            this.txtDocumento.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDocumento.Location = new System.Drawing.Point(323, 130);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(559, 20);
+            this.txtDocumento.Size = new System.Drawing.Size(745, 22);
             this.txtDocumento.TabIndex = 44;
             this.txtDocumento.Enter += new System.EventHandler(this.txtDocumento_Enter);
             this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
@@ -63,20 +63,19 @@ namespace New_MasterTrade.UserControls
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(58, 73);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(77, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(86, 16);
             this.label2.TabIndex = 43;
             this.label2.Text = "OCUPACIÓN";
             // 
             // txtRazonSocial
             // 
             this.txtRazonSocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRazonSocial.Location = new System.Drawing.Point(162, 142);
-            this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRazonSocial.Location = new System.Drawing.Point(216, 175);
+            this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(639, 20);
+            this.txtRazonSocial.Size = new System.Drawing.Size(851, 22);
             this.txtRazonSocial.TabIndex = 48;
             this.txtRazonSocial.Enter += new System.EventHandler(this.txtDocumento_Enter);
             this.txtRazonSocial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyLetters);
@@ -86,21 +85,20 @@ namespace New_MasterTrade.UserControls
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(58, 146);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(77, 180);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.Size = new System.Drawing.Size(104, 16);
             this.label4.TabIndex = 47;
             this.label4.Text = "RAZÓN SOCIAL";
             // 
             // txtDireccion
             // 
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDireccion.Location = new System.Drawing.Point(162, 178);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDireccion.Location = new System.Drawing.Point(216, 219);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(639, 219);
+            this.txtDireccion.Size = new System.Drawing.Size(851, 269);
             this.txtDireccion.TabIndex = 50;
             this.txtDireccion.Enter += new System.EventHandler(this.txtDocumento_Enter);
             this.txtDireccion.Leave += new System.EventHandler(this.txtDocumento_Leave);
@@ -109,20 +107,19 @@ namespace New_MasterTrade.UserControls
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(58, 103);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(77, 127);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 26);
+            this.label5.Size = new System.Drawing.Size(117, 32);
             this.label5.TabIndex = 49;
             this.label5.Text = "DOCUMENTO DE\r\nIDENTIDAD\r\n";
             // 
             // txtTelefono
             // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Location = new System.Drawing.Point(162, 449);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTelefono.Location = new System.Drawing.Point(216, 553);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(639, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(851, 22);
             this.txtTelefono.TabIndex = 52;
             this.txtTelefono.Enter += new System.EventHandler(this.txtDocumento_Enter);
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
@@ -132,10 +129,9 @@ namespace New_MasterTrade.UserControls
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(58, 178);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(77, 219);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.Size = new System.Drawing.Size(80, 16);
             this.label6.TabIndex = 51;
             this.label6.Text = "DIRECCIÓN";
             // 
@@ -143,10 +139,9 @@ namespace New_MasterTrade.UserControls
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(58, 453);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(77, 558);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.Size = new System.Drawing.Size(79, 16);
             this.label7.TabIndex = 53;
             this.label7.Text = "TELÉFONO";
             // 
@@ -154,38 +149,39 @@ namespace New_MasterTrade.UserControls
             // 
             this.comboOcupacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboOcupacion.FormattingEnabled = true;
-            this.comboOcupacion.Location = new System.Drawing.Point(162, 69);
+            this.comboOcupacion.Location = new System.Drawing.Point(216, 85);
+            this.comboOcupacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboOcupacion.Name = "comboOcupacion";
-            this.comboOcupacion.Size = new System.Drawing.Size(639, 21);
+            this.comboOcupacion.Size = new System.Drawing.Size(851, 24);
             this.comboOcupacion.TabIndex = 54;
             // 
             // comboDocumento
             // 
             this.comboDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDocumento.FormattingEnabled = true;
-            this.comboDocumento.Location = new System.Drawing.Point(162, 106);
+            this.comboDocumento.Location = new System.Drawing.Point(216, 130);
+            this.comboDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboDocumento.Name = "comboDocumento";
-            this.comboDocumento.Size = new System.Drawing.Size(67, 21);
+            this.comboDocumento.Size = new System.Drawing.Size(88, 24);
             this.comboDocumento.TabIndex = 55;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(58, 410);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(77, 505);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 26);
+            this.label8.Size = new System.Drawing.Size(102, 32);
             this.label8.TabIndex = 57;
             this.label8.Text = "CORREO\r\nELECTRÓNICO";
             // 
             // txtCorreo
             // 
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCorreo.Location = new System.Drawing.Point(162, 413);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCorreo.Location = new System.Drawing.Point(216, 508);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(639, 20);
+            this.txtCorreo.Size = new System.Drawing.Size(851, 22);
             this.txtCorreo.TabIndex = 56;
             this.txtCorreo.Enter += new System.EventHandler(this.txtDocumento_Enter);
             this.txtCorreo.Leave += new System.EventHandler(this.txtDocumento_Leave);
@@ -195,12 +191,12 @@ namespace New_MasterTrade.UserControls
             this.bttnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(150)))), ((int)(((byte)(242)))));
             this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnActualizar.Image = global::New_MasterTrade.Properties.Resources.pencil;
+            this.bttnActualizar.Image = global::New_MasterTrade.Properties.Resources.refresh;
             this.bttnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnActualizar.Location = new System.Drawing.Point(119, 510);
-            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnActualizar.Location = new System.Drawing.Point(159, 628);
+            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnActualizar.Name = "bttnActualizar";
-            this.bttnActualizar.Size = new System.Drawing.Size(100, 24);
+            this.bttnActualizar.Size = new System.Drawing.Size(133, 30);
             this.bttnActualizar.TabIndex = 37;
             this.bttnActualizar.Text = "ACTUALIZAR";
             this.bttnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -214,10 +210,10 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk1;
             this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnGuardar.Location = new System.Drawing.Point(14, 510);
-            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnGuardar.Location = new System.Drawing.Point(19, 628);
+            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnGuardar.Name = "bttnGuardar";
-            this.bttnGuardar.Size = new System.Drawing.Size(100, 24);
+            this.bttnGuardar.Size = new System.Drawing.Size(133, 30);
             this.bttnGuardar.TabIndex = 36;
             this.bttnGuardar.Text = "GUARDAR";
             this.bttnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -231,10 +227,10 @@ namespace New_MasterTrade.UserControls
             this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.cancel;
             this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnCancelar.Location = new System.Drawing.Point(223, 510);
-            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnCancelar.Location = new System.Drawing.Point(297, 628);
+            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnCancelar.Name = "bttnCancelar";
-            this.bttnCancelar.Size = new System.Drawing.Size(100, 24);
+            this.bttnCancelar.Size = new System.Drawing.Size(133, 30);
             this.bttnCancelar.TabIndex = 39;
             this.bttnCancelar.Text = "CANCELAR";
             this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -243,7 +239,7 @@ namespace New_MasterTrade.UserControls
             // 
             // FormularioPersonas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.label8);
@@ -262,8 +258,9 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.bttnCancelar);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.bttnGuardar);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormularioPersonas";
-            this.Size = new System.Drawing.Size(858, 551);
+            this.Size = new System.Drawing.Size(1144, 678);
             this.ResumeLayout(false);
             this.PerformLayout();
 

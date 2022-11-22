@@ -631,6 +631,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\ImagenPlaceHolder.jpg" />
     <None Include="Resources\restore.png" />
     <None Include="Resources\cloud-backup-up-arrow.png" />
     <None Include="Resources\coin.png" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace New_MasterTrade.Objetos
 {
-    class Producto
+    public class Producto
     {
         public int Id { get; set; }
         public string Serial { get; set; }

@@ -42,7 +42,6 @@ namespace New_MasterTrade.UserControls
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalBs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalUs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalle = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaVentas)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +74,6 @@ namespace New_MasterTrade.UserControls
             this.Cliente,
             this.MPago,
             this.TotalBs,
-            this.TotalUs,
             this.Detalle});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -183,20 +181,11 @@ namespace New_MasterTrade.UserControls
             // TotalBs
             // 
             this.TotalBs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TotalBs.DataPropertyName = "tbs_fve";
-            this.TotalBs.HeaderText = "T. Bolívares";
+            this.TotalBs.DataPropertyName = "tot_fve";
+            this.TotalBs.HeaderText = "Total";
             this.TotalBs.MinimumWidth = 6;
             this.TotalBs.Name = "TotalBs";
             this.TotalBs.ReadOnly = true;
-            // 
-            // TotalUs
-            // 
-            this.TotalUs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TotalUs.DataPropertyName = "tus_fve";
-            this.TotalUs.HeaderText = "T. Dólares";
-            this.TotalUs.MinimumWidth = 6;
-            this.TotalUs.Name = "TotalUs";
-            this.TotalUs.ReadOnly = true;
             // 
             // Detalle
             // 
@@ -238,7 +227,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn MPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalBs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalUs;
         private System.Windows.Forms.DataGridViewImageColumn Detalle;
     }
 }

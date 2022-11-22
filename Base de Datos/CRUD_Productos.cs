@@ -81,6 +81,45 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
+        public void Delete(int id, int x)
+        {
+            string mensaje = "";
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE `producto` SET `act_pro`=@activo WHERE `id_pro` = @id";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = x;
+
+                    command.ExecuteNonQuery();
+                }
+
+                if (x == 0)
+                {
+                    mensaje = "El registro se eliminó de manera satisfactoria.";
+                }
+                else
+                {
+                    mensaje = "El registro se restauró de manera satisfactoria.";
+                }
+
+                MessageBox.Show(mensaje, "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public DataTable Categorias()
         {
             DataTable categorias = new DataTable();
@@ -337,6 +376,42 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return x;
+        }
+
+        public Producto Producto(int id)
+        {
+            Producto resultado = null;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM producto WHERE id_pro = " + id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    Producto producto = new Producto(reader.GetInt32(0),
+                                                  reader.GetString(4),
+                                                  reader.GetString(5),
+                                                  reader.GetInt32(2),
+                                                  reader.GetInt32(1),
+                                                  reader.GetInt32(3),
+                                                  reader.GetDecimal(6),
+                                                  reader.GetDecimal(7),
+                                                  reader.GetInt32(9),
+                                                  (byte[])reader.GetValue(8));
+                    resultado = producto;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return resultado;
         }
     }
 }

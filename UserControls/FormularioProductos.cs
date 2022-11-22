@@ -36,7 +36,6 @@ namespace New_MasterTrade.UserControls
             comboCategoria.Focus();
             txtCantidad.Enabled = false;
             bttnActualizar.Enabled = false;
-            bttnEliminar2.Enabled = false;
             ConfigCombos();
             ConfigLongitud();
         }
@@ -62,7 +61,7 @@ namespace New_MasterTrade.UserControls
         {
             if (pbImagen.Image != null)
             {
-                pbImagen.Image = Properties.Resources.descripcion_del_producto;
+                pbImagen.Image = Properties.Resources.ImagenPlaceHolder;
             }            
         }
 
@@ -159,13 +158,33 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        public void OpenProducto(string filtro)
+        public void DatosProducto(Producto producto)
         {
-            if (crud.ProductoDatos(filtro).Rows.Count > 0)
+            try
             {
-                Console.WriteLine("¡Yei2!");
-                SetDatos(crud.ProductoDatos(filtro));
+                byte[] imagen = producto.Imagen;
+                MemoryStream ms = new MemoryStream(imagen);
+                pbImagen.Image = Image.FromStream(ms);
+
+                txtID.Text = producto.Id.ToString();
+                comboCategoria.SelectedValue = producto.Categoria;
+                comboMarca.SelectedValue = producto.Marca;
+                comboModelo.SelectedValue = producto.Modelo;
+                txtSerial.Text = producto.Serial.ToString();
+                txtDescripcion.Text = producto.Descripcion;
+                txtPrecioCompra.Text = producto.Precio_Compra.ToString();
+                txtPrecioVenta.Text = producto.Precio_Venta.ToString();
+
+                txtBuscar.Text = "";
+                txtSerial.Enabled = false;
+                bttnGuardar.Enabled = false;
+                bttnActualizar.Enabled = true;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         public void SetDatos(DataTable x)
@@ -188,7 +207,6 @@ namespace New_MasterTrade.UserControls
             txtSerial.Enabled = false;
             bttnGuardar.Enabled = false;
             bttnActualizar.Enabled = true;
-            bttnEliminar2.Enabled = true;
         }
 
         public void Limpiar()
@@ -205,10 +223,9 @@ namespace New_MasterTrade.UserControls
             comboCategoria.SelectedIndex = 0;
             comboModelo.SelectedIndex = 0;
             comboGarantia.SelectedIndex = 0;
-            pbImagen.Image = Properties.Resources.descripcion_del_producto;
+            pbImagen.Image = Properties.Resources.ImagenPlaceHolder;
             bttnGuardar.Enabled = true;
             bttnActualizar.Enabled = false;
-            bttnEliminar2.Enabled = false;
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
@@ -222,6 +239,9 @@ namespace New_MasterTrade.UserControls
             {
                 txtPrecioVenta.Text = "";
             }
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
         }
 
         private void txtPrecioVenta_Leave(object sender, EventArgs e)
@@ -230,6 +250,9 @@ namespace New_MasterTrade.UserControls
             {
                 txtPrecioVenta.Text = "0";
             }
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = SystemColors.Window;
+            textBox.ForeColor = SystemColors.WindowText;
         }
 
         private void txtPrecioCompra_Enter(object sender, EventArgs e)
@@ -238,6 +261,9 @@ namespace New_MasterTrade.UserControls
             {
                 txtPrecioCompra.Text = "";
             }
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
         }
 
         private void txtPrecioCompra_Leave(object sender, EventArgs e)
@@ -246,6 +272,9 @@ namespace New_MasterTrade.UserControls
             {
                 txtPrecioCompra.Text = "0";
             }
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = SystemColors.Window;
+            textBox.ForeColor = SystemColors.WindowText;
         }
 
         private void bttnActualizar_Click(object sender, EventArgs e)
@@ -254,6 +283,20 @@ namespace New_MasterTrade.UserControls
             {
                 crud.Update(GetProducto(), Int32.Parse(txtID.Text));
             }
+        }
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
+        }
+
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = SystemColors.Window;
+            textBox.ForeColor = SystemColors.WindowText;
         }
     }
 }
