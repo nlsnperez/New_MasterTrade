@@ -135,7 +135,7 @@ namespace New_MasterTrade.UserControls
             switch (comboGarantia.SelectedIndex)
             {
                 case 0:
-                    return 5;
+                    return 3;
                 case 1:
                     return 7;
                 case 2:
@@ -148,13 +148,14 @@ namespace New_MasterTrade.UserControls
 
         private void bttnBuscar_Click(object sender, EventArgs e)
         {
-            if (crud.ProductoDatos(txtBuscar.Text).Rows.Count > 0)
+            Producto producto = crud.ProductoDatos(txtBuscar.Text);
+            if (producto != null)
             {
-                SetDatos(crud.ProductoDatos(txtBuscar.Text));
+                DatosProducto(producto);
             }
             else
             {
-                MessageBox.Show("No se encontró ningún producto con el serial introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se encontró ningún producto", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -174,6 +175,7 @@ namespace New_MasterTrade.UserControls
                 txtDescripcion.Text = producto.Descripcion;
                 txtPrecioCompra.Text = producto.Precio_Compra.ToString();
                 txtPrecioVenta.Text = producto.Precio_Venta.ToString();
+                comboCategoria.SelectedIndex = IndexGarantia(producto.Garantia);
 
                 txtBuscar.Text = "";
                 txtSerial.Enabled = false;
@@ -187,26 +189,25 @@ namespace New_MasterTrade.UserControls
             
         }
 
-        public void SetDatos(DataTable x)
+        public int IndexGarantia(int x)
         {
-            DataTable resultado = x;
-            byte[] imagen = (byte[])resultado.Rows[0][8];
-            MemoryStream ms = new MemoryStream(imagen);
-
-            txtID.Text = resultado.Rows[0][0].ToString();
-            comboCategoria.SelectedValue = Int32.Parse(resultado.Rows[0][1].ToString());
-            comboMarca.SelectedValue = Int32.Parse(resultado.Rows[0][2].ToString());
-            comboModelo.SelectedValue = Int32.Parse(resultado.Rows[0][3].ToString());
-            txtSerial.Text = resultado.Rows[0][4].ToString();
-            txtDescripcion.Text = resultado.Rows[0][5].ToString();
-            txtPrecioCompra.Text = resultado.Rows[0][6].ToString();
-            txtPrecioVenta.Text = resultado.Rows[0][7].ToString();
-            pbImagen.Image = Image.FromStream(ms);
-
-            txtBuscar.Text = "";
-            txtSerial.Enabled = false;
-            bttnGuardar.Enabled = false;
-            bttnActualizar.Enabled = true;
+            int y = 0;
+            switch (x)
+            {
+                case 3:
+                    y = 0;
+                    break;
+                case 7:
+                    y = 1;
+                    break;
+                case 30:
+                    y = 2;
+                    break;
+                case 365:
+                    y = 3;
+                    break;
+            }
+            return y;
         }
 
         public void Limpiar()

@@ -34,9 +34,9 @@ namespace New_MasterTrade.Objetos
             tablaProductos.AutoGenerateColumns = false;
             if (Venta == null)
             {
-                if (crud.TablaProductos().Rows.Count > 0)
+                if (crud.ProductosActivos().Rows.Count > 0)
                 {
-                    tablaProductos.DataSource = crud.TablaProductos();
+                    tablaProductos.DataSource = crud.ProductosActivos();
                 }
                 else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -45,14 +45,9 @@ namespace New_MasterTrade.Objetos
 
         }
 
-        private void BuscarProductos_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         public void ConfigTablaVenta()
         {
-            DataTable x = crud.TablaProductos();
+            DataTable x = crud.ProductosActivos();
             if (x.Rows.Count > 0)
             {                
                 for (int i = 0; i <= x.Rows.Count-1; i++)
@@ -91,7 +86,15 @@ namespace New_MasterTrade.Objetos
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-            tablaProductos.DataSource = crud.BuscarProductos(txtBuscar.Text);
+            try
+            {
+                tablaProductos.DataSource = crud.BuscarProductosActivos(txtBuscar.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

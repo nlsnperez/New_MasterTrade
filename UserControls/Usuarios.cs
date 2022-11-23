@@ -49,17 +49,48 @@ namespace New_MasterTrade.UserControls
 
         private void tablaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5)
+            if (e.RowIndex >= 0 && tablaUsuarios.Columns[e.ColumnIndex].Name == "Detalles")
             {
+                int id = (int)tablaUsuarios.Rows[e.RowIndex].Cells["Id"].Value;
+                Usuario usuario = crud.Usuario(id);
                 Form x = new Form();
                 FormularioUsuarios y = new FormularioUsuarios();
-                y.SetDatos(tablaUsuarios.Rows[e.RowIndex].Cells[0].Value.ToString());
-                x.Size = new Size(y.Width, y.Height);
+
+                y.DatosUsuario(usuario);
+                x.Size = new Size(y.Width+10, y.Height+40);
                 x.Controls.Add(y);
                 x.StartPosition = FormStartPosition.CenterScreen;
-                x.FormBorderStyle = FormBorderStyle.None;
                 x.ShowDialog();
-            }     
+                CargarTabla();
+            }
+            else
+            {
+                if (e.ColumnIndex >= 0 && tablaUsuarios.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+                    if (Convert.ToBoolean(tablaUsuarios.Rows[e.RowIndex].Cells["Activo"].Value) == true)
+                    {
+                        if (MessageBox.Show("¿Desea eliminar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            int id = (int)tablaUsuarios.Rows[e.RowIndex].Cells["Id"].Value;
+                            crud.Delete(id, 0);
+                            CargarTabla();
+                        }
+                    }
+                    else
+                    {
+                        if (Convert.ToBoolean(tablaUsuarios.Rows[e.RowIndex].Cells["Activo"].Value) == false)
+                        {
+                            if (MessageBox.Show("¿Desea restaurar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                            {
+                                int id = (int)tablaUsuarios.Rows[e.RowIndex].Cells["Id"].Value;
+                                crud.Delete(id, 1);
+                                CargarTabla();
+                            }
+                        }
+                    }
+
+                }
+            }    
         }
 
         private void CargarTabla()
@@ -81,11 +112,23 @@ namespace New_MasterTrade.UserControls
         {
             Form x = new Form();
             FormularioUsuarios y = new FormularioUsuarios();
-            x.Size = new Size(y.Width, y.Height);
+            x.Size = new Size(y.Width+10, y.Height+40);
             x.Controls.Add(y);
             x.StartPosition = FormStartPosition.CenterScreen;
-            x.FormBorderStyle = FormBorderStyle.None;
             x.ShowDialog();
+            CargarTabla();
+        }
+
+        private void tablaUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tablaUsuarios.Columns[e.ColumnIndex].Name == "Activo")
+            {
+                if (Convert.ToBoolean(e.Value) == false)
+                {
+                    tablaUsuarios.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                    tablaUsuarios.Rows[e.RowIndex].Cells["Eliminar"].Value = Properties.Resources.restore;
+                }
+            }
         }
     }
 }

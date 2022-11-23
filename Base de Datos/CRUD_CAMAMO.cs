@@ -45,7 +45,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@categoria", MySqlDbType.VarChar).Value = categoria;
+                    command.Parameters.Add("@categoria", MySqlDbType.VarChar).Value = categoria.ToUpper();
                     command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
@@ -73,7 +73,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@categoria", MySqlDbType.VarChar).Value = categoria;
+                    command.Parameters.Add("@categoria", MySqlDbType.VarChar).Value = categoria.ToUpper();
                     command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
 
                     command.ExecuteNonQuery();
@@ -185,7 +185,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@marca", MySqlDbType.VarChar).Value = marca;
+                    command.Parameters.Add("@marca", MySqlDbType.VarChar).Value = marca.ToUpper();
                     command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
@@ -213,7 +213,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@marca", MySqlDbType.VarChar).Value = marca;
+                    command.Parameters.Add("@marca", MySqlDbType.VarChar).Value = marca.ToUpper();
                     command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
 
                     command.ExecuteNonQuery();
@@ -325,7 +325,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@modelo", MySqlDbType.VarChar).Value = modelo;
+                    command.Parameters.Add("@modelo", MySqlDbType.VarChar).Value = modelo.ToUpper();
                     command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
@@ -353,7 +353,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@marca", MySqlDbType.VarChar).Value = modelo;
+                    command.Parameters.Add("@marca", MySqlDbType.VarChar).Value = modelo.ToUpper();
                     command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
 
                     command.ExecuteNonQuery();

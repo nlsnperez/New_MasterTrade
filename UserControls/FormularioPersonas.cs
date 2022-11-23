@@ -97,8 +97,6 @@ namespace New_MasterTrade.UserControls
             txtTelefono.Text = "";
             txtCorreo.Text = "";
             comboDocumento.SelectedIndex = 0;
-            comboOcupacion.SelectedIndex = 0;
-            comboOcupacion.Enabled = true;
             comboDocumento.Enabled = true;
             txtDocumento.Enabled = true;
             bttnGuardar.Enabled = true;

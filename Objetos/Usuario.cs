@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace New_MasterTrade.Objetos
 {
-    class Usuario
+    public class Usuario
     {
         public int ID { get; set; }
         public string UserName { get; set; }
@@ -17,8 +17,9 @@ namespace New_MasterTrade.Objetos
         public string Nombre { get; set; }
         public int Nivel { get; set; }
 
-        public Usuario(string userName, string contrasegna, string correo, string documento, string nombre, int nivel)
+        public Usuario(int id, string userName, string contrasegna, string correo, string documento, string nombre, int nivel)
         {
+            ID = id;
             UserName = userName;
             Contrasegna = contrasegna;
             Correo = correo;

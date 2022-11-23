@@ -26,11 +26,11 @@ namespace New_MasterTrade.UserControls
         public void Config()
         {
             crud = new CRUD_Usuarios();
+            user_id = crud.GetId();
             txtContrasegna.PasswordChar = '●';
             txtConfirmar.PasswordChar = '●';
             ConfigCombos();
             bttnActualizar.Enabled = false;
-            bttnEliminar2.Enabled = false;
         }
 
         public void Limpiar()
@@ -112,10 +112,10 @@ namespace New_MasterTrade.UserControls
                     {
                         if (MessageBox.Show("¿Desea registrar este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            crud.Crear(GetUsuario());
+                            crud.Create(GetUsuario());
                             if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
                             {
-                                crud.CrearVendedor(crud.GetId());
+                                crud.CrearVendedor(user_id);
                             }
                             Limpiar();
                         }
@@ -126,7 +126,8 @@ namespace New_MasterTrade.UserControls
 
         private Usuario GetUsuario()
         {
-            Usuario usuario = new Usuario(txtUsuario.Text,
+            Usuario usuario = new Usuario(0,
+                                          txtUsuario.Text,
                                           txtContrasegna.Text,
                                           txtCorreo.Text,
                                           comboDocumento.Text+txtDocumento.Text,
@@ -145,17 +146,17 @@ namespace New_MasterTrade.UserControls
             this.ParentForm.Close();
         }
 
-        public void SetDatos(string id)
+        public void DatosUsuario(Usuario usuario)
         {
-            DataTable resultado = crud.UsuarioDatos(id);
+            user_id = usuario.ID;
+            txtNombre.Text = usuario.Nombre;
+            txtUsuario.Text = usuario.UserName;
+            txtContrasegna.Text = usuario.Contrasegna;
+            comboDocumento.Text = usuario.Documento.Substring(0,1);
+            txtDocumento.Text = usuario.Documento.Remove(0,1);
+            txtCorreo.Text = usuario.Correo;
 
-            user_id = (int)resultado.Rows[0][0];
-            txtUsuario.Text = resultado.Rows[0][1].ToString();
-            txtContrasegna.Text = resultado.Rows[0][2].ToString();
-            comboDocumento.Text = resultado.Rows[0][4].ToString().Substring(0,1);
-            txtDocumento.Text = resultado.Rows[0][4].ToString().Remove(0,1);
-            txtNombre.Text = resultado.Rows[0][3].ToString();
-            if ((int)resultado.Rows[0][5] == 1)
+            if (usuario.Nivel == 1)
             {
                 comboNivel.SelectedIndex = 0;
             }
@@ -170,7 +171,6 @@ namespace New_MasterTrade.UserControls
             label5.Visible = false;
             bttnGuardar.Enabled = false;
             bttnActualizar.Enabled = true;
-            bttnEliminar2.Enabled = true;
             bttnCancelar.Enabled = false;
         }
 
@@ -178,7 +178,7 @@ namespace New_MasterTrade.UserControls
         {
             if (MessageBox.Show("¿Desea actualizar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                crud.Actualizar(GetUsuario(), user_id);
+                crud.Update(GetUsuario());
                 if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
                 {
                     if (crud.VendedorRegistrado(user_id))
@@ -196,9 +196,18 @@ namespace New_MasterTrade.UserControls
             else return 2;
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void textBox_Enter(object sender, EventArgs e)
         {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
+        }
 
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = SystemColors.Window;
+            textBox.ForeColor = SystemColors.WindowText;
         }
     }
 }
