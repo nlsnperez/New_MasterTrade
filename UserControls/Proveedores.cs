@@ -100,12 +100,6 @@ namespace New_MasterTrade
             x.ShowDialog();
         }
 
-        private void bttnReporte_Click(object sender, EventArgs e)
-        {
-            Reporte reporte = new Reporte();
-            reporte.Reporte_Proveedor();
-        }
-
         private void tablaPersonas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (tablaPersonas.Columns[e.ColumnIndex].Name == "Activo")

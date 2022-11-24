@@ -109,7 +109,6 @@ namespace New_MasterTrade.UserControls
         private void bttnReporte_Click(object sender, EventArgs e)
         {
             Reporte reporte = new Reporte();
-            reporte.Reporte_Producto();
         }
 
         private void tablaProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

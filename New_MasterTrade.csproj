@@ -337,6 +337,24 @@
     <Compile Include="UserControls\RegistrosBitacora.Designer.cs">
       <DependentUpon>RegistrosBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ReportesCliente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReportesCliente.Designer.cs">
+      <DependentUpon>ReportesCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReportesProducto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReportesProducto.Designer.cs">
+      <DependentUpon>ReportesProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReportesProveedor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReportesProveedor.Designer.cs">
+      <DependentUpon>ReportesProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\VentanaReportes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -480,6 +498,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegistrosBitacora.resx">
       <DependentUpon>RegistrosBitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReportesCliente.resx">
+      <DependentUpon>ReportesCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReportesProducto.resx">
+      <DependentUpon>ReportesProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReportesProveedor.resx">
+      <DependentUpon>ReportesProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\VentanaReportes.resx">
       <DependentUpon>VentanaReportes.cs</DependentUpon>

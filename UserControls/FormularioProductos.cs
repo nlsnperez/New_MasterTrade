@@ -236,13 +236,7 @@ namespace New_MasterTrade.UserControls
 
         private void txtPrecioVenta_Enter(object sender, EventArgs e)
         {
-            if (txtPrecioVenta.Text == "0")
-            {
-                txtPrecioVenta.Text = "";
-            }
-            TextBox textBox = sender as TextBox;
-            textBox.BackColor = Color.FromArgb(255, 212, 100);
-            textBox.ForeColor = Color.Black;
+
         }
 
         private void txtPrecioVenta_Leave(object sender, EventArgs e)
@@ -280,10 +274,7 @@ namespace New_MasterTrade.UserControls
 
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea actualizar el producto: " + txtSerial.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                crud.Update(GetProducto(), Int32.Parse(txtID.Text));
-            }
+
         }
 
         private void textBox_Enter(object sender, EventArgs e)

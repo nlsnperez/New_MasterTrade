@@ -77,7 +77,7 @@
             // 
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Location = new System.Drawing.Point(569, 17);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(185, 20);
             this.txtBuscar.TabIndex = 2;
@@ -89,7 +89,7 @@
             this.bttnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnBuscar.Location = new System.Drawing.Point(761, 15);
-            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnBuscar.Name = "bttnBuscar";
             this.bttnBuscar.Size = new System.Drawing.Size(85, 24);
             this.bttnBuscar.TabIndex = 3;
@@ -112,7 +112,7 @@
             // 
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Location = new System.Drawing.Point(377, 71);
-            this.txtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtID.Margin = new System.Windows.Forms.Padding(2);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(185, 20);
             this.txtID.TabIndex = 9;
@@ -123,7 +123,7 @@
             // 
             this.txtSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSerial.Location = new System.Drawing.Point(377, 230);
-            this.txtSerial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSerial.Margin = new System.Windows.Forms.Padding(2);
             this.txtSerial.Name = "txtSerial";
             this.txtSerial.Size = new System.Drawing.Size(185, 20);
             this.txtSerial.TabIndex = 11;
@@ -145,7 +145,7 @@
             // 
             this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescripcion.Location = new System.Drawing.Point(377, 269);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(185, 135);
@@ -190,12 +190,12 @@
             // 
             this.txtPrecioVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioVenta.Location = new System.Drawing.Point(377, 423);
-            this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(185, 20);
             this.txtPrecioVenta.TabIndex = 19;
             this.txtPrecioVenta.Text = "0";
-            this.txtPrecioVenta.Enter += new System.EventHandler(this.txtPrecioVenta_Enter);
+            this.txtPrecioVenta.Enter += new System.EventHandler(this.Productos_Prot_Load);
             this.txtPrecioVenta.Leave += new System.EventHandler(this.txtPrecioVenta_Leave);
             // 
             // label7
@@ -213,7 +213,7 @@
             // 
             this.txtPrecioCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioCompra.Location = new System.Drawing.Point(377, 462);
-            this.txtPrecioCompra.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecioCompra.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(185, 20);
             this.txtPrecioCompra.TabIndex = 21;
@@ -236,7 +236,7 @@
             // 
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCantidad.Location = new System.Drawing.Point(663, 71);
-            this.txtCantidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCantidad.Margin = new System.Windows.Forms.Padding(2);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(185, 20);
             this.txtCantidad.TabIndex = 23;
@@ -271,7 +271,7 @@
             this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMarca.FormattingEnabled = true;
             this.comboMarca.Location = new System.Drawing.Point(377, 150);
-            this.comboMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboMarca.Margin = new System.Windows.Forms.Padding(2);
             this.comboMarca.Name = "comboMarca";
             this.comboMarca.Size = new System.Drawing.Size(186, 21);
             this.comboMarca.TabIndex = 28;
@@ -281,7 +281,7 @@
             this.comboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCategoria.FormattingEnabled = true;
             this.comboCategoria.Location = new System.Drawing.Point(377, 110);
-            this.comboCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.comboCategoria.Name = "comboCategoria";
             this.comboCategoria.Size = new System.Drawing.Size(186, 21);
             this.comboCategoria.TabIndex = 29;
@@ -291,7 +291,7 @@
             this.comboGarantia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboGarantia.FormattingEnabled = true;
             this.comboGarantia.Location = new System.Drawing.Point(663, 110);
-            this.comboGarantia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboGarantia.Margin = new System.Windows.Forms.Padding(2);
             this.comboGarantia.Name = "comboGarantia";
             this.comboGarantia.Size = new System.Drawing.Size(183, 21);
             this.comboGarantia.TabIndex = 30;
@@ -306,7 +306,7 @@
             this.comboModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboModelo.FormattingEnabled = true;
             this.comboModelo.Location = new System.Drawing.Point(377, 190);
-            this.comboModelo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboModelo.Margin = new System.Windows.Forms.Padding(2);
             this.comboModelo.Name = "comboModelo";
             this.comboModelo.Size = new System.Drawing.Size(186, 21);
             this.comboModelo.TabIndex = 37;
@@ -342,7 +342,7 @@
             this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.cancel;
             this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnCancelar.Location = new System.Drawing.Point(222, 510);
-            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnCancelar.Name = "bttnCancelar";
             this.bttnCancelar.Size = new System.Drawing.Size(100, 24);
             this.bttnCancelar.TabIndex = 43;
@@ -359,7 +359,7 @@
             this.bttnActualizar.Image = global::New_MasterTrade.Properties.Resources.refresh;
             this.bttnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnActualizar.Location = new System.Drawing.Point(118, 510);
-            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnActualizar.Name = "bttnActualizar";
             this.bttnActualizar.Size = new System.Drawing.Size(100, 24);
             this.bttnActualizar.TabIndex = 41;
@@ -375,7 +375,7 @@
             this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk1;
             this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnGuardar.Location = new System.Drawing.Point(14, 510);
-            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnGuardar.Name = "bttnGuardar";
             this.bttnGuardar.Size = new System.Drawing.Size(100, 24);
             this.bttnGuardar.TabIndex = 40;
@@ -392,7 +392,7 @@
             this.bttnEliminar.Image = global::New_MasterTrade.Properties.Resources.cancel;
             this.bttnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnEliminar.Location = new System.Drawing.Point(136, 346);
-            this.bttnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnEliminar.Name = "bttnEliminar";
             this.bttnEliminar.Size = new System.Drawing.Size(103, 28);
             this.bttnEliminar.TabIndex = 6;
@@ -409,7 +409,7 @@
             this.bttnAgregar.Image = global::New_MasterTrade.Properties.Resources.plus1;
             this.bttnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnAgregar.Location = new System.Drawing.Point(15, 346);
-            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnAgregar.Name = "bttnAgregar";
             this.bttnAgregar.Size = new System.Drawing.Size(103, 28);
             this.bttnAgregar.TabIndex = 5;
@@ -423,7 +423,7 @@
             this.pbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbImagen.Image = global::New_MasterTrade.Properties.Resources.ImagenPlaceHolder;
             this.pbImagen.Location = new System.Drawing.Point(14, 95);
-            this.pbImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbImagen.Margin = new System.Windows.Forms.Padding(2);
             this.pbImagen.Name = "pbImagen";
             this.pbImagen.Size = new System.Drawing.Size(226, 244);
             this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -465,7 +465,7 @@
             this.Controls.Add(this.bttnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormularioProductos";
             this.Size = new System.Drawing.Size(858, 551);
             this.Load += new System.EventHandler(this.Productos_Prot_Load);

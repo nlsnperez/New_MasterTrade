@@ -99,12 +99,6 @@ namespace New_MasterTrade.UserControls
             tablaPersonas.DataSource = crud.Tabla();
         }
 
-        private void bttnReporte_Click(object sender, EventArgs e)
-        {
-            Reporte reporte = new Reporte();
-            reporte.Reporte_Cliente();
-        }
-
         private void tablaPersonas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (tablaPersonas.Columns[e.ColumnIndex].Name == "Activo")

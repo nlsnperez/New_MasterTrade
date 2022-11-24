@@ -33,10 +33,6 @@ namespace New_MasterTrade
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaPersonas = new System.Windows.Forms.DataGridView();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bttnAgregar = new System.Windows.Forms.Button();
-            this.bttnReporte = new System.Windows.Forms.Button();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +42,9 @@ namespace New_MasterTrade
             this.Activo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalles = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bttnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,62 +103,6 @@ namespace New_MasterTrade
             this.tablaPersonas.TabIndex = 32;
             this.tablaPersonas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaPersonas_CellClick);
             this.tablaPersonas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaPersonas_CellFormatting);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BackColor = System.Drawing.SystemColors.Control;
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 38;
-            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp_1);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(597, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "BUSCAR: ";
-            // 
-            // bttnAgregar
-            // 
-            this.bttnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnAgregar.FlatAppearance.BorderSize = 0;
-            this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnAgregar.Image = global::New_MasterTrade.Properties.Resources.pencil;
-            this.bttnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnAgregar.Location = new System.Drawing.Point(12, 510);
-            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnAgregar.Name = "bttnAgregar";
-            this.bttnAgregar.Size = new System.Drawing.Size(100, 24);
-            this.bttnAgregar.TabIndex = 39;
-            this.bttnAgregar.Text = "REGISTRAR";
-            this.bttnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnAgregar.UseVisualStyleBackColor = false;
-            this.bttnAgregar.Click += new System.EventHandler(this.bttnAgregar_Click);
-            // 
-            // bttnReporte
-            // 
-            this.bttnReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnReporte.FlatAppearance.BorderSize = 0;
-            this.bttnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnReporte.Image = global::New_MasterTrade.Properties.Resources.archivo_pdf__1_;
-            this.bttnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnReporte.Location = new System.Drawing.Point(116, 510);
-            this.bttnReporte.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnReporte.Name = "bttnReporte";
-            this.bttnReporte.Size = new System.Drawing.Size(100, 24);
-            this.bttnReporte.TabIndex = 45;
-            this.bttnReporte.Text = "REPORTE";
-            this.bttnReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnReporte.UseVisualStyleBackColor = false;
-            this.bttnReporte.Click += new System.EventHandler(this.bttnReporte_Click);
             // 
             // columnId
             // 
@@ -247,12 +190,50 @@ namespace New_MasterTrade
             this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
+            this.txtBuscar.TabIndex = 38;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(597, 516);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "BUSCAR: ";
+            // 
+            // bttnAgregar
+            // 
+            this.bttnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAgregar.FlatAppearance.BorderSize = 0;
+            this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAgregar.Image = global::New_MasterTrade.Properties.Resources.pencil;
+            this.bttnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnAgregar.Location = new System.Drawing.Point(12, 510);
+            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAgregar.Name = "bttnAgregar";
+            this.bttnAgregar.Size = new System.Drawing.Size(100, 24);
+            this.bttnAgregar.TabIndex = 39;
+            this.bttnAgregar.Text = "REGISTRAR";
+            this.bttnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAgregar.UseVisualStyleBackColor = false;
+            this.bttnAgregar.Click += new System.EventHandler(this.bttnAgregar_Click);
+            // 
             // Proveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Controls.Add(this.bttnReporte);
             this.Controls.Add(this.bttnAgregar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
@@ -270,7 +251,6 @@ namespace New_MasterTrade
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bttnAgregar;
-        private System.Windows.Forms.Button bttnReporte;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
         private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocial;

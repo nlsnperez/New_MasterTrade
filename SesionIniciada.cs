@@ -210,7 +210,19 @@ namespace New_MasterTrade
 
         private void bttnReportes_Click(object sender, EventArgs e)
         {
-            MostrarUserControl(new VentanaReportes());
+            if (panelReportes.Visible == false)
+            {
+                panelReportes.Visible = true;
+                panelTransacciones.Visible = false;
+                panelArchivo.Visible = false;
+                panelMantenimiento.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaArriba;
+            }
+            else
+            {
+                panelReportes.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaAbajo;
+            }
         }
 
         private void bttnAjustes_Click_1(object sender, EventArgs e)
@@ -244,6 +256,24 @@ namespace New_MasterTrade
         {
             panelArchivo.Visible = false;
             MostrarDialog(new Modelos());
+        }
+
+        private void bttnReportesCliente_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new ReportesCliente());
+            panelReportes.Visible = false;
+        }
+
+        private void bttnReportesProveedor_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new ReportesProveedor());
+            panelReportes.Visible = false;
+        }
+
+        private void bttnReportesProducto_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new ReportesProducto());
+            panelReportes.Visible = false;
         }
     }
 }
