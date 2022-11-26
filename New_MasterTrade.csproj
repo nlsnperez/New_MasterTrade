@@ -105,6 +105,7 @@
     <Compile Include="Base de Datos\Conexion.cs" />
     <Compile Include="Base de Datos\CRUD_Bitacora.cs" />
     <Compile Include="Base de Datos\CRUD_CAMAMO.cs" />
+    <Compile Include="Base de Datos\CRUD_IMMOTA.cs" />
     <Compile Include="Base de Datos\CRUD_Proveedores.cs" />
     <Compile Include="Base de Datos\CRUDExtras.cs" />
     <Compile Include="Base de Datos\CRUD_Compras.cs" />
@@ -287,6 +288,12 @@
     <Compile Include="UserControls\FormularioUsuarios.Designer.cs">
       <DependentUpon>FormularioUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Impuestos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Impuestos.Designer.cs">
+      <DependentUpon>Impuestos.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Marcas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -298,6 +305,12 @@
     </Compile>
     <Compile Include="UserControls\Modelos.Designer.cs">
       <DependentUpon>Modelos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Monedas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Monedas.Designer.cs">
+      <DependentUpon>Monedas.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Proveedores.cs">
       <SubType>UserControl</SubType>
@@ -354,6 +367,12 @@
     </Compile>
     <Compile Include="UserControls\ReportesProveedor.Designer.cs">
       <DependentUpon>ReportesProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TasasDeCambio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TasasDeCambio.Designer.cs">
+      <DependentUpon>TasasDeCambio.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\VentanaReportes.cs">
       <SubType>UserControl</SubType>
@@ -467,11 +486,17 @@
     <EmbeddedResource Include="UserControls\FormularioUsuarios.resx">
       <DependentUpon>FormularioUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Impuestos.resx">
+      <DependentUpon>Impuestos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Marcas.resx">
       <DependentUpon>Marcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Modelos.resx">
       <DependentUpon>Modelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Monedas.resx">
+      <DependentUpon>Monedas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Proveedores.resx">
       <DependentUpon>Proveedores.cs</DependentUpon>
@@ -507,6 +532,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ReportesProveedor.resx">
       <DependentUpon>ReportesProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TasasDeCambio.resx">
+      <DependentUpon>TasasDeCambio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\VentanaReportes.resx">
       <DependentUpon>VentanaReportes.cs</DependentUpon>
@@ -658,6 +686,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\exchange.png" />
+    <None Include="Resources\estados-financieros.png" />
     <None Include="Resources\importar.png" />
     <None Include="Resources\export.png" />
     <None Include="Resources\loop.png" />

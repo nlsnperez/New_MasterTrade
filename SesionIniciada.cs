@@ -275,5 +275,15 @@ namespace New_MasterTrade
             MostrarUserControl(new ReportesProducto());
             panelReportes.Visible = false;
         }
+
+        private void bttnImpuestos_Click(object sender, EventArgs e)
+        {
+            MostrarDialog(new Impuestos());
+        }
+
+        private void bttnMonedas_Click(object sender, EventArgs e)
+        {
+            MostrarDialog(new Monedas());
+        }
     }
 }
