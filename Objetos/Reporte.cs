@@ -41,11 +41,11 @@ namespace New_MasterTrade.Objetos
             }
         }
 
-        public void Reporte_Orden_Venta(int id)
+        public void Reporte_Orden_Venta(string numero_orden)
         {
             try
             {
-                orden_venta.Fill(dataset.Orden_Venta, id);
+                orden_venta.Fill(dataset.Orden_Venta, numero_orden);
                 OrdenVenta_Reporte reporte = new OrdenVenta_Reporte();
                 string direccion = @"~\Reportes\OrdenVenta_Reporte.rpt";
                 reporte.Load(direccion);
@@ -131,12 +131,30 @@ namespace New_MasterTrade.Objetos
             }
         }
 
-        public void Reporte_Producto(string categoria, string marca, string modelo, decimal precio_compra, decimal precio_venta)
+        public void Reporte_Producto()
         {
             try
             {
-                producto.Fill(dataset.Producto, categoria, marca, modelo, precio_compra, precio_venta);
+                producto.Fill(dataset.Producto);
                 Producto_Reporte reporte = new Producto_Reporte();  
+                string direccion = @"~\Reportes\Producto_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_ProductoParametro(int estado, string categoria, string marca, string modelo, decimal pcompra, decimal pventa)
+        {
+            try
+            {
+                producto.FillBy(dataset.Producto, estado, categoria, marca, modelo, pcompra, pventa);
+                Producto_Reporte reporte = new Producto_Reporte();
                 string direccion = @"~\Reportes\Producto_Reporte.rpt";
                 reporte.Load(direccion);
                 reporte.SetDataSource(dataset);

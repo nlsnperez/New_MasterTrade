@@ -50,9 +50,9 @@ namespace New_MasterTrade.UserControls
 
         private void tablaVentas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex >= 0 && tablaVentas.Columns[e.ColumnIndex].Name == "Detalle")
             {
-                int x = Convert.ToInt32(tablaVentas.Rows[e.RowIndex].Cells["NFactura"].Value);
+                string x = tablaVentas.Rows[e.RowIndex].Cells["NOrdenVenta"].Value.ToString();
                 Reporte reporte = new Reporte();
                 reporte.Reporte_Orden_Venta(x);
             }

@@ -19,6 +19,7 @@ namespace New_MasterTrade.UserControls
         string categoria = "";
         string marca = "";
         string modelo = "";
+        int estado = 0;
         decimal precio_venta = 0;
         decimal precio_compra = 0;
 
@@ -35,14 +36,12 @@ namespace New_MasterTrade.UserControls
 
         public void ConfigComboBoxes()
         {
-            comboProductos.Items.Add("EN GENERAL");
             comboProductos.Items.Add("ACTIVOS");
             comboProductos.Items.Add("DESACTIVOS");
             comboProductos.SelectedIndex = 0;
 
             try
             {
-                combocategoria.Items.Add("EN GENERAL");
                 DataTable categorias = crud.Categorias();
                 for (int i = 0; i <= categorias.Rows.Count-1; i++)
                 {
@@ -50,7 +49,6 @@ namespace New_MasterTrade.UserControls
                 }
                 combocategoria.SelectedIndex = 0;
 
-                comboMarca.Items.Add("EN GENERAL");
                 DataTable marcas = crud.Marcas();
                 for (int i = 0; i <= marcas.Rows.Count - 1; i++)
                 {
@@ -58,7 +56,6 @@ namespace New_MasterTrade.UserControls
                 }
                 comboMarca.SelectedIndex = 0;
 
-                comboModelo.Items.Add("EN GENERAL");
                 DataTable modelos = crud.Modelos();
                 for (int i = 0; i <= modelos.Rows.Count - 1; i++)
                 {
@@ -72,12 +69,12 @@ namespace New_MasterTrade.UserControls
                 throw;
             }
 
-            comboPrecioCompra.Items.Add("EN GENERAL");
+            comboPrecioCompra.Items.Add("CUALQUIER PRECIO");
             comboPrecioCompra.Items.Add("MAYOR A 1000Bs");
             comboPrecioCompra.Items.Add("MAYOR A 10.000Bs");
             comboPrecioCompra.SelectedIndex = 0;
 
-            comboPrecioVenta.Items.Add("EN GENERAL");
+            comboPrecioVenta.Items.Add("CUALQUIER PRECIO");
             comboPrecioVenta.Items.Add("MAYOR A 1000Bs");
             comboPrecioVenta.Items.Add("MAYOR A 10.000Bs");
             comboPrecioVenta.SelectedIndex = 0;
@@ -91,12 +88,13 @@ namespace New_MasterTrade.UserControls
                     precio_compra = 0;
                     break;
                 case 1:
-                    precio_compra = 1000;
+                    precio_compra = 100;
                     break;
                 case 2:
-                    precio_compra = 10000;
+                    precio_compra = 1000;
                     break;
             }
+            Console.WriteLine(precio_compra);
         }
 
         private void comboPrecioVenta_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,6 +111,7 @@ namespace New_MasterTrade.UserControls
                     precio_venta = 1000;
                     break;
             }
+            Console.WriteLine(precio_venta);
         }
 
         private void combocategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -164,12 +163,45 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGenerar_Click(object sender, EventArgs e)
         {
-            switch (comboProductos.SelectedIndex)
+            if (!checkParametros.Checked)
             {
-                case 0:
-                    reporte.Reporte_Producto(categoria, marca, modelo, precio_compra, precio_venta);
-                    break;
+                reporte.Reporte_Producto();
             }
+            else
+            {
+                if (comboProductos.SelectedIndex == 0)
+                {
+                    estado = 1;
+                    reporte.Reporte_ProductoParametro(estado, combocategoria.Text, comboMarca.Text, comboModelo.Text, precio_compra, precio_venta);
+                }
+                else
+                {
+                    estado = 0;
+                    reporte.Reporte_ProductoParametro(estado, combocategoria.Text, comboMarca.Text, comboModelo.Text, precio_compra, precio_venta);
+                }
+            }
+        }
+
+        private void checkParametros_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkParametros.Checked)
+            {
+                ActivarCombos(true);
+            }
+            else
+            {
+                ActivarCombos(false);
+            }
+        }
+
+        public void ActivarCombos(bool estado)
+        {
+            comboProductos.Enabled = estado;
+            combocategoria.Enabled = estado;
+            comboMarca.Enabled = estado;
+            comboModelo.Enabled = estado;
+            comboPrecioCompra.Enabled = estado;
+            comboPrecioVenta.Enabled = estado;
         }
     }
 }

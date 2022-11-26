@@ -123,6 +123,30 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Categorias()
         {
             DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `categoria` ORDER BY nom_cat ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
+        }
+
+        public DataTable CategoriasActivas()
+        {
+            DataTable categorias = new DataTable();
             String sql = "SELECT * FROM `categoria` WHERE act_cat = 1 ORDER BY nom_cat ASC";
             con.Open();
             try
@@ -147,6 +171,30 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Marcas()
         {
             DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `marca` ORDER BY nom_mar ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
+        }
+
+        public DataTable MarcasActivas()
+        {
+            DataTable categorias = new DataTable();
             String sql = "SELECT * FROM `marca` WHERE act_mar = 1 ORDER BY nom_mar ASC";
             con.Open();
             try
@@ -169,6 +217,30 @@ namespace New_MasterTrade.Base_de_Datos
         }
 
         public DataTable Modelos()
+        {
+            DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `modelo` ORDER BY nom_mod ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
+        }
+
+        public DataTable ModelosActivos()
         {
             DataTable categorias = new DataTable();
             String sql = "SELECT * FROM `modelo` WHERE act_mod = 1 ORDER BY nom_mod ASC";
