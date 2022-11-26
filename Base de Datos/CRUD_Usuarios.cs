@@ -391,5 +391,95 @@ namespace New_MasterTrade.Base_de_Datos
             }
             return false;
         }
+
+        public DataTable Vendedor()
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT *, u.nom_usu, u.doc_usu FROM vendedor v INNER JOIN usuario u ON v.id_usu = u.id_usu;", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla vendedor encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return null;
+        }
+
+        public DataTable BuscarVendedor(string parametro)
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT *, u.nom_usu, u.doc_usu FROM vendedor v INNER JOIN usuario u ON v.id_usu = u.id_usu WHERE v.id_ven LIKE '%"+parametro+ "%' OR v.id_usu LIKE '%"+parametro+ "%' OR u.nom_usu LIKE '%"+parametro+ "%' OR u.doc_usu LIKE '%"+parametro+"%'", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla vendedor encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return null;
+        }
+
+        public void DeleteUsuario(int id, int x)
+        {
+            string mensaje = "";
+            if (x == 0)
+            {
+                mensaje = "El registro se eliminó de manera satisfactoria.";
+            }
+            else
+            {
+                mensaje = "El registro se restauró de manera satisfactoria.";
+            }
+
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE `vendedor` SET `act_ven`=@activo WHERE `id_ven`=@id";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = x;
+                    command.Parameters.Add("@id", MySqlDbType.VarChar).Value = id;
+
+                    command.ExecuteNonQuery();
+                }
+                MessageBox.Show(mensaje, "¡DATOS ACTUAIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

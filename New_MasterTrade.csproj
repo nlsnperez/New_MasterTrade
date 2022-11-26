@@ -374,6 +374,12 @@
     <Compile Include="UserControls\TasasDeCambio.Designer.cs">
       <DependentUpon>TasasDeCambio.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Vendedores.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Vendedores.Designer.cs">
+      <DependentUpon>Vendedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\VentanaReportes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -535,6 +541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TasasDeCambio.resx">
       <DependentUpon>TasasDeCambio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Vendedores.resx">
+      <DependentUpon>Vendedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\VentanaReportes.resx">
       <DependentUpon>VentanaReportes.cs</DependentUpon>

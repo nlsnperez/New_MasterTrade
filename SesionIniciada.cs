@@ -285,5 +285,11 @@ namespace New_MasterTrade
         {
             MostrarDialog(new Monedas());
         }
+
+        private void bttnVendedores_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new Vendedores());
+            panelMantenimiento.Visible = false;
+        }
     }
 }
