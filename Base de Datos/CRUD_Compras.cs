@@ -20,13 +20,17 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `orden_compra`(`id_prv`, `num_oco`, `fec_oco`) VALUES (@proveedor,@norden,@fecha)";
+                    command.CommandText = "INSERT INTO `orden_compra`(`id_oco`, `id_prv`, `id_tca`, `num_oco`, `fec_oco`, `hor_oco`, `act_oco`) VALUES (@id, @proveedor,@tasacambio,@norden,@fecha,@hora,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@proveedor", MySqlDbType.VarChar).Value = compra.Proveedor;
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = compra.Id;
+                    command.Parameters.Add("@proveedor", MySqlDbType.Int32).Value = compra.Proveedor;
+                    command.Parameters.Add("@tasacambio", MySqlDbType.Int32).Value = compra.TasaCambio;
                     command.Parameters.Add("@norden", MySqlDbType.VarChar).Value = compra.NumeroOrden;
-                    command.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = compra.Fecha;
+                    command.Parameters.Add("@fecha", MySqlDbType.Date).Value = System.DateTime.Today;
+                    command.Parameters.Add("@hora", MySqlDbType.Time).Value = System.DateTime.Now.TimeOfDay;
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
                     MessageBox.Show("La orden de compra fue registrada con éxito.", "¡REGISTRO EXITOSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -51,14 +55,14 @@ namespace New_MasterTrade.Base_de_Datos
                     con.Open();
                     using (MySqlCommand command = new MySqlCommand())
                     {
-                        command.CommandText = "INSERT INTO `detalle_compra`(`id_oco`, `id_pro`, `can_dco`, `tbs_dco`, `tus_dco`) VALUES (@ocompra,@producto,@cantidad,@totBs,@totUsd)";
+                        command.CommandText = "INSERT INTO `detalle_compra`(`id_oco`, `id_pro`, `can_dco`, `tot_dco`) VALUES (@ocompra,@producto,@cantidad,@total)";
                         command.CommandType = CommandType.Text;
                         command.Connection = con;
 
                         command.Parameters.Add("@ocompra", MySqlDbType.Int32).Value = detalle[i].IdOrden;
                         command.Parameters.Add("@producto", MySqlDbType.Int32).Value = detalle[i].Producto;
                         command.Parameters.Add("@cantidad", MySqlDbType.Int32).Value = detalle[i].Cantidad;
-                        command.Parameters.Add("@totBs", MySqlDbType.Decimal).Value = detalle[i].TotalBs;
+                        command.Parameters.Add("@total", MySqlDbType.Decimal).Value = detalle[i].TotalBs;
 
                         command.ExecuteNonQuery();
                         Console.WriteLine("Detalle registrado "+i+"!");
@@ -168,6 +172,77 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return facturas;
+        }
+
+        public DataTable Moneda()
+        {
+            DataTable facturas = new DataTable();
+            String sql = "SELECT * FROM moneda ORDER BY id_mon ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(facturas);
+                return facturas;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return facturas;
+        }
+
+        public DataTable TasaDeCambio(int id)
+        {
+            DataTable facturas = new DataTable();
+            String sql = "SELECT * FROM tasa_cambio WHERE id_mon = "+id+" ORDER BY id_tca ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(facturas);
+                return facturas;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return facturas;
+        }
+
+        public decimal Valor_TasaCambio(int id)
+        {
+            decimal x = 0;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `tasa_cambio` WHERE id_tca = "+id+"", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = reader.GetDecimal(3);
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
         }
     }
 }

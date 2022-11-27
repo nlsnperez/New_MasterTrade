@@ -29,10 +29,17 @@ namespace New_MasterTrade.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableCarrito = new System.Windows.Forms.DataGridView();
+            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrecioU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrecioT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remover = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtProveedor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,30 +52,18 @@ namespace New_MasterTrade.UserControls
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNumeroOrden = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtTotalBs = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtTotalUs = new System.Windows.Forms.TextBox();
-            this.txtImpuesto = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboImpuesto = new System.Windows.Forms.ComboBox();
             this.txtSubTotalBs = new System.Windows.Forms.TextBox();
-            this.txtSubTotalUs = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.bttnBuscarProductos = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.bttnBuscar = new System.Windows.Forms.Button();
             this.bttnCancelar = new System.Windows.Forms.Button();
             this.bttnNuevaCompra = new System.Windows.Forms.Button();
-            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrecioU = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrecioT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remover = new System.Windows.Forms.DataGridViewImageColumn();
+            this.comboTasaCambio = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboMoneda = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtMoneda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,24 +73,24 @@ namespace New_MasterTrade.UserControls
             this.tableCarrito.AllowUserToDeleteRows = false;
             this.tableCarrito.AllowUserToResizeColumns = false;
             this.tableCarrito.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.tableCarrito.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.tableCarrito.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.tableCarrito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableCarrito.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tableCarrito.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tableCarrito.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tableCarrito.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.tableCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.tableCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.tableCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableCarrito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -105,14 +100,14 @@ namespace New_MasterTrade.UserControls
             this.columnCantidad,
             this.columnPrecioT,
             this.Remover});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tableCarrito.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tableCarrito.DefaultCellStyle = dataGridViewCellStyle9;
             this.tableCarrito.EnableHeadersVisualStyles = false;
             this.tableCarrito.Location = new System.Drawing.Point(0, 189);
             this.tableCarrito.Name = "tableCarrito";
@@ -123,6 +118,71 @@ namespace New_MasterTrade.UserControls
             this.tableCarrito.Size = new System.Drawing.Size(858, 304);
             this.tableCarrito.TabIndex = 38;
             this.tableCarrito.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableCarrito_CellClick);
+            // 
+            // columnId
+            // 
+            this.columnId.DataPropertyName = "Id";
+            this.columnId.HeaderText = "ID";
+            this.columnId.MinimumWidth = 6;
+            this.columnId.Name = "columnId";
+            this.columnId.ReadOnly = true;
+            this.columnId.Width = 125;
+            // 
+            // columnSerial
+            // 
+            this.columnSerial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnSerial.DataPropertyName = "Serial";
+            this.columnSerial.HeaderText = "Serial";
+            this.columnSerial.MinimumWidth = 6;
+            this.columnSerial.Name = "columnSerial";
+            this.columnSerial.ReadOnly = true;
+            // 
+            // columnDescripcion
+            // 
+            this.columnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnDescripcion.DataPropertyName = "Descripcion";
+            this.columnDescripcion.HeaderText = "Descripcion";
+            this.columnDescripcion.MinimumWidth = 6;
+            this.columnDescripcion.Name = "columnDescripcion";
+            this.columnDescripcion.ReadOnly = true;
+            // 
+            // columnPrecioU
+            // 
+            this.columnPrecioU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnPrecioU.DataPropertyName = "P.Unitario";
+            this.columnPrecioU.HeaderText = "P. Unitario";
+            this.columnPrecioU.MinimumWidth = 6;
+            this.columnPrecioU.Name = "columnPrecioU";
+            this.columnPrecioU.ReadOnly = true;
+            // 
+            // columnCantidad
+            // 
+            this.columnCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnCantidad.DataPropertyName = "Cantidad";
+            this.columnCantidad.HeaderText = "Cantidad";
+            this.columnCantidad.MinimumWidth = 6;
+            this.columnCantidad.Name = "columnCantidad";
+            this.columnCantidad.ReadOnly = true;
+            // 
+            // columnPrecioT
+            // 
+            this.columnPrecioT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnPrecioT.DataPropertyName = "P.Total";
+            this.columnPrecioT.HeaderText = "P. Total";
+            this.columnPrecioT.MinimumWidth = 6;
+            this.columnPrecioT.Name = "columnPrecioT";
+            this.columnPrecioT.ReadOnly = true;
+            // 
+            // Remover
+            // 
+            this.Remover.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Remover.HeaderText = "Remover";
+            this.Remover.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
+            this.Remover.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Remover.MinimumWidth = 6;
+            this.Remover.Name = "Remover";
+            this.Remover.ReadOnly = true;
+            this.Remover.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // txtProveedor
             // 
@@ -232,123 +292,28 @@ namespace New_MasterTrade.UserControls
             this.txtNumeroOrden.Size = new System.Drawing.Size(217, 20);
             this.txtNumeroOrden.TabIndex = 51;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.label9.Location = new System.Drawing.Point(622, 122);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 20);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Bs";
-            // 
-            // txtTotalBs
-            // 
-            this.txtTotalBs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotalBs.Location = new System.Drawing.Point(711, 122);
-            this.txtTotalBs.Name = "txtTotalBs";
-            this.txtTotalBs.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTotalBs.Size = new System.Drawing.Size(133, 20);
-            this.txtTotalBs.TabIndex = 58;
-            this.txtTotalBs.Text = "0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.label10.Location = new System.Drawing.Point(622, 154);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 20);
-            this.label10.TabIndex = 59;
-            this.label10.Text = "US $";
-            // 
-            // txtTotalUs
-            // 
-            this.txtTotalUs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotalUs.Location = new System.Drawing.Point(711, 155);
-            this.txtTotalUs.Name = "txtTotalUs";
-            this.txtTotalUs.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTotalUs.Size = new System.Drawing.Size(133, 20);
-            this.txtTotalUs.TabIndex = 60;
-            this.txtTotalUs.Text = "0";
-            // 
-            // txtImpuesto
-            // 
-            this.txtImpuesto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtImpuesto.Location = new System.Drawing.Point(767, 61);
-            this.txtImpuesto.Name = "txtImpuesto";
-            this.txtImpuesto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtImpuesto.Size = new System.Drawing.Size(77, 20);
-            this.txtImpuesto.TabIndex = 58;
-            this.txtImpuesto.Text = "0";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.SystemColors.Control;
-            this.label11.Location = new System.Drawing.Point(623, 65);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(80, 13);
-            this.label11.TabIndex = 59;
-            this.label11.Text = "IMPUESTO (%)";
-            // 
-            // comboImpuesto
-            // 
-            this.comboImpuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboImpuesto.FormattingEnabled = true;
-            this.comboImpuesto.Location = new System.Drawing.Point(711, 61);
-            this.comboImpuesto.Name = "comboImpuesto";
-            this.comboImpuesto.Size = new System.Drawing.Size(52, 21);
-            this.comboImpuesto.TabIndex = 64;
-            // 
             // txtSubTotalBs
             // 
+            this.txtSubTotalBs.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtSubTotalBs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSubTotalBs.Location = new System.Drawing.Point(711, 11);
+            this.txtSubTotalBs.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
+            this.txtSubTotalBs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.txtSubTotalBs.Location = new System.Drawing.Point(623, 47);
+            this.txtSubTotalBs.Multiline = true;
             this.txtSubTotalBs.Name = "txtSubTotalBs";
+            this.txtSubTotalBs.ReadOnly = true;
             this.txtSubTotalBs.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSubTotalBs.Size = new System.Drawing.Size(133, 20);
+            this.txtSubTotalBs.Size = new System.Drawing.Size(222, 89);
             this.txtSubTotalBs.TabIndex = 66;
             this.txtSubTotalBs.Text = "0";
-            // 
-            // txtSubTotalUs
-            // 
-            this.txtSubTotalUs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSubTotalUs.Location = new System.Drawing.Point(711, 36);
-            this.txtSubTotalUs.Name = "txtSubTotalUs";
-            this.txtSubTotalUs.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSubTotalUs.Size = new System.Drawing.Size(133, 20);
-            this.txtSubTotalUs.TabIndex = 68;
-            this.txtSubTotalUs.Text = "0";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.SystemColors.Control;
-            this.label12.Location = new System.Drawing.Point(623, 15);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 13);
-            this.label12.TabIndex = 69;
-            this.label12.Text = "SUBTOTAL (Bs)";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.SystemColors.Control;
-            this.label13.Location = new System.Drawing.Point(623, 40);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(79, 13);
-            this.label13.TabIndex = 70;
-            this.label13.Text = "SUBTOTAL ($)";
+            this.txtSubTotalBs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.label14.Location = new System.Drawing.Point(622, 90);
+            this.label14.Location = new System.Drawing.Point(619, 11);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 20);
             this.label14.TabIndex = 71;
@@ -434,95 +399,79 @@ namespace New_MasterTrade.UserControls
             this.bttnNuevaCompra.UseVisualStyleBackColor = false;
             this.bttnNuevaCompra.Click += new System.EventHandler(this.bttnNuevaCompra_Click);
             // 
-            // columnId
+            // comboTasaCambio
             // 
-            this.columnId.DataPropertyName = "Id";
-            this.columnId.HeaderText = "ID";
-            this.columnId.MinimumWidth = 6;
-            this.columnId.Name = "columnId";
-            this.columnId.ReadOnly = true;
-            this.columnId.Width = 125;
+            this.comboTasaCambio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboTasaCambio.Enabled = false;
+            this.comboTasaCambio.FormattingEnabled = true;
+            this.comboTasaCambio.Location = new System.Drawing.Point(90, 83);
+            this.comboTasaCambio.Name = "comboTasaCambio";
+            this.comboTasaCambio.Size = new System.Drawing.Size(216, 21);
+            this.comboTasaCambio.TabIndex = 112;
+            this.comboTasaCambio.SelectedIndexChanged += new System.EventHandler(this.comboTasaCambio_SelectedIndexChanged);
             // 
-            // columnSerial
+            // label8
             // 
-            this.columnSerial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnSerial.DataPropertyName = "Serial";
-            this.columnSerial.HeaderText = "Serial";
-            this.columnSerial.MinimumWidth = 6;
-            this.columnSerial.Name = "columnSerial";
-            this.columnSerial.ReadOnly = true;
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.Control;
+            this.label8.Location = new System.Drawing.Point(9, 80);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 26);
+            this.label8.TabIndex = 111;
+            this.label8.Text = "TASA DE\r\nCAMBIO";
             // 
-            // columnDescripcion
+            // comboMoneda
             // 
-            this.columnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDescripcion.DataPropertyName = "Descripcion";
-            this.columnDescripcion.HeaderText = "Descripcion";
-            this.columnDescripcion.MinimumWidth = 6;
-            this.columnDescripcion.Name = "columnDescripcion";
-            this.columnDescripcion.ReadOnly = true;
+            this.comboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboMoneda.Enabled = false;
+            this.comboMoneda.FormattingEnabled = true;
+            this.comboMoneda.Location = new System.Drawing.Point(90, 47);
+            this.comboMoneda.Name = "comboMoneda";
+            this.comboMoneda.Size = new System.Drawing.Size(216, 21);
+            this.comboMoneda.TabIndex = 110;
+            this.comboMoneda.SelectedIndexChanged += new System.EventHandler(this.comboMoneda_SelectedIndexChanged);
             // 
-            // columnPrecioU
+            // label7
             // 
-            this.columnPrecioU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnPrecioU.DataPropertyName = "P.Unitario";
-            this.columnPrecioU.HeaderText = "P. Unitario";
-            this.columnPrecioU.MinimumWidth = 6;
-            this.columnPrecioU.Name = "columnPrecioU";
-            this.columnPrecioU.ReadOnly = true;
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.Control;
+            this.label7.Location = new System.Drawing.Point(9, 51);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 13);
+            this.label7.TabIndex = 109;
+            this.label7.Text = "MONEDA";
             // 
-            // columnCantidad
+            // txtMoneda
             // 
-            this.columnCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnCantidad.DataPropertyName = "Cantidad";
-            this.columnCantidad.HeaderText = "Cantidad";
-            this.columnCantidad.MinimumWidth = 6;
-            this.columnCantidad.Name = "columnCantidad";
-            this.columnCantidad.ReadOnly = true;
-            // 
-            // columnPrecioT
-            // 
-            this.columnPrecioT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnPrecioT.DataPropertyName = "P.Total";
-            this.columnPrecioT.HeaderText = "P. Total";
-            this.columnPrecioT.MinimumWidth = 6;
-            this.columnPrecioT.Name = "columnPrecioT";
-            this.columnPrecioT.ReadOnly = true;
-            // 
-            // Remover
-            // 
-            this.Remover.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Remover.HeaderText = "Remover";
-            this.Remover.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
-            this.Remover.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Remover.MinimumWidth = 6;
-            this.Remover.Name = "Remover";
-            this.Remover.ReadOnly = true;
-            this.Remover.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtMoneda.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtMoneda.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
+            this.txtMoneda.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtMoneda.Location = new System.Drawing.Point(623, 143);
+            this.txtMoneda.Multiline = true;
+            this.txtMoneda.Name = "txtMoneda";
+            this.txtMoneda.Size = new System.Drawing.Size(222, 32);
+            this.txtMoneda.TabIndex = 113;
             // 
             // Comprar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.txtMoneda);
+            this.Controls.Add(this.comboTasaCambio);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.comboMoneda);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.bttnBuscarProductos);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.bttnGuardar);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.txtSubTotalUs);
             this.Controls.Add(this.txtSubTotalBs);
-            this.Controls.Add(this.comboImpuesto);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.txtNumeroOrden);
-            this.Controls.Add(this.txtImpuesto);
             this.Controls.Add(this.bttnBuscar);
-            this.Controls.Add(this.txtTotalUs);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtTotalBs);
             this.Controls.Add(this.bttnCancelar);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.txtTelefono);
@@ -562,17 +511,7 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.Button bttnCancelar;
         private System.Windows.Forms.Button bttnNuevaCompra;
         private System.Windows.Forms.Button bttnBuscarProductos;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtTotalBs;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtTotalUs;
-        private System.Windows.Forms.TextBox txtImpuesto;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboImpuesto;
         private System.Windows.Forms.TextBox txtSubTotalBs;
-        private System.Windows.Forms.TextBox txtSubTotalUs;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSerial;
@@ -581,5 +520,10 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrecioT;
         private System.Windows.Forms.DataGridViewImageColumn Remover;
+        private System.Windows.Forms.ComboBox comboTasaCambio;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox comboMoneda;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtMoneda;
     }
 }

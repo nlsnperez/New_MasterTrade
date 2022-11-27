@@ -49,6 +49,13 @@ namespace New_MasterTrade.UserControls
             this.label1 = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.tableCarrito = new System.Windows.Forms.DataGridView();
+            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrecioU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrecioT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remover = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.bttnBuscarProductos = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
@@ -58,13 +65,6 @@ namespace New_MasterTrade.UserControls
             this.comboTasaCambio = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtMoneda = new System.Windows.Forms.TextBox();
-            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrecioU = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrecioT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remover = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,10 +72,9 @@ namespace New_MasterTrade.UserControls
             // 
             this.comboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMoneda.FormattingEnabled = true;
-            this.comboMoneda.Location = new System.Drawing.Point(120, 62);
-            this.comboMoneda.Margin = new System.Windows.Forms.Padding(4);
+            this.comboMoneda.Location = new System.Drawing.Point(90, 50);
             this.comboMoneda.Name = "comboMoneda";
-            this.comboMoneda.Size = new System.Drawing.Size(287, 24);
+            this.comboMoneda.Size = new System.Drawing.Size(216, 21);
             this.comboMoneda.TabIndex = 106;
             this.comboMoneda.SelectedIndexChanged += new System.EventHandler(this.comboMoneda_SelectedIndexChanged);
             // 
@@ -83,10 +82,9 @@ namespace New_MasterTrade.UserControls
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(12, 66);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(9, 54);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 16);
+            this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 105;
             this.label7.Text = "MONEDA";
             // 
@@ -95,10 +93,9 @@ namespace New_MasterTrade.UserControls
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.label14.Location = new System.Drawing.Point(821, 16);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(616, 13);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 25);
+            this.label14.Size = new System.Drawing.Size(64, 20);
             this.label14.TabIndex = 103;
             this.label14.Text = "TOTAL";
             // 
@@ -108,13 +105,12 @@ namespace New_MasterTrade.UserControls
             this.txtSubTotalBs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSubTotalBs.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSubTotalBs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.txtSubTotalBs.Location = new System.Drawing.Point(826, 62);
-            this.txtSubTotalBs.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSubTotalBs.Location = new System.Drawing.Point(620, 50);
             this.txtSubTotalBs.Multiline = true;
             this.txtSubTotalBs.Name = "txtSubTotalBs";
             this.txtSubTotalBs.ReadOnly = true;
             this.txtSubTotalBs.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtSubTotalBs.Size = new System.Drawing.Size(302, 101);
+            this.txtSubTotalBs.Size = new System.Drawing.Size(227, 82);
             this.txtSubTotalBs.TabIndex = 99;
             this.txtSubTotalBs.Text = "0";
             // 
@@ -122,10 +118,9 @@ namespace New_MasterTrade.UserControls
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(12, 22);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(9, 18);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 16);
+            this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 89;
             this.label5.Text = "V. ORDEN #";
             // 
@@ -133,30 +128,27 @@ namespace New_MasterTrade.UserControls
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(416, 66);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(312, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 80;
             this.label2.Text = "NOMBRE";
             // 
             // txtNumeroOrden
             // 
             this.txtNumeroOrden.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNumeroOrden.Location = new System.Drawing.Point(120, 17);
-            this.txtNumeroOrden.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNumeroOrden.Location = new System.Drawing.Point(90, 14);
             this.txtNumeroOrden.Name = "txtNumeroOrden";
-            this.txtNumeroOrden.Size = new System.Drawing.Size(289, 22);
+            this.txtNumeroOrden.Size = new System.Drawing.Size(217, 20);
             this.txtNumeroOrden.TabIndex = 88;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(416, 199);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(312, 162);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 16);
+            this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 86;
             this.label6.Text = "CORREO";
             // 
@@ -164,78 +156,70 @@ namespace New_MasterTrade.UserControls
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(416, 155);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(312, 126);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 16);
+            this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 85;
             this.label4.Text = "TELÉFONO";
             // 
             // txtCorreo
             // 
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCorreo.Location = new System.Drawing.Point(524, 194);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCorreo.Location = new System.Drawing.Point(393, 158);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(289, 22);
+            this.txtCorreo.Size = new System.Drawing.Size(217, 20);
             this.txtCorreo.TabIndex = 84;
             // 
             // txtTelefono
             // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Location = new System.Drawing.Point(524, 150);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTelefono.Location = new System.Drawing.Point(393, 122);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(289, 22);
+            this.txtTelefono.Size = new System.Drawing.Size(217, 20);
             this.txtTelefono.TabIndex = 83;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(416, 111);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(312, 90);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 16);
+            this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 82;
             this.label3.Text = "DIRECCIÓN";
             // 
             // txtDireccion
             // 
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDireccion.Location = new System.Drawing.Point(524, 106);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDireccion.Location = new System.Drawing.Point(393, 86);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(289, 22);
+            this.txtDireccion.Size = new System.Drawing.Size(217, 20);
             this.txtDireccion.TabIndex = 81;
             // 
             // txtRazonSocial
             // 
             this.txtRazonSocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRazonSocial.Location = new System.Drawing.Point(524, 62);
-            this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRazonSocial.Location = new System.Drawing.Point(393, 50);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(289, 22);
+            this.txtRazonSocial.Size = new System.Drawing.Size(217, 20);
             this.txtRazonSocial.TabIndex = 79;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(416, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(312, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 16);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 78;
             this.label1.Text = "CLIENTE";
             // 
             // txtCliente
             // 
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCliente.Location = new System.Drawing.Point(524, 17);
-            this.txtCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCliente.Location = new System.Drawing.Point(393, 14);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(243, 22);
+            this.txtCliente.Size = new System.Drawing.Size(183, 20);
             this.txtCliente.TabIndex = 77;
             // 
             // tableCarrito
@@ -280,148 +264,15 @@ namespace New_MasterTrade.UserControls
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tableCarrito.DefaultCellStyle = dataGridViewCellStyle3;
             this.tableCarrito.EnableHeadersVisualStyles = false;
-            this.tableCarrito.Location = new System.Drawing.Point(0, 236);
-            this.tableCarrito.Margin = new System.Windows.Forms.Padding(4);
+            this.tableCarrito.Location = new System.Drawing.Point(0, 192);
             this.tableCarrito.Name = "tableCarrito";
             this.tableCarrito.ReadOnly = true;
             this.tableCarrito.RowHeadersVisible = false;
             this.tableCarrito.RowHeadersWidth = 51;
             this.tableCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableCarrito.Size = new System.Drawing.Size(1144, 374);
+            this.tableCarrito.Size = new System.Drawing.Size(858, 304);
             this.tableCarrito.TabIndex = 76;
             this.tableCarrito.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableCarrito_CellClick);
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewImageColumn1.HeaderText = "Remover";
-            this.dataGridViewImageColumn1.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.MinimumWidth = 6;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // bttnBuscarProductos
-            // 
-            this.bttnBuscarProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnBuscarProductos.FlatAppearance.BorderSize = 0;
-            this.bttnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnBuscarProductos.Image = global::New_MasterTrade.Properties.Resources.boxes;
-            this.bttnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnBuscarProductos.Location = new System.Drawing.Point(157, 628);
-            this.bttnBuscarProductos.Margin = new System.Windows.Forms.Padding(4);
-            this.bttnBuscarProductos.Name = "bttnBuscarProductos";
-            this.bttnBuscarProductos.Size = new System.Drawing.Size(133, 30);
-            this.bttnBuscarProductos.TabIndex = 104;
-            this.bttnBuscarProductos.Text = "PRODUCTOS";
-            this.bttnBuscarProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnBuscarProductos.UseVisualStyleBackColor = false;
-            this.bttnBuscarProductos.Click += new System.EventHandler(this.bttnBuscarProductos_Click);
-            // 
-            // bttnGuardar
-            // 
-            this.bttnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnGuardar.FlatAppearance.BorderSize = 0;
-            this.bttnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
-            this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk1;
-            this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnGuardar.Location = new System.Drawing.Point(440, 628);
-            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(4);
-            this.bttnGuardar.Name = "bttnGuardar";
-            this.bttnGuardar.Size = new System.Drawing.Size(133, 30);
-            this.bttnGuardar.TabIndex = 90;
-            this.bttnGuardar.Text = "REGISTRAR";
-            this.bttnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnGuardar.UseVisualStyleBackColor = false;
-            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
-            // 
-            // bttnCancelar
-            // 
-            this.bttnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnCancelar.FlatAppearance.BorderSize = 0;
-            this.bttnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(85)))), ((int)(((byte)(93)))));
-            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.cancel;
-            this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnCancelar.Location = new System.Drawing.Point(299, 628);
-            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(4);
-            this.bttnCancelar.Name = "bttnCancelar";
-            this.bttnCancelar.Size = new System.Drawing.Size(133, 30);
-            this.bttnCancelar.TabIndex = 97;
-            this.bttnCancelar.Text = "CANCELAR";
-            this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnCancelar.UseVisualStyleBackColor = false;
-            this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
-            // 
-            // bttnBuscar
-            // 
-            this.bttnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnBuscar.FlatAppearance.BorderSize = 0;
-            this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnBuscar.Image = global::New_MasterTrade.Properties.Resources.browsing;
-            this.bttnBuscar.Location = new System.Drawing.Point(776, 16);
-            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.bttnBuscar.Name = "bttnBuscar";
-            this.bttnBuscar.Size = new System.Drawing.Size(37, 28);
-            this.bttnBuscar.TabIndex = 87;
-            this.bttnBuscar.UseVisualStyleBackColor = false;
-            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click_1);
-            // 
-            // bttnNuevaVenta
-            // 
-            this.bttnNuevaVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnNuevaVenta.FlatAppearance.BorderSize = 0;
-            this.bttnNuevaVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
-            this.bttnNuevaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnNuevaVenta.Image = global::New_MasterTrade.Properties.Resources.plus1;
-            this.bttnNuevaVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnNuevaVenta.Location = new System.Drawing.Point(16, 628);
-            this.bttnNuevaVenta.Margin = new System.Windows.Forms.Padding(4);
-            this.bttnNuevaVenta.Name = "bttnNuevaVenta";
-            this.bttnNuevaVenta.Size = new System.Drawing.Size(133, 30);
-            this.bttnNuevaVenta.TabIndex = 96;
-            this.bttnNuevaVenta.Text = "NUEVO";
-            this.bttnNuevaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnNuevaVenta.UseVisualStyleBackColor = false;
-            this.bttnNuevaVenta.Click += new System.EventHandler(this.bttnNuevaVenta_Click);
-            // 
-            // comboTasaCambio
-            // 
-            this.comboTasaCambio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboTasaCambio.FormattingEnabled = true;
-            this.comboTasaCambio.Location = new System.Drawing.Point(120, 105);
-            this.comboTasaCambio.Margin = new System.Windows.Forms.Padding(4);
-            this.comboTasaCambio.Name = "comboTasaCambio";
-            this.comboTasaCambio.Size = new System.Drawing.Size(287, 24);
-            this.comboTasaCambio.TabIndex = 108;
-            this.comboTasaCambio.SelectedIndexChanged += new System.EventHandler(this.comboTasaCambio_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(12, 101);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 32);
-            this.label8.TabIndex = 107;
-            this.label8.Text = "TASA DE\r\nCAMBIO";
-            // 
-            // txtMoneda
-            // 
-            this.txtMoneda.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtMoneda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMoneda.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtMoneda.Location = new System.Drawing.Point(826, 171);
-            this.txtMoneda.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMoneda.Multiline = true;
-            this.txtMoneda.Name = "txtMoneda";
-            this.txtMoneda.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtMoneda.Size = new System.Drawing.Size(302, 45);
-            this.txtMoneda.TabIndex = 109;
             // 
             // columnId
             // 
@@ -488,9 +339,133 @@ namespace New_MasterTrade.UserControls
             this.Remover.ReadOnly = true;
             this.Remover.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn1.HeaderText = "Remover";
+            this.dataGridViewImageColumn1.Image = global::New_MasterTrade.Properties.Resources.delete__2_;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // bttnBuscarProductos
+            // 
+            this.bttnBuscarProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnBuscarProductos.FlatAppearance.BorderSize = 0;
+            this.bttnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnBuscarProductos.Image = global::New_MasterTrade.Properties.Resources.boxes;
+            this.bttnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnBuscarProductos.Location = new System.Drawing.Point(118, 510);
+            this.bttnBuscarProductos.Name = "bttnBuscarProductos";
+            this.bttnBuscarProductos.Size = new System.Drawing.Size(100, 24);
+            this.bttnBuscarProductos.TabIndex = 104;
+            this.bttnBuscarProductos.Text = "PRODUCTOS";
+            this.bttnBuscarProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnBuscarProductos.UseVisualStyleBackColor = false;
+            this.bttnBuscarProductos.Click += new System.EventHandler(this.bttnBuscarProductos_Click);
+            // 
+            // bttnGuardar
+            // 
+            this.bttnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnGuardar.FlatAppearance.BorderSize = 0;
+            this.bttnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
+            this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk1;
+            this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnGuardar.Location = new System.Drawing.Point(330, 510);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(100, 24);
+            this.bttnGuardar.TabIndex = 90;
+            this.bttnGuardar.Text = "REGISTRAR";
+            this.bttnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnGuardar.UseVisualStyleBackColor = false;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
+            // 
+            // bttnCancelar
+            // 
+            this.bttnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnCancelar.FlatAppearance.BorderSize = 0;
+            this.bttnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(85)))), ((int)(((byte)(93)))));
+            this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.cancel;
+            this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnCancelar.Location = new System.Drawing.Point(224, 510);
+            this.bttnCancelar.Name = "bttnCancelar";
+            this.bttnCancelar.Size = new System.Drawing.Size(100, 24);
+            this.bttnCancelar.TabIndex = 97;
+            this.bttnCancelar.Text = "CANCELAR";
+            this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnCancelar.UseVisualStyleBackColor = false;
+            this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
+            // 
+            // bttnBuscar
+            // 
+            this.bttnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnBuscar.FlatAppearance.BorderSize = 0;
+            this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnBuscar.Image = global::New_MasterTrade.Properties.Resources.browsing;
+            this.bttnBuscar.Location = new System.Drawing.Point(582, 13);
+            this.bttnBuscar.Name = "bttnBuscar";
+            this.bttnBuscar.Size = new System.Drawing.Size(28, 23);
+            this.bttnBuscar.TabIndex = 87;
+            this.bttnBuscar.UseVisualStyleBackColor = false;
+            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click_1);
+            // 
+            // bttnNuevaVenta
+            // 
+            this.bttnNuevaVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnNuevaVenta.FlatAppearance.BorderSize = 0;
+            this.bttnNuevaVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
+            this.bttnNuevaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnNuevaVenta.Image = global::New_MasterTrade.Properties.Resources.plus1;
+            this.bttnNuevaVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnNuevaVenta.Location = new System.Drawing.Point(12, 510);
+            this.bttnNuevaVenta.Name = "bttnNuevaVenta";
+            this.bttnNuevaVenta.Size = new System.Drawing.Size(100, 24);
+            this.bttnNuevaVenta.TabIndex = 96;
+            this.bttnNuevaVenta.Text = "NUEVO";
+            this.bttnNuevaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnNuevaVenta.UseVisualStyleBackColor = false;
+            this.bttnNuevaVenta.Click += new System.EventHandler(this.bttnNuevaVenta_Click);
+            // 
+            // comboTasaCambio
+            // 
+            this.comboTasaCambio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboTasaCambio.FormattingEnabled = true;
+            this.comboTasaCambio.Location = new System.Drawing.Point(90, 85);
+            this.comboTasaCambio.Name = "comboTasaCambio";
+            this.comboTasaCambio.Size = new System.Drawing.Size(216, 21);
+            this.comboTasaCambio.TabIndex = 108;
+            this.comboTasaCambio.SelectedIndexChanged += new System.EventHandler(this.comboTasaCambio_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.Control;
+            this.label8.Location = new System.Drawing.Point(9, 82);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 26);
+            this.label8.TabIndex = 107;
+            this.label8.Text = "TASA DE\r\nCAMBIO";
+            // 
+            // txtMoneda
+            // 
+            this.txtMoneda.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtMoneda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
+            this.txtMoneda.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtMoneda.Location = new System.Drawing.Point(620, 139);
+            this.txtMoneda.Multiline = true;
+            this.txtMoneda.Name = "txtMoneda";
+            this.txtMoneda.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtMoneda.Size = new System.Drawing.Size(227, 37);
+            this.txtMoneda.TabIndex = 109;
+            // 
             // Vender
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.txtMoneda);
@@ -518,9 +493,8 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.tableCarrito);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Vender";
-            this.Size = new System.Drawing.Size(1144, 678);
+            this.Size = new System.Drawing.Size(858, 551);
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

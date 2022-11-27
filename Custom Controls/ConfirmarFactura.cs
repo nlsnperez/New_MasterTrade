@@ -120,7 +120,7 @@ namespace New_MasterTrade.Custom_Controls
                     crud.Crear(OrdenVenta);
                     crud.CrearDetalle(DetalleVenta);
                     crud.CrearGarantia(crud.Detalles(OrdenVenta.Id), Garantias);
-                    crud.CrearFactura(new Factura(id: 0, vendedor: crud.Vendedor(UserData.Id), ordenVenta: OrdenVenta.Id, metodoPago: (int)comboMetodoPago.SelectedValue, impuesto: (int)comboImpuesto.SelectedValue, total: decimal.Parse(txtTotal.Text)));
+                    crud.CrearFactura(new Factura(id: 0, vendedor: crud.Vendedor(UserData.Id), ordenVenta: OrdenVenta.Id, metodoPago: (int)comboMetodoPago.SelectedValue, impuesto: (int)comboImpuesto.SelectedValue, total_impuesto: decimal.Parse(txtCantidadImpuesto.Text), total: decimal.Parse(txtTotal.Text)));
                     bitacora.Create(UserData.Id, Modulos.Vender, Accion.NuevaVenta(UserData.NombreUsuario, OrdenVenta.NumeroOrden));
                     VentaCompletada = true;
                     this.ParentForm.Close();

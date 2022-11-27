@@ -11,13 +11,15 @@ namespace New_MasterTrade.Objetos
         public int Id { get; set; }
         public string NumeroOrden{ get; set; }
         public int Proveedor { get; set; }
+        public int TasaCambio { get; set; }
         public DateTime Fecha { get; set; }
 
-        public Compra(int id, string numeroOrden, int proveedor, DateTime fecha)
+        public Compra(int id, string numeroOrden, int proveedor, int tasa_cambio, DateTime fecha)
         {
             Id = id;
             NumeroOrden = numeroOrden;
             Proveedor = proveedor;
+            TasaCambio = tasa_cambio;
             Fecha = fecha;
         }
 

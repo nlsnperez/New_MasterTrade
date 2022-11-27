@@ -40,10 +40,6 @@ namespace New_MasterTrade.UserControls
             tableCarrito.AutoGenerateColumns = false;
             ConfigControles("OFF");
             ConfigCarrito();
-
-            comboMoneda.DataSource = crud.Moneda();
-            comboMoneda.ValueMember = "id_mon";
-            comboMoneda.DisplayMember = "nom_mon";
         }
 
 
@@ -98,6 +94,11 @@ namespace New_MasterTrade.UserControls
                     bttnBuscar.Enabled = true;
                     bttnCancelar.Enabled = true;
                     comboMoneda.Enabled = true;
+                    comboTasaCambio.Enabled = true;
+
+                    comboMoneda.ValueMember = "id_mon";
+                    comboMoneda.DisplayMember = "nom_mon";
+                    comboMoneda.DataSource = crud.Moneda();
                     break;
                 case "OFF":
                     txtNumeroOrden.Enabled = false;
@@ -109,6 +110,7 @@ namespace New_MasterTrade.UserControls
                     txtCorreo.Enabled = false;
 
                     comboMoneda.Enabled = false;
+                    comboTasaCambio.Enabled = false;
 
                     bttnNuevaVenta.Enabled = true;
                     bttnBuscarProductos.Enabled = false;
@@ -160,7 +162,7 @@ namespace New_MasterTrade.UserControls
             ConfigControles("ON");
             txtCliente.Focus();
             IdVenta = crud.GetIdVentas();
-            txtNumeroOrden.Text = "MT-V" + IdVenta.ToString("000");
+            txtNumeroOrden.Text = IdVenta.ToString("000000000");
             comboMoneda.SelectedIndex = 0;
         }
 
@@ -285,9 +287,9 @@ namespace New_MasterTrade.UserControls
             for (int i = 0; i <= tableCarrito.Rows.Count - 1; i++)
             {
                 Detalle x = new Detalle(IdVenta,
-                                        Int32.Parse(tableCarrito.Rows[i].Cells[0].Value.ToString()),
-                                        Int32.Parse(tableCarrito.Rows[i].Cells[4].Value.ToString()),
-                                        decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()));
+                                        Int32.Parse(tableCarrito.Rows[i].Cells["columnId"].Value.ToString()),
+                                        Int32.Parse(tableCarrito.Rows[i].Cells["columnCantidad"].Value.ToString()),
+                                        decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioT"].Value.ToString()));
                 detalle.Add(x);
             }
             return detalle;

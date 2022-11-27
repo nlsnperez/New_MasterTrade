@@ -13,15 +13,17 @@ namespace New_MasterTrade.Objetos
         public int OrdenVenta { get; set; }
         public int MetodoPago { get; set; }
         public int Impuesto { get; set; }
+        public decimal TotalImpuesto { get; set; }
         public decimal Total { get; set; }
 
-        public Factura(int id, int vendedor, int ordenVenta, int metodoPago, int impuesto, decimal total)
+        public Factura(int id, int vendedor, int ordenVenta, int metodoPago, int impuesto, decimal total_impuesto, decimal total)
         {
             Id = id;
             Vendedor = vendedor;
             OrdenVenta = ordenVenta;
             MetodoPago = metodoPago;
             Impuesto = impuesto;
+            TotalImpuesto = total_impuesto;
             Total = total;
         }
     }

@@ -18,6 +18,7 @@ namespace New_MasterTrade.UserControls
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
         int IdCompra = 0;
         int IdProveedor = 0;
+        decimal tasa_cambio = 0;
         
         public Comprar()
         {
@@ -86,7 +87,10 @@ namespace New_MasterTrade.UserControls
                     bttnNuevaCompra.Enabled = false;
                     bttnBuscarProductos.Enabled = true;
                     bttnBuscar.Enabled = true;
-                    bttnCancelar.Enabled = true;                    
+                    bttnCancelar.Enabled = true;
+                    ConfigCombo();
+                    comboMoneda.Enabled = true;
+                    comboTasaCambio.Enabled = true;
                     break;
                 case "OFF":
                     txtNumeroOrden.Enabled = false;
@@ -97,13 +101,6 @@ namespace New_MasterTrade.UserControls
                     txtTelefono.Enabled = false;
                     txtCorreo.Enabled = false;
 
-                    comboImpuesto.Enabled = false;
-                    txtImpuesto.Enabled = false;
-                    txtSubTotalBs.Enabled = false;
-                    txtSubTotalUs.Enabled = false;
-                    txtTotalBs.Enabled = false;
-                    txtTotalUs.Enabled = false;
-
                     bttnNuevaCompra.Enabled = true;
                     bttnBuscarProductos.Enabled = false;
                     bttnBuscar.Enabled = false;
@@ -112,7 +109,6 @@ namespace New_MasterTrade.UserControls
                     tableCarrito.DataSource = null;
                     carrito.Rows.Clear();
                     LimpiarCampos();
-                    comboImpuesto.DataSource = null;
                     break;
             }
         }
@@ -127,10 +123,9 @@ namespace New_MasterTrade.UserControls
             txtTelefono.Text = "";
             txtCorreo.Text = "";
 
-            txtSubTotalBs.Text = "0";
-            txtSubTotalUs.Text = "0";
-            txtTotalBs.Text = "0";
-            txtTotalUs.Text = "0";
+            txtSubTotalBs.Text = "0.00";
+            comboMoneda.Enabled = false;
+            comboTasaCambio.Enabled = false;
         }
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)//LIMITA LOS TEXBOXES PARA QUE ACEPTEN SÓLO NÚMEROS
@@ -143,22 +138,17 @@ namespace New_MasterTrade.UserControls
 
         public void ConfigCombo()
         {
-            comboImpuesto.DataSource = crud.Impuestos();
-            comboImpuesto.ValueMember = "id_imp";
-            comboImpuesto.DisplayMember = "por_imp";
-
-            CalcPorcentaje();
-        }
-
-        public void GetTotal()
-        {
-            decimal x = 0;
-            x = (decimal.Parse(txtSubTotalBs.Text) + decimal.Parse(txtImpuesto.Text));
-            txtTotalBs.Text = x.ToString("0.00");
-
-            x = 0;
-            x = decimal.Parse(txtSubTotalUs.Text) + (decimal.Parse(txtImpuesto.Text) / (decimal)8.40);
-            txtTotalUs.Text = x.ToString("0.00");
+            try
+            {
+                comboMoneda.ValueMember = "id_mon";
+                comboMoneda.DisplayMember = "nom_mon";
+                comboMoneda.DataSource = crud.Moneda();
+                comboTasaCambio.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void GetSubTotal()
@@ -168,11 +158,8 @@ namespace New_MasterTrade.UserControls
             {
                 x = x + decimal.Parse(carrito.Rows[i]["P.Total"].ToString());
             }
-            txtSubTotalBs.Text = x.ToString("0.00");
-
-            x = 0;
-            x = decimal.Parse(txtSubTotalBs.Text) / (decimal)8.40;
-            txtSubTotalUs.Text = x.ToString("0.00");
+            decimal total = x / tasa_cambio;
+            txtSubTotalBs.Text = total.ToString("0.00");
         }
 
 
@@ -181,7 +168,7 @@ namespace New_MasterTrade.UserControls
             ConfigControles("ON");
             txtProveedor.Focus();
             IdCompra = crud.GetIdCompras();
-            txtNumeroOrden.Text = "MT-C"+ IdCompra.ToString("00");
+            txtNumeroOrden.Text = IdCompra.ToString("000000000");
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
@@ -192,11 +179,8 @@ namespace New_MasterTrade.UserControls
         public void AddProduct(string[] producto)
         {
             carrito.Rows.Add(producto);
-            comboImpuesto.Enabled = true;
             ConfigCombo();
             GetSubTotal();
-            CalcPorcentaje();
-            GetTotal();
             if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);
             tableCarrito.DataSource = carrito;
             bttnGuardar.Enabled = true;
@@ -210,12 +194,8 @@ namespace New_MasterTrade.UserControls
                 {
                     tableCarrito.Rows.RemoveAt(e.RowIndex);
                     GetSubTotal();
-                    CalcPorcentaje();
-                    GetTotal();
                     if (tableCarrito.Rows.Count < 1)
                     {
-                        comboImpuesto.DataSource = null;
-                        comboImpuesto.Enabled = false;
                         bttnGuardar.Enabled = false;
                     }
                 }
@@ -293,21 +273,12 @@ namespace New_MasterTrade.UserControls
             x.ShowDialog();
         }
 
-        public void CalcPorcentaje()
-        {
-            decimal porcentaje = decimal.Parse(comboImpuesto.Text);
-            decimal total = decimal.Parse(txtSubTotalBs.Text);
-
-            decimal drantotal = (total * porcentaje) / 100;
-
-            txtImpuesto.Text = drantotal.ToString("0.00");
-        }
-
         private Compra GetCompra()
         {
             Compra compra = new Compra(IdCompra,
                                        txtNumeroOrden.Text,
                                        IdProveedor,
+                                       (int)comboTasaCambio.SelectedValue,
                                        System.DateTime.Now);
             return compra;
         }
@@ -319,9 +290,9 @@ namespace New_MasterTrade.UserControls
             for (int i = 0; i <= tableCarrito.Rows.Count - 1; i++)
             {
                 Detalle x = new Detalle(IdCompra,
-                                        Int32.Parse(tableCarrito.Rows[i].Cells[0].Value.ToString()),
-                                        Int32.Parse(tableCarrito.Rows[i].Cells[4].Value.ToString()),
-                                        decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()));
+                                        Int32.Parse(tableCarrito.Rows[i].Cells["columnId"].Value.ToString()),
+                                        Int32.Parse(tableCarrito.Rows[i].Cells["columnCantidad"].Value.ToString()),
+                                        decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioT"].Value.ToString()));
                 detalle.Add(x);
             }
             return detalle;
@@ -343,6 +314,38 @@ namespace New_MasterTrade.UserControls
                     ConfigControles("OFF");
                 }
             }            
+        }
+
+        private void comboMoneda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = (int)comboMoneda.SelectedValue;
+                comboTasaCambio.ValueMember = "id_tca";
+                comboTasaCambio.DisplayMember = "des_tca";
+                comboTasaCambio.DataSource = crud.TasaDeCambio(id);
+                comboTasaCambio.SelectedIndex = 0;
+
+                txtMoneda.Text = comboMoneda.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void comboTasaCambio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = (int)comboTasaCambio.SelectedValue;
+                tasa_cambio = crud.Valor_TasaCambio(id);
+                GetSubTotal();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         //CONFIGURACIONES
     }

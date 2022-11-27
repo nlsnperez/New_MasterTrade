@@ -20,11 +20,12 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `orden_venta`(`id_cli`, `id_tca`, `num_ove`, `fec_ove`, `hor_ove`) VALUES (@cliente,@tasacambio,@norden,@fecha,@hora)";
+                    command.CommandText = "INSERT INTO `orden_venta`(`id_ove`, `id_cli`, `id_tca`, `num_ove`, `fec_ove`, `hor_ove`) VALUES (@id, @cliente,@tasacambio,@norden,@fecha,@hora)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = venta.Cliente; 
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = venta.Id;
+                    command.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = venta.Cliente;
                     command.Parameters.Add("@tasacambio", MySqlDbType.VarChar).Value = venta.Tasa_Cambio; 
                     command.Parameters.Add("@norden", MySqlDbType.VarChar).Value = venta.NumeroOrden;
                     command.Parameters.Add("@fecha", MySqlDbType.Date).Value = System.DateTime.Now.Date.ToString("yyyy-MM-dd");
@@ -84,7 +85,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `factura_venta`(`id_ven`, `id_ove`, `id_imp`, `id_mpa`, `tot_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@impuesto,@metodopago,@total,@activo)";
+                    command.CommandText = "INSERT INTO `factura_venta`(`id_ven`, `id_ove`, `id_imp`, `id_mpa`, `tim_fve`, `tot_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@impuesto,@metodopago,@totalimpuesto,@total,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -92,6 +93,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@ordenventa", MySqlDbType.Int32).Value = factura.OrdenVenta;
                     command.Parameters.Add("@impuesto", MySqlDbType.Int32).Value = factura.Impuesto;
                     command.Parameters.Add("@metodopago", MySqlDbType.Int32).Value = factura.MetodoPago;
+                    command.Parameters.Add("@totalimpuesto", MySqlDbType.Decimal).Value = factura.TotalImpuesto;
                     command.Parameters.Add("@total", MySqlDbType.Decimal).Value = factura.Total;
                     command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
