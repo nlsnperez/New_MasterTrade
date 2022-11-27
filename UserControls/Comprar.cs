@@ -279,6 +279,7 @@ namespace New_MasterTrade.UserControls
                                        txtNumeroOrden.Text,
                                        IdProveedor,
                                        (int)comboTasaCambio.SelectedValue,
+                                       Convert.ToDecimal(txtSubTotalBs.Text),
                                        System.DateTime.Now);
             return compra;
         }
@@ -310,6 +311,8 @@ namespace New_MasterTrade.UserControls
                 {
                     crud.Crear(GetCompra());
                     crud.CrearDetalle(GetDetalle());
+                    Reporte reporte = new Reporte();
+                    reporte.Reporte_Orden_Compra(txtNumeroOrden.Text);
                     bitacora.Create(UserData.Id, Modulos.Comprar, Accion.NuevaCompra(UserData.NombreUsuario, txtNumeroOrden.Text));
                     ConfigControles("OFF");
                 }

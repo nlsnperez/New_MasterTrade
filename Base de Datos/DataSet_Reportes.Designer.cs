@@ -575,19 +575,23 @@ namespace New_MasterTrade.Base_de_Datos {
             
             private global::System.Data.DataColumn columncan_dco;
             
-            private global::System.Data.DataColumn columntbs_dco;
-            
-            private global::System.Data.DataColumn columntus_dco;
-            
             private global::System.Data.DataColumn columnser_pro;
             
             private global::System.Data.DataColumn columnpco_pro;
             
             private global::System.Data.DataColumn columndes_pro;
             
-            private global::System.Data.DataColumn columntbs_oco;
+            private global::System.Data.DataColumn columnhor_oco;
             
-            private global::System.Data.DataColumn columntus_oco;
+            private global::System.Data.DataColumn columndes_tca;
+            
+            private global::System.Data.DataColumn columnval_tca;
+            
+            private global::System.Data.DataColumn columnnom_mon;
+            
+            private global::System.Data.DataColumn columntot_dco;
+            
+            private global::System.Data.DataColumn columntot_oco;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -688,22 +692,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tbs_dcoColumn {
-                get {
-                    return this.columntbs_dco;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tus_dcoColumn {
-                get {
-                    return this.columntus_dco;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn ser_proColumn {
                 get {
                     return this.columnser_pro;
@@ -728,17 +716,49 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tbs_ocoColumn {
+            public global::System.Data.DataColumn hor_ocoColumn {
                 get {
-                    return this.columntbs_oco;
+                    return this.columnhor_oco;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tus_ocoColumn {
+            public global::System.Data.DataColumn des_tcaColumn {
                 get {
-                    return this.columntus_oco;
+                    return this.columndes_tca;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn val_tcaColumn {
+                get {
+                    return this.columnval_tca;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn nom_monColumn {
+                get {
+                    return this.columnnom_mon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn tot_dcoColumn {
+                get {
+                    return this.columntot_dco;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn tot_ocoColumn {
+                get {
+                    return this.columntot_oco;
                 }
             }
             
@@ -779,7 +799,24 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Orden_CompraRow AddOrden_CompraRow(string num_oco, System.DateTime fec_oco, string doc_prv, string raz_prv, string dir_prv, string tel_prv, string cor_prv, int can_dco, double tbs_dco, double tus_dco, string ser_pro, double pco_pro, string des_pro, double tbs_oco, double tus_oco) {
+            public Orden_CompraRow AddOrden_CompraRow(
+                        string num_oco, 
+                        System.DateTime fec_oco, 
+                        string doc_prv, 
+                        string raz_prv, 
+                        string dir_prv, 
+                        string tel_prv, 
+                        string cor_prv, 
+                        int can_dco, 
+                        string ser_pro, 
+                        double pco_pro, 
+                        string des_pro, 
+                        System.TimeSpan hor_oco, 
+                        string des_tca, 
+                        double val_tca, 
+                        string nom_mon, 
+                        double tot_dco, 
+                        double tot_oco) {
                 Orden_CompraRow rowOrden_CompraRow = ((Orden_CompraRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         num_oco,
@@ -790,13 +827,15 @@ namespace New_MasterTrade.Base_de_Datos {
                         tel_prv,
                         cor_prv,
                         can_dco,
-                        tbs_dco,
-                        tus_dco,
                         ser_pro,
                         pco_pro,
                         des_pro,
-                        tbs_oco,
-                        tus_oco};
+                        hor_oco,
+                        des_tca,
+                        val_tca,
+                        nom_mon,
+                        tot_dco,
+                        tot_oco};
                 rowOrden_CompraRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowOrden_CompraRow);
                 return rowOrden_CompraRow;
@@ -827,13 +866,15 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columntel_prv = base.Columns["tel_prv"];
                 this.columncor_prv = base.Columns["cor_prv"];
                 this.columncan_dco = base.Columns["can_dco"];
-                this.columntbs_dco = base.Columns["tbs_dco"];
-                this.columntus_dco = base.Columns["tus_dco"];
                 this.columnser_pro = base.Columns["ser_pro"];
                 this.columnpco_pro = base.Columns["pco_pro"];
                 this.columndes_pro = base.Columns["des_pro"];
-                this.columntbs_oco = base.Columns["tbs_oco"];
-                this.columntus_oco = base.Columns["tus_oco"];
+                this.columnhor_oco = base.Columns["hor_oco"];
+                this.columndes_tca = base.Columns["des_tca"];
+                this.columnval_tca = base.Columns["val_tca"];
+                this.columnnom_mon = base.Columns["nom_mon"];
+                this.columntot_dco = base.Columns["tot_dco"];
+                this.columntot_oco = base.Columns["tot_oco"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -855,20 +896,24 @@ namespace New_MasterTrade.Base_de_Datos {
                 base.Columns.Add(this.columncor_prv);
                 this.columncan_dco = new global::System.Data.DataColumn("can_dco", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncan_dco);
-                this.columntbs_dco = new global::System.Data.DataColumn("tbs_dco", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntbs_dco);
-                this.columntus_dco = new global::System.Data.DataColumn("tus_dco", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntus_dco);
                 this.columnser_pro = new global::System.Data.DataColumn("ser_pro", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnser_pro);
                 this.columnpco_pro = new global::System.Data.DataColumn("pco_pro", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpco_pro);
                 this.columndes_pro = new global::System.Data.DataColumn("des_pro", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndes_pro);
-                this.columntbs_oco = new global::System.Data.DataColumn("tbs_oco", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntbs_oco);
-                this.columntus_oco = new global::System.Data.DataColumn("tus_oco", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntus_oco);
+                this.columnhor_oco = new global::System.Data.DataColumn("hor_oco", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhor_oco);
+                this.columndes_tca = new global::System.Data.DataColumn("des_tca", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndes_tca);
+                this.columnval_tca = new global::System.Data.DataColumn("val_tca", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnval_tca);
+                this.columnnom_mon = new global::System.Data.DataColumn("nom_mon", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnom_mon);
+                this.columntot_dco = new global::System.Data.DataColumn("tot_dco", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntot_dco);
+                this.columntot_oco = new global::System.Data.DataColumn("tot_oco", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntot_oco);
                 this.columnnum_oco.AllowDBNull = false;
                 this.columnnum_oco.MaxLength = 100;
                 this.columnfec_oco.AllowDBNull = false;
@@ -883,15 +928,19 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columncor_prv.AllowDBNull = false;
                 this.columncor_prv.MaxLength = 100;
                 this.columncan_dco.AllowDBNull = false;
-                this.columntbs_dco.AllowDBNull = false;
-                this.columntus_dco.AllowDBNull = false;
                 this.columnser_pro.AllowDBNull = false;
                 this.columnser_pro.MaxLength = 100;
                 this.columnpco_pro.AllowDBNull = false;
                 this.columndes_pro.AllowDBNull = false;
                 this.columndes_pro.MaxLength = 500;
-                this.columntbs_oco.AllowDBNull = false;
-                this.columntus_oco.AllowDBNull = false;
+                this.columnhor_oco.AllowDBNull = false;
+                this.columndes_tca.AllowDBNull = false;
+                this.columndes_tca.MaxLength = 200;
+                this.columnval_tca.AllowDBNull = false;
+                this.columnnom_mon.AllowDBNull = false;
+                this.columnnom_mon.MaxLength = 50;
+                this.columntot_dco.AllowDBNull = false;
+                this.columntot_oco.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2838,6 +2887,8 @@ namespace New_MasterTrade.Base_de_Datos {
             
             private global::System.Data.DataColumn columntot_fve;
             
+            private global::System.Data.DataColumn columntim_fve;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Orden_VentaDataTable() {
@@ -3049,6 +3100,14 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn tim_fveColumn {
+                get {
+                    return this.columntim_fve;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3105,7 +3164,8 @@ namespace New_MasterTrade.Base_de_Datos {
                         string nom_mon, 
                         string des_tca, 
                         double val_tca, 
-                        double tot_fve) {
+                        double tot_fve, 
+                        double tim_fve) {
                 Orden_VentaRow rowOrden_VentaRow = ((Orden_VentaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         num_ove,
@@ -3129,7 +3189,8 @@ namespace New_MasterTrade.Base_de_Datos {
                         nom_mon,
                         des_tca,
                         val_tca,
-                        tot_fve};
+                        tot_fve,
+                        tim_fve};
                 rowOrden_VentaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowOrden_VentaRow);
                 return rowOrden_VentaRow;
@@ -3174,6 +3235,7 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columndes_tca = base.Columns["des_tca"];
                 this.columnval_tca = base.Columns["val_tca"];
                 this.columntot_fve = base.Columns["tot_fve"];
+                this.columntim_fve = base.Columns["tim_fve"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3223,6 +3285,8 @@ namespace New_MasterTrade.Base_de_Datos {
                 base.Columns.Add(this.columnval_tca);
                 this.columntot_fve = new global::System.Data.DataColumn("tot_fve", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntot_fve);
+                this.columntim_fve = new global::System.Data.DataColumn("tim_fve", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntim_fve);
                 this.columnnum_ove.AllowDBNull = false;
                 this.columnnum_ove.MaxLength = 100;
                 this.columnfec_ove.AllowDBNull = false;
@@ -3261,6 +3325,7 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columndes_tca.MaxLength = 200;
                 this.columnval_tca.AllowDBNull = false;
                 this.columntot_fve.AllowDBNull = false;
+                this.columntim_fve.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4557,28 +4622,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double tbs_dco {
-                get {
-                    return ((double)(this[this.tableOrden_Compra.tbs_dcoColumn]));
-                }
-                set {
-                    this[this.tableOrden_Compra.tbs_dcoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double tus_dco {
-                get {
-                    return ((double)(this[this.tableOrden_Compra.tus_dcoColumn]));
-                }
-                set {
-                    this[this.tableOrden_Compra.tus_dcoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string ser_pro {
                 get {
                     return ((string)(this[this.tableOrden_Compra.ser_proColumn]));
@@ -4612,23 +4655,67 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double tbs_oco {
+            public System.TimeSpan hor_oco {
                 get {
-                    return ((double)(this[this.tableOrden_Compra.tbs_ocoColumn]));
+                    return ((global::System.TimeSpan)(this[this.tableOrden_Compra.hor_ocoColumn]));
                 }
                 set {
-                    this[this.tableOrden_Compra.tbs_ocoColumn] = value;
+                    this[this.tableOrden_Compra.hor_ocoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double tus_oco {
+            public string des_tca {
                 get {
-                    return ((double)(this[this.tableOrden_Compra.tus_ocoColumn]));
+                    return ((string)(this[this.tableOrden_Compra.des_tcaColumn]));
                 }
                 set {
-                    this[this.tableOrden_Compra.tus_ocoColumn] = value;
+                    this[this.tableOrden_Compra.des_tcaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double val_tca {
+                get {
+                    return ((double)(this[this.tableOrden_Compra.val_tcaColumn]));
+                }
+                set {
+                    this[this.tableOrden_Compra.val_tcaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string nom_mon {
+                get {
+                    return ((string)(this[this.tableOrden_Compra.nom_monColumn]));
+                }
+                set {
+                    this[this.tableOrden_Compra.nom_monColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double tot_dco {
+                get {
+                    return ((double)(this[this.tableOrden_Compra.tot_dcoColumn]));
+                }
+                set {
+                    this[this.tableOrden_Compra.tot_dcoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double tot_oco {
+                get {
+                    return ((double)(this[this.tableOrden_Compra.tot_ocoColumn]));
+                }
+                set {
+                    this[this.tableOrden_Compra.tot_ocoColumn] = value;
                 }
             }
         }
@@ -5374,6 +5461,17 @@ namespace New_MasterTrade.Base_de_Datos {
                 }
                 set {
                     this[this.tableOrden_Venta.tot_fveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double tim_fve {
+                get {
+                    return ((double)(this[this.tableOrden_Venta.tim_fveColumn]));
+                }
+                set {
+                    this[this.tableOrden_Venta.tim_fveColumn] = value;
                 }
             }
         }
@@ -6243,13 +6341,15 @@ namespace New_MasterTrade.Base_de_Datos.DataSet_ReportesTableAdapters {
             tableMapping.ColumnMappings.Add("tel_prv", "tel_prv");
             tableMapping.ColumnMappings.Add("cor_prv", "cor_prv");
             tableMapping.ColumnMappings.Add("can_dco", "can_dco");
-            tableMapping.ColumnMappings.Add("tbs_dco", "tbs_dco");
-            tableMapping.ColumnMappings.Add("tus_dco", "tus_dco");
             tableMapping.ColumnMappings.Add("ser_pro", "ser_pro");
             tableMapping.ColumnMappings.Add("pco_pro", "pco_pro");
             tableMapping.ColumnMappings.Add("des_pro", "des_pro");
-            tableMapping.ColumnMappings.Add("tbs_oco", "tbs_oco");
-            tableMapping.ColumnMappings.Add("tus_oco", "tus_oco");
+            tableMapping.ColumnMappings.Add("hor_oco", "hor_oco");
+            tableMapping.ColumnMappings.Add("des_tca", "des_tca");
+            tableMapping.ColumnMappings.Add("val_tca", "val_tca");
+            tableMapping.ColumnMappings.Add("nom_mon", "nom_mon");
+            tableMapping.ColumnMappings.Add("tot_dco", "tot_dco");
+            tableMapping.ColumnMappings.Add("tot_oco", "tot_oco");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -6266,20 +6366,25 @@ namespace New_MasterTrade.Base_de_Datos.DataSet_ReportesTableAdapters {
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT oc.num_oco, oc.fec_oco, oc.tbs_oco, oc.tus_oco, p.doc_prv, p.raz_prv, p.dir_prv, p.tel_prv, p.cor_prv, dc.can_dco, dc.tbs_dco, dc.tus_dco, pro.ser_pro, pro.pco_pro, pro.des_pro
-FROM     orden_compra oc, proveedor p, detalle_compra dc, producto pro
-WHERE  oc.id_prv = p.id_prv AND oc.id_oco = dc.id_oco AND dc.id_pro = pro.id_pro AND (oc.id_oco = ?)";
+            this._commandCollection[0].CommandText = @"SELECT oc.num_oco, oc.tot_oco, oc.fec_oco, oc.hor_oco, p.doc_prv, p.raz_prv, p.dir_prv, p.tel_prv, p.cor_prv, tc.des_tca, tc.val_tca, m.nom_mon, dc.can_dco, dc.tot_dco, pro.ser_pro, pro.des_pro, pro.pco_pro
+FROM     orden_compra oc, proveedor p, tasa_cambio tc, moneda m, detalle_compra dc, producto pro
+WHERE  oc.id_prv = p.id_prv AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon AND oc.id_oco = dc.id_oco AND dc.id_pro = pro.id_pro AND (oc.num_oco = ?)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("id_oco", global::System.Data.Odbc.OdbcType.Int, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_oco", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("num_oco", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "num_oco", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet_Reportes.Orden_CompraDataTable dataTable, int id_oco) {
+        public virtual int Fill(DataSet_Reportes.Orden_CompraDataTable dataTable, string num_oco) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(id_oco));
+            if ((num_oco == null)) {
+                throw new global::System.ArgumentNullException("num_oco");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(num_oco));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -6291,9 +6396,14 @@ WHERE  oc.id_prv = p.id_prv AND oc.id_oco = dc.id_oco AND dc.id_pro = pro.id_pro
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet_Reportes.Orden_CompraDataTable GetData(int id_oco) {
+        public virtual DataSet_Reportes.Orden_CompraDataTable GetData(string num_oco) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(id_oco));
+            if ((num_oco == null)) {
+                throw new global::System.ArgumentNullException("num_oco");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(num_oco));
+            }
             DataSet_Reportes.Orden_CompraDataTable dataTable = new DataSet_Reportes.Orden_CompraDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6905,33 +7015,64 @@ WHERE  oc.id_prv = p.id_prv AND oc.id_oco = dc.id_oco AND dc.id_pro = pro.id_pro
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.Odbc.OdbcCommand[2];
+            this._commandCollection = new global::System.Data.Odbc.OdbcCommand[3];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT p.id_pro, p.ser_pro, c.nom_cat, m.nom_mar, mo.nom_mod, p.des_pro, p.pco_pr" +
-                "o, p.pve_pro, p.gar_pro\r\nFROM     producto p, categoria c, marca m, modelo mo\r\nW" +
-                "HERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod";
+            this._commandCollection[0].CommandText = @"SELECT p.id_pro, p.ser_pro, c.nom_cat, m.nom_mar, mo.nom_mod, p.des_pro, p.pco_pro, p.pve_pro, p.gar_pro
+FROM     producto p, categoria c, marca m, modelo mo
+WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND ((c.nom_cat LIKE ?) OR
+                  (m.nom_mar LIKE ?) OR
+                  (mo.nom_mod LIKE ?))";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("nom_cat", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nom_cat", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("nom_mar", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nom_mar", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("nom_mod", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nom_mod", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[1] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT p.id_pro, p.ser_pro, c.nom_cat, m.nom_mar, mo.nom_mod, p.des_pro, p.pco_pro, p.pve_pro, p.gar_pro
+            this._commandCollection[1].CommandText = @"SELECT p.id_pro, c.nom_cat, m.nom_mar, mo.nom_mod, p.ser_pro, p.des_pro, p.pco_pro, p.pve_pro
 FROM     producto p, categoria c, marca m, modelo mo
-WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND (p.act_pro = ?) AND (c.nom_cat = ?) AND (m.nom_mar = ?) AND (mo.nom_mod = ?) AND (p.pco_pro > ?) AND (p.pve_pro > ?)";
+WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND ((p.act_pro = ?) AND (c.nom_cat LIKE ?) OR
+                  (p.act_pro = ?) AND (m.nom_mar LIKE ?) OR
+                  (p.act_pro = ?) AND (mo.nom_mod LIKE ?))";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("act_pro", global::System.Data.Odbc.OdbcType.Int, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "act_pro", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[1].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("nom_cat", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nom_cat", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("act_pro1", global::System.Data.Odbc.OdbcType.Int, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "act_pro", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[1].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("nom_mar", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nom_mar", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("act_pro2", global::System.Data.Odbc.OdbcType.Int, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "act_pro", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[1].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("nom_mod", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nom_mod", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("pco_pro", global::System.Data.Odbc.OdbcType.Decimal, 0, global::System.Data.ParameterDirection.Input, ((byte)(10)), ((byte)(2)), "pco_pro", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("pve_pro", global::System.Data.Odbc.OdbcType.Decimal, 0, global::System.Data.ParameterDirection.Input, ((byte)(10)), ((byte)(2)), "pve_pro", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2] = new global::System.Data.Odbc.OdbcCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT p.id_pro, c.nom_cat, m.nom_mar, mo.nom_mod, p.ser_pro, p.des_pro, p.pco_pr" +
+                "o, p.pve_pro, p.gar_pro\r\nFROM     producto p, categoria c, marca m, modelo mo\r\nW" +
+                "HERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet_Reportes.ProductoDataTable dataTable) {
+        public virtual int Fill(DataSet_Reportes.ProductoDataTable dataTable, string nom_cat, string nom_mar, string nom_mod) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((nom_cat == null)) {
+                throw new global::System.ArgumentNullException("nom_cat");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nom_cat));
+            }
+            if ((nom_mar == null)) {
+                throw new global::System.ArgumentNullException("nom_mar");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nom_mar));
+            }
+            if ((nom_mod == null)) {
+                throw new global::System.ArgumentNullException("nom_mod");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(nom_mod));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -6943,8 +7084,26 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet_Reportes.ProductoDataTable GetData() {
+        public virtual DataSet_Reportes.ProductoDataTable GetData(string nom_cat, string nom_mar, string nom_mod) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((nom_cat == null)) {
+                throw new global::System.ArgumentNullException("nom_cat");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nom_cat));
+            }
+            if ((nom_mar == null)) {
+                throw new global::System.ArgumentNullException("nom_mar");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nom_mar));
+            }
+            if ((nom_mod == null)) {
+                throw new global::System.ArgumentNullException("nom_mod");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(nom_mod));
+            }
             DataSet_Reportes.ProductoDataTable dataTable = new DataSet_Reportes.ProductoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6954,7 +7113,7 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(DataSet_Reportes.ProductoDataTable dataTable, int act_pro, string nom_cat, string nom_mar, string nom_mod, decimal pco_pro, decimal pve_pro) {
+        public virtual int FillBy(DataSet_Reportes.ProductoDataTable dataTable, int act_pro, string nom_cat, int act_pro1, string nom_mar, int act_pro2, string nom_mod) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(act_pro));
             if ((nom_cat == null)) {
@@ -6963,20 +7122,20 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND 
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nom_cat));
             }
+            this.Adapter.SelectCommand.Parameters[2].Value = ((int)(act_pro1));
             if ((nom_mar == null)) {
                 throw new global::System.ArgumentNullException("nom_mar");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(nom_mar));
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(nom_mar));
             }
+            this.Adapter.SelectCommand.Parameters[4].Value = ((int)(act_pro2));
             if ((nom_mod == null)) {
                 throw new global::System.ArgumentNullException("nom_mod");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(nom_mod));
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(nom_mod));
             }
-            this.Adapter.SelectCommand.Parameters[4].Value = ((decimal)(pco_pro));
-            this.Adapter.SelectCommand.Parameters[5].Value = ((decimal)(pve_pro));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -6988,7 +7147,7 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSet_Reportes.ProductoDataTable GetDataBy(int act_pro, string nom_cat, string nom_mar, string nom_mod, decimal pco_pro, decimal pve_pro) {
+        public virtual DataSet_Reportes.ProductoDataTable GetDataBy(int act_pro, string nom_cat, int act_pro1, string nom_mar, int act_pro2, string nom_mod) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(act_pro));
             if ((nom_cat == null)) {
@@ -6997,20 +7156,44 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND 
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nom_cat));
             }
+            this.Adapter.SelectCommand.Parameters[2].Value = ((int)(act_pro1));
             if ((nom_mar == null)) {
                 throw new global::System.ArgumentNullException("nom_mar");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(nom_mar));
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(nom_mar));
             }
+            this.Adapter.SelectCommand.Parameters[4].Value = ((int)(act_pro2));
             if ((nom_mod == null)) {
                 throw new global::System.ArgumentNullException("nom_mod");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(nom_mod));
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(nom_mod));
             }
-            this.Adapter.SelectCommand.Parameters[4].Value = ((decimal)(pco_pro));
-            this.Adapter.SelectCommand.Parameters[5].Value = ((decimal)(pve_pro));
+            DataSet_Reportes.ProductoDataTable dataTable = new DataSet_Reportes.ProductoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByAll(DataSet_Reportes.ProductoDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSet_Reportes.ProductoDataTable GetDataByALL() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             DataSet_Reportes.ProductoDataTable dataTable = new DataSet_Reportes.ProductoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -7506,6 +7689,7 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND 
             tableMapping.ColumnMappings.Add("des_tca", "des_tca");
             tableMapping.ColumnMappings.Add("val_tca", "val_tca");
             tableMapping.ColumnMappings.Add("tot_fve", "tot_fve");
+            tableMapping.ColumnMappings.Add("tim_fve", "tim_fve");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -7522,10 +7706,10 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND 
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT fv.id_fve, fv.tot_fve, u.nom_usu, ov.num_ove, ov.fec_ove, ov.hor_ove, dv.can_dve, dv.tot_dve, p.ser_pro, p.des_pro, p.pve_pro, c.doc_cli, c.raz_cli, c.dir_cli, c.tel_cli, c.cor_cli, m.nom_mon, tc.des_tca, tc.val_tca, i.des_imp, i.por_imp, 
+            this._commandCollection[0].CommandText = @"SELECT fv.id_fve, fv.tot_fve, fv.tim_fve, u.nom_usu, ov.num_ove, ov.fec_ove, ov.hor_ove, dv.can_dve, dv.tot_dve, p.ser_pro, p.des_pro, p.pve_pro, c.doc_cli, c.raz_cli, c.dir_cli, c.tel_cli, c.cor_cli, m.nom_mon, tc.des_tca, tc.val_tca, i.des_imp, i.por_imp, 
                   mp.des_mpa
 FROM     factura_venta fv, vendedor v, usuario u, orden_venta ov, detalle_venta dv, producto p, cliente c, tasa_cambio tc, moneda m, impuesto i, metodo_pago mp
-WHERE  fv.id_ven = v.id_ven AND v.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AND dv.id_ove = ov.id_ove AND dv.id_pro = p.id_pro AND ov.id_cli = c.id_cli AND ov.id_tca = tc.id_tca AND tc.id_mon = m.id_mon AND fv.id_imp = i.id_imp AND 
+WHERE  fv.id_ven = v.id_ven AND v.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AND ov.id_ove = dv.id_ove AND dv.id_pro = p.id_pro AND ov.id_cli = c.id_cli AND ov.id_tca = tc.id_tca AND tc.id_mon = m.id_mon AND fv.id_imp = i.id_imp AND 
                   fv.id_mpa = mp.id_mpa AND (ov.num_ove = ?)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("num_ove", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "num_ove", global::System.Data.DataRowVersion.Current, false, null));

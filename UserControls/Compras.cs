@@ -47,7 +47,7 @@ namespace New_MasterTrade.UserControls
         {
             if (e.ColumnIndex == 4)
             {
-                int x = Convert.ToInt32(tablaCompras.Rows[e.RowIndex].Cells[0].Value);
+                string x = tablaCompras.Rows[e.RowIndex].Cells["NOrden"].Value.ToString();
                 Reporte reporte = new Reporte();
                 reporte.Reporte_Orden_Compra(x);
             }

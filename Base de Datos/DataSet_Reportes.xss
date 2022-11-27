@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:Orden_Compra" ZOrder="9" X="19" Y="17" Height="365" Width="248" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
     <Shape ID="DesignTable:Cliente" ZOrder="3" X="275" Y="21" Height="261" Width="218" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="191" />
     <Shape ID="DesignTable:Proveedor" ZOrder="8" X="498" Y="23" Height="261" Width="228" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="191" />
-    <Shape ID="DesignTable:Producto" ZOrder="2" X="275" Y="289" Height="342" Width="440" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="239" />
+    <Shape ID="DesignTable:Producto" ZOrder="2" X="275" Y="288" Height="344" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="239" />
     <Shape ID="DesignTable:Venta" ZOrder="7" X="780" Y="23" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="28" OldDataTableHeight="0" SplitterPosition="0" />
     <Shape ID="DesignTable:Compra" ZOrder="6" X="18" Y="387" Height="227" Width="248" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="168" />
     <Shape ID="DesignTable:Orden_Venta" ZOrder="1" X="946" Y="21" Height="365" Width="259" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />

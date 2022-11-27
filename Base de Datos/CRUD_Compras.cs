@@ -20,7 +20,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `orden_compra`(`id_oco`, `id_prv`, `id_tca`, `num_oco`, `fec_oco`, `hor_oco`, `act_oco`) VALUES (@id, @proveedor,@tasacambio,@norden,@fecha,@hora,@activo)";
+                    command.CommandText = "INSERT INTO `orden_compra`(`id_oco`, `id_prv`, `id_tca`, `num_oco`, `tot_oco`, `fec_oco`, `hor_oco`, `act_oco`) VALUES (@id, @proveedor,@tasacambio,@norden,@total,@fecha,@hora,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -28,6 +28,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@proveedor", MySqlDbType.Int32).Value = compra.Proveedor;
                     command.Parameters.Add("@tasacambio", MySqlDbType.Int32).Value = compra.TasaCambio;
                     command.Parameters.Add("@norden", MySqlDbType.VarChar).Value = compra.NumeroOrden;
+                    command.Parameters.Add("@total", MySqlDbType.Decimal).Value = compra.Total;
                     command.Parameters.Add("@fecha", MySqlDbType.Date).Value = System.DateTime.Today;
                     command.Parameters.Add("@hora", MySqlDbType.Time).Value = System.DateTime.Now.TimeOfDay;
                     command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;

@@ -23,11 +23,11 @@ namespace New_MasterTrade.Objetos
         Vendedor_EficienteTableAdapter vendedor_eficiente = new Vendedor_EficienteTableAdapter();
         //TableAdapters
 
-        public void Reporte_Orden_Compra(int id)
+        public void Reporte_Orden_Compra(string numero_orden)
         {
             try
             {
-                orden_compra.Fill(dataset.Orden_Compra, id);
+                orden_compra.Fill(dataset.Orden_Compra, numero_orden);
                 OrdenCompra_Reporte reporte = new OrdenCompra_Reporte();
                 string direccion = @"~\Reportes\OrdenCompra_Reporte.rpt";
                 reporte.Load(direccion);
@@ -135,7 +135,7 @@ namespace New_MasterTrade.Objetos
         {
             try
             {
-                producto.Fill(dataset.Producto);
+                producto.FillByAll(dataset.Producto);
                 Producto_Reporte reporte = new Producto_Reporte();  
                 string direccion = @"~\Reportes\Producto_Reporte.rpt";
                 reporte.Load(direccion);
@@ -149,11 +149,12 @@ namespace New_MasterTrade.Objetos
             }
         }
 
-        public void Reporte_ProductoParametro(int estado, string categoria, string marca, string modelo, decimal pcompra, decimal pventa)
+        public void Reporte_ProductoParametro(int estado, string filtro)
         {
+            filtro += "%";
             try
             {
-                producto.FillBy(dataset.Producto, estado, categoria, marca, modelo, pcompra, pventa);
+                producto.FillBy(dataset.Producto, estado, filtro, estado, filtro, estado, filtro);
                 Producto_Reporte reporte = new Producto_Reporte();
                 string direccion = @"~\Reportes\Producto_Reporte.rpt";
                 reporte.Load(direccion);

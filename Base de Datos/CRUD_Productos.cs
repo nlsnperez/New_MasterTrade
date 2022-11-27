@@ -542,5 +542,13 @@ namespace New_MasterTrade.Base_de_Datos
             }
             return resultado;
         }
+
+        public DataTable TablaSeleccionada(string filtro)
+        {
+            DataTable tablafiltrada = Categorias();
+            if (filtro == "MARCAS") tablafiltrada = Marcas();
+            if (filtro == "MODELOS") tablafiltrada = Modelos();
+            return tablafiltrada;
+        }
     }
 }
