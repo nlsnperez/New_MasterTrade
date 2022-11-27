@@ -134,12 +134,6 @@
     <Compile Include="Custom Controls\BuscarClientes.Designer.cs">
       <DependentUpon>BuscarClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Custom Controls\Confirmar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Custom Controls\Confirmar.Designer.cs">
-      <DependentUpon>Confirmar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Custom Controls\ConfirmarFactura.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -415,9 +409,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\BuscarClientes.resx">
       <DependentUpon>BuscarClientes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Custom Controls\Confirmar.resx">
-      <DependentUpon>Confirmar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\ConfirmarFactura.resx">
       <DependentUpon>ConfirmarFactura.cs</DependentUpon>

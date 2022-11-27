@@ -132,6 +132,28 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
+        public DataTable TablaActivos()
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `proveedor` WHERE act_prv = 1", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
         public DataTable BuscarTabla(string filtro)
         {
             try
@@ -141,6 +163,28 @@ namespace New_MasterTrade.Base_de_Datos
                 using (MySqlCommand command = new MySqlCommand())
                 {
                     MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `proveedor`  WHERE `doc_prv` LIKE '%" + filtro + "%' OR `raz_prv` LIKE '%" + filtro + "%' ORDER BY id_prv ASC", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla productos encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
+
+        public DataTable BuscarTablaActivos(string filtro)
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `proveedor`  WHERE act = 1 AND (`doc_prv` LIKE '%" + filtro + "%' OR `raz_prv` LIKE '%" + filtro + "%') ORDER BY id_prv ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }

@@ -194,7 +194,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Impuestos()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `impuesto`";
+            String sql = "SELECT * FROM `impuesto` WHERE act_imp = 1";
             con.Open();
             try
             {
@@ -246,7 +246,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable MetodosPago()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `metodo_pago` ORDER BY des_mpa ASC";
+            String sql = "SELECT * FROM `metodo_pago` WHERE act_mpa = 1 ORDER BY des_mpa ASC";
             con.Open();
             try
             {
@@ -270,7 +270,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Moneda()
         {
             DataTable moneda = new DataTable();
-            String sql = "SELECT * FROM `moneda` ORDER BY id_mon ASC";
+            String sql = "SELECT * FROM `moneda` WHERE act_mon = 1 ORDER BY id_mon ASC";
             con.Open();
             try
             {
@@ -294,7 +294,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Tasa_Cambio(int id)
         {
             DataTable tasa_cambio = new DataTable();
-            String sql = "SELECT * FROM `tasa_cambio` WHERE id_mon = "+id;
+            String sql = "SELECT * FROM `tasa_cambio` WHERE act_tca = 1 AND id_mon = "+id;
             con.Open();
             try
             {

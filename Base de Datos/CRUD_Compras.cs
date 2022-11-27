@@ -177,7 +177,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Moneda()
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT * FROM moneda ORDER BY id_mon ASC";
+            String sql = "SELECT * FROM moneda WHERE act_mon = 1 ORDER BY id_mon ASC";
             con.Open();
             try
             {
@@ -201,7 +201,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable TasaDeCambio(int id)
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT * FROM tasa_cambio WHERE id_mon = "+id+" ORDER BY id_tca ASC";
+            String sql = "SELECT * FROM tasa_cambio WHERE act_tca = 1 AND id_mon = "+id;
             con.Open();
             try
             {

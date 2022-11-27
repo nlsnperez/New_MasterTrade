@@ -134,6 +134,27 @@ namespace New_MasterTrade.Base_de_Datos
             }
             return null;
         }
+        public DataTable TablaActivos()
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `cliente` WHERE act_cli = 1", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
 
         public DataTable BuscarTabla(string filtro)
         {
@@ -144,6 +165,28 @@ namespace New_MasterTrade.Base_de_Datos
                 using (MySqlCommand command = new MySqlCommand())
                 {
                     MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `cliente`  WHERE `doc_cli` LIKE '%" + filtro + "%' OR `raz_cli` LIKE '%" + filtro + "%' ORDER BY id_cli ASC", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla productos encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
+
+        public DataTable BuscarTablaActivos(string filtro)
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `cliente`  WHERE act_cli = 1 AND (`doc_cli` LIKE '%" + filtro + "%' OR `raz_cli` LIKE '%" + filtro + "%') ORDER BY id_cli ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }

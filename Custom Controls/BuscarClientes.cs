@@ -29,7 +29,7 @@ namespace New_MasterTrade.Custom_Controls
             if (crud.Tabla().Rows.Count > 0)
             {
                 tablaPersonas.AutoGenerateColumns = false;
-                tablaPersonas.DataSource = crud.Tabla();
+                tablaPersonas.DataSource = crud.TablaActivos();
                 tablaPersonas.ClearSelection();
             }
             else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -47,7 +47,7 @@ namespace New_MasterTrade.Custom_Controls
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-            tablaPersonas.DataSource = crud.BuscarTabla(txtBuscar.Text);
+            tablaPersonas.DataSource = crud.BuscarTablaActivos(txtBuscar.Text);
         }
     }
 }

@@ -71,17 +71,17 @@ namespace New_MasterTrade.UserControls
             {
                 comboMarca.ValueMember = "id_mar";
                 comboMarca.DisplayMember = "nom_mar";
-                comboMarca.DataSource = crud.Marcas();
+                comboMarca.DataSource = crud.MarcasActivas();
                 comboMarca.SelectedIndex = 0;
 
                 comboCategoria.ValueMember = "id_cat";
                 comboCategoria.DisplayMember = "nom_cat";
-                comboCategoria.DataSource = crud.Categorias();
+                comboCategoria.DataSource = crud.CategoriasActivas();
                 comboCategoria.SelectedIndex = 0;
 
                 comboModelo.ValueMember = "id_mod";
                 comboModelo.DisplayMember = "nom_mod";
-                comboModelo.DataSource = crud.Modelos();
+                comboModelo.DataSource = crud.ModelosActivos();
                 comboModelo.SelectedIndex = 0;
 
                 comboGarantia.Items.Add("3 DÍAS");
