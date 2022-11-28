@@ -116,18 +116,34 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGuardar_Click(object sender, EventArgs e)
         {
-            if (GetProducto().IsEmpty())
+            if (ProcesoDeAprobacion(GetProducto()))
             {
-                MessageBox.Show("Complete todos los campos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                if (MessageBox.Show("¿Desea registrar el producto: " + txtSerial.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea registrar este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     crud.Create(GetProducto());
                     Limpiar();
                 }
             }
+        }
+
+        public bool ProcesoDeAprobacion(Producto producto)
+        {
+            if (producto.IsEmpty())
+            {
+                MessageBox.Show("Complete todos los campos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!producto.PrecioCorrecto())
+            {
+                MessageBox.Show("El precio de venta no puede ser menor al precio de compra", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (crud.ProductoDuplicado(producto.Serial))
+            {
+                MessageBox.Show("Ya existe un producto registrado con el serial ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
 
         public int DiasDeGarantía()
@@ -163,6 +179,7 @@ namespace New_MasterTrade.UserControls
         {
             try
             {
+                int cantidad = crud.ProductosComprados(producto.Id) - crud.ProductosVendidos(producto.Id);
                 byte[] imagen = producto.Imagen;
                 MemoryStream ms = new MemoryStream(imagen);
                 pbImagen.Image = Image.FromStream(ms);
@@ -175,6 +192,7 @@ namespace New_MasterTrade.UserControls
                 txtDescripcion.Text = producto.Descripcion;
                 txtPrecioCompra.Text = producto.Precio_Compra.ToString();
                 txtPrecioVenta.Text = producto.Precio_Venta.ToString();
+                txtCantidad.Text = cantidad.ToString();
                 comboCategoria.SelectedIndex = IndexGarantia(producto.Garantia);
 
                 txtBuscar.Text = "";

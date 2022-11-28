@@ -41,5 +41,14 @@ namespace New_MasterTrade.Objetos
             }
             return false;
         }
+
+        public bool PrecioCorrecto()
+        {
+            if (Precio_Compra > Precio_Venta)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

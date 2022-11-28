@@ -254,5 +254,28 @@ namespace New_MasterTrade.Base_de_Datos
             }
             return resultado;
         }
+
+        public bool ClienteDuplicado(Persona persona)
+        {
+            bool duplicado = false;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM cliente WHERE doc_cli = '" + persona.Documento+"'", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) duplicado = true;
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return duplicado;
+        }
     }
 }

@@ -52,9 +52,9 @@ namespace New_MasterTrade.UserControls
         public void ConfigLongitud()
         {
             txtDocumento.MaxLength = 9;
-            txtRazonSocial.MaxLength = 100;
-            txtDireccion.MaxLength = 500;
-            txtTelefono.MaxLength = 15;
+            txtRazonSocial.MaxLength = 50;
+            txtDireccion.MaxLength = 100;
+            txtTelefono.MaxLength = 12;
             txtCorreo.MaxLength = 100;
         }
 
@@ -105,50 +105,66 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGuardar_Click(object sender, EventArgs e)
         {
-            if (GetPersona().IsEmpty())
+            if (ProcesoDeAdmicion(GetPersona()))
             {
-                MessageBox.Show("Complete todos los campos!");
-            }
-            else
-            {
-                if (!GetPersona().ValidDocumento())
+                if (MessageBox.Show("¿Desea registrar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show(GetPersona().Documento + " no es un número de documento válido. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    if (!GetPersona().ValidPhone())
+                    if (comboOcupacion.SelectedIndex == 0)
                     {
-                        MessageBox.Show(GetPersona().Telefono + " no es un número de teléfono válido. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        crud2.Create(GetPersona());
+                        bitacora.Create(UserData.Id, Modulos.Clientes, Accion.NuevoRegistro(UserData.NombreUsuario, GetPersona().Documento));
+                        Limpiar();
                     }
                     else
                     {
-                        if (!GetPersona().ValidEmail())
-                        {
-                            MessageBox.Show(GetPersona().Correo.ToUpper() + " no es una dirección de correo válida. Inténtelo de nuevo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else
-                        {
-                            if (MessageBox.Show("¿Desea registrar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                            {
-                                if (comboOcupacion.SelectedIndex == 0)
-                                {
-                                    crud2.Create(GetPersona());
-                                    bitacora.Create(UserData.Id, Modulos.Clientes, Accion.NuevoRegistro(UserData.NombreUsuario, GetPersona().Documento));
-                                    Limpiar();
-                                }
-                                else
-                                {
-                                    crud.Create(GetPersona());
-                                    bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.NuevoRegistro(UserData.NombreUsuario, GetPersona().Documento));
-                                    Limpiar();
-                                }                                
-                            }
-                        }
+                        crud.Create(GetPersona());
+                        bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.NuevoRegistro(UserData.NombreUsuario, GetPersona().Documento));
+                        Limpiar();
                     }
                 }
-
             }
+        }
+
+        public bool ProcesoDeAdmicion(Persona persona)
+        {
+            if (persona.IsEmpty())
+            {
+                MessageBox.Show("Complete todos los campos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!persona.ValidDocumento())
+            {
+                MessageBox.Show("El documento introducido es inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!persona.ValidPhone())
+            {
+                MessageBox.Show("El número de teléfono introducido es inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!persona.ValidEmail())
+            {
+                MessageBox.Show("El correo electrónico introducido es inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            switch (comboOcupacion.Text)
+            {
+                case "CLIENTE":
+                    if (crud2.ClienteDuplicado(persona))
+                    {
+                        MessageBox.Show("Ya existe un cliente con el documento de identidad introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                    break;
+                case "PROVEEDOR":
+                    if (crud.ProveedorDuplicado(persona))
+                    {
+                        MessageBox.Show("Ya existe un proveedor con el documento de identidad introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                    break;
+            }
+            return true;
         }
 
         private void bttnActualizar_Click(object sender, EventArgs e)
