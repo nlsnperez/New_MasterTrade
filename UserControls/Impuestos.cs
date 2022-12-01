@@ -164,12 +164,20 @@ namespace New_MasterTrade.UserControls
             }
             else
             {
-                if (MessageBox.Show("Desea registrar este impuesto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                decimal x = Convert.ToDecimal(txtPorcentaje.Text);
+                if (x < 1)
                 {
-                    decimal porcentaje = Convert.ToDecimal(txtPorcentaje.Text);
-                    crud.Create_Impuesto(txtNombre.Text, porcentaje);
-                    TablaImpuestos_Refresh();
-                    ConfigControles("INICIO");
+                    MessageBox.Show("Ingrese un porcentaje válido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    if (MessageBox.Show("Desea registrar este impuesto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        decimal porcentaje = Convert.ToDecimal(txtPorcentaje.Text);
+                        crud.Create_Impuesto(txtNombre.Text, porcentaje);
+                        TablaImpuestos_Refresh();
+                        ConfigControles("INICIO");
+                    }
                 }
             }
         }

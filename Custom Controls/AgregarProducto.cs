@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Objetos;
 using New_MasterTrade.UserControls;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,21 @@ namespace New_MasterTrade.Custom_Controls
     {
         private Comprar Compra;
         private Vender Venta;
-        CRUD_Ventas crud;
+        private int Id;
+        CRUD_Ventas crud = new CRUD_Ventas();
+        CRUD_Productos crud_productos = new CRUD_Productos();
         int CantMax = 0;
-        public AgregarProducto(Comprar compra, Vender venta)
+        public AgregarProducto(Comprar compra, Vender venta, int id)
         {
             InitializeComponent();
-            Config();
-            crud = new CRUD_Ventas();
             this.Compra = compra;
             this.Venta = venta;
+            this.Id = id;
+            if (Compra != null)
+            {
+                lblCantidad.Visible = false;
+            }
+            Config();
         }
 
         public void Config()
@@ -33,20 +40,26 @@ namespace New_MasterTrade.Custom_Controls
             txtDescripcion.Enabled = false;
             txtSerial.Enabled = false;
             txtPrecio.Enabled = false;
+            OrdenarDatos();
             txtCantidad.Focus();
         }
 
-        public void SetTexts(string[] producto)
+        public void OrdenarDatos()
         {
-            txtId.Text = producto[0];
-            if (Compra == null) CantMax = crud.CantidadMax(Int32.Parse(txtId.Text));
-            txtSerial.Text = producto[1];
-            txtDescripcion.Text = producto[2];
-            txtCantidad.Text = producto[3];
+            Producto x = crud_productos.Producto(Id);
+            txtId.Text = x.Id.ToString();
+            if (Compra == null)
+            {
+                CantMax = crud.CantidadMax(x.Id);
+                lblCantidad.Text += " " + CantMax.ToString()+" UNIDADES";
+            }
+            txtSerial.Text = x.Serial;
+            txtDescripcion.Text = x.Descripcion;
+            txtCantidad.Text = "1";
             if (Venta == null)
             {
-                txtPrecio.Text = producto[4];
-            }else txtPrecio.Text = producto[5];
+                txtPrecio.Text = x.Precio_Compra.ToString();
+            }else txtPrecio.Text = x.Precio_Venta.ToString();
 
         }
 
@@ -76,7 +89,11 @@ namespace New_MasterTrade.Custom_Controls
             }
             else
             {
-                if (Int32.Parse(txtCantidad.Text) > CantMax) txtCantidad.Text = CantMax.ToString();
+                if (Int32.Parse(txtCantidad.Text) > CantMax)
+                {
+                    txtCantidad.Text = CantMax.ToString();
+                    MessageBox.Show("La cantidad introducida excede a la cantidad de productos en stock por lo que ha sido ajustada automaticamente", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 decimal x = decimal.Parse(txtPrecio.Text) * decimal.Parse(txtCantidad.Text);
                 string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString()};
                 Venta.AddProduct(producto, CantMax);

@@ -105,6 +105,7 @@
     <Compile Include="Base de Datos\Conexion.cs" />
     <Compile Include="Base de Datos\CRUD_Bitacora.cs" />
     <Compile Include="Base de Datos\CRUD_CAMAMO.cs" />
+    <Compile Include="Base de Datos\CRUD_Garantia.cs" />
     <Compile Include="Base de Datos\CRUD_IMMOTA.cs" />
     <Compile Include="Base de Datos\CRUD_Proveedores.cs" />
     <Compile Include="Base de Datos\CRUDExtras.cs" />
@@ -282,6 +283,12 @@
     <Compile Include="UserControls\FormularioUsuarios.Designer.cs">
       <DependentUpon>FormularioUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Garantias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Garantias.Designer.cs">
+      <DependentUpon>Garantias.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Impuestos.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -293,6 +300,12 @@
     </Compile>
     <Compile Include="UserControls\Marcas.Designer.cs">
       <DependentUpon>Marcas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MetodosDePago.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MetodosDePago.Designer.cs">
+      <DependentUpon>MetodosDePago.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Modelos.cs">
       <SubType>UserControl</SubType>
@@ -483,11 +496,17 @@
     <EmbeddedResource Include="UserControls\FormularioUsuarios.resx">
       <DependentUpon>FormularioUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Garantias.resx">
+      <DependentUpon>Garantias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Impuestos.resx">
       <DependentUpon>Impuestos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Marcas.resx">
       <DependentUpon>Marcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MetodosDePago.resx">
+      <DependentUpon>MetodosDePago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Modelos.resx">
       <DependentUpon>Modelos.cs</DependentUpon>

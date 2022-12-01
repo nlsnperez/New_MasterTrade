@@ -3485,14 +3485,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             private global::System.Data.DataColumn columnid_ove;
             
-            private global::System.Data.DataColumn columnExpr1;
-            
-            private global::System.Data.DataColumn columntbs_dve;
-            
-            private global::System.Data.DataColumn columntus_dve;
-            
-            private global::System.Data.DataColumn columnExpr2;
-            
             private global::System.Data.DataColumn columnid_cli;
             
             private global::System.Data.DataColumn columnnum_ove;
@@ -3505,15 +3497,15 @@ namespace New_MasterTrade.Base_de_Datos {
             
             private global::System.Data.DataColumn columnid_ven;
             
-            private global::System.Data.DataColumn columnExpr3;
-            
             private global::System.Data.DataColumn columnid_imp;
             
             private global::System.Data.DataColumn columnid_mpa;
             
-            private global::System.Data.DataColumn columntbs_fve;
+            private global::System.Data.DataColumn columntot_dve;
             
-            private global::System.Data.DataColumn columntus_fve;
+            private global::System.Data.DataColumn columntot_fve;
+            
+            private global::System.Data.DataColumn columntim_fve;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -3654,38 +3646,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Expr1Column {
-                get {
-                    return this.columnExpr1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tbs_dveColumn {
-                get {
-                    return this.columntbs_dve;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tus_dveColumn {
-                get {
-                    return this.columntus_dve;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Expr2Column {
-                get {
-                    return this.columnExpr2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn id_cliColumn {
                 get {
                     return this.columnid_cli;
@@ -3734,14 +3694,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Expr3Column {
-                get {
-                    return this.columnExpr3;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn id_impColumn {
                 get {
                     return this.columnid_imp;
@@ -3758,17 +3710,25 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tbs_fveColumn {
+            public global::System.Data.DataColumn tot_dveColumn {
                 get {
-                    return this.columntbs_fve;
+                    return this.columntot_dve;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tus_fveColumn {
+            public global::System.Data.DataColumn tot_fveColumn {
                 get {
-                    return this.columntus_fve;
+                    return this.columntot_fve;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn tim_fveColumn {
+                get {
+                    return this.columntim_fve;
                 }
             }
             
@@ -3821,19 +3781,16 @@ namespace New_MasterTrade.Base_de_Datos {
                         byte[] img_pro, 
                         int gar_pro, 
                         int id_ove, 
-                        int Expr1, 
-                        double tbs_dve, 
-                        double tus_dve, 
                         int id_cli, 
                         string num_ove, 
                         System.DateTime fec_ove, 
                         System.TimeSpan hor_ove, 
                         int id_ven, 
-                        int Expr3, 
                         int id_imp, 
                         int id_mpa, 
-                        double tbs_fve, 
-                        double tus_fve) {
+                        double tot_dve, 
+                        double tot_fve, 
+                        double tim_fve) {
                 Producto_VendidoRow rowProducto_VendidoRow = ((Producto_VendidoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ser_pro,
@@ -3849,21 +3806,17 @@ namespace New_MasterTrade.Base_de_Datos {
                         gar_pro,
                         null,
                         id_ove,
-                        Expr1,
-                        tbs_dve,
-                        tus_dve,
-                        null,
                         id_cli,
                         num_ove,
                         fec_ove,
                         hor_ove,
                         null,
                         id_ven,
-                        Expr3,
                         id_imp,
                         id_mpa,
-                        tbs_fve,
-                        tus_fve};
+                        tot_dve,
+                        tot_fve,
+                        tim_fve};
                 rowProducto_VendidoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProducto_VendidoRow);
                 return rowProducto_VendidoRow;
@@ -3909,21 +3862,17 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columngar_pro = base.Columns["gar_pro"];
                 this.columnid_dve = base.Columns["id_dve"];
                 this.columnid_ove = base.Columns["id_ove"];
-                this.columnExpr1 = base.Columns["Expr1"];
-                this.columntbs_dve = base.Columns["tbs_dve"];
-                this.columntus_dve = base.Columns["tus_dve"];
-                this.columnExpr2 = base.Columns["Expr2"];
                 this.columnid_cli = base.Columns["id_cli"];
                 this.columnnum_ove = base.Columns["num_ove"];
                 this.columnfec_ove = base.Columns["fec_ove"];
                 this.columnhor_ove = base.Columns["hor_ove"];
                 this.columnid_fve = base.Columns["id_fve"];
                 this.columnid_ven = base.Columns["id_ven"];
-                this.columnExpr3 = base.Columns["Expr3"];
                 this.columnid_imp = base.Columns["id_imp"];
                 this.columnid_mpa = base.Columns["id_mpa"];
-                this.columntbs_fve = base.Columns["tbs_fve"];
-                this.columntus_fve = base.Columns["tus_fve"];
+                this.columntot_dve = base.Columns["tot_dve"];
+                this.columntot_fve = base.Columns["tot_fve"];
+                this.columntim_fve = base.Columns["tim_fve"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3955,14 +3904,6 @@ namespace New_MasterTrade.Base_de_Datos {
                 base.Columns.Add(this.columnid_dve);
                 this.columnid_ove = new global::System.Data.DataColumn("id_ove", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_ove);
-                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr1);
-                this.columntbs_dve = new global::System.Data.DataColumn("tbs_dve", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntbs_dve);
-                this.columntus_dve = new global::System.Data.DataColumn("tus_dve", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntus_dve);
-                this.columnExpr2 = new global::System.Data.DataColumn("Expr2", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr2);
                 this.columnid_cli = new global::System.Data.DataColumn("id_cli", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_cli);
                 this.columnnum_ove = new global::System.Data.DataColumn("num_ove", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3975,16 +3916,16 @@ namespace New_MasterTrade.Base_de_Datos {
                 base.Columns.Add(this.columnid_fve);
                 this.columnid_ven = new global::System.Data.DataColumn("id_ven", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_ven);
-                this.columnExpr3 = new global::System.Data.DataColumn("Expr3", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr3);
                 this.columnid_imp = new global::System.Data.DataColumn("id_imp", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_imp);
                 this.columnid_mpa = new global::System.Data.DataColumn("id_mpa", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_mpa);
-                this.columntbs_fve = new global::System.Data.DataColumn("tbs_fve", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntbs_fve);
-                this.columntus_fve = new global::System.Data.DataColumn("tus_fve", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntus_fve);
+                this.columntot_dve = new global::System.Data.DataColumn("tot_dve", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntot_dve);
+                this.columntot_fve = new global::System.Data.DataColumn("tot_fve", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntot_fve);
+                this.columntim_fve = new global::System.Data.DataColumn("tim_fve", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntim_fve);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid_pro,
                                 this.columnid_dve,
@@ -4005,19 +3946,11 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columnpco_pro.AllowDBNull = false;
                 this.columnpve_pro.AllowDBNull = false;
                 this.columnimg_pro.AllowDBNull = false;
-                this.columngar_pro.AllowDBNull = false;
                 this.columnid_dve.AutoIncrement = true;
                 this.columnid_dve.AutoIncrementSeed = -1;
                 this.columnid_dve.AutoIncrementStep = -1;
                 this.columnid_dve.AllowDBNull = false;
                 this.columnid_ove.AllowDBNull = false;
-                this.columnExpr1.AllowDBNull = false;
-                this.columntbs_dve.AllowDBNull = false;
-                this.columntus_dve.AllowDBNull = false;
-                this.columnExpr2.AutoIncrement = true;
-                this.columnExpr2.AutoIncrementSeed = -1;
-                this.columnExpr2.AutoIncrementStep = -1;
-                this.columnExpr2.AllowDBNull = false;
                 this.columnid_cli.AllowDBNull = false;
                 this.columnnum_ove.AllowDBNull = false;
                 this.columnnum_ove.MaxLength = 100;
@@ -4028,11 +3961,11 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columnid_fve.AutoIncrementStep = -1;
                 this.columnid_fve.AllowDBNull = false;
                 this.columnid_ven.AllowDBNull = false;
-                this.columnExpr3.AllowDBNull = false;
                 this.columnid_imp.AllowDBNull = false;
                 this.columnid_mpa.AllowDBNull = false;
-                this.columntbs_fve.AllowDBNull = false;
-                this.columntus_fve.AllowDBNull = false;
+                this.columntot_dve.AllowDBNull = false;
+                this.columntot_fve.AllowDBNull = false;
+                this.columntim_fve.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5604,7 +5537,12 @@ namespace New_MasterTrade.Base_de_Datos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int gar_pro {
                 get {
-                    return ((int)(this[this.tableProducto_Vendido.gar_proColumn]));
+                    try {
+                        return ((int)(this[this.tableProducto_Vendido.gar_proColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'gar_pro\' de la tabla \'Producto_Vendido\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableProducto_Vendido.gar_proColumn] = value;
@@ -5630,50 +5568,6 @@ namespace New_MasterTrade.Base_de_Datos {
                 }
                 set {
                     this[this.tableProducto_Vendido.id_oveColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Expr1 {
-                get {
-                    return ((int)(this[this.tableProducto_Vendido.Expr1Column]));
-                }
-                set {
-                    this[this.tableProducto_Vendido.Expr1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double tbs_dve {
-                get {
-                    return ((double)(this[this.tableProducto_Vendido.tbs_dveColumn]));
-                }
-                set {
-                    this[this.tableProducto_Vendido.tbs_dveColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double tus_dve {
-                get {
-                    return ((double)(this[this.tableProducto_Vendido.tus_dveColumn]));
-                }
-                set {
-                    this[this.tableProducto_Vendido.tus_dveColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Expr2 {
-                get {
-                    return ((int)(this[this.tableProducto_Vendido.Expr2Column]));
-                }
-                set {
-                    this[this.tableProducto_Vendido.Expr2Column] = value;
                 }
             }
             
@@ -5745,17 +5639,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Expr3 {
-                get {
-                    return ((int)(this[this.tableProducto_Vendido.Expr3Column]));
-                }
-                set {
-                    this[this.tableProducto_Vendido.Expr3Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int id_imp {
                 get {
                     return ((int)(this[this.tableProducto_Vendido.id_impColumn]));
@@ -5778,24 +5661,47 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double tbs_fve {
+            public double tot_dve {
                 get {
-                    return ((double)(this[this.tableProducto_Vendido.tbs_fveColumn]));
+                    return ((double)(this[this.tableProducto_Vendido.tot_dveColumn]));
                 }
                 set {
-                    this[this.tableProducto_Vendido.tbs_fveColumn] = value;
+                    this[this.tableProducto_Vendido.tot_dveColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double tus_fve {
+            public double tot_fve {
                 get {
-                    return ((double)(this[this.tableProducto_Vendido.tus_fveColumn]));
+                    return ((double)(this[this.tableProducto_Vendido.tot_fveColumn]));
                 }
                 set {
-                    this[this.tableProducto_Vendido.tus_fveColumn] = value;
+                    this[this.tableProducto_Vendido.tot_fveColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double tim_fve {
+                get {
+                    return ((double)(this[this.tableProducto_Vendido.tim_fveColumn]));
+                }
+                set {
+                    this[this.tableProducto_Vendido.tim_fveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isgar_proNull() {
+                return this.IsNull(this.tableProducto_Vendido.gar_proColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setgar_proNull() {
+                this[this.tableProducto_Vendido.gar_proColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7886,21 +7792,17 @@ WHERE  fv.id_ven = v.id_ven AND v.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AN
             tableMapping.ColumnMappings.Add("gar_pro", "gar_pro");
             tableMapping.ColumnMappings.Add("id_dve", "id_dve");
             tableMapping.ColumnMappings.Add("id_ove", "id_ove");
-            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
-            tableMapping.ColumnMappings.Add("tbs_dve", "tbs_dve");
-            tableMapping.ColumnMappings.Add("tus_dve", "tus_dve");
-            tableMapping.ColumnMappings.Add("Expr2", "Expr2");
             tableMapping.ColumnMappings.Add("id_cli", "id_cli");
             tableMapping.ColumnMappings.Add("num_ove", "num_ove");
             tableMapping.ColumnMappings.Add("fec_ove", "fec_ove");
             tableMapping.ColumnMappings.Add("hor_ove", "hor_ove");
             tableMapping.ColumnMappings.Add("id_fve", "id_fve");
             tableMapping.ColumnMappings.Add("id_ven", "id_ven");
-            tableMapping.ColumnMappings.Add("Expr3", "Expr3");
             tableMapping.ColumnMappings.Add("id_imp", "id_imp");
             tableMapping.ColumnMappings.Add("id_mpa", "id_mpa");
-            tableMapping.ColumnMappings.Add("tbs_fve", "tbs_fve");
-            tableMapping.ColumnMappings.Add("tus_fve", "tus_fve");
+            tableMapping.ColumnMappings.Add("tot_dve", "tot_dve");
+            tableMapping.ColumnMappings.Add("tot_fve", "tot_fve");
+            tableMapping.ColumnMappings.Add("tim_fve", "tim_fve");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -7917,8 +7819,8 @@ WHERE  fv.id_ven = v.id_ven AND v.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AN
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT p.id_pro, p.id_cat, p.id_mar, p.id_mod, p.ser_pro, p.des_pro, p.pco_pro, p.pve_pro, p.img_pro, p.gar_pro, dv.id_dve, dv.id_ove, dv.id_pro AS Expr1, dv.can_dve, dv.tbs_dve, dv.tus_dve, ov.id_ove AS Expr2, ov.id_cli, ov.num_ove, ov.fec_ove, 
-                  ov.hor_ove, fv.id_fve, fv.id_ven, fv.id_ove AS Expr3, fv.id_imp, fv.id_mpa, fv.tbs_fve, fv.tus_fve
+            this._commandCollection[0].CommandText = @"SELECT p.id_pro, p.id_cat, p.id_mar, p.id_mod, p.ser_pro, p.des_pro, p.pco_pro, p.pve_pro, p.img_pro, p.gar_pro, dv.id_dve, dv.can_dve, dv.tot_dve, ov.id_ove, ov.id_cli, ov.num_ove, ov.fec_ove, ov.hor_ove, fv.id_fve, fv.id_ven, fv.id_imp, fv.id_mpa, 
+                  fv.tot_fve, fv.tim_fve
 FROM     producto p, detalle_venta dv, orden_venta ov, factura_venta fv
 WHERE  p.id_pro = dv.id_pro AND dv.id_ove = ov.id_ove AND ov.id_ove = fv.id_ove";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;

@@ -85,15 +85,15 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaCategorias.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaCategorias.EnableHeadersVisualStyles = false;
-            this.tablaCategorias.Location = new System.Drawing.Point(0, 24);
-            this.tablaCategorias.Margin = new System.Windows.Forms.Padding(2);
+            this.tablaCategorias.Location = new System.Drawing.Point(0, 30);
+            this.tablaCategorias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tablaCategorias.Name = "tablaCategorias";
             this.tablaCategorias.ReadOnly = true;
             this.tablaCategorias.RowHeadersVisible = false;
             this.tablaCategorias.RowHeadersWidth = 51;
             this.tablaCategorias.RowTemplate.Height = 24;
             this.tablaCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaCategorias.Size = new System.Drawing.Size(429, 189);
+            this.tablaCategorias.Size = new System.Drawing.Size(572, 233);
             this.tablaCategorias.TabIndex = 0;
             this.tablaCategorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaCategorias_CellClick);
             this.tablaCategorias.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaCategorias_CellFormatting);
@@ -115,7 +115,7 @@
             this.CATEGORIA.MinimumWidth = 6;
             this.CATEGORIA.Name = "CATEGORIA";
             this.CATEGORIA.ReadOnly = true;
-            this.CATEGORIA.Width = 97;
+            this.CATEGORIA.Width = 121;
             // 
             // ACTIVO
             // 
@@ -140,10 +140,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(19, 224);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(25, 276);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.Size = new System.Drawing.Size(20, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "ID";
             // 
@@ -151,29 +150,29 @@
             // 
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(44, 222);
-            this.txtID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtID.Location = new System.Drawing.Point(59, 273);
+            this.txtID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(65, 20);
+            this.txtID.Size = new System.Drawing.Size(86, 22);
             this.txtID.TabIndex = 2;
             // 
             // txtNombre
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombre.Location = new System.Drawing.Point(179, 222);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombre.Location = new System.Drawing.Point(239, 273);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombre.MaxLength = 25;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(227, 20);
+            this.txtNombre.Size = new System.Drawing.Size(302, 22);
             this.txtNombre.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(118, 224);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(157, 276);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(69, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "NOMBRE:";
             // 
@@ -182,10 +181,10 @@
             this.bttnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuardar.Location = new System.Drawing.Point(171, 254);
-            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnGuardar.Location = new System.Drawing.Point(228, 313);
+            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnGuardar.Name = "bttnGuardar";
-            this.bttnGuardar.Size = new System.Drawing.Size(86, 24);
+            this.bttnGuardar.Size = new System.Drawing.Size(115, 30);
             this.bttnGuardar.TabIndex = 5;
             this.bttnGuardar.Text = "GUARDAR";
             this.bttnGuardar.UseVisualStyleBackColor = false;
@@ -196,10 +195,10 @@
             this.bttnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(150)))), ((int)(((byte)(242)))));
             this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnActualizar.Location = new System.Drawing.Point(261, 254);
-            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnActualizar.Location = new System.Drawing.Point(348, 313);
+            this.bttnActualizar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnActualizar.Name = "bttnActualizar";
-            this.bttnActualizar.Size = new System.Drawing.Size(86, 24);
+            this.bttnActualizar.Size = new System.Drawing.Size(115, 30);
             this.bttnActualizar.TabIndex = 6;
             this.bttnActualizar.Text = "ACTUALIZAR";
             this.bttnActualizar.UseVisualStyleBackColor = false;
@@ -209,10 +208,10 @@
             // 
             this.bttnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnNuevo.Location = new System.Drawing.Point(81, 254);
-            this.bttnNuevo.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnNuevo.Location = new System.Drawing.Point(108, 313);
+            this.bttnNuevo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnNuevo.Name = "bttnNuevo";
-            this.bttnNuevo.Size = new System.Drawing.Size(86, 24);
+            this.bttnNuevo.Size = new System.Drawing.Size(115, 30);
             this.bttnNuevo.TabIndex = 7;
             this.bttnNuevo.Text = "NUEVO";
             this.bttnNuevo.UseVisualStyleBackColor = false;
@@ -223,10 +222,10 @@
             this.bttnCerrar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bttnCerrar.FlatAppearance.BorderSize = 0;
             this.bttnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCerrar.Location = new System.Drawing.Point(407, 0);
-            this.bttnCerrar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnCerrar.Location = new System.Drawing.Point(543, 0);
+            this.bttnCerrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnCerrar.Name = "bttnCerrar";
-            this.bttnCerrar.Size = new System.Drawing.Size(22, 24);
+            this.bttnCerrar.Size = new System.Drawing.Size(29, 30);
             this.bttnCerrar.TabIndex = 8;
             this.bttnCerrar.Text = "X";
             this.bttnCerrar.UseVisualStyleBackColor = false;
@@ -245,16 +244,15 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(3, 6);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(4, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.Size = new System.Drawing.Size(94, 16);
             this.label3.TabIndex = 9;
             this.label3.Text = "CATEGORÍAS";
             // 
             // Categorias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.label3);
@@ -267,9 +265,9 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaCategorias);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Categorias";
-            this.Size = new System.Drawing.Size(429, 284);
+            this.Size = new System.Drawing.Size(572, 350);
             ((System.ComponentModel.ISupportInitialize)(this.tablaCategorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

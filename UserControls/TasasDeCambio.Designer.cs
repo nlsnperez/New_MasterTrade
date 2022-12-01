@@ -38,6 +38,11 @@
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.tablaTasasCambio = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TASACAMBIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACTIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DELETE = new System.Windows.Forms.DataGridViewImageColumn();
             this.labelTitulo = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,11 +50,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TASACAMBIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACTIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DELETE = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tablaTasasCambio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,7 +124,7 @@
             this.bttnGuardar.TabIndex = 35;
             this.bttnGuardar.Text = "GUARDAR";
             this.bttnGuardar.UseVisualStyleBackColor = false;
-            this.bttnGuardar.Click += new System.EventHandler(this.bttnNuevo_Click);
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // tablaTasasCambio
             // 
@@ -177,77 +177,6 @@
             this.tablaTasasCambio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaTasasCambio_CellClick);
             this.tablaTasasCambio.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaTasasCambio_CellFormatting);
             // 
-            // labelTitulo
-            // 
-            this.labelTitulo.AutoSize = true;
-            this.labelTitulo.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelTitulo.Location = new System.Drawing.Point(4, 7);
-            this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(174, 16);
-            this.labelTitulo.TabIndex = 39;
-            this.labelTitulo.Text = "TASAS DE CAMBIO PARA: ";
-            // 
-            // txtValor
-            // 
-            this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtValor.Enabled = false;
-            this.txtValor.Location = new System.Drawing.Point(432, 273);
-            this.txtValor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(121, 22);
-            this.txtValor.TabIndex = 47;
-            this.txtValor.Text = "0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(344, 276);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 16);
-            this.label4.TabIndex = 46;
-            this.label4.Text = "VALOR (Bs):";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(215, 273);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(121, 22);
-            this.txtNombre.TabIndex = 45;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(138, 276);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 16);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "NOMBRE:";
-            // 
-            // txtID
-            // 
-            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(44, 273);
-            this.txtID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(86, 22);
-            this.txtID.TabIndex = 43;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(20, 276);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 16);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "ID";
-            // 
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -294,6 +223,80 @@
             this.DELETE.MinimumWidth = 6;
             this.DELETE.Name = "DELETE";
             this.DELETE.ReadOnly = true;
+            // 
+            // labelTitulo
+            // 
+            this.labelTitulo.AutoSize = true;
+            this.labelTitulo.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelTitulo.Location = new System.Drawing.Point(4, 7);
+            this.labelTitulo.Name = "labelTitulo";
+            this.labelTitulo.Size = new System.Drawing.Size(174, 16);
+            this.labelTitulo.TabIndex = 39;
+            this.labelTitulo.Text = "TASAS DE CAMBIO PARA: ";
+            // 
+            // txtValor
+            // 
+            this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtValor.Location = new System.Drawing.Point(432, 273);
+            this.txtValor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtValor.MaxLength = 10;
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(121, 22);
+            this.txtValor.TabIndex = 47;
+            this.txtValor.Text = "0";
+            this.txtValor.Enter += new System.EventHandler(this.txtValor_Enter);
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
+            this.txtValor.Leave += new System.EventHandler(this.txtValor_Leave);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(344, 276);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 16);
+            this.label4.TabIndex = 46;
+            this.label4.Text = "VALOR (Bs):";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombre.Location = new System.Drawing.Point(215, 273);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombre.MaxLength = 25;
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(121, 22);
+            this.txtNombre.TabIndex = 45;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(138, 276);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 16);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "NOMBRE:";
+            // 
+            // txtID
+            // 
+            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtID.Enabled = false;
+            this.txtID.Location = new System.Drawing.Point(44, 273);
+            this.txtID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(86, 22);
+            this.txtID.TabIndex = 43;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(20, 276);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 16);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "ID";
             // 
             // TasasDeCambio
             // 

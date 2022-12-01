@@ -107,20 +107,36 @@ namespace New_MasterTrade.UserControls
         {
             if (ProcesoDeAdmicion(GetPersona()))
             {
-                if (MessageBox.Show("¿Desea registrar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                switch (comboOcupacion.Text)
                 {
-                    if (comboOcupacion.SelectedIndex == 0)
-                    {
-                        crud2.Create(GetPersona());
-                        bitacora.Create(UserData.Id, Modulos.Clientes, Accion.NuevoRegistro(UserData.NombreUsuario, GetPersona().Documento));
-                        Limpiar();
-                    }
-                    else
-                    {
-                        crud.Create(GetPersona());
-                        bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.NuevoRegistro(UserData.NombreUsuario, GetPersona().Documento));
-                        Limpiar();
-                    }
+                    case "CLIENTE":
+                        if (crud2.ClienteDuplicado(GetPersona()))
+                        {
+                            MessageBox.Show("Ya existe un cliente registrado con el documento de identidad introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("¿Desea registrar los datos de este cliente?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                crud2.Create(GetPersona());
+                                bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
+                            }
+                        }
+                        break;
+                    case "PROVEEDOR":
+                        if (crud.ProveedorDuplicado(GetPersona()))
+                        {
+                            MessageBox.Show("Ya existe un proveedor registrado con el documento de identidad introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("¿Desea registrar los datos de este proveedor?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                crud.Create(GetPersona());
+                                bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
+                            }
+                        }
+                        break;
                 }
             }
         }
@@ -147,41 +163,32 @@ namespace New_MasterTrade.UserControls
                 MessageBox.Show("El correo electrónico introducido es inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            switch (comboOcupacion.Text)
-            {
-                case "CLIENTE":
-                    if (crud2.ClienteDuplicado(persona))
-                    {
-                        MessageBox.Show("Ya existe un cliente con el documento de identidad introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
-                    break;
-                case "PROVEEDOR":
-                    if (crud.ProveedorDuplicado(persona))
-                    {
-                        MessageBox.Show("Ya existe un proveedor con el documento de identidad introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
-                    break;
-            }
             return true;
         }
 
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea actualizar los datos de este " + comboOcupacion.Text.ToLower() + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (ProcesoDeAdmicion(GetPersona()))
             {
-                if (comboOcupacion.SelectedIndex == 0)
+                switch (comboOcupacion.Text)
                 {
-                    crud2.Update(GetPersona());
-                    bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
+                    case "CLIENTE":
+                        if (MessageBox.Show("¿Desea actualizar los datos de este cliente?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            crud2.Update(GetPersona());
+                            bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
+                        }
+                        break;
+                    case "PROVEEDOR":
+                        if (MessageBox.Show("¿Desea actualizar los datos de este proveedor?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            crud.Update(GetPersona());
+                            bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
+                        }
+                        break;
                 }
-                else
-                {
-                    crud.Update(GetPersona());
-                    bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
-                }
-            }            
+            }
+                       
         }
 
         public void DatosPersona(Persona persona, int x)

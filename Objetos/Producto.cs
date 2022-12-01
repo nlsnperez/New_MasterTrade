@@ -33,6 +33,15 @@ namespace New_MasterTrade.Objetos
             Imagen = imagen;
         }
 
+        public bool TamagnoSerial()
+        {
+            if (this.Serial.Length < 10 || this.Serial.Length > 13)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public bool IsEmpty()
         {
             if (this.Serial == "" || this.Descripcion == "" || this.Precio_Compra == 0 || this.Precio_Venta == 0)
@@ -44,11 +53,11 @@ namespace New_MasterTrade.Objetos
 
         public bool PrecioCorrecto()
         {
-            if (Precio_Compra > Precio_Venta)
+            if (Precio_Compra < Precio_Venta)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }

@@ -319,6 +319,84 @@ namespace New_MasterTrade.Base_de_Datos
             return resultado;
         }
 
+        public bool UserNameDuplicado(string username)
+        {
+            bool duplicado = false;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `usr_usu` = '" + username+ "'", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    duplicado = true;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return duplicado;
+        }
+
+        public bool DocumentoDuplicado(string documento)
+        {
+            bool duplicado = false;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `doc_usu` = '" + documento + "'", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    duplicado = true;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return duplicado;
+        }
+
+        public bool CorreoDuplicado(string correo)
+        {
+            bool duplicado = false;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `cor_usu` = '" + correo + "'", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    duplicado = true;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return duplicado;
+        }
+
         public int GetId()
         {
             int x = 0;

@@ -92,36 +92,61 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGuardar_Click(object sender, EventArgs e)
         {
-            if (GetUsuario().IsEmpty())
+            if (ProcesoDeAdmicion(GetUsuario()))
+            {
+                if (NoRegistrosDuplicados(GetUsuario()))
+                {
+                    if (MessageBox.Show("¿Desea registrar este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        crud.Create(GetUsuario());
+                        if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
+                        {
+                            crud.CrearVendedor(user_id);
+                        }
+                        Limpiar();
+                    }
+                }
+            }
+        }
+
+        public bool ProcesoDeAdmicion(Usuario usuario)
+        {
+            if (usuario.IsEmpty())
             {
                 MessageBox.Show("Complete todo los campos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
-            else
+            if (!usuario.ValidDocumento())
             {
-                if (!GetUsuario().ValidDocumento())
-                {
-                    MessageBox.Show("Ingrese un número de documento válido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    if (txtContrasegna.Text != txtConfirmar.Text)
-                    {
-                        MessageBox.Show("Las contraseñas introducidas no coinciden", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        if (MessageBox.Show("¿Desea registrar este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            crud.Create(GetUsuario());
-                            if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
-                            {
-                                crud.CrearVendedor(user_id);
-                            }
-                            Limpiar();
-                        }
-                    }
-                }
+                MessageBox.Show("Ingrese un documento de identidad válido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
+            if (!usuario.ValidEmail())
+            {
+                MessageBox.Show("Ingrese un correo electrónico válido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        public bool NoRegistrosDuplicados(Usuario usuario)
+        {
+            if (crud.CorreoDuplicado(usuario.Correo))
+            {
+                MessageBox.Show("Ya existe un usuario registrado con el correo electrónico ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (crud.DocumentoDuplicado(usuario.Documento))
+            {
+                MessageBox.Show("Ya existe un usuario registrado con documento de identidad ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (crud.UserNameDuplicado(usuario.UserName))
+            {
+                MessageBox.Show("Ya existe un usuario registrado con el nombre de usuario ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
 
         private Usuario GetUsuario()
@@ -149,6 +174,7 @@ namespace New_MasterTrade.UserControls
         public void DatosUsuario(Usuario usuario)
         {
             user_id = usuario.ID;
+            if (crud.IsVendedor(user_id)) chckVendedor.Visible = false;
             txtNombre.Text = usuario.Nombre;
             txtUsuario.Text = usuario.UserName;
             txtContrasegna.Text = usuario.Contrasegna;
@@ -181,11 +207,10 @@ namespace New_MasterTrade.UserControls
                 crud.Update(GetUsuario());
                 if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
                 {
-                    if (crud.VendedorRegistrado(user_id))
+                    if (!crud.VendedorRegistrado(user_id))
                     {
-
+                        crud.CrearVendedor(user_id);
                     }
-                    else crud.CrearVendedor(user_id);
                 }
             }
         }

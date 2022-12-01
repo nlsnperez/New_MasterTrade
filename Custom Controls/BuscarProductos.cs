@@ -32,29 +32,31 @@ namespace New_MasterTrade.Objetos
         {
             crud = new CRUD_Productos();
             tablaProductos.AutoGenerateColumns = false;
-            if (Venta == null)
+            if (crud.ProductosActivos().Rows.Count > 0)
             {
-                if (crud.ProductosActivos().Rows.Count > 0)
+                if (Venta == null)
                 {
                     tablaProductos.DataSource = crud.ProductosActivos();
                 }
-                else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else ConfigTablaVenta(crud.ProductosActivos());
             }
-            else ConfigTablaVenta();
+            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
 
 
         }
 
-        public void ConfigTablaVenta()
+        public void ConfigTablaVenta(DataTable tabla)
         {
-            DataTable x = crud.ProductosActivos();
+            DataTable x = tabla;
             if (x.Rows.Count > 0)
             {                
                 for (int i = 0; i <= x.Rows.Count-1; i++)
                 {
-                    int id = (int)x.Rows[i][0];
+                    int id = (int)x.Rows[i]["id_pro"];
                     Console.WriteLine(id);
                     int y = crud.ProductosComprados(id) - crud.ProductosVendidos(id);
+                    Console.WriteLine(y);
+                    Console.WriteLine(i);
                     if (y == 0) x.Rows.RemoveAt(i);
                 }
                 tablaProductos.DataSource = x;
@@ -64,23 +66,24 @@ namespace New_MasterTrade.Objetos
 
         private void tablaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 8)
+            if (tablaProductos.Columns[e.ColumnIndex].Name == "Agregar")
             {
-                string[] producto = {tablaProductos.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                                     tablaProductos.Rows[e.RowIndex].Cells[4].Value.ToString(),
-                                     tablaProductos.Rows[e.RowIndex].Cells[5].Value.ToString(),
-                                     Convert.ToString(1),
-                                     tablaProductos.Rows[e.RowIndex].Cells[6].Value.ToString(),
-                                     tablaProductos.Rows[e.RowIndex].Cells[7].Value.ToString()};
+                try
+                {
+                    int id = (int)tablaProductos.Rows[e.RowIndex].Cells["columnId"].Value;
 
-                Form x = new Form();
-                AgregarProducto y = new AgregarProducto(Compra, Venta);
-                y.SetTexts(producto);
-                x.Size = new Size(y.Width, y.Height);
-                x.Controls.Add(y);
-                x.StartPosition = FormStartPosition.CenterScreen;
-                x.FormBorderStyle = FormBorderStyle.None;
-                x.ShowDialog();
+                    Form x = new Form();
+                    AgregarProducto y = new AgregarProducto(Compra, Venta, id);
+                    x.Size = new Size(y.Width, y.Height);
+                    x.Controls.Add(y);
+                    x.StartPosition = FormStartPosition.CenterScreen;
+                    x.FormBorderStyle = FormBorderStyle.None;
+                    x.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -88,7 +91,11 @@ namespace New_MasterTrade.Objetos
         {
             try
             {
-                tablaProductos.DataSource = crud.BuscarProductosActivos(txtBuscar.Text);
+                if (Venta == null)
+                {
+                    tablaProductos.DataSource = crud.BuscarProductosActivos(txtBuscar.Text);
+                }
+                else ConfigTablaVenta(crud.BuscarProductosActivos(txtBuscar.Text));
             }
             catch (Exception ex)
             {

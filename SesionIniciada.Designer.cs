@@ -66,6 +66,10 @@ namespace New_MasterTrade
             this.bttnArchivo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bttnAjustes = new System.Windows.Forms.Button();
+            this.bttnGarantias = new System.Windows.Forms.Button();
+            this.bttnReportesVenta = new System.Windows.Forms.Button();
+            this.bttnReportesCompra = new System.Windows.Forms.Button();
+            this.bttnMetodosPago = new System.Windows.Forms.Button();
             this.panelPapa.SuspendLayout();
             this.panelAjustes.SuspendLayout();
             this.panelReportes.SuspendLayout();
@@ -95,15 +99,16 @@ namespace New_MasterTrade
             // panelAjustes
             // 
             this.panelAjustes.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelAjustes.Controls.Add(this.bttnMetodosPago);
             this.panelAjustes.Controls.Add(this.bttnImpuestos);
             this.panelAjustes.Controls.Add(this.bttnMonedas);
             this.panelAjustes.Controls.Add(this.bttnModelos);
             this.panelAjustes.Controls.Add(this.bttnMarcas);
             this.panelAjustes.Controls.Add(this.bttnCategorias);
-            this.panelAjustes.Location = new System.Drawing.Point(917, 491);
+            this.panelAjustes.Location = new System.Drawing.Point(917, 444);
             this.panelAjustes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelAjustes.Name = "panelAjustes";
-            this.panelAjustes.Size = new System.Drawing.Size(213, 235);
+            this.panelAjustes.Size = new System.Drawing.Size(213, 282);
             this.panelAjustes.TabIndex = 0;
             this.panelAjustes.Visible = false;
             // 
@@ -116,7 +121,7 @@ namespace New_MasterTrade
             this.bttnImpuestos.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnImpuestos.Image = global::New_MasterTrade.Properties.Resources.estados_financieros;
             this.bttnImpuestos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnImpuestos.Location = new System.Drawing.Point(0, 141);
+            this.bttnImpuestos.Location = new System.Drawing.Point(0, 188);
             this.bttnImpuestos.Margin = new System.Windows.Forms.Padding(4);
             this.bttnImpuestos.Name = "bttnImpuestos";
             this.bttnImpuestos.Size = new System.Drawing.Size(213, 47);
@@ -134,7 +139,7 @@ namespace New_MasterTrade
             this.bttnMonedas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnMonedas.Image = global::New_MasterTrade.Properties.Resources.coin;
             this.bttnMonedas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnMonedas.Location = new System.Drawing.Point(0, 188);
+            this.bttnMonedas.Location = new System.Drawing.Point(0, 235);
             this.bttnMonedas.Margin = new System.Windows.Forms.Padding(4);
             this.bttnMonedas.Name = "bttnMonedas";
             this.bttnMonedas.Size = new System.Drawing.Size(213, 47);
@@ -200,13 +205,15 @@ namespace New_MasterTrade
             // panelReportes
             // 
             this.panelReportes.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelReportes.Controls.Add(this.bttnReportesCompra);
+            this.panelReportes.Controls.Add(this.bttnReportesVenta);
             this.panelReportes.Controls.Add(this.bttnReportesProducto);
             this.panelReportes.Controls.Add(this.bttnReportesProveedor);
             this.panelReportes.Controls.Add(this.bttnReportesCliente);
             this.panelReportes.Location = new System.Drawing.Point(560, 53);
             this.panelReportes.Margin = new System.Windows.Forms.Padding(4);
             this.panelReportes.Name = "panelReportes";
-            this.panelReportes.Size = new System.Drawing.Size(213, 140);
+            this.panelReportes.Size = new System.Drawing.Size(213, 235);
             this.panelReportes.TabIndex = 18;
             this.panelReportes.Visible = false;
             // 
@@ -217,7 +224,6 @@ namespace New_MasterTrade
             this.bttnReportesProducto.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.bttnReportesProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnReportesProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnReportesProducto.Image = global::New_MasterTrade.Properties.Resources.point_of_sale;
             this.bttnReportesProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnReportesProducto.Location = new System.Drawing.Point(0, 94);
             this.bttnReportesProducto.Margin = new System.Windows.Forms.Padding(4);
@@ -235,7 +241,6 @@ namespace New_MasterTrade
             this.bttnReportesProveedor.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.bttnReportesProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnReportesProveedor.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnReportesProveedor.Image = global::New_MasterTrade.Properties.Resources.point_of_sale;
             this.bttnReportesProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnReportesProveedor.Location = new System.Drawing.Point(0, 47);
             this.bttnReportesProveedor.Margin = new System.Windows.Forms.Padding(4);
@@ -253,7 +258,6 @@ namespace New_MasterTrade
             this.bttnReportesCliente.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.bttnReportesCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnReportesCliente.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnReportesCliente.Image = global::New_MasterTrade.Properties.Resources.point_of_sale;
             this.bttnReportesCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnReportesCliente.Location = new System.Drawing.Point(0, 0);
             this.bttnReportesCliente.Margin = new System.Windows.Forms.Padding(4);
@@ -402,6 +406,7 @@ namespace New_MasterTrade
             // 
             this.panelArchivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panelArchivo.BackColor = System.Drawing.Color.DimGray;
+            this.panelArchivo.Controls.Add(this.bttnGarantias);
             this.panelArchivo.Controls.Add(this.bttnClientes);
             this.panelArchivo.Controls.Add(this.bttnVentas);
             this.panelArchivo.Controls.Add(this.bttnCompras);
@@ -411,7 +416,7 @@ namespace New_MasterTrade
             this.panelArchivo.Margin = new System.Windows.Forms.Padding(4);
             this.panelArchivo.MinimumSize = new System.Drawing.Size(213, 187);
             this.panelArchivo.Name = "panelArchivo";
-            this.panelArchivo.Size = new System.Drawing.Size(213, 234);
+            this.panelArchivo.Size = new System.Drawing.Size(213, 280);
             this.panelArchivo.TabIndex = 14;
             this.panelArchivo.Visible = false;
             // 
@@ -687,6 +692,74 @@ namespace New_MasterTrade
             this.bttnAjustes.UseVisualStyleBackColor = false;
             this.bttnAjustes.Click += new System.EventHandler(this.bttnAjustes_Click_1);
             // 
+            // bttnGarantias
+            // 
+            this.bttnGarantias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnGarantias.FlatAppearance.BorderSize = 0;
+            this.bttnGarantias.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnGarantias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnGarantias.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnGarantias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnGarantias.Location = new System.Drawing.Point(0, 234);
+            this.bttnGarantias.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnGarantias.Name = "bttnGarantias";
+            this.bttnGarantias.Size = new System.Drawing.Size(213, 47);
+            this.bttnGarantias.TabIndex = 19;
+            this.bttnGarantias.Text = "GARANTÍAS";
+            this.bttnGarantias.UseVisualStyleBackColor = false;
+            this.bttnGarantias.Click += new System.EventHandler(this.bttnGarantias_Click);
+            // 
+            // bttnReportesVenta
+            // 
+            this.bttnReportesVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnReportesVenta.FlatAppearance.BorderSize = 0;
+            this.bttnReportesVenta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnReportesVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnReportesVenta.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnReportesVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnReportesVenta.Location = new System.Drawing.Point(0, 141);
+            this.bttnReportesVenta.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnReportesVenta.Name = "bttnReportesVenta";
+            this.bttnReportesVenta.Size = new System.Drawing.Size(213, 47);
+            this.bttnReportesVenta.TabIndex = 13;
+            this.bttnReportesVenta.Text = "VENTAS";
+            this.bttnReportesVenta.UseVisualStyleBackColor = false;
+            this.bttnReportesVenta.Click += new System.EventHandler(this.bttnReportesVenta_Click);
+            // 
+            // bttnReportesCompra
+            // 
+            this.bttnReportesCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnReportesCompra.FlatAppearance.BorderSize = 0;
+            this.bttnReportesCompra.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnReportesCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnReportesCompra.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnReportesCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnReportesCompra.Location = new System.Drawing.Point(0, 188);
+            this.bttnReportesCompra.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnReportesCompra.Name = "bttnReportesCompra";
+            this.bttnReportesCompra.Size = new System.Drawing.Size(213, 47);
+            this.bttnReportesCompra.TabIndex = 14;
+            this.bttnReportesCompra.Text = "COMPRAS";
+            this.bttnReportesCompra.UseVisualStyleBackColor = false;
+            this.bttnReportesCompra.Click += new System.EventHandler(this.bttnReportesCompra_Click);
+            // 
+            // bttnMetodosPago
+            // 
+            this.bttnMetodosPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnMetodosPago.FlatAppearance.BorderSize = 0;
+            this.bttnMetodosPago.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnMetodosPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnMetodosPago.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnMetodosPago.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnMetodosPago.Location = new System.Drawing.Point(0, 141);
+            this.bttnMetodosPago.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnMetodosPago.Name = "bttnMetodosPago";
+            this.bttnMetodosPago.Size = new System.Drawing.Size(213, 47);
+            this.bttnMetodosPago.TabIndex = 28;
+            this.bttnMetodosPago.Text = "METODOS DE\r\nPAGO";
+            this.bttnMetodosPago.UseVisualStyleBackColor = false;
+            this.bttnMetodosPago.Click += new System.EventHandler(this.bttnMetodosPago_Click);
+            // 
             // SesionIniciada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -753,5 +826,9 @@ namespace New_MasterTrade
         private System.Windows.Forms.Button bttnReportesProveedor;
         private System.Windows.Forms.Button bttnReportesCliente;
         private System.Windows.Forms.Button bttnImpuestos;
+        private System.Windows.Forms.Button bttnGarantias;
+        private System.Windows.Forms.Button bttnReportesCompra;
+        private System.Windows.Forms.Button bttnReportesVenta;
+        private System.Windows.Forms.Button bttnMetodosPago;
     }
 }

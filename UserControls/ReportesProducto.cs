@@ -55,7 +55,18 @@ namespace New_MasterTrade.UserControls
             {
                 if (comboProductos.SelectedIndex > 0 && comboProductos.SelectedIndex < 3)
                 {
-                    reporte.Reporte_ProductoParametro(estado, filtro);
+                    reporte.Reporte_ProductoParametroEstado(estado, filtro);
+                }
+                else
+                {
+                    if (comboProductos.SelectedIndex == 0)
+                    {
+                        reporte.Reporte_ProductoParametro(filtro);
+                    }
+                    if (comboProductos.SelectedIndex == 3)
+                    {
+                        reporte.Reporte_ProductoMasVendido();
+                    }
                 }
             }
         }

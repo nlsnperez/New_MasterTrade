@@ -45,18 +45,18 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public void Update(Producto producto, int id)
+        public void Update(Producto producto)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `producto` SET `ser_pro`=@serial,`des_pro`=@descripcion,`id_mar`=@marca,`id_cat`=@categoria, `id_mod`=@modelo,`pco_pro`=@preciocompra,`pve_pro`=@precioventa,`est_pro`=@estado,`img_pro`=@imagen WHERE `id_pro`=@id";
+                    command.CommandText = "UPDATE `producto` SET `des_pro`=@descripcion,`id_mar`=@marca,`id_cat`=@categoria, `id_mod`=@modelo,`pco_pro`=@preciocompra,`pve_pro`=@precioventa, `img_pro`=@imagen WHERE `ser_pro`=@serial";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                    
                     command.Parameters.Add("@serial", MySqlDbType.VarChar).Value = producto.Serial;
                     command.Parameters.Add("@descripcion", MySqlDbType.VarChar).Value = producto.Descripcion;
                     command.Parameters.Add("@marca", MySqlDbType.Int32).Value = producto.Marca;

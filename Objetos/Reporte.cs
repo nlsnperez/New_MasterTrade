@@ -149,7 +149,25 @@ namespace New_MasterTrade.Objetos
             }
         }
 
-        public void Reporte_ProductoParametro(int estado, string filtro)
+        public void Reporte_ProductoParametro(string filtro)
+        {
+            try
+            {
+                producto.Fill(dataset.Producto, filtro, filtro, filtro);
+                Producto_Reporte reporte = new Producto_Reporte();
+                string direccion = @"~\Reportes\Producto_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_ProductoParametroEstado(int estado, string filtro)
         {
             filtro += "%";
             try

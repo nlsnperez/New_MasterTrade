@@ -24,7 +24,6 @@ namespace New_MasterTrade.UserControls
         public void Config()
         {
             crud = new CRUD_Productos();
-            txtBuscar.Enabled = false;
             tablaProductos.AutoGenerateColumns = false;
             CargarTabla();
         }
@@ -37,7 +36,7 @@ namespace New_MasterTrade.UserControls
             x.Controls.Add(y);
             x.StartPosition = FormStartPosition.CenterScreen;
             x.ShowDialog();
-            tablaProductos.DataSource = crud.TablaProductos();
+            CargarTabla();
         }
 
         private void ResgistrosProductos_Prototipo_Load(object sender, EventArgs e)
@@ -47,13 +46,15 @@ namespace New_MasterTrade.UserControls
 
         private void CargarTabla()
         {
-            if (crud.TablaProductos().Rows.Count > 0)
+            try
             {
                 tablaProductos.DataSource = crud.TablaProductos();
-                txtBuscar.Enabled = true;
                 txtBuscar.Focus();
             }
-            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void tablaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -70,6 +71,7 @@ namespace New_MasterTrade.UserControls
                 x.Size = new Size(y.Width + 30, y.Height + 40);                
                 x.StartPosition = FormStartPosition.CenterScreen;
                 x.ShowDialog();
+                CargarTabla();
             }
             else
             {

@@ -176,6 +176,17 @@ namespace New_MasterTrade.UserControls
                     string moneda = txtNombre.Text;
                     crud.Create_Moneda(moneda);
                     TablaMonedas_Refresh();
+
+                    MessageBox.Show("Debe registrar una tasa de cambio para la moneda registrada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    int id = (int)tablaMonedas.Rows[tablaMonedas.Rows.Count-1].Cells["ID"].Value;
+                    Form x = new Form();
+                    TasasDeCambio y = new TasasDeCambio(id);
+                    x.Size = y.Size;
+                    x.FormBorderStyle = FormBorderStyle.None;
+                    x.StartPosition = FormStartPosition.CenterScreen;
+                    x.Controls.Add(y);
+                    x.ShowDialog();
+
                     ConfigControles("INICIO");
                 }
             }

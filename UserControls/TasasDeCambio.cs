@@ -41,6 +41,7 @@ namespace New_MasterTrade.UserControls
                     bttnActualizar.Enabled = false;
                     txtID.Text = "";
                     txtNombre.Text = "";
+                    txtValor.Text = "";
                     break;
                 case "NUEVO":
                     bttnNuevo.Enabled = false;
@@ -48,6 +49,7 @@ namespace New_MasterTrade.UserControls
                     bttnActualizar.Enabled = false;
                     txtID.Text = crud.NuevoId_TasaCambio().ToString();
                     txtNombre.Text = "";
+                    txtValor.Text = "";
                     break;
                 case "ACTUALIZAR":
                     bttnNuevo.Enabled = true;
@@ -71,8 +73,16 @@ namespace New_MasterTrade.UserControls
 
         private void bttnCerrar_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
-            this.Dispose();
+            if (tablaTasasCambio.Rows.Count < 1)
+            {
+                MessageBox.Show("Debe registrar al menos una tasa de cambio para esta moneda", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                this.ParentForm.Close();
+                this.Dispose();
+            }
+            
         }
 
         private void tablaTasasCambio_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -97,23 +107,16 @@ namespace New_MasterTrade.UserControls
                     }
                     else
                     {
-                        if (tablaTasasCambio.Columns[e.ColumnIndex].Name == "TASACAMBIO")
+                        try
                         {
-
+                            ConfigControles("ACTUALIZAR");
+                            txtID.Text = tablaTasasCambio.Rows[e.RowIndex].Cells["ID"].Value.ToString(); ;
+                            txtNombre.Text = tablaTasasCambio.Rows[e.RowIndex].Cells["TASACAMBIO"].Value.ToString();
+                            txtValor.Text = tablaTasasCambio.Rows[e.RowIndex].Cells["VALOR"].Value.ToString();
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            try
-                            {
-                                ConfigControles("ACTUALIZAR");
-                                txtID.Text = tablaTasasCambio.Rows[e.RowIndex].Cells["ID"].Value.ToString(); ;
-                                txtNombre.Text = tablaTasasCambio.Rows[e.RowIndex].Cells["TASACAMBIO"].Value.ToString();
-                                txtValor.Text = tablaTasasCambio.Rows[e.RowIndex].Cells["VALOR"].Value.ToString();
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
+                            MessageBox.Show(ex.Message);
                         }
                     }
                 }
@@ -143,15 +146,23 @@ namespace New_MasterTrade.UserControls
             }
             else
             {
-                if (MessageBox.Show("Desea actualizar los datos de este registro?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                int id = Convert.ToInt32(txtID.Text);
+                string tasa_cambio = txtNombre.Text;
+                decimal valor = Convert.ToDecimal(txtValor.Text);
+                if (valor < 0)
                 {
-                    int id = Convert.ToInt32(txtID.Text);
-                    string tasa_cambio = txtNombre.Text;
-                    decimal valor = Convert.ToDecimal(txtValor.Text);
-                    crud.Update_TasaCambio(id, tasa_cambio, valor);
-                    TablaTasasCambio_Refresh();
-                    ConfigControles("INICIO");
+                    MessageBox.Show("Ingrese un valor válido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else
+                {
+                    if (MessageBox.Show("Desea actualizar los datos de este registro?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+
+                        crud.Update_TasaCambio(id, tasa_cambio, valor);
+                        TablaTasasCambio_Refresh();
+                        ConfigControles("INICIO");
+                    }
+                }                
             }
         }
 
@@ -169,14 +180,22 @@ namespace New_MasterTrade.UserControls
             }
             else
             {
-                if (MessageBox.Show("Desea registrar esta tasa de cambio?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                decimal x = Convert.ToDecimal(txtValor.Text);
+                if (x < 1)
                 {
-                    string tasa_cambio = txtNombre.Text;
-                    decimal valor = Convert.ToDecimal(txtValor.Text);
-                    crud.Create_TasaCambio(Id_Moneda, tasa_cambio, valor);
-                    TablaTasasCambio_Refresh();
-                    ConfigControles("INICIO");
+                    MessageBox.Show("Ingrese un valor válido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else
+                {
+                    if (MessageBox.Show("Desea registrar esta tasa de cambio?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        string tasa_cambio = txtNombre.Text;
+                        decimal valor = Convert.ToDecimal(txtValor.Text);
+                        crud.Create_TasaCambio(Id_Moneda, tasa_cambio, valor);
+                        TablaTasasCambio_Refresh();
+                        ConfigControles("INICIO");
+                    }
+                }                
             }
         }
 
@@ -196,6 +215,30 @@ namespace New_MasterTrade.UserControls
                         tablaTasasCambio.Rows[e.RowIndex].Visible = false;
                     }
                 }
+            }
+        }
+
+        private void txtValor_Enter(object sender, EventArgs e)
+        {
+            if (txtValor.Text == "0")
+            {
+                txtValor.Text = "";
+            }
+        }
+
+        private void txtValor_Leave(object sender, EventArgs e)
+        {
+            if (txtValor.Text == "")
+            {
+                txtValor.Text = "0";
+            }
+        }
+
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
             }
         }
     }

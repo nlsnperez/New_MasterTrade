@@ -1,5 +1,6 @@
 ﻿using New_MasterTrade.Base_de_Datos;
 using New_MasterTrade.Cache;
+using New_MasterTrade.Custom_Controls;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -48,9 +49,11 @@ namespace New_MasterTrade.UserControls
             {
                 if (carrito.Rows[x][0].ToString() == carrito.Rows[y][0].ToString())
                 {
-                    carrito.Rows[x][4] = int.Parse(carrito.Rows[x][4].ToString()) + int.Parse(carrito.Rows[y][4].ToString());
-                    carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][5].ToString()) + decimal.Parse(carrito.Rows[y][5].ToString());
-                    carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
+                    carrito.Rows.RemoveAt(x);
+                    GetSubTotal();
+                    //carrito.Rows[x][4] = int.Parse(carrito.Rows[x][4].ToString()) + int.Parse(carrito.Rows[y][4].ToString());
+                    //carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][5].ToString()) + decimal.Parse(carrito.Rows[y][5].ToString());
+                    //carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
                     break;
                 }
             }
@@ -124,6 +127,7 @@ namespace New_MasterTrade.UserControls
             txtCorreo.Text = "";
 
             txtSubTotalBs.Text = "0.00";
+            txtMoneda.Text = "";
             comboMoneda.Enabled = false;
             comboTasaCambio.Enabled = false;
         }
@@ -188,7 +192,7 @@ namespace New_MasterTrade.UserControls
 
         private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            if (tableCarrito.Columns[e.ColumnIndex].Name == "Remover")
             {
                 if (MessageBox.Show("¿Desea remover este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -198,6 +202,20 @@ namespace New_MasterTrade.UserControls
                     {
                         bttnGuardar.Enabled = false;
                     }
+                }
+            }
+            else
+            {
+                if (e.RowIndex >= 0)
+                {
+                    int id = Int32.Parse(tableCarrito.Rows[e.RowIndex].Cells["columnId"].Value.ToString());
+                    Form x = new Form();
+                    AgregarProducto y = new AgregarProducto(this, null, id);
+                    x.Size = new Size(y.Width, y.Height);
+                    x.Controls.Add(y);
+                    x.StartPosition = FormStartPosition.CenterScreen;
+                    x.FormBorderStyle = FormBorderStyle.None;
+                    x.ShowDialog();
                 }
             }
         }

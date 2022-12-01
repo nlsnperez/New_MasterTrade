@@ -34,7 +34,6 @@ namespace New_MasterTrade.UserControls
             txtID.Text = crud.GetLastID().ToString();
             txtID.Enabled = false;
             comboCategoria.Focus();
-            txtCantidad.Enabled = false;
             bttnActualizar.Enabled = false;
             ConfigCombos();
             ConfigLongitud();
@@ -42,8 +41,8 @@ namespace New_MasterTrade.UserControls
 
         public void ConfigLongitud()
         {
-            txtSerial.MaxLength = 100;
-            txtDescripcion.MaxLength = 500;
+            txtSerial.MaxLength = 13;
+            txtDescripcion.MaxLength = 100;
             txtPrecioVenta.MaxLength = 13;
             txtPrecioCompra.MaxLength = 13;
         }
@@ -118,16 +117,28 @@ namespace New_MasterTrade.UserControls
         {
             if (ProcesoDeAprobacion(GetProducto()))
             {
-                if (MessageBox.Show("¿Desea registrar este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (crud.ProductoDuplicado(GetProducto().Serial))
                 {
-                    crud.Create(GetProducto());
-                    Limpiar();
+                    MessageBox.Show("Ya existe un producto registrado con el serial ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    if (MessageBox.Show("¿Desea registrar este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        crud.Create(GetProducto());
+                        Limpiar();
+                    }
                 }
             }
         }
 
         public bool ProcesoDeAprobacion(Producto producto)
         {
+            if (!producto.TamagnoSerial())
+            {
+                MessageBox.Show("Debe introducir un serial con 10 dígitos mínimo y 13 dígitos máximo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             if (producto.IsEmpty())
             {
                 MessageBox.Show("Complete todos los campos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -136,11 +147,6 @@ namespace New_MasterTrade.UserControls
             if (!producto.PrecioCorrecto())
             {
                 MessageBox.Show("El precio de venta no puede ser menor al precio de compra", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (crud.ProductoDuplicado(producto.Serial))
-            {
-                MessageBox.Show("Ya existe un producto registrado con el serial ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -180,6 +186,15 @@ namespace New_MasterTrade.UserControls
             try
             {
                 int cantidad = crud.ProductosComprados(producto.Id) - crud.ProductosVendidos(producto.Id);
+                if (cantidad > 0)
+                {
+                    txtCantidad.BackColor = Color.FromArgb(149, 212, 90);
+                }
+                else
+                {
+                    txtCantidad.BackColor = Color.FromArgb(255, 97, 116);
+                }
+
                 byte[] imagen = producto.Imagen;
                 MemoryStream ms = new MemoryStream(imagen);
                 pbImagen.Image = Image.FromStream(ms);
@@ -193,7 +208,7 @@ namespace New_MasterTrade.UserControls
                 txtPrecioCompra.Text = producto.Precio_Compra.ToString();
                 txtPrecioVenta.Text = producto.Precio_Venta.ToString();
                 txtCantidad.Text = cantidad.ToString();
-                comboCategoria.SelectedIndex = IndexGarantia(producto.Garantia);
+                IndexGarantia(producto.Garantia);
 
                 txtBuscar.Text = "";
                 txtSerial.Enabled = false;
@@ -207,25 +222,24 @@ namespace New_MasterTrade.UserControls
             
         }
 
-        public int IndexGarantia(int x)
+        public void IndexGarantia(int x)
         {
             int y = 0;
             switch (x)
             {
                 case 3:
-                    y = 0;
+                    comboGarantia.Text = "3 DÍAS";
                     break;
                 case 7:
-                    y = 1;
+                    comboGarantia.Text = "1 SEMANA";
                     break;
                 case 30:
-                    y = 2;
+                    comboGarantia.Text = "1 MES";
                     break;
                 case 365:
-                    y = 3;
+                    comboGarantia.Text = "1 AÑO";
                     break;
             }
-            return y;
         }
 
         public void Limpiar()
@@ -254,7 +268,13 @@ namespace New_MasterTrade.UserControls
 
         private void txtPrecioVenta_Enter(object sender, EventArgs e)
         {
-
+            if (txtPrecioVenta.Text == "0")
+            {
+                txtPrecioVenta.Text = "";
+            }
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
         }
 
         private void txtPrecioVenta_Leave(object sender, EventArgs e)
@@ -292,7 +312,14 @@ namespace New_MasterTrade.UserControls
 
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
-
+            if (ProcesoDeAprobacion(GetProducto()))
+            {
+                if (MessageBox.Show("¿Desea actualizar este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    crud.Update(GetProducto());
+                    Limpiar();
+                }
+            }
         }
 
         private void textBox_Enter(object sender, EventArgs e)
@@ -307,6 +334,25 @@ namespace New_MasterTrade.UserControls
             TextBox textBox = sender as TextBox;
             textBox.BackColor = SystemColors.Window;
             textBox.ForeColor = SystemColors.WindowText;
+        }
+
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            TextBox objeto = sender as TextBox;
+            if (objeto.Name == "txtSerial")
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
+            }            
         }
     }
 }

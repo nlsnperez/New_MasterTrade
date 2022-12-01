@@ -24,7 +24,6 @@ namespace New_MasterTrade
             crud = new CRUD_Proveedores();
             tablaPersonas.AutoGenerateColumns = false;
             tablaPersonas.DataSource = null;
-            txtBuscar.Enabled = false;
             CargarTabla();
             
         }
@@ -51,7 +50,7 @@ namespace New_MasterTrade
                 {
                     if (Convert.ToBoolean(tablaPersonas.Rows[e.RowIndex].Cells["Activo"].Value) == true)
                     {
-                        if (MessageBox.Show("¿Desea eliminar los datos de este cliente?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        if (MessageBox.Show("¿Desea eliminar los datos de este proveedor?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             string documento = tablaPersonas.Rows[e.RowIndex].Cells["Documento"].Value.ToString();
                             crud.Delete(documento, 0);
@@ -62,7 +61,7 @@ namespace New_MasterTrade
                     {
                         if (Convert.ToBoolean(tablaPersonas.Rows[e.RowIndex].Cells["Activo"].Value) == false)
                         {
-                            if (MessageBox.Show("¿Desea restaurar los datos de este cliente?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                            if (MessageBox.Show("¿Desea restaurar los datos de este proveedor?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                             {
                                 string documento = tablaPersonas.Rows[e.RowIndex].Cells["Documento"].Value.ToString();
                                 crud.Delete(documento, 1);
@@ -77,12 +76,15 @@ namespace New_MasterTrade
 
         private void CargarTabla()
         {
-            if (crud.Tabla().Rows.Count > 0)
+            try
             {
                 tablaPersonas.DataSource = crud.Tabla();
                 txtBuscar.Focus();
             }
-            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void txtBuscar_KeyUp_1(object sender, KeyEventArgs e)
@@ -98,6 +100,7 @@ namespace New_MasterTrade
             x.Controls.Add(y);
             x.StartPosition = FormStartPosition.CenterScreen;
             x.ShowDialog();
+            CargarTabla();
         }
 
         private void tablaPersonas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

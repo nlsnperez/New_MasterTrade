@@ -55,10 +55,10 @@ namespace New_MasterTrade.Base_de_Datos
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = persona.RazonSocial;
+                    command.Parameters.Add("@razonsocial", MySqlDbType.VarChar).Value = persona.RazonSocial;
                     command.Parameters.Add("@direccion", MySqlDbType.VarChar).Value = persona.Direccion;
                     command.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = persona.Telefono;
-                    command.Parameters.Add("@email", MySqlDbType.VarChar).Value = persona.Correo;
+                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = persona.Correo;
                     command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = persona.Documento;
 
                     command.ExecuteNonQuery();

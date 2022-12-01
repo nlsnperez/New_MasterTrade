@@ -134,7 +134,7 @@ namespace New_MasterTrade.Base_de_Datos
             int x = 0;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT COUNT(`id_cat`) AS categorias FROM categoria", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM categoria ORDER BY id_cat DESC", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -349,11 +349,11 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `modelo` SET `nom_mod`=@modelo WHERE `id_mar` = @id";
+                    command.CommandText = "UPDATE `modelo` SET `nom_mod`=@modelo WHERE `id_mod` = @id";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@marca", MySqlDbType.VarChar).Value = modelo.ToUpper();
+                    command.Parameters.Add("@modelo", MySqlDbType.VarChar).Value = modelo.ToUpper();
                     command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
 
                     command.ExecuteNonQuery();
@@ -415,6 +415,146 @@ namespace New_MasterTrade.Base_de_Datos
             try
             {
                 MySqlCommand command = new MySqlCommand("SELECT * FROM modelo ORDER BY id_mod DESC", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = reader.GetInt32(0);
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x + 1;
+        }
+
+        public DataTable TablaMetodoPago()
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `metodo_pago`", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        public void Create_MetodoPago(string metodopago)
+        {
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "INSERT INTO `metodo_pago`(`des_mpa`, `act_mpa`) VALUES (@metodopago, @activo)";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@metodopago", MySqlDbType.VarChar).Value = metodopago.ToUpper();
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
+
+                    command.ExecuteNonQuery();
+                }
+                MessageBox.Show("El registro se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void Update_MetodoPago(int id, string metodopago)
+        {
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE `metodo_pago` SET `des_mpa`=@metodopago WHERE `id_mpa` = @id";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@metodopago", MySqlDbType.VarChar).Value = metodopago.ToUpper();
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
+                    command.ExecuteNonQuery();
+                }
+                MessageBox.Show("El registro se actualizó de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void Delete_MetodoPago(int id, int x)
+        {
+            string mensaje = "";
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE `metodo_pago` SET `act_mpa`=@activo WHERE `id_mpa` = @id";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = x;
+
+                    command.ExecuteNonQuery();
+                }
+
+                if (x == 0)
+                {
+                    mensaje = "El registro se eliminó de manera satisfactoria.";
+                }
+                else
+                {
+                    mensaje = "El registro se restauró de manera satisfactoria.";
+                }
+
+                MessageBox.Show(mensaje, "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public int NuevoId_MetodoPago()
+        {
+            int x = 0;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM metodo_pago ORDER BY id_mpa DESC", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();

@@ -42,6 +42,20 @@ namespace New_MasterTrade
             }
         }
 
+        public void CerrarPaneles()
+        {
+            panelArchivo.Visible = false;
+            panelTransacciones.Visible = false;
+            panelReportes.Visible = false;
+            panelMantenimiento.Visible = false;
+            panelAjustes.Visible = false;
+
+            bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+            bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+            bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+            bttnReportes.Image = Properties.Resources.FlechaAbajo;
+        }
+
         private void bttnMouseEnter(object sender, EventArgs e)
         {
             Button bttn = sender as Button;
@@ -97,19 +111,19 @@ namespace New_MasterTrade
         private void bttnProductos_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Productos());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnComprar_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Comprar());
-            panelTransacciones.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnUsuarios_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Usuarios());
-            panelMantenimiento.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnArchivo_Click(object sender, EventArgs e)
@@ -117,10 +131,18 @@ namespace New_MasterTrade
             if (panelArchivo.Visible == false)
             {
                 panelArchivo.Visible = true;
-                panelTransacciones.Visible = false;
-                panelMantenimiento.Visible = false;
                 bttnArchivo.Image = Properties.Resources.FlechaArriba;
-                panelArchivo.Focus();
+
+                panelTransacciones.Visible = false;
+                bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+
+                panelReportes.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaAbajo;
+
+                panelMantenimiento.Visible = false;
+                bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+
+                panelAjustes.Visible = false;
             }
             else
             {
@@ -134,9 +156,18 @@ namespace New_MasterTrade
             if (panelTransacciones.Visible == false)
             {
                 panelTransacciones.Visible = true;
-                panelArchivo.Visible = false;
-                panelMantenimiento.Visible = false;
                 bttnTransacciones.Image = Properties.Resources.FlechaArriba;
+
+                panelArchivo.Visible = false;
+                bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+
+                panelReportes.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaAbajo;
+
+                panelMantenimiento.Visible = false;
+                bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+
+                panelAjustes.Visible = false;
             }
             else
             {
@@ -150,9 +181,18 @@ namespace New_MasterTrade
             if (panelMantenimiento.Visible == false)
             {
                 panelMantenimiento.Visible = true;
-                panelTransacciones.Visible = false;
-                panelArchivo.Visible = false;
                 bttnMantenimiento.Image = Properties.Resources.FlechaArriba;
+
+                panelArchivo.Visible = false;
+                bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+
+                panelTransacciones.Visible = false;
+                bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+
+                panelReportes.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaAbajo;
+
+                panelAjustes.Visible = false;
             }
             else
             {
@@ -164,25 +204,25 @@ namespace New_MasterTrade
         private void bttnVender_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Vender());
-            panelTransacciones.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnCompras_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Compras());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnVentas_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Ventas());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnBitacora_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new RegistrosBitacora());
-            panelMantenimiento.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnAjustes_Click(object sender, EventArgs e)
@@ -193,19 +233,19 @@ namespace New_MasterTrade
         private void bttnProveedores_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Proveedores());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnClientes_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Clientes());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnRespaldo_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Respaldos());
-            panelMantenimiento.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnReportes_Click(object sender, EventArgs e)
@@ -213,10 +253,18 @@ namespace New_MasterTrade
             if (panelReportes.Visible == false)
             {
                 panelReportes.Visible = true;
-                panelTransacciones.Visible = false;
-                panelArchivo.Visible = false;
-                panelMantenimiento.Visible = false;
                 bttnReportes.Image = Properties.Resources.FlechaArriba;
+
+                panelArchivo.Visible = false;
+                bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+
+                panelTransacciones.Visible = false;
+                bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+
+                panelMantenimiento.Visible = false;
+                bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+
+                panelAjustes.Visible = false;
             }
             else
             {
@@ -230,9 +278,18 @@ namespace New_MasterTrade
             if (panelAjustes.Visible == false)
             {
                 panelAjustes.Visible = true;
+
                 panelArchivo.Visible = false;
+                bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+
                 panelTransacciones.Visible = false;
+                bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+
+                panelReportes.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaAbajo;
+
                 panelMantenimiento.Visible = false;
+                bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
             }
             else
             {
@@ -242,54 +299,80 @@ namespace New_MasterTrade
 
         private void bttnCategorias_Click(object sender, EventArgs e)
         {
-            panelArchivo.Visible = false;
-            MostrarDialog(new Categorias());            
+            MostrarDialog(new Categorias());
+            CerrarPaneles();
         }
 
         private void bttnMarcas_Click(object sender, EventArgs e)
         {
-            panelArchivo.Visible = false;
+            
             MostrarDialog(new Marcas());
+            CerrarPaneles();
         }
 
         private void bttnModelos_Click(object sender, EventArgs e)
         {
-            panelArchivo.Visible = false;
+            
             MostrarDialog(new Modelos());
+            CerrarPaneles();
         }
 
         private void bttnReportesCliente_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new ReportesCliente());
-            panelReportes.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnReportesProveedor_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new ReportesProveedor());
-            panelReportes.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnReportesProducto_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new ReportesProducto());
-            panelReportes.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnImpuestos_Click(object sender, EventArgs e)
         {
             MostrarDialog(new Impuestos());
+            CerrarPaneles();
         }
 
         private void bttnMonedas_Click(object sender, EventArgs e)
         {
             MostrarDialog(new Monedas());
+            CerrarPaneles();
         }
 
         private void bttnVendedores_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Vendedores());
-            panelMantenimiento.Visible = false;
+            CerrarPaneles();
+        }
+
+        private void bttnGarantias_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new Garantias());
+            CerrarPaneles();
+        }
+
+        private void bttnReportesVenta_Click(object sender, EventArgs e)
+        {
+            CerrarPaneles();
+        }
+
+        private void bttnReportesCompra_Click(object sender, EventArgs e)
+        {
+            CerrarPaneles();
+        }
+
+        private void bttnMetodosPago_Click(object sender, EventArgs e)
+        {
+            MostrarDialog(new MetodosDePago());
+            CerrarPaneles();
         }
     }
 }

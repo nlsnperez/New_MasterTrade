@@ -19,21 +19,20 @@ namespace New_MasterTrade.UserControls
         {
             InitializeComponent();
             crud = new CRUD_Ventas();
-            txtBuscar.Enabled = false;
             CargarTabla();
         }
 
         public void CargarTabla()
         {
-            if (crud.Facturas().Rows.Count > 0)
+            try
             {
                 tablaVentas.DataSource = crud.Facturas();
-                txtBuscar.Enabled = true;
                 txtBuscar.Focus();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No hay registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message);
+                throw;
             }
         }
 

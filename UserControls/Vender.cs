@@ -51,11 +51,13 @@ namespace New_MasterTrade.UserControls
             {
                 if (carrito.Rows[x][0].ToString() == carrito.Rows[y][0].ToString())
                 {
-                    int cant = int.Parse(carrito.Rows[x][4].ToString()) + int.Parse(carrito.Rows[y][4].ToString());
-                    if (cant > z) carrito.Rows[x][4] = z;
-                    else carrito.Rows[x][4] = cant;
-                    carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][3].ToString()) * decimal.Parse(carrito.Rows[y][4].ToString());
-                    carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
+                    carrito.Rows.RemoveAt(x);
+                    GetSubTotal();
+                    //int cant = int.Parse(carrito.Rows[x][4].ToString()) + int.Parse(carrito.Rows[y][4].ToString());
+                    //if (cant > z) carrito.Rows[x][4] = z;
+                    //else carrito.Rows[x][4] = cant;
+                    //carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][3].ToString()) * decimal.Parse(carrito.Rows[y][4].ToString());
+                    //carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
                     break;
                 }
             }
@@ -134,7 +136,8 @@ namespace New_MasterTrade.UserControls
             txtTelefono.Text = "";
             txtCorreo.Text = "";
 
-            txtSubTotalBs.Text = "0";
+            txtSubTotalBs.Text = "0.00";
+            txtMoneda.Text = "";
         }
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)//LIMITA LOS TEXBOXES PARA QUE ACEPTEN SÓLO NÚMEROS
@@ -159,11 +162,19 @@ namespace New_MasterTrade.UserControls
 
         private void bttnNuevaVenta_Click(object sender, EventArgs e)
         {
-            ConfigControles("ON");
-            txtCliente.Focus();
-            IdVenta = crud.GetIdVentas();
-            txtNumeroOrden.Text = IdVenta.ToString("000000000");
-            comboMoneda.SelectedIndex = 0;
+            try
+            {
+                ConfigControles("ON");
+                txtCliente.Focus();
+                IdVenta = crud.GetIdVentas();
+                txtNumeroOrden.Text = IdVenta.ToString("000000000");
+                comboMoneda.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
@@ -184,7 +195,7 @@ namespace New_MasterTrade.UserControls
 
         private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            if (tableCarrito.Columns[e.ColumnIndex].Name == "Remover")
             {
                 if (MessageBox.Show("¿Desea remover este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -196,6 +207,20 @@ namespace New_MasterTrade.UserControls
                         bttnGuardar.Enabled = false;
                     }
                 }
+            }
+            else
+            {
+                if (e.RowIndex >= 0)
+                {
+                    int id = Int32.Parse(tableCarrito.Rows[e.RowIndex].Cells["columnId"].Value.ToString());
+                    Form x = new Form();
+                    AgregarProducto y = new AgregarProducto(null, this, id);
+                    x.Size = new Size(y.Width, y.Height);
+                    x.Controls.Add(y);
+                    x.StartPosition = FormStartPosition.CenterScreen;
+                    x.FormBorderStyle = FormBorderStyle.None;
+                    x.ShowDialog();
+                }                
             }
         }
 
@@ -274,7 +299,7 @@ namespace New_MasterTrade.UserControls
         {
             Venta venta = new Venta(IdVenta,
                                     IdCliente,
-                                    Convert.ToInt32(comboMoneda.SelectedValue),
+                                    Convert.ToInt32(comboTasaCambio.SelectedValue),
                                     txtNumeroOrden.Text,
                                     System.DateTime.Now);
             return venta;

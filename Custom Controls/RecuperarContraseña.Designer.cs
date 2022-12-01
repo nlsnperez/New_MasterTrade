@@ -34,20 +34,21 @@ namespace New_MasterTrade.Custom_Controls
             this.txtParametro = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // bttnCancelar
             // 
             this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCancelar.Location = new System.Drawing.Point(317, 116);
+            this.bttnCancelar.Location = new System.Drawing.Point(423, 143);
+            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bttnCancelar.Name = "bttnCancelar";
-            this.bttnCancelar.Size = new System.Drawing.Size(85, 24);
+            this.bttnCancelar.Size = new System.Drawing.Size(113, 30);
             this.bttnCancelar.TabIndex = 65;
             this.bttnCancelar.Text = "CANCELAR";
             this.bttnCancelar.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@ namespace New_MasterTrade.Custom_Controls
             // bttnAceptar
             // 
             this.bttnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnAceptar.Location = new System.Drawing.Point(408, 116);
+            this.bttnAceptar.Location = new System.Drawing.Point(544, 143);
+            this.bttnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bttnAceptar.Name = "bttnAceptar";
-            this.bttnAceptar.Size = new System.Drawing.Size(85, 24);
+            this.bttnAceptar.Size = new System.Drawing.Size(113, 30);
             this.bttnAceptar.TabIndex = 64;
             this.bttnAceptar.Text = "ACEPTAR";
             this.bttnAceptar.UseVisualStyleBackColor = true;
@@ -68,9 +70,11 @@ namespace New_MasterTrade.Custom_Controls
             // 
             this.txtParametro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtParametro.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.txtParametro.Location = new System.Drawing.Point(256, 89);
+            this.txtParametro.Location = new System.Drawing.Point(341, 110);
+            this.txtParametro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtParametro.MaxLength = 150;
             this.txtParametro.Name = "txtParametro";
-            this.txtParametro.Size = new System.Drawing.Size(300, 20);
+            this.txtParametro.Size = new System.Drawing.Size(399, 22);
             this.txtParametro.TabIndex = 67;
             this.txtParametro.Text = "Usuario o correo electrónico";
             this.txtParametro.Enter += new System.EventHandler(this.txtParametro_Enter);
@@ -80,9 +84,10 @@ namespace New_MasterTrade.Custom_Controls
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(6, 6);
+            this.label2.Location = new System.Drawing.Point(8, 7);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(335, 13);
+            this.label2.Size = new System.Drawing.Size(412, 16);
             this.label2.TabIndex = 66;
             this.label2.Text = "INGRESE SU NOMBRE DE USUARIO O CORREO ELECTRÓNICO:";
             // 
@@ -93,56 +98,61 @@ namespace New_MasterTrade.Custom_Controls
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 200);
+            this.panel1.Size = new System.Drawing.Size(267, 246);
             this.panel1.TabIndex = 68;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(33, 181);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 16);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "RECUPERAR CONTRASEÑA";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::New_MasterTrade.Properties.Resources.RecuperarContrasegna;
+            this.pictureBox1.Location = new System.Drawing.Point(67, 49);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(133, 123);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(200, 0);
+            this.panel2.Location = new System.Drawing.Point(267, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(400, 25);
+            this.panel2.Size = new System.Drawing.Size(533, 31);
             this.panel2.TabIndex = 69;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::New_MasterTrade.Properties.Resources.RecuperarContrasegna;
-            this.pictureBox1.Location = new System.Drawing.Point(50, 40);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(25, 147);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 13);
-            this.label1.TabIndex = 67;
-            this.label1.Text = "RECUPERAR CONTRASEÑA";
             // 
             // RecuperarContrasegna
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtParametro);
             this.Controls.Add(this.bttnCancelar);
             this.Controls.Add(this.bttnAceptar);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "RecuperarContrasegna";
-            this.Size = new System.Drawing.Size(600, 200);
+            this.Size = new System.Drawing.Size(800, 246);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

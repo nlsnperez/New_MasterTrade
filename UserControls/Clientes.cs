@@ -21,7 +21,6 @@ namespace New_MasterTrade.UserControls
         {
             tablaPersonas.AutoGenerateColumns = false;
             tablaPersonas.DataSource = null;
-            txtBuscar.Enabled = false;
             CargarTabla();
 
         }
@@ -74,13 +73,15 @@ namespace New_MasterTrade.UserControls
 
         private void CargarTabla()
         {
-            if (crud.Tabla().Rows.Count > 0)
+            try
             {
                 tablaPersonas.DataSource = crud.Tabla();
-                txtBuscar.Enabled = true;
                 txtBuscar.Focus();
             }
-            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void txtBuscar_KeyUp_1(object sender, KeyEventArgs e)

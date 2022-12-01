@@ -101,6 +101,7 @@
             // txtTotal
             // 
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotal.Enabled = false;
             this.txtTotal.Location = new System.Drawing.Point(225, 150);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTotal.Name = "txtTotal";
@@ -162,7 +163,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(267, 246);
             this.panel1.TabIndex = 12;
@@ -181,7 +182,7 @@
             // 
             this.pictureBox1.Image = global::New_MasterTrade.Properties.Resources.invoice;
             this.pictureBox1.Location = new System.Drawing.Point(67, 48);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(133, 123);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -205,7 +206,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(267, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(533, 246);
             this.panel2.TabIndex = 13;
@@ -215,7 +216,7 @@
             this.bttnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.bttnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnAceptar.Location = new System.Drawing.Point(271, 188);
-            this.bttnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bttnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.bttnAceptar.Name = "bttnAceptar";
             this.bttnAceptar.Size = new System.Drawing.Size(100, 28);
             this.bttnAceptar.TabIndex = 13;
@@ -228,7 +229,7 @@
             this.bttnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(85)))), ((int)(((byte)(93)))));
             this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnCancelar.Location = new System.Drawing.Point(163, 188);
-            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.bttnCancelar.Name = "bttnCancelar";
             this.bttnCancelar.Size = new System.Drawing.Size(100, 28);
             this.bttnCancelar.TabIndex = 12;

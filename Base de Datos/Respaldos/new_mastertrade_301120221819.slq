@@ -1,0 +1,501 @@
+-- MySqlBackup.NET 2.3.7.0
+-- Dump Time: 2022-11-30 18:19:43
+-- --------------------------------------
+-- Server version 10.4.25-MariaDB mariadb.org binary distribution
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- 
+-- Definition of categoria
+-- 
+
+DROP TABLE IF EXISTS `categoria`;
+CREATE TABLE IF NOT EXISTS `categoria` (
+  `id_cat` int(15) NOT NULL AUTO_INCREMENT,
+  `nom_cat` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `act_cat` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_cat`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table categoria
+-- 
+
+/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+INSERT INTO `categoria`(`id_cat`,`nom_cat`,`act_cat`) VALUES(1,'LUCES',1),(2,'CABLES',1),(3,'IMPRESORAS',0),(4,'ANTENAS WIFI',0),(5,'MICROSOFT',1),(6,'EXTENSIONES',0),(7,'CÁMARAS DE VIGILANCIA',1),(8,'RATONES',0),(9,'CÁMARAS WEB',1),(10,'MICE',1),(11,'TECLADOS',1),(12,'MEMORIAS RAM',1),(13,'CABLES',0),(14,'PASTAS TÉRMICAS',1),(15,'VENTILADORES',1),(16,'CARGADORES',1),(17,'RADARES ELECTRÓNICOS',1),(18,'REFRIGERANTES',1);
+/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
+
+-- 
+-- Definition of cliente
+-- 
+
+DROP TABLE IF EXISTS `cliente`;
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `id_cli` int(15) NOT NULL AUTO_INCREMENT,
+  `doc_cli` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `raz_cli` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `dir_cli` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
+  `tel_cli` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `cor_cli` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `act_cli` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_cli`),
+  UNIQUE KEY `documento_identidad_4` (`doc_cli`),
+  KEY `documento_identidad` (`doc_cli`),
+  KEY `documento_identidad_2` (`doc_cli`),
+  KEY `documento_identidad_3` (`doc_cli`),
+  KEY `documento_identidad_5` (`doc_cli`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table cliente
+-- 
+
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente`(`id_cli`,`doc_cli`,`raz_cli`,`dir_cli`,`tel_cli`,`cor_cli`,`act_cli`) VALUES(1,'V29561173','NELSON PÉREZ','BARRIO NUEVO','04127586032','SAGITARIO20120@GMAIL.COM',1),(2,'V13509897','NORAIDA ARRIECHE','ALÍ PRIMERA','04167510937','NORAIDAARRIECHE@GMAIL.COM',1),(3,'V7429524','NELSON PASTOR PÉREZ','LAS CASITAS','00000000000','NELSONPEREZ@GMAIL.COM',0),(4,'V31195024','LUISANA GUADALUPE PÉREZ','LAS CASITAS','04121383848','LUISANAPEREZ@GMAIL.COM',0),(5,'V13547896','AMBER HEARD','LOS ANGELES','04126589632','AMBERHEARDWASRIGHT@GMAIL.COM',1),(6,'V458526539','Adele','Londres','04125896325','adele@gmail.com',0),(7,'V29561175','Popeye','LAs casitas','04127586034','nuevousuario@gmail.com',1),(8,'V29561142','Korra','El polo norte','04127586034','Korra@gmail.com',1),(9,'E23561173','Camila Cabello','Cuba','04127586034','camilacabello5H@GMAIL.COM',0),(10,'V28493312','Heyscar Romero','El oeste, por la playita','04127586025','heyscarromero@gmail.com',1),(11,'V29561179','Nelson','las casitas','04167510937','sagitario20120@gmail.com',1);
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+
+-- 
+-- Definition of impuesto
+-- 
+
+DROP TABLE IF EXISTS `impuesto`;
+CREATE TABLE IF NOT EXISTS `impuesto` (
+  `id_imp` int(15) NOT NULL AUTO_INCREMENT,
+  `des_imp` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `por_imp` decimal(10,2) NOT NULL,
+  `act_imp` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_imp`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table impuesto
+-- 
+
+/*!40000 ALTER TABLE `impuesto` DISABLE KEYS */;
+INSERT INTO `impuesto`(`id_imp`,`des_imp`,`por_imp`,`act_imp`) VALUES(2,'IVA2',16.30,1),(3,'IGTF3',4.00,0),(4,'Nuevo Impuesto',2.00,0),(5,'IMPUESTO NUEVO',5.02,0);
+/*!40000 ALTER TABLE `impuesto` ENABLE KEYS */;
+
+-- 
+-- Definition of factura_venta
+-- 
+
+DROP TABLE IF EXISTS `factura_venta`;
+CREATE TABLE IF NOT EXISTS `factura_venta` (
+  `id_fve` int(15) NOT NULL AUTO_INCREMENT,
+  `id_ven` int(15) NOT NULL,
+  `id_ove` int(15) NOT NULL,
+  `id_imp` int(15) NOT NULL,
+  `id_mpa` int(15) NOT NULL,
+  `tim_fve` decimal(10,2) NOT NULL,
+  `tot_fve` decimal(10,2) NOT NULL,
+  `act_fve` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_fve`),
+  KEY `cliente` (`id_ven`,`id_ove`,`id_mpa`),
+  KEY `metodo_pago` (`id_mpa`),
+  KEY `orden_venta` (`id_ove`),
+  KEY `imp_fve` (`id_imp`),
+  CONSTRAINT `factura_venta_ibfk_1` FOREIGN KEY (`id_mpa`) REFERENCES `metodo_pago` (`id_mpa`),
+  CONSTRAINT `factura_venta_ibfk_3` FOREIGN KEY (`id_ove`) REFERENCES `orden_venta` (`id_ove`),
+  CONSTRAINT `factura_venta_ibfk_4` FOREIGN KEY (`id_ven`) REFERENCES `vendedor` (`id_ven`),
+  CONSTRAINT `factura_venta_ibfk_5` FOREIGN KEY (`id_imp`) REFERENCES `impuesto` (`id_imp`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table factura_venta
+-- 
+
+/*!40000 ALTER TABLE `factura_venta` DISABLE KEYS */;
+INSERT INTO `factura_venta`(`id_fve`,`id_ven`,`id_ove`,`id_imp`,`id_mpa`,`tim_fve`,`tot_fve`,`act_fve`) VALUES(1,3,2,2,1,0.00,200.50,1),(2,4,3,2,2,0.00,10.00,1),(3,3,11,2,5,0.00,116.00,1),(4,3,13,2,2,0.00,0.00,1),(5,3,14,2,2,0.00,638.00,1),(6,3,15,2,2,0.00,34.80,1),(7,3,16,2,1,0.00,12.78,1),(8,3,17,2,2,6.40,45.68,1),(9,3,18,2,1,0.75,5.36,1),(10,3,19,2,2,53.46,381.43,1),(11,3,20,2,1,2.94,20.98,1),(12,3,21,2,2,4.08,29.13,1);
+/*!40000 ALTER TABLE `factura_venta` ENABLE KEYS */;
+
+-- 
+-- Definition of marca
+-- 
+
+DROP TABLE IF EXISTS `marca`;
+CREATE TABLE IF NOT EXISTS `marca` (
+  `id_mar` int(15) NOT NULL AUTO_INCREMENT,
+  `nom_mar` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `act_mar` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_mar`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table marca
+-- 
+
+/*!40000 ALTER TABLE `marca` DISABLE KEYS */;
+INSERT INTO `marca`(`id_mar`,`nom_mar`,`act_mar`) VALUES(1,'APPLE',1),(2,'LENOVO',0),(3,'HP',1),(4,'XIAOMI',1),(5,'MICROSOFT',0),(6,'MOTOROLA',1);
+/*!40000 ALTER TABLE `marca` ENABLE KEYS */;
+
+-- 
+-- Definition of metodo_pago
+-- 
+
+DROP TABLE IF EXISTS `metodo_pago`;
+CREATE TABLE IF NOT EXISTS `metodo_pago` (
+  `id_mpa` int(15) NOT NULL AUTO_INCREMENT,
+  `des_mpa` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `act_mpa` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_mpa`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table metodo_pago
+-- 
+
+/*!40000 ALTER TABLE `metodo_pago` DISABLE KEYS */;
+INSERT INTO `metodo_pago`(`id_mpa`,`des_mpa`,`act_mpa`) VALUES(1,'Punto de venta',1),(2,'Efectivo',1),(4,'Transferencia',1),(5,'Pago Móvil',1);
+/*!40000 ALTER TABLE `metodo_pago` ENABLE KEYS */;
+
+-- 
+-- Definition of modelo
+-- 
+
+DROP TABLE IF EXISTS `modelo`;
+CREATE TABLE IF NOT EXISTS `modelo` (
+  `id_mod` int(15) NOT NULL AUTO_INCREMENT,
+  `nom_mod` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `act_mod` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_mod`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table modelo
+-- 
+
+/*!40000 ALTER TABLE `modelo` DISABLE KEYS */;
+INSERT INTO `modelo`(`id_mod`,`nom_mod`,`act_mod`) VALUES(1,'INALAMBRICO',1),(2,'DE ESCRITORIO',0),(3,'ERGONÓMICO',0);
+/*!40000 ALTER TABLE `modelo` ENABLE KEYS */;
+
+-- 
+-- Definition of moneda
+-- 
+
+DROP TABLE IF EXISTS `moneda`;
+CREATE TABLE IF NOT EXISTS `moneda` (
+  `id_mon` int(15) NOT NULL AUTO_INCREMENT,
+  `nom_mon` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `act_mon` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_mon`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table moneda
+-- 
+
+/*!40000 ALTER TABLE `moneda` DISABLE KEYS */;
+INSERT INTO `moneda`(`id_mon`,`nom_mon`,`act_mon`) VALUES(1,'BOLIVAR FUERTE (BS)',1),(2,'DÓLAR AMERICANO ($)',1),(3,'EURO (€)',0);
+/*!40000 ALTER TABLE `moneda` ENABLE KEYS */;
+
+-- 
+-- Definition of producto
+-- 
+
+DROP TABLE IF EXISTS `producto`;
+CREATE TABLE IF NOT EXISTS `producto` (
+  `id_pro` int(15) NOT NULL AUTO_INCREMENT,
+  `id_cat` int(15) NOT NULL,
+  `id_mar` int(15) NOT NULL,
+  `id_mod` int(15) NOT NULL,
+  `ser_pro` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `des_pro` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
+  `pco_pro` decimal(10,2) NOT NULL,
+  `pve_pro` decimal(10,2) NOT NULL,
+  `img_pro` longblob NOT NULL,
+  `gar_pro` int(3) DEFAULT NULL,
+  `act_pro` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_pro`),
+  KEY `marca` (`id_mar`,`id_cat`),
+  KEY `categoria_2` (`id_cat`),
+  KEY `id_mod` (`id_mod`),
+  CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_cat`) REFERENCES `categoria` (`id_cat`),
+  CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`id_mar`) REFERENCES `marca` (`id_mar`),
+  CONSTRAINT `producto_ibfk_3` FOREIGN KEY (`id_mod`) REFERENCES `modelo` (`id_mod`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table producto
+-- 
+
+/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
+
+/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
+
+-- 
+-- Definition of proveedor
+-- 
+
+DROP TABLE IF EXISTS `proveedor`;
+CREATE TABLE IF NOT EXISTS `proveedor` (
+  `id_prv` int(15) NOT NULL AUTO_INCREMENT,
+  `doc_prv` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `raz_prv` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `dir_prv` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
+  `tel_prv` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `cor_prv` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `act_prv` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_prv`),
+  UNIQUE KEY `documento_identidad_3` (`doc_prv`),
+  KEY `documento_identidad` (`doc_prv`),
+  KEY `documento_identidad_2` (`doc_prv`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table proveedor
+-- 
+
+/*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
+INSERT INTO `proveedor`(`id_prv`,`doc_prv`,`raz_prv`,`dir_prv`,`tel_prv`,`cor_prv`,`act_prv`) VALUES(18,'V29561173','NELSON ALEJANDRO PÉREZ','LAS CASITAS','04167510937','NELSONPEREZ@GMAIL.COM',1),(19,'V13509897','NORAIDA ARRIECHE','LAS CASITAS','04167510937','NORAIDAARRIECHE@GMAIL.COM',1),(20,'V7429524','NELSON PASTOR PÉREZ','LAS CASITAS','04167510937','NELSONPEREZ@GMAIL.COM',1),(21,'V31195024','LUISANA PÉREZ','LAS CASITAS','04125884868','LUISANAPEREZ@GMAIL.COM',1),(22,'V123456789','ALGUIEN NUEVO','ALÍ PRIMERA','04127589563','ALGIENNUEVO@GMAIL.COM',0),(23,'E20221224','MIRABEL MADRIGAL','CASITA, EN ALGÚN LUGAR DE COLOMBIA','04167510937','MIRABELMADRIGAL@GMAIL.COM',0),(24,'E20586459','ANGELINA JOLIE','NEW YORK','04167589856','ANGELINAJOLIEWASRIGHT@GMAIL.COM',0),(25,'E041275860','Rihana','Las Casitas','04127586034','rihannanavy@gmail.com',0),(26,'V29561174','Nelson Arrieche','Don david','04127586034','nelsonarrieche@gmail.com',1),(27,'V13509859','Noraida Yerlin','Las casitas','04167510937','Noraidayerlin13@gmail.com',1),(28,'V7845125','Nelson Pastor','Las casitas','04262076520','nelsonpastor@gmail.com',1),(29,'V29564485','Nelson Arrieche','Las casitas, Cuji vereda 4','04127586034','nelsonarrieche@gmail.com',1),(31,'V8569547','Nelson Perez','El Cuji','04125698547','nel123@gmail.com',1),(32,'V20009840','JESSYCA PEREZ ','EL CUJI, EATADO LARA ','04245552932','jlorena.26@gmail.com',1),(33,'V29561126','Asami Sato','Industrias Sato','04127586034','Asamisato@gmail.com',0);
+/*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
+
+-- 
+-- Definition of tasa_cambio
+-- 
+
+DROP TABLE IF EXISTS `tasa_cambio`;
+CREATE TABLE IF NOT EXISTS `tasa_cambio` (
+  `id_tca` int(15) NOT NULL AUTO_INCREMENT,
+  `id_mon` int(15) NOT NULL,
+  `des_tca` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `val_tca` decimal(10,2) NOT NULL,
+  `act_tca` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_tca`),
+  KEY `id_mon` (`id_mon`),
+  CONSTRAINT `tasa_cambio_ibfk_1` FOREIGN KEY (`id_mon`) REFERENCES `moneda` (`id_mon`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table tasa_cambio
+-- 
+
+/*!40000 ALTER TABLE `tasa_cambio` DISABLE KEYS */;
+INSERT INTO `tasa_cambio`(`id_tca`,`id_mon`,`des_tca`,`val_tca`,`act_tca`) VALUES(1,1,'ESTANDAR',1.00,1),(2,2,'BANCO CENTRAL DE VENEZUELA',9.98,1),(3,2,'PARALELO',11.88,0);
+/*!40000 ALTER TABLE `tasa_cambio` ENABLE KEYS */;
+
+-- 
+-- Definition of orden_compra
+-- 
+
+DROP TABLE IF EXISTS `orden_compra`;
+CREATE TABLE IF NOT EXISTS `orden_compra` (
+  `id_oco` int(15) NOT NULL AUTO_INCREMENT,
+  `id_prv` int(15) NOT NULL,
+  `id_tca` int(15) NOT NULL,
+  `num_oco` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `tot_oco` decimal(10,2) NOT NULL,
+  `fec_oco` date NOT NULL,
+  `hor_oco` time NOT NULL,
+  `act_oco` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_oco`),
+  KEY `proveedor` (`id_prv`),
+  KEY `id_mon` (`id_tca`),
+  CONSTRAINT `orden_compra_ibfk_1` FOREIGN KEY (`id_prv`) REFERENCES `proveedor` (`id_prv`),
+  CONSTRAINT `orden_compra_ibfk_2` FOREIGN KEY (`id_tca`) REFERENCES `tasa_cambio` (`id_tca`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table orden_compra
+-- 
+
+/*!40000 ALTER TABLE `orden_compra` DISABLE KEYS */;
+INSERT INTO `orden_compra`(`id_oco`,`id_prv`,`id_tca`,`num_oco`,`tot_oco`,`fec_oco`,`hor_oco`,`act_oco`) VALUES(1,18,1,'MT-C01',0.00,'2022-10-30 00:00:00','00:00:00',0),(2,18,1,'MT-C02',0.00,'2022-10-30 00:00:00','00:00:00',0),(3,19,1,'MT-C03',0.00,'2022-10-30 00:00:00','00:00:00',0),(4,20,1,'MT-C04',0.00,'2022-10-30 00:00:00','00:00:00',0),(5,18,1,'MT-C05',0.00,'2022-10-30 00:00:00','00:00:00',0),(6,20,1,'MT-C06',0.00,'2022-10-30 00:00:00','00:00:00',0),(7,20,1,'MT-C07',0.00,'2022-10-30 00:00:00','00:00:00',0),(8,20,1,'MT-C08',0.00,'2022-10-30 00:00:00','00:00:00',0),(9,28,1,'MT-C09',0.00,'2022-10-31 00:00:00','00:00:00',0),(10,25,1,'MT-C10',0.00,'2022-10-31 00:00:00','00:00:00',0),(11,19,1,'MT-C11',0.00,'2022-10-31 00:00:00','00:00:00',0),(12,19,1,'MT-C12',0.00,'2022-10-31 00:00:00','00:00:00',0),(13,19,1,'MT-C13',0.00,'2022-10-31 00:00:00','00:00:00',0),(14,31,1,'MT-C14',0.00,'2022-10-31 00:00:00','00:00:00',0),(15,32,1,'MT-C15',0.00,'2022-11-01 00:00:00','00:00:00',0),(16,18,1,'MT-C16',0.00,'2022-11-02 00:00:00','00:00:00',0),(17,25,1,'MT-C0017',0.00,'2022-11-05 00:00:00','00:00:00',0),(18,23,1,'MT-C17',0.00,'2022-11-05 00:00:00','00:00:00',0),(19,18,1,'MT-C19',0.00,'2022-11-05 00:00:00','00:00:00',0),(20,18,1,'MT-C20',0.00,'2022-11-08 00:00:00','00:00:00',0),(21,19,2,'000000021',0.00,'2022-11-27 00:00:00','16:35:48',1),(22,18,1,'000000022',0.00,'2022-11-27 00:00:00','16:38:19',1),(23,20,2,'000000023',84.05,'2022-11-27 00:00:00','16:52:31',1),(24,20,2,'000000024',44.68,'2022-11-29 00:00:00','16:06:42',1),(25,26,1,'000000025',1039.90,'2022-11-30 00:00:00','17:56:20',1);
+/*!40000 ALTER TABLE `orden_compra` ENABLE KEYS */;
+
+-- 
+-- Definition of detalle_compra
+-- 
+
+DROP TABLE IF EXISTS `detalle_compra`;
+CREATE TABLE IF NOT EXISTS `detalle_compra` (
+  `id_dco` int(15) NOT NULL AUTO_INCREMENT,
+  `id_oco` int(15) NOT NULL,
+  `id_pro` int(15) NOT NULL,
+  `can_dco` int(10) NOT NULL,
+  `tot_dco` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id_dco`),
+  KEY `compra` (`id_oco`),
+  KEY `producto` (`id_pro`),
+  CONSTRAINT `detalle_compra_ibfk_1` FOREIGN KEY (`id_pro`) REFERENCES `producto` (`id_pro`),
+  CONSTRAINT `detalle_compra_ibfk_2` FOREIGN KEY (`id_oco`) REFERENCES `orden_compra` (`id_oco`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table detalle_compra
+-- 
+
+/*!40000 ALTER TABLE `detalle_compra` DISABLE KEYS */;
+INSERT INTO `detalle_compra`(`id_dco`,`id_oco`,`id_pro`,`can_dco`,`tot_dco`) VALUES(1,6,12,1,5.00),(2,7,12,1,5.00),(3,8,12,1,5.00),(4,8,14,1,35.56),(5,9,13,1,49.99),(6,10,14,1,35.56),(7,11,11,2,304.76),(8,11,12,1,5.00),(9,11,13,1,49.99),(10,11,14,1,35.56),(11,11,15,1,40.17),(12,12,12,2,10.00),(13,12,15,3,120.51),(14,12,14,1,35.56),(15,13,12,4,20.00),(16,13,14,2,71.12),(17,14,13,20,999.80),(18,14,11,2,304.76),(19,15,12,10,50.00),(20,15,15,5,200.85),(21,16,11,1,152.38),(22,16,12,2,10.00),(23,16,14,5,177.80),(29,19,11,1,152.38),(30,19,12,5,25.00),(31,19,13,2,99.98),(32,19,14,1,35.56),(33,19,15,1,39.00),(34,20,11,10,1523.80),(35,20,12,5,25.00),(36,20,13,25,1249.75),(37,20,14,8,284.48),(38,20,15,10,390.00),(39,20,16,10,200.00),(40,20,17,15,5175.00),(41,21,15,5,195.00),(42,21,13,7,349.93),(43,22,15,20,780.00),(44,22,13,1,49.99),(48,23,13,16,799.84),(49,23,15,1,39.00),(50,24,13,5,249.95),(51,24,18,1,40.00),(52,24,15,4,156.00),(53,25,13,10,499.90),(54,25,20,2,40.00),(55,25,22,100,500.00);
+/*!40000 ALTER TABLE `detalle_compra` ENABLE KEYS */;
+
+-- 
+-- Definition of orden_venta
+-- 
+
+DROP TABLE IF EXISTS `orden_venta`;
+CREATE TABLE IF NOT EXISTS `orden_venta` (
+  `id_ove` int(15) NOT NULL AUTO_INCREMENT,
+  `id_cli` int(15) NOT NULL,
+  `id_tca` int(15) NOT NULL,
+  `num_ove` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `fec_ove` datetime NOT NULL,
+  `hor_ove` time NOT NULL,
+  PRIMARY KEY (`id_ove`),
+  KEY `cliente` (`id_cli`),
+  KEY `id_mon` (`id_tca`),
+  CONSTRAINT `orden_venta_ibfk_1` FOREIGN KEY (`id_cli`) REFERENCES `cliente` (`id_cli`),
+  CONSTRAINT `orden_venta_ibfk_2` FOREIGN KEY (`id_tca`) REFERENCES `tasa_cambio` (`id_tca`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table orden_venta
+-- 
+
+/*!40000 ALTER TABLE `orden_venta` DISABLE KEYS */;
+INSERT INTO `orden_venta`(`id_ove`,`id_cli`,`id_tca`,`num_ove`,`fec_ove`,`hor_ove`) VALUES(1,1,1,'0','0001-01-01 00:00:00','00:00:00'),(2,4,1,'MT-V002','2022-11-05 17:51:25','00:00:00'),(3,3,1,'MT-V003','2022-11-05 22:39:32','00:00:00'),(4,6,1,'MT-V004','2022-11-05 22:49:47','00:00:00'),(5,4,1,'MT-V005','2022-11-05 22:57:52','00:00:00'),(6,6,1,'MT-V006','2022-11-05 22:58:36','00:00:00'),(7,5,1,'MT-V007','2022-11-05 22:59:53','00:00:00'),(8,7,1,'MT-V008','2022-11-05 23:04:47','00:00:00'),(9,5,1,'MT-V009','2022-11-05 23:33:36','00:00:00'),(10,2,1,'MT-V010','2022-11-05 23:39:58','00:00:00'),(11,1,1,'MT-V011','2022-11-08 16:46:34','00:00:00'),(12,4,1,'MT-V012','2022-11-08 18:36:56','00:00:00'),(13,7,1,'MT-V013','2022-11-08 18:40:41','00:00:00'),(14,8,1,'MT-V014','2022-11-08 23:09:31','00:00:00'),(15,2,1,'MT-V015','2022-11-20 00:00:00','11:58:00'),(16,4,2,'MT-V016','2022-11-20 00:00:00','12:08:06'),(17,2,2,'000000017','2022-11-27 00:00:00','16:14:40'),(18,2,2,'000000018','2022-11-27 00:00:00','16:40:42'),(19,2,1,'000000019','2022-11-29 00:00:00','16:01:38'),(20,2,2,'000000020','2022-11-29 00:00:00','16:30:49'),(21,1,2,'000000021','2022-11-30 00:00:00','17:51:48');
+/*!40000 ALTER TABLE `orden_venta` ENABLE KEYS */;
+
+-- 
+-- Definition of detalle_venta
+-- 
+
+DROP TABLE IF EXISTS `detalle_venta`;
+CREATE TABLE IF NOT EXISTS `detalle_venta` (
+  `id_dve` int(15) NOT NULL AUTO_INCREMENT,
+  `id_ove` int(15) NOT NULL,
+  `id_pro` int(15) NOT NULL,
+  `can_dve` int(10) NOT NULL,
+  `tot_dve` float(10,2) NOT NULL,
+  PRIMARY KEY (`id_dve`),
+  KEY `venta` (`id_ove`),
+  KEY `producto` (`id_pro`),
+  KEY `venta_2` (`id_ove`),
+  CONSTRAINT `detalle_venta_ibfk_1` FOREIGN KEY (`id_pro`) REFERENCES `producto` (`id_pro`),
+  CONSTRAINT `detalle_venta_ibfk_2` FOREIGN KEY (`id_ove`) REFERENCES `orden_venta` (`id_ove`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table detalle_venta
+-- 
+
+/*!40000 ALTER TABLE `detalle_venta` DISABLE KEYS */;
+INSERT INTO `detalle_venta`(`id_dve`,`id_ove`,`id_pro`,`can_dve`,`tot_dve`) VALUES(3,1,12,1,10),(4,1,13,2,100),(5,2,15,3,137.97),(6,2,14,2,90),(7,3,12,21,210),(8,4,13,20,1000),(9,4,14,5,225),(10,5,14,4,180),(11,6,15,6,275.94),(12,7,11,5,1000),(13,8,12,0,0),(14,8,14,0,0),(15,9,12,5,50),(16,10,14,1,45),(17,10,15,1,45.99),(18,11,13,2,100),(19,12,11,1,200),(20,12,13,0,0),(21,12,15,0,0),(22,13,12,0,0),(23,13,14,0,0),(24,13,16,0,0),(25,14,17,3,450),(26,14,14,2,90),(27,14,12,1,10),(28,15,12,3,30),(29,16,13,2,100),(30,16,12,1,10),(31,17,13,2,100),(32,17,15,2,91.98),(33,17,11,1,200),(34,18,15,1,45.99),(35,19,15,3,137.97),(36,19,14,2,90),(37,19,13,2,100),(38,20,14,4,180),(39,21,18,1,20),(40,21,15,5,229.95);
+/*!40000 ALTER TABLE `detalle_venta` ENABLE KEYS */;
+
+-- 
+-- Definition of garantia
+-- 
+
+DROP TABLE IF EXISTS `garantia`;
+CREATE TABLE IF NOT EXISTS `garantia` (
+  `id_gar` int(15) NOT NULL AUTO_INCREMENT,
+  `id_dve` int(15) NOT NULL,
+  `fin_gar` date NOT NULL,
+  `ffi_gar` date NOT NULL,
+  PRIMARY KEY (`id_gar`),
+  KEY `id_pro` (`id_dve`),
+  CONSTRAINT `garantia_ibfk_1` FOREIGN KEY (`id_dve`) REFERENCES `detalle_venta` (`id_dve`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table garantia
+-- 
+
+/*!40000 ALTER TABLE `garantia` DISABLE KEYS */;
+INSERT INTO `garantia`(`id_gar`,`id_dve`,`fin_gar`,`ffi_gar`) VALUES(1,22,'2022-11-08 00:00:00','2022-11-15 00:00:00'),(2,23,'2022-11-08 00:00:00','2022-12-08 00:00:00'),(3,24,'2022-11-08 00:00:00','2022-11-15 00:00:00'),(4,25,'2022-11-08 00:00:00','2022-11-15 00:00:00'),(5,26,'2022-11-08 00:00:00','2022-12-08 00:00:00'),(6,27,'2022-11-08 00:00:00','2022-11-15 00:00:00'),(7,28,'2022-11-20 00:00:00','2022-11-27 00:00:00'),(8,29,'2022-11-20 00:00:00','2022-12-20 00:00:00'),(9,30,'2022-11-20 00:00:00','2022-11-27 00:00:00'),(10,31,'2022-11-27 00:00:00','2022-12-27 00:00:00'),(11,32,'2022-11-27 00:00:00','2022-12-27 00:00:00'),(12,33,'2022-11-27 00:00:00','2022-11-30 00:00:00'),(13,34,'2022-11-27 00:00:00','2022-11-30 00:00:00'),(14,35,'2022-11-29 00:00:00','2022-12-29 00:00:00'),(15,36,'2022-11-29 00:00:00','2022-12-02 00:00:00'),(16,37,'2022-11-29 00:00:00','2022-12-29 00:00:00'),(17,38,'2022-11-29 00:00:00','2022-12-29 00:00:00'),(18,39,'2022-11-30 00:00:00','2022-12-30 00:00:00'),(19,40,'2022-11-30 00:00:00','2022-12-03 00:00:00');
+/*!40000 ALTER TABLE `garantia` ENABLE KEYS */;
+
+-- 
+-- Definition of usuario
+-- 
+
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id_usu` int(15) NOT NULL AUTO_INCREMENT,
+  `usr_usu` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `pas_usu` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `nom_usu` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `doc_usu` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `cor_usu` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `niv_usu` int(1) NOT NULL,
+  `act_usu` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_usu`),
+  UNIQUE KEY `user` (`usr_usu`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table usuario
+-- 
+
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario`(`id_usu`,`usr_usu`,`pas_usu`,`nom_usu`,`doc_usu`,`cor_usu`,`niv_usu`,`act_usu`) VALUES(8,'29561173','29561173','Nelson Alejandro Pérez','V29561173','sagitario20120@gmail.com',1,1),(9,'ALEDURAN2710','27102002','Aleymar Duràn','V27102022','aleduran@gmail.com',2,1),(10,'noraidaarrieche','yerlin1724','Noraida Yerlin Arrieche','V13509897','noraidaarrieche2@gmail.com',1,1),(11,'luperez','31195024','Luisana Pérez','V31195024','az1710@gmail.com',1,0),(12,'nelpez1303','panalito18','Nelson Pastor','V7429524','nelpez1303@gmail.com',2,1),(13,'jjose','29561174','Juan José','V29561174','juanjose@gmai.com',2,1),(14,'kDuran20','31194026','Katherine Duràn','V31194026','katherineduran@gmail.com',1,1);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+
+-- 
+-- Definition of bitacora
+-- 
+
+DROP TABLE IF EXISTS `bitacora`;
+CREATE TABLE IF NOT EXISTS `bitacora` (
+  `id_bit` int(15) NOT NULL AUTO_INCREMENT,
+  `id_usu` int(15) NOT NULL,
+  `mod_bit` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `acc_bit` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `fec_bit` date NOT NULL,
+  `hor_bit` time NOT NULL,
+  PRIMARY KEY (`id_bit`),
+  KEY `usuario` (`id_usu`),
+  CONSTRAINT `bitacora_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`)
+) ENGINE=InnoDB AUTO_INCREMENT=395 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table bitacora
+-- 
+
+/*!40000 ALTER TABLE `bitacora` DISABLE KEYS */;
+INSERT INTO `bitacora`(`id_bit`,`id_usu`,`mod_bit`,`acc_bit`,`fec_bit`,`hor_bit`) VALUES(62,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-09 00:00:00','00:00:00'),(63,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-09 00:00:00','00:00:00'),(64,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-09 00:00:00','00:00:00'),(65,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-09 00:00:00','00:00:00'),(66,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-09 00:00:00','00:00:00'),(67,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-09 00:00:00','00:00:00'),(68,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-09 00:00:00','00:00:00'),(69,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-09 00:00:00','00:00:00'),(70,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-09 00:00:00','00:00:00'),(71,8,'CLIENTES','El usuario nlsnperez actualizó la entrada de V29561173 en el sistema','2022-11-09 00:00:00','00:00:00'),(72,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(73,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(74,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(75,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(76,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(77,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(78,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(79,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(80,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(81,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(82,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(83,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(84,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(85,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(86,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(87,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(88,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(89,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(90,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(91,8,'RESPALDOS','El usuario nlsnperez generó una copia de la base de datos','2022-11-10 00:00:00','00:00:00'),(92,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(93,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(94,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(95,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(96,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(97,8,'RESPALDOS','El usuario nlsnperez generó una copia de la base de datos','2022-11-10 00:00:00','00:00:00'),(98,8,'RESPALDOS','El usuario nlsnperez restauró copia de la base de datos','2022-11-10 00:00:00','00:00:00'),(99,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-10 00:00:00','00:00:00'),(100,5,'RESPALDOS','El usuario nlsnperez restauró copia de la base de datos','2022-11-10 00:00:00','00:00:00'),(101,8,'INICIO DE SESIÓN','El usuario nlsnperez inició sesión en el sistema','2022-11-17 00:00:00','00:00:00'),(102,8,'CIERRE DE SESIÓN','El usuario nlsnperez cerró su sesión en el sistema','2022-11-17 00:00:00','00:00:00'),(103,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(104,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(105,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(106,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(107,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(108,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(109,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(110,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(111,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(112,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(113,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(114,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(115,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(116,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-18 00:00:00','00:00:00'),(117,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(118,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(119,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(120,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(121,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(122,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(123,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(124,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(125,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(126,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(127,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(128,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(129,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(130,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(131,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(132,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','00:00:00'),(133,8,'VENDER','El usuario 29561173 registró la venta MT-V016 en el sistema','2022-11-20 00:00:00','00:00:00'),(134,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-20 00:00:00','12:13:35'),(135,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-20 00:00:00','12:13:38'),(136,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','18:04:30'),(137,8,'RESPALDOS','El usuario 29561173 generó una copia de la base de datos','2022-11-21 00:00:00','18:05:48'),(138,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-21 00:00:00','18:05:59'),(139,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','18:34:52'),(140,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','18:41:29'),(141,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-21 00:00:00','18:41:57'),(142,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','18:45:04'),(143,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','18:47:25'),(144,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','18:51:00'),(145,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-21 00:00:00','18:51:25'),(146,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','19:01:42'),(147,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-21 00:00:00','19:23:23'),(148,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','19:24:49'),(149,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-21 00:00:00','19:26:03'),(150,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','19:32:41'),(151,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-21 00:00:00','19:33:13'),(152,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','19:35:42'),(153,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-21 00:00:00','19:35:57'),(154,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-21 00:00:00','19:38:50'),(155,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-21 00:00:00','19:39:49'),(156,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','08:56:27'),(157,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','08:57:54'),(158,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:06:58'),(159,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:07:31'),(160,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:09:01'),(161,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:09:36'),(162,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:11:40'),(163,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:12:36'),(164,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:12:52'),(165,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:20:13'),(166,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:21:21'),(167,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:27:02'),(168,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:27:17'),(169,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:30:05'),(170,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:30:30'),(171,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:32:35'),(172,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:32:55'),(173,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:34:41'),(174,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:35:05'),(175,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:36:00'),(176,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:37:40'),(177,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:40:10'),(178,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:41:42'),(179,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:46:11'),(180,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','09:46:20'),(181,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','09:46:39'),(182,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','09:48:50'),(183,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','09:50:40'),(184,12,'CIERRE DE SESIÓN','El usuario nelpez1303 cerró su sesión en el sistema','2022-11-22 00:00:00','09:51:30'),(185,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','09:51:39'),(186,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','09:54:56'),(187,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','10:01:01'),(188,12,'CIERRE DE SESIÓN','El usuario nelpez1303 cerró su sesión en el sistema','2022-11-22 00:00:00','10:01:26'),(189,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','10:03:16'),(190,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','10:03:48'),(191,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','10:04:00'),(192,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','10:04:46'),(193,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','10:05:03'),(194,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','10:05:16'),(195,12,'CIERRE DE SESIÓN','El usuario nelpez1303 cerró su sesión en el sistema','2022-11-22 00:00:00','10:05:54'),(196,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','10:09:32'),(197,12,'CIERRE DE SESIÓN','El usuario nelpez1303 cerró su sesión en el sistema','2022-11-22 00:00:00','10:09:47'),(198,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','10:15:39'),(199,12,'CIERRE DE SESIÓN','El usuario nelpez1303 cerró su sesión en el sistema','2022-11-22 00:00:00','10:16:11'),(200,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','10:16:19'),(201,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','10:17:22'),(202,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','10:34:28'),(203,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','10:34:59'),(204,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','10:35:11'),(205,12,'CIERRE DE SESIÓN','El usuario nelpez1303 cerró su sesión en el sistema','2022-11-22 00:00:00','10:35:50'),(206,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','10:37:20'),(207,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','10:40:48'),(208,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','10:41:10'),(209,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','10:55:32'),(210,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','10:55:45'),(211,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','10:56:29'),(212,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','10:57:41'),(213,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','11:00:11'),(214,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','11:00:52'),(215,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','11:01:44'),(216,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','11:03:41'),(217,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','11:04:04'),(218,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','11:05:37'),(219,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','11:06:04'),(220,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','11:12:16'),(221,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','11:13:24'),(222,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','11:14:09'),(223,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','11:15:09'),(224,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','11:15:41'),(225,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','11:16:12'),(226,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','11:16:29'),(227,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','11:17:00'),(228,12,'CIERRE DE SESIÓN','El usuario nelpez1303 cerró su sesión en el sistema','2022-11-22 00:00:00','11:17:20'),(229,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','11:18:35'),(230,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','11:19:51'),(231,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','17:54:13'),(232,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','17:55:53'),(233,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','17:56:42'),(234,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','18:21:59'),(235,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','18:22:41'),(236,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','19:09:01'),(237,8,'CLIENTES','El usuario 29561173 actualizó la entrada de V13509897 en el sistema','2022-11-22 00:00:00','19:10:17'),(238,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','19:11:47'),(239,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','19:12:03'),(240,12,'CIERRE DE SESIÓN','El usuario nelpez1303 cerró su sesión en el sistema','2022-11-22 00:00:00','19:13:20'),(241,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','19:13:29'),(242,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','19:14:26'),(243,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','19:21:14'),(244,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','19:22:12'),(245,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','19:23:43'),(246,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','19:24:27'),(247,12,'INICIO DE SESIÓN','El usuario nelpez1303 inició sesión en el sistema','2022-11-22 00:00:00','19:24:57'),(248,12,'CIERRE DE SESIÓN','El usuario nelpez1303 cerró su sesión en el sistema','2022-11-22 00:00:00','19:25:45'),(249,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','19:25:55'),(250,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-22 00:00:00','19:29:38'),(251,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-22 00:00:00','19:29:50'),(252,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-24 00:00:00','15:38:26'),(253,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-24 00:00:00','16:08:12'),(254,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-24 00:00:00','16:10:44'),(255,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-24 00:00:00','16:12:01'),(256,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-24 00:00:00','16:17:51'),(257,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-24 00:00:00','16:21:04'),(258,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-24 00:00:00','16:59:13'),(259,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-24 00:00:00','17:02:33'),(260,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-24 00:00:00','17:03:26'),(261,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','08:56:36'),(262,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-26 00:00:00','08:58:42'),(263,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','09:38:42'),(264,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','09:42:25'),(265,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','09:47:19'),(266,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','09:48:37'),(267,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','09:49:41'),(268,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','09:50:50'),(269,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-26 00:00:00','09:51:38'),(270,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','09:54:06'),(271,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','09:59:04'),(272,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-26 00:00:00','10:00:02'),(273,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','10:26:41'),(274,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','10:27:29'),(275,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','10:28:44'),(276,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-26 00:00:00','10:30:07'),(277,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','10:41:32'),(278,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','10:43:04'),(279,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-26 00:00:00','10:43:22'),(280,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','11:20:02'),(281,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','11:21:45'),(282,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','11:22:53'),(283,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','11:24:03'),(284,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','11:27:37'),(285,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-26 00:00:00','11:28:47'),(286,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','18:49:17'),(287,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','18:58:11'),(288,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','18:59:31'),(289,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','19:01:08'),(290,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','19:10:47'),(291,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','19:11:45'),(292,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-26 00:00:00','19:12:20'),(293,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','19:16:04'),(294,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-26 00:00:00','19:16:34'),(295,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-26 00:00:00','19:18:23'),(296,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','15:55:43'),(297,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:07:12'),(298,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-27 00:00:00','16:10:24'),(299,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:13:09'),(300,8,'VENDER','El usuario 29561173 registró la venta 000000017 en el sistema','2022-11-27 00:00:00','16:14:41'),(301,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-27 00:00:00','16:15:00'),(302,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:22:40'),(303,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-27 00:00:00','16:23:09'),(304,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:27:34'),(305,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-27 00:00:00','16:28:31'),(306,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:31:05'),(307,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-27 00:00:00','16:31:43'),(308,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:35:19'),(309,8,'COMPRAR','El usuario 29561173 registró la compra 000000021 en el sistema','2022-11-27 00:00:00','16:35:49'),(310,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-27 00:00:00','16:36:29'),(311,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:37:55'),(312,8,'COMPRAR','El usuario 29561173 registró la compra 000000022 en el sistema','2022-11-27 00:00:00','16:38:29'),(313,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:40:10'),(314,8,'VENDER','El usuario 29561173 registró la venta 000000018 en el sistema','2022-11-27 00:00:00','16:41:11'),(315,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-27 00:00:00','16:41:25'),(316,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:48:52'),(317,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:49:57'),(318,8,'COMPRAR','El usuario 29561173 registró la compra 000000023 en el sistema','2022-11-27 00:00:00','16:50:40'),(319,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:51:53'),(320,8,'COMPRAR','El usuario 29561173 registró la compra 000000023 en el sistema','2022-11-27 00:00:00','16:52:40'),(321,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:57:20'),(322,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-27 00:00:00','16:58:15'),(323,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','16:58:56'),(324,8,'RESPALDOS','El usuario 29561173 generó una copia de la base de datos','2022-11-27 00:00:00','16:59:23'),(325,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','17:20:49'),(326,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','17:23:46'),(327,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','17:25:38'),(328,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','17:29:30'),(329,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','17:30:40'),(330,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','17:45:54'),(331,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','18:10:50'),(332,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-27 00:00:00','18:45:34'),(333,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-28 00:00:00','18:00:06'),(334,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-28 00:00:00','18:02:16'),(335,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-28 00:00:00','18:04:53'),(336,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-28 00:00:00','18:19:09'),(337,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-28 00:00:00','18:31:58'),(338,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','08:43:18'),(339,8,'CLIENTES','El usuario 29561173 registró la entrada de V28493312 al el sistema','2022-11-29 00:00:00','08:44:12'),(340,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','08:46:02'),(341,8,'CLIENTES','El usuario 29561173 actualizó la entrada de V28493312 en el sistema','2022-11-29 00:00:00','08:46:14'),(342,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','08:59:49'),(343,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','14:55:56'),(344,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:01:43'),(345,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:05:44'),(346,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-29 00:00:00','15:06:08'),(347,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:10:08'),(348,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:11:44'),(349,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:14:53'),(350,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:24:01'),(351,8,'CLIENTES','El usuario 29561173 actualizó la entrada de V29561175 en el sistema','2022-11-29 00:00:00','15:24:45'),(352,8,'PROVEEDORES','El usuario 29561173 actualizó la entrada de V29564485 en el sistema','2022-11-29 00:00:00','15:25:54'),(353,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:37:54'),(354,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:41:39'),(355,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:43:04'),(356,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:45:26'),(357,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:49:36'),(358,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:51:21'),(359,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:52:47'),(360,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:56:24'),(361,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','15:58:54'),(362,8,'VENDER','El usuario 29561173 registró la venta 000000019 en el sistema','2022-11-29 00:00:00','16:02:42'),(363,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','16:05:16'),(364,8,'COMPRAR','El usuario 29561173 registró la compra 000000024 en el sistema','2022-11-29 00:00:00','16:07:01'),(365,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','16:14:27'),(366,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-29 00:00:00','16:16:32'),(367,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','16:24:43'),(368,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','16:29:14'),(369,8,'VENDER','El usuario 29561173 registró la venta 000000020 en el sistema','2022-11-29 00:00:00','16:31:05'),(370,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','16:33:23'),(371,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','16:45:13'),(372,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','16:52:53'),(373,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','17:04:04'),(374,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-29 00:00:00','17:04:58'),(375,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','17:09:38'),(376,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','17:10:16'),(377,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','18:48:54'),(378,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-29 00:00:00','18:50:42'),(379,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-30 00:00:00','16:58:06'),(380,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-30 00:00:00','17:09:39'),(381,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-30 00:00:00','17:12:02'),(382,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-30 00:00:00','17:15:54'),(383,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-30 00:00:00','17:18:16'),(384,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-30 00:00:00','17:18:56'),(385,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-30 00:00:00','17:20:01'),(386,8,'CIERRE DE SESIÓN','El usuario 29561173 cerró su sesión en el sistema','2022-11-30 00:00:00','17:20:21'),(387,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-30 00:00:00','17:20:47'),(388,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-30 00:00:00','17:37:16'),(389,8,'CLIENTES','El usuario 29561173 actualizó la entrada de V29561179 en el sistema','2022-11-30 00:00:00','17:38:57'),(390,8,'INICIO DE SESIÓN','El usuario 29561173 inició sesión en el sistema','2022-11-30 00:00:00','17:44:40'),(391,8,'VENDER','El usuario 29561173 registró la venta 000000021 en el sistema','2022-11-30 00:00:00','17:53:27'),(392,8,'COMPRAR','El usuario 29561173 registró la compra 000000025 en el sistema','2022-11-30 00:00:00','17:57:05'),(393,8,'RESPALDOS','El usuario 29561173 generó una copia de la base de datos','2022-11-30 00:00:00','18:09:15'),(394,8,'RESPALDOS','El usuario 29561173 restauró copia de la base de datos','2022-11-30 00:00:00','18:10:30');
+/*!40000 ALTER TABLE `bitacora` ENABLE KEYS */;
+
+-- 
+-- Definition of vendedor
+-- 
+
+DROP TABLE IF EXISTS `vendedor`;
+CREATE TABLE IF NOT EXISTS `vendedor` (
+  `id_ven` int(15) NOT NULL AUTO_INCREMENT,
+  `id_usu` int(15) NOT NULL,
+  `act_ven` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_ven`),
+  KEY `id_user` (`id_usu`),
+  CONSTRAINT `vendedor_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- 
+-- Dumping data for table vendedor
+-- 
+
+/*!40000 ALTER TABLE `vendedor` DISABLE KEYS */;
+INSERT INTO `vendedor`(`id_ven`,`id_usu`,`act_ven`) VALUES(3,8,1),(4,9,0),(5,10,1),(6,13,1),(7,14,1);
+/*!40000 ALTER TABLE `vendedor` ENABLE KEYS */;
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+
+-- Dump completed on 2022-11-30 18:19:43
+-- Total time: 0:0:0:0:443 (d:h:m:s:ms)
