@@ -45,39 +45,49 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGenerar_Click(object sender, EventArgs e)
         {
-            switch (comboFiltro.SelectedIndex)
+            try
             {
-                case 0:
-                    y = "";
-                    break;
-                case 1:
-                    y = "V";
-                    break;
-                case 2:
-                    y = "E";
-                    break;
-                case 3:
-                    y = "J";
-                    break;
-                case 4:
-                    y = "G";
-                    break;
-            }
 
-            switch (comboClientes.SelectedIndex)
-            {
-                case 0:
-                    reporte.Reporte_Cliente(y);
-                    break;
-                case 1:
-                    x = 1;
-                    reporte.Reporte_ClienteParametro(x, y);
-                    break;
-                case 2:
-                    x = 0;
-                    reporte.Reporte_ClienteParametro(x, y);
-                    break;
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            reporte.Reporte_VentasPorCliente();
+            //switch (comboFiltro.SelectedIndex)
+            //{
+            //    case 0:
+            //        y = "";
+            //        break;
+            //    case 1:
+            //        y = "V";
+            //        break;
+            //    case 2:
+            //        y = "E";
+            //        break;
+            //    case 3:
+            //        y = "J";
+            //        break;
+            //    case 4:
+            //        y = "G";
+            //        break;
+            //}
+
+            //switch (comboClientes.SelectedIndex)
+            //{
+            //    case 0:
+            //        reporte.Reporte_Cliente(y);
+            //        break;
+            //    case 1:
+            //        x = 1;
+            //        reporte.Reporte_ClienteParametro(x, y);
+            //        break;
+            //    case 2:
+            //        x = 0;
+            //        reporte.Reporte_ClienteParametro(x, y);
+            //        break;
+            //}
         }
     }
 }

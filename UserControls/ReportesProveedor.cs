@@ -45,39 +45,40 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGenerar_Click(object sender, EventArgs e)
         {
-            switch (comboFiltro.SelectedIndex)
-            {
-                case 0:
-                    y = "";
-                    break;
-                case 1:
-                    y = "V";
-                    break;
-                case 2:
-                    y = "E";
-                    break;
-                case 3:
-                    y = "J";
-                    break;
-                case 4:
-                    y = "G";
-                    break;
-            }
+            reporte.Reporte_ProductosPorProveedor();
+            //switch (comboFiltro.SelectedIndex)
+            //{
+            //    case 0:
+            //        y = "";
+            //        break;
+            //    case 1:
+            //        y = "V";
+            //        break;
+            //    case 2:
+            //        y = "E";
+            //        break;
+            //    case 3:
+            //        y = "J";
+            //        break;
+            //    case 4:
+            //        y = "G";
+            //        break;
+            //}
 
-            switch (comboClientes.SelectedIndex)
-            {
-                case 0:
-                    reporte.Reporte_Proveedor(y);
-                    break;
-                case 1:
-                    x = 1;
-                    reporte.Reporte_ProveedorParametro(x, y);
-                    break;
-                case 2:
-                    x = 0;
-                    reporte.Reporte_ProveedorParametro(x, y);
-                    break;
-            }
+            //switch (comboClientes.SelectedIndex)
+            //{
+            //    case 0:
+            //        reporte.Reporte_Proveedor(y);
+            //        break;
+            //    case 1:
+            //        x = 1;
+            //        reporte.Reporte_ProveedorParametro(x, y);
+            //        break;
+            //    case 2:
+            //        x = 0;
+            //        reporte.Reporte_ProveedorParametro(x, y);
+            //        break;
+            //}
         }
     }
 }

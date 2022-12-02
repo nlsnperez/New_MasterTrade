@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Orden_CompraTableAdapter" GeneratorDataComponentClassName="Orden_CompraTableAdapter" Name="Orden_Compra" UserDataComponentName="Orden_CompraTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT oc.num_oco, oc.tot_oco, oc.fec_oco, oc.hor_oco, p.doc_prv, p.raz_prv, p.dir_prv, p.tel_prv, p.cor_prv, tc.des_tca, tc.val_tca, m.nom_mon, dc.can_dco, dc.tot_dco, pro.ser_pro, pro.des_pro, pro.pco_pro
@@ -45,7 +45,7 @@ WHERE  oc.id_prv = p.id_prv AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon A
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClienteTableAdapter" GeneratorDataComponentClassName="ClienteTableAdapter" Name="Cliente" UserDataComponentName="ClienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        id_cli, doc_cli, raz_cli, dir_cli, tel_cli, cor_cli, act_cli
@@ -68,7 +68,7 @@ WHERE        (doc_cli LIKE ?)</CommandText>
               <Mapping SourceColumn="act_cli" DataSetColumn="act_cli" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT * FROM cliente WHERE act_cli = ? AND doc_cli LIKE ?</CommandText>
@@ -83,7 +83,7 @@ WHERE        (doc_cli LIKE ?)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProveedorTableAdapter" GeneratorDataComponentClassName="ProveedorTableAdapter" Name="Proveedor" UserDataComponentName="ProveedorTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        id_prv, doc_prv, raz_prv, dir_prv, tel_prv, cor_prv, act_prv
@@ -106,7 +106,7 @@ WHERE        (doc_prv LIKE ?)</CommandText>
               <Mapping SourceColumn="act_prv" DataSetColumn="act_prv" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT * FROM proveedor WHERE act_prv = ? AND doc_prv LIKE ?</CommandText>
@@ -121,7 +121,7 @@ WHERE        (doc_prv LIKE ?)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductoTableAdapter" GeneratorDataComponentClassName="ProductoTableAdapter" Name="Producto" UserDataComponentName="ProductoTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT p.id_pro, p.ser_pro, c.nom_cat, m.nom_mar, mo.nom_mod, p.des_pro, p.pco_pro, p.pve_pro, p.gar_pro
@@ -150,7 +150,7 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND 
               <Mapping SourceColumn="gar_pro" DataSetColumn="gar_pro" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT p.id_pro, c.nom_cat, m.nom_mar, mo.nom_mod, p.ser_pro, p.des_pro, p.pco_pro, p.pve_pro
@@ -169,7 +169,7 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod AND 
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByAll" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByALL" GeneratorSourceName="FillByAll" GetMethodModifier="Public" GetMethodName="GetDataByALL" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByALL" UserSourceName="FillByAll">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByAll" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByALL" GeneratorSourceName="FillByAll" GetMethodModifier="Public" GetMethodName="GetDataByALL" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByALL" UserSourceName="FillByAll">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT p.id_pro, c.nom_cat, m.nom_mar, mo.nom_mod, p.ser_pro, p.des_pro, p.pco_pro, p.pve_pro, p.gar_pro
@@ -183,7 +183,7 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod</Com
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VentaTableAdapter" GeneratorDataComponentClassName="VentaTableAdapter" Name="Venta" UserDataComponentName="VentaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT f.id_fve, u.nom_usu, ov.num_ove, c.raz_cli, mp.des_mpa, f.tbs_fve, f.tus_fve FROM factura_venta f INNER JOIN vendedor v ON f.id_ven = v.id_ven INNER JOIN orden_venta ov ON f.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON f.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli INNER JOIN usuario u ON v.id_usu = u.id_usu</CommandText>
@@ -205,7 +205,7 @@ WHERE  p.id_cat = c.id_cat AND p.id_mar = m.id_mar AND p.id_mod = mo.id_mod</Com
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CompraTableAdapter" GeneratorDataComponentClassName="CompraTableAdapter" Name="Compra" UserDataComponentName="CompraTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT oc.id_oco, oc.num_oco, oc.fec_oco, oc.tbs_oco, oc.tus_oco, p.raz_prv
@@ -228,7 +228,7 @@ WHERE  oc.id_prv = p.id_prv</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Orden_VentaTableAdapter" GeneratorDataComponentClassName="Orden_VentaTableAdapter" Name="Orden_Venta" UserDataComponentName="Orden_VentaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT fv.id_fve, fv.tot_fve, fv.tim_fve, u.nom_usu, ov.num_ove, ov.fec_ove, ov.hor_ove, dv.can_dve, dv.tot_dve, p.ser_pro, p.des_pro, p.pve_pro, c.doc_cli, c.raz_cli, c.dir_cli, c.tel_cli, c.cor_cli, m.nom_mon, tc.des_tca, tc.val_tca, i.des_imp, i.por_imp, 
@@ -272,13 +272,14 @@ WHERE  fv.id_ven = v.id_ven AND v.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AN
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Producto_VendidoTableAdapter" GeneratorDataComponentClassName="Producto_VendidoTableAdapter" Name="Producto_Vendido" UserDataComponentName="Producto_VendidoTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT p.id_pro, p.id_cat, p.id_mar, p.id_mod, p.ser_pro, p.des_pro, p.pco_pro, p.pve_pro, p.img_pro, p.gar_pro, dv.id_dve, dv.can_dve, dv.tot_dve, ov.id_ove, ov.id_cli, ov.num_ove, ov.fec_ove, ov.hor_ove, fv.id_fve, fv.id_ven, fv.id_imp, fv.id_mpa, 
-                  fv.tot_fve, fv.tim_fve
-FROM     producto p, detalle_venta dv, orden_venta ov, factura_venta fv
-WHERE  p.id_pro = dv.id_pro AND dv.id_ove = ov.id_ove AND ov.id_ove = fv.id_ove</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT p.id_pro, p.ser_pro, p.des_pro, SUM(dv.can_dve) AS cantidad_vendida
+FROM     producto p, detalle_venta dv
+WHERE  dv.id_pro = p.id_pro
+GROUP BY p.id_pro
+ORDER BY cantidad_vendida DESC LIMIT 10</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -286,35 +287,15 @@ WHERE  p.id_pro = dv.id_pro AND dv.id_ove = ov.id_ove AND ov.id_ove = fv.id_ove<
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="ser_pro" DataSetColumn="ser_pro" />
-              <Mapping SourceColumn="can_dve" DataSetColumn="can_dve" />
               <Mapping SourceColumn="des_pro" DataSetColumn="des_pro" />
               <Mapping SourceColumn="id_pro" DataSetColumn="id_pro" />
-              <Mapping SourceColumn="id_cat" DataSetColumn="id_cat" />
-              <Mapping SourceColumn="id_mar" DataSetColumn="id_mar" />
-              <Mapping SourceColumn="id_mod" DataSetColumn="id_mod" />
-              <Mapping SourceColumn="pco_pro" DataSetColumn="pco_pro" />
-              <Mapping SourceColumn="pve_pro" DataSetColumn="pve_pro" />
-              <Mapping SourceColumn="img_pro" DataSetColumn="img_pro" />
-              <Mapping SourceColumn="gar_pro" DataSetColumn="gar_pro" />
-              <Mapping SourceColumn="id_dve" DataSetColumn="id_dve" />
-              <Mapping SourceColumn="id_ove" DataSetColumn="id_ove" />
-              <Mapping SourceColumn="id_cli" DataSetColumn="id_cli" />
-              <Mapping SourceColumn="num_ove" DataSetColumn="num_ove" />
-              <Mapping SourceColumn="fec_ove" DataSetColumn="fec_ove" />
-              <Mapping SourceColumn="hor_ove" DataSetColumn="hor_ove" />
-              <Mapping SourceColumn="id_fve" DataSetColumn="id_fve" />
-              <Mapping SourceColumn="id_ven" DataSetColumn="id_ven" />
-              <Mapping SourceColumn="id_imp" DataSetColumn="id_imp" />
-              <Mapping SourceColumn="id_mpa" DataSetColumn="id_mpa" />
-              <Mapping SourceColumn="tot_dve" DataSetColumn="tot_dve" />
-              <Mapping SourceColumn="tot_fve" DataSetColumn="tot_fve" />
-              <Mapping SourceColumn="tim_fve" DataSetColumn="tim_fve" />
+              <Mapping SourceColumn="cantidad_vendida" DataSetColumn="cantidad_vendida" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Vendedor_EficienteTableAdapter" GeneratorDataComponentClassName="Vendedor_EficienteTableAdapter" Name="Vendedor_Eficiente" UserDataComponentName="Vendedor_EficienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT v.id_ven, u.nom_usu, u.doc_usu, ov.num_ove, ov.fec_ove, ov.hor_ove, fv.tbs_fve, fv.tus_fve
@@ -334,6 +315,74 @@ WHERE  v.id_usu = u.id_usu AND fv.id_ven = v.id_ven AND fv.id_ove = ov.id_ove</C
               <Mapping SourceColumn="hor_ove" DataSetColumn="hor_ove" />
               <Mapping SourceColumn="tbs_fve" DataSetColumn="tbs_fve" />
               <Mapping SourceColumn="tus_fve" DataSetColumn="tus_fve" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VentasPorClienteTableAdapter" GeneratorDataComponentClassName="VentasPorClienteTableAdapter" Name="VentasPorCliente" UserDataComponentName="VentasPorClienteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT c.id_cli, c.doc_cli, c.raz_cli, COUNT(ov.id_ove) AS numero_ventas
+FROM     orden_venta ov, cliente c
+WHERE  ov.id_cli = c.id_cli
+GROUP BY c.raz_cli
+ORDER BY numero_ventas DESC LIMIT 10</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_cli" DataSetColumn="id_cli" />
+              <Mapping SourceColumn="doc_cli" DataSetColumn="doc_cli" />
+              <Mapping SourceColumn="raz_cli" DataSetColumn="raz_cli" />
+              <Mapping SourceColumn="numero_ventas" DataSetColumn="numero_ventas" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductosPorProveedorTableAdapter" GeneratorDataComponentClassName="ProductosPorProveedorTableAdapter" Name="ProductosPorProveedor" UserDataComponentName="ProductosPorProveedorTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT pro.id_prv, pro.doc_prv, pro.raz_prv, SUM(dc.can_dco) AS productos_comprados
+FROM     producto p, detalle_compra dc, orden_compra oc, proveedor pro
+WHERE  p.id_pro = dc.id_pro AND dc.id_oco = oc.id_oco AND oc.id_prv = pro.id_prv
+GROUP BY pro.id_prv
+ORDER BY productos_comprados DESC LIMIT 10</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_prv" DataSetColumn="id_prv" />
+              <Mapping SourceColumn="doc_prv" DataSetColumn="doc_prv" />
+              <Mapping SourceColumn="raz_prv" DataSetColumn="raz_prv" />
+              <Mapping SourceColumn="productos_comprados" DataSetColumn="productos_comprados" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MarcasVendidasTableAdapter" GeneratorDataComponentClassName="MarcasVendidasTableAdapter" Name="MarcasVendidas" UserDataComponentName="MarcasVendidasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT m.id_mar, m.nom_mar, SUM(dv.can_dve) AS marcas_vendidas
+FROM     marca m, producto p, detalle_venta dv
+WHERE  m.id_mar = p.id_mar AND p.id_pro = dv.id_pro
+GROUP BY m.id_mar
+ORDER BY marcas_vendidas DESC LIMIT 10</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_mar" DataSetColumn="id_mar" />
+              <Mapping SourceColumn="nom_mar" DataSetColumn="nom_mar" />
+              <Mapping SourceColumn="marcas_vendidas" DataSetColumn="marcas_vendidas" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -737,7 +786,6 @@ WHERE  v.id_usu = u.id_usu AND fv.id_ven = v.id_ven AND fv.id_ove = ov.id_ove</C
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="can_dve" msprop:Generator_ColumnPropNameInTable="can_dveColumn" msprop:Generator_ColumnPropNameInRow="can_dve" msprop:Generator_UserColumnName="can_dve" msprop:Generator_ColumnVarNameInTable="columncan_dve" type="xs:int" />
               <xs:element name="des_pro" msprop:Generator_ColumnPropNameInTable="des_proColumn" msprop:Generator_ColumnPropNameInRow="des_pro" msprop:Generator_UserColumnName="des_pro" msprop:Generator_ColumnVarNameInTable="columndes_pro">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -746,32 +794,7 @@ WHERE  v.id_usu = u.id_usu AND fv.id_ven = v.id_ven AND fv.id_ove = ov.id_ove</C
                 </xs:simpleType>
               </xs:element>
               <xs:element name="id_pro" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="id_proColumn" msprop:Generator_ColumnPropNameInRow="id_pro" msprop:Generator_UserColumnName="id_pro" msprop:Generator_ColumnVarNameInTable="columnid_pro" type="xs:int" />
-              <xs:element name="id_cat" msprop:Generator_ColumnPropNameInTable="id_catColumn" msprop:Generator_ColumnPropNameInRow="id_cat" msprop:Generator_UserColumnName="id_cat" msprop:Generator_ColumnVarNameInTable="columnid_cat" type="xs:int" />
-              <xs:element name="id_mar" msprop:Generator_ColumnPropNameInTable="id_marColumn" msprop:Generator_ColumnPropNameInRow="id_mar" msprop:Generator_UserColumnName="id_mar" msprop:Generator_ColumnVarNameInTable="columnid_mar" type="xs:int" />
-              <xs:element name="id_mod" msprop:Generator_ColumnPropNameInTable="id_modColumn" msprop:Generator_ColumnPropNameInRow="id_mod" msprop:Generator_UserColumnName="id_mod" msprop:Generator_ColumnVarNameInTable="columnid_mod" type="xs:int" />
-              <xs:element name="pco_pro" msprop:Generator_ColumnPropNameInTable="pco_proColumn" msprop:Generator_ColumnPropNameInRow="pco_pro" msprop:Generator_UserColumnName="pco_pro" msprop:Generator_ColumnVarNameInTable="columnpco_pro" type="xs:double" />
-              <xs:element name="pve_pro" msprop:Generator_ColumnPropNameInTable="pve_proColumn" msprop:Generator_ColumnPropNameInRow="pve_pro" msprop:Generator_UserColumnName="pve_pro" msprop:Generator_ColumnVarNameInTable="columnpve_pro" type="xs:double" />
-              <xs:element name="img_pro" msprop:Generator_ColumnPropNameInTable="img_proColumn" msprop:Generator_ColumnPropNameInRow="img_pro" msprop:Generator_UserColumnName="img_pro" msprop:Generator_ColumnVarNameInTable="columnimg_pro" type="xs:base64Binary" />
-              <xs:element name="gar_pro" msprop:Generator_ColumnPropNameInTable="gar_proColumn" msprop:Generator_ColumnPropNameInRow="gar_pro" msprop:Generator_UserColumnName="gar_pro" msprop:Generator_ColumnVarNameInTable="columngar_pro" type="xs:int" minOccurs="0" />
-              <xs:element name="id_dve" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="id_dveColumn" msprop:Generator_ColumnPropNameInRow="id_dve" msprop:Generator_UserColumnName="id_dve" msprop:Generator_ColumnVarNameInTable="columnid_dve" type="xs:int" />
-              <xs:element name="id_ove" msprop:Generator_ColumnPropNameInTable="id_oveColumn" msprop:Generator_ColumnPropNameInRow="id_ove" msprop:Generator_UserColumnName="id_ove" msprop:Generator_ColumnVarNameInTable="columnid_ove" type="xs:int" />
-              <xs:element name="id_cli" msprop:Generator_ColumnPropNameInTable="id_cliColumn" msprop:Generator_ColumnPropNameInRow="id_cli" msprop:Generator_UserColumnName="id_cli" msprop:Generator_ColumnVarNameInTable="columnid_cli" type="xs:int" />
-              <xs:element name="num_ove" msprop:Generator_ColumnPropNameInTable="num_oveColumn" msprop:Generator_ColumnPropNameInRow="num_ove" msprop:Generator_UserColumnName="num_ove" msprop:Generator_ColumnVarNameInTable="columnnum_ove">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="fec_ove" msprop:Generator_ColumnPropNameInTable="fec_oveColumn" msprop:Generator_ColumnPropNameInRow="fec_ove" msprop:Generator_UserColumnName="fec_ove" msprop:Generator_ColumnVarNameInTable="columnfec_ove" type="xs:dateTime" />
-              <xs:element name="hor_ove" msprop:Generator_ColumnPropNameInTable="hor_oveColumn" msprop:Generator_ColumnPropNameInRow="hor_ove" msprop:Generator_UserColumnName="hor_ove" msprop:Generator_ColumnVarNameInTable="columnhor_ove" type="xs:duration" />
-              <xs:element name="id_fve" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="id_fveColumn" msprop:Generator_ColumnPropNameInRow="id_fve" msprop:Generator_UserColumnName="id_fve" msprop:Generator_ColumnVarNameInTable="columnid_fve" type="xs:int" />
-              <xs:element name="id_ven" msprop:Generator_ColumnPropNameInTable="id_venColumn" msprop:Generator_ColumnPropNameInRow="id_ven" msprop:Generator_UserColumnName="id_ven" msprop:Generator_ColumnVarNameInTable="columnid_ven" type="xs:int" />
-              <xs:element name="id_imp" msprop:Generator_ColumnPropNameInTable="id_impColumn" msprop:Generator_ColumnPropNameInRow="id_imp" msprop:Generator_UserColumnName="id_imp" msprop:Generator_ColumnVarNameInTable="columnid_imp" type="xs:int" />
-              <xs:element name="id_mpa" msprop:Generator_ColumnPropNameInTable="id_mpaColumn" msprop:Generator_ColumnPropNameInRow="id_mpa" msprop:Generator_UserColumnName="id_mpa" msprop:Generator_ColumnVarNameInTable="columnid_mpa" type="xs:int" />
-              <xs:element name="tot_dve" msprop:Generator_UserColumnName="tot_dve" msprop:Generator_ColumnPropNameInTable="tot_dveColumn" msprop:Generator_ColumnPropNameInRow="tot_dve" msprop:Generator_ColumnVarNameInTable="columntot_dve" type="xs:double" />
-              <xs:element name="tot_fve" msprop:Generator_UserColumnName="tot_fve" msprop:Generator_ColumnPropNameInTable="tot_fveColumn" msprop:Generator_ColumnPropNameInRow="tot_fve" msprop:Generator_ColumnVarNameInTable="columntot_fve" type="xs:double" />
-              <xs:element name="tim_fve" msprop:Generator_UserColumnName="tim_fve" msprop:Generator_ColumnPropNameInTable="tim_fveColumn" msprop:Generator_ColumnPropNameInRow="tim_fve" msprop:Generator_ColumnVarNameInTable="columntim_fve" type="xs:double" />
+              <xs:element name="cantidad_vendida" msprop:Generator_ColumnPropNameInRow="cantidad_vendida" msprop:Generator_ColumnPropNameInTable="cantidad_vendidaColumn" msprop:Generator_ColumnVarNameInTable="columncantidad_vendida" msprop:Generator_UserColumnName="cantidad_vendida" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -807,6 +830,65 @@ WHERE  v.id_usu = u.id_usu AND fv.id_ven = v.id_ven AND fv.id_ove = ov.id_ove</C
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="VentasPorCliente" msprop:Generator_RowClassName="VentasPorClienteRow" msprop:Generator_RowEvHandlerName="VentasPorClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="VentasPorClienteRowDeleted" msprop:Generator_RowDeletingName="VentasPorClienteRowDeleting" msprop:Generator_RowEvArgName="VentasPorClienteRowChangeEvent" msprop:Generator_TablePropName="VentasPorCliente" msprop:Generator_RowChangedName="VentasPorClienteRowChanged" msprop:Generator_UserTableName="VentasPorCliente" msprop:Generator_RowChangingName="VentasPorClienteRowChanging" msprop:Generator_TableClassName="VentasPorClienteDataTable" msprop:Generator_TableVarName="tableVentasPorCliente">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_cli" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="id_cli" msprop:Generator_ColumnPropNameInTable="id_cliColumn" msprop:Generator_ColumnPropNameInRow="id_cli" msprop:Generator_ColumnVarNameInTable="columnid_cli" type="xs:int" />
+              <xs:element name="doc_cli" msprop:Generator_UserColumnName="doc_cli" msprop:Generator_ColumnPropNameInTable="doc_cliColumn" msprop:Generator_ColumnPropNameInRow="doc_cli" msprop:Generator_ColumnVarNameInTable="columndoc_cli">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="raz_cli" msprop:Generator_UserColumnName="raz_cli" msprop:Generator_ColumnPropNameInTable="raz_cliColumn" msprop:Generator_ColumnPropNameInRow="raz_cli" msprop:Generator_ColumnVarNameInTable="columnraz_cli">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="numero_ventas" msprop:Generator_UserColumnName="numero_ventas" msprop:Generator_ColumnPropNameInTable="numero_ventasColumn" msprop:Generator_ColumnPropNameInRow="numero_ventas" msprop:Generator_ColumnVarNameInTable="columnnumero_ventas" type="xs:long" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProductosPorProveedor" msprop:Generator_RowEvHandlerName="ProductosPorProveedorRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductosPorProveedorRowDeleted" msprop:Generator_RowDeletingName="ProductosPorProveedorRowDeleting" msprop:Generator_RowEvArgName="ProductosPorProveedorRowChangeEvent" msprop:Generator_TablePropName="ProductosPorProveedor" msprop:Generator_RowChangedName="ProductosPorProveedorRowChanged" msprop:Generator_RowChangingName="ProductosPorProveedorRowChanging" msprop:Generator_TableClassName="ProductosPorProveedorDataTable" msprop:Generator_RowClassName="ProductosPorProveedorRow" msprop:Generator_TableVarName="tableProductosPorProveedor" msprop:Generator_UserTableName="ProductosPorProveedor">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_prv" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id_prv" msprop:Generator_ColumnPropNameInTable="id_prvColumn" msprop:Generator_ColumnVarNameInTable="columnid_prv" msprop:Generator_UserColumnName="id_prv" type="xs:int" />
+              <xs:element name="doc_prv" msprop:Generator_ColumnPropNameInRow="doc_prv" msprop:Generator_ColumnPropNameInTable="doc_prvColumn" msprop:Generator_ColumnVarNameInTable="columndoc_prv" msprop:Generator_UserColumnName="doc_prv">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="raz_prv" msprop:Generator_ColumnPropNameInRow="raz_prv" msprop:Generator_ColumnPropNameInTable="raz_prvColumn" msprop:Generator_ColumnVarNameInTable="columnraz_prv" msprop:Generator_UserColumnName="raz_prv">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="productos_comprados" msprop:Generator_ColumnPropNameInRow="productos_comprados" msprop:Generator_ColumnPropNameInTable="productos_compradosColumn" msprop:Generator_ColumnVarNameInTable="columnproductos_comprados" msprop:Generator_UserColumnName="productos_comprados" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MarcasVendidas" msprop:Generator_RowEvHandlerName="MarcasVendidasRowChangeEventHandler" msprop:Generator_RowDeletedName="MarcasVendidasRowDeleted" msprop:Generator_RowDeletingName="MarcasVendidasRowDeleting" msprop:Generator_RowEvArgName="MarcasVendidasRowChangeEvent" msprop:Generator_TablePropName="MarcasVendidas" msprop:Generator_RowChangedName="MarcasVendidasRowChanged" msprop:Generator_RowChangingName="MarcasVendidasRowChanging" msprop:Generator_TableClassName="MarcasVendidasDataTable" msprop:Generator_RowClassName="MarcasVendidasRow" msprop:Generator_TableVarName="tableMarcasVendidas" msprop:Generator_UserTableName="MarcasVendidas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_mar" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id_mar" msprop:Generator_ColumnPropNameInTable="id_marColumn" msprop:Generator_ColumnVarNameInTable="columnid_mar" msprop:Generator_UserColumnName="id_mar" type="xs:int" />
+              <xs:element name="nom_mar" msprop:Generator_ColumnPropNameInRow="nom_mar" msprop:Generator_ColumnPropNameInTable="nom_marColumn" msprop:Generator_ColumnVarNameInTable="columnnom_mar" msprop:Generator_UserColumnName="nom_mar">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="marcas_vendidas" msprop:Generator_ColumnPropNameInRow="marcas_vendidas" msprop:Generator_ColumnPropNameInTable="marcas_vendidasColumn" msprop:Generator_ColumnVarNameInTable="columnmarcas_vendidas" msprop:Generator_UserColumnName="marcas_vendidas" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -832,9 +914,18 @@ WHERE  v.id_usu = u.id_usu AND fv.id_ven = v.id_ven AND fv.id_ove = ov.id_ove</C
     <xs:unique name="Producto_Vendido_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Producto_Vendido" />
       <xs:field xpath="mstns:id_pro" />
-      <xs:field xpath="mstns:id_dve" />
-      <xs:field xpath="mstns:id_ove" />
-      <xs:field xpath="mstns:id_fve" />
+    </xs:unique>
+    <xs:unique name="VentasPorCliente_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VentasPorCliente" />
+      <xs:field xpath="mstns:id_cli" />
+    </xs:unique>
+    <xs:unique name="ProductosPorProveedor_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ProductosPorProveedor" />
+      <xs:field xpath="mstns:id_prv" />
+    </xs:unique>
+    <xs:unique name="MarcasVendidas_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MarcasVendidas" />
+      <xs:field xpath="mstns:id_mar" />
     </xs:unique>
   </xs:element>
 </xs:schema>

@@ -21,6 +21,8 @@ namespace New_MasterTrade.Objetos
         CompraTableAdapter compra = new CompraTableAdapter();
         Producto_VendidoTableAdapter producto_vendido = new Producto_VendidoTableAdapter();
         Vendedor_EficienteTableAdapter vendedor_eficiente = new Vendedor_EficienteTableAdapter();
+        VentasPorClienteTableAdapter ventas_por_cliente = new VentasPorClienteTableAdapter();
+        ProductosPorProveedorTableAdapter productos_proveedor = new ProductosPorProveedorTableAdapter();
         //TableAdapters
 
         public void Reporte_Orden_Compra(string numero_orden)
@@ -247,6 +249,42 @@ namespace New_MasterTrade.Objetos
                 vendedor_eficiente.Fill(dataset.Vendedor_Eficiente);
                 VendedorEficiencia_Reporte reporte = new VendedorEficiencia_Reporte();
                 string direccion = @"~\Reportes\VendedorEficiencia_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_VentasPorCliente()
+        {
+            try
+            {
+                ventas_por_cliente.Fill(dataset.VentasPorCliente);
+                VentasPorClientes_Reporte reporte = new VentasPorClientes_Reporte();
+                string direccion = @"~\Reportes\VentasPorClientes_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_ProductosPorProveedor()
+        {
+            try
+            {
+                productos_proveedor.Fill(dataset.ProductosPorProveedor);
+                ProductosPorProveedor_Reporte reporte = new ProductosPorProveedor_Reporte();
+                string direccion = @"~\Reportes\ProductosPorProveedor_Reporte.rpt";
                 reporte.Load(direccion);
                 reporte.SetDataSource(dataset);
                 FormReportes ventana = new FormReportes(reporte);

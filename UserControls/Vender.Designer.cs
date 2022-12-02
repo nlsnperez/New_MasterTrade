@@ -65,6 +65,7 @@ namespace New_MasterTrade.UserControls
             this.comboTasaCambio = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtMoneda = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +73,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.comboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMoneda.FormattingEnabled = true;
-            this.comboMoneda.Location = new System.Drawing.Point(120, 62);
+            this.comboMoneda.Location = new System.Drawing.Point(120, 149);
             this.comboMoneda.Margin = new System.Windows.Forms.Padding(4);
             this.comboMoneda.Name = "comboMoneda";
             this.comboMoneda.Size = new System.Drawing.Size(287, 24);
@@ -83,7 +84,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(12, 66);
+            this.label7.Location = new System.Drawing.Point(12, 153);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 16);
@@ -122,7 +123,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(12, 22);
+            this.label5.Location = new System.Drawing.Point(12, 109);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 16);
@@ -143,7 +144,7 @@ namespace New_MasterTrade.UserControls
             // txtNumeroOrden
             // 
             this.txtNumeroOrden.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNumeroOrden.Location = new System.Drawing.Point(120, 17);
+            this.txtNumeroOrden.Location = new System.Drawing.Point(120, 104);
             this.txtNumeroOrden.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumeroOrden.Name = "txtNumeroOrden";
             this.txtNumeroOrden.Size = new System.Drawing.Size(289, 22);
@@ -456,7 +457,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.comboTasaCambio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTasaCambio.FormattingEnabled = true;
-            this.comboTasaCambio.Location = new System.Drawing.Point(120, 105);
+            this.comboTasaCambio.Location = new System.Drawing.Point(120, 192);
             this.comboTasaCambio.Margin = new System.Windows.Forms.Padding(4);
             this.comboTasaCambio.Name = "comboTasaCambio";
             this.comboTasaCambio.Size = new System.Drawing.Size(287, 24);
@@ -467,7 +468,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(12, 101);
+            this.label8.Location = new System.Drawing.Point(12, 188);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 32);
@@ -489,11 +490,24 @@ namespace New_MasterTrade.UserControls
             this.txtMoneda.Size = new System.Drawing.Size(302, 45);
             this.txtMoneda.TabIndex = 109;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(15, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(161, 39);
+            this.label9.TabIndex = 110;
+            this.label9.Text = "VENDER";
+            // 
             // Vender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtMoneda);
             this.Controls.Add(this.comboTasaCambio);
             this.Controls.Add(this.label8);
@@ -563,5 +577,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrecioT;
         private System.Windows.Forms.DataGridViewImageColumn Remover;
+        private System.Windows.Forms.Label label9;
     }
 }
