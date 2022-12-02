@@ -261,7 +261,7 @@ namespace New_MasterTrade.Base_de_Datos
                 {
                     string contrasegna = reader.GetString(2);
                     string nombre = reader.GetString(3);
-                    string correo = reader.GetString(4);
+                    string correo = reader.GetString(5);
 
                     SistemaSoporteCorreo servicioCorreo = new SistemaSoporteCorreo();
                     servicioCorreo.EnviarCorreo(asunto: "SOLICITUD PARA RECUPERAR CONTRASEÑA",

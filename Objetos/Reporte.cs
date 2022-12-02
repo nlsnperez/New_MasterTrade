@@ -23,6 +23,9 @@ namespace New_MasterTrade.Objetos
         Vendedor_EficienteTableAdapter vendedor_eficiente = new Vendedor_EficienteTableAdapter();
         VentasPorClienteTableAdapter ventas_por_cliente = new VentasPorClienteTableAdapter();
         ProductosPorProveedorTableAdapter productos_proveedor = new ProductosPorProveedorTableAdapter();
+        MarcasVendidasTableAdapter marcas_vendidas = new MarcasVendidasTableAdapter();
+        VentasPorAgnoTableAdapter ventas_agno = new VentasPorAgnoTableAdapter();
+        ComprasPorAgnoTableAdapter compras_agno = new ComprasPorAgnoTableAdapter();
         //TableAdapters
 
         public void Reporte_Orden_Compra(string numero_orden)
@@ -285,6 +288,60 @@ namespace New_MasterTrade.Objetos
                 productos_proveedor.Fill(dataset.ProductosPorProveedor);
                 ProductosPorProveedor_Reporte reporte = new ProductosPorProveedor_Reporte();
                 string direccion = @"~\Reportes\ProductosPorProveedor_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_MarcasVendidas()
+        {
+            try
+            {
+                marcas_vendidas.Fill(dataset.MarcasVendidas);
+                MarcaMasVendida reporte = new MarcaMasVendida();
+                string direccion = @"~\Reportes\MarcaMasVendida.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_VentasPorAgno(string agno)
+        {
+            try
+            {
+                ventas_agno.Fill(dataset.VentasPorAgno, agno);
+                VentasPorAgno_Reporte reporte = new VentasPorAgno_Reporte();
+                string direccion = @"~\Reportes\VentasPorAgno_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_ComprasPorAgno(string agno)
+        {
+            try
+            {
+                compras_agno.Fill(dataset.ComprasPorAgno, agno);
+                ComprasPorAgno reporte = new ComprasPorAgno();
+                string direccion = @"~\Reportes\ComprasPorAgno.rpt";
                 reporte.Load(direccion);
                 reporte.SetDataSource(dataset);
                 FormReportes ventana = new FormReportes(reporte);

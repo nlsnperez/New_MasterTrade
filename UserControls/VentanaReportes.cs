@@ -17,45 +17,47 @@ namespace New_MasterTrade.UserControls
         public VentanaReportes()
         {
             InitializeComponent();
-            Config();
+            ConfigCombo();
         }
 
-        public void Config()
+        public void ConfigCombo()
         {
-            ConfigComboBoxes();
-            ConfigDatePickers();
-            //panelPerzonalizado.Visible = false;
-        }
-
-        public void ConfigComboBoxes()
-        {
-            comboReporte.Items.Add("VENTAS");
+            comboReporte.Items.Add("TOP 10 PRODUCTOS MÁS VENDIDOS");
+            comboReporte.Items.Add("TOP 10 CLIENTES");
+            comboReporte.Items.Add("TOP 10 PROVEEDORES CON MÁS PRODUCTOS");
+            comboReporte.Items.Add("DESEMPREÑO DE VENDEDORES");
+            comboReporte.Items.Add("MARCA MÁS VENDIDA");
+            comboReporte.Items.Add("NÚMERO DE COMPRAS REALIZADAS EN EL AÑO");
+            comboReporte.Items.Add("NÚMERO DE VENTAS REALIZADAS EN EL AÑO");
             comboReporte.SelectedIndex = 0;
-
-            comboFiltro.Items.Add("ÚLTIMOS 7 DÍAS");
-            comboFiltro.Items.Add("ÚLTIMOS 30 DÍAS");
-            comboFiltro.Items.Add("ÚLTIMO AÑO");
-            comboFiltro.Items.Add("PERSONALIZADO");
-            comboFiltro.SelectedIndex = 0;
-        }
-
-        public void ConfigDatePickers()
-        {
-            dpHasta.MaxDate = System.DateTime.Today;
-        }
-
-        private void comboReporte_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboFiltro.Text == "PERSONALIZADO")
-            {
-                panelPerzonalizado.Visible = true;
-            }else panelPerzonalizado.Visible = false;
         }
 
         private void bttnReporte_Click(object sender, EventArgs e)
         {
-            //reporte.Reporte_ProductoMasVendido();
-            reporte.Reporte_VendedorEficiente();
+            switch (comboReporte.Text)
+            {
+                case "TOP 10 PRODUCTOS MÁS VENDIDOS":
+                    reporte.Reporte_ProductoMasVendido();
+                    break;
+                case "TOP 10 CLIENTES":
+                    reporte.Reporte_VentasPorCliente();
+                    break;
+                case "TOP 10 PROVEEDORES CON MÁS PRODUCTOS":
+                    reporte.Reporte_ProductosPorProveedor();
+                    break;
+                case "DESEMPREÑO DE VENDEDORES":
+                    reporte.Reporte_VendedorEficiente();
+                    break;
+                case "MARCA MÁS VENDIDA":
+                    reporte.Reporte_MarcasVendidas();
+                    break;
+                case "NÚMERO DE COMPRAS REALIZADAS EN EL AÑO":
+                    reporte.Reporte_ComprasPorAgno("2022");
+                    break;
+                case "NÚMERO DE VENTAS REALIZADAS EN EL AÑO":
+                    reporte.Reporte_VentasPorAgno("2022");
+                    break;
+            }
         }
     }
 }

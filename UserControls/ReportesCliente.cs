@@ -45,16 +45,8 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGenerar_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            reporte.Reporte_VentasPorCliente();
+            //reporte.Reporte_VentasPorCliente();
+            reporte.Reporte_ComprasPorAgno("2022");
             //switch (comboFiltro.SelectedIndex)
             //{
             //    case 0:

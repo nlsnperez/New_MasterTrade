@@ -250,27 +250,29 @@ namespace New_MasterTrade
 
         private void bttnReportes_Click(object sender, EventArgs e)
         {
-            if (panelReportes.Visible == false)
-            {
-                panelReportes.Visible = true;
-                bttnReportes.Image = Properties.Resources.FlechaArriba;
+            MostrarUserControl(new VentanaReportes());
+            CerrarPaneles();
+            //if (panelReportes.Visible == false)
+            //{
+            //    panelReportes.Visible = true;
+            //    bttnReportes.Image = Properties.Resources.FlechaArriba;
 
-                panelArchivo.Visible = false;
-                bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+            //    panelArchivo.Visible = false;
+            //    bttnArchivo.Image = Properties.Resources.FlechaAbajo;
 
-                panelTransacciones.Visible = false;
-                bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+            //    panelTransacciones.Visible = false;
+            //    bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
 
-                panelMantenimiento.Visible = false;
-                bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+            //    panelMantenimiento.Visible = false;
+            //    bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
 
-                panelAjustes.Visible = false;
-            }
-            else
-            {
-                panelReportes.Visible = false;
-                bttnReportes.Image = Properties.Resources.FlechaAbajo;
-            }
+            //    panelAjustes.Visible = false;
+            //}
+            //else
+            //{
+            //    panelReportes.Visible = false;
+            //    bttnReportes.Image = Properties.Resources.FlechaAbajo;
+            //}
         }
 
         private void bttnAjustes_Click_1(object sender, EventArgs e)

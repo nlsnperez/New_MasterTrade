@@ -32,7 +32,7 @@ namespace New_MasterTrade.Objetos
         {
             crud = new CRUD_Productos();
             tablaProductos.AutoGenerateColumns = false;
-            if (crud.ProductosActivos().Rows.Count > 0)
+            try
             {
                 if (Venta == null)
                 {
@@ -40,7 +40,11 @@ namespace New_MasterTrade.Objetos
                 }
                 else ConfigTablaVenta(crud.ProductosActivos());
             }
-            else MessageBox.Show("No existen registros en la base de datos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
 
 
         }
@@ -57,7 +61,10 @@ namespace New_MasterTrade.Objetos
                     int y = crud.ProductosComprados(id) - crud.ProductosVendidos(id);
                     Console.WriteLine(y);
                     Console.WriteLine(i);
-                    if (y == 0) x.Rows.RemoveAt(i);
+                    if (y == 0)
+                    {
+                        x.Rows.RemoveAt(i);
+                    }
                 }
                 tablaProductos.DataSource = x;
             }

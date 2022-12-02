@@ -49,7 +49,7 @@ namespace New_MasterTrade.UserControls
         {
             if (comboProductos.SelectedIndex == 0 && comboGrupo.SelectedIndex == 0)
             {
-                reporte.Reporte_Producto();
+                reporte.Reporte_MarcasVendidas();
             }
             else
             {
