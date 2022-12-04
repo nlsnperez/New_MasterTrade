@@ -18,6 +18,7 @@ namespace New_MasterTrade.UserControls
         CRUD_Proveedores crud;
         CRUD_Clientes crud2;
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
+        private bool registro_externo = false;
 
         public FormularioPersonas(int x)
         {
@@ -27,6 +28,15 @@ namespace New_MasterTrade.UserControls
 
         public void Config(int x)
         {
+            if (x == 0)
+            {
+                lblTitulo.Text = "REGISTRAR CLIENTE";
+            }
+            else
+            {
+                lblTitulo.Text = "REGISTRAR PROVEEDOR";
+            }
+
             crud = new CRUD_Proveedores();
             crud2 = new CRUD_Clientes();
             comboOcupacion.Focus();
@@ -120,6 +130,14 @@ namespace New_MasterTrade.UserControls
                             {
                                 crud2.Create(GetPersona());
                                 bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
+                                if (registro_externo == true)
+                                {
+                                    this.ParentForm.Close();
+                                }
+                                else
+                                {
+                                    Limpiar();
+                                }
                             }
                         }
                         break;
@@ -134,6 +152,14 @@ namespace New_MasterTrade.UserControls
                             {
                                 crud.Create(GetPersona());
                                 bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
+                                if (registro_externo == true)
+                                {
+                                    this.ParentForm.Close();
+                                }
+                                else
+                                {
+                                    Limpiar();
+                                }
                             }
                         }
                         break;
@@ -176,6 +202,7 @@ namespace New_MasterTrade.UserControls
                         if (MessageBox.Show("¿Desea actualizar los datos de este cliente?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             crud2.Update(GetPersona());
+                            Limpiar();
                             bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
                         }
                         break;
@@ -183,6 +210,7 @@ namespace New_MasterTrade.UserControls
                         if (MessageBox.Show("¿Desea actualizar los datos de este proveedor?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             crud.Update(GetPersona());
+                            Limpiar();
                             bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
                         }
                         break;
@@ -216,8 +244,12 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        public void RegistroExterno(int x)
+        public void RegistroExterno(int x, string documento)
         {
+            bttnAtrás.Visible = false;
+            registro_externo = true;
+            txtDocumento.Text = documento;
+            txtDocumento.Enabled = false;
             txtDocumento.Focus();
 
             comboOcupacion.SelectedIndex = x - 1;
@@ -236,6 +268,18 @@ namespace New_MasterTrade.UserControls
             TextBox textBox = sender as TextBox;
             textBox.BackColor = SystemColors.Window;
             textBox.ForeColor = SystemColors.WindowText;
+        }
+
+        private void bttnAtrás_Click(object sender, EventArgs e)
+        {
+            if (comboOcupacion.SelectedIndex == 0)
+            {
+                SesionIniciada.Instancia.MostrarUserControl(new Clientes());
+            }
+            else
+            {
+                SesionIniciada.Instancia.MostrarUserControl(new Proveedores());
+            }
         }
     }
 }

@@ -30,13 +30,14 @@ namespace New_MasterTrade.UserControls
 
         private void bttnAgregar_Click(object sender, EventArgs e)
         {
-            Form x = new Form();
-            FormularioProductos y = new FormularioProductos();
-            x.Size = new Size(y.Width+30, y.Height+40);
-            x.Controls.Add(y);
-            x.StartPosition = FormStartPosition.CenterScreen;
-            x.ShowDialog();
-            CargarTabla();
+            SesionIniciada.Instancia.MostrarUserControl(new FormularioProductos());
+            //Form x = new Form();
+            //FormularioProductos y = new FormularioProductos();
+            //x.Size = new Size(y.Width+30, y.Height+40);
+            //x.Controls.Add(y);
+            //x.StartPosition = FormStartPosition.CenterScreen;
+            //x.ShowDialog();
+            //CargarTabla();
         }
 
         private void ResgistrosProductos_Prototipo_Load(object sender, EventArgs e)
@@ -67,11 +68,12 @@ namespace New_MasterTrade.UserControls
                 FormularioProductos y = new FormularioProductos();
 
                 y.DatosProducto(producto);
-                x.Controls.Add(y);
-                x.Size = new Size(y.Width + 30, y.Height + 40);                
-                x.StartPosition = FormStartPosition.CenterScreen;
-                x.ShowDialog();
-                CargarTabla();
+                SesionIniciada.Instancia.MostrarUserControl(y);
+                //x.Controls.Add(y);
+                //x.Size = new Size(y.Width + 30, y.Height + 40);                
+                //x.StartPosition = FormStartPosition.CenterScreen;
+                //x.ShowDialog();
+                //CargarTabla();
             }
             else
             {

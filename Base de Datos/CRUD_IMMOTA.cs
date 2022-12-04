@@ -50,7 +50,7 @@ namespace New_MasterTrade.Base_de_Datos
 
                     command.ExecuteNonQuery();
                 }
-                MessageBox.Show("El registro se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El impuesto se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
@@ -191,7 +191,7 @@ namespace New_MasterTrade.Base_de_Datos
 
                     command.ExecuteNonQuery();
                 }
-                MessageBox.Show("El registro se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("La moneda se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
@@ -333,7 +333,7 @@ namespace New_MasterTrade.Base_de_Datos
 
                     command.ExecuteNonQuery();
                 }
-                MessageBox.Show("El registro se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("La tasa de cambio se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {

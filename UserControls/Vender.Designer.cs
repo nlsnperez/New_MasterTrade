@@ -29,9 +29,9 @@ namespace New_MasterTrade.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboMoneda = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -40,7 +40,6 @@ namespace New_MasterTrade.UserControls
             this.label2 = new System.Windows.Forms.Label();
             this.txtNumeroOrden = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,11 +60,13 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.bttnCancelar = new System.Windows.Forms.Button();
             this.bttnBuscar = new System.Windows.Forms.Button();
-            this.bttnNuevaVenta = new System.Windows.Forms.Button();
             this.comboTasaCambio = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtMoneda = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtValor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,10 +74,10 @@ namespace New_MasterTrade.UserControls
             // 
             this.comboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMoneda.FormattingEnabled = true;
-            this.comboMoneda.Location = new System.Drawing.Point(120, 149);
+            this.comboMoneda.Location = new System.Drawing.Point(155, 105);
             this.comboMoneda.Margin = new System.Windows.Forms.Padding(4);
             this.comboMoneda.Name = "comboMoneda";
-            this.comboMoneda.Size = new System.Drawing.Size(287, 24);
+            this.comboMoneda.Size = new System.Drawing.Size(209, 24);
             this.comboMoneda.TabIndex = 106;
             this.comboMoneda.SelectedIndexChanged += new System.EventHandler(this.comboMoneda_SelectedIndexChanged);
             // 
@@ -84,7 +85,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(12, 153);
+            this.label7.Location = new System.Drawing.Point(12, 109);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 16);
@@ -94,28 +95,28 @@ namespace New_MasterTrade.UserControls
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.label14.Location = new System.Drawing.Point(821, 16);
+            this.label14.Location = new System.Drawing.Point(12, 582);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 25);
+            this.label14.Size = new System.Drawing.Size(127, 37);
             this.label14.TabIndex = 103;
             this.label14.Text = "TOTAL";
             // 
             // txtSubTotalBs
             // 
-            this.txtSubTotalBs.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtSubTotalBs.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txtSubTotalBs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSubTotalBs.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubTotalBs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.txtSubTotalBs.Location = new System.Drawing.Point(827, 62);
+            this.txtSubTotalBs.ForeColor = System.Drawing.Color.Black;
+            this.txtSubTotalBs.Location = new System.Drawing.Point(157, 583);
             this.txtSubTotalBs.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubTotalBs.Multiline = true;
             this.txtSubTotalBs.Name = "txtSubTotalBs";
             this.txtSubTotalBs.ReadOnly = true;
             this.txtSubTotalBs.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtSubTotalBs.Size = new System.Drawing.Size(302, 100);
+            this.txtSubTotalBs.Size = new System.Drawing.Size(660, 37);
             this.txtSubTotalBs.TabIndex = 99;
             this.txtSubTotalBs.Text = "0";
             // 
@@ -123,18 +124,18 @@ namespace New_MasterTrade.UserControls
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(12, 109);
+            this.label5.Location = new System.Drawing.Point(12, 65);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 16);
+            this.label5.Size = new System.Drawing.Size(110, 16);
             this.label5.TabIndex = 89;
-            this.label5.Text = "V. ORDEN #";
+            this.label5.Text = "N° DE FACTURA";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(416, 66);
+            this.label2.Location = new System.Drawing.Point(379, 109);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 16);
@@ -144,57 +145,49 @@ namespace New_MasterTrade.UserControls
             // txtNumeroOrden
             // 
             this.txtNumeroOrden.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNumeroOrden.Location = new System.Drawing.Point(120, 104);
+            this.txtNumeroOrden.Enabled = false;
+            this.txtNumeroOrden.Location = new System.Drawing.Point(154, 62);
             this.txtNumeroOrden.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumeroOrden.Name = "txtNumeroOrden";
-            this.txtNumeroOrden.Size = new System.Drawing.Size(289, 22);
+            this.txtNumeroOrden.Size = new System.Drawing.Size(211, 22);
             this.txtNumeroOrden.TabIndex = 88;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(416, 199);
+            this.label6.Location = new System.Drawing.Point(804, 109);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 16);
             this.label6.TabIndex = 86;
             this.label6.Text = "CORREO";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(416, 155);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 16);
-            this.label4.TabIndex = 85;
-            this.label4.Text = "TELÉFONO";
-            // 
             // txtCorreo
             // 
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCorreo.Location = new System.Drawing.Point(524, 194);
+            this.txtCorreo.Enabled = false;
+            this.txtCorreo.Location = new System.Drawing.Point(916, 106);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(289, 22);
+            this.txtCorreo.Size = new System.Drawing.Size(211, 22);
             this.txtCorreo.TabIndex = 84;
             // 
             // txtTelefono
             // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Location = new System.Drawing.Point(524, 150);
+            this.txtTelefono.Enabled = false;
+            this.txtTelefono.Location = new System.Drawing.Point(915, 62);
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(289, 22);
+            this.txtTelefono.Size = new System.Drawing.Size(211, 22);
             this.txtTelefono.TabIndex = 83;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(416, 111);
+            this.label3.Location = new System.Drawing.Point(379, 153);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 16);
@@ -204,26 +197,28 @@ namespace New_MasterTrade.UserControls
             // txtDireccion
             // 
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDireccion.Location = new System.Drawing.Point(524, 106);
+            this.txtDireccion.Enabled = false;
+            this.txtDireccion.Location = new System.Drawing.Point(492, 150);
             this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(289, 22);
+            this.txtDireccion.Size = new System.Drawing.Size(211, 22);
             this.txtDireccion.TabIndex = 81;
             // 
             // txtRazonSocial
             // 
             this.txtRazonSocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRazonSocial.Location = new System.Drawing.Point(524, 62);
+            this.txtRazonSocial.Enabled = false;
+            this.txtRazonSocial.Location = new System.Drawing.Point(492, 106);
             this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(4);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(289, 22);
+            this.txtRazonSocial.Size = new System.Drawing.Size(211, 22);
             this.txtRazonSocial.TabIndex = 79;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(416, 22);
+            this.label1.Location = new System.Drawing.Point(379, 65);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 16);
@@ -233,11 +228,13 @@ namespace New_MasterTrade.UserControls
             // txtCliente
             // 
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCliente.Location = new System.Drawing.Point(524, 17);
+            this.txtCliente.Location = new System.Drawing.Point(492, 62);
             this.txtCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCliente.MaxLength = 10;
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(243, 22);
+            this.txtCliente.Size = new System.Drawing.Size(211, 22);
             this.txtCliente.TabIndex = 77;
+            this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
             // tableCarrito
             // 
@@ -245,24 +242,24 @@ namespace New_MasterTrade.UserControls
             this.tableCarrito.AllowUserToDeleteRows = false;
             this.tableCarrito.AllowUserToResizeColumns = false;
             this.tableCarrito.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.tableCarrito.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.tableCarrito.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.tableCarrito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableCarrito.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tableCarrito.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tableCarrito.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tableCarrito.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.tableCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.tableCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.tableCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableCarrito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -272,14 +269,14 @@ namespace New_MasterTrade.UserControls
             this.columnCantidad,
             this.columnPrecioT,
             this.Remover});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tableCarrito.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tableCarrito.DefaultCellStyle = dataGridViewCellStyle9;
             this.tableCarrito.EnableHeadersVisualStyles = false;
             this.tableCarrito.Location = new System.Drawing.Point(0, 236);
             this.tableCarrito.Margin = new System.Windows.Forms.Padding(4);
@@ -288,7 +285,7 @@ namespace New_MasterTrade.UserControls
             this.tableCarrito.RowHeadersVisible = false;
             this.tableCarrito.RowHeadersWidth = 51;
             this.tableCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableCarrito.Size = new System.Drawing.Size(1144, 374);
+            this.tableCarrito.Size = new System.Drawing.Size(1144, 337);
             this.tableCarrito.TabIndex = 76;
             this.tableCarrito.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableCarrito_CellClick);
             // 
@@ -375,7 +372,7 @@ namespace New_MasterTrade.UserControls
             this.bttnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnBuscarProductos.Image = global::New_MasterTrade.Properties.Resources.boxes;
             this.bttnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnBuscarProductos.Location = new System.Drawing.Point(157, 628);
+            this.bttnBuscarProductos.Location = new System.Drawing.Point(12, 628);
             this.bttnBuscarProductos.Margin = new System.Windows.Forms.Padding(4);
             this.bttnBuscarProductos.Name = "bttnBuscarProductos";
             this.bttnBuscarProductos.Size = new System.Drawing.Size(133, 30);
@@ -388,12 +385,13 @@ namespace New_MasterTrade.UserControls
             // bttnGuardar
             // 
             this.bttnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnGuardar.Enabled = false;
             this.bttnGuardar.FlatAppearance.BorderSize = 0;
             this.bttnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk1;
             this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnGuardar.Location = new System.Drawing.Point(440, 628);
+            this.bttnGuardar.Location = new System.Drawing.Point(298, 628);
             this.bttnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.bttnGuardar.Name = "bttnGuardar";
             this.bttnGuardar.Size = new System.Drawing.Size(133, 30);
@@ -411,7 +409,7 @@ namespace New_MasterTrade.UserControls
             this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.cancel;
             this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnCancelar.Location = new System.Drawing.Point(299, 628);
+            this.bttnCancelar.Location = new System.Drawing.Point(155, 628);
             this.bttnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.bttnCancelar.Name = "bttnCancelar";
             this.bttnCancelar.Size = new System.Drawing.Size(133, 30);
@@ -427,7 +425,7 @@ namespace New_MasterTrade.UserControls
             this.bttnBuscar.FlatAppearance.BorderSize = 0;
             this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnBuscar.Image = global::New_MasterTrade.Properties.Resources.browsing;
-            this.bttnBuscar.Location = new System.Drawing.Point(776, 16);
+            this.bttnBuscar.Location = new System.Drawing.Point(711, 59);
             this.bttnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.bttnBuscar.Name = "bttnBuscar";
             this.bttnBuscar.Size = new System.Drawing.Size(37, 28);
@@ -435,32 +433,14 @@ namespace New_MasterTrade.UserControls
             this.bttnBuscar.UseVisualStyleBackColor = false;
             this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click_1);
             // 
-            // bttnNuevaVenta
-            // 
-            this.bttnNuevaVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnNuevaVenta.FlatAppearance.BorderSize = 0;
-            this.bttnNuevaVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
-            this.bttnNuevaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnNuevaVenta.Image = global::New_MasterTrade.Properties.Resources.plus1;
-            this.bttnNuevaVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnNuevaVenta.Location = new System.Drawing.Point(16, 628);
-            this.bttnNuevaVenta.Margin = new System.Windows.Forms.Padding(4);
-            this.bttnNuevaVenta.Name = "bttnNuevaVenta";
-            this.bttnNuevaVenta.Size = new System.Drawing.Size(133, 30);
-            this.bttnNuevaVenta.TabIndex = 96;
-            this.bttnNuevaVenta.Text = "NUEVO";
-            this.bttnNuevaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnNuevaVenta.UseVisualStyleBackColor = false;
-            this.bttnNuevaVenta.Click += new System.EventHandler(this.bttnNuevaVenta_Click);
-            // 
             // comboTasaCambio
             // 
             this.comboTasaCambio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTasaCambio.FormattingEnabled = true;
-            this.comboTasaCambio.Location = new System.Drawing.Point(120, 192);
+            this.comboTasaCambio.Location = new System.Drawing.Point(155, 149);
             this.comboTasaCambio.Margin = new System.Windows.Forms.Padding(4);
             this.comboTasaCambio.Name = "comboTasaCambio";
-            this.comboTasaCambio.Size = new System.Drawing.Size(287, 24);
+            this.comboTasaCambio.Size = new System.Drawing.Size(209, 24);
             this.comboTasaCambio.TabIndex = 108;
             this.comboTasaCambio.SelectedIndexChanged += new System.EventHandler(this.comboTasaCambio_SelectedIndexChanged);
             // 
@@ -468,7 +448,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(12, 188);
+            this.label8.Location = new System.Drawing.Point(12, 145);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 32);
@@ -477,17 +457,17 @@ namespace New_MasterTrade.UserControls
             // 
             // txtMoneda
             // 
-            this.txtMoneda.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtMoneda.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txtMoneda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMoneda.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtMoneda.Location = new System.Drawing.Point(827, 171);
+            this.txtMoneda.ForeColor = System.Drawing.Color.Black;
+            this.txtMoneda.Location = new System.Drawing.Point(825, 583);
             this.txtMoneda.Margin = new System.Windows.Forms.Padding(4);
             this.txtMoneda.Multiline = true;
             this.txtMoneda.Name = "txtMoneda";
             this.txtMoneda.ReadOnly = true;
             this.txtMoneda.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtMoneda.Size = new System.Drawing.Size(302, 45);
+            this.txtMoneda.Size = new System.Drawing.Size(302, 37);
             this.txtMoneda.TabIndex = 109;
             // 
             // label9
@@ -496,17 +476,50 @@ namespace New_MasterTrade.UserControls
             this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(15, 16);
+            this.label9.Location = new System.Drawing.Point(408, 10);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(161, 39);
+            this.label9.Size = new System.Drawing.Size(328, 38);
             this.label9.TabIndex = 110;
-            this.label9.Text = "VENDER";
+            this.label9.Text = "REGISTRAR VENTA";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(804, 65);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 16);
+            this.label4.TabIndex = 85;
+            this.label4.Text = "TELÉFONO";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.Control;
+            this.label10.Location = new System.Drawing.Point(12, 198);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 16);
+            this.label10.TabIndex = 111;
+            this.label10.Text = "VALOR";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // txtValor
+            // 
+            this.txtValor.Enabled = false;
+            this.txtValor.Location = new System.Drawing.Point(155, 195);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(209, 22);
+            this.txtValor.TabIndex = 112;
             // 
             // Vender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.txtValor);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtMoneda);
             this.Controls.Add(this.comboTasaCambio);
@@ -527,7 +540,6 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.bttnNuevaVenta);
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.txtRazonSocial);
             this.Controls.Add(this.label1);
@@ -536,6 +548,7 @@ namespace New_MasterTrade.UserControls
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Vender";
             this.Size = new System.Drawing.Size(1144, 678);
+            this.Load += new System.EventHandler(this.Vender_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -556,11 +569,9 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.TextBox txtNumeroOrden;
         private System.Windows.Forms.Button bttnBuscar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button bttnNuevaVenta;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtRazonSocial;
         private System.Windows.Forms.Label label1;
@@ -578,5 +589,8 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrecioT;
         private System.Windows.Forms.DataGridViewImageColumn Remover;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtValor;
     }
 }

@@ -38,11 +38,13 @@ namespace New_MasterTrade
                 FormularioPersonas y = new FormularioPersonas(1);
 
                 y.DatosPersona(proveedor, 1);
-                x.Controls.Add(y);
-                x.Size = new Size(y.Width + 30, y.Height + 40);                
-                x.StartPosition = FormStartPosition.CenterScreen;
-                x.ShowDialog();
-                CargarTabla();
+                SesionIniciada.Instancia.MostrarUserControl(y);
+
+                //x.Controls.Add(y);
+                //x.Size = new Size(y.Width + 30, y.Height + 40);                
+                //x.StartPosition = FormStartPosition.CenterScreen;
+                //x.ShowDialog();
+                //CargarTabla();
             }
             else
             {
@@ -94,13 +96,14 @@ namespace New_MasterTrade
 
         private void bttnAgregar_Click(object sender, EventArgs e)
         {
-            Form x = new Form();
-            FormularioPersonas y = new FormularioPersonas(1);
-            x.Size = new Size(y.Width + 30, y.Height + 40);
-            x.Controls.Add(y);
-            x.StartPosition = FormStartPosition.CenterScreen;
-            x.ShowDialog();
-            CargarTabla();
+            SesionIniciada.Instancia.MostrarUserControl(new FormularioPersonas(1));
+            //Form x = new Form();
+            //FormularioPersonas y = new FormularioPersonas(1);
+            //x.Size = new Size(y.Width + 30, y.Height + 40);
+            //x.Controls.Add(y);
+            //x.StartPosition = FormStartPosition.CenterScreen;
+            //x.ShowDialog();
+            //CargarTabla();
         }
 
         private void tablaPersonas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

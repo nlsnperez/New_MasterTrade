@@ -90,5 +90,10 @@ namespace New_MasterTrade.UserControls
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -45,6 +45,8 @@ namespace New_MasterTrade.UserControls
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.bttnCancelar = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.bttnAtrás = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtDocumento
@@ -150,7 +152,7 @@ namespace New_MasterTrade.UserControls
             this.comboOcupacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboOcupacion.FormattingEnabled = true;
             this.comboOcupacion.Location = new System.Drawing.Point(216, 85);
-            this.comboOcupacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboOcupacion.Margin = new System.Windows.Forms.Padding(4);
             this.comboOcupacion.Name = "comboOcupacion";
             this.comboOcupacion.Size = new System.Drawing.Size(851, 24);
             this.comboOcupacion.TabIndex = 54;
@@ -160,7 +162,7 @@ namespace New_MasterTrade.UserControls
             this.comboDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDocumento.FormattingEnabled = true;
             this.comboDocumento.Location = new System.Drawing.Point(216, 130);
-            this.comboDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.comboDocumento.Name = "comboDocumento";
             this.comboDocumento.Size = new System.Drawing.Size(88, 24);
             this.comboDocumento.TabIndex = 55;
@@ -237,11 +239,41 @@ namespace New_MasterTrade.UserControls
             this.bttnCancelar.UseVisualStyleBackColor = false;
             this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTitulo.Location = new System.Drawing.Point(357, 12);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(430, 38);
+            this.lblTitulo.TabIndex = 117;
+            this.lblTitulo.Text = "REGISTRAR PROVEEDOR";
+            // 
+            // bttnAtrás
+            // 
+            this.bttnAtrás.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAtrás.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAtrás.Image = global::New_MasterTrade.Properties.Resources.atras;
+            this.bttnAtrás.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnAtrás.Location = new System.Drawing.Point(20, 12);
+            this.bttnAtrás.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bttnAtrás.Name = "bttnAtrás";
+            this.bttnAtrás.Size = new System.Drawing.Size(106, 34);
+            this.bttnAtrás.TabIndex = 118;
+            this.bttnAtrás.Text = "ATRÁS";
+            this.bttnAtrás.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAtrás.UseVisualStyleBackColor = false;
+            this.bttnAtrás.Click += new System.EventHandler(this.bttnAtrás_Click);
+            // 
             // FormularioPersonas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.bttnAtrás);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.comboDocumento);
@@ -258,7 +290,7 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.bttnCancelar);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.bttnGuardar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormularioPersonas";
             this.Size = new System.Drawing.Size(1144, 678);
             this.ResumeLayout(false);
@@ -283,5 +315,7 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Button bttnCancelar;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Button bttnAtrás;
     }
 }

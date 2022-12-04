@@ -50,7 +50,7 @@ namespace New_MasterTrade.Base_de_Datos
 
                     command.ExecuteNonQuery();
                 }
-                MessageBox.Show("El registro se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("La categoría se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
@@ -190,7 +190,7 @@ namespace New_MasterTrade.Base_de_Datos
 
                     command.ExecuteNonQuery();
                 }
-                MessageBox.Show("El registro se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("La marca se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
@@ -330,7 +330,7 @@ namespace New_MasterTrade.Base_de_Datos
 
                     command.ExecuteNonQuery();
                 }
-                MessageBox.Show("El registro se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El modelo se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
@@ -470,7 +470,7 @@ namespace New_MasterTrade.Base_de_Datos
 
                     command.ExecuteNonQuery();
                 }
-                MessageBox.Show("El registro se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El método de pago se registró de manera satisfactoria.", "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {

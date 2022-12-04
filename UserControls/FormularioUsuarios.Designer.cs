@@ -49,14 +49,15 @@ namespace New_MasterTrade.UserControls
             this.bttnCancelar = new System.Windows.Forms.Button();
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboDocumento
             // 
             this.comboDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDocumento.FormattingEnabled = true;
-            this.comboDocumento.Location = new System.Drawing.Point(512, 18);
-            this.comboDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboDocumento.Location = new System.Drawing.Point(512, 62);
+            this.comboDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.comboDocumento.Name = "comboDocumento";
             this.comboDocumento.Size = new System.Drawing.Size(55, 24);
             this.comboDocumento.TabIndex = 74;
@@ -66,7 +67,7 @@ namespace New_MasterTrade.UserControls
             this.comboNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboNivel.FormattingEnabled = true;
             this.comboNivel.Location = new System.Drawing.Point(125, 110);
-            this.comboNivel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboNivel.Margin = new System.Windows.Forms.Padding(4);
             this.comboNivel.Name = "comboNivel";
             this.comboNivel.Size = new System.Drawing.Size(225, 24);
             this.comboNivel.TabIndex = 73;
@@ -84,7 +85,7 @@ namespace New_MasterTrade.UserControls
             // txtConfirmar
             // 
             this.txtConfirmar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtConfirmar.Location = new System.Drawing.Point(899, 64);
+            this.txtConfirmar.Location = new System.Drawing.Point(899, 110);
             this.txtConfirmar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtConfirmar.MaxLength = 80;
             this.txtConfirmar.Name = "txtConfirmar";
@@ -97,7 +98,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(764, 64);
+            this.label5.Location = new System.Drawing.Point(764, 105);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 32);
             this.label5.TabIndex = 70;
@@ -106,7 +107,7 @@ namespace New_MasterTrade.UserControls
             // txtContrasegna
             // 
             this.txtContrasegna.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContrasegna.Location = new System.Drawing.Point(512, 64);
+            this.txtContrasegna.Location = new System.Drawing.Point(512, 110);
             this.txtContrasegna.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtContrasegna.MaxLength = 80;
             this.txtContrasegna.Name = "txtContrasegna";
@@ -119,7 +120,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(379, 66);
+            this.label3.Location = new System.Drawing.Point(379, 113);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 16);
             this.label3.TabIndex = 68;
@@ -150,7 +151,7 @@ namespace New_MasterTrade.UserControls
             // txtDocumento
             // 
             this.txtDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDocumento.Location = new System.Drawing.Point(575, 18);
+            this.txtDocumento.Location = new System.Drawing.Point(575, 63);
             this.txtDocumento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDocumento.MaxLength = 10;
             this.txtDocumento.Name = "txtDocumento";
@@ -164,7 +165,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(379, 18);
+            this.label1.Location = new System.Drawing.Point(379, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 32);
             this.label1.TabIndex = 64;
@@ -199,8 +200,8 @@ namespace New_MasterTrade.UserControls
             this.chckMostrar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.chckMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chckMostrar.ForeColor = System.Drawing.SystemColors.Control;
-            this.chckMostrar.Location = new System.Drawing.Point(512, 113);
-            this.chckMostrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chckMostrar.Location = new System.Drawing.Point(512, 156);
+            this.chckMostrar.Margin = new System.Windows.Forms.Padding(4);
             this.chckMostrar.Name = "chckMostrar";
             this.chckMostrar.Size = new System.Drawing.Size(140, 20);
             this.chckMostrar.TabIndex = 79;
@@ -215,7 +216,7 @@ namespace New_MasterTrade.UserControls
             this.chckVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chckVendedor.ForeColor = System.Drawing.SystemColors.Control;
             this.chckVendedor.Location = new System.Drawing.Point(125, 156);
-            this.chckVendedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chckVendedor.Margin = new System.Windows.Forms.Padding(4);
             this.chckVendedor.Name = "chckVendedor";
             this.chckVendedor.Size = new System.Drawing.Size(169, 20);
             this.chckVendedor.TabIndex = 81;
@@ -225,7 +226,7 @@ namespace New_MasterTrade.UserControls
             // txtCorreo
             // 
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCorreo.Location = new System.Drawing.Point(899, 18);
+            this.txtCorreo.Location = new System.Drawing.Point(899, 63);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCorreo.MaxLength = 150;
             this.txtCorreo.Name = "txtCorreo";
@@ -238,7 +239,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(764, 22);
+            this.label7.Location = new System.Drawing.Point(764, 66);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 16);
             this.label7.TabIndex = 82;
@@ -295,11 +296,24 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar.UseVisualStyleBackColor = false;
             this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(395, 4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(359, 32);
+            this.label9.TabIndex = 120;
+            this.label9.Text = "REGISTRO DE USUARIOS";
+            // 
             // FormularioUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.chckVendedor);
@@ -320,7 +334,7 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label4);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormularioUsuarios";
             this.Size = new System.Drawing.Size(1149, 246);
             this.ResumeLayout(false);
@@ -350,5 +364,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.CheckBox chckVendedor;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
     }
 }

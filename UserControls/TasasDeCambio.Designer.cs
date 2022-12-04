@@ -228,7 +228,7 @@
             // 
             this.labelTitulo.AutoSize = true;
             this.labelTitulo.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelTitulo.Location = new System.Drawing.Point(4, 7);
+            this.labelTitulo.Location = new System.Drawing.Point(16, 7);
             this.labelTitulo.Name = "labelTitulo";
             this.labelTitulo.Size = new System.Drawing.Size(174, 16);
             this.labelTitulo.TabIndex = 39;

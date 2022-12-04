@@ -170,15 +170,16 @@ namespace New_MasterTrade.UserControls
 
         private void bttnBuscar_Click(object sender, EventArgs e)
         {
-            Producto producto = crud.ProductoDatos(txtBuscar.Text);
-            if (producto != null)
-            {
-                DatosProducto(producto);
-            }
-            else
-            {
-                MessageBox.Show("No se encontró ningún producto", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            SesionIniciada.Instancia.MostrarUserControl(new Productos());
+            //Producto producto = crud.ProductoDatos(txtBuscar.Text);
+            //if (producto != null)
+            //{
+            //    DatosProducto(producto);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No se encontró ningún producto", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         public void DatosProducto(Producto producto)
@@ -210,7 +211,6 @@ namespace New_MasterTrade.UserControls
                 txtCantidad.Text = cantidad.ToString();
                 IndexGarantia(producto.Garantia);
 
-                txtBuscar.Text = "";
                 txtSerial.Enabled = false;
                 bttnGuardar.Enabled = false;
                 bttnActualizar.Enabled = true;
@@ -251,7 +251,6 @@ namespace New_MasterTrade.UserControls
             txtPrecioCompra.Text = "0";
             txtPrecioVenta.Text = "0";
             txtCantidad.Text = "0";
-            txtBuscar.Text = "";
             comboMarca.SelectedIndex = 0;
             comboCategoria.SelectedIndex = 0;
             comboModelo.SelectedIndex = 0;
@@ -353,6 +352,29 @@ namespace New_MasterTrade.UserControls
                     e.Handled = true;
                 }
             }            
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bttnCategoria_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarDialog(new Categorias());
+            ConfigCombos();
+        }
+
+        private void bttnMarca_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarDialog(new Marcas());
+            ConfigCombos();
+        }
+
+        private void bttnModelo_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarDialog(new Modelos());
+            ConfigCombos();
         }
     }
 }

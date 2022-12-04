@@ -47,6 +47,7 @@ namespace New_MasterTrade.UserControls
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.bttnAgregar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,17 +95,18 @@ namespace New_MasterTrade.UserControls
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaPersonas.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaPersonas.EnableHeadersVisualStyles = false;
-            this.tablaPersonas.Location = new System.Drawing.Point(0, 0);
-            this.tablaPersonas.Margin = new System.Windows.Forms.Padding(10);
+            this.tablaPersonas.Location = new System.Drawing.Point(0, 60);
+            this.tablaPersonas.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.tablaPersonas.MultiSelect = false;
             this.tablaPersonas.Name = "tablaPersonas";
             this.tablaPersonas.ReadOnly = true;
             this.tablaPersonas.RowHeadersVisible = false;
             this.tablaPersonas.RowHeadersWidth = 51;
             this.tablaPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaPersonas.Size = new System.Drawing.Size(858, 494);
+            this.tablaPersonas.Size = new System.Drawing.Size(1144, 548);
             this.tablaPersonas.TabIndex = 40;
             this.tablaPersonas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaPersonas_CellClick);
+            this.tablaPersonas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaPersonas_CellContentClick);
             this.tablaPersonas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaPersonas_CellFormatting);
             // 
             // columnId
@@ -197,10 +199,10 @@ namespace New_MasterTrade.UserControls
             // 
             this.txtBuscar.BackColor = System.Drawing.SystemColors.Control;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Location = new System.Drawing.Point(881, 630);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(246, 22);
             this.txtBuscar.TabIndex = 42;
             this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp_1);
             // 
@@ -208,10 +210,9 @@ namespace New_MasterTrade.UserControls
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(597, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(796, 635);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(69, 16);
             this.label1.TabIndex = 41;
             this.label1.Text = "BUSCAR: ";
             // 
@@ -244,27 +245,41 @@ namespace New_MasterTrade.UserControls
             this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnAgregar.Image = global::New_MasterTrade.Properties.Resources.pencil;
             this.bttnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnAgregar.Location = new System.Drawing.Point(12, 510);
-            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAgregar.Location = new System.Drawing.Point(16, 628);
+            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnAgregar.Name = "bttnAgregar";
-            this.bttnAgregar.Size = new System.Drawing.Size(100, 24);
+            this.bttnAgregar.Size = new System.Drawing.Size(133, 30);
             this.bttnAgregar.TabIndex = 43;
             this.bttnAgregar.Text = "REGISTRAR";
             this.bttnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bttnAgregar.UseVisualStyleBackColor = false;
             this.bttnAgregar.Click += new System.EventHandler(this.bttnAgregar_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(359, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(426, 38);
+            this.label9.TabIndex = 117;
+            this.label9.Text = "CLIENTES REGISTRADOS";
+            // 
             // Clientes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.tablaPersonas);
             this.Controls.Add(this.bttnAgregar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Clientes";
-            this.Size = new System.Drawing.Size(858, 551);
+            this.Size = new System.Drawing.Size(1144, 678);
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -288,5 +303,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn Activo;
         private System.Windows.Forms.DataGridViewImageColumn Detalles;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.Label label9;
     }
 }

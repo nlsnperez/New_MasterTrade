@@ -33,14 +33,15 @@ namespace New_MasterTrade.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaBitacora = new System.Windows.Forms.DataGridView();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaBitacora)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,68 +84,53 @@ namespace New_MasterTrade.UserControls
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaBitacora.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaBitacora.EnableHeadersVisualStyles = false;
-            this.tablaBitacora.Location = new System.Drawing.Point(0, 0);
+            this.tablaBitacora.Location = new System.Drawing.Point(0, 60);
+            this.tablaBitacora.Margin = new System.Windows.Forms.Padding(4);
             this.tablaBitacora.Name = "tablaBitacora";
             this.tablaBitacora.ReadOnly = true;
             this.tablaBitacora.RowHeadersVisible = false;
+            this.tablaBitacora.RowHeadersWidth = 51;
             this.tablaBitacora.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaBitacora.Size = new System.Drawing.Size(858, 494);
+            this.tablaBitacora.Size = new System.Drawing.Size(1144, 548);
             this.tablaBitacora.TabIndex = 42;
             this.tablaBitacora.MouseEnter += new System.EventHandler(this.tablaBitacora_MouseEnter);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 44;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(597, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "BUSCAR: ";
             // 
             // Id
             // 
             this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Id.DataPropertyName = "id_bit";
             this.Id.HeaderText = "ID";
+            this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
-            this.Id.Width = 42;
+            this.Id.Width = 49;
             // 
             // Usuario
             // 
             this.Usuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Usuario.DataPropertyName = "usr_usu";
             this.Usuario.HeaderText = "Usuario";
+            this.Usuario.MinimumWidth = 6;
             this.Usuario.Name = "Usuario";
             this.Usuario.ReadOnly = true;
-            this.Usuario.Width = 73;
+            this.Usuario.Width = 87;
             // 
             // Modulo
             // 
             this.Modulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Modulo.DataPropertyName = "mod_bit";
             this.Modulo.HeaderText = "Módulo";
+            this.Modulo.MinimumWidth = 6;
             this.Modulo.Name = "Modulo";
             this.Modulo.ReadOnly = true;
-            this.Modulo.Width = 72;
+            this.Modulo.Width = 85;
             // 
             // Accion
             // 
             this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Accion.DataPropertyName = "acc_bit";
             this.Accion.HeaderText = "Acción";
+            this.Accion.MinimumWidth = 6;
             this.Accion.Name = "Accion";
             this.Accion.ReadOnly = true;
             // 
@@ -153,31 +139,67 @@ namespace New_MasterTrade.UserControls
             this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Fecha.DataPropertyName = "fec_bit";
             this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 6;
             this.Fecha.Name = "Fecha";
             this.Fecha.ReadOnly = true;
             this.Fecha.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Fecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Fecha.Width = 45;
+            this.Fecha.Width = 53;
             // 
             // Hora
             // 
             this.Hora.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Hora.DataPropertyName = "hor_bit";
             this.Hora.HeaderText = "Hora";
+            this.Hora.MinimumWidth = 6;
             this.Hora.Name = "Hora";
             this.Hora.ReadOnly = true;
-            this.Hora.Width = 57;
+            this.Hora.Width = 68;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(881, 630);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(246, 22);
+            this.txtBuscar.TabIndex = 44;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(796, 635);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 16);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "BUSCAR: ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(346, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(452, 38);
+            this.label9.TabIndex = 118;
+            this.label9.Text = "BITÁCORAS REGISTRADAS";
             // 
             // RegistrosBitacora
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.tablaBitacora);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegistrosBitacora";
-            this.Size = new System.Drawing.Size(858, 551);
+            this.Size = new System.Drawing.Size(1144, 678);
             ((System.ComponentModel.ISupportInitialize)(this.tablaBitacora)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -195,5 +217,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn Accion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hora;
+        private System.Windows.Forms.Label label9;
     }
 }

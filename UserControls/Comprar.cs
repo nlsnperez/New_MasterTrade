@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Management.Instrumentation;
 using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
@@ -24,11 +25,13 @@ namespace New_MasterTrade.UserControls
         public Comprar()
         {
             InitializeComponent();
+            Comprar_Load(null, new EventArgs());
         }
 
         private void Comprar_Load(object sender, EventArgs e)
         {
             Config();
+            txtMoneda.Text = comboMoneda.Text;
         }
 
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
@@ -87,7 +90,6 @@ namespace New_MasterTrade.UserControls
                 case "ON":
                     txtProveedor.Enabled = true;
 
-                    bttnNuevaCompra.Enabled = false;
                     bttnBuscarProductos.Enabled = true;
                     bttnBuscar.Enabled = true;
                     bttnCancelar.Enabled = true;
@@ -97,17 +99,13 @@ namespace New_MasterTrade.UserControls
                     break;
                 case "OFF":
                     txtNumeroOrden.Enabled = false;
-                    
+
                     txtProveedor.Enabled = false;
                     txtRazonSocial.Enabled = false;
                     txtDireccion.Enabled = false;
                     txtTelefono.Enabled = false;
                     txtCorreo.Enabled = false;
 
-                    bttnNuevaCompra.Enabled = true;
-                    bttnBuscarProductos.Enabled = false;
-                    bttnBuscar.Enabled = false;
-                    bttnCancelar.Enabled = false;
                     bttnGuardar.Enabled = false;
                     tableCarrito.DataSource = null;
                     carrito.Rows.Clear();
@@ -118,7 +116,12 @@ namespace New_MasterTrade.UserControls
 
         public void LimpiarCampos()
         {
+            ConfigControles("ON");
+            txtProveedor.Focus();
+            IdCompra = crud.GetIdCompras();
             txtNumeroOrden.Text = "";
+            txtNumeroOrden.Text = IdCompra.ToString("000000000");
+            comboMoneda.SelectedIndex = 0;
 
             txtProveedor.Text = "";
             txtRazonSocial.Text = "";
@@ -128,8 +131,6 @@ namespace New_MasterTrade.UserControls
 
             txtSubTotalBs.Text = "0.00";
             txtMoneda.Text = "";
-            comboMoneda.Enabled = false;
-            comboTasaCambio.Enabled = false;
         }
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)//LIMITA LOS TEXBOXES PARA QUE ACEPTEN SÓLO NÚMEROS
@@ -247,7 +248,7 @@ namespace New_MasterTrade.UserControls
                     {
                         Form x = new Form();
                         FormularioPersonas y = new FormularioPersonas(1);
-                        y.RegistroExterno(2);
+                        y.RegistroExterno(2, txtProveedor.Text);
                         x.StartPosition = FormStartPosition.CenterScreen;
                         x.Size = new Size(y.Width + 15, y.Height + 30);
                         x.Controls.Add(y);
@@ -341,13 +342,12 @@ namespace New_MasterTrade.UserControls
         {
             try
             {
+                txtMoneda.Text = comboMoneda.Text;
                 int id = (int)comboMoneda.SelectedValue;
                 comboTasaCambio.ValueMember = "id_tca";
                 comboTasaCambio.DisplayMember = "des_tca";
                 comboTasaCambio.DataSource = crud.TasaDeCambio(id);
-                comboTasaCambio.SelectedIndex = 0;
-
-                txtMoneda.Text = comboMoneda.Text;
+                comboTasaCambio.SelectedIndex = 0;                
             }
             catch (Exception ex)
             {
@@ -361,6 +361,7 @@ namespace New_MasterTrade.UserControls
             {
                 int id = (int)comboTasaCambio.SelectedValue;
                 tasa_cambio = crud.Valor_TasaCambio(id);
+                txtValor.Text = tasa_cambio.ToString();
                 GetSubTotal();
             }
             catch (Exception ex)

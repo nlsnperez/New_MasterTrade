@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.bttnBuscar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtSerial = new System.Windows.Forms.TextBox();
@@ -53,48 +50,19 @@
             this.comboModelo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.bttnCancelar = new System.Windows.Forms.Button();
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.bttnEliminar = new System.Windows.Forms.Button();
             this.bttnAgregar = new System.Windows.Forms.Button();
             this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.bttnAtras = new System.Windows.Forms.Button();
+            this.bttnModelo = new System.Windows.Forms.Button();
+            this.bttnCategoria = new System.Windows.Forms.Button();
+            this.bttnMarca = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(673, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "BUSCAR: ";
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(759, 21);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(246, 22);
-            this.txtBuscar.TabIndex = 2;
-            this.txtBuscar.Enter += new System.EventHandler(this.textBox_Enter);
-            this.txtBuscar.Leave += new System.EventHandler(this.textBox_Leave);
-            // 
-            // bttnBuscar
-            // 
-            this.bttnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnBuscar.Location = new System.Drawing.Point(1015, 18);
-            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bttnBuscar.Name = "bttnBuscar";
-            this.bttnBuscar.Size = new System.Drawing.Size(113, 30);
-            this.bttnBuscar.TabIndex = 3;
-            this.bttnBuscar.Text = "BUSCAR";
-            this.bttnBuscar.UseVisualStyleBackColor = false;
-            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click);
             // 
             // label2
             // 
@@ -109,6 +77,7 @@
             // txtID
             // 
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtID.ForeColor = System.Drawing.SystemColors.Control;
             this.txtID.Location = new System.Drawing.Point(503, 87);
             this.txtID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtID.Name = "txtID";
@@ -184,7 +153,7 @@
             // txtPrecioVenta
             // 
             this.txtPrecioVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrecioVenta.Location = new System.Drawing.Point(503, 521);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(503, 565);
             this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(246, 22);
@@ -200,14 +169,14 @@
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
             this.label7.Location = new System.Drawing.Point(347, 517);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 32);
+            this.label7.Size = new System.Drawing.Size(140, 32);
             this.label7.TabIndex = 18;
-            this.label7.Text = "PRECIO DE VENTA\r\n(Bs)";
+            this.label7.Text = "PRECIO DE COMPRA\r\n(Bs)";
             // 
             // txtPrecioCompra
             // 
             this.txtPrecioCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrecioCompra.Location = new System.Drawing.Point(503, 569);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(503, 517);
             this.txtPrecioCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(246, 22);
@@ -223,9 +192,9 @@
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
             this.label8.Location = new System.Drawing.Point(347, 565);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(140, 32);
+            this.label8.Size = new System.Drawing.Size(128, 32);
             this.label8.TabIndex = 20;
-            this.label8.Text = "PRECIO DE COMPRA\r\n(Bs)";
+            this.label8.Text = "PRECIO DE VENTA\r\n(Bs)";
             // 
             // txtCantidad
             // 
@@ -237,14 +206,12 @@
             this.txtCantidad.Size = new System.Drawing.Size(246, 22);
             this.txtCantidad.TabIndex = 23;
             this.txtCantidad.Text = "0";
-            this.txtCantidad.Enter += new System.EventHandler(this.textBox_Enter);
-            this.txtCantidad.Leave += new System.EventHandler(this.textBox_Leave);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(771, 92);
+            this.label9.Location = new System.Drawing.Point(800, 92);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 16);
             this.label9.TabIndex = 22;
@@ -254,7 +221,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.Control;
-            this.label11.Location = new System.Drawing.Point(771, 140);
+            this.label11.Location = new System.Drawing.Point(800, 140);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(76, 16);
             this.label11.TabIndex = 26;
@@ -325,6 +292,18 @@
             this.label12.TabIndex = 38;
             this.label12.Text = "IMAGEN DEL PRODUCTO";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F);
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(391, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(408, 38);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "REGISTRAR PRODUCTO";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // bttnCancelar
             // 
@@ -423,11 +402,67 @@
             this.pbImagen.TabIndex = 4;
             this.pbImagen.TabStop = false;
             // 
+            // bttnAtras
+            // 
+            this.bttnAtras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAtras.Image = global::New_MasterTrade.Properties.Resources.atras;
+            this.bttnAtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnAtras.Location = new System.Drawing.Point(20, 12);
+            this.bttnAtras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bttnAtras.Name = "bttnAtras";
+            this.bttnAtras.Size = new System.Drawing.Size(106, 34);
+            this.bttnAtras.TabIndex = 3;
+            this.bttnAtras.Text = "ATRÁS";
+            this.bttnAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAtras.UseVisualStyleBackColor = false;
+            this.bttnAtras.Click += new System.EventHandler(this.bttnBuscar_Click);
+            // 
+            // bttnModelo
+            // 
+            this.bttnModelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnModelo.Image = global::New_MasterTrade.Properties.Resources.plus1;
+            this.bttnModelo.Location = new System.Drawing.Point(756, 234);
+            this.bttnModelo.Name = "bttnModelo";
+            this.bttnModelo.Size = new System.Drawing.Size(35, 24);
+            this.bttnModelo.TabIndex = 45;
+            this.bttnModelo.UseVisualStyleBackColor = false;
+            this.bttnModelo.Click += new System.EventHandler(this.bttnModelo_Click);
+            // 
+            // bttnCategoria
+            // 
+            this.bttnCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnCategoria.Image = global::New_MasterTrade.Properties.Resources.plus1;
+            this.bttnCategoria.Location = new System.Drawing.Point(756, 135);
+            this.bttnCategoria.Name = "bttnCategoria";
+            this.bttnCategoria.Size = new System.Drawing.Size(35, 24);
+            this.bttnCategoria.TabIndex = 46;
+            this.bttnCategoria.UseVisualStyleBackColor = false;
+            this.bttnCategoria.Click += new System.EventHandler(this.bttnCategoria_Click);
+            // 
+            // bttnMarca
+            // 
+            this.bttnMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnMarca.Image = global::New_MasterTrade.Properties.Resources.plus1;
+            this.bttnMarca.Location = new System.Drawing.Point(756, 186);
+            this.bttnMarca.Name = "bttnMarca";
+            this.bttnMarca.Size = new System.Drawing.Size(35, 24);
+            this.bttnMarca.TabIndex = 47;
+            this.bttnMarca.UseVisualStyleBackColor = false;
+            this.bttnMarca.Click += new System.EventHandler(this.bttnMarca_Click);
+            // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.bttnMarca);
+            this.Controls.Add(this.bttnCategoria);
+            this.Controls.Add(this.bttnModelo);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.bttnCancelar);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.bttnGuardar);
@@ -455,9 +490,7 @@
             this.Controls.Add(this.bttnEliminar);
             this.Controls.Add(this.bttnAgregar);
             this.Controls.Add(this.pbImagen);
-            this.Controls.Add(this.bttnBuscar);
-            this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.bttnAtras);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormularioProductos";
             this.Size = new System.Drawing.Size(1144, 678);
@@ -469,9 +502,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Button bttnBuscar;
+        private System.Windows.Forms.Button bttnAtras;
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.Button bttnAgregar;
         private System.Windows.Forms.Button bttnEliminar;
@@ -500,5 +531,9 @@
         private System.Windows.Forms.Button bttnCancelar;
         private System.Windows.Forms.Button bttnActualizar;
         private System.Windows.Forms.Button bttnGuardar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bttnModelo;
+        private System.Windows.Forms.Button bttnCategoria;
+        private System.Windows.Forms.Button bttnMarca;
     }
 }

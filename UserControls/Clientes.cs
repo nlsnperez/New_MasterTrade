@@ -33,13 +33,14 @@ namespace New_MasterTrade.UserControls
                 Persona cliente = crud.Cliente(id);
                 Form x = new Form();
                 FormularioPersonas y = new FormularioPersonas(0);
-
                 y.DatosPersona(cliente, 0);
-                x.Controls.Add(y);
-                x.Size = new Size(y.Width + 30, y.Height + 40);
-                x.StartPosition = FormStartPosition.CenterScreen;
-                x.ShowDialog();
-                CargarTabla();
+
+                SesionIniciada.Instancia.MostrarUserControl(y);
+                //x.Controls.Add(y);
+                //x.Size = new Size(y.Width + 30, y.Height + 40);
+                //x.StartPosition = FormStartPosition.CenterScreen;
+                //x.ShowDialog();
+                //CargarTabla();
             }
             else
             {
@@ -91,13 +92,14 @@ namespace New_MasterTrade.UserControls
 
         private void bttnAgregar_Click(object sender, EventArgs e)
         {
-            Form x = new Form();
-            FormularioPersonas y = new FormularioPersonas(0);
-            x.Size = new Size(y.Width + 30, y.Height + 40);
-            x.Controls.Add(y);
-            x.StartPosition = FormStartPosition.CenterScreen;
-            x.ShowDialog();
-            tablaPersonas.DataSource = crud.Tabla();
+            SesionIniciada.Instancia.MostrarUserControl(new FormularioPersonas(0));
+            //Form x = new Form();
+            //FormularioPersonas y = new FormularioPersonas(0);
+            //x.Size = new Size(y.Width + 30, y.Height + 40);
+            //x.Controls.Add(y);
+            //x.StartPosition = FormStartPosition.CenterScreen;
+            //x.ShowDialog();
+            //tablaPersonas.DataSource = crud.Tabla();
         }
 
         private void tablaPersonas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -117,6 +119,11 @@ namespace New_MasterTrade.UserControls
                     }
                 }
             }
+        }
+
+        private void tablaPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

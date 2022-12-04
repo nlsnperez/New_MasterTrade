@@ -25,7 +25,7 @@ namespace New_MasterTrade.UserControls
             comboReporte.Items.Add("TOP 10 PRODUCTOS MÁS VENDIDOS");
             comboReporte.Items.Add("TOP 10 CLIENTES");
             comboReporte.Items.Add("TOP 10 PROVEEDORES CON MÁS PRODUCTOS");
-            comboReporte.Items.Add("DESEMPREÑO DE VENDEDORES");
+            comboReporte.Items.Add("DESEMPEÑO DE VENDEDORES");
             comboReporte.Items.Add("MARCA MÁS VENDIDA");
             comboReporte.Items.Add("NÚMERO DE COMPRAS REALIZADAS EN EL AÑO");
             comboReporte.Items.Add("NÚMERO DE VENTAS REALIZADAS EN EL AÑO");
@@ -45,7 +45,7 @@ namespace New_MasterTrade.UserControls
                 case "TOP 10 PROVEEDORES CON MÁS PRODUCTOS":
                     reporte.Reporte_ProductosPorProveedor();
                     break;
-                case "DESEMPREÑO DE VENDEDORES":
+                case "DESEMPEÑO DE VENDEDORES":
                     reporte.Reporte_VendedorEficiente();
                     break;
                 case "MARCA MÁS VENDIDA":
@@ -58,6 +58,11 @@ namespace New_MasterTrade.UserControls
                     reporte.Reporte_VentasPorAgno("2022");
                     break;
             }
+        }
+
+        private void comboReporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -29,7 +29,14 @@ namespace New_MasterTrade.UserControls
         public Vender()
         {
             InitializeComponent();
-            Config();
+            try
+            {
+                Vender_Load(null, new EventArgs());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
@@ -38,7 +45,8 @@ namespace New_MasterTrade.UserControls
             crud_clientes = new CRUD_Clientes();
             dias_garantia = new List<int>();
             tableCarrito.AutoGenerateColumns = false;
-            ConfigControles("OFF");
+            //ConfigControles("OFF");
+            LimpiarCampos();
             ConfigCarrito();
         }
 
@@ -91,7 +99,6 @@ namespace New_MasterTrade.UserControls
                 case "ON":
                     txtCliente.Enabled = true;
 
-                    bttnNuevaVenta.Enabled = false;
                     bttnBuscarProductos.Enabled = true;
                     bttnBuscar.Enabled = true;
                     bttnCancelar.Enabled = true;
@@ -111,13 +118,6 @@ namespace New_MasterTrade.UserControls
                     txtTelefono.Enabled = false;
                     txtCorreo.Enabled = false;
 
-                    comboMoneda.Enabled = false;
-                    comboTasaCambio.Enabled = false;
-
-                    bttnNuevaVenta.Enabled = true;
-                    bttnBuscarProductos.Enabled = false;
-                    bttnBuscar.Enabled = false;
-                    bttnCancelar.Enabled = false;
                     bttnGuardar.Enabled = false;
                     tableCarrito.DataSource = null;
                     carrito.Rows.Clear();
@@ -128,21 +128,33 @@ namespace New_MasterTrade.UserControls
 
         public void LimpiarCampos()
         {
-            txtNumeroOrden.Text = "";
+            try
+            {
+                ConfigControles("ON");
+                txtCliente.Focus();
+                IdVenta = crud.GetIdVentas();
+                txtNumeroOrden.Text = "";
+                txtNumeroOrden.Text = IdVenta.ToString("000000000");
+                comboMoneda.SelectedIndex = 0;
 
-            txtCliente.Text = "";
-            txtRazonSocial.Text = "";
-            txtDireccion.Text = "";
-            txtTelefono.Text = "";
-            txtCorreo.Text = "";
+                txtCliente.Text = "";
+                txtRazonSocial.Text = "";
+                txtDireccion.Text = "";
+                txtTelefono.Text = "";
+                txtCorreo.Text = "";
 
-            txtSubTotalBs.Text = "0.00";
-            txtMoneda.Text = "";
+                txtSubTotalBs.Text = "0.00";
+                txtMoneda.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
         }
 
-        private void OnlyNumbers(object sender, KeyPressEventArgs e)//LIMITA LOS TEXBOXES PARA QUE ACEPTEN SÓLO NÚMEROS
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -162,19 +174,7 @@ namespace New_MasterTrade.UserControls
 
         private void bttnNuevaVenta_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ConfigControles("ON");
-                txtCliente.Focus();
-                IdVenta = crud.GetIdVentas();
-                txtNumeroOrden.Text = IdVenta.ToString("000000000");
-                comboMoneda.SelectedIndex = 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
+                        
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
@@ -251,7 +251,7 @@ namespace New_MasterTrade.UserControls
                     {
                         Form x = new Form();
                         FormularioPersonas y = new FormularioPersonas(0);
-                        y.RegistroExterno(1);
+                        y.RegistroExterno(1, txtCliente.Text);
                         x.StartPosition = FormStartPosition.CenterScreen;
                         x.Size = new Size(y.Width + 15, y.Height + 30);
                         x.Controls.Add(y);
@@ -376,8 +376,20 @@ namespace New_MasterTrade.UserControls
             if (comboTasaCambio.ValueMember == "id_tca")
             {
                 tasa_cambio = crud.Valor_TasaCambio((int)comboTasaCambio.SelectedValue);
+                txtValor.Text = tasa_cambio.ToString();
                 if (tableCarrito.Rows.Count > 0) GetSubTotal();
             }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Vender_Load(object sender, EventArgs e)
+        {
+            Config();
+            txtMoneda.Text = comboMoneda.Text;
         }
     }
 }

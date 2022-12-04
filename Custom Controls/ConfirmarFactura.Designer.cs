@@ -171,12 +171,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(87, 183);
+            this.label4.Location = new System.Drawing.Point(56, 183);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 16);
+            this.label4.Size = new System.Drawing.Size(154, 16);
             this.label4.TabIndex = 1;
-            this.label4.Text = "CONFIRMAR";
+            this.label4.Text = "CONFIRMAR FACTURA";
             // 
             // pictureBox1
             // 

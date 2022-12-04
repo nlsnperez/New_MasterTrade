@@ -9,6 +9,19 @@ namespace New_MasterTrade
 {
     public partial class SesionIniciada : Form
     {
+        static SesionIniciada s_iniciada;
+        public static SesionIniciada Instancia
+        {
+            get
+            {
+                if(s_iniciada == null)
+                {
+                    s_iniciada = new SesionIniciada();
+                }
+                return s_iniciada;
+            }
+        }
+
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
         CRUD_Usuarios usuario = new CRUD_Usuarios();
         Panel p = new Panel();
@@ -20,6 +33,7 @@ namespace New_MasterTrade
 
         private void SesionIniciada_Load(object sender, EventArgs e)
         {
+            s_iniciada = this;
             bttnClientes_Click(null, e);
             Config();
         }
@@ -65,7 +79,7 @@ namespace New_MasterTrade
             p.Location = new Point(bttn.Location.X, bttn.Location.Y + 38);
         }
 
-        private void MostrarUserControl(object pantalla)
+        public void MostrarUserControl(object pantalla)
         {
             if (panelContenedor.Controls.Count > 0) panelContenedor.Controls.Clear();
             UserControl control = pantalla as UserControl;
@@ -75,7 +89,7 @@ namespace New_MasterTrade
             control.Show();
         }
 
-        private void MostrarDialog(object pantalla)
+        public void MostrarDialog(object pantalla)
         {
             UserControl control = pantalla as UserControl;
             Form x = new Form();

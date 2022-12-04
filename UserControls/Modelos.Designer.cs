@@ -236,7 +236,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(4, 7);
+            this.label3.Location = new System.Drawing.Point(16, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 16);
             this.label3.TabIndex = 29;

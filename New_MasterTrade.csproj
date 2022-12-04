@@ -636,7 +636,6 @@
     <None Include="Base de Datos\DataSet_Reportes.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet_Reportes.Designer.cs</LastGenOutput>
     </None>
     <None Include="Base de Datos\DataSet_Reportes.xss">
       <DependentUpon>DataSet_Reportes.xsd</DependentUpon>
@@ -765,6 +764,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\atras.png" />
     <None Include="Resources\exchange.png" />
     <None Include="Resources\estados-financieros.png" />
     <None Include="Resources\importar.png" />

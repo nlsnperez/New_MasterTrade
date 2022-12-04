@@ -31,6 +31,7 @@
             this.comboReporte = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bttnReporte = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboReporte
@@ -42,6 +43,7 @@
             this.comboReporte.Name = "comboReporte";
             this.comboReporte.Size = new System.Drawing.Size(851, 24);
             this.comboReporte.TabIndex = 56;
+            this.comboReporte.SelectedIndexChanged += new System.EventHandler(this.comboReporte_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -70,11 +72,24 @@
             this.bttnReporte.UseVisualStyleBackColor = false;
             this.bttnReporte.Click += new System.EventHandler(this.bttnReporte_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(473, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(199, 38);
+            this.label9.TabIndex = 118;
+            this.label9.Text = "REPORTES";
+            // 
             // VentanaReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.bttnReporte);
             this.Controls.Add(this.comboReporte);
             this.Controls.Add(this.label2);
@@ -90,5 +105,6 @@
         private System.Windows.Forms.ComboBox comboReporte;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button bttnReporte;
+        private System.Windows.Forms.Label label9;
     }
 }
