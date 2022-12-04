@@ -52,10 +52,10 @@ namespace New_MasterTrade.UserControls
             // 
             // bttnCerrar
             // 
-            this.bttnCerrar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bttnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(116)))));
             this.bttnCerrar.FlatAppearance.BorderSize = 0;
             this.bttnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCerrar.Location = new System.Drawing.Point(541, 0);
+            this.bttnCerrar.Location = new System.Drawing.Point(543, 0);
             this.bttnCerrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnCerrar.Name = "bttnCerrar";
             this.bttnCerrar.Size = new System.Drawing.Size(29, 30);
@@ -189,7 +189,7 @@ namespace New_MasterTrade.UserControls
             this.tablaModelos.RowHeadersWidth = 51;
             this.tablaModelos.RowTemplate.Height = 24;
             this.tablaModelos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaModelos.Size = new System.Drawing.Size(570, 233);
+            this.tablaModelos.Size = new System.Drawing.Size(572, 233);
             this.tablaModelos.TabIndex = 20;
             this.tablaModelos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaModelos_CellClick);
             this.tablaModelos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaModelos_CellFormatting);

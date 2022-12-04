@@ -29,9 +29,9 @@ namespace New_MasterTrade.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboMoneda = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -67,6 +67,7 @@ namespace New_MasterTrade.UserControls
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
+            this.bttnAtras = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tableCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,7 +157,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(804, 109);
+            this.label6.Location = new System.Drawing.Point(804, 153);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 16);
@@ -167,7 +168,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCorreo.Enabled = false;
-            this.txtCorreo.Location = new System.Drawing.Point(916, 106);
+            this.txtCorreo.Location = new System.Drawing.Point(916, 150);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(211, 22);
@@ -177,7 +178,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefono.Enabled = false;
-            this.txtTelefono.Location = new System.Drawing.Point(915, 62);
+            this.txtTelefono.Location = new System.Drawing.Point(915, 106);
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(211, 22);
@@ -232,7 +233,7 @@ namespace New_MasterTrade.UserControls
             this.txtCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtCliente.MaxLength = 10;
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(211, 22);
+            this.txtCliente.Size = new System.Drawing.Size(589, 22);
             this.txtCliente.TabIndex = 77;
             this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
@@ -242,24 +243,24 @@ namespace New_MasterTrade.UserControls
             this.tableCarrito.AllowUserToDeleteRows = false;
             this.tableCarrito.AllowUserToResizeColumns = false;
             this.tableCarrito.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            this.tableCarrito.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.tableCarrito.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.tableCarrito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableCarrito.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tableCarrito.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tableCarrito.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tableCarrito.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.tableCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.tableCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.tableCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableCarrito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -269,14 +270,14 @@ namespace New_MasterTrade.UserControls
             this.columnCantidad,
             this.columnPrecioT,
             this.Remover});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tableCarrito.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tableCarrito.DefaultCellStyle = dataGridViewCellStyle12;
             this.tableCarrito.EnableHeadersVisualStyles = false;
             this.tableCarrito.Location = new System.Drawing.Point(0, 236);
             this.tableCarrito.Margin = new System.Windows.Forms.Padding(4);
@@ -425,7 +426,7 @@ namespace New_MasterTrade.UserControls
             this.bttnBuscar.FlatAppearance.BorderSize = 0;
             this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnBuscar.Image = global::New_MasterTrade.Properties.Resources.browsing;
-            this.bttnBuscar.Location = new System.Drawing.Point(711, 59);
+            this.bttnBuscar.Location = new System.Drawing.Point(1089, 59);
             this.bttnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.bttnBuscar.Name = "bttnBuscar";
             this.bttnBuscar.Size = new System.Drawing.Size(37, 28);
@@ -486,7 +487,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(804, 65);
+            this.label4.Location = new System.Drawing.Point(804, 109);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 16);
@@ -513,11 +514,27 @@ namespace New_MasterTrade.UserControls
             this.txtValor.Size = new System.Drawing.Size(209, 22);
             this.txtValor.TabIndex = 112;
             // 
+            // bttnAtras
+            // 
+            this.bttnAtras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAtras.Image = global::New_MasterTrade.Properties.Resources.atras;
+            this.bttnAtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnAtras.Location = new System.Drawing.Point(20, 12);
+            this.bttnAtras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bttnAtras.Name = "bttnAtras";
+            this.bttnAtras.Size = new System.Drawing.Size(106, 34);
+            this.bttnAtras.TabIndex = 118;
+            this.bttnAtras.Text = "ATRÁS";
+            this.bttnAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAtras.UseVisualStyleBackColor = false;
+            // 
             // Vender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.bttnAtras);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -592,5 +609,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtValor;
+        public System.Windows.Forms.Button bttnAtras;
     }
 }

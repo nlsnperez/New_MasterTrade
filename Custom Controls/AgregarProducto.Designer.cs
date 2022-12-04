@@ -222,6 +222,7 @@ namespace New_MasterTrade.Custom_Controls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(867, 246);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bttnCancelar);
@@ -236,9 +237,10 @@ namespace New_MasterTrade.Custom_Controls
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCantidad);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AgregarProducto";
-            this.Size = new System.Drawing.Size(867, 246);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -124,7 +124,7 @@
     <Compile Include="Cache\Modulos.cs" />
     <Compile Include="Cache\UserData.cs" />
     <Compile Include="Custom Controls\AgregarProducto.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Controls\AgregarProducto.Designer.cs">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
@@ -136,7 +136,7 @@
       <DependentUpon>BuscarClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\ConfirmarFactura.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Controls\ConfirmarFactura.Designer.cs">
       <DependentUpon>ConfirmarFactura.cs</DependentUpon>

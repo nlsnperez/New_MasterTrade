@@ -32,7 +32,7 @@ namespace New_MasterTrade.Base_de_Datos
                     command.Parameters.Add("@hora", MySqlDbType.Time).Value = System.DateTime.Now.TimeOfDay;
 
                     command.ExecuteNonQuery();
-                    MessageBox.Show("La orden de venta fue registrada con éxito.", "¡REGISTRO EXITOSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("La factura fue registrada con éxito.", "¡REGISTRO EXITOSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (MySqlException ex)

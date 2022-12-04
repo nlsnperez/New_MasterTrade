@@ -79,13 +79,8 @@ namespace New_MasterTrade.Objetos
                 {
                     int id = (int)tablaProductos.Rows[e.RowIndex].Cells["columnId"].Value;
 
-                    Form x = new Form();
                     AgregarProducto y = new AgregarProducto(Compra, Venta, id);
-                    x.Size = new Size(y.Width, y.Height);
-                    x.Controls.Add(y);
-                    x.StartPosition = FormStartPosition.CenterScreen;
-                    x.FormBorderStyle = FormBorderStyle.None;
-                    x.ShowDialog();
+                    y.ShowDialog();
                 }
                 catch (Exception ex)
                 {

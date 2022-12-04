@@ -51,7 +51,7 @@
             // 
             // bttnCerrar
             // 
-            this.bttnCerrar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bttnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(116)))));
             this.bttnCerrar.FlatAppearance.BorderSize = 0;
             this.bttnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnCerrar.Location = new System.Drawing.Point(542, 0);

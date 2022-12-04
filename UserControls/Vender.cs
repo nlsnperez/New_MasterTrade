@@ -213,13 +213,9 @@ namespace New_MasterTrade.UserControls
                 if (e.RowIndex >= 0)
                 {
                     int id = Int32.Parse(tableCarrito.Rows[e.RowIndex].Cells["columnId"].Value.ToString());
-                    Form x = new Form();
-                    AgregarProducto y = new AgregarProducto(null, this, id);
-                    x.Size = new Size(y.Width, y.Height);
-                    x.Controls.Add(y);
-                    x.StartPosition = FormStartPosition.CenterScreen;
-                    x.FormBorderStyle = FormBorderStyle.None;
-                    x.ShowDialog();
+                    SesionIniciada.Instancia.MostrarDialog(new AgregarProducto(null, this, id));
+                    //AgregarProducto y = new AgregarProducto(null, this, id);
+                    //y.ShowDialog();
                 }                
             }
         }
@@ -328,25 +324,25 @@ namespace New_MasterTrade.UserControls
             }
             else
             {
-                if (MessageBox.Show("¿Desea registrar esta orden?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea registrar esta venta?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    Form x = new Form();
-                    ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), dias_garantia,Convert.ToDecimal(txtSubTotalBs.Text));
-                    x.Size = factura.Size;
-                    x.Controls.Add(factura);
-                    x.StartPosition = FormStartPosition.CenterScreen;
-                    x.FormBorderStyle = FormBorderStyle.None;
-                    x.ShowDialog();
+                    ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), dias_garantia, Convert.ToDecimal(txtSubTotalBs.Text));
+                    SesionIniciada.Instancia.MostrarDialog(factura);
+                    //Form x = new Form();
+                    //ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), dias_garantia,Convert.ToDecimal(txtSubTotalBs.Text));
+                    //x.Size = factura.Size;
+                    //x.Controls.Add(factura);
+                    //x.StartPosition = FormStartPosition.CenterScreen;
+                    //x.FormBorderStyle = FormBorderStyle.None;
+                    //x.ShowDialog();
                     if (factura.VentaCompletada == true)
                     {
                         ConfigControles("OFF");
                         factura.Dispose();
-                        x.Dispose();
                     }
                     else
                     {
                         factura.Dispose();
-                        x.Dispose();
                     }    
                 }
             }
@@ -390,6 +386,7 @@ namespace New_MasterTrade.UserControls
         {
             Config();
             txtMoneda.Text = comboMoneda.Text;
+            bttnAtras.Visible = false;
         }
     }
 }

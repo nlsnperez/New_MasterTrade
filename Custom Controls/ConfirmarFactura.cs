@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.Custom_Controls
 {
-    public partial class ConfirmarFactura : UserControl
+    public partial class ConfirmarFactura : Form
     {
         public bool VentaCompletada { get; set; }
 
@@ -107,7 +107,7 @@ namespace New_MasterTrade.Custom_Controls
 
         private void bttnCancelar_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            this.Close();
             VentaCompletada = false;
         }
 
@@ -125,7 +125,7 @@ namespace New_MasterTrade.Custom_Controls
                     reporte.Reporte_Orden_Venta(OrdenVenta.NumeroOrden);
                     bitacora.Create(UserData.Id, Modulos.Vender, Accion.NuevaVenta(UserData.NombreUsuario, OrdenVenta.NumeroOrden));
                     VentaCompletada = true;
-                    this.ParentForm.Close();
+                    this.Close();
                 }
                 catch (Exception ex)
                 {

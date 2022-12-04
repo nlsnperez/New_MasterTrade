@@ -1,4 +1,6 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
+using New_MasterTrade.Custom_Controls;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,19 @@ namespace New_MasterTrade.UserControls
 {
     public partial class FormularioProductos : UserControl
     {
+        static FormularioProductos f_productos;
+        public static FormularioProductos Instancia
+        {
+            get
+            {
+                if (f_productos == null)
+                {
+                    f_productos = new FormularioProductos();
+                }
+                return f_productos;
+            }
+        }
+
         CRUD_Productos crud;
 
         public FormularioProductos()
@@ -35,6 +50,8 @@ namespace New_MasterTrade.UserControls
             txtID.Enabled = false;
             comboCategoria.Focus();
             bttnActualizar.Enabled = false;
+            //bttnComprar.Visible = false;
+            //bttnVender.Visible = false;
             ConfigCombos();
             ConfigLongitud();
         }
@@ -126,7 +143,21 @@ namespace New_MasterTrade.UserControls
                     if (MessageBox.Show("¿Desea registrar este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         crud.Create(GetProducto());
-                        Limpiar();
+                        if (UserData.Nivel == 1)
+                        {
+                            if (MessageBox.Show("¿Desea registrar una compra con este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                SesionIniciada.Instancia.MostrarUserControl(new Comprar());
+                            }
+                            else
+                            {
+                                Limpiar();
+                            }
+                        }
+                        else
+                        {
+                            Limpiar();
+                        }                        
                     }
                 }
             }
@@ -190,6 +221,7 @@ namespace New_MasterTrade.UserControls
                 if (cantidad > 0)
                 {
                     txtCantidad.BackColor = Color.FromArgb(149, 212, 90);
+                    //bttnVender.Visible = true;
                 }
                 else
                 {
@@ -214,6 +246,7 @@ namespace New_MasterTrade.UserControls
                 txtSerial.Enabled = false;
                 bttnGuardar.Enabled = false;
                 bttnActualizar.Enabled = true;
+                //bttnComprar.Visible = true;
             }
             catch (Exception ex)
             {

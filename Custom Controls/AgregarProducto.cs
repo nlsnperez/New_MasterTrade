@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.Custom_Controls
 {
-    public partial class AgregarProducto : UserControl
+    public partial class AgregarProducto : Form
     {
         private Comprar Compra;
         private Vender Venta;
@@ -98,12 +98,12 @@ namespace New_MasterTrade.Custom_Controls
                 string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString()};
                 Venta.AddProduct(producto, CantMax);
             }
-            this.ParentForm.Close();
+            this.Close();
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            this.Close();
         }
     }
 }

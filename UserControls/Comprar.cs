@@ -21,9 +21,23 @@ namespace New_MasterTrade.UserControls
         int IdCompra = 0;
         int IdProveedor = 0;
         decimal tasa_cambio = 0;
-        
+
+        static Comprar comprar;
+        public static Comprar Instancia
+        {
+            get
+            {
+                if (comprar == null)
+                {
+                    comprar = new Comprar();
+                }
+                return comprar;
+            }
+        }
+
         public Comprar()
         {
+            //comprar = this;
             InitializeComponent();
             Comprar_Load(null, new EventArgs());
         }
@@ -32,6 +46,12 @@ namespace New_MasterTrade.UserControls
         {
             Config();
             txtMoneda.Text = comboMoneda.Text;
+            bttnAtras.Visible = false;
+        }
+
+        public void CompraExterna()
+        {
+            bttnAtras.Visible = true;
         }
 
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
@@ -189,6 +209,7 @@ namespace New_MasterTrade.UserControls
             if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);
             tableCarrito.DataSource = carrito;
             bttnGuardar.Enabled = true;
+            comprar = this;
         }
 
         private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -210,13 +231,9 @@ namespace New_MasterTrade.UserControls
                 if (e.RowIndex >= 0)
                 {
                     int id = Int32.Parse(tableCarrito.Rows[e.RowIndex].Cells["columnId"].Value.ToString());
-                    Form x = new Form();
-                    AgregarProducto y = new AgregarProducto(this, null, id);
-                    x.Size = new Size(y.Width, y.Height);
-                    x.Controls.Add(y);
-                    x.StartPosition = FormStartPosition.CenterScreen;
-                    x.FormBorderStyle = FormBorderStyle.None;
-                    x.ShowDialog();
+                    SesionIniciada.Instancia.MostrarDialog(new AgregarProducto(this, null, id));
+                    //AgregarProducto y = new AgregarProducto(this, null, id);
+                    //y.ShowDialog();
                 }
             }
         }
@@ -368,6 +385,11 @@ namespace New_MasterTrade.UserControls
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void bttnAtras_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarUserControl(FormularioProductos.Instancia);
         }
         //CONFIGURACIONES
     }
