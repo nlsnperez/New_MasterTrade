@@ -91,13 +91,22 @@ namespace New_MasterTrade
 
         public void MostrarDialog(object pantalla)
         {
-            UserControl control = pantalla as UserControl;
             Form x = new Form();
-            x.Size = control.Size;
+            
             x.StartPosition = FormStartPosition.CenterScreen;
             x.FormBorderStyle = FormBorderStyle.None;
-            x.Controls.Add(control);
-            x.ShowDialog();
+            x.Opacity = .70d;
+            x.BackColor = Color.Black;
+            x.Size = this.Size;
+            x.ShowInTaskbar = false;
+            x.Show();
+
+            Form vetana_dialogo = pantalla as Form;
+            vetana_dialogo.StartPosition = FormStartPosition.CenterParent;
+            vetana_dialogo.FormBorderStyle = FormBorderStyle.None;
+            vetana_dialogo.Owner = x;
+            vetana_dialogo.ShowDialog();
+            x.Dispose();
         }
 
         private void bttnMouseLeave(object sender, EventArgs e)
@@ -389,6 +398,11 @@ namespace New_MasterTrade
         {
             MostrarDialog(new MetodosDePago());
             CerrarPaneles();
+        }
+
+        private void SesionIniciada_Deactivate(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

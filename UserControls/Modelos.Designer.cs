@@ -55,7 +55,7 @@ namespace New_MasterTrade.UserControls
             this.bttnCerrar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bttnCerrar.FlatAppearance.BorderSize = 0;
             this.bttnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCerrar.Location = new System.Drawing.Point(551, 0);
+            this.bttnCerrar.Location = new System.Drawing.Point(541, 0);
             this.bttnCerrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnCerrar.Name = "bttnCerrar";
             this.bttnCerrar.Size = new System.Drawing.Size(29, 30);
@@ -68,7 +68,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.bttnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnNuevo.Location = new System.Drawing.Point(115, 313);
+            this.bttnNuevo.Location = new System.Drawing.Point(118, 313);
             this.bttnNuevo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnNuevo.Name = "bttnNuevo";
             this.bttnNuevo.Size = new System.Drawing.Size(113, 30);
@@ -82,7 +82,7 @@ namespace New_MasterTrade.UserControls
             this.bttnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(150)))), ((int)(((byte)(242)))));
             this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnActualizar.Location = new System.Drawing.Point(352, 313);
+            this.bttnActualizar.Location = new System.Drawing.Point(355, 313);
             this.bttnActualizar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnActualizar.Name = "bttnActualizar";
             this.bttnActualizar.Size = new System.Drawing.Size(113, 30);
@@ -95,7 +95,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.bttnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuardar.Location = new System.Drawing.Point(233, 313);
+            this.bttnGuardar.Location = new System.Drawing.Point(236, 313);
             this.bttnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnGuardar.Name = "bttnGuardar";
             this.bttnGuardar.Size = new System.Drawing.Size(113, 30);
@@ -107,7 +107,7 @@ namespace New_MasterTrade.UserControls
             // txtNombre
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombre.Location = new System.Drawing.Point(239, 273);
+            this.txtNombre.Location = new System.Drawing.Point(242, 273);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNombre.MaxLength = 25;
             this.txtNombre.Name = "txtNombre";
@@ -118,7 +118,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(157, 278);
+            this.label2.Location = new System.Drawing.Point(160, 278);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 16);
             this.label2.TabIndex = 23;
@@ -128,7 +128,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(59, 273);
+            this.txtID.Location = new System.Drawing.Point(62, 273);
             this.txtID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(86, 22);
@@ -138,7 +138,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(25, 278);
+            this.label1.Location = new System.Drawing.Point(28, 278);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 16);
             this.label1.TabIndex = 21;
@@ -189,7 +189,7 @@ namespace New_MasterTrade.UserControls
             this.tablaModelos.RowHeadersWidth = 51;
             this.tablaModelos.RowTemplate.Height = 24;
             this.tablaModelos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaModelos.Size = new System.Drawing.Size(580, 233);
+            this.tablaModelos.Size = new System.Drawing.Size(570, 233);
             this.tablaModelos.TabIndex = 20;
             this.tablaModelos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaModelos_CellClick);
             this.tablaModelos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaModelos_CellFormatting);
@@ -256,6 +256,7 @@ namespace New_MasterTrade.UserControls
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(572, 350);
             this.Controls.Add(this.bttnCerrar);
             this.Controls.Add(this.bttnNuevo);
             this.Controls.Add(this.bttnActualizar);
@@ -266,9 +267,9 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaModelos);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Modelos";
-            this.Size = new System.Drawing.Size(580, 350);
             ((System.ComponentModel.ISupportInitialize)(this.tablaModelos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -280,6 +280,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(572, 350);
             this.Controls.Add(this.bttnCerrar);
             this.Controls.Add(this.bttnNuevo);
             this.Controls.Add(this.bttnActualizar);
@@ -290,8 +291,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaMonedas);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Monedas";
-            this.Size = new System.Drawing.Size(572, 350);
             ((System.ComponentModel.ISupportInitialize)(this.tablaMonedas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

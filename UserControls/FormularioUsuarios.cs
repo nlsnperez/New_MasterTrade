@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -184,6 +185,11 @@ namespace New_MasterTrade.UserControls
 
             if (usuario.Nivel == 1)
             {
+                if (UserData.NombreUsuario != txtUsuario.Text)
+                {
+                    txtContrasegna.Enabled = false;
+                    chckMostrar.Visible = false;
+                }
                 comboNivel.SelectedIndex = 0;
             }
             else
@@ -233,6 +239,28 @@ namespace New_MasterTrade.UserControls
             TextBox textBox = sender as TextBox;
             textBox.BackColor = SystemColors.Window;
             textBox.ForeColor = SystemColors.WindowText;
+        }
+
+        private void comboNivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboNivel.SelectedIndex == 0)
+            {
+                chckVendedor.Visible = false;
+            }
+            else
+            {
+                chckVendedor.Visible = true;
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bttnAtrás_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarUserControl(new Usuarios());
         }
     }
 }

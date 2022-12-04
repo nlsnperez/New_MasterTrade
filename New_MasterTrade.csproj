@@ -284,7 +284,7 @@
     <Compile Include="Servicios de Correo\ServidorCorreoMaestro.cs" />
     <Compile Include="Servicios de Correo\SistemaSoporteCorreo.cs" />
     <Compile Include="UserControls\Categorias.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserControls\Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
@@ -326,31 +326,31 @@
       <DependentUpon>Garantias.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Impuestos.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserControls\Impuestos.Designer.cs">
       <DependentUpon>Impuestos.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Marcas.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserControls\Marcas.Designer.cs">
       <DependentUpon>Marcas.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MetodosDePago.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserControls\MetodosDePago.Designer.cs">
       <DependentUpon>MetodosDePago.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Modelos.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserControls\Modelos.Designer.cs">
       <DependentUpon>Modelos.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Monedas.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserControls\Monedas.Designer.cs">
       <DependentUpon>Monedas.cs</DependentUpon>

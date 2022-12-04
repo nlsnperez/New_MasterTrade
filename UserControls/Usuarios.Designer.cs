@@ -29,9 +29,9 @@ namespace New_MasterTrade.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaUsuarios = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,24 +58,24 @@ namespace New_MasterTrade.UserControls
             this.tablaUsuarios.AllowUserToDeleteRows = false;
             this.tablaUsuarios.AllowUserToResizeColumns = false;
             this.tablaUsuarios.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            this.tablaUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaUsuarios.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tablaUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -87,17 +87,17 @@ namespace New_MasterTrade.UserControls
             this.Activo,
             this.Detalles,
             this.Eliminar});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaUsuarios.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaUsuarios.EnableHeadersVisualStyles = false;
             this.tablaUsuarios.Location = new System.Drawing.Point(0, 60);
-            this.tablaUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tablaUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.tablaUsuarios.MultiSelect = false;
             this.tablaUsuarios.Name = "tablaUsuarios";
             this.tablaUsuarios.ReadOnly = true;
@@ -200,7 +200,7 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar.FlatAppearance.BorderSize = 0;
             this.bttnGuardar.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnGuardar.Location = new System.Drawing.Point(736, -78);
-            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bttnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.bttnGuardar.Name = "bttnGuardar";
             this.bttnGuardar.Size = new System.Drawing.Size(120, 49);
             this.bttnGuardar.TabIndex = 37;
@@ -213,7 +213,7 @@ namespace New_MasterTrade.UserControls
             this.bttnCancelar.FlatAppearance.BorderSize = 0;
             this.bttnCancelar.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnCancelar.Location = new System.Drawing.Point(608, -78);
-            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bttnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.bttnCancelar.Name = "bttnCancelar";
             this.bttnCancelar.Size = new System.Drawing.Size(120, 49);
             this.bttnCancelar.TabIndex = 38;
@@ -273,11 +273,11 @@ namespace New_MasterTrade.UserControls
             this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(362, 10);
+            this.label9.Location = new System.Drawing.Point(353, 10);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(425, 38);
+            this.label9.Size = new System.Drawing.Size(438, 38);
             this.label9.TabIndex = 119;
-            this.label9.Text = "REGISTRO DE USUARIOS";
+            this.label9.Text = "USUARIOS REGISTRADOS";
             // 
             // Usuarios
             // 
@@ -291,7 +291,7 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.bttnGuardar);
             this.Controls.Add(this.bttnCancelar);
             this.Controls.Add(this.tablaUsuarios);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Usuarios";
             this.Size = new System.Drawing.Size(1144, 678);
             ((System.ComponentModel.ISupportInitialize)(this.tablaUsuarios)).EndInit();

@@ -257,7 +257,7 @@ namespace New_MasterTrade.UserControls
             this.bttnAtrás.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnAtrás.Image = global::New_MasterTrade.Properties.Resources.atras;
             this.bttnAtrás.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnAtrás.Location = new System.Drawing.Point(20, 12);
+            this.bttnAtrás.Location = new System.Drawing.Point(19, 12);
             this.bttnAtrás.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnAtrás.Name = "bttnAtrás";
             this.bttnAtrás.Size = new System.Drawing.Size(106, 34);

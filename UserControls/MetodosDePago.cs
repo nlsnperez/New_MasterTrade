@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
 {
-    public partial class MetodosDePago : UserControl
+    public partial class MetodosDePago : Form
     {
         CRUD_CAMAMO crud = new CRUD_CAMAMO();
         public MetodosDePago()
@@ -66,7 +66,7 @@ namespace New_MasterTrade.UserControls
 
         private void bttnCerrar_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            this.Close();
             this.Dispose();
         }
 

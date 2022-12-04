@@ -50,13 +50,14 @@ namespace New_MasterTrade.UserControls
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.bttnAtrás = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboDocumento
             // 
             this.comboDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDocumento.FormattingEnabled = true;
-            this.comboDocumento.Location = new System.Drawing.Point(512, 62);
+            this.comboDocumento.Location = new System.Drawing.Point(216, 260);
             this.comboDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.comboDocumento.Name = "comboDocumento";
             this.comboDocumento.Size = new System.Drawing.Size(55, 24);
@@ -66,30 +67,32 @@ namespace New_MasterTrade.UserControls
             // 
             this.comboNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboNivel.FormattingEnabled = true;
-            this.comboNivel.Location = new System.Drawing.Point(125, 110);
+            this.comboNivel.Location = new System.Drawing.Point(216, 85);
             this.comboNivel.Margin = new System.Windows.Forms.Padding(4);
             this.comboNivel.Name = "comboNivel";
-            this.comboNivel.Size = new System.Drawing.Size(225, 24);
+            this.comboNivel.Size = new System.Drawing.Size(851, 24);
             this.comboNivel.TabIndex = 73;
+            this.comboNivel.SelectedIndexChanged += new System.EventHandler(this.comboNivel_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(24, 113);
+            this.label6.Location = new System.Drawing.Point(77, 90);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 16);
             this.label6.TabIndex = 72;
             this.label6.Text = "NIVEL";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // txtConfirmar
             // 
             this.txtConfirmar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtConfirmar.Location = new System.Drawing.Point(899, 110);
+            this.txtConfirmar.Location = new System.Drawing.Point(216, 435);
             this.txtConfirmar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtConfirmar.MaxLength = 80;
             this.txtConfirmar.Name = "txtConfirmar";
-            this.txtConfirmar.Size = new System.Drawing.Size(225, 22);
+            this.txtConfirmar.Size = new System.Drawing.Size(851, 22);
             this.txtConfirmar.TabIndex = 71;
             this.txtConfirmar.Enter += new System.EventHandler(this.textBox_Enter);
             this.txtConfirmar.Leave += new System.EventHandler(this.textBox_Leave);
@@ -98,7 +101,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(764, 105);
+            this.label5.Location = new System.Drawing.Point(79, 435);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 32);
             this.label5.TabIndex = 70;
@@ -107,11 +110,11 @@ namespace New_MasterTrade.UserControls
             // txtContrasegna
             // 
             this.txtContrasegna.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContrasegna.Location = new System.Drawing.Point(512, 110);
+            this.txtContrasegna.Location = new System.Drawing.Point(216, 377);
             this.txtContrasegna.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtContrasegna.MaxLength = 80;
             this.txtContrasegna.Name = "txtContrasegna";
-            this.txtContrasegna.Size = new System.Drawing.Size(225, 22);
+            this.txtContrasegna.Size = new System.Drawing.Size(851, 22);
             this.txtContrasegna.TabIndex = 69;
             this.txtContrasegna.Enter += new System.EventHandler(this.textBox_Enter);
             this.txtContrasegna.Leave += new System.EventHandler(this.textBox_Leave);
@@ -120,7 +123,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(379, 113);
+            this.label3.Location = new System.Drawing.Point(80, 380);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 16);
             this.label3.TabIndex = 68;
@@ -129,11 +132,11 @@ namespace New_MasterTrade.UserControls
             // txtUsuario
             // 
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUsuario.Location = new System.Drawing.Point(125, 64);
+            this.txtUsuario.Location = new System.Drawing.Point(216, 145);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsuario.MaxLength = 50;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(225, 22);
+            this.txtUsuario.Size = new System.Drawing.Size(851, 22);
             this.txtUsuario.TabIndex = 67;
             this.txtUsuario.Enter += new System.EventHandler(this.textBox_Enter);
             this.txtUsuario.Leave += new System.EventHandler(this.textBox_Leave);
@@ -142,7 +145,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(24, 66);
+            this.label2.Location = new System.Drawing.Point(77, 148);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 16);
             this.label2.TabIndex = 66;
@@ -151,11 +154,11 @@ namespace New_MasterTrade.UserControls
             // txtDocumento
             // 
             this.txtDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDocumento.Location = new System.Drawing.Point(575, 63);
+            this.txtDocumento.Location = new System.Drawing.Point(279, 261);
             this.txtDocumento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDocumento.MaxLength = 10;
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(162, 22);
+            this.txtDocumento.Size = new System.Drawing.Size(788, 22);
             this.txtDocumento.TabIndex = 65;
             this.txtDocumento.Enter += new System.EventHandler(this.textBox_Enter);
             this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
@@ -165,7 +168,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(379, 58);
+            this.label1.Location = new System.Drawing.Point(79, 261);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 32);
             this.label1.TabIndex = 64;
@@ -174,11 +177,11 @@ namespace New_MasterTrade.UserControls
             // txtNombre
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombre.Location = new System.Drawing.Point(125, 18);
+            this.txtNombre.Location = new System.Drawing.Point(216, 203);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(225, 22);
+            this.txtNombre.Size = new System.Drawing.Size(851, 22);
             this.txtNombre.TabIndex = 63;
             this.txtNombre.Enter += new System.EventHandler(this.textBox_Enter);
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyLetters);
@@ -188,7 +191,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(24, 22);
+            this.label4.Location = new System.Drawing.Point(79, 206);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 16);
             this.label4.TabIndex = 62;
@@ -200,7 +203,7 @@ namespace New_MasterTrade.UserControls
             this.chckMostrar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.chckMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chckMostrar.ForeColor = System.Drawing.SystemColors.Control;
-            this.chckMostrar.Location = new System.Drawing.Point(512, 156);
+            this.chckMostrar.Location = new System.Drawing.Point(216, 493);
             this.chckMostrar.Margin = new System.Windows.Forms.Padding(4);
             this.chckMostrar.Name = "chckMostrar";
             this.chckMostrar.Size = new System.Drawing.Size(140, 20);
@@ -215,7 +218,7 @@ namespace New_MasterTrade.UserControls
             this.chckVendedor.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
             this.chckVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chckVendedor.ForeColor = System.Drawing.SystemColors.Control;
-            this.chckVendedor.Location = new System.Drawing.Point(125, 156);
+            this.chckVendedor.Location = new System.Drawing.Point(216, 549);
             this.chckVendedor.Margin = new System.Windows.Forms.Padding(4);
             this.chckVendedor.Name = "chckVendedor";
             this.chckVendedor.Size = new System.Drawing.Size(169, 20);
@@ -226,11 +229,11 @@ namespace New_MasterTrade.UserControls
             // txtCorreo
             // 
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCorreo.Location = new System.Drawing.Point(899, 63);
+            this.txtCorreo.Location = new System.Drawing.Point(216, 319);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCorreo.MaxLength = 150;
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(225, 22);
+            this.txtCorreo.Size = new System.Drawing.Size(851, 22);
             this.txtCorreo.TabIndex = 83;
             this.txtCorreo.Enter += new System.EventHandler(this.textBox_Enter);
             this.txtCorreo.Leave += new System.EventHandler(this.textBox_Leave);
@@ -239,7 +242,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(764, 66);
+            this.label7.Location = new System.Drawing.Point(80, 322);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 16);
             this.label7.TabIndex = 82;
@@ -252,7 +255,7 @@ namespace New_MasterTrade.UserControls
             this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.cancel;
             this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnCancelar.Location = new System.Drawing.Point(331, 199);
+            this.bttnCancelar.Location = new System.Drawing.Point(325, 628);
             this.bttnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnCancelar.Name = "bttnCancelar";
             this.bttnCancelar.Size = new System.Drawing.Size(147, 30);
@@ -269,7 +272,7 @@ namespace New_MasterTrade.UserControls
             this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnActualizar.Image = global::New_MasterTrade.Properties.Resources.refresh;
             this.bttnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnActualizar.Location = new System.Drawing.Point(179, 199);
+            this.bttnActualizar.Location = new System.Drawing.Point(172, 628);
             this.bttnActualizar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnActualizar.Name = "bttnActualizar";
             this.bttnActualizar.Size = new System.Drawing.Size(147, 30);
@@ -286,7 +289,7 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk1;
             this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnGuardar.Location = new System.Drawing.Point(27, 199);
+            this.bttnGuardar.Location = new System.Drawing.Point(19, 628);
             this.bttnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnGuardar.Name = "bttnGuardar";
             this.bttnGuardar.Size = new System.Drawing.Size(147, 30);
@@ -302,17 +305,34 @@ namespace New_MasterTrade.UserControls
             this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(395, 4);
+            this.label9.Location = new System.Drawing.Point(417, 12);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(359, 32);
+            this.label9.Size = new System.Drawing.Size(311, 32);
             this.label9.TabIndex = 120;
-            this.label9.Text = "REGISTRO DE USUARIOS";
+            this.label9.Text = "REGISTRAR USUARIO";
+            // 
+            // bttnAtrás
+            // 
+            this.bttnAtrás.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAtrás.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAtrás.Image = global::New_MasterTrade.Properties.Resources.atras;
+            this.bttnAtrás.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnAtrás.Location = new System.Drawing.Point(19, 12);
+            this.bttnAtrás.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bttnAtrás.Name = "bttnAtrás";
+            this.bttnAtrás.Size = new System.Drawing.Size(106, 34);
+            this.bttnAtrás.TabIndex = 121;
+            this.bttnAtrás.Text = "ATRÁS";
+            this.bttnAtrás.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAtrás.UseVisualStyleBackColor = false;
+            this.bttnAtrás.Click += new System.EventHandler(this.bttnAtrás_Click);
             // 
             // FormularioUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.bttnAtrás);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.label7);
@@ -336,7 +356,7 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.label4);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormularioUsuarios";
-            this.Size = new System.Drawing.Size(1149, 246);
+            this.Size = new System.Drawing.Size(1144, 678);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,5 +385,6 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button bttnAtrás;
     }
 }

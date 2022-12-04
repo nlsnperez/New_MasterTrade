@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
 {
-    public partial class Impuestos : UserControl
+    public partial class Impuestos : Form
     {
         CRUD_IMMOTA crud = new CRUD_IMMOTA();
         public Impuestos()
@@ -73,7 +73,7 @@ namespace New_MasterTrade.UserControls
 
         private void bttnCerrar_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            this.Close();
             this.Dispose();
         }
 

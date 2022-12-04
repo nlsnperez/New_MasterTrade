@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
 {
-    public partial class Monedas : UserControl
+    public partial class Monedas : Form
     {
         CRUD_IMMOTA crud = new CRUD_IMMOTA();
         public Monedas()
@@ -67,7 +67,7 @@ namespace New_MasterTrade.UserControls
 
         private void bttnCerrar_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            this.Close();
             this.Dispose();
         }
 

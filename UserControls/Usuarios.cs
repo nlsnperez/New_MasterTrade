@@ -57,13 +57,13 @@ namespace New_MasterTrade.UserControls
                 FormularioUsuarios y = new FormularioUsuarios();
 
                 y.DatosUsuario(usuario);
-                //SesionIniciada.Instancia.MostrarUserControl(y);
+                SesionIniciada.Instancia.MostrarUserControl(y);
 
-                x.Size = new Size(y.Width + 10, y.Height + 40);
-                x.Controls.Add(y);
-                x.StartPosition = FormStartPosition.CenterScreen;
-                x.ShowDialog();
-                CargarTabla();
+                //x.Size = new Size(y.Width + 10, y.Height + 40);
+                //x.Controls.Add(y);
+                //x.StartPosition = FormStartPosition.CenterScreen;
+                //x.ShowDialog();
+                //CargarTabla();
             }
             else
             {
@@ -112,14 +112,14 @@ namespace New_MasterTrade.UserControls
 
         private void bttnRegistrar_Click(object sender, EventArgs e)
         {
-            //SesionIniciada.Instancia.MostrarUserControl(new FormularioUsuarios());
-            Form x = new Form();
-            FormularioUsuarios y = new FormularioUsuarios();
-            x.Size = new Size(y.Width + 10, y.Height + 40);
-            x.Controls.Add(y);
-            x.StartPosition = FormStartPosition.CenterScreen;
-            x.ShowDialog();
-            CargarTabla();
+            SesionIniciada.Instancia.MostrarUserControl(new FormularioUsuarios());
+            //Form x = new Form();
+            //FormularioUsuarios y = new FormularioUsuarios();
+            //x.Size = new Size(y.Width + 10, y.Height + 40);
+            //x.Controls.Add(y);
+            //x.StartPosition = FormStartPosition.CenterScreen;
+            //x.ShowDialog();
+            //CargarTabla();
         }
 
         private void tablaUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
 {
-    public partial class Categorias : UserControl
+    public partial class Categorias : Form
     {
         CRUD_CAMAMO crud = new CRUD_CAMAMO();
         public Categorias()
@@ -61,7 +61,7 @@ namespace New_MasterTrade.UserControls
 
         private void bttnCerrar_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            this.Close();
             this.Dispose();
         }
 

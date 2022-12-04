@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bttnCerrar = new System.Windows.Forms.Button();
             this.bttnNuevo = new System.Windows.Forms.Button();
             this.bttnActualizar = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             this.bttnCerrar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bttnCerrar.FlatAppearance.BorderSize = 0;
             this.bttnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCerrar.Location = new System.Drawing.Point(551, 0);
+            this.bttnCerrar.Location = new System.Drawing.Point(544, 0);
             this.bttnCerrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnCerrar.Name = "bttnCerrar";
             this.bttnCerrar.Size = new System.Drawing.Size(29, 30);
@@ -110,18 +110,18 @@
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(210, 273);
+            this.txtNombre.Location = new System.Drawing.Point(214, 273);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNombre.MaxLength = 25;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(121, 22);
+            this.txtNombre.Size = new System.Drawing.Size(112, 22);
             this.txtNombre.TabIndex = 34;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(133, 276);
+            this.label2.Location = new System.Drawing.Point(136, 276);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 16);
             this.label2.TabIndex = 33;
@@ -131,7 +131,7 @@
             // 
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(39, 273);
+            this.txtID.Location = new System.Drawing.Point(41, 273);
             this.txtID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(86, 22);
@@ -141,7 +141,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(11, 276);
+            this.label1.Location = new System.Drawing.Point(12, 276);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 16);
             this.label1.TabIndex = 31;
@@ -151,24 +151,24 @@
             // 
             this.tablaImpuestos.AllowUserToAddRows = false;
             this.tablaImpuestos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.tablaImpuestos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaImpuestos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaImpuestos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tablaImpuestos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaImpuestos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaImpuestos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaImpuestos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaImpuestos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaImpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaImpuestos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -176,14 +176,14 @@
             this.PORCENTAJE,
             this.ACTIVO,
             this.DELETE});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaImpuestos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaImpuestos.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaImpuestos.EnableHeadersVisualStyles = false;
             this.tablaImpuestos.Location = new System.Drawing.Point(0, 30);
             this.tablaImpuestos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -193,7 +193,7 @@
             this.tablaImpuestos.RowHeadersWidth = 51;
             this.tablaImpuestos.RowTemplate.Height = 24;
             this.tablaImpuestos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaImpuestos.Size = new System.Drawing.Size(580, 233);
+            this.tablaImpuestos.Size = new System.Drawing.Size(573, 233);
             this.tablaImpuestos.TabIndex = 30;
             this.tablaImpuestos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaImpuestos_CellClick);
             this.tablaImpuestos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaImpuestos_CellFormatting);
@@ -268,7 +268,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(339, 277);
+            this.label4.Location = new System.Drawing.Point(335, 277);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 16);
             this.label4.TabIndex = 40;
@@ -278,11 +278,11 @@
             // 
             this.txtPorcentaje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPorcentaje.Enabled = false;
-            this.txtPorcentaje.Location = new System.Drawing.Point(448, 274);
+            this.txtPorcentaje.Location = new System.Drawing.Point(445, 274);
             this.txtPorcentaje.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPorcentaje.MaxLength = 10;
             this.txtPorcentaje.Name = "txtPorcentaje";
-            this.txtPorcentaje.Size = new System.Drawing.Size(121, 22);
+            this.txtPorcentaje.Size = new System.Drawing.Size(112, 22);
             this.txtPorcentaje.TabIndex = 41;
             this.txtPorcentaje.Text = "0";
             this.txtPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
@@ -292,6 +292,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(572, 350);
             this.Controls.Add(this.txtPorcentaje);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.bttnCerrar);
@@ -304,8 +305,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaImpuestos);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Impuestos";
-            this.Size = new System.Drawing.Size(580, 350);
             ((System.ComponentModel.ISupportInitialize)(this.tablaImpuestos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -54,7 +54,7 @@
             this.bttnCerrar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bttnCerrar.FlatAppearance.BorderSize = 0;
             this.bttnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCerrar.Location = new System.Drawing.Point(551, 0);
+            this.bttnCerrar.Location = new System.Drawing.Point(542, 0);
             this.bttnCerrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnCerrar.Name = "bttnCerrar";
             this.bttnCerrar.Size = new System.Drawing.Size(29, 30);
@@ -188,7 +188,7 @@
             this.tablaMetodosPago.RowHeadersWidth = 51;
             this.tablaMetodosPago.RowTemplate.Height = 24;
             this.tablaMetodosPago.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaMetodosPago.Size = new System.Drawing.Size(580, 233);
+            this.tablaMetodosPago.Size = new System.Drawing.Size(571, 233);
             this.tablaMetodosPago.TabIndex = 30;
             this.tablaMetodosPago.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaMetodosPago_CellClick);
             this.tablaMetodosPago.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaMetodosPago_CellFormatting);
@@ -255,6 +255,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(572, 350);
             this.Controls.Add(this.bttnCerrar);
             this.Controls.Add(this.bttnNuevo);
             this.Controls.Add(this.bttnActualizar);
@@ -265,8 +266,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaMetodosPago);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MetodosDePago";
-            this.Size = new System.Drawing.Size(580, 350);
             ((System.ComponentModel.ISupportInitialize)(this.tablaMetodosPago)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
