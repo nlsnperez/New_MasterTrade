@@ -119,6 +119,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet_Reportes.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Base de Datos\DataSet_Reportes1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet_Reportes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Base de Datos\Respaldo.cs" />
     <Compile Include="Cache\Accion.cs" />
     <Compile Include="Cache\Modulos.cs" />
@@ -636,6 +641,7 @@
     <None Include="Base de Datos\DataSet_Reportes.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet_Reportes1.Designer.cs</LastGenOutput>
     </None>
     <None Include="Base de Datos\DataSet_Reportes.xss">
       <DependentUpon>DataSet_Reportes.xsd</DependentUpon>

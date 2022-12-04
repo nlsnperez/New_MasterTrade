@@ -64,11 +64,11 @@ namespace New_MasterTrade.Objetos
             }
         }
 
-        public void Reporte_Cliente(string x)
+        public void Reporte_Cliente()
         {
             try
             {
-                cliente.Fill(dataset.Cliente, x + "%");
+                cliente.Fill(dataset.Cliente, "%");
                 Cliente_Reporte reporte = new Cliente_Reporte();
                 string direccion = @"~\Reportes\Cliente_Reporte.rpt";
                 reporte.Load(direccion);
@@ -82,47 +82,11 @@ namespace New_MasterTrade.Objetos
             }
         }
 
-        public void Reporte_ClienteParametro(int x, string y)
+        public void Reporte_Proveedor()
         {
             try
             {
-                cliente.FillBy(dataset.Cliente, x, y+"%");
-                Cliente_Reporte reporte = new Cliente_Reporte();
-                string direccion = @"~\Reportes\Cliente_Reporte.rpt";
-                reporte.Load(direccion);
-                reporte.SetDataSource(dataset);
-                FormReportes ventana = new FormReportes(reporte);
-                ventana.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void Reporte_Proveedor(string x)
-        {
-            try
-            {
-                proveedor.Fill(dataset.Proveedor, x + "%");
-                Proveedor_Reporte reporte = new Proveedor_Reporte();
-                string direccion = @"~\Reportes\Proveedor_Reporte.rpt";
-                reporte.Load(direccion);
-                reporte.SetDataSource(dataset);
-                FormReportes ventana = new FormReportes(reporte);
-                ventana.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void Reporte_ProveedorParametro(int x, string y)
-        {
-            try
-            {
-                proveedor.FillBy(dataset.Proveedor, x, y + "%");
+                proveedor.Fill(dataset.Proveedor, "%");
                 Proveedor_Reporte reporte = new Proveedor_Reporte();
                 string direccion = @"~\Reportes\Proveedor_Reporte.rpt";
                 reporte.Load(direccion);
