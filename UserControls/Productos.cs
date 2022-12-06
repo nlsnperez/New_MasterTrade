@@ -26,6 +26,41 @@ namespace New_MasterTrade.UserControls
             crud = new CRUD_Productos();
             tablaProductos.AutoGenerateColumns = false;
             CargarTabla();
+            ConfigCombos(); 
+        }
+
+        public void ConfigCombos()
+        {
+            try
+            {
+                DataTable resultados = crud.Categorias();
+                comboCategoria.Items.Add("CUALQUIERA");
+                for (int i = 0; i <= resultados.Rows.Count -1; i++)
+                {
+                    comboCategoria.Items.Add(resultados.Rows[i][1]);
+                }
+                comboCategoria.SelectedIndex = 0;
+
+                resultados = crud.Marcas();
+                comboMarca.Items.Add("CUALQUIERA");
+                for (int i = 0; i <= resultados.Rows.Count - 1; i++)
+                {
+                    comboMarca.Items.Add(resultados.Rows[i][1]);
+                }
+                comboMarca.SelectedIndex = 0;
+
+                resultados = crud.Modelos();
+                comboModelo.Items.Add("CUALQUIERA");
+                for (int i = 0; i <= resultados.Rows.Count - 1; i++)
+                {
+                    comboModelo.Items.Add(resultados.Rows[i][1]);
+                }
+                comboModelo.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void bttnAgregar_Click(object sender, EventArgs e)
@@ -50,7 +85,7 @@ namespace New_MasterTrade.UserControls
             try
             {
                 tablaProductos.DataSource = crud.TablaProductos();
-                txtBuscar.Focus();
+                txtSerial.Focus();
             }
             catch (Exception ex)
             {
@@ -107,7 +142,7 @@ namespace New_MasterTrade.UserControls
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-            tablaProductos.DataSource = crud.BuscarProductos(txtBuscar.Text);
+            //tablaProductos.DataSource = crud.BuscarProductos(txtSerial.Text);
         }
 
         private void bttnReporte_Click(object sender, EventArgs e)
@@ -131,6 +166,57 @@ namespace New_MasterTrade.UserControls
                         tablaProductos.Rows[e.RowIndex].Visible = false;
                     }
                 }
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bttnBuscar_Click(object sender, EventArgs e)
+        {
+            string categoria = comboCategoria.Text;
+            if (comboCategoria.Text == "CUALQUIERA")
+            {
+                categoria = "";
+            }
+            string marca = comboMarca.Text;
+            if (comboMarca.Text == "CUALQUIERA")
+            {
+                marca = "";
+            }
+            string modelo = comboModelo.Text;
+            if (comboModelo.Text == "CUALQUIERA")
+            {
+                modelo = "";
+            }
+
+            string serial = txtSerial.Text;
+            string descripcion = txtDescripción.Text;
+            
+            if (comboCategoria.SelectedIndex == 0) categoria = "";
+            if (comboMarca.SelectedIndex == 0) marca = "";
+            if (comboModelo.SelectedIndex == 0) modelo = "";
+
+            tablaProductos.DataSource = crud.BuscarProductos(categoria, marca, modelo, serial, descripcion);
+
+            comboCategoria.SelectedIndex = 0;
+            comboMarca.SelectedIndex = 0;
+            comboModelo.SelectedIndex = 0;
+            txtSerial.Text = "";
+            txtDescripción.Text = "";
+        }
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
             }
         }
     }

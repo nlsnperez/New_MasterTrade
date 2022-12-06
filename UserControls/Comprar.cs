@@ -142,6 +142,7 @@ namespace New_MasterTrade.UserControls
             txtNumeroOrden.Text = "";
             txtNumeroOrden.Text = IdCompra.ToString("000000000");
             comboMoneda.SelectedIndex = 0;
+            txtMoneda.Text = comboMoneda.Text;
 
             txtProveedor.Text = "";
             txtRazonSocial.Text = "";
@@ -244,10 +245,11 @@ namespace New_MasterTrade.UserControls
             {
                 Form x = new Form();
                 BuscarProveedores y = new BuscarProveedores(1);
-                x.StartPosition = FormStartPosition.CenterScreen;
-                x.Size = new Size(y.Width + 15, y.Height + 30);
-                x.Controls.Add(y);
-                x.ShowDialog();
+                //x.StartPosition = FormStartPosition.CenterScreen;
+                //x.Size = new Size(y.Width + 15, y.Height + 30);
+                //x.Controls.Add(y);
+                //x.ShowDialog();
+                SesionIniciada.Instancia.MostrarDialog(y);
                 if (y.x != "")
                 {
                     SetDatos(personas.ProveedorDatos(y.x));
@@ -257,6 +259,7 @@ namespace New_MasterTrade.UserControls
             {
                 if (personas.ProveedorDatos(txtProveedor.Text).Rows.Count > 0)
                 {
+                    MessageBox.Show("Proveedor no encontrado!", "PROVEEDOR ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     SetDatos(personas.ProveedorDatos(txtProveedor.Text));
                 }
                 else
@@ -301,12 +304,13 @@ namespace New_MasterTrade.UserControls
 
         private void bttnBuscarProductos_Click(object sender, EventArgs e)
         {
-            Form x = new Form();
-            BuscarProductos y = new BuscarProductos(this, null);
-            x.StartPosition = FormStartPosition.CenterScreen;
-            x.Size = new Size(y.Width + 15, y.Height + 30);
-            x.Controls.Add(y);
-            x.ShowDialog();
+            SesionIniciada.Instancia.MostrarDialog(new BuscarProductos(this, null));
+            //Form x = new Form();
+            //BuscarProductos y = new BuscarProductos(this, null);
+            //x.StartPosition = FormStartPosition.CenterScreen;
+            //x.Size = new Size(y.Width + 15, y.Height + 38);
+            //x.Controls.Add(y);
+            //x.ShowDialog();
         }
 
         private Compra GetCompra()

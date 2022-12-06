@@ -145,7 +145,7 @@ namespace New_MasterTrade.UserControls
                         crud.Create(GetProducto());
                         if (UserData.Nivel == 1)
                         {
-                            if (MessageBox.Show("¿Desea registrar una compra con este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (MessageBox.Show("¿Desea proseguir registrando una compra?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 SesionIniciada.Instancia.MostrarUserControl(new Comprar());
                             }

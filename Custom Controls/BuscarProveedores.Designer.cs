@@ -33,8 +33,6 @@ namespace New_MasterTrade.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaPersonas = new System.Windows.Forms.DataGridView();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +40,10 @@ namespace New_MasterTrade.UserControls
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Seleccionar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,43 +88,24 @@ namespace New_MasterTrade.UserControls
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaPersonas.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaPersonas.EnableHeadersVisualStyles = false;
-            this.tablaPersonas.Location = new System.Drawing.Point(0, 0);
-            this.tablaPersonas.Margin = new System.Windows.Forms.Padding(10);
+            this.tablaPersonas.Location = new System.Drawing.Point(0, 60);
+            this.tablaPersonas.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.tablaPersonas.MultiSelect = false;
             this.tablaPersonas.Name = "tablaPersonas";
             this.tablaPersonas.ReadOnly = true;
             this.tablaPersonas.RowHeadersVisible = false;
+            this.tablaPersonas.RowHeadersWidth = 51;
             this.tablaPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaPersonas.Size = new System.Drawing.Size(858, 494);
+            this.tablaPersonas.Size = new System.Drawing.Size(1144, 548);
             this.tablaPersonas.TabIndex = 33;
             this.tablaPersonas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaPersonas_CellClick);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(185, 20);
-            this.txtBuscar.TabIndex = 40;
-            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(600, 516);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "BUSCAR: ";
             // 
             // columnId
             // 
             this.columnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.columnId.DataPropertyName = "id_prv";
             this.columnId.HeaderText = "ID";
+            this.columnId.MinimumWidth = 6;
             this.columnId.Name = "columnId";
             this.columnId.ReadOnly = true;
             // 
@@ -131,6 +114,7 @@ namespace New_MasterTrade.UserControls
             this.Documento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Documento.DataPropertyName = "doc_prv";
             this.Documento.HeaderText = "Documento de identidad";
+            this.Documento.MinimumWidth = 6;
             this.Documento.Name = "Documento";
             this.Documento.ReadOnly = true;
             // 
@@ -139,6 +123,7 @@ namespace New_MasterTrade.UserControls
             this.RazonSocial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.RazonSocial.DataPropertyName = "raz_prv";
             this.RazonSocial.HeaderText = "Razón social";
+            this.RazonSocial.MinimumWidth = 6;
             this.RazonSocial.Name = "RazonSocial";
             this.RazonSocial.ReadOnly = true;
             // 
@@ -147,6 +132,7 @@ namespace New_MasterTrade.UserControls
             this.Direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Direccion.DataPropertyName = "dir_prv";
             this.Direccion.HeaderText = "Dirección";
+            this.Direccion.MinimumWidth = 6;
             this.Direccion.Name = "Direccion";
             this.Direccion.ReadOnly = true;
             // 
@@ -155,6 +141,7 @@ namespace New_MasterTrade.UserControls
             this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Telefono.DataPropertyName = "tel_prv";
             this.Telefono.HeaderText = "Teléfono";
+            this.Telefono.MinimumWidth = 6;
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             // 
@@ -163,6 +150,7 @@ namespace New_MasterTrade.UserControls
             this.Correo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Correo.DataPropertyName = "cor_prv";
             this.Correo.HeaderText = "Correo";
+            this.Correo.MinimumWidth = 6;
             this.Correo.Name = "Correo";
             this.Correo.ReadOnly = true;
             // 
@@ -172,21 +160,75 @@ namespace New_MasterTrade.UserControls
             this.Seleccionar.HeaderText = "Seleccionar";
             this.Seleccionar.Image = global::New_MasterTrade.Properties.Resources.add_user;
             this.Seleccionar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Seleccionar.MinimumWidth = 6;
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.ReadOnly = true;
             this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(881, 630);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(246, 22);
+            this.txtBuscar.TabIndex = 40;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(800, 635);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 16);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "BUSCAR: ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(335, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(474, 38);
+            this.label9.TabIndex = 119;
+            this.label9.Text = "SELECCIONAR PROVEEDOR";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::New_MasterTrade.Properties.Resources.cancel;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(994, 10);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 30);
+            this.button1.TabIndex = 140;
+            this.button1.Text = "CERRAR";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BuscarProveedores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(1144, 678);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaPersonas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BuscarProveedores";
-            this.Size = new System.Drawing.Size(858, 551);
             ((System.ComponentModel.ISupportInitialize)(this.tablaPersonas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -205,5 +247,7 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Correo;
         private System.Windows.Forms.DataGridViewImageColumn Seleccionar;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button1;
     }
 }

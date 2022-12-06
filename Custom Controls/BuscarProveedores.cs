@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
 {
-    public partial class BuscarProveedores : UserControl
+    public partial class BuscarProveedores : Form
     {
         public string x { get; set; }
         CRUD_Proveedores crud;
@@ -42,13 +42,18 @@ namespace New_MasterTrade.UserControls
             if (e.ColumnIndex == 6)
             {
                 this.x = tablaPersonas.Rows[e.RowIndex].Cells[2].Value.ToString();
-                this.ParentForm.Close();
+                this.Close();
             }
         }
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             tablaPersonas.DataSource = crud.BuscarTablaActivos(txtBuscar.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -136,7 +136,15 @@ namespace New_MasterTrade.UserControls
                                 }
                                 else
                                 {
-                                    Limpiar();
+                                    if (MessageBox.Show("Desea proseguir registrado una venta?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                    {
+                                        Limpiar();
+                                        SesionIniciada.Instancia.MostrarUserControl(new Vender());
+                                    }
+                                    else
+                                    {
+                                        Limpiar();
+                                    }                                    
                                 }
                             }
                         }
@@ -158,7 +166,15 @@ namespace New_MasterTrade.UserControls
                                 }
                                 else
                                 {
-                                    Limpiar();
+                                    if (MessageBox.Show("Desea proseguir registrando una compra?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                    {
+                                        Limpiar();
+                                        SesionIniciada.Instancia.MostrarUserControl(new Comprar());
+                                    }
+                                    else
+                                    {
+                                        Limpiar();
+                                    }
                                 }
                             }
                         }

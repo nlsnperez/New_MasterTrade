@@ -44,12 +44,21 @@
             this.columnImagen = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.txtSerial = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.bttnAgregar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.comboCategoria = new System.Windows.Forms.ComboBox();
+            this.comboMarca = new System.Windows.Forms.ComboBox();
+            this.comboModelo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.bttnBuscar = new System.Windows.Forms.Button();
+            this.txtDescripción = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -227,26 +236,28 @@
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
             // 
-            // txtBuscar
+            // txtSerial
             // 
-            this.txtBuscar.BackColor = System.Drawing.SystemColors.Control;
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(881, 630);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(246, 22);
-            this.txtBuscar.TabIndex = 36;
-            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
+            this.txtSerial.BackColor = System.Drawing.SystemColors.Control;
+            this.txtSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSerial.Location = new System.Drawing.Point(646, 643);
+            this.txtSerial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSerial.MaxLength = 13;
+            this.txtSerial.Name = "txtSerial";
+            this.txtSerial.Size = new System.Drawing.Size(143, 22);
+            this.txtSerial.TabIndex = 36;
+            this.txtSerial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(796, 635);
+            this.label1.Location = new System.Drawing.Point(646, 624);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 16);
+            this.label1.Size = new System.Drawing.Size(54, 16);
             this.label1.TabIndex = 35;
-            this.label1.Text = "BUSCAR: ";
+            this.label1.Text = "SERIAL";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -274,7 +285,7 @@
             this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnAgregar.Image = global::New_MasterTrade.Properties.Resources.pencil;
             this.bttnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnAgregar.Location = new System.Drawing.Point(16, 628);
+            this.bttnAgregar.Location = new System.Drawing.Point(16, 636);
             this.bttnAgregar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttnAgregar.Name = "bttnAgregar";
             this.bttnAgregar.Size = new System.Drawing.Size(133, 30);
@@ -296,13 +307,117 @@
             this.label9.TabIndex = 118;
             this.label9.Text = "PRODUCTOS REGISTRADOS";
             // 
+            // comboCategoria
+            // 
+            this.comboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCategoria.FormattingEnabled = true;
+            this.comboCategoria.Location = new System.Drawing.Point(207, 642);
+            this.comboCategoria.Name = "comboCategoria";
+            this.comboCategoria.Size = new System.Drawing.Size(143, 24);
+            this.comboCategoria.TabIndex = 119;
+            // 
+            // comboMarca
+            // 
+            this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboMarca.FormattingEnabled = true;
+            this.comboMarca.Location = new System.Drawing.Point(352, 642);
+            this.comboMarca.Name = "comboMarca";
+            this.comboMarca.Size = new System.Drawing.Size(143, 24);
+            this.comboMarca.TabIndex = 120;
+            // 
+            // comboModelo
+            // 
+            this.comboModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboModelo.FormattingEnabled = true;
+            this.comboModelo.Location = new System.Drawing.Point(497, 642);
+            this.comboModelo.Name = "comboModelo";
+            this.comboModelo.Size = new System.Drawing.Size(143, 24);
+            this.comboModelo.TabIndex = 121;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(207, 624);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.TabIndex = 122;
+            this.label2.Text = "CATEGORÍA";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(352, 624);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 16);
+            this.label3.TabIndex = 123;
+            this.label3.Text = "MARCA:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(497, 624);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 16);
+            this.label4.TabIndex = 124;
+            this.label4.Text = "MODELO";
+            // 
+            // bttnBuscar
+            // 
+            this.bttnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnBuscar.FlatAppearance.BorderSize = 0;
+            this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnBuscar.Image = global::New_MasterTrade.Properties.Resources.browsing;
+            this.bttnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnBuscar.Location = new System.Drawing.Point(997, 636);
+            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bttnBuscar.Name = "bttnBuscar";
+            this.bttnBuscar.Size = new System.Drawing.Size(133, 30);
+            this.bttnBuscar.TabIndex = 125;
+            this.bttnBuscar.Text = "BUSCAR";
+            this.bttnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnBuscar.UseVisualStyleBackColor = false;
+            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click);
+            // 
+            // txtDescripción
+            // 
+            this.txtDescripción.BackColor = System.Drawing.SystemColors.Control;
+            this.txtDescripción.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescripción.Location = new System.Drawing.Point(795, 643);
+            this.txtDescripción.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDescripción.Name = "txtDescripción";
+            this.txtDescripción.Size = new System.Drawing.Size(143, 22);
+            this.txtDescripción.TabIndex = 127;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(795, 623);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 16);
+            this.label5.TabIndex = 126;
+            this.label5.Text = "DESCRIPCIÓN";
+            // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.txtDescripción);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.bttnBuscar);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboModelo);
+            this.Controls.Add(this.comboMarca);
+            this.Controls.Add(this.comboCategoria);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.txtSerial);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bttnAgregar);
             this.Controls.Add(this.tablaProductos);
@@ -320,7 +435,7 @@
 
         private System.Windows.Forms.DataGridView tablaProductos;
         private System.Windows.Forms.Button bttnAgregar;
-        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.TextBox txtSerial;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
@@ -337,5 +452,14 @@
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboCategoria;
+        private System.Windows.Forms.ComboBox comboMarca;
+        private System.Windows.Forms.ComboBox comboModelo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button bttnBuscar;
+        private System.Windows.Forms.TextBox txtDescripción;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -138,7 +138,7 @@
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\BuscarClientes.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Controls\BuscarClientes.Designer.cs">
       <DependentUpon>BuscarClientes.cs</DependentUpon>
@@ -178,13 +178,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\BuscarProveedores.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Controls\BuscarProveedores.Designer.cs">
       <DependentUpon>BuscarProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\BuscarProductos.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Controls\BuscarProductos.Designer.cs">
       <DependentUpon>BuscarProductos.cs</DependentUpon>

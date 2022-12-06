@@ -51,6 +51,7 @@ namespace New_MasterTrade.Custom_Controls
             if (Compra == null)
             {
                 CantMax = crud.CantidadMax(x.Id);
+                if (CantMax == 0) bttnAceptar.Enabled = false;
                 lblCantidad.Text += " " + CantMax.ToString()+" UNIDADES";
             }
             txtSerial.Text = x.Serial;

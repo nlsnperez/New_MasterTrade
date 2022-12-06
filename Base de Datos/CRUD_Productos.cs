@@ -312,7 +312,7 @@ namespace New_MasterTrade.Base_de_Datos
             return productos;
         }
 
-        public DataTable BuscarProductos(String filtro)
+        public DataTable BuscarProductos(string categoria, string marca, string modelo, string serial, string descripcion)
         {
             try
             {
@@ -320,7 +320,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod WHERE `ser_pro` LIKE '" + filtro + "%' OR `des_pro` LIKE '%" + filtro + "%' ORDER BY id_pro ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod WHERE c.nom_cat LIKE '"+categoria+"%' AND m.nom_mar LIKE '"+marca+ "%' AND mo.nom_mod LIKE '" +modelo+"%' AND p.des_pro LIKE '"+descripcion+"%' AND p.ser_pro LIKE '"+serial+"%' ORDER BY p.id_pro ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -334,7 +334,7 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
-        public DataTable BuscarProductosActivos(String filtro)
+        public DataTable BuscarProductosActivos(string categoria, string marca, string modelo, string serial, string descripcion)
         {
             try
             {
@@ -342,7 +342,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod WHERE act_pro = 1 AND (`ser_pro` LIKE '" + filtro + "%' OR `des_pro` LIKE '%" + filtro + "%') ORDER BY id_pro ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod WHERE p.act_pro = 1 AND c.nom_cat LIKE '" + categoria + "%' AND m.nom_mar LIKE '" + marca + "%' AND mo.nom_mod LIKE '" + modelo + "%' AND p.des_pro LIKE '" + descripcion + "%' AND p.ser_pro LIKE '" + serial + "%' ORDER BY p.id_pro ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }

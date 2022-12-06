@@ -136,6 +136,7 @@ namespace New_MasterTrade.UserControls
                 txtNumeroOrden.Text = "";
                 txtNumeroOrden.Text = IdVenta.ToString("000000000");
                 comboMoneda.SelectedIndex = 0;
+                txtMoneda.Text = comboMoneda.Text;
 
                 txtCliente.Text = "";
                 txtRazonSocial.Text = "";
@@ -226,10 +227,11 @@ namespace New_MasterTrade.UserControls
             {
                 Form x = new Form();
                 BuscarClientes y = new BuscarClientes();
-                x.StartPosition = FormStartPosition.CenterScreen;
-                x.Size = new Size(y.Width + 15, y.Height + 30);
-                x.Controls.Add(y);
-                x.ShowDialog();
+                SesionIniciada.Instancia.MostrarDialog(y);
+                //x.StartPosition = FormStartPosition.CenterScreen;
+                //x.Size = new Size(y.Width + 15, y.Height + 30);
+                //x.Controls.Add(y);
+                //x.ShowDialog();
                 if (y.x != "")
                 {
                     SetDatos(crud_clientes.ClienteDatos(y.x));
@@ -239,6 +241,7 @@ namespace New_MasterTrade.UserControls
             {
                 if (crud_clientes.ClienteDatos(txtCliente.Text).Rows.Count > 0)
                 {
+                    MessageBox.Show("Cliente encontrado!", "CLIENTE ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     SetDatos(crud_clientes.ClienteDatos(txtCliente.Text));
                 }
                 else
@@ -283,12 +286,13 @@ namespace New_MasterTrade.UserControls
 
         private void bttnBuscarProductos_Click(object sender, EventArgs e)
         {
-            Form x = new Form();
-            BuscarProductos y = new BuscarProductos(null, this);
-            x.StartPosition = FormStartPosition.CenterScreen;
-            x.Size = new Size(y.Width + 15, y.Height + 30);
-            x.Controls.Add(y);
-            x.ShowDialog();
+            SesionIniciada.Instancia.MostrarDialog(new BuscarProductos(null, this));
+            //Form x = new Form();
+            //BuscarProductos y = new BuscarProductos(null, this);
+            //x.StartPosition = FormStartPosition.CenterScreen;
+            //x.Size = new Size(y.Width + 15, y.Height + 38);
+            //x.Controls.Add(y);
+            //x.ShowDialog();
         }
 
         private Venta GetVenta()

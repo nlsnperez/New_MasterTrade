@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace New_MasterTrade.Custom_Controls
 {
-    public partial class BuscarClientes : UserControl
+    public partial class BuscarClientes : Form
     {
         public string x { get; set; }
         CRUD_Clientes crud;
@@ -41,13 +41,18 @@ namespace New_MasterTrade.Custom_Controls
             if (e.ColumnIndex == 6)
             {
                 this.x = tablaPersonas.Rows[e.RowIndex].Cells[2].Value.ToString();
-                this.ParentForm.Close();
+                this.Close();
             }
         }
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             tablaPersonas.DataSource = crud.BuscarTablaActivos(txtBuscar.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
