@@ -317,7 +317,7 @@
             this.bttnCancelar.Name = "bttnCancelar";
             this.bttnCancelar.Size = new System.Drawing.Size(133, 30);
             this.bttnCancelar.TabIndex = 43;
-            this.bttnCancelar.Text = "COMPRAR";
+            this.bttnCancelar.Text = "CANCELAR";
             this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bttnCancelar.UseVisualStyleBackColor = false;
             this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);

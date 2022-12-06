@@ -268,11 +268,12 @@ namespace New_MasterTrade.UserControls
                     {
                         Form x = new Form();
                         FormularioPersonas y = new FormularioPersonas(1);
-                        y.RegistroExterno(2, txtProveedor.Text);
-                        x.StartPosition = FormStartPosition.CenterScreen;
-                        x.Size = new Size(y.Width + 15, y.Height + 30);
-                        x.Controls.Add(y);
-                        x.ShowDialog();
+                        SesionIniciada.Instancia.MostrarDialog(y);
+                        //y.RegistroExterno(2, txtProveedor.Text);
+                        //x.StartPosition = FormStartPosition.CenterScreen;
+                        //x.Size = new Size(y.Width + 15, y.Height + 30);
+                        //x.Controls.Add(y);
+                        //x.ShowDialog();
                         if (personas.ProveedorDatos(txtProveedor.Text).Rows.Count > 0)
                         {
                             SetDatos(personas.ProveedorDatos(txtProveedor.Text));

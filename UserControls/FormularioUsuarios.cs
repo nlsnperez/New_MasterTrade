@@ -42,7 +42,8 @@ namespace New_MasterTrade.UserControls
             txtUsuario.Text = "";
             txtContrasegna.Text = "";
             txtConfirmar.Text = "";
-            comboNivel.SelectedIndex = 1;
+            txtCorreo.Text = "";
+            comboNivel.SelectedIndex = 0;
             chckMostrar.Checked = false;
         }
 
