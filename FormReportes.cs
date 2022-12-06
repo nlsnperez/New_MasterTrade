@@ -25,7 +25,7 @@ namespace New_MasterTrade
             try
             {
                 CRV_Ventana.ReportSource = reporte;
-                CRV_Ventana.Refresh();
+                //CRV_Ventana.Refresh();
             }
             catch (Exception ex)
             {

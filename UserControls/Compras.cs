@@ -50,11 +50,5 @@ namespace New_MasterTrade.UserControls
                 reporte.Reporte_Orden_Compra(x);
             }
         }
-
-        private void bttnReporte_Click(object sender, EventArgs e)
-        {
-            Reporte reporte = new Reporte();
-            reporte.Reporte_Compra();
-        }
     }
 }

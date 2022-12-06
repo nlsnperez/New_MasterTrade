@@ -114,6 +114,9 @@
     <Compile Include="Base de Datos\CRUD_Usuarios.cs" />
     <Compile Include="Base de Datos\CRUD_Productos.cs" />
     <Compile Include="Base de Datos\CRUD_Ventas.cs" />
+    <Compile Include="Base de Datos\DataSet_Reportes.cs">
+      <DependentUpon>DataSet_Reportes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Base de Datos\DataSet_Reportes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -202,16 +205,10 @@
       <DependentUpon>ComprasPorAgno.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\Compra_Reporte.cs">
+    <Compile Include="Reportes\FacturaVenta_Reporte.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Compra_Reporte.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reportes\CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <DependentUpon>FacturaVenta_Reporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\MarcaMasVendida.cs">
@@ -220,16 +217,10 @@
       <DependentUpon>MarcaMasVendida.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\OrdenCompra_Reporte.cs">
+    <Compile Include="Reportes\OrdenCompra2_Reporte.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrdenCompra_Reporte.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reportes\OrdenVenta_Reporte.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrdenVenta_Reporte.rpt</DependentUpon>
+      <DependentUpon>OrdenCompra2_Reporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\ProductosPorProveedor_Reporte.cs">
@@ -238,7 +229,7 @@
       <DependentUpon>ProductosPorProveedor_Reporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\ProductoVendido_Reporte.cs">
+    <Compile Include="Reportes\ProductoVendido_Reporte1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductoVendido_Reporte.rpt</DependentUpon>
@@ -254,6 +245,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Proveedor_Reporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Prueba.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Prueba.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\VendedorEficiencia_Reporte.cs">
@@ -487,25 +484,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ComprasPorAgno.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Compra_Reporte.rpt">
+    <EmbeddedResource Include="Reportes\FacturaVenta_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Compra_Reporte.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+      <LastGenOutput>FacturaVenta_Reporte.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\MarcaMasVendida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>MarcaMasVendida.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\OrdenCompra_Reporte.rpt">
+    <EmbeddedResource Include="Reportes\OrdenCompra2_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>OrdenCompra_Reporte.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\OrdenVenta_Reporte.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>OrdenVenta_Reporte.cs</LastGenOutput>
+      <LastGenOutput>OrdenCompra2_Reporte.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ProductosPorProveedor_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -513,7 +502,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ProductoVendido_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ProductoVendido_Reporte.cs</LastGenOutput>
+      <LastGenOutput>ProductoVendido_Reporte1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Producto_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -522,6 +511,10 @@
     <EmbeddedResource Include="Reportes\Proveedor_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Proveedor_Reporte.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Prueba.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Prueba.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\VendedorEficiencia_Reporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

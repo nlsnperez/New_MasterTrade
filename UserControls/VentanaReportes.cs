@@ -34,24 +34,16 @@ namespace New_MasterTrade.UserControls
             //3
             comboReporte.Items.Add("VENTAS REGISTRADAS");
             //4
-            comboReporte.Items.Add("NÚMERO DE VENTAS REALIZADAS EN UN MES");
-            //5
             comboReporte.Items.Add("NÚMERO DE VENTAS REALIZADAS EN UN AÑO");
-            //6
-            comboReporte.Items.Add("COMPRAS REGISTRADAS");            
-            //7
-            comboReporte.Items.Add("NÚMERO DE COMPRAS REALIZADAS EN UN MES");
-            //8
-            comboReporte.Items.Add("NÚMERO DE COMPRAS REALIZADAS EN UN AÑO");
-            //9
+            //5
             comboReporte.Items.Add("DESEMPEÑO DE VENDEDORES");
-            //10
+            //6
             comboReporte.Items.Add("TOP 10 CLIENTES FRECUENTES");
-            //11
+            //7
             comboReporte.Items.Add("TOP 10 PROVEEDORES PRINCIPALES");
-            //12
+            //8
             comboReporte.Items.Add("TOP 10 PRODUCTOS MÁS VENDIDOS");
-            //13
+            //9
             comboReporte.Items.Add("TOP 10 MARCAS MÁS VENDIDAS");
             comboReporte.SelectedIndex = 0;
         }
@@ -75,34 +67,13 @@ namespace New_MasterTrade.UserControls
 
         private void comboReporte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboReporte.SelectedIndex == 3 || comboReporte.SelectedIndex == 6)
+            if (comboReporte.SelectedIndex == 4)
             {
-                dtpDesde.Enabled = true;
-                dtpHasta.Enabled = true;
-            }
-            else
-            {
-                dtpDesde.Enabled = false;
-                dtpHasta.Enabled = false;
-            }
-
-            if (comboReporte.SelectedIndex == 4 || comboReporte.SelectedIndex == 7)
-            {
-                comboMeses.Enabled = true;
                 txtAgno.Enabled = true;
             }
             else
             {
-                if (comboReporte.SelectedIndex == 5 || comboReporte.SelectedIndex == 8)
-                {
-                    comboMeses.Enabled = false;
-                    txtAgno.Enabled = true;
-                }
-                else
-                {
-                    comboMeses.Enabled = false;
-                    txtAgno.Enabled = false;
-                }
+                txtAgno.Enabled = false;
             }
         }
 
@@ -120,8 +91,7 @@ namespace New_MasterTrade.UserControls
                     reporte.Reporte_Producto();
                     break;
                 case "VENTAS REGISTRADAS":
-                    break;
-                case "NÚMERO DE VENTAS REALIZADAS EN UN MES":
+                    reporte.Reporte_Venta();
                     break;
                 case "NÚMERO DE VENTAS REALIZADAS EN UN AÑO":
                     if (txtAgno.Text == "")
@@ -130,22 +100,8 @@ namespace New_MasterTrade.UserControls
                     }
                     else
                     {
-                        reporte.Reporte_ComprasPorAgno(txtAgno.Text);
-                    }
-                    break;
-                case "COMPRAS REGISTRADAS":
-                    break;
-                case "NÚMERO DE COMPRAS REALIZADAS EN UN MES":
-                    break;
-                case "NÚMERO DE COMPRAS REALIZADAS EN UN AÑO":
-                    if (txtAgno.Text == "")
-                    {
-                        MessageBox.Show("INGRESE UN AÑO PARA GENERAR EL REPORTE", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
                         reporte.Reporte_VentasPorAgno(txtAgno.Text);
-                    }                    
+                    }
                     break;
                 case "DESEMPEÑO DE VENDEDORES":
                     reporte.Reporte_VendedorEficiente();

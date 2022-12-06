@@ -42,5 +42,35 @@ namespace New_MasterTrade.Properties {
                 return ((string)(this["ConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dsn=Conector_MariaDB;uid=root")]
+        public string ConectorMariaDB {
+            get {
+                return ((string)(this["ConectorMariaDB"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dsn=localhost;uid=root")]
+        public string ConnectionMySQL {
+            get {
+                return ((string)(this["ConnectionMySQL"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dsn=DevartMySQLConnector;uid=root")]
+        public string ConexionDevart {
+            get {
+                return ((string)(this["ConexionDevart"]));
+            }
+        }
     }
 }
