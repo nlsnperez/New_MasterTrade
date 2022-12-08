@@ -100,7 +100,7 @@ namespace New_MasterTrade.UserControls
                 {
                     if (MessageBox.Show("¿Desea registrar este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        crud.Create(GetUsuario());
+                        //crud.Create(GetUsuario());
                         if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
                         {
                             crud.CrearVendedor(user_id);
@@ -211,7 +211,7 @@ namespace New_MasterTrade.UserControls
         {
             if (MessageBox.Show("¿Desea actualizar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                crud.Update(GetUsuario());
+                //crud.Update(GetUsuario());
                 if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
                 {
                     if (!crud.VendedorRegistrado(user_id))

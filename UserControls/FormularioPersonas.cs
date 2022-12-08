@@ -15,7 +15,7 @@ namespace New_MasterTrade.UserControls
 {
     public partial class FormularioPersonas : UserControl
     {
-        CRUD_Proveedores crud;
+        CRUD_Usuarios crud = new CRUD_Usuarios();
         CRUD_Clientes crud2;
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
         private bool registro_externo = false;
@@ -36,10 +36,7 @@ namespace New_MasterTrade.UserControls
             {
                 lblTitulo.Text = "REGISTRAR PROVEEDOR";
             }
-
-            crud = new CRUD_Proveedores();
-            crud2 = new CRUD_Clientes();
-            comboOcupacion.Focus();
+            comboNivel.Focus();
             ConfigLongitud();
             ConfigCombos(x);
             bttnActualizar.Enabled = false;
@@ -47,11 +44,17 @@ namespace New_MasterTrade.UserControls
 
         public void ConfigCombos(int x)
         {
-            comboOcupacion.Items.Add("CLIENTE");
-            comboOcupacion.Items.Add("PROVEEDOR");
-            comboOcupacion.SelectedIndex = x;
-            comboOcupacion.Enabled = false;
-            
+            try
+            {
+                comboNivel.ValueMember = "id_niv";
+                comboNivel.DisplayMember = "des_niv";
+                comboNivel.DataSource = crud.Nivel();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             comboDocumento.Items.Add("V");
             comboDocumento.Items.Add("E");
             comboDocumento.Items.Add("J");
@@ -70,7 +73,9 @@ namespace New_MasterTrade.UserControls
 
         public Persona GetPersona()
         {
-            Persona persona = new Persona(comboDocumento.Text + txtDocumento.Text,
+            Persona persona = new Persona(0,
+                                          (int)comboNivel.SelectedValue,
+                                          comboDocumento.Text + txtDocumento.Text,
                                           txtRazonSocial.Text,
                                           txtDireccion.Text,
                                           txtTelefono.Text,
@@ -106,7 +111,9 @@ namespace New_MasterTrade.UserControls
             txtDireccion.Text = "";
             txtTelefono.Text = "";
             txtCorreo.Text = "";
+            comboNivel.SelectedIndex = 0;
             comboDocumento.SelectedIndex = 0;
+            comboNivel.Enabled = true;
             comboDocumento.Enabled = true;
             txtDocumento.Enabled = true;
             bttnGuardar.Enabled = true;
@@ -115,26 +122,32 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGuardar_Click(object sender, EventArgs e)
         {
-            if (ProcesoDeAdmicion(GetPersona()))
+            Persona usuario = GetPersona();
+            if (ProcesoDeAdmicion(usuario))
             {
-                switch (comboOcupacion.Text)
+                if (crud.DocumentoDuplicado(usuario.Documento))
                 {
-                    case "CLIENTE":
-                        if (crud2.ClienteDuplicado(GetPersona()))
+                    MessageBox.Show("Ya existe un usuario registrado con el documento de identidad introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    if (crud.CorreoDuplicado(usuario.Correo))
+                    {
+                        MessageBox.Show("Ya existe un usuario registrado con el correo electrónico introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("¿Desea registrar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            MessageBox.Show("Ya existe un cliente registrado con el documento de identidad introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else
-                        {
-                            if (MessageBox.Show("¿Desea registrar los datos de este cliente?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            crud.Create(usuario);
+                            bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, usuario.Documento));
+                            if (registro_externo == true)
                             {
-                                crud2.Create(GetPersona());
-                                bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
-                                if (registro_externo == true)
-                                {
-                                    this.ParentForm.Close();
-                                }
-                                else
+                                this.ParentForm.Close();
+                            }
+                            else
+                            {
+                                if (UserData.Nivel == 1)
                                 {
                                     if (MessageBox.Show("Desea proseguir registrado una venta?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                     {
@@ -144,41 +157,16 @@ namespace New_MasterTrade.UserControls
                                     else
                                     {
                                         Limpiar();
-                                    }                                    
-                                }
-                            }
-                        }
-                        break;
-                    case "PROVEEDOR":
-                        if (crud.ProveedorDuplicado(GetPersona()))
-                        {
-                            MessageBox.Show("Ya existe un proveedor registrado con el documento de identidad introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else
-                        {
-                            if (MessageBox.Show("¿Desea registrar los datos de este proveedor?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                            {
-                                crud.Create(GetPersona());
-                                bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
-                                if (registro_externo == true)
-                                {
-                                    this.ParentForm.Close();
+                                    }
                                 }
                                 else
                                 {
-                                    if (MessageBox.Show("Desea proseguir registrando una compra?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                    {
-                                        Limpiar();
-                                        SesionIniciada.Instancia.MostrarUserControl(new Comprar());
-                                    }
-                                    else
-                                    {
-                                        Limpiar();
-                                    }
+                                    Limpiar();
                                 }
                             }
                         }
-                        break;
+                    }
+                    
                 }
             }
         }
@@ -210,36 +198,24 @@ namespace New_MasterTrade.UserControls
 
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
+            Persona usuario = GetPersona();
             if (ProcesoDeAdmicion(GetPersona()))
             {
-                switch (comboOcupacion.Text)
+                if (MessageBox.Show("¿Desea actualizar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    case "CLIENTE":
-                        if (MessageBox.Show("¿Desea actualizar los datos de este cliente?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            crud2.Update(GetPersona());
-                            Limpiar();
-                            bitacora.Create(UserData.Id, Modulos.Clientes, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
-                        }
-                        break;
-                    case "PROVEEDOR":
-                        if (MessageBox.Show("¿Desea actualizar los datos de este proveedor?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            crud.Update(GetPersona());
-                            Limpiar();
-                            bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
-                        }
-                        break;
+                    crud.Update(usuario);
+                    Limpiar();
+                    bitacora.Create(UserData.Id, Modulos.Proveedores, Accion.RegistroActualizado(UserData.NombreUsuario, GetPersona().Documento));
                 }
             }
-                       
         }
 
-        public void DatosPersona(Persona persona, int x)
+        public void DatosPersona(Persona persona)
         {
             try
             {
-                comboOcupacion.SelectedIndex = x;
+                comboNivel.SelectedIndex = persona.Nivel-1;
+                if (UserData.Nivel != 1) comboNivel.Enabled = false;
 
                 comboDocumento.Text = persona.Documento.Substring(0, 1);
                 txtDocumento.Text = persona.Documento.Remove(0, 1);
@@ -248,7 +224,6 @@ namespace New_MasterTrade.UserControls
                 txtTelefono.Text = persona.Telefono;
                 txtCorreo.Text = persona.Correo;
 
-                comboOcupacion.Enabled = false;
                 comboDocumento.Enabled = false;
                 txtDocumento.Enabled = false;
                 bttnGuardar.Enabled = false;
@@ -268,8 +243,8 @@ namespace New_MasterTrade.UserControls
             txtDocumento.Enabled = false;
             txtDocumento.Focus();
 
-            comboOcupacion.SelectedIndex = x - 1;
-            comboOcupacion.Enabled = false;
+            comboNivel.SelectedIndex = x - 1;
+            comboNivel.Enabled = false;
         }
 
         private void txtDocumento_Enter(object sender, EventArgs e)
@@ -288,14 +263,7 @@ namespace New_MasterTrade.UserControls
 
         private void bttnAtrás_Click(object sender, EventArgs e)
         {
-            if (comboOcupacion.SelectedIndex == 0)
-            {
-                SesionIniciada.Instancia.MostrarUserControl(new Clientes());
-            }
-            else
-            {
-                SesionIniciada.Instancia.MostrarUserControl(new Proveedores());
-            }
+            SesionIniciada.Instancia.MostrarUserControl(new Clientes());
         }
     }
 }

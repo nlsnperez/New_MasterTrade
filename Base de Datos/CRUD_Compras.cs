@@ -154,7 +154,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable BuscarCompras(string filtro)
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT oc.*, p.raz_prv FROM orden_compra oc INNER JOIN proveedor p ON oc.id_prv = p.id_prv WHERE oc.id_oco LIKE '%" + filtro + "%' OR p.raz_prv LIKE '%" + filtro + "%' OR oc.num_oco LIKE '%" + filtro+"%' ORDER BY id_oco ASC";
+            String sql = "SELECT oc.*, p.raz_prv FROM orden_compra oc INNER JOIN proveedor p ON oc.id_prv = p.id_prv WHERE oc.id_oco LIKE '%" + filtro + "%' OR p.raz_prv LIKE '%" + filtro + "%' OR oc.num_oco LIKE '%" + filtro+ "%' OR p.doc_prv LIKE '%" + filtro+"%' ORDER BY id_oco ASC";
             con.Open();
             try
             {

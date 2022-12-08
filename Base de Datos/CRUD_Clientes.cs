@@ -233,15 +233,15 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
-                if (reader.HasRows)
-                {
-                    Persona cliente = new Persona(reader.GetString(1),
-                                                  reader.GetString(2),
-                                                  reader.GetString(3),
-                                                  reader.GetString(4),
-                                                  reader.GetString(5));
-                    resultado = cliente;
-                }
+                //if (reader.HasRows)
+                //{
+                //    Persona cliente = new Persona(reader.GetString(1),
+                //                                  reader.GetString(2),
+                //                                  reader.GetString(3),
+                //                                  reader.GetString(4),
+                //                                  reader.GetString(5));
+                //    resultado = cliente;
+                //}
                 reader.Close();
             }
             catch (MySqlException ex)

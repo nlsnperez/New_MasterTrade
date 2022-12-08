@@ -51,13 +51,13 @@ namespace New_MasterTrade.UserControls
         {
             if (e.RowIndex >= 0 && tablaUsuarios.Columns[e.ColumnIndex].Name == "Detalles")
             {
-                int id = (int)tablaUsuarios.Rows[e.RowIndex].Cells["Id"].Value;
-                Usuario usuario = crud.Usuario(id);
-                Form x = new Form();
-                FormularioUsuarios y = new FormularioUsuarios();
+                //int id = (int)tablaUsuarios.Rows[e.RowIndex].Cells["Id"].Value;
+                //Persona usuario = crud.Usuario(id);
+                //Form x = new Form();
+                //FormularioUsuarios y = new FormularioUsuarios();
 
-                y.DatosUsuario(usuario);
-                SesionIniciada.Instancia.MostrarUserControl(y);
+                //y.DatosUsuario(usuario);
+                //SesionIniciada.Instancia.MostrarUserControl(y);
 
                 //x.Size = new Size(y.Width + 10, y.Height + 40);
                 //x.Controls.Add(y);
@@ -107,7 +107,7 @@ namespace New_MasterTrade.UserControls
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-            tablaUsuarios.DataSource = crud.BuscarTabla(txtBuscar.Text);
+            //tablaUsuarios.DataSource = crud.BuscarTabla(txtBuscar.Text);
         }
 
         private void bttnRegistrar_Click(object sender, EventArgs e)

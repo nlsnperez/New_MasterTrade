@@ -365,7 +365,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable BuscarFacuras(string filtro)
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tbs_fve, fv.tus_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli WHERE fv.id_fve LIKE '" + filtro + "%' OR ov.num_ove LIKE '" + filtro + "%' OR c.raz_cli LIKE '" + filtro+ "%' ORDER BY id_fve ASC";
+            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tot_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli WHERE fv.id_fve LIKE '" + filtro + "%' OR ov.num_ove LIKE '" + filtro + "%' OR c.raz_cli LIKE '" + filtro+ "%' OR c.doc_cli LIKE '%" + filtro+ "%'ORDER BY id_fve ASC";
             con.Open();
             try
             {

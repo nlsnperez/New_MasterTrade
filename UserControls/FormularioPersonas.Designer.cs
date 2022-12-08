@@ -38,7 +38,7 @@ namespace New_MasterTrade.UserControls
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboOcupacion = new System.Windows.Forms.ComboBox();
+            this.comboNivel = new System.Windows.Forms.ComboBox();
             this.comboDocumento = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
@@ -67,9 +67,9 @@ namespace New_MasterTrade.UserControls
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(77, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 16);
+            this.label2.Size = new System.Drawing.Size(45, 16);
             this.label2.TabIndex = 43;
-            this.label2.Text = "OCUPACIÓN";
+            this.label2.Text = "NIVEL";
             // 
             // txtRazonSocial
             // 
@@ -147,15 +147,15 @@ namespace New_MasterTrade.UserControls
             this.label7.TabIndex = 53;
             this.label7.Text = "TELÉFONO";
             // 
-            // comboOcupacion
+            // comboNivel
             // 
-            this.comboOcupacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboOcupacion.FormattingEnabled = true;
-            this.comboOcupacion.Location = new System.Drawing.Point(216, 85);
-            this.comboOcupacion.Margin = new System.Windows.Forms.Padding(4);
-            this.comboOcupacion.Name = "comboOcupacion";
-            this.comboOcupacion.Size = new System.Drawing.Size(851, 24);
-            this.comboOcupacion.TabIndex = 54;
+            this.comboNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboNivel.FormattingEnabled = true;
+            this.comboNivel.Location = new System.Drawing.Point(216, 85);
+            this.comboNivel.Margin = new System.Windows.Forms.Padding(4);
+            this.comboNivel.Name = "comboNivel";
+            this.comboNivel.Size = new System.Drawing.Size(851, 24);
+            this.comboNivel.TabIndex = 54;
             // 
             // comboDocumento
             // 
@@ -277,7 +277,7 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.comboDocumento);
-            this.Controls.Add(this.comboOcupacion);
+            this.Controls.Add(this.comboNivel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label6);
@@ -310,7 +310,7 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboOcupacion;
+        private System.Windows.Forms.ComboBox comboNivel;
         private System.Windows.Forms.ComboBox comboDocumento;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCorreo;

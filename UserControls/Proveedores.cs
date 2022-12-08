@@ -32,13 +32,13 @@ namespace New_MasterTrade
         {
             if (e.ColumnIndex >= 0 && tablaPersonas.Columns[e.ColumnIndex].Name == "Detalles")
             {
-                int id = Convert.ToInt32(tablaPersonas.Rows[e.RowIndex].Cells["columnId"].Value);
-                Persona proveedor = crud.Proveedor(id);
-                Form x = new Form();
-                FormularioPersonas y = new FormularioPersonas(1);
+                //int id = Convert.ToInt32(tablaPersonas.Rows[e.RowIndex].Cells["columnId"].Value);
+                //Persona proveedor = crud.Proveedor(id);
+                //Form x = new Form();
+                //FormularioPersonas y = new FormularioPersonas(1);
 
-                y.DatosPersona(proveedor, 1);
-                SesionIniciada.Instancia.MostrarUserControl(y);
+                //y.DatosPersona(proveedor, 1);
+                //SesionIniciada.Instancia.MostrarUserControl(y);
 
                 //x.Controls.Add(y);
                 //x.Size = new Size(y.Width + 30, y.Height + 40);                

@@ -14,23 +14,23 @@ namespace New_MasterTrade.Base_de_Datos
 {
     class CRUD_Usuarios : Conexion
     {
-        public void Create(Usuario user)
+        public void Create(Persona persona)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `usuario`(`usr_usu`, `pas_usu`, `nom_usu`, `doc_usu`, `cor_usu`, `niv_usu`, `act_usu`) VALUES (@usuario, @contrasegna, @nombre, @documento, @correo, @nivel, @activo)";
+                    command.CommandText = "INSERT INTO `usuario`(`id_niv`, `doc_usu`, `raz_usu`, `dir_usu`, `tel_usu`, `cor_usu`, `act_usu`) VALUES (@nivel,@documento,@razonsocial,@direccion,@telefono,@correo,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = user.UserName;
-                    command.Parameters.Add("@contrasegna", MySqlDbType.VarChar).Value = user.Contrasegna;
-                    command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = user.Nombre;
-                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = user.Documento;
-                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = user.Correo;
-                    command.Parameters.Add("@nivel", MySqlDbType.Int32).Value = user.Nivel;
+                    command.Parameters.Add("@nivel", MySqlDbType.Int32).Value = persona.Nivel;
+                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = persona.Documento;
+                    command.Parameters.Add("@razonsocial", MySqlDbType.VarChar).Value = persona.RazonSocial;
+                    command.Parameters.Add("@direccion", MySqlDbType.VarChar).Value = persona.Direccion;
+                    command.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = persona.Telefono;
+                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = persona.Correo;
                     command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
@@ -73,24 +73,23 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public void Update(Usuario user)
+        public void Update(Persona persona)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `usuario` SET `usr_usu`=@usuario,`pas_usu`=@contrasegna,`nom_usu`=@nombre,`doc_usu`=@documento,`cor_usu`=@correo,`niv_usu`=@nivel WHERE `usr_usu` = @username";
+                    command.CommandText = "UPDATE `usuario` SET `id_niv`=@nivel, `raz_usu`=@razonsocial,`dir_usu`=@direccion,`tel_usu`=@telefono,`cor_usu`=@correo WHERE `doc_usu` =@documento";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = user.UserName;
-                    command.Parameters.Add("@username", MySqlDbType.VarChar).Value = user.UserName;
-                    command.Parameters.Add("@contrasegna", MySqlDbType.VarChar).Value = user.Contrasegna;
-                    command.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = user.Nombre;
-                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = user.Documento;
-                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = user.Correo;
-                    command.Parameters.Add("@nivel", MySqlDbType.Int32).Value = user.Nivel;
+                    command.Parameters.Add("@nivel", MySqlDbType.Int32).Value = persona.Nivel;
+                    command.Parameters.Add("@razonsocial", MySqlDbType.VarChar).Value = persona.RazonSocial;
+                    command.Parameters.Add("@direccion", MySqlDbType.VarChar).Value = persona.Direccion;
+                    command.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = persona.Telefono;
+                    command.Parameters.Add("@correo", MySqlDbType.VarChar).Value = persona.Correo;
+                    command.Parameters.Add("@documento", MySqlDbType.VarChar).Value = persona.Documento;
 
                     command.ExecuteNonQuery();
                     con.Close();
@@ -195,7 +194,7 @@ namespace New_MasterTrade.Base_de_Datos
             return true;
         }
 
-        public DataTable BuscarTabla(string filtro)
+        public DataTable BuscarTabla(int nivel, string filtro)
         {
             try
             {
@@ -203,7 +202,29 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `usuario`  WHERE `id_usu` LIKE '%" + filtro + "%' OR `nom_usu` LIKE '%" + filtro + "%' OR `cor_usu` LIKE '%" + filtro + "%' ORDER BY id_usu ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM nivel n INNER JOIN usuario u ON u.id_niv = n.id_niv INNER JOIN credencial c ON c.id_usu = u.id_usu WHERE n.id_niv = "+nivel+" AND (u.`id_usu` LIKE '%" + filtro + "%' OR u.`raz_usu` LIKE '%" + filtro + "%' OR u.`cor_usu` LIKE '%" + filtro + "%' OR u.`doc_usu` LIKE '%" + filtro + "%' OR u.`tel_usu` LIKE '%" + filtro + "%' OR u.`dir_usu` LIKE '%" + filtro + "%') ORDER BY u.id_usu ASC", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla productos encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
+
+        public DataTable Nivel()
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM nivel", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -221,7 +242,7 @@ namespace New_MasterTrade.Base_de_Datos
         {
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `usr_usu` = '"+user+"' AND `pas_usu` = '"+password+"'", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM usuario u INNER JOIN credencial c ON c.id_usu = u.id_usu WHERE u.id_niv < 3 AND (c.nom_usu = '"+user+"' AND c.pas_usu = '"+password+"')", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -232,10 +253,10 @@ namespace New_MasterTrade.Base_de_Datos
                     return false;
                 }
                 UserData.Id = Int32.Parse(reader["id_usu"].ToString());
-                UserData.NombreUsuario = reader["usr_usu"].ToString();
+                UserData.NombreUsuario = reader["nom_usu"].ToString();
                 UserData.Contrasegna = reader["pas_usu"].ToString();
-                UserData.Nombre = reader["nom_usu"].ToString();
-                UserData.Nivel = Int32.Parse(reader["niv_usu"].ToString());
+                UserData.Nombre = reader["raz_usu"].ToString();
+                UserData.Nivel = Int32.Parse(reader["id_niv"].ToString());
                 reader.Close();
             }
             catch (MySqlException ex)
@@ -286,9 +307,9 @@ namespace New_MasterTrade.Base_de_Datos
             return false;
         }
 
-        public Usuario Usuario(int id)
+        public Persona Usuario(int id)
         {
-            Usuario resultado = null;
+            Persona resultado = null;
             try
             {
                 MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `id_usu` = " + id, con);
@@ -297,14 +318,14 @@ namespace New_MasterTrade.Base_de_Datos
                 reader.Read();
                 if (reader.HasRows)
                 {
-                    Usuario cliente = new Usuario(reader.GetInt32(0),
-                                                  reader.GetString(1),
+                    Persona persona = new Persona(reader.GetInt32(0),
+                                                  reader.GetInt32(1),
                                                   reader.GetString(2),
-                                                  reader.GetString(5),
-                                                  reader.GetString(4),
                                                   reader.GetString(3),
-                                                  reader.GetInt32(6));
-                    resultado = cliente;
+                                                  reader.GetString(4),
+                                                  reader.GetString(5),
+                                                  reader.GetString(6));
+                    resultado = persona;
                 }
                 reader.Close();
             }

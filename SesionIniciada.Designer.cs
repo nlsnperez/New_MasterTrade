@@ -267,7 +267,7 @@ namespace New_MasterTrade
             this.panelMantenimiento.Location = new System.Drawing.Point(773, 53);
             this.panelMantenimiento.Margin = new System.Windows.Forms.Padding(4);
             this.panelMantenimiento.Name = "panelMantenimiento";
-            this.panelMantenimiento.Size = new System.Drawing.Size(213, 140);
+            this.panelMantenimiento.Size = new System.Drawing.Size(213, 47);
             this.panelMantenimiento.TabIndex = 15;
             this.panelMantenimiento.Visible = false;
             // 
@@ -316,7 +316,7 @@ namespace New_MasterTrade
             this.bttnBitacora.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnBitacora.Image = global::New_MasterTrade.Properties.Resources.copy;
             this.bttnBitacora.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnBitacora.Location = new System.Drawing.Point(0, 94);
+            this.bttnBitacora.Location = new System.Drawing.Point(0, 0);
             this.bttnBitacora.Margin = new System.Windows.Forms.Padding(4);
             this.bttnBitacora.Name = "bttnBitacora";
             this.bttnBitacora.Size = new System.Drawing.Size(213, 47);
@@ -334,7 +334,7 @@ namespace New_MasterTrade
             this.bttnUsuarios.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnUsuarios.Image = global::New_MasterTrade.Properties.Resources.personal_data__1_;
             this.bttnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnUsuarios.Location = new System.Drawing.Point(0, 0);
+            this.bttnUsuarios.Location = new System.Drawing.Point(0, 94);
             this.bttnUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.bttnUsuarios.Name = "bttnUsuarios";
             this.bttnUsuarios.Size = new System.Drawing.Size(213, 47);
@@ -404,7 +404,7 @@ namespace New_MasterTrade
             this.panelArchivo.Margin = new System.Windows.Forms.Padding(4);
             this.panelArchivo.MinimumSize = new System.Drawing.Size(213, 187);
             this.panelArchivo.Name = "panelArchivo";
-            this.panelArchivo.Size = new System.Drawing.Size(213, 235);
+            this.panelArchivo.Size = new System.Drawing.Size(213, 188);
             this.panelArchivo.TabIndex = 14;
             this.panelArchivo.Visible = false;
             // 
@@ -422,7 +422,7 @@ namespace New_MasterTrade
             this.bttnClientes.Name = "bttnClientes";
             this.bttnClientes.Size = new System.Drawing.Size(213, 47);
             this.bttnClientes.TabIndex = 18;
-            this.bttnClientes.Text = "CLIENTES";
+            this.bttnClientes.Text = "USUARIOS";
             this.bttnClientes.UseVisualStyleBackColor = false;
             this.bttnClientes.Click += new System.EventHandler(this.bttnClientes_Click);
             // 
@@ -435,7 +435,7 @@ namespace New_MasterTrade
             this.bttnVentas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnVentas.Image = global::New_MasterTrade.Properties.Resources.receipt;
             this.bttnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnVentas.Location = new System.Drawing.Point(0, 140);
+            this.bttnVentas.Location = new System.Drawing.Point(0, 94);
             this.bttnVentas.Margin = new System.Windows.Forms.Padding(4);
             this.bttnVentas.Name = "bttnVentas";
             this.bttnVentas.Size = new System.Drawing.Size(213, 47);
@@ -453,10 +453,10 @@ namespace New_MasterTrade
             this.bttnCompras.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnCompras.Image = global::New_MasterTrade.Properties.Resources.shopping_bag;
             this.bttnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnCompras.Location = new System.Drawing.Point(0, 187);
+            this.bttnCompras.Location = new System.Drawing.Point(0, 141);
             this.bttnCompras.Margin = new System.Windows.Forms.Padding(4);
             this.bttnCompras.Name = "bttnCompras";
-            this.bttnCompras.Size = new System.Drawing.Size(213, 53);
+            this.bttnCompras.Size = new System.Drawing.Size(213, 47);
             this.bttnCompras.TabIndex = 16;
             this.bttnCompras.Text = "COMPRAS";
             this.bttnCompras.UseVisualStyleBackColor = false;
@@ -471,7 +471,7 @@ namespace New_MasterTrade
             this.bttnProveedores.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnProveedores.Image = global::New_MasterTrade.Properties.Resources.parcel;
             this.bttnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnProveedores.Location = new System.Drawing.Point(0, 47);
+            this.bttnProveedores.Location = new System.Drawing.Point(0, 188);
             this.bttnProveedores.Margin = new System.Windows.Forms.Padding(4);
             this.bttnProveedores.Name = "bttnProveedores";
             this.bttnProveedores.Size = new System.Drawing.Size(213, 47);
@@ -489,7 +489,7 @@ namespace New_MasterTrade
             this.bttnProductos.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnProductos.Image = global::New_MasterTrade.Properties.Resources.monitor;
             this.bttnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnProductos.Location = new System.Drawing.Point(0, 94);
+            this.bttnProductos.Location = new System.Drawing.Point(0, 47);
             this.bttnProductos.Margin = new System.Windows.Forms.Padding(4);
             this.bttnProductos.Name = "bttnProductos";
             this.bttnProductos.Size = new System.Drawing.Size(213, 47);

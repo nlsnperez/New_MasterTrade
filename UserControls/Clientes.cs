@@ -9,7 +9,7 @@ namespace New_MasterTrade.UserControls
 {
     public partial class Clientes : UserControl
     {
-        CRUD_Clientes crud = new CRUD_Clientes();
+        CRUD_Usuarios crud = new CRUD_Usuarios();
 
         public Clientes()
         {
@@ -22,7 +22,22 @@ namespace New_MasterTrade.UserControls
             tablaPersonas.AutoGenerateColumns = false;
             tablaPersonas.DataSource = null;
             CargarTabla();
+            CargarCombos();
 
+        }
+
+        public void CargarCombos()
+        {
+            try
+            {
+                comboNivel.ValueMember = "id_niv";
+                comboNivel.DisplayMember = "des_niv";
+                comboNivel.DataSource = crud.Nivel();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void tablaPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -30,17 +45,11 @@ namespace New_MasterTrade.UserControls
             if (e.ColumnIndex >= 0 && tablaPersonas.Columns[e.ColumnIndex].Name == "Detalles")
             {
                 int id = Convert.ToInt32(tablaPersonas.Rows[e.RowIndex].Cells["columnId"].Value);
-                Persona cliente = crud.Cliente(id);
-                Form x = new Form();
+                Persona usuario = crud.Usuario(id);
                 FormularioPersonas y = new FormularioPersonas(0);
-                y.DatosPersona(cliente, 0);
+                y.DatosPersona(usuario);
 
                 SesionIniciada.Instancia.MostrarUserControl(y);
-                //x.Controls.Add(y);
-                //x.Size = new Size(y.Width + 30, y.Height + 40);
-                //x.StartPosition = FormStartPosition.CenterScreen;
-                //x.ShowDialog();
-                //CargarTabla();
             }
             else
             {
@@ -48,10 +57,10 @@ namespace New_MasterTrade.UserControls
                 {
                     if (Convert.ToBoolean(tablaPersonas.Rows[e.RowIndex].Cells["Activo"].Value) == true)
                     {
-                        if (MessageBox.Show("¿Desea eliminar los datos de este cliente?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        if (MessageBox.Show("¿Desea eliminar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            string documento = tablaPersonas.Rows[e.RowIndex].Cells["Documento"].Value.ToString();
-                            crud.Delete(documento, 0);
+                            int id = (int)tablaPersonas.Rows[e.RowIndex].Cells["columnId"].Value;
+                            crud.Delete(id, 0);
                             CargarTabla();
                         }
                     }
@@ -59,10 +68,10 @@ namespace New_MasterTrade.UserControls
                     {
                         if (Convert.ToBoolean(tablaPersonas.Rows[e.RowIndex].Cells["Activo"].Value) == false)
                         {
-                            if (MessageBox.Show("¿Desea restaurar los datos de este cliente?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                            if (MessageBox.Show("¿Desea restaurar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                             {
-                                string documento = tablaPersonas.Rows[e.RowIndex].Cells["Documento"].Value.ToString();
-                                crud.Delete(documento, 1);
+                                int id = (int)tablaPersonas.Rows[e.RowIndex].Cells["columnId"].Value;
+                                crud.Delete(id, 1);
                                 CargarTabla();
                             }
                         }
@@ -76,7 +85,7 @@ namespace New_MasterTrade.UserControls
         {
             try
             {
-                tablaPersonas.DataSource = crud.Tabla();
+                tablaPersonas.DataSource = crud.Usuarios();
                 txtBuscar.Focus();
             }
             catch (Exception ex)
@@ -87,19 +96,12 @@ namespace New_MasterTrade.UserControls
 
         private void txtBuscar_KeyUp_1(object sender, KeyEventArgs e)
         {
-            tablaPersonas.DataSource = crud.BuscarTabla(txtBuscar.Text);
+            tablaPersonas.DataSource = crud.BuscarTabla((int)comboNivel.SelectedValue, txtBuscar.Text);
         }
 
         private void bttnAgregar_Click(object sender, EventArgs e)
         {
-            SesionIniciada.Instancia.MostrarUserControl(new FormularioPersonas(0));
-            //Form x = new Form();
-            //FormularioPersonas y = new FormularioPersonas(0);
-            //x.Size = new Size(y.Width + 30, y.Height + 40);
-            //x.Controls.Add(y);
-            //x.StartPosition = FormStartPosition.CenterScreen;
-            //x.ShowDialog();
-            //tablaPersonas.DataSource = crud.Tabla();
+            SesionIniciada.Instancia.MostrarUserControl(new FormularioPersonas((int)comboNivel.SelectedValue));
         }
 
         private void tablaPersonas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

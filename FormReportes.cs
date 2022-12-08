@@ -18,6 +18,7 @@ namespace New_MasterTrade
         {
             InitializeComponent();
             AbrirReporte(reporte);
+           
         }
 
         private void AbrirReporte(object reporte)
