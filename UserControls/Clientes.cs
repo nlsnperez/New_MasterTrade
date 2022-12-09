@@ -2,13 +2,20 @@
 using New_MasterTrade.Cache;
 using New_MasterTrade.Objetos;
 using System;
+using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
 {
     public partial class Clientes : UserControl
     {
+        private DataTable tabla = new DataTable();
+        private int total_filas = 0;
+        private int pagina = 0;
+        private int total_paginas = 0;
+        private int limite_registro = 20;
         CRUD_Usuarios crud = new CRUD_Usuarios();
 
         public Clientes()
@@ -21,18 +28,37 @@ namespace New_MasterTrade.UserControls
         {
             tablaPersonas.AutoGenerateColumns = false;
             tablaPersonas.DataSource = null;
-            CargarTabla();
+            CargarDatos(crud.Usuarios());
             CargarCombos();
+        }
 
+        public void CargarDatos(DataTable resultados)
+        {
+            tabla = resultados;
+            total_filas = tabla.Rows.Count-1;
+            total_paginas = total_filas / limite_registro;            
+            tablaPersonas.DataSource = Resultados(tabla);
+        }
+
+        private DataTable Resultados(DataTable resultados)
+        {
+            HabilitarBotones();
+            return resultados.AsEnumerable().Skip(limite_registro * pagina).Take(limite_registro).CopyToDataTable();
         }
 
         public void CargarCombos()
         {
             try
             {
-                comboNivel.ValueMember = "id_niv";
-                comboNivel.DisplayMember = "des_niv";
-                comboNivel.DataSource = crud.Nivel();
+                for (int i = 0; i <= total_paginas; i++)
+                {
+                    comboPaginas.Items.Add(i + 1);
+                }
+                comboPaginas.SelectedIndex = 0;
+
+                //comboNivel.ValueMember = "id_niv";
+                //comboNivel.DisplayMember = "des_niv";
+                //comboNivel.DataSource = crud.Nivel();
             }
             catch (Exception ex)
             {
@@ -61,7 +87,7 @@ namespace New_MasterTrade.UserControls
                         {
                             int id = (int)tablaPersonas.Rows[e.RowIndex].Cells["columnId"].Value;
                             crud.Delete(id, 0);
-                            CargarTabla();
+                            CargarDatos(crud.Usuarios());
                         }
                     }
                     else
@@ -72,7 +98,7 @@ namespace New_MasterTrade.UserControls
                             {
                                 int id = (int)tablaPersonas.Rows[e.RowIndex].Cells["columnId"].Value;
                                 crud.Delete(id, 1);
-                                CargarTabla();
+                                CargarDatos(crud.Usuarios());
                             }
                         }
                     }
@@ -81,27 +107,14 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        private void CargarTabla()
-        {
-            try
-            {
-                tablaPersonas.DataSource = crud.Usuarios();
-                txtBuscar.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void txtBuscar_KeyUp_1(object sender, KeyEventArgs e)
         {
-            tablaPersonas.DataSource = crud.BuscarTabla((int)comboNivel.SelectedValue, txtBuscar.Text);
+            //tablaPersonas.DataSource = crud.BuscarTabla((int)comboNivel.SelectedValue, txtBuscar.Text);
         }
 
         private void bttnAgregar_Click(object sender, EventArgs e)
         {
-            SesionIniciada.Instancia.MostrarUserControl(new FormularioPersonas((int)comboNivel.SelectedValue));
+            SesionIniciada.Instancia.MostrarUserControl(new FormularioPersonas(0));
         }
 
         private void tablaPersonas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -123,9 +136,62 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        private void tablaPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void bttnSiguiente_Click(object sender, EventArgs e)
         {
+            try
+            {
+                comboPaginas.SelectedIndex += 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
+        private void bttnAnterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                comboPaginas.SelectedIndex -= 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void HabilitarBotones()
+        {
+            if (pagina == 0)
+            {
+                bttnAnterior.Enabled = false;
+            }
+            else
+            {
+                bttnAnterior.Enabled = true;
+            }
+
+            if (pagina == total_paginas)
+            {
+                bttnSiguiente.Enabled = false;
+            }
+            else
+            {
+                bttnSiguiente.Enabled = true;
+            }
+        }
+
+        private void comboPaginas_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                pagina = Int32.Parse(comboPaginas.Text)-1;
+                tablaPersonas.DataSource = Resultados(tabla);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

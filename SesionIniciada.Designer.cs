@@ -87,9 +87,9 @@ namespace New_MasterTrade
             this.panelPapa.Controls.Add(this.panelArchivo);
             this.panelPapa.Controls.Add(this.panelContenedor);
             this.panelPapa.Location = new System.Drawing.Point(0, 0);
-            this.panelPapa.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.panelPapa.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panelPapa.Name = "panelPapa";
-            this.panelPapa.Size = new System.Drawing.Size(1144, 731);
+            this.panelPapa.Size = new System.Drawing.Size(858, 594);
             this.panelPapa.TabIndex = 0;
             // 
             // panelAjustes
@@ -98,10 +98,10 @@ namespace New_MasterTrade
             this.panelAjustes.Controls.Add(this.bttnMetodosPago);
             this.panelAjustes.Controls.Add(this.bttnImpuestos);
             this.panelAjustes.Controls.Add(this.bttnMonedas);
-            this.panelAjustes.Location = new System.Drawing.Point(917, 585);
-            this.panelAjustes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelAjustes.Location = new System.Drawing.Point(688, 475);
+            this.panelAjustes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelAjustes.Name = "panelAjustes";
-            this.panelAjustes.Size = new System.Drawing.Size(213, 141);
+            this.panelAjustes.Size = new System.Drawing.Size(160, 115);
             this.panelAjustes.TabIndex = 0;
             this.panelAjustes.Visible = false;
             // 
@@ -114,9 +114,8 @@ namespace New_MasterTrade
             this.bttnMetodosPago.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnMetodosPago.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnMetodosPago.Location = new System.Drawing.Point(0, 0);
-            this.bttnMetodosPago.Margin = new System.Windows.Forms.Padding(4);
             this.bttnMetodosPago.Name = "bttnMetodosPago";
-            this.bttnMetodosPago.Size = new System.Drawing.Size(213, 47);
+            this.bttnMetodosPago.Size = new System.Drawing.Size(160, 38);
             this.bttnMetodosPago.TabIndex = 28;
             this.bttnMetodosPago.Text = "METODOS DE\r\nPAGO";
             this.bttnMetodosPago.UseVisualStyleBackColor = false;
@@ -131,10 +130,9 @@ namespace New_MasterTrade
             this.bttnImpuestos.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnImpuestos.Image = global::New_MasterTrade.Properties.Resources.estados_financieros;
             this.bttnImpuestos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnImpuestos.Location = new System.Drawing.Point(0, 47);
-            this.bttnImpuestos.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnImpuestos.Location = new System.Drawing.Point(0, 38);
             this.bttnImpuestos.Name = "bttnImpuestos";
-            this.bttnImpuestos.Size = new System.Drawing.Size(213, 47);
+            this.bttnImpuestos.Size = new System.Drawing.Size(160, 38);
             this.bttnImpuestos.TabIndex = 27;
             this.bttnImpuestos.Text = "IMPUESTOS";
             this.bttnImpuestos.UseVisualStyleBackColor = false;
@@ -149,10 +147,9 @@ namespace New_MasterTrade
             this.bttnMonedas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnMonedas.Image = global::New_MasterTrade.Properties.Resources.coin;
             this.bttnMonedas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnMonedas.Location = new System.Drawing.Point(0, 94);
-            this.bttnMonedas.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnMonedas.Location = new System.Drawing.Point(0, 76);
             this.bttnMonedas.Name = "bttnMonedas";
-            this.bttnMonedas.Size = new System.Drawing.Size(213, 47);
+            this.bttnMonedas.Size = new System.Drawing.Size(160, 38);
             this.bttnMonedas.TabIndex = 26;
             this.bttnMonedas.Text = "MONEDAS";
             this.bttnMonedas.UseVisualStyleBackColor = false;
@@ -166,10 +163,9 @@ namespace New_MasterTrade
             this.panelReportes.Controls.Add(this.bttnReportesProducto);
             this.panelReportes.Controls.Add(this.bttnReportesProveedor);
             this.panelReportes.Controls.Add(this.bttnReportesCliente);
-            this.panelReportes.Location = new System.Drawing.Point(560, 53);
-            this.panelReportes.Margin = new System.Windows.Forms.Padding(4);
+            this.panelReportes.Location = new System.Drawing.Point(420, 43);
             this.panelReportes.Name = "panelReportes";
-            this.panelReportes.Size = new System.Drawing.Size(213, 235);
+            this.panelReportes.Size = new System.Drawing.Size(160, 190);
             this.panelReportes.TabIndex = 18;
             this.panelReportes.Visible = false;
             // 
@@ -181,10 +177,9 @@ namespace New_MasterTrade
             this.bttnReportesCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnReportesCompra.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnReportesCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnReportesCompra.Location = new System.Drawing.Point(0, 188);
-            this.bttnReportesCompra.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnReportesCompra.Location = new System.Drawing.Point(0, 152);
             this.bttnReportesCompra.Name = "bttnReportesCompra";
-            this.bttnReportesCompra.Size = new System.Drawing.Size(213, 47);
+            this.bttnReportesCompra.Size = new System.Drawing.Size(160, 38);
             this.bttnReportesCompra.TabIndex = 14;
             this.bttnReportesCompra.Text = "COMPRAS";
             this.bttnReportesCompra.UseVisualStyleBackColor = false;
@@ -198,10 +193,9 @@ namespace New_MasterTrade
             this.bttnReportesVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnReportesVenta.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnReportesVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnReportesVenta.Location = new System.Drawing.Point(0, 141);
-            this.bttnReportesVenta.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnReportesVenta.Location = new System.Drawing.Point(0, 114);
             this.bttnReportesVenta.Name = "bttnReportesVenta";
-            this.bttnReportesVenta.Size = new System.Drawing.Size(213, 47);
+            this.bttnReportesVenta.Size = new System.Drawing.Size(160, 38);
             this.bttnReportesVenta.TabIndex = 13;
             this.bttnReportesVenta.Text = "VENTAS";
             this.bttnReportesVenta.UseVisualStyleBackColor = false;
@@ -215,10 +209,9 @@ namespace New_MasterTrade
             this.bttnReportesProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnReportesProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnReportesProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnReportesProducto.Location = new System.Drawing.Point(0, 94);
-            this.bttnReportesProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnReportesProducto.Location = new System.Drawing.Point(0, 76);
             this.bttnReportesProducto.Name = "bttnReportesProducto";
-            this.bttnReportesProducto.Size = new System.Drawing.Size(213, 47);
+            this.bttnReportesProducto.Size = new System.Drawing.Size(160, 38);
             this.bttnReportesProducto.TabIndex = 12;
             this.bttnReportesProducto.Text = "PRODUCTOS";
             this.bttnReportesProducto.UseVisualStyleBackColor = false;
@@ -232,10 +225,9 @@ namespace New_MasterTrade
             this.bttnReportesProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnReportesProveedor.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnReportesProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnReportesProveedor.Location = new System.Drawing.Point(0, 47);
-            this.bttnReportesProveedor.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnReportesProveedor.Location = new System.Drawing.Point(0, 38);
             this.bttnReportesProveedor.Name = "bttnReportesProveedor";
-            this.bttnReportesProveedor.Size = new System.Drawing.Size(213, 47);
+            this.bttnReportesProveedor.Size = new System.Drawing.Size(160, 38);
             this.bttnReportesProveedor.TabIndex = 11;
             this.bttnReportesProveedor.Text = "PROVEEDORES";
             this.bttnReportesProveedor.UseVisualStyleBackColor = false;
@@ -250,9 +242,8 @@ namespace New_MasterTrade
             this.bttnReportesCliente.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnReportesCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnReportesCliente.Location = new System.Drawing.Point(0, 0);
-            this.bttnReportesCliente.Margin = new System.Windows.Forms.Padding(4);
             this.bttnReportesCliente.Name = "bttnReportesCliente";
-            this.bttnReportesCliente.Size = new System.Drawing.Size(213, 47);
+            this.bttnReportesCliente.Size = new System.Drawing.Size(160, 38);
             this.bttnReportesCliente.TabIndex = 10;
             this.bttnReportesCliente.Text = "CLIENTES";
             this.bttnReportesCliente.UseVisualStyleBackColor = false;
@@ -264,10 +255,9 @@ namespace New_MasterTrade
             this.panelMantenimiento.Controls.Add(this.bttnVendedores);
             this.panelMantenimiento.Controls.Add(this.bttnBitacora);
             this.panelMantenimiento.Controls.Add(this.bttnUsuarios);
-            this.panelMantenimiento.Location = new System.Drawing.Point(773, 53);
-            this.panelMantenimiento.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMantenimiento.Location = new System.Drawing.Point(580, 43);
             this.panelMantenimiento.Name = "panelMantenimiento";
-            this.panelMantenimiento.Size = new System.Drawing.Size(213, 47);
+            this.panelMantenimiento.Size = new System.Drawing.Size(160, 38);
             this.panelMantenimiento.TabIndex = 15;
             this.panelMantenimiento.Visible = false;
             // 
@@ -280,10 +270,9 @@ namespace New_MasterTrade
             this.bttnRespaldo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnRespaldo.Image = global::New_MasterTrade.Properties.Resources.cloud_backup_up_arrow;
             this.bttnRespaldo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnRespaldo.Location = new System.Drawing.Point(0, 140);
-            this.bttnRespaldo.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnRespaldo.Location = new System.Drawing.Point(0, 114);
             this.bttnRespaldo.Name = "bttnRespaldo";
-            this.bttnRespaldo.Size = new System.Drawing.Size(213, 47);
+            this.bttnRespaldo.Size = new System.Drawing.Size(160, 38);
             this.bttnRespaldo.TabIndex = 22;
             this.bttnRespaldo.Text = "RESPALDO";
             this.bttnRespaldo.UseVisualStyleBackColor = false;
@@ -298,10 +287,9 @@ namespace New_MasterTrade
             this.bttnVendedores.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnVendedores.Image = global::New_MasterTrade.Properties.Resources.businessman;
             this.bttnVendedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnVendedores.Location = new System.Drawing.Point(0, 47);
-            this.bttnVendedores.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnVendedores.Location = new System.Drawing.Point(0, 38);
             this.bttnVendedores.Name = "bttnVendedores";
-            this.bttnVendedores.Size = new System.Drawing.Size(213, 47);
+            this.bttnVendedores.Size = new System.Drawing.Size(160, 38);
             this.bttnVendedores.TabIndex = 21;
             this.bttnVendedores.Text = "VENDEDORES";
             this.bttnVendedores.UseVisualStyleBackColor = false;
@@ -317,9 +305,8 @@ namespace New_MasterTrade
             this.bttnBitacora.Image = global::New_MasterTrade.Properties.Resources.copy;
             this.bttnBitacora.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnBitacora.Location = new System.Drawing.Point(0, 0);
-            this.bttnBitacora.Margin = new System.Windows.Forms.Padding(4);
             this.bttnBitacora.Name = "bttnBitacora";
-            this.bttnBitacora.Size = new System.Drawing.Size(213, 47);
+            this.bttnBitacora.Size = new System.Drawing.Size(160, 38);
             this.bttnBitacora.TabIndex = 20;
             this.bttnBitacora.Text = "BITACORA";
             this.bttnBitacora.UseVisualStyleBackColor = false;
@@ -334,10 +321,9 @@ namespace New_MasterTrade
             this.bttnUsuarios.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnUsuarios.Image = global::New_MasterTrade.Properties.Resources.personal_data__1_;
             this.bttnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnUsuarios.Location = new System.Drawing.Point(0, 94);
-            this.bttnUsuarios.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnUsuarios.Location = new System.Drawing.Point(0, 76);
             this.bttnUsuarios.Name = "bttnUsuarios";
-            this.bttnUsuarios.Size = new System.Drawing.Size(213, 47);
+            this.bttnUsuarios.Size = new System.Drawing.Size(160, 38);
             this.bttnUsuarios.TabIndex = 19;
             this.bttnUsuarios.Text = "USUARIOS";
             this.bttnUsuarios.UseVisualStyleBackColor = false;
@@ -347,11 +333,10 @@ namespace New_MasterTrade
             // 
             this.panelTransacciones.Controls.Add(this.bttnVender);
             this.panelTransacciones.Controls.Add(this.bttnComprar);
-            this.panelTransacciones.Location = new System.Drawing.Point(347, 53);
-            this.panelTransacciones.Margin = new System.Windows.Forms.Padding(4);
-            this.panelTransacciones.MinimumSize = new System.Drawing.Size(213, 47);
+            this.panelTransacciones.Location = new System.Drawing.Point(260, 43);
+            this.panelTransacciones.MinimumSize = new System.Drawing.Size(160, 38);
             this.panelTransacciones.Name = "panelTransacciones";
-            this.panelTransacciones.Size = new System.Drawing.Size(213, 94);
+            this.panelTransacciones.Size = new System.Drawing.Size(160, 76);
             this.panelTransacciones.TabIndex = 16;
             this.panelTransacciones.Visible = false;
             // 
@@ -365,9 +350,8 @@ namespace New_MasterTrade
             this.bttnVender.Image = global::New_MasterTrade.Properties.Resources.point_of_sale;
             this.bttnVender.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnVender.Location = new System.Drawing.Point(0, 0);
-            this.bttnVender.Margin = new System.Windows.Forms.Padding(4);
             this.bttnVender.Name = "bttnVender";
-            this.bttnVender.Size = new System.Drawing.Size(213, 47);
+            this.bttnVender.Size = new System.Drawing.Size(160, 38);
             this.bttnVender.TabIndex = 9;
             this.bttnVender.Text = "VENTA";
             this.bttnVender.UseVisualStyleBackColor = false;
@@ -382,10 +366,9 @@ namespace New_MasterTrade
             this.bttnComprar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnComprar.Image = global::New_MasterTrade.Properties.Resources.cart;
             this.bttnComprar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnComprar.Location = new System.Drawing.Point(0, 47);
-            this.bttnComprar.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnComprar.Location = new System.Drawing.Point(0, 38);
             this.bttnComprar.Name = "bttnComprar";
-            this.bttnComprar.Size = new System.Drawing.Size(213, 47);
+            this.bttnComprar.Size = new System.Drawing.Size(160, 38);
             this.bttnComprar.TabIndex = 8;
             this.bttnComprar.Text = "COMPRA";
             this.bttnComprar.UseVisualStyleBackColor = false;
@@ -400,11 +383,10 @@ namespace New_MasterTrade
             this.panelArchivo.Controls.Add(this.bttnCompras);
             this.panelArchivo.Controls.Add(this.bttnProveedores);
             this.panelArchivo.Controls.Add(this.bttnProductos);
-            this.panelArchivo.Location = new System.Drawing.Point(133, 53);
-            this.panelArchivo.Margin = new System.Windows.Forms.Padding(4);
-            this.panelArchivo.MinimumSize = new System.Drawing.Size(213, 187);
+            this.panelArchivo.Location = new System.Drawing.Point(100, 43);
+            this.panelArchivo.MinimumSize = new System.Drawing.Size(160, 152);
             this.panelArchivo.Name = "panelArchivo";
-            this.panelArchivo.Size = new System.Drawing.Size(213, 188);
+            this.panelArchivo.Size = new System.Drawing.Size(160, 152);
             this.panelArchivo.TabIndex = 14;
             this.panelArchivo.Visible = false;
             // 
@@ -418,9 +400,8 @@ namespace New_MasterTrade
             this.bttnClientes.Image = global::New_MasterTrade.Properties.Resources.star;
             this.bttnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnClientes.Location = new System.Drawing.Point(0, 0);
-            this.bttnClientes.Margin = new System.Windows.Forms.Padding(4);
             this.bttnClientes.Name = "bttnClientes";
-            this.bttnClientes.Size = new System.Drawing.Size(213, 47);
+            this.bttnClientes.Size = new System.Drawing.Size(160, 38);
             this.bttnClientes.TabIndex = 18;
             this.bttnClientes.Text = "USUARIOS";
             this.bttnClientes.UseVisualStyleBackColor = false;
@@ -435,10 +416,9 @@ namespace New_MasterTrade
             this.bttnVentas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnVentas.Image = global::New_MasterTrade.Properties.Resources.receipt;
             this.bttnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnVentas.Location = new System.Drawing.Point(0, 94);
-            this.bttnVentas.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnVentas.Location = new System.Drawing.Point(0, 76);
             this.bttnVentas.Name = "bttnVentas";
-            this.bttnVentas.Size = new System.Drawing.Size(213, 47);
+            this.bttnVentas.Size = new System.Drawing.Size(160, 38);
             this.bttnVentas.TabIndex = 17;
             this.bttnVentas.Text = "VENTAS";
             this.bttnVentas.UseVisualStyleBackColor = false;
@@ -453,10 +433,9 @@ namespace New_MasterTrade
             this.bttnCompras.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnCompras.Image = global::New_MasterTrade.Properties.Resources.shopping_bag;
             this.bttnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnCompras.Location = new System.Drawing.Point(0, 141);
-            this.bttnCompras.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnCompras.Location = new System.Drawing.Point(0, 114);
             this.bttnCompras.Name = "bttnCompras";
-            this.bttnCompras.Size = new System.Drawing.Size(213, 47);
+            this.bttnCompras.Size = new System.Drawing.Size(160, 38);
             this.bttnCompras.TabIndex = 16;
             this.bttnCompras.Text = "COMPRAS";
             this.bttnCompras.UseVisualStyleBackColor = false;
@@ -471,10 +450,9 @@ namespace New_MasterTrade
             this.bttnProveedores.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnProveedores.Image = global::New_MasterTrade.Properties.Resources.parcel;
             this.bttnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnProveedores.Location = new System.Drawing.Point(0, 188);
-            this.bttnProveedores.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnProveedores.Location = new System.Drawing.Point(0, 153);
             this.bttnProveedores.Name = "bttnProveedores";
-            this.bttnProveedores.Size = new System.Drawing.Size(213, 47);
+            this.bttnProveedores.Size = new System.Drawing.Size(160, 38);
             this.bttnProveedores.TabIndex = 11;
             this.bttnProveedores.Text = "PROVEEDORES";
             this.bttnProveedores.UseVisualStyleBackColor = false;
@@ -489,10 +467,9 @@ namespace New_MasterTrade
             this.bttnProductos.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnProductos.Image = global::New_MasterTrade.Properties.Resources.monitor;
             this.bttnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnProductos.Location = new System.Drawing.Point(0, 47);
-            this.bttnProductos.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnProductos.Location = new System.Drawing.Point(0, 38);
             this.bttnProductos.Name = "bttnProductos";
-            this.bttnProductos.Size = new System.Drawing.Size(213, 47);
+            this.bttnProductos.Size = new System.Drawing.Size(160, 38);
             this.bttnProductos.TabIndex = 10;
             this.bttnProductos.Text = "PRODUCTOS";
             this.bttnProductos.UseVisualStyleBackColor = false;
@@ -500,10 +477,9 @@ namespace New_MasterTrade
             // 
             // panelContenedor
             // 
-            this.panelContenedor.Location = new System.Drawing.Point(0, 53);
-            this.panelContenedor.Margin = new System.Windows.Forms.Padding(4);
+            this.panelContenedor.Location = new System.Drawing.Point(0, 43);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1144, 678);
+            this.panelContenedor.Size = new System.Drawing.Size(858, 551);
             this.panelContenedor.TabIndex = 17;
             // 
             // bttnMinimizar
@@ -513,10 +489,9 @@ namespace New_MasterTrade
             this.bttnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnMinimizar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnMinimizar.ForeColor = System.Drawing.Color.White;
-            this.bttnMinimizar.Location = new System.Drawing.Point(1045, 9);
-            this.bttnMinimizar.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnMinimizar.Location = new System.Drawing.Point(784, 7);
             this.bttnMinimizar.Name = "bttnMinimizar";
-            this.bttnMinimizar.Size = new System.Drawing.Size(39, 34);
+            this.bttnMinimizar.Size = new System.Drawing.Size(29, 28);
             this.bttnMinimizar.TabIndex = 1;
             this.bttnMinimizar.Text = "-";
             this.bttnMinimizar.UseVisualStyleBackColor = false;
@@ -534,9 +509,8 @@ namespace New_MasterTrade
             this.panelMenu.Controls.Add(this.bttnArchivo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(1144, 53);
+            this.panelMenu.Size = new System.Drawing.Size(858, 43);
             this.panelMenu.TabIndex = 4;
             // 
             // bttnSalir
@@ -546,10 +520,9 @@ namespace New_MasterTrade
             this.bttnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnSalir.Font = new System.Drawing.Font("Arial", 9F);
             this.bttnSalir.Image = global::New_MasterTrade.Properties.Resources.Salir;
-            this.bttnSalir.Location = new System.Drawing.Point(1092, 9);
-            this.bttnSalir.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnSalir.Location = new System.Drawing.Point(819, 7);
             this.bttnSalir.Name = "bttnSalir";
-            this.bttnSalir.Size = new System.Drawing.Size(39, 34);
+            this.bttnSalir.Size = new System.Drawing.Size(29, 28);
             this.bttnSalir.TabIndex = 12;
             this.bttnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnSalir.UseVisualStyleBackColor = false;
@@ -558,10 +531,9 @@ namespace New_MasterTrade
             // pictureBox1
             // 
             this.pictureBox1.Image = global::New_MasterTrade.Properties.Resources.MasterTradeLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(5, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 43);
+            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
@@ -576,10 +548,9 @@ namespace New_MasterTrade
             this.bttnTransacciones.ForeColor = System.Drawing.SystemColors.Control;
             this.bttnTransacciones.Image = ((System.Drawing.Image)(resources.GetObject("bttnTransacciones.Image")));
             this.bttnTransacciones.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnTransacciones.Location = new System.Drawing.Point(347, 0);
-            this.bttnTransacciones.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnTransacciones.Location = new System.Drawing.Point(260, 0);
             this.bttnTransacciones.Name = "bttnTransacciones";
-            this.bttnTransacciones.Size = new System.Drawing.Size(213, 47);
+            this.bttnTransacciones.Size = new System.Drawing.Size(160, 38);
             this.bttnTransacciones.TabIndex = 17;
             this.bttnTransacciones.Text = "REGISTRAR";
             this.bttnTransacciones.UseVisualStyleBackColor = false;
@@ -597,10 +568,9 @@ namespace New_MasterTrade
             this.bttnMantenimiento.ForeColor = System.Drawing.SystemColors.Control;
             this.bttnMantenimiento.Image = global::New_MasterTrade.Properties.Resources.FlechaAbajo;
             this.bttnMantenimiento.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnMantenimiento.Location = new System.Drawing.Point(773, 0);
-            this.bttnMantenimiento.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnMantenimiento.Location = new System.Drawing.Point(580, 0);
             this.bttnMantenimiento.Name = "bttnMantenimiento";
-            this.bttnMantenimiento.Size = new System.Drawing.Size(213, 47);
+            this.bttnMantenimiento.Size = new System.Drawing.Size(160, 38);
             this.bttnMantenimiento.TabIndex = 13;
             this.bttnMantenimiento.Text = "MANTENIMIENTO";
             this.bttnMantenimiento.UseVisualStyleBackColor = false;
@@ -618,10 +588,9 @@ namespace New_MasterTrade
             this.bttnReportes.ForeColor = System.Drawing.SystemColors.Control;
             this.bttnReportes.Image = global::New_MasterTrade.Properties.Resources.FlechaAbajo;
             this.bttnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnReportes.Location = new System.Drawing.Point(560, 0);
-            this.bttnReportes.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnReportes.Location = new System.Drawing.Point(420, 0);
             this.bttnReportes.Name = "bttnReportes";
-            this.bttnReportes.Size = new System.Drawing.Size(213, 47);
+            this.bttnReportes.Size = new System.Drawing.Size(160, 38);
             this.bttnReportes.TabIndex = 17;
             this.bttnReportes.Text = "REPORTES";
             this.bttnReportes.UseVisualStyleBackColor = false;
@@ -639,10 +608,9 @@ namespace New_MasterTrade
             this.bttnArchivo.ForeColor = System.Drawing.SystemColors.Control;
             this.bttnArchivo.Image = global::New_MasterTrade.Properties.Resources.FlechaAbajo;
             this.bttnArchivo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnArchivo.Location = new System.Drawing.Point(133, 0);
-            this.bttnArchivo.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnArchivo.Location = new System.Drawing.Point(100, 0);
             this.bttnArchivo.Name = "bttnArchivo";
-            this.bttnArchivo.Size = new System.Drawing.Size(213, 47);
+            this.bttnArchivo.Size = new System.Drawing.Size(160, 38);
             this.bttnArchivo.TabIndex = 14;
             this.bttnArchivo.Text = "ARCHIVO";
             this.bttnArchivo.UseVisualStyleBackColor = false;
@@ -655,10 +623,10 @@ namespace New_MasterTrade
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel1.Controls.Add(this.bttnAjustes);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 726);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 590);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1144, 60);
+            this.panel1.Size = new System.Drawing.Size(858, 49);
             this.panel1.TabIndex = 5;
             // 
             // bttnAjustes
@@ -671,10 +639,9 @@ namespace New_MasterTrade
             this.bttnAjustes.ForeColor = System.Drawing.Color.White;
             this.bttnAjustes.Image = global::New_MasterTrade.Properties.Resources.settings;
             this.bttnAjustes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnAjustes.Location = new System.Drawing.Point(917, 2);
-            this.bttnAjustes.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnAjustes.Location = new System.Drawing.Point(688, 2);
             this.bttnAjustes.Name = "bttnAjustes";
-            this.bttnAjustes.Size = new System.Drawing.Size(213, 55);
+            this.bttnAjustes.Size = new System.Drawing.Size(160, 45);
             this.bttnAjustes.TabIndex = 19;
             this.bttnAjustes.Text = "AJUSTES";
             this.bttnAjustes.UseVisualStyleBackColor = false;
@@ -682,15 +649,14 @@ namespace New_MasterTrade
             // 
             // SesionIniciada
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1144, 786);
+            this.ClientSize = new System.Drawing.Size(858, 639);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelPapa);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SesionIniciada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SesionIniciada";

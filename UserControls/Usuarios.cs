@@ -97,12 +97,12 @@ namespace New_MasterTrade.UserControls
 
         private void CargarTabla()
         {
-            if (crud.Usuarios().Rows.Count > 0)
-            {
-                tablaUsuarios.DataSource = crud.Usuarios();
-                txtBuscar.Enabled = true;
-            }
-            else MessageBox.Show("No se encontraron registros en la base de datos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //if (crud.Usuarios().Rows.Count > 0)
+            //{
+            //    tablaUsuarios.DataSource = crud.Usuarios();
+            //    txtBuscar.Enabled = true;
+            //}
+            //else MessageBox.Show("No se encontraron registros en la base de datos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
