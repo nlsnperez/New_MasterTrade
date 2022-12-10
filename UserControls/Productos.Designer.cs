@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaProductos = new System.Windows.Forms.DataGridView();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +59,10 @@
             this.bttnBuscar = new System.Windows.Forms.Button();
             this.txtDescripción = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.bttnSiguiente = new System.Windows.Forms.Button();
+            this.comboPaginas = new System.Windows.Forms.ComboBox();
+            this.bttnAnterior = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,24 +72,24 @@
             this.tablaProductos.AllowUserToDeleteRows = false;
             this.tablaProductos.AllowUserToResizeColumns = false;
             this.tablaProductos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaProductos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tablaProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -100,24 +104,24 @@
             this.columnImagen,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaProductos.EnableHeadersVisualStyles = false;
-            this.tablaProductos.Location = new System.Drawing.Point(0, 60);
-            this.tablaProductos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tablaProductos.Location = new System.Drawing.Point(0, 49);
+            this.tablaProductos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.ReadOnly = true;
             this.tablaProductos.RowHeadersVisible = false;
             this.tablaProductos.RowHeadersWidth = 51;
             this.tablaProductos.RowTemplate.Height = 24;
             this.tablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaProductos.Size = new System.Drawing.Size(1144, 548);
+            this.tablaProductos.Size = new System.Drawing.Size(858, 410);
             this.tablaProductos.TabIndex = 0;
             this.tablaProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProductos_CellClick);
             this.tablaProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaProductos_CellFormatting);
@@ -240,11 +244,11 @@
             // 
             this.txtSerial.BackColor = System.Drawing.SystemColors.Control;
             this.txtSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSerial.Location = new System.Drawing.Point(646, 643);
-            this.txtSerial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSerial.Location = new System.Drawing.Point(484, 522);
+            this.txtSerial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSerial.MaxLength = 13;
             this.txtSerial.Name = "txtSerial";
-            this.txtSerial.Size = new System.Drawing.Size(143, 22);
+            this.txtSerial.Size = new System.Drawing.Size(108, 20);
             this.txtSerial.TabIndex = 36;
             this.txtSerial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
@@ -252,9 +256,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(646, 624);
+            this.label1.Location = new System.Drawing.Point(484, 507);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 16);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 35;
             this.label1.Text = "SERIAL";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -285,10 +290,10 @@
             this.bttnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnAgregar.Image = global::New_MasterTrade.Properties.Resources.pencil;
             this.bttnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnAgregar.Location = new System.Drawing.Point(16, 636);
-            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bttnAgregar.Location = new System.Drawing.Point(12, 517);
+            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bttnAgregar.Name = "bttnAgregar";
-            this.bttnAgregar.Size = new System.Drawing.Size(133, 30);
+            this.bttnAgregar.Size = new System.Drawing.Size(100, 24);
             this.bttnAgregar.TabIndex = 33;
             this.bttnAgregar.Text = "REGISTRAR";
             this.bttnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -301,9 +306,10 @@
             this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(333, 10);
+            this.label9.Location = new System.Drawing.Point(250, 8);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(478, 38);
+            this.label9.Size = new System.Drawing.Size(395, 31);
             this.label9.TabIndex = 118;
             this.label9.Text = "PRODUCTOS REGISTRADOS";
             // 
@@ -311,36 +317,40 @@
             // 
             this.comboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCategoria.FormattingEnabled = true;
-            this.comboCategoria.Location = new System.Drawing.Point(207, 642);
+            this.comboCategoria.Location = new System.Drawing.Point(155, 522);
+            this.comboCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboCategoria.Name = "comboCategoria";
-            this.comboCategoria.Size = new System.Drawing.Size(143, 24);
+            this.comboCategoria.Size = new System.Drawing.Size(108, 21);
             this.comboCategoria.TabIndex = 119;
             // 
             // comboMarca
             // 
             this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMarca.FormattingEnabled = true;
-            this.comboMarca.Location = new System.Drawing.Point(352, 642);
+            this.comboMarca.Location = new System.Drawing.Point(264, 522);
+            this.comboMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboMarca.Name = "comboMarca";
-            this.comboMarca.Size = new System.Drawing.Size(143, 24);
+            this.comboMarca.Size = new System.Drawing.Size(108, 21);
             this.comboMarca.TabIndex = 120;
             // 
             // comboModelo
             // 
             this.comboModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboModelo.FormattingEnabled = true;
-            this.comboModelo.Location = new System.Drawing.Point(497, 642);
+            this.comboModelo.Location = new System.Drawing.Point(373, 522);
+            this.comboModelo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboModelo.Name = "comboModelo";
-            this.comboModelo.Size = new System.Drawing.Size(143, 24);
+            this.comboModelo.Size = new System.Drawing.Size(108, 21);
             this.comboModelo.TabIndex = 121;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(207, 624);
+            this.label2.Location = new System.Drawing.Point(155, 507);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 122;
             this.label2.Text = "CATEGORÍA";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -349,9 +359,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(352, 624);
+            this.label3.Location = new System.Drawing.Point(264, 507);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 16);
+            this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 123;
             this.label3.Text = "MARCA:";
             // 
@@ -359,9 +370,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(497, 624);
+            this.label4.Location = new System.Drawing.Point(373, 507);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 16);
+            this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 124;
             this.label4.Text = "MODELO";
             // 
@@ -372,10 +384,10 @@
             this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnBuscar.Image = global::New_MasterTrade.Properties.Resources.browsing;
             this.bttnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnBuscar.Location = new System.Drawing.Point(997, 636);
-            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bttnBuscar.Location = new System.Drawing.Point(748, 517);
+            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bttnBuscar.Name = "bttnBuscar";
-            this.bttnBuscar.Size = new System.Drawing.Size(133, 30);
+            this.bttnBuscar.Size = new System.Drawing.Size(100, 24);
             this.bttnBuscar.TabIndex = 125;
             this.bttnBuscar.Text = "BUSCAR";
             this.bttnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -386,27 +398,83 @@
             // 
             this.txtDescripción.BackColor = System.Drawing.SystemColors.Control;
             this.txtDescripción.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescripción.Location = new System.Drawing.Point(795, 643);
-            this.txtDescripción.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDescripción.Location = new System.Drawing.Point(596, 522);
+            this.txtDescripción.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDescripción.Name = "txtDescripción";
-            this.txtDescripción.Size = new System.Drawing.Size(143, 22);
+            this.txtDescripción.Size = new System.Drawing.Size(108, 20);
             this.txtDescripción.TabIndex = 127;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(795, 623);
+            this.label5.Location = new System.Drawing.Point(596, 506);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 16);
+            this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 126;
             this.label5.Text = "DESCRIPCIÓN";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(372, 475);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 132;
+            this.label6.Text = "PÁGINA:";
+            // 
+            // bttnSiguiente
+            // 
+            this.bttnSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnSiguiente.FlatAppearance.BorderSize = 0;
+            this.bttnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnSiguiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnSiguiente.Location = new System.Drawing.Point(491, 469);
+            this.bttnSiguiente.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnSiguiente.Name = "bttnSiguiente";
+            this.bttnSiguiente.Size = new System.Drawing.Size(24, 24);
+            this.bttnSiguiente.TabIndex = 131;
+            this.bttnSiguiente.Text = ">";
+            this.bttnSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnSiguiente.UseVisualStyleBackColor = false;
+            // 
+            // comboPaginas
+            // 
+            this.comboPaginas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboPaginas.FormattingEnabled = true;
+            this.comboPaginas.Location = new System.Drawing.Point(426, 471);
+            this.comboPaginas.Margin = new System.Windows.Forms.Padding(2);
+            this.comboPaginas.Name = "comboPaginas";
+            this.comboPaginas.Size = new System.Drawing.Size(61, 21);
+            this.comboPaginas.TabIndex = 130;
+            // 
+            // bttnAnterior
+            // 
+            this.bttnAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAnterior.FlatAppearance.BorderSize = 0;
+            this.bttnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnAnterior.Location = new System.Drawing.Point(344, 469);
+            this.bttnAnterior.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAnterior.Name = "bttnAnterior";
+            this.bttnAnterior.Size = new System.Drawing.Size(24, 24);
+            this.bttnAnterior.TabIndex = 129;
+            this.bttnAnterior.Text = "<";
+            this.bttnAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAnterior.UseVisualStyleBackColor = false;
+            // 
             // Productos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.bttnSiguiente);
+            this.Controls.Add(this.comboPaginas);
+            this.Controls.Add(this.bttnAnterior);
             this.Controls.Add(this.txtDescripción);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.bttnBuscar);
@@ -421,9 +489,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bttnAgregar);
             this.Controls.Add(this.tablaProductos);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Productos";
-            this.Size = new System.Drawing.Size(1144, 678);
+            this.Size = new System.Drawing.Size(858, 551);
             this.Load += new System.EventHandler(this.ResgistrosProductos_Prototipo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).EndInit();
             this.ResumeLayout(false);
@@ -461,5 +529,9 @@
         private System.Windows.Forms.Button bttnBuscar;
         private System.Windows.Forms.TextBox txtDescripción;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button bttnSiguiente;
+        private System.Windows.Forms.ComboBox comboPaginas;
+        private System.Windows.Forms.Button bttnAnterior;
     }
 }

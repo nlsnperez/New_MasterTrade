@@ -44,7 +44,7 @@ namespace New_MasterTrade.Objetos
 
         public bool IsEmpty()
         {
-            if (this.Serial == "" || this.Descripcion == "" || this.Precio_Compra == 0 || this.Precio_Venta == 0)
+            if (this.Serial == "" || this.Descripcion == "")
             {
                 return true;
             }
@@ -57,7 +57,7 @@ namespace New_MasterTrade.Objetos
             {
                 return true;
             }
-            return false;
+            return true;
         }
     }
 }

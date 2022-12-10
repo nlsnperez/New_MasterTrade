@@ -278,7 +278,7 @@ namespace New_MasterTrade.UserControls
             this.bttnAnterior.FlatAppearance.BorderSize = 0;
             this.bttnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnAnterior.Location = new System.Drawing.Point(12, 11);
+            this.bttnAnterior.Location = new System.Drawing.Point(344, 510);
             this.bttnAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.bttnAnterior.Name = "bttnAnterior";
             this.bttnAnterior.Size = new System.Drawing.Size(24, 24);
@@ -292,7 +292,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.comboPaginas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboPaginas.FormattingEnabled = true;
-            this.comboPaginas.Location = new System.Drawing.Point(94, 13);
+            this.comboPaginas.Location = new System.Drawing.Point(426, 512);
             this.comboPaginas.Margin = new System.Windows.Forms.Padding(2);
             this.comboPaginas.Name = "comboPaginas";
             this.comboPaginas.Size = new System.Drawing.Size(61, 21);
@@ -305,7 +305,7 @@ namespace New_MasterTrade.UserControls
             this.bttnSiguiente.FlatAppearance.BorderSize = 0;
             this.bttnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnSiguiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnSiguiente.Location = new System.Drawing.Point(159, 11);
+            this.bttnSiguiente.Location = new System.Drawing.Point(491, 510);
             this.bttnSiguiente.Margin = new System.Windows.Forms.Padding(2);
             this.bttnSiguiente.Name = "bttnSiguiente";
             this.bttnSiguiente.Size = new System.Drawing.Size(24, 24);
@@ -319,7 +319,7 @@ namespace New_MasterTrade.UserControls
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(40, 17);
+            this.label3.Location = new System.Drawing.Point(372, 516);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
