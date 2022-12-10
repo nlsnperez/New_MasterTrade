@@ -18,7 +18,7 @@ namespace New_MasterTrade.UserControls
     public partial class Vender : UserControl
     {
         CRUD_Ventas crud;
-        CRUD_Clientes crud_clientes;
+        CRUD_Usuarios crud_usuarios = new CRUD_Usuarios();
         DataTable carrito = new DataTable();
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
         List<int> dias_garantia;
@@ -42,7 +42,6 @@ namespace New_MasterTrade.UserControls
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
         {
             crud = new CRUD_Ventas();
-            crud_clientes = new CRUD_Clientes();
             dias_garantia = new List<int>();
             tableCarrito.AutoGenerateColumns = false;
             //ConfigControles("OFF");
@@ -228,21 +227,18 @@ namespace New_MasterTrade.UserControls
                 Form x = new Form();
                 BuscarClientes y = new BuscarClientes();
                 SesionIniciada.Instancia.MostrarDialog(y);
-                //x.StartPosition = FormStartPosition.CenterScreen;
-                //x.Size = new Size(y.Width + 15, y.Height + 30);
-                //x.Controls.Add(y);
-                //x.ShowDialog();
-                if (y.x != "")
+                if (y.x != 0)
                 {
-                    SetDatos(crud_clientes.ClienteDatos(y.x));
+                    SetDatos(crud_usuarios.Usuario(y.x, y.y));
                 }
             }
             else
             {
-                if (crud_clientes.ClienteDatos(txtCliente.Text).Rows.Count > 0)
+                Persona cliente = crud_usuarios.Usuario(0, txtCliente.Text);
+                if (cliente != null)
                 {
                     MessageBox.Show("Cliente encontrado!", "CLIENTE ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    SetDatos(crud_clientes.ClienteDatos(txtCliente.Text));
+                    SetDatos(cliente);
                 }
                 else
                 {
@@ -255,9 +251,10 @@ namespace New_MasterTrade.UserControls
                         x.Size = new Size(y.Width + 15, y.Height + 30);
                         x.Controls.Add(y);
                         x.ShowDialog();
-                        if (crud_clientes.ClienteDatos(txtCliente.Text).Rows.Count > 0)
+                        Persona nuevo_cliente = crud_usuarios.Usuario(0, txtCliente.Text);
+                        if (nuevo_cliente != null)
                         {
-                            SetDatos(crud_clientes.ClienteDatos(txtCliente.Text));
+                            SetDatos(nuevo_cliente);
                         }
                         else
                         {
@@ -272,27 +269,19 @@ namespace New_MasterTrade.UserControls
             }
         }
 
-        public void SetDatos(DataTable tabla)
+        public void SetDatos(Persona cliente)
         {
-            DataTable resultado = tabla;
-
-            IdCliente = Int32.Parse(resultado.Rows[0][0].ToString());
-            txtCliente.Text = resultado.Rows[0][1].ToString();
-            txtRazonSocial.Text = resultado.Rows[0][2].ToString();
-            txtDireccion.Text = resultado.Rows[0][3].ToString();
-            txtTelefono.Text = resultado.Rows[0][4].ToString();
-            txtCorreo.Text = resultado.Rows[0][5].ToString();
+            IdCliente = cliente.Id;
+            txtCliente.Text = cliente.Documento;
+            txtRazonSocial.Text = cliente.RazonSocial;
+            txtDireccion.Text = cliente.Direccion;
+            txtTelefono.Text = cliente.Telefono;
+            txtCorreo.Text = cliente.Correo;
         }
 
         private void bttnBuscarProductos_Click(object sender, EventArgs e)
         {
             SesionIniciada.Instancia.MostrarDialog(new BuscarProductos(null, this));
-            //Form x = new Form();
-            //BuscarProductos y = new BuscarProductos(null, this);
-            //x.StartPosition = FormStartPosition.CenterScreen;
-            //x.Size = new Size(y.Width + 15, y.Height + 38);
-            //x.Controls.Add(y);
-            //x.ShowDialog();
         }
 
         private Venta GetVenta()
@@ -332,13 +321,6 @@ namespace New_MasterTrade.UserControls
                 {
                     ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), dias_garantia, Convert.ToDecimal(txtSubTotalBs.Text));
                     SesionIniciada.Instancia.MostrarDialog(factura);
-                    //Form x = new Form();
-                    //ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), dias_garantia,Convert.ToDecimal(txtSubTotalBs.Text));
-                    //x.Size = factura.Size;
-                    //x.Controls.Add(factura);
-                    //x.StartPosition = FormStartPosition.CenterScreen;
-                    //x.FormBorderStyle = FormBorderStyle.None;
-                    //x.ShowDialog();
                     if (factura.VentaCompletada == true)
                     {
                         ConfigControles("OFF");

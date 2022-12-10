@@ -20,7 +20,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `orden_compra`(`id_oco`, `id_prv`, `id_tca`, `num_oco`, `tot_oco`, `fec_oco`, `hor_oco`, `act_oco`) VALUES (@id, @proveedor,@tasacambio,@norden,@total,@fecha,@hora,@activo)";
+                    command.CommandText = "INSERT INTO `orden_compra`(`id_oco`, `id_usu`, `id_tca`, `num_oco`, `tot_oco`, `fec_oco`, `hor_oco`, `act_oco`) VALUES (@id, @proveedor,@tasacambio,@norden,@total,@fecha,@hora,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 

@@ -15,7 +15,7 @@ namespace New_MasterTrade.UserControls
     public partial class Comprar : UserControl
     {
         CRUD_Compras crud;
-        CRUD_Proveedores personas;
+        CRUD_Usuarios crud_usuarios = new CRUD_Usuarios();
         DataTable carrito = new DataTable();
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
         int IdCompra = 0;
@@ -57,7 +57,6 @@ namespace New_MasterTrade.UserControls
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
         {
             crud = new CRUD_Compras();
-            personas = new CRUD_Proveedores();
             tableCarrito.AutoGenerateColumns = false;
             ConfigControles("OFF");
             ConfigCarrito();
@@ -244,62 +243,58 @@ namespace New_MasterTrade.UserControls
             if (txtProveedor.Text == "")
             {
                 Form x = new Form();
-                BuscarProveedores y = new BuscarProveedores(1);
-                //x.StartPosition = FormStartPosition.CenterScreen;
-                //x.Size = new Size(y.Width + 15, y.Height + 30);
-                //x.Controls.Add(y);
-                //x.ShowDialog();
+                BuscarClientes y = new BuscarClientes();
                 SesionIniciada.Instancia.MostrarDialog(y);
-                if (y.x != "")
+                if (y.x != 0)
                 {
-                    SetDatos(personas.ProveedorDatos(y.x));
+                    SetDatos(crud_usuarios.Usuario(y.x, y.y));
                 }
             }
             else
             {
-                if (personas.ProveedorDatos(txtProveedor.Text).Rows.Count > 0)
+                Persona proveedor = crud_usuarios.Usuario(0, txtProveedor.Text);
+                if (proveedor != null)
                 {
                     MessageBox.Show("Proveedor encontrado!", "PROVEEDOR ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    SetDatos(personas.ProveedorDatos(txtProveedor.Text));
+                    SetDatos(proveedor);
                 }
                 else
                 {
                     if (MessageBox.Show("Proveedor no encontrado, ¿Desea registrarlo?", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         Form x = new Form();
-                        FormularioPersonas y = new FormularioPersonas(1);
-                        y.RegistroExterno(2, txtProveedor.Text);
+                        FormularioPersonas y = new FormularioPersonas(0);
+                        y.RegistroExterno(1, txtProveedor.Text);
                         x.StartPosition = FormStartPosition.CenterScreen;
                         x.Size = new Size(y.Width + 15, y.Height + 30);
                         x.Controls.Add(y);
                         x.ShowDialog();
-                        if (personas.ProveedorDatos(txtProveedor.Text).Rows.Count > 0)
+                        Persona nuevo_proveedor = crud_usuarios.Usuario(0, txtProveedor.Text);
+                        if (nuevo_proveedor != null)
                         {
-                            SetDatos(personas.ProveedorDatos(txtProveedor.Text));
+                            SetDatos(nuevo_proveedor);
                         }
-                        else 
+                        else
                         {
                             txtProveedor.Text = "";
                             txtRazonSocial.Text = "";
                             txtDireccion.Text = "";
                             txtTelefono.Text = "";
                             txtCorreo.Text = "";
-                        }                
+                        }
                     }
                 }
             }
         }
 
-        public void SetDatos(DataTable tabla)
+        public void SetDatos(Persona proveedor)
         {
-            DataTable resultado = tabla;
-
-            IdProveedor = Int32.Parse(resultado.Rows[0][0].ToString());
-            txtProveedor.Text = resultado.Rows[0][1].ToString();
-            txtRazonSocial.Text = resultado.Rows[0][2].ToString();
-            txtDireccion.Text = resultado.Rows[0][3].ToString();
-            txtTelefono.Text = resultado.Rows[0][4].ToString();
-            txtCorreo.Text = resultado.Rows[0][5].ToString();
+            IdProveedor = proveedor.Id;
+            txtProveedor.Text = proveedor.Documento;
+            txtRazonSocial.Text = proveedor.RazonSocial;
+            txtDireccion.Text = proveedor.Direccion;
+            txtTelefono.Text = proveedor.Telefono;
+            txtCorreo.Text = proveedor.Correo;
         }
 
         private void bttnBuscarProductos_Click(object sender, EventArgs e)
@@ -351,8 +346,8 @@ namespace New_MasterTrade.UserControls
                 {
                     crud.Crear(GetCompra());
                     crud.CrearDetalle(GetDetalle());
-                    Reporte reporte = new Reporte();
-                    reporte.Reporte_Orden_Compra(txtNumeroOrden.Text);
+                    //Reporte reporte = new Reporte();
+                    //reporte.Reporte_Orden_Compra(txtNumeroOrden.Text);
                     bitacora.Create(UserData.Id, Modulos.Comprar, Accion.NuevaCompra(UserData.NombreUsuario, txtNumeroOrden.Text));
                     ConfigControles("OFF");
                 }

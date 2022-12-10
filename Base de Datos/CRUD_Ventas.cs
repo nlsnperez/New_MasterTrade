@@ -20,7 +20,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `orden_venta`(`id_ove`, `id_cli`, `id_tca`, `num_ove`, `fec_ove`, `hor_ove`) VALUES (@id, @cliente,@tasacambio,@norden,@fecha,@hora)";
+                    command.CommandText = "INSERT INTO `orden_venta`(`id_ove`, `id_usu`, `id_tca`, `num_ove`, `fec_ove`, `hor_ove`) VALUES (@id, @cliente,@tasacambio,@norden,@fecha,@hora)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
@@ -85,7 +85,7 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `factura_venta`(`id_ven`, `id_ove`, `id_imp`, `id_mpa`, `tim_fve`, `tot_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@impuesto,@metodopago,@totalimpuesto,@total,@activo)";
+                    command.CommandText = "INSERT INTO `factura_venta`(`id_usu`, `id_ove`, `id_imp`, `id_mpa`, `tim_fve`, `tot_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@impuesto,@metodopago,@totalimpuesto,@total,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 

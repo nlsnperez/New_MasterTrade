@@ -71,7 +71,8 @@ namespace New_MasterTrade.UserControls
             if (e.ColumnIndex >= 0 && tablaPersonas.Columns[e.ColumnIndex].Name == "Detalles")
             {
                 int id = Convert.ToInt32(tablaPersonas.Rows[e.RowIndex].Cells["columnId"].Value);
-                Persona usuario = crud.Usuario(id);
+                string documento = tablaPersonas.Rows[e.RowIndex].Cells["Documento"].Value.ToString();
+                Persona usuario = crud.Usuario(id, documento);
                 FormularioPersonas y = new FormularioPersonas(0);
                 y.DatosPersona(usuario);
 

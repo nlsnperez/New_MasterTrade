@@ -167,6 +167,32 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
+        public DataTable UsuariosActivos()
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `usuario` WHERE act_usu = 1", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla productos encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return null;
+        }
+
         public bool VendedorRegistrado(int id)
         {
             try
@@ -307,12 +333,12 @@ namespace New_MasterTrade.Base_de_Datos
             return false;
         }
 
-        public Persona Usuario(int id)
+        public Persona Usuario(int id, string documento)
         {
             Persona resultado = null;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `id_usu` = " + id, con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `id_usu` = " + id + " OR `doc_usu` LIKE '%"+documento+"%'", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
