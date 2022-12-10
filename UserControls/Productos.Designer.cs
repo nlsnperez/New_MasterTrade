@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaProductos = new System.Windows.Forms.DataGridView();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,24 +72,24 @@
             this.tablaProductos.AllowUserToDeleteRows = false;
             this.tablaProductos.AllowUserToResizeColumns = false;
             this.tablaProductos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.tablaProductos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tablaProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -104,17 +104,17 @@
             this.columnImagen,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle12;
             this.tablaProductos.EnableHeadersVisualStyles = false;
             this.tablaProductos.Location = new System.Drawing.Point(0, 49);
-            this.tablaProductos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tablaProductos.Margin = new System.Windows.Forms.Padding(2);
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.ReadOnly = true;
             this.tablaProductos.RowHeadersVisible = false;
@@ -245,7 +245,7 @@
             this.txtSerial.BackColor = System.Drawing.SystemColors.Control;
             this.txtSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSerial.Location = new System.Drawing.Point(484, 522);
-            this.txtSerial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSerial.Margin = new System.Windows.Forms.Padding(2);
             this.txtSerial.MaxLength = 13;
             this.txtSerial.Name = "txtSerial";
             this.txtSerial.Size = new System.Drawing.Size(108, 20);
@@ -262,7 +262,6 @@
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 35;
             this.label1.Text = "SERIAL";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -291,7 +290,7 @@
             this.bttnAgregar.Image = global::New_MasterTrade.Properties.Resources.pencil;
             this.bttnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnAgregar.Location = new System.Drawing.Point(12, 517);
-            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnAgregar.Name = "bttnAgregar";
             this.bttnAgregar.Size = new System.Drawing.Size(100, 24);
             this.bttnAgregar.TabIndex = 33;
@@ -318,7 +317,7 @@
             this.comboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCategoria.FormattingEnabled = true;
             this.comboCategoria.Location = new System.Drawing.Point(155, 522);
-            this.comboCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.comboCategoria.Name = "comboCategoria";
             this.comboCategoria.Size = new System.Drawing.Size(108, 21);
             this.comboCategoria.TabIndex = 119;
@@ -328,7 +327,7 @@
             this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMarca.FormattingEnabled = true;
             this.comboMarca.Location = new System.Drawing.Point(264, 522);
-            this.comboMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboMarca.Margin = new System.Windows.Forms.Padding(2);
             this.comboMarca.Name = "comboMarca";
             this.comboMarca.Size = new System.Drawing.Size(108, 21);
             this.comboMarca.TabIndex = 120;
@@ -338,7 +337,7 @@
             this.comboModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboModelo.FormattingEnabled = true;
             this.comboModelo.Location = new System.Drawing.Point(373, 522);
-            this.comboModelo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboModelo.Margin = new System.Windows.Forms.Padding(2);
             this.comboModelo.Name = "comboModelo";
             this.comboModelo.Size = new System.Drawing.Size(108, 21);
             this.comboModelo.TabIndex = 121;
@@ -353,7 +352,6 @@
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 122;
             this.label2.Text = "CATEGORÍA";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -385,7 +383,7 @@
             this.bttnBuscar.Image = global::New_MasterTrade.Properties.Resources.browsing;
             this.bttnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnBuscar.Location = new System.Drawing.Point(748, 517);
-            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnBuscar.Name = "bttnBuscar";
             this.bttnBuscar.Size = new System.Drawing.Size(100, 24);
             this.bttnBuscar.TabIndex = 125;
@@ -399,7 +397,7 @@
             this.txtDescripción.BackColor = System.Drawing.SystemColors.Control;
             this.txtDescripción.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescripción.Location = new System.Drawing.Point(596, 522);
-            this.txtDescripción.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescripción.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripción.Name = "txtDescripción";
             this.txtDescripción.Size = new System.Drawing.Size(108, 20);
             this.txtDescripción.TabIndex = 127;
@@ -440,6 +438,7 @@
             this.bttnSiguiente.Text = ">";
             this.bttnSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bttnSiguiente.UseVisualStyleBackColor = false;
+            this.bttnSiguiente.Click += new System.EventHandler(this.bttnSiguiente_Click);
             // 
             // comboPaginas
             // 
@@ -450,6 +449,7 @@
             this.comboPaginas.Name = "comboPaginas";
             this.comboPaginas.Size = new System.Drawing.Size(61, 21);
             this.comboPaginas.TabIndex = 130;
+            this.comboPaginas.SelectedIndexChanged += new System.EventHandler(this.comboPaginas_SelectedIndexChanged_1);
             // 
             // bttnAnterior
             // 
@@ -465,6 +465,7 @@
             this.bttnAnterior.Text = "<";
             this.bttnAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bttnAnterior.UseVisualStyleBackColor = false;
+            this.bttnAnterior.Click += new System.EventHandler(this.bttnAnterior_Click);
             // 
             // Productos
             // 
@@ -489,7 +490,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bttnAgregar);
             this.Controls.Add(this.tablaProductos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Productos";
             this.Size = new System.Drawing.Size(858, 551);
             this.Load += new System.EventHandler(this.ResgistrosProductos_Prototipo_Load);

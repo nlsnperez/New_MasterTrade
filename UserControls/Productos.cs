@@ -15,6 +15,11 @@ namespace New_MasterTrade.UserControls
 {
     public partial class Productos : UserControl
     {
+        private DataTable tabla = new DataTable();
+        private int total_filas = 0;
+        private int pagina = 0;
+        private int total_paginas = 0;
+        private int limite_registro = 2;
         CRUD_Productos crud;
         public Productos()
         {
@@ -25,14 +30,108 @@ namespace New_MasterTrade.UserControls
         {
             crud = new CRUD_Productos();
             tablaProductos.AutoGenerateColumns = false;
-            CargarTabla();
+            CargarDatos(crud.TablaProductos());
+            ConfigComboPaginas();
             ConfigCombos(); 
         }
+
+        //MÉTODOS PARA EL PAGINADOR
+        public void ReiniciarPaginador()
+        {
+            total_filas = 0;
+            pagina = 0;
+            total_paginas = 0;
+            limite_registro = 2;
+        }
+
+        public void ConfigComboPaginas()
+        {
+            if (comboPaginas.Items.Count > 0) comboPaginas.Items.Clear();
+            for (int i = 0; i <= total_paginas; i++)
+            {
+                comboPaginas.Items.Add(i + 1);
+            }
+            comboPaginas.SelectedIndex = 0;
+        }
+
+        public void CargarDatos(DataTable resultados)
+        {
+            tabla = resultados;
+            total_filas = tabla.Rows.Count - 1;
+            total_paginas = total_filas / limite_registro;
+            tablaProductos.DataSource = Resultados(tabla);
+        }
+
+        private DataTable Resultados(DataTable resultados)
+        {
+            HabilitarBotones();
+            return resultados.AsEnumerable().Skip(limite_registro * pagina).Take(limite_registro).CopyToDataTable();
+        }
+
+        private void HabilitarBotones()
+        {
+            if (pagina == 0)
+            {
+                bttnAnterior.Enabled = false;
+            }
+            else
+            {
+                bttnAnterior.Enabled = true;
+            }
+
+            if (pagina == total_paginas)
+            {
+                bttnSiguiente.Enabled = false;
+            }
+            else
+            {
+                bttnSiguiente.Enabled = true;
+            }
+        }
+
+        private void comboPaginas_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                pagina = Int32.Parse(comboPaginas.Text) - 1;
+                tablaProductos.DataSource = Resultados(tabla);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void bttnSiguiente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                comboPaginas.SelectedIndex += 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void bttnAnterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                comboPaginas.SelectedIndex -= 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        //MÉTODOS PARA EL PAGINADOR
 
         public void ConfigCombos()
         {
             try
-            {
+            {               
+
                 DataTable resultados = crud.Categorias();
                 comboCategoria.Items.Add("CUALQUIERA");
                 for (int i = 0; i <= resultados.Rows.Count -1; i++)
@@ -66,31 +165,11 @@ namespace New_MasterTrade.UserControls
         private void bttnAgregar_Click(object sender, EventArgs e)
         {
             SesionIniciada.Instancia.MostrarUserControl(new FormularioProductos());
-            //Form x = new Form();
-            //FormularioProductos y = new FormularioProductos();
-            //x.Size = new Size(y.Width+30, y.Height+40);
-            //x.Controls.Add(y);
-            //x.StartPosition = FormStartPosition.CenterScreen;
-            //x.ShowDialog();
-            //CargarTabla();
         }
 
         private void ResgistrosProductos_Prototipo_Load(object sender, EventArgs e)
         {
             Config();
-        }
-
-        private void CargarTabla()
-        {
-            try
-            {
-                tablaProductos.DataSource = crud.TablaProductos();
-                txtSerial.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void tablaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -104,11 +183,6 @@ namespace New_MasterTrade.UserControls
 
                 y.DatosProducto(producto);
                 SesionIniciada.Instancia.MostrarUserControl(y);
-                //x.Controls.Add(y);
-                //x.Size = new Size(y.Width + 30, y.Height + 40);                
-                //x.StartPosition = FormStartPosition.CenterScreen;
-                //x.ShowDialog();
-                //CargarTabla();
             }
             else
             {
@@ -120,7 +194,7 @@ namespace New_MasterTrade.UserControls
                         {
                             int id = (int)tablaProductos.Rows[e.RowIndex].Cells["columnId"].Value;
                             crud.Delete(id, 0);
-                            CargarTabla();
+                            CargarDatos(crud.TablaProductos());
                         }
                     }
                     else
@@ -131,23 +205,13 @@ namespace New_MasterTrade.UserControls
                             {
                                 int id = (int)tablaProductos.Rows[e.RowIndex].Cells["columnId"].Value;
                                 crud.Delete(id, 1);
-                                CargarTabla();
+                                CargarDatos(crud.TablaProductos());
                             }
                         }
                     }
 
                 }
             }
-        }
-
-        private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
-        {
-            //tablaProductos.DataSource = crud.BuscarProductos(txtSerial.Text);
-        }
-
-        private void bttnReporte_Click(object sender, EventArgs e)
-        {
-            Reporte reporte = new Reporte();
         }
 
         private void tablaProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -167,16 +231,6 @@ namespace New_MasterTrade.UserControls
                     }
                 }
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void bttnBuscar_Click(object sender, EventArgs e)
@@ -204,7 +258,10 @@ namespace New_MasterTrade.UserControls
             if (comboMarca.SelectedIndex == 0) marca = "";
             if (comboModelo.SelectedIndex == 0) modelo = "";
 
-            tablaProductos.DataSource = crud.BuscarProductos(categoria, marca, modelo, serial, descripcion);
+            ReiniciarPaginador();
+            
+            CargarDatos(crud.BuscarProductos(categoria, marca, modelo, serial, descripcion));
+            ConfigComboPaginas();
 
             comboCategoria.SelectedIndex = 0;
             comboMarca.SelectedIndex = 0;
@@ -212,12 +269,13 @@ namespace New_MasterTrade.UserControls
             txtSerial.Text = "";
             txtDescripción.Text = "";
         }
+
         private void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
-        }
+        }        
     }
 }
