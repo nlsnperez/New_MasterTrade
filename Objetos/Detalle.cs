@@ -12,13 +12,16 @@ namespace New_MasterTrade.Objetos
         public int IdOrden { get; set; }
         public int Producto { get; set; }
         public int Cantidad { get; set; }
+        public decimal Precio { get; set; }
         public decimal TotalBs { get; set; }
 
-        public Detalle(int idOrden, int producto, int cantidad, decimal totalBs)
+        public Detalle(int id, int idOrden, int producto, int cantidad, decimal precio, decimal totalBs)
         {
+            Id = id;
             IdOrden = idOrden;
             Producto = producto;
             Cantidad = cantidad;
+            Precio = precio;
             TotalBs = totalBs;
         }
     }

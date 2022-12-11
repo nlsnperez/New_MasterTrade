@@ -325,9 +325,11 @@ namespace New_MasterTrade.UserControls
             
             for (int i = 0; i <= tableCarrito.Rows.Count - 1; i++)
             {
-                Detalle x = new Detalle(IdCompra,
+                Detalle x = new Detalle(0,
+                                        IdCompra,
                                         Int32.Parse(tableCarrito.Rows[i].Cells["columnId"].Value.ToString()),
                                         Int32.Parse(tableCarrito.Rows[i].Cells["columnCantidad"].Value.ToString()),
+                                        decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioU"].Value.ToString()),
                                         decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioT"].Value.ToString()));
                 detalle.Add(x);
             }
@@ -344,12 +346,20 @@ namespace New_MasterTrade.UserControls
             {
                 if (MessageBox.Show("¿Desea registrar esta orden?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    crud.Crear(GetCompra());
-                    crud.CrearDetalle(GetDetalle());
-                    //Reporte reporte = new Reporte();
-                    //reporte.Reporte_Orden_Compra(txtNumeroOrden.Text);
-                    bitacora.Create(UserData.Id, Modulos.Comprar, Accion.NuevaCompra(UserData.NombreUsuario, txtNumeroOrden.Text));
-                    ConfigControles("OFF");
+                    try
+                    {
+                        crud.Crear(GetCompra());
+                        crud.RegistrarPrecioCompra(GetDetalle());
+                        crud.CrearDetalle(GetDetalle());
+                        //Reporte reporte = new Reporte();
+                        //reporte.Reporte_Orden_Compra(txtNumeroOrden.Text);
+                        bitacora.Create(UserData.Id, Modulos.Comprar, Accion.NuevaCompra(UserData.NombreUsuario, txtNumeroOrden.Text));
+                        ConfigControles("OFF");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }            
         }

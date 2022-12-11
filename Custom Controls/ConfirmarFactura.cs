@@ -118,6 +118,7 @@ namespace New_MasterTrade.Custom_Controls
                 try
                 {
                     crud.Crear(OrdenVenta);
+                    crud.RegistrarPrecioVenta(DetalleVenta);
                     crud.CrearDetalle(DetalleVenta);
                     crud.CrearGarantia(crud.Detalles(OrdenVenta.Id), Garantias);
                     crud.CrearFactura(new Factura(id: 0, vendedor: UserData.Id, ordenVenta: OrdenVenta.Id, metodoPago: (int)comboMetodoPago.SelectedValue, impuesto: (int)comboImpuesto.SelectedValue, total_impuesto: decimal.Parse(txtCantidadImpuesto.Text), total: decimal.Parse(txtTotal.Text)));

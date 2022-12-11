@@ -45,6 +45,37 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
+        public void RegistrarPrecioVenta(List<Detalle> detalle)
+        {
+            for (int i = 0; i <= detalle.Count - 1; i++)
+            {
+                try
+                {
+                    con.Open();
+                    using (MySqlCommand command = new MySqlCommand())
+                    {
+                        command.CommandText = "UPDATE `producto` SET `pve_pro`=@precioventa WHERE `id_pro` = @id";
+                        command.CommandType = CommandType.Text;
+                        command.Connection = con;
+
+                        command.Parameters.Add("@precioventa", MySqlDbType.Int32).Value = detalle[i].Precio;
+                        command.Parameters.Add("@id", MySqlDbType.Int32).Value = detalle[i].Producto;
+
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("Precio de venta actualizado " + i + "!");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+        }
+
         public void CrearDetalle(List<Detalle> detalle)
         {
             for (int i = 0; i <= detalle.Count - 1; i++)

@@ -300,9 +300,11 @@ namespace New_MasterTrade.UserControls
 
             for (int i = 0; i <= tableCarrito.Rows.Count - 1; i++)
             {
-                Detalle x = new Detalle(IdVenta,
+                Detalle x = new Detalle(0,
+                                        IdVenta,
                                         Int32.Parse(tableCarrito.Rows[i].Cells["columnId"].Value.ToString()),
                                         Int32.Parse(tableCarrito.Rows[i].Cells["columnCantidad"].Value.ToString()),
+                                        decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioU"].Value.ToString()),
                                         decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioT"].Value.ToString()));
                 detalle.Add(x);
             }

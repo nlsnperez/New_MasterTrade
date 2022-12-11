@@ -39,7 +39,7 @@ namespace New_MasterTrade.Custom_Controls
             txtId.Enabled = false;
             txtDescripcion.Enabled = false;
             txtSerial.Enabled = false;
-            txtPrecio.Enabled = false;
+            if (this.Compra == null) txtPrecio.ReadOnly = true;
             OrdenarDatos();
             txtCantidad.Focus();
         }
@@ -60,8 +60,17 @@ namespace New_MasterTrade.Custom_Controls
             if (Venta == null)
             {
                 txtPrecio.Text = x.Precio_Compra.ToString();
-            }else txtPrecio.Text = x.Precio_Venta.ToString();
+            }else CalcPorcentaje(x.Precio_Compra);
 
+        }
+
+        public void CalcPorcentaje(decimal x)
+        {
+            decimal porcentaje = 30;
+            decimal drantotal = (x * porcentaje) / 100;
+            decimal total = x + drantotal;
+
+            txtPrecio.Text = total.ToString("0.00");
         }
 
         private void txtCantidad_Enter(object sender, EventArgs e)
@@ -82,29 +91,54 @@ namespace New_MasterTrade.Custom_Controls
 
         private void bttnAceptar_Click(object sender, EventArgs e)
         {
-            if (Venta == null)
+
+            if (txtPrecio.Text == "")
             {
-                decimal x = decimal.Parse(txtPrecio.Text) * decimal.Parse(txtCantidad.Text);
-                string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString()};
-                Compra.AddProduct(producto);
+                MessageBox.Show("Debe introducir un precio para comprar el producto", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                if (Int32.Parse(txtCantidad.Text) > CantMax)
+                decimal precio = Convert.ToDecimal(txtPrecio.Text);
+                if (precio <= 0)
                 {
-                    txtCantidad.Text = CantMax.ToString();
-                    MessageBox.Show("La cantidad introducida excede a la cantidad de productos en stock por lo que ha sido ajustada automaticamente", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Ingrese un precio válido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                decimal x = decimal.Parse(txtPrecio.Text) * decimal.Parse(txtCantidad.Text);
-                string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString()};
-                Venta.AddProduct(producto, CantMax);
-            }
-            this.Close();
+                else
+                {
+                    if (Venta == null)
+                    {
+                        decimal x = Convert.ToDecimal(txtPrecio.Text) * Convert.ToDecimal(txtCantidad.Text);
+                        string[] producto = {txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString("0.00") };
+                        Compra.AddProduct(producto);
+                    }
+                    else
+                    {
+                        if (Int32.Parse(txtCantidad.Text) > CantMax)
+                        {
+                            txtCantidad.Text = CantMax.ToString();
+                            MessageBox.Show("La cantidad introducida excede a la cantidad de productos en stock por lo que ha sido ajustada automaticamente", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        decimal x = decimal.Parse(txtPrecio.Text) * decimal.Parse(txtCantidad.Text);
+                        string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString() };
+                        Venta.AddProduct(producto, CantMax);
+                    }
+                    this.Close();
+                }
+            }           
+            
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
