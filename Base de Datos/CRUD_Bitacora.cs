@@ -45,7 +45,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable RegistrosBitacora()
         {
             DataTable bitacora = new DataTable();
-            String sql = "SELECT b.*, u.usr_usu FROM bitacora b INNER JOIN usuario u ON b.id_usu = u.id_usu WHERE fec_bit LIKE '%"+ System.DateTime.Now.Date.ToString("yyyy-MM-dd") + "%' ORDER BY id_bit ASC";
+            String sql = "SELECT b.*, u.raz_usu FROM bitacora b INNER JOIN usuario u ON b.id_usu = u.id_usu WHERE fec_bit LIKE '%"+ System.DateTime.Now.Date.ToString("yyyy-MM-dd") + "%' ORDER BY id_bit ASC";
             con.Open();
             try
             {
@@ -69,7 +69,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable BuscarBitacora(string filtro)
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT b.*, u.usr_usu FROM bitacora b INNER JOIN usuario u ON b.id_usu = u.id_usu WHERE b.id_bit LIKE '%" + filtro + "%' OR b.mod_bit LIKE '%" + filtro + "%' OR u.usr_usu LIKE '%" + filtro + "%' OR b.fec_bit LIKE '%" + filtro + "%' ORDER BY id_bit ASC";
+            String sql = "SELECT b.*, u.raz_usu FROM bitacora b INNER JOIN usuario u ON b.id_usu = u.id_usu WHERE b.id_bit LIKE '%" + filtro + "%' OR b.mod_bit LIKE '%" + filtro + "%' OR u.raz_usu LIKE '%" + filtro + "%' OR b.fec_bit LIKE '%" + filtro + "%' ORDER BY id_bit ASC";
             con.Open();
             try
             {

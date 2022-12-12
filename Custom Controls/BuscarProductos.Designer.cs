@@ -30,9 +30,9 @@ namespace New_MasterTrade.Objetos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timerFade = new System.Windows.Forms.Timer(this.components);
             this.tablaProductos = new System.Windows.Forms.DataGridView();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +57,10 @@ namespace New_MasterTrade.Objetos
             this.label6 = new System.Windows.Forms.Label();
             this.bttnBuscar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bttnSiguiente = new System.Windows.Forms.Button();
+            this.comboPaginas = new System.Windows.Forms.ComboBox();
+            this.bttnAnterior = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,23 +74,23 @@ namespace New_MasterTrade.Objetos
             this.tablaProductos.AllowUserToDeleteRows = false;
             this.tablaProductos.AllowUserToResizeColumns = false;
             this.tablaProductos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.tablaProductos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tablaProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
@@ -98,24 +102,24 @@ namespace New_MasterTrade.Objetos
             this.columPCompra,
             this.columnPrecioVenta,
             this.Agregar});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle9;
             this.tablaProductos.EnableHeadersVisualStyles = false;
-            this.tablaProductos.Location = new System.Drawing.Point(0, 60);
-            this.tablaProductos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tablaProductos.Location = new System.Drawing.Point(0, 49);
+            this.tablaProductos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.ReadOnly = true;
             this.tablaProductos.RowHeadersVisible = false;
             this.tablaProductos.RowHeadersWidth = 51;
             this.tablaProductos.RowTemplate.Height = 24;
             this.tablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaProductos.Size = new System.Drawing.Size(1144, 548);
+            this.tablaProductos.Size = new System.Drawing.Size(858, 410);
             this.tablaProductos.TabIndex = 21;
             this.tablaProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProductos_CellClick);
             // 
@@ -208,9 +212,10 @@ namespace New_MasterTrade.Objetos
             this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(370, 11);
+            this.label9.Location = new System.Drawing.Point(278, 9);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(404, 38);
+            this.label9.Size = new System.Drawing.Size(332, 31);
             this.label9.TabIndex = 118;
             this.label9.Text = "AGREGAR PRODUCTOS";
             this.label9.Click += new System.EventHandler(this.label9_Click);
@@ -219,19 +224,20 @@ namespace New_MasterTrade.Objetos
             // 
             this.txtDescripción.BackColor = System.Drawing.SystemColors.Control;
             this.txtDescripción.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescripción.Location = new System.Drawing.Point(601, 643);
-            this.txtDescripción.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDescripción.Location = new System.Drawing.Point(614, 520);
+            this.txtDescripción.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDescripción.Name = "txtDescripción";
-            this.txtDescripción.Size = new System.Drawing.Size(143, 22);
+            this.txtDescripción.Size = new System.Drawing.Size(128, 20);
             this.txtDescripción.TabIndex = 137;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(601, 623);
+            this.label5.Location = new System.Drawing.Point(614, 503);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 16);
+            this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 136;
             this.label5.Text = "DESCRIPCIÓN";
             // 
@@ -239,9 +245,10 @@ namespace New_MasterTrade.Objetos
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(303, 624);
+            this.label4.Location = new System.Drawing.Point(312, 503);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 16);
+            this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 135;
             this.label4.Text = "MODELO";
             // 
@@ -249,9 +256,10 @@ namespace New_MasterTrade.Objetos
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(158, 624);
+            this.label3.Location = new System.Drawing.Point(161, 503);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 16);
+            this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 134;
             this.label3.Text = "MARCA:";
             // 
@@ -259,9 +267,10 @@ namespace New_MasterTrade.Objetos
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(13, 624);
+            this.label2.Location = new System.Drawing.Point(10, 503);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 133;
             this.label2.Text = "CATEGORÍA";
             // 
@@ -269,38 +278,41 @@ namespace New_MasterTrade.Objetos
             // 
             this.comboModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboModelo.FormattingEnabled = true;
-            this.comboModelo.Location = new System.Drawing.Point(307, 642);
+            this.comboModelo.Location = new System.Drawing.Point(312, 519);
+            this.comboModelo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboModelo.Name = "comboModelo";
-            this.comboModelo.Size = new System.Drawing.Size(143, 24);
+            this.comboModelo.Size = new System.Drawing.Size(128, 21);
             this.comboModelo.TabIndex = 132;
             // 
             // comboMarca
             // 
             this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMarca.FormattingEnabled = true;
-            this.comboMarca.Location = new System.Drawing.Point(160, 642);
+            this.comboMarca.Location = new System.Drawing.Point(161, 519);
+            this.comboMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboMarca.Name = "comboMarca";
-            this.comboMarca.Size = new System.Drawing.Size(143, 24);
+            this.comboMarca.Size = new System.Drawing.Size(128, 21);
             this.comboMarca.TabIndex = 131;
             // 
             // comboCategoria
             // 
             this.comboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCategoria.FormattingEnabled = true;
-            this.comboCategoria.Location = new System.Drawing.Point(13, 642);
+            this.comboCategoria.Location = new System.Drawing.Point(10, 519);
+            this.comboCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboCategoria.Name = "comboCategoria";
-            this.comboCategoria.Size = new System.Drawing.Size(143, 24);
+            this.comboCategoria.Size = new System.Drawing.Size(128, 21);
             this.comboCategoria.TabIndex = 130;
             // 
             // txtSerial
             // 
             this.txtSerial.BackColor = System.Drawing.SystemColors.Control;
             this.txtSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSerial.Location = new System.Drawing.Point(454, 643);
-            this.txtSerial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSerial.Location = new System.Drawing.Point(463, 520);
+            this.txtSerial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSerial.MaxLength = 13;
             this.txtSerial.Name = "txtSerial";
-            this.txtSerial.Size = new System.Drawing.Size(143, 22);
+            this.txtSerial.Size = new System.Drawing.Size(128, 20);
             this.txtSerial.TabIndex = 129;
             this.txtSerial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
@@ -308,9 +320,10 @@ namespace New_MasterTrade.Objetos
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(452, 624);
+            this.label6.Location = new System.Drawing.Point(463, 503);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 16);
+            this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 128;
             this.label6.Text = "SERIAL";
             // 
@@ -321,10 +334,10 @@ namespace New_MasterTrade.Objetos
             this.bttnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnBuscar.Image = global::New_MasterTrade.Properties.Resources.browsing;
             this.bttnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnBuscar.Location = new System.Drawing.Point(999, 635);
-            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bttnBuscar.Location = new System.Drawing.Point(749, 516);
+            this.bttnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bttnBuscar.Name = "bttnBuscar";
-            this.bttnBuscar.Size = new System.Drawing.Size(133, 30);
+            this.bttnBuscar.Size = new System.Drawing.Size(100, 24);
             this.bttnBuscar.TabIndex = 138;
             this.bttnBuscar.Text = "BUSCAR";
             this.bttnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -338,22 +351,80 @@ namespace New_MasterTrade.Objetos
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = global::New_MasterTrade.Properties.Resources.cancel;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(999, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(749, 9);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 30);
+            this.button1.Size = new System.Drawing.Size(100, 24);
             this.button1.TabIndex = 139;
             this.button1.Text = "CERRAR";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(372, 475);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 143;
+            this.label1.Text = "PÁGINA:";
+            // 
+            // bttnSiguiente
+            // 
+            this.bttnSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnSiguiente.FlatAppearance.BorderSize = 0;
+            this.bttnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnSiguiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnSiguiente.Location = new System.Drawing.Point(491, 469);
+            this.bttnSiguiente.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnSiguiente.Name = "bttnSiguiente";
+            this.bttnSiguiente.Size = new System.Drawing.Size(24, 24);
+            this.bttnSiguiente.TabIndex = 142;
+            this.bttnSiguiente.Text = ">";
+            this.bttnSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnSiguiente.UseVisualStyleBackColor = false;
+            this.bttnSiguiente.Click += new System.EventHandler(this.bttnSiguiente_Click);
+            // 
+            // comboPaginas
+            // 
+            this.comboPaginas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboPaginas.FormattingEnabled = true;
+            this.comboPaginas.Location = new System.Drawing.Point(426, 471);
+            this.comboPaginas.Margin = new System.Windows.Forms.Padding(2);
+            this.comboPaginas.Name = "comboPaginas";
+            this.comboPaginas.Size = new System.Drawing.Size(61, 21);
+            this.comboPaginas.TabIndex = 141;
+            this.comboPaginas.SelectedIndexChanged += new System.EventHandler(this.comboPaginas_SelectedIndexChanged_1);
+            // 
+            // bttnAnterior
+            // 
+            this.bttnAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAnterior.FlatAppearance.BorderSize = 0;
+            this.bttnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnAnterior.Location = new System.Drawing.Point(344, 469);
+            this.bttnAnterior.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAnterior.Name = "bttnAnterior";
+            this.bttnAnterior.Size = new System.Drawing.Size(24, 24);
+            this.bttnAnterior.TabIndex = 140;
+            this.bttnAnterior.Text = "<";
+            this.bttnAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAnterior.UseVisualStyleBackColor = false;
+            this.bttnAnterior.Click += new System.EventHandler(this.bttnAnterior_Click);
+            // 
             // BuscarProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1144, 678);
+            this.ClientSize = new System.Drawing.Size(858, 551);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.bttnSiguiente);
+            this.Controls.Add(this.comboPaginas);
+            this.Controls.Add(this.bttnAnterior);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bttnBuscar);
             this.Controls.Add(this.txtDescripción);
@@ -369,7 +440,6 @@ namespace New_MasterTrade.Objetos
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tablaProductos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BuscarProductos";
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).EndInit();
             this.ResumeLayout(false);
@@ -402,5 +472,9 @@ namespace New_MasterTrade.Objetos
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button bttnBuscar;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bttnSiguiente;
+        private System.Windows.Forms.ComboBox comboPaginas;
+        private System.Windows.Forms.Button bttnAnterior;
     }
 }

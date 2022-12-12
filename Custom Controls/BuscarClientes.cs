@@ -20,7 +20,7 @@ namespace New_MasterTrade.Custom_Controls
         private int total_filas = 0;
         private int pagina = 0;
         private int total_paginas = 0;
-        private int limite_registro = 2;
+        private int limite_registro = 20;
         CRUD_Usuarios crud = new CRUD_Usuarios();
 
         public BuscarClientes()

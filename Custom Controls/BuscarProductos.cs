@@ -15,6 +15,12 @@ namespace New_MasterTrade.Objetos
 {
     public partial class BuscarProductos : Form
     {
+        private DataTable tabla = new DataTable();
+        private int total_filas = 0;
+        private int pagina = 0;
+        private int total_paginas = 0;
+        private int limite_registro = 20;
+
         private Comprar Compra;
         private Vender Venta;
         CRUD_Productos crud;
@@ -33,7 +39,8 @@ namespace New_MasterTrade.Objetos
             tablaProductos.AutoGenerateColumns = false;
             try
             {
-                tablaProductos.DataSource = crud.ProductosActivos();
+                CargarDatos(crud.ProductosActivos());
+                ConfigComboPaginas();
                 ConfigCombos();
 
                 //if (Venta == null)
@@ -48,6 +55,98 @@ namespace New_MasterTrade.Objetos
                 throw;
             }
         }
+
+        //MÉTODOS PARA EL PAGINADOR
+        public void ReiniciarPaginador()
+        {
+            total_filas = 0;
+            pagina = 0;
+            total_paginas = 0;
+            limite_registro = 20;
+        }
+
+        public void ConfigComboPaginas()
+        {
+            if (comboPaginas.Items.Count > 0) comboPaginas.Items.Clear();
+            for (int i = 0; i <= total_paginas; i++)
+            {
+                comboPaginas.Items.Add(i + 1);
+            }
+            comboPaginas.SelectedIndex = 0;
+        }
+
+        public void CargarDatos(DataTable resultados)
+        {
+            tabla = resultados;
+            total_filas = tabla.Rows.Count - 1;
+            total_paginas = total_filas / limite_registro;
+            tablaProductos.DataSource = Resultados(tabla);
+        }
+
+        private DataTable Resultados(DataTable resultados)
+        {
+            HabilitarBotones();
+            return resultados.AsEnumerable().Skip(limite_registro * pagina).Take(limite_registro).CopyToDataTable();
+        }
+
+        private void HabilitarBotones()
+        {
+            if (pagina == 0)
+            {
+                bttnAnterior.Enabled = false;
+            }
+            else
+            {
+                bttnAnterior.Enabled = true;
+            }
+
+            if (pagina == total_paginas)
+            {
+                bttnSiguiente.Enabled = false;
+            }
+            else
+            {
+                bttnSiguiente.Enabled = true;
+            }
+        }
+
+        private void comboPaginas_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                pagina = Int32.Parse(comboPaginas.Text) - 1;
+                tablaProductos.DataSource = Resultados(tabla);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void bttnSiguiente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                comboPaginas.SelectedIndex += 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void bttnAnterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                comboPaginas.SelectedIndex -= 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        //MÉTODOS PARA EL PAGINADOR
 
         public void ConfigCombos()
         {
@@ -171,7 +270,10 @@ namespace New_MasterTrade.Objetos
             if (comboMarca.SelectedIndex == 0) marca = "";
             if (comboModelo.SelectedIndex == 0) modelo = "";
 
-            tablaProductos.DataSource = crud.BuscarProductosActivos(categoria, marca, modelo, serial, descripcion);
+            ReiniciarPaginador();
+
+            CargarDatos(crud.BuscarProductosActivos(categoria, marca, modelo, serial, descripcion));
+            ConfigComboPaginas();
 
             comboCategoria.SelectedIndex = 0;
             comboMarca.SelectedIndex = 0;

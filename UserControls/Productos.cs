@@ -19,7 +19,7 @@ namespace New_MasterTrade.UserControls
         private int total_filas = 0;
         private int pagina = 0;
         private int total_paginas = 0;
-        private int limite_registro = 2;
+        private int limite_registro = 20;
         CRUD_Productos crud;
         public Productos()
         {
@@ -41,7 +41,7 @@ namespace New_MasterTrade.UserControls
             total_filas = 0;
             pagina = 0;
             total_paginas = 0;
-            limite_registro = 2;
+            limite_registro = 20;
         }
 
         public void ConfigComboPaginas()

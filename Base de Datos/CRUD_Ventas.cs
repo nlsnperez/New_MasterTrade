@@ -372,7 +372,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Facturas()
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tot_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli ORDER BY id_fve ASC";
+            String sql = "SELECT fv.id_fve, ov.num_ove, u.raz_usu, m.nom_mon, fv.tot_fve FROM factura_venta fv INNER JOIN orden_venta ov ON ov.id_ove = fv.id_fve INNER JOIN usuario u ON u.id_usu = ov.id_usu INNER JOIN tasa_cambio tc ON ov.id_tca = tc.id_tca INNER JOIN moneda m ON tc.id_mon = m.id_mon ORDER BY id_fve ASC";
             con.Open();
             try
             {
@@ -396,7 +396,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable BuscarFacuras(string filtro)
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tot_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli WHERE fv.id_fve LIKE '" + filtro + "%' OR ov.num_ove LIKE '" + filtro + "%' OR c.raz_cli LIKE '" + filtro+ "%' OR c.doc_cli LIKE '%" + filtro+ "%'ORDER BY id_fve ASC";
+            String sql = "SELECT fv.id_fve, ov.num_ove, u.raz_usu, m.nom_mon, fv.tot_fve FROM factura_venta fv INNER JOIN orden_venta ov ON ov.id_ove = fv.id_fve INNER JOIN usuario u ON u.id_usu = ov.id_usu INNER JOIN tasa_cambio tc ON ov.id_tca = tc.id_tca INNER JOIN moneda m ON tc.id_mon = m.id_mon WHERE fv.id_fve LIKE '" + filtro + "%' OR ov.num_ove LIKE '" + filtro + "%' OR u.raz_usu LIKE '" + filtro+ "%' OR u.doc_usu LIKE '%" + filtro+ "%' ORDER BY id_fve ASC";
             con.Open();
             try
             {

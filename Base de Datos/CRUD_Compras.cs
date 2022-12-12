@@ -161,7 +161,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Compras()
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT oc.*, p.raz_prv FROM orden_compra oc INNER JOIN proveedor p ON oc.id_prv = p.id_prv ORDER BY id_oco ASC";
+            String sql = "SELECT oc.id_oco, oc.num_oco, u.raz_usu, m.nom_mon, oc.tot_oco FROM orden_compra oc INNER JOIN usuario u ON oc.id_usu = u.id_usu INNER JOIN tasa_cambio tc ON oc.id_tca = tc.id_tca INNER JOIN moneda m ON tc.id_mon = m.id_mon ORDER BY id_oco ASC";
             con.Open();
             try
             {
@@ -185,7 +185,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable BuscarCompras(string filtro)
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT oc.*, p.raz_prv FROM orden_compra oc INNER JOIN proveedor p ON oc.id_prv = p.id_prv WHERE oc.id_oco LIKE '%" + filtro + "%' OR p.raz_prv LIKE '%" + filtro + "%' OR oc.num_oco LIKE '%" + filtro+ "%' OR p.doc_prv LIKE '%" + filtro+"%' ORDER BY id_oco ASC";
+            String sql = "SELECT oc.id_oco, oc.num_oco, u.raz_usu, m.nom_mon, oc.tot_oco FROM orden_compra oc INNER JOIN usuario u ON oc.id_usu = u.id_usu INNER JOIN tasa_cambio tc ON oc.id_tca = tc.id_tca INNER JOIN moneda m ON tc.id_mon = m.id_mon WHERE oc.id_oco LIKE '%" + filtro + "%' OR u.raz_usu LIKE '%" + filtro + "%' OR oc.num_oco LIKE '%" + filtro+ "%' OR u.doc_usu LIKE '%" + filtro+"%' ORDER BY id_oco ASC";
             con.Open();
             try
             {
