@@ -41,11 +41,13 @@ namespace New_MasterTrade.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.chckMostrar = new System.Windows.Forms.CheckBox();
             this.bttnSalir = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.Location = new System.Drawing.Point(164, 101);
+            this.txtNombreUsuario.MaxLength = 15;
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(253, 20);
             this.txtNombreUsuario.TabIndex = 0;
@@ -53,6 +55,7 @@ namespace New_MasterTrade.Forms
             // txtContrasegna
             // 
             this.txtContrasegna.Location = new System.Drawing.Point(163, 134);
+            this.txtContrasegna.MaxLength = 15;
             this.txtContrasegna.Name = "txtContrasegna";
             this.txtContrasegna.Size = new System.Drawing.Size(253, 20);
             this.txtContrasegna.TabIndex = 1;
@@ -60,6 +63,7 @@ namespace New_MasterTrade.Forms
             // txtConfirmarContrasegna
             // 
             this.txtConfirmarContrasegna.Location = new System.Drawing.Point(164, 167);
+            this.txtConfirmarContrasegna.MaxLength = 15;
             this.txtConfirmarContrasegna.Name = "txtConfirmarContrasegna";
             this.txtConfirmarContrasegna.Size = new System.Drawing.Size(253, 20);
             this.txtConfirmarContrasegna.TabIndex = 2;
@@ -85,6 +89,7 @@ namespace New_MasterTrade.Forms
             this.bttnGuardar.TabIndex = 6;
             this.bttnGuardar.Text = "GUARDAR";
             this.bttnGuardar.UseVisualStyleBackColor = false;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // bttnActualizar
             // 
@@ -98,6 +103,7 @@ namespace New_MasterTrade.Forms
             this.bttnActualizar.TabIndex = 7;
             this.bttnActualizar.Text = "ACTUALIZAR";
             this.bttnActualizar.UseVisualStyleBackColor = false;
+            this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
             // 
             // label1
             // 
@@ -155,6 +161,7 @@ namespace New_MasterTrade.Forms
             this.chckMostrar.TabIndex = 13;
             this.chckMostrar.Text = "Mostrar contraseña";
             this.chckMostrar.UseVisualStyleBackColor = true;
+            this.chckMostrar.CheckedChanged += new System.EventHandler(this.chckMostrar_CheckedChanged);
             // 
             // bttnSalir
             // 
@@ -172,12 +179,26 @@ namespace New_MasterTrade.Forms
             this.bttnSalir.UseVisualStyleBackColor = false;
             this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTitulo.Location = new System.Drawing.Point(101, 10);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(227, 31);
+            this.lblTitulo.TabIndex = 120;
+            this.lblTitulo.Text = "CREDENCIALES";
+            // 
             // Credenciales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(429, 284);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.bttnSalir);
             this.Controls.Add(this.chckMostrar);
             this.Controls.Add(this.label5);
@@ -212,5 +233,6 @@ namespace New_MasterTrade.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chckMostrar;
         private System.Windows.Forms.Button bttnSalir;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

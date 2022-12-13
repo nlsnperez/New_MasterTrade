@@ -73,6 +73,33 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
+        public void AsingarCredenciales(int id, string nombreusuario, string contrasegna)
+        {
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "INSERT INTO `credencial`(`id_usu`, `nom_usu`, `pas_usu`) VALUES (@idusuario,@nombreusuario,@contrasegna)";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@idusuario", MySqlDbType.Int32).Value = id;
+                    command.Parameters.Add("@nombreusuario", MySqlDbType.VarChar).Value = nombreusuario;
+                    command.Parameters.Add("@contrasegna", MySqlDbType.VarChar).Value = contrasegna;
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public void Update(Persona persona)
         {
             try
@@ -100,6 +127,33 @@ namespace New_MasterTrade.Base_de_Datos
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void ActualizarCredenciales(int id, string nombreusuario, string contrasegna)
+        {
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE `credencial` SET `nom_usu`=@nombreusuario,`pas_usu`=@contrasegna WHERE `id_usu` = @id";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@nombreusuario", MySqlDbType.VarChar).Value = nombreusuario;
+                    command.Parameters.Add("@contrasegna", MySqlDbType.VarChar).Value = contrasegna;
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
@@ -339,6 +393,7 @@ namespace New_MasterTrade.Base_de_Datos
             try
             {
                 MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `id_usu` = " + id + " OR `doc_usu` LIKE '%"+documento+"%'", con);
+                Console.WriteLine("SELECT * FROM `usuario` WHERE `id_usu` = " + id + " OR `doc_usu` LIKE '%" + documento + "%'");
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -400,7 +455,7 @@ namespace New_MasterTrade.Base_de_Datos
             bool duplicado = false;
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `usr_usu` = '" + username+ "'", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `credencial` WHERE `nom_usu` = '" + username+ "'", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();

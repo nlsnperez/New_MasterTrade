@@ -45,14 +45,15 @@ namespace New_MasterTrade
                 bttnReportes.Visible = false;
                 bttnMantenimiento.Visible = false;
                 bttnAjustes.Visible = false;
-                if (usuario.IsVendedor(UserData.Id))
-                {
-                    panelTransacciones.Size = new Size(160, 38);
-                }
-                else
-                {
-                    bttnTransacciones.Visible = false;
-                }
+                panelTransacciones.Size = new Size(160, 38);
+                //if (usuario.IsVendedor(UserData.Id))
+                //{
+                //    panelTransacciones.Size = new Size(160, 38);
+                //}
+                //else
+                //{
+                //    bttnTransacciones.Visible = false;
+                //}
             }
         }
 

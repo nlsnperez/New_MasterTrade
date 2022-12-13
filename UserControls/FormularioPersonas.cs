@@ -20,7 +20,7 @@ namespace New_MasterTrade.UserControls
         CRUD_Clientes crud2;
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
         private bool registro_externo = false;
-        private int id_usuario = 0;
+        public Persona Usuario { get; set; }
 
         public FormularioPersonas(int x)
         {
@@ -41,6 +41,13 @@ namespace New_MasterTrade.UserControls
             comboNivel.Focus();
             ConfigLongitud();
             ConfigCombos(x);
+            if (UserData.Nivel == 2)
+            {
+                comboNivel.SelectedIndex = 2;
+                comboNivel.Enabled = false;
+            }
+            bttnCredenciales.Visible = false;
+            comboNivel.Width = 639;
             bttnActualizar.Enabled = false;
         }
 
@@ -108,18 +115,25 @@ namespace New_MasterTrade.UserControls
 
         public void Limpiar()
         {
+            if (UserData.Nivel == 2)
+            {
+                comboNivel.Enabled = false;
+            }
+            else
+            {
+                comboNivel.Enabled = true;
+                comboNivel.SelectedIndex = 0;
+            }
             txtDocumento.Text = "";
             txtRazonSocial.Text = "";
             txtDireccion.Text = "";
             txtTelefono.Text = "";
-            txtCorreo.Text = "";
-            comboNivel.SelectedIndex = 0;
+            txtCorreo.Text = "";            
             comboDocumento.SelectedIndex = 0;
-            comboNivel.Enabled = true;
             comboDocumento.Enabled = true;
             txtDocumento.Enabled = true;
             bttnGuardar.Enabled = true;
-            bttnActualizar.Enabled = false;
+            bttnActualizar.Enabled = false;            
         }
 
         private void bttnGuardar_Click(object sender, EventArgs e)
@@ -146,6 +160,14 @@ namespace New_MasterTrade.UserControls
                             if (registro_externo == true)
                             {
                                 this.ParentForm.Close();
+                            }
+                            if (comboNivel.SelectedIndex < 2)
+                            {
+                                MessageBox.Show("Acaba de agregar un usuario con acceso al sistema por lo que debe agregar sus credenciales", "AGREGAR CREDENCIALES", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Console.WriteLine(txtDocumento.Text);
+                                Usuario = crud.Usuario(0, txtDocumento.Text);
+                                SesionIniciada.Instancia.MostrarDialog(new Credenciales(Usuario));
+                                Limpiar();
                             }
                             else
                             {
@@ -216,12 +238,24 @@ namespace New_MasterTrade.UserControls
         {
             try
             {
-                id_usuario = persona.Id;
-                if(persona.Nivel > 2)
+                Usuario = persona;               
+
+                if (UserData.Nivel == 2)
+                {
+                    comboNivel.Enabled = false;
+                    bttnCredenciales.Enabled = false;
+                }
+                else
+                {
+                    bttnCredenciales.Visible = true;
+                    comboNivel.Width = 605;
+                }
+                if (persona.Nivel > 2)
                 {
                     bttnCredenciales.Visible = false;
                     comboNivel.Width = 639;
                 }
+
                 comboNivel.SelectedIndex = persona.Nivel-1;
                 if (UserData.Nivel != 1) comboNivel.Enabled = false;
 
@@ -250,8 +284,9 @@ namespace New_MasterTrade.UserControls
             txtDocumento.Text = documento;
             txtDocumento.Enabled = false;
             txtDocumento.Focus();
-
-            comboNivel.SelectedIndex = x - 1;
+            comboNivel.SelectedIndex = 2;
+            comboNivel.Width = 639;
+            bttnCredenciales.Visible = false;
             comboNivel.Enabled = false;
         }
 
@@ -276,8 +311,8 @@ namespace New_MasterTrade.UserControls
 
         private void bttnCredenciales_Click(object sender, EventArgs e)
         {
-            Credenciales credenciales = new Credenciales();
-            credenciales.AcomodarDatos(crud.Credenciales(id_usuario));
+            Credenciales credenciales = new Credenciales(Usuario);
+            credenciales.AcomodarDatos(crud.Credenciales(Usuario.Id));
             SesionIniciada.Instancia.MostrarDialog(credenciales);
         }
     }
