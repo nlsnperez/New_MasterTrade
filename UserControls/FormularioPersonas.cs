@@ -1,5 +1,6 @@
 ﻿using New_MasterTrade.Base_de_Datos;
 using New_MasterTrade.Cache;
+using New_MasterTrade.Forms;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace New_MasterTrade.UserControls
         CRUD_Clientes crud2;
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
         private bool registro_externo = false;
+        private int id_usuario = 0;
 
         public FormularioPersonas(int x)
         {
@@ -214,6 +216,12 @@ namespace New_MasterTrade.UserControls
         {
             try
             {
+                id_usuario = persona.Id;
+                if(persona.Nivel > 2)
+                {
+                    bttnCredenciales.Visible = false;
+                    comboNivel.Width = 639;
+                }
                 comboNivel.SelectedIndex = persona.Nivel-1;
                 if (UserData.Nivel != 1) comboNivel.Enabled = false;
 
@@ -264,6 +272,13 @@ namespace New_MasterTrade.UserControls
         private void bttnAtrás_Click(object sender, EventArgs e)
         {
             SesionIniciada.Instancia.MostrarUserControl(new Clientes());
+        }
+
+        private void bttnCredenciales_Click(object sender, EventArgs e)
+        {
+            Credenciales credenciales = new Credenciales();
+            credenciales.AcomodarDatos(crud.Credenciales(id_usuario));
+            SesionIniciada.Instancia.MostrarDialog(credenciales);
         }
     }
 }

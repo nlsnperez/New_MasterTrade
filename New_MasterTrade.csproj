@@ -131,28 +131,35 @@
     <Compile Include="Cache\Accion.cs" />
     <Compile Include="Cache\Modulos.cs" />
     <Compile Include="Cache\UserData.cs" />
-    <Compile Include="Custom Controls\AgregarProducto.cs">
+    <Compile Include="Forms\AgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Controls\AgregarProducto.Designer.cs">
+    <Compile Include="Forms\AgregarProducto.Designer.cs">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Custom Controls\BuscarClientes.cs">
+    <Compile Include="Forms\BuscarClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Controls\BuscarClientes.Designer.cs">
+    <Compile Include="Forms\BuscarClientes.Designer.cs">
       <DependentUpon>BuscarClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Custom Controls\ConfirmarFactura.cs">
+    <Compile Include="Forms\ConfirmarFactura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Controls\ConfirmarFactura.Designer.cs">
+    <Compile Include="Forms\ConfirmarFactura.Designer.cs">
       <DependentUpon>ConfirmarFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="Custom Controls\RecuperarContraseña.cs">
+    <Compile Include="Forms\Credenciales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Credenciales.Designer.cs">
+      <DependentUpon>Credenciales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objetos\Credencial.cs" />
+    <Compile Include="UserControls\RecuperarContraseña.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Custom Controls\RecuperarContraseña.Designer.cs">
+    <Compile Include="UserControls\RecuperarContraseña.Designer.cs">
       <DependentUpon>RecuperarContraseña.cs</DependentUpon>
     </Compile>
     <Compile Include="FormReportes.cs">
@@ -177,16 +184,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Custom Controls\BuscarProveedores.cs">
+    <Compile Include="Forms\BuscarProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Controls\BuscarProveedores.Designer.cs">
+    <Compile Include="Forms\BuscarProveedores.Designer.cs">
       <DependentUpon>BuscarProveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="Custom Controls\BuscarProductos.cs">
+    <Compile Include="Forms\BuscarProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Controls\BuscarProductos.Designer.cs">
+    <Compile Include="Forms\BuscarProductos.Designer.cs">
       <DependentUpon>BuscarProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="Objetos\Compra.cs" />
@@ -285,10 +292,10 @@
     </Compile>
     <Compile Include="Servicios de Correo\ServidorCorreoMaestro.cs" />
     <Compile Include="Servicios de Correo\SistemaSoporteCorreo.cs" />
-    <Compile Include="UserControls\Categorias.cs">
+    <Compile Include="Forms\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserControls\Categorias.Designer.cs">
+    <Compile Include="Forms\Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Clientes.cs">
@@ -327,34 +334,34 @@
     <Compile Include="UserControls\Garantias.Designer.cs">
       <DependentUpon>Garantias.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Impuestos.cs">
+    <Compile Include="Forms\Impuestos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserControls\Impuestos.Designer.cs">
+    <Compile Include="Forms\Impuestos.Designer.cs">
       <DependentUpon>Impuestos.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Marcas.cs">
+    <Compile Include="Forms\Marcas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserControls\Marcas.Designer.cs">
+    <Compile Include="Forms\Marcas.Designer.cs">
       <DependentUpon>Marcas.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MetodosDePago.cs">
+    <Compile Include="Forms\MetodosDePago.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserControls\MetodosDePago.Designer.cs">
+    <Compile Include="Forms\MetodosDePago.Designer.cs">
       <DependentUpon>MetodosDePago.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Modelos.cs">
+    <Compile Include="Forms\Modelos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserControls\Modelos.Designer.cs">
+    <Compile Include="Forms\Modelos.Designer.cs">
       <DependentUpon>Modelos.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Monedas.cs">
+    <Compile Include="Forms\Monedas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserControls\Monedas.Designer.cs">
+    <Compile Include="Forms\Monedas.Designer.cs">
       <DependentUpon>Monedas.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Proveedores.cs">
@@ -455,22 +462,25 @@
     <Compile Include="UserControls\Ventas.Designer.cs">
       <DependentUpon>Ventas.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Custom Controls\AgregarProducto.resx">
+    <EmbeddedResource Include="Forms\AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Controls\BuscarClientes.resx">
+    <EmbeddedResource Include="Forms\BuscarClientes.resx">
       <DependentUpon>BuscarClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Controls\ConfirmarFactura.resx">
+    <EmbeddedResource Include="Forms\ConfirmarFactura.resx">
       <DependentUpon>ConfirmarFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Controls\RecuperarContraseña.resx">
+    <EmbeddedResource Include="Forms\Credenciales.resx">
+      <DependentUpon>Credenciales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RecuperarContraseña.resx">
       <DependentUpon>RecuperarContraseña.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Controls\BuscarProveedores.resx">
+    <EmbeddedResource Include="Forms\BuscarProveedores.resx">
       <DependentUpon>BuscarProveedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Controls\BuscarProductos.resx">
+    <EmbeddedResource Include="Forms\BuscarProductos.resx">
       <DependentUpon>BuscarProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReportes.resx">
@@ -536,7 +546,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Venta_Reporte.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Categorias.resx">
+    <EmbeddedResource Include="Forms\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Clientes.resx">
@@ -557,19 +567,19 @@
     <EmbeddedResource Include="UserControls\Garantias.resx">
       <DependentUpon>Garantias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Impuestos.resx">
+    <EmbeddedResource Include="Forms\Impuestos.resx">
       <DependentUpon>Impuestos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Marcas.resx">
+    <EmbeddedResource Include="Forms\Marcas.resx">
       <DependentUpon>Marcas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MetodosDePago.resx">
+    <EmbeddedResource Include="Forms\MetodosDePago.resx">
       <DependentUpon>MetodosDePago.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Modelos.resx">
+    <EmbeddedResource Include="Forms\Modelos.resx">
       <DependentUpon>Modelos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Monedas.resx">
+    <EmbeddedResource Include="Forms\Monedas.resx">
       <DependentUpon>Monedas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Proveedores.resx">
@@ -763,6 +773,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\tarjeta-de-identificacion.png" />
     <None Include="Resources\atras.png" />
     <None Include="Resources\exchange.png" />
     <None Include="Resources\estados-financieros.png" />

@@ -366,6 +366,35 @@ namespace New_MasterTrade.Base_de_Datos
             return resultado;
         }
 
+        public Credencial Credenciales(int id)
+        {
+            Credencial resultado = null;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `credencial` WHERE `id_usu` = "+id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    Credencial credenciales = new Credencial(reader.GetInt32(0),
+                                                             reader.GetString(1),
+                                                             reader.GetString(2));
+                    resultado = credenciales;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return resultado;
+        }
+
         public bool UserNameDuplicado(string username)
         {
             bool duplicado = false;
