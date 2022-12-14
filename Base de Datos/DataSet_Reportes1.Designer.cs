@@ -4323,13 +4323,13 @@ namespace New_MasterTrade.Base_de_Datos {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ProveedorPrincipalDataTable : global::System.Data.TypedTableBase<ProveedorPrincipalRow> {
             
-            private global::System.Data.DataColumn columnid_prv;
-            
-            private global::System.Data.DataColumn columndoc_prv;
-            
-            private global::System.Data.DataColumn columnraz_prv;
-            
             private global::System.Data.DataColumn columnproductos_comprados;
+            
+            private global::System.Data.DataColumn columnid_usu;
+            
+            private global::System.Data.DataColumn columndoc_usu;
+            
+            private global::System.Data.DataColumn columnraz_usu;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -4366,33 +4366,33 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn id_prvColumn {
-                get {
-                    return this.columnid_prv;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn doc_prvColumn {
-                get {
-                    return this.columndoc_prv;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn raz_prvColumn {
-                get {
-                    return this.columnraz_prv;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn productos_compradosColumn {
                 get {
                     return this.columnproductos_comprados;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn id_usuColumn {
+                get {
+                    return this.columnid_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn doc_usuColumn {
+                get {
+                    return this.columndoc_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn raz_usuColumn {
+                get {
+                    return this.columnraz_usu;
                 }
             }
             
@@ -4433,13 +4433,13 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ProveedorPrincipalRow AddProveedorPrincipalRow(string doc_prv, string raz_prv, decimal productos_comprados) {
+            public ProveedorPrincipalRow AddProveedorPrincipalRow(decimal productos_comprados, string doc_usu, string raz_usu) {
                 ProveedorPrincipalRow rowProveedorPrincipalRow = ((ProveedorPrincipalRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        productos_comprados,
                         null,
-                        doc_prv,
-                        raz_prv,
-                        productos_comprados};
+                        doc_usu,
+                        raz_usu};
                 rowProveedorPrincipalRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProveedorPrincipalRow);
                 return rowProveedorPrincipalRow;
@@ -4447,9 +4447,9 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ProveedorPrincipalRow FindByid_prv(int id_prv) {
+            public ProveedorPrincipalRow FindByid_usu(int id_usu) {
                 return ((ProveedorPrincipalRow)(this.Rows.Find(new object[] {
-                            id_prv})));
+                            id_usu})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4469,34 +4469,34 @@ namespace New_MasterTrade.Base_de_Datos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnid_prv = base.Columns["id_prv"];
-                this.columndoc_prv = base.Columns["doc_prv"];
-                this.columnraz_prv = base.Columns["raz_prv"];
                 this.columnproductos_comprados = base.Columns["productos_comprados"];
+                this.columnid_usu = base.Columns["id_usu"];
+                this.columndoc_usu = base.Columns["doc_usu"];
+                this.columnraz_usu = base.Columns["raz_usu"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnid_prv = new global::System.Data.DataColumn("id_prv", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_prv);
-                this.columndoc_prv = new global::System.Data.DataColumn("doc_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndoc_prv);
-                this.columnraz_prv = new global::System.Data.DataColumn("raz_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnraz_prv);
                 this.columnproductos_comprados = new global::System.Data.DataColumn("productos_comprados", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproductos_comprados);
+                this.columnid_usu = new global::System.Data.DataColumn("id_usu", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_usu);
+                this.columndoc_usu = new global::System.Data.DataColumn("doc_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_usu);
+                this.columnraz_usu = new global::System.Data.DataColumn("raz_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnraz_usu);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid_prv}, true));
-                this.columnid_prv.AutoIncrement = true;
-                this.columnid_prv.AutoIncrementSeed = -1;
-                this.columnid_prv.AutoIncrementStep = -1;
-                this.columnid_prv.AllowDBNull = false;
-                this.columnid_prv.Unique = true;
-                this.columndoc_prv.AllowDBNull = false;
-                this.columndoc_prv.MaxLength = 10;
-                this.columnraz_prv.AllowDBNull = false;
-                this.columnraz_prv.MaxLength = 100;
+                                this.columnid_usu}, true));
+                this.columnid_usu.AutoIncrement = true;
+                this.columnid_usu.AutoIncrementSeed = -1;
+                this.columnid_usu.AutoIncrementStep = -1;
+                this.columnid_usu.AllowDBNull = false;
+                this.columnid_usu.Unique = true;
+                this.columndoc_usu.AllowDBNull = false;
+                this.columndoc_usu.MaxLength = 10;
+                this.columnraz_usu.AllowDBNull = false;
+                this.columnraz_usu.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7003,39 +7003,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int id_prv {
-                get {
-                    return ((int)(this[this.tableProveedorPrincipal.id_prvColumn]));
-                }
-                set {
-                    this[this.tableProveedorPrincipal.id_prvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string doc_prv {
-                get {
-                    return ((string)(this[this.tableProveedorPrincipal.doc_prvColumn]));
-                }
-                set {
-                    this[this.tableProveedorPrincipal.doc_prvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string raz_prv {
-                get {
-                    return ((string)(this[this.tableProveedorPrincipal.raz_prvColumn]));
-                }
-                set {
-                    this[this.tableProveedorPrincipal.raz_prvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public decimal productos_comprados {
                 get {
                     try {
@@ -7048,6 +7015,39 @@ namespace New_MasterTrade.Base_de_Datos {
                 }
                 set {
                     this[this.tableProveedorPrincipal.productos_compradosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id_usu {
+                get {
+                    return ((int)(this[this.tableProveedorPrincipal.id_usuColumn]));
+                }
+                set {
+                    this[this.tableProveedorPrincipal.id_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string doc_usu {
+                get {
+                    return ((string)(this[this.tableProveedorPrincipal.doc_usuColumn]));
+                }
+                set {
+                    this[this.tableProveedorPrincipal.doc_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string raz_usu {
+                get {
+                    return ((string)(this[this.tableProveedorPrincipal.raz_usuColumn]));
+                }
+                set {
+                    this[this.tableProveedorPrincipal.raz_usuColumn] = value;
                 }
             }
             
@@ -9597,10 +9597,10 @@ WHERE  oc.id_usu = u.id_usu AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon A
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ProveedorPrincipal";
-            tableMapping.ColumnMappings.Add("id_prv", "id_prv");
-            tableMapping.ColumnMappings.Add("doc_prv", "doc_prv");
-            tableMapping.ColumnMappings.Add("raz_prv", "raz_prv");
             tableMapping.ColumnMappings.Add("productos_comprados", "productos_comprados");
+            tableMapping.ColumnMappings.Add("id_usu", "id_usu");
+            tableMapping.ColumnMappings.Add("doc_usu", "doc_usu");
+            tableMapping.ColumnMappings.Add("raz_usu", "raz_usu");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -9617,11 +9617,10 @@ WHERE  oc.id_usu = u.id_usu AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon A
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT pro.id_prv, pro.doc_prv, pro.raz_prv, SUM(dc.can_dco) AS productos_comprados
-FROM     producto p, detalle_compra dc, orden_compra oc, proveedor pro
-WHERE  p.id_pro = dc.id_pro AND dc.id_oco = oc.id_oco AND oc.id_prv = pro.id_prv
-GROUP BY pro.id_prv
-ORDER BY productos_comprados DESC";
+            this._commandCollection[0].CommandText = "SELECT pv.id_usu, pv.doc_usu, pv.raz_usu, SUM(dc.can_dco) AS productos_comprados\r" +
+                "\nFROM     usuario pv, orden_compra oc, detalle_compra dc\r\nWHERE  pv.id_usu = oc." +
+                "id_usu AND oc.id_oco = dc.id_oco\r\nGROUP BY pv.id_usu\r\nORDER BY productos_comprad" +
+                "os DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

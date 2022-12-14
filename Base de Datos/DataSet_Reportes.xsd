@@ -267,13 +267,13 @@ ORDER BY ventas DESC</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProveedorPrincipalTableAdapter" GeneratorDataComponentClassName="ProveedorPrincipalTableAdapter" Name="ProveedorPrincipal" UserDataComponentName="ProveedorPrincipalTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConexionDevart (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConexionDevart (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT pro.id_prv, pro.doc_prv, pro.raz_prv, SUM(dc.can_dco) AS productos_comprados
-FROM     producto p, detalle_compra dc, orden_compra oc, proveedor pro
-WHERE  p.id_pro = dc.id_pro AND dc.id_oco = oc.id_oco AND oc.id_prv = pro.id_prv
-GROUP BY pro.id_prv
+                    <CommandText>SELECT pv.id_usu, pv.doc_usu, pv.raz_usu, SUM(dc.can_dco) AS productos_comprados
+FROM     usuario pv, orden_compra oc, detalle_compra dc
+WHERE  pv.id_usu = oc.id_usu AND oc.id_oco = dc.id_oco
+GROUP BY pv.id_usu
 ORDER BY productos_comprados DESC</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -281,10 +281,10 @@ ORDER BY productos_comprados DESC</CommandText>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="id_prv" DataSetColumn="id_prv" />
-              <Mapping SourceColumn="doc_prv" DataSetColumn="doc_prv" />
-              <Mapping SourceColumn="raz_prv" DataSetColumn="raz_prv" />
               <Mapping SourceColumn="productos_comprados" DataSetColumn="productos_comprados" />
+              <Mapping SourceColumn="id_usu" DataSetColumn="id_usu" />
+              <Mapping SourceColumn="doc_usu" DataSetColumn="doc_usu" />
+              <Mapping SourceColumn="raz_usu" DataSetColumn="raz_usu" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -822,22 +822,22 @@ ORDER BY ventas DESC</CommandText>
         <xs:element name="ProveedorPrincipal" msprop:Generator_RowEvHandlerName="ProveedorPrincipalRowChangeEventHandler" msprop:Generator_RowDeletedName="ProveedorPrincipalRowDeleted" msprop:Generator_RowDeletingName="ProveedorPrincipalRowDeleting" msprop:Generator_RowEvArgName="ProveedorPrincipalRowChangeEvent" msprop:Generator_TablePropName="ProveedorPrincipal" msprop:Generator_RowChangedName="ProveedorPrincipalRowChanged" msprop:Generator_UserTableName="ProveedorPrincipal" msprop:Generator_RowChangingName="ProveedorPrincipalRowChanging" msprop:Generator_RowClassName="ProveedorPrincipalRow" msprop:Generator_TableClassName="ProveedorPrincipalDataTable" msprop:Generator_TableVarName="tableProveedorPrincipal">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id_prv" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="id_prvColumn" msprop:Generator_ColumnPropNameInRow="id_prv" msprop:Generator_UserColumnName="id_prv" msprop:Generator_ColumnVarNameInTable="columnid_prv" type="xs:int" />
-              <xs:element name="doc_prv" msprop:Generator_ColumnPropNameInTable="doc_prvColumn" msprop:Generator_ColumnPropNameInRow="doc_prv" msprop:Generator_UserColumnName="doc_prv" msprop:Generator_ColumnVarNameInTable="columndoc_prv">
+              <xs:element name="productos_comprados" msprop:Generator_ColumnPropNameInTable="productos_compradosColumn" msprop:Generator_ColumnPropNameInRow="productos_comprados" msprop:Generator_UserColumnName="productos_comprados" msprop:Generator_ColumnVarNameInTable="columnproductos_comprados" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id_usu" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id_usu" msprop:Generator_ColumnPropNameInTable="id_usuColumn" msprop:Generator_ColumnVarNameInTable="columnid_usu" msprop:Generator_UserColumnName="id_usu" type="xs:int" />
+              <xs:element name="doc_usu" msprop:Generator_ColumnPropNameInRow="doc_usu" msprop:Generator_ColumnPropNameInTable="doc_usuColumn" msprop:Generator_ColumnVarNameInTable="columndoc_usu" msprop:Generator_UserColumnName="doc_usu">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="raz_prv" msprop:Generator_ColumnPropNameInTable="raz_prvColumn" msprop:Generator_ColumnPropNameInRow="raz_prv" msprop:Generator_UserColumnName="raz_prv" msprop:Generator_ColumnVarNameInTable="columnraz_prv">
+              <xs:element name="raz_usu" msprop:Generator_ColumnPropNameInRow="raz_usu" msprop:Generator_ColumnPropNameInTable="raz_usuColumn" msprop:Generator_ColumnVarNameInTable="columnraz_usu" msprop:Generator_UserColumnName="raz_usu">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="productos_comprados" msprop:Generator_ColumnPropNameInTable="productos_compradosColumn" msprop:Generator_ColumnPropNameInRow="productos_comprados" msprop:Generator_UserColumnName="productos_comprados" msprop:Generator_ColumnVarNameInTable="columnproductos_comprados" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -978,7 +978,7 @@ ORDER BY ventas DESC</CommandText>
     </xs:unique>
     <xs:unique name="ProveedorPrincipal_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:ProveedorPrincipal" />
-      <xs:field xpath="mstns:id_prv" />
+      <xs:field xpath="mstns:id_usu" />
     </xs:unique>
     <xs:unique name="MarcaMasVendida_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:MarcaMasVendida" />
