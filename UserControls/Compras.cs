@@ -143,7 +143,7 @@ namespace New_MasterTrade.UserControls
 
         private void tablaCompras_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (tablaCompras.Columns[e.ColumnIndex].Name == "Detalle")
             {
                 string x = tablaCompras.Rows[e.RowIndex].Cells["NOrden"].Value.ToString();
                 Reporte reporte = new Reporte();

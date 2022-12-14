@@ -358,8 +358,8 @@ namespace New_MasterTrade.UserControls
                         crud.Crear(GetCompra());
                         crud.RegistrarPrecioCompra(GetDetalle());
                         crud.CrearDetalle(GetDetalle());
-                        //Reporte reporte = new Reporte();
-                        //reporte.Reporte_Orden_Compra(txtNumeroOrden.Text);
+                        Reporte reporte = new Reporte();
+                        reporte.Reporte_Orden_Compra(txtNumeroOrden.Text);
                         bitacora.Create(UserData.Id, Modulos.Comprar, Accion.NuevaCompra(UserData.NombreUsuario, txtNumeroOrden.Text));
                         ConfigControles("OFF");
                     }

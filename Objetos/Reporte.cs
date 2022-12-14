@@ -40,6 +40,7 @@ namespace New_MasterTrade.Objetos
         MarcaMasVendidaTableAdapter marca_vendida = new MarcaMasVendidaTableAdapter();
         VentasAlAgnoTableAdapter ventas_agno = new VentasAlAgnoTableAdapter();
         VentasTableAdapter venta = new VentasTableAdapter();
+        TOP10ClienteFrecuenteTableAdapter top_cliente_frecuente = new TOP10ClienteFrecuenteTableAdapter();
         //TableAdapters
 
         public void Reporte_Orden_Compra(string numero_orden)
@@ -227,7 +228,7 @@ namespace New_MasterTrade.Objetos
         {
             try
             {
-                cliente_frecuente.Fill(dataset.ClienteFrecuente);
+                top_cliente_frecuente.Fill(dataset.TOP10ClienteFrecuente);
                 VentasPorClientes_Reporte reporte = new VentasPorClientes_Reporte();
                 string direccion = @"~\Reportes\VentasPorClientes_Reporte.rpt";
                 reporte.Load(direccion);

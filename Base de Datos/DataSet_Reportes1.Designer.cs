@@ -50,6 +50,8 @@ namespace New_MasterTrade.Base_de_Datos {
         
         private VentasDataTable tableVentas;
         
+        private TOP10ClienteFrecuenteDataTable tableTOP10ClienteFrecuente;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -116,6 +118,9 @@ namespace New_MasterTrade.Base_de_Datos {
                 }
                 if ((ds.Tables["Ventas"] != null)) {
                     base.Tables.Add(new VentasDataTable(ds.Tables["Ventas"]));
+                }
+                if ((ds.Tables["TOP10ClienteFrecuente"] != null)) {
+                    base.Tables.Add(new TOP10ClienteFrecuenteDataTable(ds.Tables["TOP10ClienteFrecuente"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -267,6 +272,16 @@ namespace New_MasterTrade.Base_de_Datos {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public TOP10ClienteFrecuenteDataTable TOP10ClienteFrecuente {
+            get {
+                return this.tableTOP10ClienteFrecuente;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -370,6 +385,9 @@ namespace New_MasterTrade.Base_de_Datos {
                 }
                 if ((ds.Tables["Ventas"] != null)) {
                     base.Tables.Add(new VentasDataTable(ds.Tables["Ventas"]));
+                }
+                if ((ds.Tables["TOP10ClienteFrecuente"] != null)) {
+                    base.Tables.Add(new TOP10ClienteFrecuenteDataTable(ds.Tables["TOP10ClienteFrecuente"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -482,6 +500,12 @@ namespace New_MasterTrade.Base_de_Datos {
                     this.tableVentas.InitVars();
                 }
             }
+            this.tableTOP10ClienteFrecuente = ((TOP10ClienteFrecuenteDataTable)(base.Tables["TOP10ClienteFrecuente"]));
+            if ((initTable == true)) {
+                if ((this.tableTOP10ClienteFrecuente != null)) {
+                    this.tableTOP10ClienteFrecuente.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -518,6 +542,8 @@ namespace New_MasterTrade.Base_de_Datos {
             base.Tables.Add(this.tableVentasAlAgno);
             this.tableVentas = new VentasDataTable();
             base.Tables.Add(this.tableVentas);
+            this.tableTOP10ClienteFrecuente = new TOP10ClienteFrecuenteDataTable();
+            base.Tables.Add(this.tableTOP10ClienteFrecuente);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -595,6 +621,12 @@ namespace New_MasterTrade.Base_de_Datos {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeVentas() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeTOP10ClienteFrecuente() {
             return false;
         }
         
@@ -691,6 +723,9 @@ namespace New_MasterTrade.Base_de_Datos {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void VentasRowChangeEventHandler(object sender, VentasRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void TOP10ClienteFrecuenteRowChangeEventHandler(object sender, TOP10ClienteFrecuenteRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1046,13 +1081,9 @@ namespace New_MasterTrade.Base_de_Datos {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class Factura_VentaDataTable : global::System.Data.TypedTableBase<Factura_VentaRow> {
             
-            private global::System.Data.DataColumn columnid_fve;
-            
             private global::System.Data.DataColumn columntot_fve;
             
             private global::System.Data.DataColumn columntim_fve;
-            
-            private global::System.Data.DataColumn columnnom_usu;
             
             private global::System.Data.DataColumn columnnum_ove;
             
@@ -1070,16 +1101,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             private global::System.Data.DataColumn columnpve_pro;
             
-            private global::System.Data.DataColumn columndoc_cli;
-            
-            private global::System.Data.DataColumn columnraz_cli;
-            
-            private global::System.Data.DataColumn columndir_cli;
-            
-            private global::System.Data.DataColumn columntel_cli;
-            
-            private global::System.Data.DataColumn columncor_cli;
-            
             private global::System.Data.DataColumn columnnom_mon;
             
             private global::System.Data.DataColumn columndes_tca;
@@ -1091,6 +1112,20 @@ namespace New_MasterTrade.Base_de_Datos {
             private global::System.Data.DataColumn columnpor_imp;
             
             private global::System.Data.DataColumn columndes_mpa;
+            
+            private global::System.Data.DataColumn columnvendedor;
+            
+            private global::System.Data.DataColumn columndoc_usu;
+            
+            private global::System.Data.DataColumn columnraz_usu;
+            
+            private global::System.Data.DataColumn columndir_usu;
+            
+            private global::System.Data.DataColumn columntel_usu;
+            
+            private global::System.Data.DataColumn columncor_usu;
+            
+            private global::System.Data.DataColumn columnid_pro;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1127,14 +1162,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn id_fveColumn {
-                get {
-                    return this.columnid_fve;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn tot_fveColumn {
                 get {
                     return this.columntot_fve;
@@ -1146,14 +1173,6 @@ namespace New_MasterTrade.Base_de_Datos {
             public global::System.Data.DataColumn tim_fveColumn {
                 get {
                     return this.columntim_fve;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn nom_usuColumn {
-                get {
-                    return this.columnnom_usu;
                 }
             }
             
@@ -1223,46 +1242,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn doc_cliColumn {
-                get {
-                    return this.columndoc_cli;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn raz_cliColumn {
-                get {
-                    return this.columnraz_cli;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn dir_cliColumn {
-                get {
-                    return this.columndir_cli;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tel_cliColumn {
-                get {
-                    return this.columntel_cli;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn cor_cliColumn {
-                get {
-                    return this.columncor_cli;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn nom_monColumn {
                 get {
                     return this.columnnom_mon;
@@ -1311,6 +1290,62 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn vendedorColumn {
+                get {
+                    return this.columnvendedor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn doc_usuColumn {
+                get {
+                    return this.columndoc_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn raz_usuColumn {
+                get {
+                    return this.columnraz_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn dir_usuColumn {
+                get {
+                    return this.columndir_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn tel_usuColumn {
+                get {
+                    return this.columntel_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn cor_usuColumn {
+                get {
+                    return this.columncor_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn id_proColumn {
+                get {
+                    return this.columnid_pro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1349,7 +1384,6 @@ namespace New_MasterTrade.Base_de_Datos {
             public Factura_VentaRow AddFactura_VentaRow(
                         decimal tot_fve, 
                         decimal tim_fve, 
-                        string nom_usu, 
                         string num_ove, 
                         System.DateTime fec_ove, 
                         System.TimeSpan hor_ove, 
@@ -1358,23 +1392,22 @@ namespace New_MasterTrade.Base_de_Datos {
                         string ser_pro, 
                         string des_pro, 
                         decimal pve_pro, 
-                        string doc_cli, 
-                        string raz_cli, 
-                        string dir_cli, 
-                        string tel_cli, 
-                        string cor_cli, 
                         string nom_mon, 
                         string des_tca, 
                         decimal val_tca, 
                         string des_imp, 
                         decimal por_imp, 
-                        string des_mpa) {
+                        string des_mpa, 
+                        string vendedor, 
+                        string doc_usu, 
+                        string raz_usu, 
+                        string dir_usu, 
+                        string tel_usu, 
+                        string cor_usu) {
                 Factura_VentaRow rowFactura_VentaRow = ((Factura_VentaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         tot_fve,
                         tim_fve,
-                        nom_usu,
                         num_ove,
                         fec_ove,
                         hor_ove,
@@ -1383,17 +1416,19 @@ namespace New_MasterTrade.Base_de_Datos {
                         ser_pro,
                         des_pro,
                         pve_pro,
-                        doc_cli,
-                        raz_cli,
-                        dir_cli,
-                        tel_cli,
-                        cor_cli,
                         nom_mon,
                         des_tca,
                         val_tca,
                         des_imp,
                         por_imp,
-                        des_mpa};
+                        des_mpa,
+                        vendedor,
+                        doc_usu,
+                        raz_usu,
+                        dir_usu,
+                        tel_usu,
+                        cor_usu,
+                        null};
                 rowFactura_VentaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFactura_VentaRow);
                 return rowFactura_VentaRow;
@@ -1416,10 +1451,8 @@ namespace New_MasterTrade.Base_de_Datos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnid_fve = base.Columns["id_fve"];
                 this.columntot_fve = base.Columns["tot_fve"];
                 this.columntim_fve = base.Columns["tim_fve"];
-                this.columnnom_usu = base.Columns["nom_usu"];
                 this.columnnum_ove = base.Columns["num_ove"];
                 this.columnfec_ove = base.Columns["fec_ove"];
                 this.columnhor_ove = base.Columns["hor_ove"];
@@ -1428,30 +1461,28 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columnser_pro = base.Columns["ser_pro"];
                 this.columndes_pro = base.Columns["des_pro"];
                 this.columnpve_pro = base.Columns["pve_pro"];
-                this.columndoc_cli = base.Columns["doc_cli"];
-                this.columnraz_cli = base.Columns["raz_cli"];
-                this.columndir_cli = base.Columns["dir_cli"];
-                this.columntel_cli = base.Columns["tel_cli"];
-                this.columncor_cli = base.Columns["cor_cli"];
                 this.columnnom_mon = base.Columns["nom_mon"];
                 this.columndes_tca = base.Columns["des_tca"];
                 this.columnval_tca = base.Columns["val_tca"];
                 this.columndes_imp = base.Columns["des_imp"];
                 this.columnpor_imp = base.Columns["por_imp"];
                 this.columndes_mpa = base.Columns["des_mpa"];
+                this.columnvendedor = base.Columns["vendedor"];
+                this.columndoc_usu = base.Columns["doc_usu"];
+                this.columnraz_usu = base.Columns["raz_usu"];
+                this.columndir_usu = base.Columns["dir_usu"];
+                this.columntel_usu = base.Columns["tel_usu"];
+                this.columncor_usu = base.Columns["cor_usu"];
+                this.columnid_pro = base.Columns["id_pro"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnid_fve = new global::System.Data.DataColumn("id_fve", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_fve);
                 this.columntot_fve = new global::System.Data.DataColumn("tot_fve", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntot_fve);
                 this.columntim_fve = new global::System.Data.DataColumn("tim_fve", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntim_fve);
-                this.columnnom_usu = new global::System.Data.DataColumn("nom_usu", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnom_usu);
                 this.columnnum_ove = new global::System.Data.DataColumn("num_ove", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnum_ove);
                 this.columnfec_ove = new global::System.Data.DataColumn("fec_ove", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -1468,16 +1499,6 @@ namespace New_MasterTrade.Base_de_Datos {
                 base.Columns.Add(this.columndes_pro);
                 this.columnpve_pro = new global::System.Data.DataColumn("pve_pro", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpve_pro);
-                this.columndoc_cli = new global::System.Data.DataColumn("doc_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndoc_cli);
-                this.columnraz_cli = new global::System.Data.DataColumn("raz_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnraz_cli);
-                this.columndir_cli = new global::System.Data.DataColumn("dir_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndir_cli);
-                this.columntel_cli = new global::System.Data.DataColumn("tel_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntel_cli);
-                this.columncor_cli = new global::System.Data.DataColumn("cor_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncor_cli);
                 this.columnnom_mon = new global::System.Data.DataColumn("nom_mon", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnom_mon);
                 this.columndes_tca = new global::System.Data.DataColumn("des_tca", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1490,14 +1511,24 @@ namespace New_MasterTrade.Base_de_Datos {
                 base.Columns.Add(this.columnpor_imp);
                 this.columndes_mpa = new global::System.Data.DataColumn("des_mpa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndes_mpa);
-                this.columnid_fve.AutoIncrement = true;
-                this.columnid_fve.AutoIncrementSeed = -1;
-                this.columnid_fve.AutoIncrementStep = -1;
-                this.columnid_fve.AllowDBNull = false;
+                this.columnvendedor = new global::System.Data.DataColumn("vendedor", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvendedor);
+                this.columndoc_usu = new global::System.Data.DataColumn("doc_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_usu);
+                this.columnraz_usu = new global::System.Data.DataColumn("raz_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnraz_usu);
+                this.columndir_usu = new global::System.Data.DataColumn("dir_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndir_usu);
+                this.columntel_usu = new global::System.Data.DataColumn("tel_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntel_usu);
+                this.columncor_usu = new global::System.Data.DataColumn("cor_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncor_usu);
+                this.columnid_pro = new global::System.Data.DataColumn("id_pro", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_pro);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid_pro}, false));
                 this.columntot_fve.AllowDBNull = false;
                 this.columntim_fve.AllowDBNull = false;
-                this.columnnom_usu.AllowDBNull = false;
-                this.columnnom_usu.MaxLength = 100;
                 this.columnnum_ove.AllowDBNull = false;
                 this.columnnum_ove.MaxLength = 100;
                 this.columnfec_ove.AllowDBNull = false;
@@ -1509,16 +1540,6 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columndes_pro.AllowDBNull = false;
                 this.columndes_pro.MaxLength = 500;
                 this.columnpve_pro.AllowDBNull = false;
-                this.columndoc_cli.AllowDBNull = false;
-                this.columndoc_cli.MaxLength = 10;
-                this.columnraz_cli.AllowDBNull = false;
-                this.columnraz_cli.MaxLength = 100;
-                this.columndir_cli.AllowDBNull = false;
-                this.columndir_cli.MaxLength = 500;
-                this.columntel_cli.AllowDBNull = false;
-                this.columntel_cli.MaxLength = 15;
-                this.columncor_cli.AllowDBNull = false;
-                this.columncor_cli.MaxLength = 100;
                 this.columnnom_mon.AllowDBNull = false;
                 this.columnnom_mon.MaxLength = 50;
                 this.columndes_tca.AllowDBNull = false;
@@ -1529,6 +1550,23 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columnpor_imp.AllowDBNull = false;
                 this.columndes_mpa.AllowDBNull = false;
                 this.columndes_mpa.MaxLength = 20;
+                this.columnvendedor.AllowDBNull = false;
+                this.columnvendedor.MaxLength = 100;
+                this.columndoc_usu.AllowDBNull = false;
+                this.columndoc_usu.MaxLength = 10;
+                this.columnraz_usu.AllowDBNull = false;
+                this.columnraz_usu.MaxLength = 100;
+                this.columndir_usu.AllowDBNull = false;
+                this.columndir_usu.MaxLength = 500;
+                this.columntel_usu.AllowDBNull = false;
+                this.columntel_usu.MaxLength = 15;
+                this.columncor_usu.AllowDBNull = false;
+                this.columncor_usu.MaxLength = 100;
+                this.columnid_pro.AutoIncrement = true;
+                this.columnid_pro.AutoIncrementSeed = -1;
+                this.columnid_pro.AutoIncrementStep = -1;
+                this.columnid_pro.AllowDBNull = false;
+                this.columnid_pro.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1670,16 +1708,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             private global::System.Data.DataColumn columnhor_oco;
             
-            private global::System.Data.DataColumn columndoc_prv;
-            
-            private global::System.Data.DataColumn columnraz_prv;
-            
-            private global::System.Data.DataColumn columndir_prv;
-            
-            private global::System.Data.DataColumn columntel_prv;
-            
-            private global::System.Data.DataColumn columncor_prv;
-            
             private global::System.Data.DataColumn columndes_tca;
             
             private global::System.Data.DataColumn columnval_tca;
@@ -1695,6 +1723,16 @@ namespace New_MasterTrade.Base_de_Datos {
             private global::System.Data.DataColumn columndes_pro;
             
             private global::System.Data.DataColumn columnpco_pro;
+            
+            private global::System.Data.DataColumn columndoc_usu;
+            
+            private global::System.Data.DataColumn columnraz_usu;
+            
+            private global::System.Data.DataColumn columndir_usu;
+            
+            private global::System.Data.DataColumn columntel_usu;
+            
+            private global::System.Data.DataColumn columncor_usu;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1758,46 +1796,6 @@ namespace New_MasterTrade.Base_de_Datos {
             public global::System.Data.DataColumn hor_ocoColumn {
                 get {
                     return this.columnhor_oco;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn doc_prvColumn {
-                get {
-                    return this.columndoc_prv;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn raz_prvColumn {
-                get {
-                    return this.columnraz_prv;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn dir_prvColumn {
-                get {
-                    return this.columndir_prv;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tel_prvColumn {
-                get {
-                    return this.columntel_prv;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn cor_prvColumn {
-                get {
-                    return this.columncor_prv;
                 }
             }
             
@@ -1867,6 +1865,46 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn doc_usuColumn {
+                get {
+                    return this.columndoc_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn raz_usuColumn {
+                get {
+                    return this.columnraz_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn dir_usuColumn {
+                get {
+                    return this.columndir_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn tel_usuColumn {
+                get {
+                    return this.columntel_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn cor_usuColumn {
+                get {
+                    return this.columncor_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1907,11 +1945,6 @@ namespace New_MasterTrade.Base_de_Datos {
                         decimal tot_oco, 
                         System.DateTime fec_oco, 
                         System.TimeSpan hor_oco, 
-                        string doc_prv, 
-                        string raz_prv, 
-                        string dir_prv, 
-                        string tel_prv, 
-                        string cor_prv, 
                         string des_tca, 
                         decimal val_tca, 
                         string nom_mon, 
@@ -1919,18 +1952,18 @@ namespace New_MasterTrade.Base_de_Datos {
                         decimal tot_dco, 
                         string ser_pro, 
                         string des_pro, 
-                        decimal pco_pro) {
+                        decimal pco_pro, 
+                        string doc_usu, 
+                        string raz_usu, 
+                        string dir_usu, 
+                        string tel_usu, 
+                        string cor_usu) {
                 Nuevo_OrdenCompraRow rowNuevo_OrdenCompraRow = ((Nuevo_OrdenCompraRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         num_oco,
                         tot_oco,
                         fec_oco,
                         hor_oco,
-                        doc_prv,
-                        raz_prv,
-                        dir_prv,
-                        tel_prv,
-                        cor_prv,
                         des_tca,
                         val_tca,
                         nom_mon,
@@ -1938,7 +1971,12 @@ namespace New_MasterTrade.Base_de_Datos {
                         tot_dco,
                         ser_pro,
                         des_pro,
-                        pco_pro};
+                        pco_pro,
+                        doc_usu,
+                        raz_usu,
+                        dir_usu,
+                        tel_usu,
+                        cor_usu};
                 rowNuevo_OrdenCompraRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNuevo_OrdenCompraRow);
                 return rowNuevo_OrdenCompraRow;
@@ -1965,11 +2003,6 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columntot_oco = base.Columns["tot_oco"];
                 this.columnfec_oco = base.Columns["fec_oco"];
                 this.columnhor_oco = base.Columns["hor_oco"];
-                this.columndoc_prv = base.Columns["doc_prv"];
-                this.columnraz_prv = base.Columns["raz_prv"];
-                this.columndir_prv = base.Columns["dir_prv"];
-                this.columntel_prv = base.Columns["tel_prv"];
-                this.columncor_prv = base.Columns["cor_prv"];
                 this.columndes_tca = base.Columns["des_tca"];
                 this.columnval_tca = base.Columns["val_tca"];
                 this.columnnom_mon = base.Columns["nom_mon"];
@@ -1978,6 +2011,11 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columnser_pro = base.Columns["ser_pro"];
                 this.columndes_pro = base.Columns["des_pro"];
                 this.columnpco_pro = base.Columns["pco_pro"];
+                this.columndoc_usu = base.Columns["doc_usu"];
+                this.columnraz_usu = base.Columns["raz_usu"];
+                this.columndir_usu = base.Columns["dir_usu"];
+                this.columntel_usu = base.Columns["tel_usu"];
+                this.columncor_usu = base.Columns["cor_usu"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1991,16 +2029,6 @@ namespace New_MasterTrade.Base_de_Datos {
                 base.Columns.Add(this.columnfec_oco);
                 this.columnhor_oco = new global::System.Data.DataColumn("hor_oco", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhor_oco);
-                this.columndoc_prv = new global::System.Data.DataColumn("doc_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndoc_prv);
-                this.columnraz_prv = new global::System.Data.DataColumn("raz_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnraz_prv);
-                this.columndir_prv = new global::System.Data.DataColumn("dir_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndir_prv);
-                this.columntel_prv = new global::System.Data.DataColumn("tel_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntel_prv);
-                this.columncor_prv = new global::System.Data.DataColumn("cor_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncor_prv);
                 this.columndes_tca = new global::System.Data.DataColumn("des_tca", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndes_tca);
                 this.columnval_tca = new global::System.Data.DataColumn("val_tca", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -2017,21 +2045,21 @@ namespace New_MasterTrade.Base_de_Datos {
                 base.Columns.Add(this.columndes_pro);
                 this.columnpco_pro = new global::System.Data.DataColumn("pco_pro", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpco_pro);
+                this.columndoc_usu = new global::System.Data.DataColumn("doc_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_usu);
+                this.columnraz_usu = new global::System.Data.DataColumn("raz_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnraz_usu);
+                this.columndir_usu = new global::System.Data.DataColumn("dir_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndir_usu);
+                this.columntel_usu = new global::System.Data.DataColumn("tel_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntel_usu);
+                this.columncor_usu = new global::System.Data.DataColumn("cor_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncor_usu);
                 this.columnnum_oco.AllowDBNull = false;
                 this.columnnum_oco.MaxLength = 100;
                 this.columntot_oco.AllowDBNull = false;
                 this.columnfec_oco.AllowDBNull = false;
                 this.columnhor_oco.AllowDBNull = false;
-                this.columndoc_prv.AllowDBNull = false;
-                this.columndoc_prv.MaxLength = 10;
-                this.columnraz_prv.AllowDBNull = false;
-                this.columnraz_prv.MaxLength = 100;
-                this.columndir_prv.AllowDBNull = false;
-                this.columndir_prv.MaxLength = 500;
-                this.columntel_prv.AllowDBNull = false;
-                this.columntel_prv.MaxLength = 15;
-                this.columncor_prv.AllowDBNull = false;
-                this.columncor_prv.MaxLength = 100;
                 this.columndes_tca.AllowDBNull = false;
                 this.columndes_tca.MaxLength = 200;
                 this.columnval_tca.AllowDBNull = false;
@@ -2044,6 +2072,16 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columndes_pro.AllowDBNull = false;
                 this.columndes_pro.MaxLength = 500;
                 this.columnpco_pro.AllowDBNull = false;
+                this.columndoc_usu.AllowDBNull = false;
+                this.columndoc_usu.MaxLength = 10;
+                this.columnraz_usu.AllowDBNull = false;
+                this.columnraz_usu.MaxLength = 100;
+                this.columndir_usu.AllowDBNull = false;
+                this.columndir_usu.MaxLength = 500;
+                this.columntel_usu.AllowDBNull = false;
+                this.columntel_usu.MaxLength = 15;
+                this.columncor_usu.AllowDBNull = false;
+                this.columncor_usu.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2177,19 +2215,21 @@ namespace New_MasterTrade.Base_de_Datos {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ClienteDataTable : global::System.Data.TypedTableBase<ClienteRow> {
             
-            private global::System.Data.DataColumn columnid_cli;
+            private global::System.Data.DataColumn columnid_usu;
             
-            private global::System.Data.DataColumn columndoc_cli;
+            private global::System.Data.DataColumn columnid_niv;
             
-            private global::System.Data.DataColumn columnraz_cli;
+            private global::System.Data.DataColumn columndoc_usu;
             
-            private global::System.Data.DataColumn columndir_cli;
+            private global::System.Data.DataColumn columnraz_usu;
             
-            private global::System.Data.DataColumn columntel_cli;
+            private global::System.Data.DataColumn columndir_usu;
             
-            private global::System.Data.DataColumn columncor_cli;
+            private global::System.Data.DataColumn columntel_usu;
             
-            private global::System.Data.DataColumn columnact_cli;
+            private global::System.Data.DataColumn columncor_usu;
+            
+            private global::System.Data.DataColumn columnact_usu;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2226,57 +2266,65 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn id_cliColumn {
+            public global::System.Data.DataColumn id_usuColumn {
                 get {
-                    return this.columnid_cli;
+                    return this.columnid_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn doc_cliColumn {
+            public global::System.Data.DataColumn id_nivColumn {
                 get {
-                    return this.columndoc_cli;
+                    return this.columnid_niv;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn raz_cliColumn {
+            public global::System.Data.DataColumn doc_usuColumn {
                 get {
-                    return this.columnraz_cli;
+                    return this.columndoc_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn dir_cliColumn {
+            public global::System.Data.DataColumn raz_usuColumn {
                 get {
-                    return this.columndir_cli;
+                    return this.columnraz_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tel_cliColumn {
+            public global::System.Data.DataColumn dir_usuColumn {
                 get {
-                    return this.columntel_cli;
+                    return this.columndir_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn cor_cliColumn {
+            public global::System.Data.DataColumn tel_usuColumn {
                 get {
-                    return this.columncor_cli;
+                    return this.columntel_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn act_cliColumn {
+            public global::System.Data.DataColumn cor_usuColumn {
                 get {
-                    return this.columnact_cli;
+                    return this.columncor_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn act_usuColumn {
+                get {
+                    return this.columnact_usu;
                 }
             }
             
@@ -2317,16 +2365,17 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ClienteRow AddClienteRow(string doc_cli, string raz_cli, string dir_cli, string tel_cli, string cor_cli, short act_cli) {
+            public ClienteRow AddClienteRow(int id_niv, string doc_usu, string raz_usu, string dir_usu, string tel_usu, string cor_usu, short act_usu) {
                 ClienteRow rowClienteRow = ((ClienteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        doc_cli,
-                        raz_cli,
-                        dir_cli,
-                        tel_cli,
-                        cor_cli,
-                        act_cli};
+                        id_niv,
+                        doc_usu,
+                        raz_usu,
+                        dir_usu,
+                        tel_usu,
+                        cor_usu,
+                        act_usu};
                 rowClienteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowClienteRow);
                 return rowClienteRow;
@@ -2334,9 +2383,9 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ClienteRow FindByid_cli(int id_cli) {
+            public ClienteRow FindByid_usu(int id_usu) {
                 return ((ClienteRow)(this.Rows.Find(new object[] {
-                            id_cli})));
+                            id_usu})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2356,50 +2405,54 @@ namespace New_MasterTrade.Base_de_Datos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnid_cli = base.Columns["id_cli"];
-                this.columndoc_cli = base.Columns["doc_cli"];
-                this.columnraz_cli = base.Columns["raz_cli"];
-                this.columndir_cli = base.Columns["dir_cli"];
-                this.columntel_cli = base.Columns["tel_cli"];
-                this.columncor_cli = base.Columns["cor_cli"];
-                this.columnact_cli = base.Columns["act_cli"];
+                this.columnid_usu = base.Columns["id_usu"];
+                this.columnid_niv = base.Columns["id_niv"];
+                this.columndoc_usu = base.Columns["doc_usu"];
+                this.columnraz_usu = base.Columns["raz_usu"];
+                this.columndir_usu = base.Columns["dir_usu"];
+                this.columntel_usu = base.Columns["tel_usu"];
+                this.columncor_usu = base.Columns["cor_usu"];
+                this.columnact_usu = base.Columns["act_usu"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnid_cli = new global::System.Data.DataColumn("id_cli", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_cli);
-                this.columndoc_cli = new global::System.Data.DataColumn("doc_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndoc_cli);
-                this.columnraz_cli = new global::System.Data.DataColumn("raz_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnraz_cli);
-                this.columndir_cli = new global::System.Data.DataColumn("dir_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndir_cli);
-                this.columntel_cli = new global::System.Data.DataColumn("tel_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntel_cli);
-                this.columncor_cli = new global::System.Data.DataColumn("cor_cli", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncor_cli);
-                this.columnact_cli = new global::System.Data.DataColumn("act_cli", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnact_cli);
+                this.columnid_usu = new global::System.Data.DataColumn("id_usu", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_usu);
+                this.columnid_niv = new global::System.Data.DataColumn("id_niv", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_niv);
+                this.columndoc_usu = new global::System.Data.DataColumn("doc_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_usu);
+                this.columnraz_usu = new global::System.Data.DataColumn("raz_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnraz_usu);
+                this.columndir_usu = new global::System.Data.DataColumn("dir_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndir_usu);
+                this.columntel_usu = new global::System.Data.DataColumn("tel_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntel_usu);
+                this.columncor_usu = new global::System.Data.DataColumn("cor_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncor_usu);
+                this.columnact_usu = new global::System.Data.DataColumn("act_usu", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_usu);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid_cli}, true));
-                this.columnid_cli.AutoIncrement = true;
-                this.columnid_cli.AutoIncrementSeed = -1;
-                this.columnid_cli.AutoIncrementStep = -1;
-                this.columnid_cli.AllowDBNull = false;
-                this.columnid_cli.Unique = true;
-                this.columndoc_cli.AllowDBNull = false;
-                this.columndoc_cli.MaxLength = 10;
-                this.columnraz_cli.AllowDBNull = false;
-                this.columnraz_cli.MaxLength = 100;
-                this.columndir_cli.AllowDBNull = false;
-                this.columndir_cli.MaxLength = 500;
-                this.columntel_cli.AllowDBNull = false;
-                this.columntel_cli.MaxLength = 15;
-                this.columncor_cli.AllowDBNull = false;
-                this.columncor_cli.MaxLength = 100;
-                this.columnact_cli.AllowDBNull = false;
+                                this.columnid_usu}, true));
+                this.columnid_usu.AutoIncrement = true;
+                this.columnid_usu.AutoIncrementSeed = -1;
+                this.columnid_usu.AutoIncrementStep = -1;
+                this.columnid_usu.AllowDBNull = false;
+                this.columnid_usu.Unique = true;
+                this.columnid_niv.AllowDBNull = false;
+                this.columndoc_usu.AllowDBNull = false;
+                this.columndoc_usu.MaxLength = 10;
+                this.columnraz_usu.AllowDBNull = false;
+                this.columnraz_usu.MaxLength = 100;
+                this.columndir_usu.AllowDBNull = false;
+                this.columndir_usu.MaxLength = 500;
+                this.columntel_usu.AllowDBNull = false;
+                this.columntel_usu.MaxLength = 15;
+                this.columncor_usu.AllowDBNull = false;
+                this.columncor_usu.MaxLength = 100;
+                this.columnact_usu.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2533,19 +2586,21 @@ namespace New_MasterTrade.Base_de_Datos {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ProveedorDataTable : global::System.Data.TypedTableBase<ProveedorRow> {
             
-            private global::System.Data.DataColumn columnid_prv;
+            private global::System.Data.DataColumn columnid_usu;
             
-            private global::System.Data.DataColumn columndoc_prv;
+            private global::System.Data.DataColumn columnid_niv;
             
-            private global::System.Data.DataColumn columnraz_prv;
+            private global::System.Data.DataColumn columndoc_usu;
             
-            private global::System.Data.DataColumn columndir_prv;
+            private global::System.Data.DataColumn columnraz_usu;
             
-            private global::System.Data.DataColumn columntel_prv;
+            private global::System.Data.DataColumn columndir_usu;
             
-            private global::System.Data.DataColumn columncor_prv;
+            private global::System.Data.DataColumn columntel_usu;
             
-            private global::System.Data.DataColumn columnact_prv;
+            private global::System.Data.DataColumn columncor_usu;
+            
+            private global::System.Data.DataColumn columnact_usu;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2582,57 +2637,65 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn id_prvColumn {
+            public global::System.Data.DataColumn id_usuColumn {
                 get {
-                    return this.columnid_prv;
+                    return this.columnid_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn doc_prvColumn {
+            public global::System.Data.DataColumn id_nivColumn {
                 get {
-                    return this.columndoc_prv;
+                    return this.columnid_niv;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn raz_prvColumn {
+            public global::System.Data.DataColumn doc_usuColumn {
                 get {
-                    return this.columnraz_prv;
+                    return this.columndoc_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn dir_prvColumn {
+            public global::System.Data.DataColumn raz_usuColumn {
                 get {
-                    return this.columndir_prv;
+                    return this.columnraz_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tel_prvColumn {
+            public global::System.Data.DataColumn dir_usuColumn {
                 get {
-                    return this.columntel_prv;
+                    return this.columndir_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn cor_prvColumn {
+            public global::System.Data.DataColumn tel_usuColumn {
                 get {
-                    return this.columncor_prv;
+                    return this.columntel_usu;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn act_prvColumn {
+            public global::System.Data.DataColumn cor_usuColumn {
                 get {
-                    return this.columnact_prv;
+                    return this.columncor_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn act_usuColumn {
+                get {
+                    return this.columnact_usu;
                 }
             }
             
@@ -2673,16 +2736,17 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ProveedorRow AddProveedorRow(string doc_prv, string raz_prv, string dir_prv, string tel_prv, string cor_prv, short act_prv) {
+            public ProveedorRow AddProveedorRow(int id_niv, string doc_usu, string raz_usu, string dir_usu, string tel_usu, string cor_usu, short act_usu) {
                 ProveedorRow rowProveedorRow = ((ProveedorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        doc_prv,
-                        raz_prv,
-                        dir_prv,
-                        tel_prv,
-                        cor_prv,
-                        act_prv};
+                        id_niv,
+                        doc_usu,
+                        raz_usu,
+                        dir_usu,
+                        tel_usu,
+                        cor_usu,
+                        act_usu};
                 rowProveedorRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProveedorRow);
                 return rowProveedorRow;
@@ -2690,9 +2754,9 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ProveedorRow FindByid_prv(int id_prv) {
+            public ProveedorRow FindByid_usu(int id_usu) {
                 return ((ProveedorRow)(this.Rows.Find(new object[] {
-                            id_prv})));
+                            id_usu})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2712,50 +2776,54 @@ namespace New_MasterTrade.Base_de_Datos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnid_prv = base.Columns["id_prv"];
-                this.columndoc_prv = base.Columns["doc_prv"];
-                this.columnraz_prv = base.Columns["raz_prv"];
-                this.columndir_prv = base.Columns["dir_prv"];
-                this.columntel_prv = base.Columns["tel_prv"];
-                this.columncor_prv = base.Columns["cor_prv"];
-                this.columnact_prv = base.Columns["act_prv"];
+                this.columnid_usu = base.Columns["id_usu"];
+                this.columnid_niv = base.Columns["id_niv"];
+                this.columndoc_usu = base.Columns["doc_usu"];
+                this.columnraz_usu = base.Columns["raz_usu"];
+                this.columndir_usu = base.Columns["dir_usu"];
+                this.columntel_usu = base.Columns["tel_usu"];
+                this.columncor_usu = base.Columns["cor_usu"];
+                this.columnact_usu = base.Columns["act_usu"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnid_prv = new global::System.Data.DataColumn("id_prv", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_prv);
-                this.columndoc_prv = new global::System.Data.DataColumn("doc_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndoc_prv);
-                this.columnraz_prv = new global::System.Data.DataColumn("raz_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnraz_prv);
-                this.columndir_prv = new global::System.Data.DataColumn("dir_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndir_prv);
-                this.columntel_prv = new global::System.Data.DataColumn("tel_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntel_prv);
-                this.columncor_prv = new global::System.Data.DataColumn("cor_prv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncor_prv);
-                this.columnact_prv = new global::System.Data.DataColumn("act_prv", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnact_prv);
+                this.columnid_usu = new global::System.Data.DataColumn("id_usu", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_usu);
+                this.columnid_niv = new global::System.Data.DataColumn("id_niv", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_niv);
+                this.columndoc_usu = new global::System.Data.DataColumn("doc_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_usu);
+                this.columnraz_usu = new global::System.Data.DataColumn("raz_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnraz_usu);
+                this.columndir_usu = new global::System.Data.DataColumn("dir_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndir_usu);
+                this.columntel_usu = new global::System.Data.DataColumn("tel_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntel_usu);
+                this.columncor_usu = new global::System.Data.DataColumn("cor_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncor_usu);
+                this.columnact_usu = new global::System.Data.DataColumn("act_usu", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_usu);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid_prv}, true));
-                this.columnid_prv.AutoIncrement = true;
-                this.columnid_prv.AutoIncrementSeed = -1;
-                this.columnid_prv.AutoIncrementStep = -1;
-                this.columnid_prv.AllowDBNull = false;
-                this.columnid_prv.Unique = true;
-                this.columndoc_prv.AllowDBNull = false;
-                this.columndoc_prv.MaxLength = 10;
-                this.columnraz_prv.AllowDBNull = false;
-                this.columnraz_prv.MaxLength = 100;
-                this.columndir_prv.AllowDBNull = false;
-                this.columndir_prv.MaxLength = 500;
-                this.columntel_prv.AllowDBNull = false;
-                this.columntel_prv.MaxLength = 15;
-                this.columncor_prv.AllowDBNull = false;
-                this.columncor_prv.MaxLength = 100;
-                this.columnact_prv.AllowDBNull = false;
+                                this.columnid_usu}, true));
+                this.columnid_usu.AutoIncrement = true;
+                this.columnid_usu.AutoIncrementSeed = -1;
+                this.columnid_usu.AutoIncrementStep = -1;
+                this.columnid_usu.AllowDBNull = false;
+                this.columnid_usu.Unique = true;
+                this.columnid_niv.AllowDBNull = false;
+                this.columndoc_usu.AllowDBNull = false;
+                this.columndoc_usu.MaxLength = 10;
+                this.columnraz_usu.AllowDBNull = false;
+                this.columnraz_usu.MaxLength = 100;
+                this.columndir_usu.AllowDBNull = false;
+                this.columndir_usu.MaxLength = 500;
+                this.columntel_usu.AllowDBNull = false;
+                this.columntel_usu.MaxLength = 15;
+                this.columncor_usu.AllowDBNull = false;
+                this.columncor_usu.MaxLength = 100;
+                this.columnact_usu.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3890,6 +3958,14 @@ namespace New_MasterTrade.Base_de_Datos {
             
             private global::System.Data.DataColumn columnnumero_ventas;
             
+            private global::System.Data.DataColumn columnid_usu;
+            
+            private global::System.Data.DataColumn columndoc_usu;
+            
+            private global::System.Data.DataColumn columnraz_usu;
+            
+            private global::System.Data.DataColumn columnventas;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ClienteFrecuenteDataTable() {
@@ -3957,6 +4033,38 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn id_usuColumn {
+                get {
+                    return this.columnid_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn doc_usuColumn {
+                get {
+                    return this.columndoc_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn raz_usuColumn {
+                get {
+                    return this.columnraz_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ventasColumn {
+                get {
+                    return this.columnventas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3992,13 +4100,17 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ClienteFrecuenteRow AddClienteFrecuenteRow(string doc_cli, string raz_cli, long numero_ventas) {
+            public ClienteFrecuenteRow AddClienteFrecuenteRow(string doc_cli, string raz_cli, long numero_ventas, string doc_usu, string raz_usu, long ventas) {
                 ClienteFrecuenteRow rowClienteFrecuenteRow = ((ClienteFrecuenteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         doc_cli,
                         raz_cli,
-                        numero_ventas};
+                        numero_ventas,
+                        null,
+                        doc_usu,
+                        raz_usu,
+                        ventas};
                 rowClienteFrecuenteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowClienteFrecuenteRow);
                 return rowClienteFrecuenteRow;
@@ -4032,6 +4144,10 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columndoc_cli = base.Columns["doc_cli"];
                 this.columnraz_cli = base.Columns["raz_cli"];
                 this.columnnumero_ventas = base.Columns["numero_ventas"];
+                this.columnid_usu = base.Columns["id_usu"];
+                this.columndoc_usu = base.Columns["doc_usu"];
+                this.columnraz_usu = base.Columns["raz_usu"];
+                this.columnventas = base.Columns["ventas"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4045,6 +4161,14 @@ namespace New_MasterTrade.Base_de_Datos {
                 base.Columns.Add(this.columnraz_cli);
                 this.columnnumero_ventas = new global::System.Data.DataColumn("numero_ventas", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnumero_ventas);
+                this.columnid_usu = new global::System.Data.DataColumn("id_usu", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_usu);
+                this.columndoc_usu = new global::System.Data.DataColumn("doc_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_usu);
+                this.columnraz_usu = new global::System.Data.DataColumn("raz_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnraz_usu);
+                this.columnventas = new global::System.Data.DataColumn("ventas", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnventas);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid_cli}, true));
                 this.columnid_cli.AutoIncrement = true;
@@ -4057,6 +4181,15 @@ namespace New_MasterTrade.Base_de_Datos {
                 this.columnraz_cli.AllowDBNull = false;
                 this.columnraz_cli.MaxLength = 100;
                 this.columnnumero_ventas.AllowDBNull = false;
+                this.columnid_usu.AutoIncrement = true;
+                this.columnid_usu.AutoIncrementSeed = -1;
+                this.columnid_usu.AutoIncrementStep = -1;
+                this.columnid_usu.AllowDBNull = false;
+                this.columndoc_usu.AllowDBNull = false;
+                this.columndoc_usu.MaxLength = 10;
+                this.columnraz_usu.AllowDBNull = false;
+                this.columnraz_usu.MaxLength = 100;
+                this.columnventas.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5409,6 +5542,314 @@ namespace New_MasterTrade.Base_de_Datos {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class TOP10ClienteFrecuenteDataTable : global::System.Data.TypedTableBase<TOP10ClienteFrecuenteRow> {
+            
+            private global::System.Data.DataColumn columnid_usu;
+            
+            private global::System.Data.DataColumn columndoc_usu;
+            
+            private global::System.Data.DataColumn columnraz_usu;
+            
+            private global::System.Data.DataColumn columnventas;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public TOP10ClienteFrecuenteDataTable() {
+                this.TableName = "TOP10ClienteFrecuente";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal TOP10ClienteFrecuenteDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected TOP10ClienteFrecuenteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn id_usuColumn {
+                get {
+                    return this.columnid_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn doc_usuColumn {
+                get {
+                    return this.columndoc_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn raz_usuColumn {
+                get {
+                    return this.columnraz_usu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ventasColumn {
+                get {
+                    return this.columnventas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public TOP10ClienteFrecuenteRow this[int index] {
+                get {
+                    return ((TOP10ClienteFrecuenteRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event TOP10ClienteFrecuenteRowChangeEventHandler TOP10ClienteFrecuenteRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event TOP10ClienteFrecuenteRowChangeEventHandler TOP10ClienteFrecuenteRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event TOP10ClienteFrecuenteRowChangeEventHandler TOP10ClienteFrecuenteRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event TOP10ClienteFrecuenteRowChangeEventHandler TOP10ClienteFrecuenteRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddTOP10ClienteFrecuenteRow(TOP10ClienteFrecuenteRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public TOP10ClienteFrecuenteRow AddTOP10ClienteFrecuenteRow(string doc_usu, string raz_usu, long ventas) {
+                TOP10ClienteFrecuenteRow rowTOP10ClienteFrecuenteRow = ((TOP10ClienteFrecuenteRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        doc_usu,
+                        raz_usu,
+                        ventas};
+                rowTOP10ClienteFrecuenteRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTOP10ClienteFrecuenteRow);
+                return rowTOP10ClienteFrecuenteRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public TOP10ClienteFrecuenteRow FindByid_usu(int id_usu) {
+                return ((TOP10ClienteFrecuenteRow)(this.Rows.Find(new object[] {
+                            id_usu})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                TOP10ClienteFrecuenteDataTable cln = ((TOP10ClienteFrecuenteDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new TOP10ClienteFrecuenteDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnid_usu = base.Columns["id_usu"];
+                this.columndoc_usu = base.Columns["doc_usu"];
+                this.columnraz_usu = base.Columns["raz_usu"];
+                this.columnventas = base.Columns["ventas"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnid_usu = new global::System.Data.DataColumn("id_usu", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_usu);
+                this.columndoc_usu = new global::System.Data.DataColumn("doc_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_usu);
+                this.columnraz_usu = new global::System.Data.DataColumn("raz_usu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnraz_usu);
+                this.columnventas = new global::System.Data.DataColumn("ventas", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnventas);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid_usu}, true));
+                this.columnid_usu.AutoIncrement = true;
+                this.columnid_usu.AutoIncrementSeed = -1;
+                this.columnid_usu.AutoIncrementStep = -1;
+                this.columnid_usu.AllowDBNull = false;
+                this.columnid_usu.Unique = true;
+                this.columndoc_usu.AllowDBNull = false;
+                this.columndoc_usu.MaxLength = 10;
+                this.columnraz_usu.AllowDBNull = false;
+                this.columnraz_usu.MaxLength = 100;
+                this.columnventas.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public TOP10ClienteFrecuenteRow NewTOP10ClienteFrecuenteRow() {
+                return ((TOP10ClienteFrecuenteRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new TOP10ClienteFrecuenteRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(TOP10ClienteFrecuenteRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.TOP10ClienteFrecuenteRowChanged != null)) {
+                    this.TOP10ClienteFrecuenteRowChanged(this, new TOP10ClienteFrecuenteRowChangeEvent(((TOP10ClienteFrecuenteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.TOP10ClienteFrecuenteRowChanging != null)) {
+                    this.TOP10ClienteFrecuenteRowChanging(this, new TOP10ClienteFrecuenteRowChangeEvent(((TOP10ClienteFrecuenteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.TOP10ClienteFrecuenteRowDeleted != null)) {
+                    this.TOP10ClienteFrecuenteRowDeleted(this, new TOP10ClienteFrecuenteRowChangeEvent(((TOP10ClienteFrecuenteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.TOP10ClienteFrecuenteRowDeleting != null)) {
+                    this.TOP10ClienteFrecuenteRowDeleting(this, new TOP10ClienteFrecuenteRowChangeEvent(((TOP10ClienteFrecuenteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveTOP10ClienteFrecuenteRow(TOP10ClienteFrecuenteRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet_Reportes ds = new DataSet_Reportes();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "TOP10ClienteFrecuenteDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class CompraRow : global::System.Data.DataRow {
@@ -5516,17 +5957,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int id_fve {
-                get {
-                    return ((int)(this[this.tableFactura_Venta.id_fveColumn]));
-                }
-                set {
-                    this[this.tableFactura_Venta.id_fveColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public decimal tot_fve {
                 get {
                     return ((decimal)(this[this.tableFactura_Venta.tot_fveColumn]));
@@ -5544,17 +5974,6 @@ namespace New_MasterTrade.Base_de_Datos {
                 }
                 set {
                     this[this.tableFactura_Venta.tim_fveColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string nom_usu {
-                get {
-                    return ((string)(this[this.tableFactura_Venta.nom_usuColumn]));
-                }
-                set {
-                    this[this.tableFactura_Venta.nom_usuColumn] = value;
                 }
             }
             
@@ -5648,61 +6067,6 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string doc_cli {
-                get {
-                    return ((string)(this[this.tableFactura_Venta.doc_cliColumn]));
-                }
-                set {
-                    this[this.tableFactura_Venta.doc_cliColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string raz_cli {
-                get {
-                    return ((string)(this[this.tableFactura_Venta.raz_cliColumn]));
-                }
-                set {
-                    this[this.tableFactura_Venta.raz_cliColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string dir_cli {
-                get {
-                    return ((string)(this[this.tableFactura_Venta.dir_cliColumn]));
-                }
-                set {
-                    this[this.tableFactura_Venta.dir_cliColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string tel_cli {
-                get {
-                    return ((string)(this[this.tableFactura_Venta.tel_cliColumn]));
-                }
-                set {
-                    this[this.tableFactura_Venta.tel_cliColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string cor_cli {
-                get {
-                    return ((string)(this[this.tableFactura_Venta.cor_cliColumn]));
-                }
-                set {
-                    this[this.tableFactura_Venta.cor_cliColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string nom_mon {
                 get {
                     return ((string)(this[this.tableFactura_Venta.nom_monColumn]));
@@ -5766,6 +6130,83 @@ namespace New_MasterTrade.Base_de_Datos {
                     this[this.tableFactura_Venta.des_mpaColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string vendedor {
+                get {
+                    return ((string)(this[this.tableFactura_Venta.vendedorColumn]));
+                }
+                set {
+                    this[this.tableFactura_Venta.vendedorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string doc_usu {
+                get {
+                    return ((string)(this[this.tableFactura_Venta.doc_usuColumn]));
+                }
+                set {
+                    this[this.tableFactura_Venta.doc_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string raz_usu {
+                get {
+                    return ((string)(this[this.tableFactura_Venta.raz_usuColumn]));
+                }
+                set {
+                    this[this.tableFactura_Venta.raz_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string dir_usu {
+                get {
+                    return ((string)(this[this.tableFactura_Venta.dir_usuColumn]));
+                }
+                set {
+                    this[this.tableFactura_Venta.dir_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string tel_usu {
+                get {
+                    return ((string)(this[this.tableFactura_Venta.tel_usuColumn]));
+                }
+                set {
+                    this[this.tableFactura_Venta.tel_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string cor_usu {
+                get {
+                    return ((string)(this[this.tableFactura_Venta.cor_usuColumn]));
+                }
+                set {
+                    this[this.tableFactura_Venta.cor_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id_pro {
+                get {
+                    return ((int)(this[this.tableFactura_Venta.id_proColumn]));
+                }
+                set {
+                    this[this.tableFactura_Venta.id_proColumn] = value;
+                }
+            }
         }
         
         /// <summary>
@@ -5823,61 +6264,6 @@ namespace New_MasterTrade.Base_de_Datos {
                 }
                 set {
                     this[this.tableNuevo_OrdenCompra.hor_ocoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string doc_prv {
-                get {
-                    return ((string)(this[this.tableNuevo_OrdenCompra.doc_prvColumn]));
-                }
-                set {
-                    this[this.tableNuevo_OrdenCompra.doc_prvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string raz_prv {
-                get {
-                    return ((string)(this[this.tableNuevo_OrdenCompra.raz_prvColumn]));
-                }
-                set {
-                    this[this.tableNuevo_OrdenCompra.raz_prvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string dir_prv {
-                get {
-                    return ((string)(this[this.tableNuevo_OrdenCompra.dir_prvColumn]));
-                }
-                set {
-                    this[this.tableNuevo_OrdenCompra.dir_prvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string tel_prv {
-                get {
-                    return ((string)(this[this.tableNuevo_OrdenCompra.tel_prvColumn]));
-                }
-                set {
-                    this[this.tableNuevo_OrdenCompra.tel_prvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string cor_prv {
-                get {
-                    return ((string)(this[this.tableNuevo_OrdenCompra.cor_prvColumn]));
-                }
-                set {
-                    this[this.tableNuevo_OrdenCompra.cor_prvColumn] = value;
                 }
             }
             
@@ -5968,6 +6354,61 @@ namespace New_MasterTrade.Base_de_Datos {
                     this[this.tableNuevo_OrdenCompra.pco_proColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string doc_usu {
+                get {
+                    return ((string)(this[this.tableNuevo_OrdenCompra.doc_usuColumn]));
+                }
+                set {
+                    this[this.tableNuevo_OrdenCompra.doc_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string raz_usu {
+                get {
+                    return ((string)(this[this.tableNuevo_OrdenCompra.raz_usuColumn]));
+                }
+                set {
+                    this[this.tableNuevo_OrdenCompra.raz_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string dir_usu {
+                get {
+                    return ((string)(this[this.tableNuevo_OrdenCompra.dir_usuColumn]));
+                }
+                set {
+                    this[this.tableNuevo_OrdenCompra.dir_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string tel_usu {
+                get {
+                    return ((string)(this[this.tableNuevo_OrdenCompra.tel_usuColumn]));
+                }
+                set {
+                    this[this.tableNuevo_OrdenCompra.tel_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string cor_usu {
+                get {
+                    return ((string)(this[this.tableNuevo_OrdenCompra.cor_usuColumn]));
+                }
+                set {
+                    this[this.tableNuevo_OrdenCompra.cor_usuColumn] = value;
+                }
+            }
         }
         
         /// <summary>
@@ -5986,78 +6427,89 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int id_cli {
+            public int id_usu {
                 get {
-                    return ((int)(this[this.tableCliente.id_cliColumn]));
+                    return ((int)(this[this.tableCliente.id_usuColumn]));
                 }
                 set {
-                    this[this.tableCliente.id_cliColumn] = value;
+                    this[this.tableCliente.id_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string doc_cli {
+            public int id_niv {
                 get {
-                    return ((string)(this[this.tableCliente.doc_cliColumn]));
+                    return ((int)(this[this.tableCliente.id_nivColumn]));
                 }
                 set {
-                    this[this.tableCliente.doc_cliColumn] = value;
+                    this[this.tableCliente.id_nivColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string raz_cli {
+            public string doc_usu {
                 get {
-                    return ((string)(this[this.tableCliente.raz_cliColumn]));
+                    return ((string)(this[this.tableCliente.doc_usuColumn]));
                 }
                 set {
-                    this[this.tableCliente.raz_cliColumn] = value;
+                    this[this.tableCliente.doc_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string dir_cli {
+            public string raz_usu {
                 get {
-                    return ((string)(this[this.tableCliente.dir_cliColumn]));
+                    return ((string)(this[this.tableCliente.raz_usuColumn]));
                 }
                 set {
-                    this[this.tableCliente.dir_cliColumn] = value;
+                    this[this.tableCliente.raz_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string tel_cli {
+            public string dir_usu {
                 get {
-                    return ((string)(this[this.tableCliente.tel_cliColumn]));
+                    return ((string)(this[this.tableCliente.dir_usuColumn]));
                 }
                 set {
-                    this[this.tableCliente.tel_cliColumn] = value;
+                    this[this.tableCliente.dir_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string cor_cli {
+            public string tel_usu {
                 get {
-                    return ((string)(this[this.tableCliente.cor_cliColumn]));
+                    return ((string)(this[this.tableCliente.tel_usuColumn]));
                 }
                 set {
-                    this[this.tableCliente.cor_cliColumn] = value;
+                    this[this.tableCliente.tel_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short act_cli {
+            public string cor_usu {
                 get {
-                    return ((short)(this[this.tableCliente.act_cliColumn]));
+                    return ((string)(this[this.tableCliente.cor_usuColumn]));
                 }
                 set {
-                    this[this.tableCliente.act_cliColumn] = value;
+                    this[this.tableCliente.cor_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short act_usu {
+                get {
+                    return ((short)(this[this.tableCliente.act_usuColumn]));
+                }
+                set {
+                    this[this.tableCliente.act_usuColumn] = value;
                 }
             }
         }
@@ -6078,78 +6530,89 @@ namespace New_MasterTrade.Base_de_Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int id_prv {
+            public int id_usu {
                 get {
-                    return ((int)(this[this.tableProveedor.id_prvColumn]));
+                    return ((int)(this[this.tableProveedor.id_usuColumn]));
                 }
                 set {
-                    this[this.tableProveedor.id_prvColumn] = value;
+                    this[this.tableProveedor.id_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string doc_prv {
+            public int id_niv {
                 get {
-                    return ((string)(this[this.tableProveedor.doc_prvColumn]));
+                    return ((int)(this[this.tableProveedor.id_nivColumn]));
                 }
                 set {
-                    this[this.tableProveedor.doc_prvColumn] = value;
+                    this[this.tableProveedor.id_nivColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string raz_prv {
+            public string doc_usu {
                 get {
-                    return ((string)(this[this.tableProveedor.raz_prvColumn]));
+                    return ((string)(this[this.tableProveedor.doc_usuColumn]));
                 }
                 set {
-                    this[this.tableProveedor.raz_prvColumn] = value;
+                    this[this.tableProveedor.doc_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string dir_prv {
+            public string raz_usu {
                 get {
-                    return ((string)(this[this.tableProveedor.dir_prvColumn]));
+                    return ((string)(this[this.tableProveedor.raz_usuColumn]));
                 }
                 set {
-                    this[this.tableProveedor.dir_prvColumn] = value;
+                    this[this.tableProveedor.raz_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string tel_prv {
+            public string dir_usu {
                 get {
-                    return ((string)(this[this.tableProveedor.tel_prvColumn]));
+                    return ((string)(this[this.tableProveedor.dir_usuColumn]));
                 }
                 set {
-                    this[this.tableProveedor.tel_prvColumn] = value;
+                    this[this.tableProveedor.dir_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string cor_prv {
+            public string tel_usu {
                 get {
-                    return ((string)(this[this.tableProveedor.cor_prvColumn]));
+                    return ((string)(this[this.tableProveedor.tel_usuColumn]));
                 }
                 set {
-                    this[this.tableProveedor.cor_prvColumn] = value;
+                    this[this.tableProveedor.tel_usuColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short act_prv {
+            public string cor_usu {
                 get {
-                    return ((short)(this[this.tableProveedor.act_prvColumn]));
+                    return ((string)(this[this.tableProveedor.cor_usuColumn]));
                 }
                 set {
-                    this[this.tableProveedor.act_prvColumn] = value;
+                    this[this.tableProveedor.cor_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short act_usu {
+                get {
+                    return ((short)(this[this.tableProveedor.act_usuColumn]));
+                }
+                set {
+                    this[this.tableProveedor.act_usuColumn] = value;
                 }
             }
         }
@@ -6478,6 +6941,50 @@ namespace New_MasterTrade.Base_de_Datos {
                     this[this.tableClienteFrecuente.numero_ventasColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id_usu {
+                get {
+                    return ((int)(this[this.tableClienteFrecuente.id_usuColumn]));
+                }
+                set {
+                    this[this.tableClienteFrecuente.id_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string doc_usu {
+                get {
+                    return ((string)(this[this.tableClienteFrecuente.doc_usuColumn]));
+                }
+                set {
+                    this[this.tableClienteFrecuente.doc_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string raz_usu {
+                get {
+                    return ((string)(this[this.tableClienteFrecuente.raz_usuColumn]));
+                }
+                set {
+                    this[this.tableClienteFrecuente.raz_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long ventas {
+                get {
+                    return ((long)(this[this.tableClienteFrecuente.ventasColumn]));
+                }
+                set {
+                    this[this.tableClienteFrecuente.ventasColumn] = value;
+                }
+            }
         }
         
         /// <summary>
@@ -6793,6 +7300,65 @@ namespace New_MasterTrade.Base_de_Datos {
                 }
                 set {
                     this[this.tableVentas.nom_monColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class TOP10ClienteFrecuenteRow : global::System.Data.DataRow {
+            
+            private TOP10ClienteFrecuenteDataTable tableTOP10ClienteFrecuente;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal TOP10ClienteFrecuenteRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableTOP10ClienteFrecuente = ((TOP10ClienteFrecuenteDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id_usu {
+                get {
+                    return ((int)(this[this.tableTOP10ClienteFrecuente.id_usuColumn]));
+                }
+                set {
+                    this[this.tableTOP10ClienteFrecuente.id_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string doc_usu {
+                get {
+                    return ((string)(this[this.tableTOP10ClienteFrecuente.doc_usuColumn]));
+                }
+                set {
+                    this[this.tableTOP10ClienteFrecuente.doc_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string raz_usu {
+                get {
+                    return ((string)(this[this.tableTOP10ClienteFrecuente.raz_usuColumn]));
+                }
+                set {
+                    this[this.tableTOP10ClienteFrecuente.raz_usuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long ventas {
+                get {
+                    return ((long)(this[this.tableTOP10ClienteFrecuente.ventasColumn]));
+                }
+                set {
+                    this[this.tableTOP10ClienteFrecuente.ventasColumn] = value;
                 }
             }
         }
@@ -7238,6 +7804,40 @@ namespace New_MasterTrade.Base_de_Datos {
                 }
             }
         }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class TOP10ClienteFrecuenteRowChangeEvent : global::System.EventArgs {
+            
+            private TOP10ClienteFrecuenteRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public TOP10ClienteFrecuenteRowChangeEvent(TOP10ClienteFrecuenteRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public TOP10ClienteFrecuenteRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
     }
 }
 namespace New_MasterTrade.Base_de_Datos.DataSet_ReportesTableAdapters {
@@ -7544,10 +8144,8 @@ namespace New_MasterTrade.Base_de_Datos.DataSet_ReportesTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Factura_Venta";
-            tableMapping.ColumnMappings.Add("id_fve", "id_fve");
             tableMapping.ColumnMappings.Add("tot_fve", "tot_fve");
             tableMapping.ColumnMappings.Add("tim_fve", "tim_fve");
-            tableMapping.ColumnMappings.Add("nom_usu", "nom_usu");
             tableMapping.ColumnMappings.Add("num_ove", "num_ove");
             tableMapping.ColumnMappings.Add("fec_ove", "fec_ove");
             tableMapping.ColumnMappings.Add("hor_ove", "hor_ove");
@@ -7556,17 +8154,19 @@ namespace New_MasterTrade.Base_de_Datos.DataSet_ReportesTableAdapters {
             tableMapping.ColumnMappings.Add("ser_pro", "ser_pro");
             tableMapping.ColumnMappings.Add("des_pro", "des_pro");
             tableMapping.ColumnMappings.Add("pve_pro", "pve_pro");
-            tableMapping.ColumnMappings.Add("doc_cli", "doc_cli");
-            tableMapping.ColumnMappings.Add("raz_cli", "raz_cli");
-            tableMapping.ColumnMappings.Add("dir_cli", "dir_cli");
-            tableMapping.ColumnMappings.Add("tel_cli", "tel_cli");
-            tableMapping.ColumnMappings.Add("cor_cli", "cor_cli");
             tableMapping.ColumnMappings.Add("nom_mon", "nom_mon");
             tableMapping.ColumnMappings.Add("des_tca", "des_tca");
             tableMapping.ColumnMappings.Add("val_tca", "val_tca");
             tableMapping.ColumnMappings.Add("des_imp", "des_imp");
             tableMapping.ColumnMappings.Add("por_imp", "por_imp");
             tableMapping.ColumnMappings.Add("des_mpa", "des_mpa");
+            tableMapping.ColumnMappings.Add("vendedor", "vendedor");
+            tableMapping.ColumnMappings.Add("doc_usu", "doc_usu");
+            tableMapping.ColumnMappings.Add("raz_usu", "raz_usu");
+            tableMapping.ColumnMappings.Add("dir_usu", "dir_usu");
+            tableMapping.ColumnMappings.Add("tel_usu", "tel_usu");
+            tableMapping.ColumnMappings.Add("cor_usu", "cor_usu");
+            tableMapping.ColumnMappings.Add("id_pro", "id_pro");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -7583,11 +8183,11 @@ namespace New_MasterTrade.Base_de_Datos.DataSet_ReportesTableAdapters {
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT fv.id_fve, fv.tot_fve, fv.tim_fve, u.nom_usu, ov.num_ove, ov.fec_ove, ov.hor_ove, dv.can_dve, dv.tot_dve, p.ser_pro, p.des_pro, p.pve_pro, c.doc_cli, c.raz_cli, c.dir_cli, c.tel_cli, c.cor_cli, m.nom_mon, tc.des_tca, tc.val_tca, i.des_imp, i.por_imp, 
-                  mp.des_mpa
-FROM     factura_venta fv, vendedor v, usuario u, orden_venta ov, detalle_venta dv, producto p, cliente c, tasa_cambio tc, moneda m, impuesto i, metodo_pago mp
-WHERE  fv.id_ven = v.id_ven AND v.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AND ov.id_ove = dv.id_ove AND dv.id_pro = p.id_pro AND ov.id_cli = c.id_cli AND ov.id_tca = tc.id_tca AND tc.id_mon = m.id_mon AND fv.id_imp = i.id_imp AND 
-                  fv.id_mpa = mp.id_mpa AND (ov.num_ove = ?)";
+            this._commandCollection[0].CommandText = @"SELECT fv.tim_fve, fv.tot_fve, u.raz_usu AS vendedor, ov.num_ove, ov.fec_ove, ov.hor_ove, c.doc_usu, c.raz_usu, c.dir_usu, c.tel_usu, c.cor_usu, tc.des_tca, tc.val_tca, m.nom_mon, dv.can_dve, dv.tot_dve, p.id_pro, p.ser_pro, p.des_pro, p.pve_pro, 
+                  i.des_imp, i.por_imp, mp.des_mpa
+FROM     factura_venta fv, usuario u, orden_venta ov, usuario c, tasa_cambio tc, moneda m, detalle_venta dv, producto p, impuesto i, metodo_pago mp
+WHERE  fv.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AND ov.id_usu = c.id_usu AND ov.id_tca = tc.id_tca AND tc.id_mon = m.id_mon AND dv.id_ove = ov.id_ove AND dv.id_pro = p.id_pro AND fv.id_imp = i.id_imp AND fv.id_mpa = mp.id_mpa AND 
+                  (ov.num_ove = ?)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("num_ove", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "num_ove", global::System.Data.DataRowVersion.Current, false, null));
         }
@@ -7754,11 +8354,6 @@ WHERE  fv.id_ven = v.id_ven AND v.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AN
             tableMapping.ColumnMappings.Add("tot_oco", "tot_oco");
             tableMapping.ColumnMappings.Add("fec_oco", "fec_oco");
             tableMapping.ColumnMappings.Add("hor_oco", "hor_oco");
-            tableMapping.ColumnMappings.Add("doc_prv", "doc_prv");
-            tableMapping.ColumnMappings.Add("raz_prv", "raz_prv");
-            tableMapping.ColumnMappings.Add("dir_prv", "dir_prv");
-            tableMapping.ColumnMappings.Add("tel_prv", "tel_prv");
-            tableMapping.ColumnMappings.Add("cor_prv", "cor_prv");
             tableMapping.ColumnMappings.Add("des_tca", "des_tca");
             tableMapping.ColumnMappings.Add("val_tca", "val_tca");
             tableMapping.ColumnMappings.Add("nom_mon", "nom_mon");
@@ -7767,6 +8362,11 @@ WHERE  fv.id_ven = v.id_ven AND v.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AN
             tableMapping.ColumnMappings.Add("ser_pro", "ser_pro");
             tableMapping.ColumnMappings.Add("des_pro", "des_pro");
             tableMapping.ColumnMappings.Add("pco_pro", "pco_pro");
+            tableMapping.ColumnMappings.Add("doc_usu", "doc_usu");
+            tableMapping.ColumnMappings.Add("raz_usu", "raz_usu");
+            tableMapping.ColumnMappings.Add("dir_usu", "dir_usu");
+            tableMapping.ColumnMappings.Add("tel_usu", "tel_usu");
+            tableMapping.ColumnMappings.Add("cor_usu", "cor_usu");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -7783,9 +8383,9 @@ WHERE  fv.id_ven = v.id_ven AND v.id_usu = u.id_usu AND fv.id_ove = ov.id_ove AN
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT oc.num_oco, oc.tot_oco, oc.fec_oco, oc.hor_oco, p.doc_prv, p.raz_prv, p.dir_prv, p.tel_prv, p.cor_prv, tc.des_tca, tc.val_tca, m.nom_mon, dc.can_dco, dc.tot_dco, pro.ser_pro, pro.des_pro, pro.pco_pro
-FROM     orden_compra oc, proveedor p, tasa_cambio tc, moneda m, detalle_compra dc, producto pro
-WHERE  oc.id_prv = p.id_prv AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon AND oc.id_oco = dc.id_oco AND dc.id_pro = pro.id_pro AND (oc.num_oco = ?)";
+            this._commandCollection[0].CommandText = @"SELECT oc.num_oco, oc.tot_oco, oc.fec_oco, oc.hor_oco, u.doc_usu, u.raz_usu, u.dir_usu, u.tel_usu, u.cor_usu, tc.des_tca, tc.val_tca, m.nom_mon, dc.can_dco, dc.tot_dco, pro.ser_pro, pro.des_pro, pro.pco_pro
+FROM     orden_compra oc, usuario u, tasa_cambio tc, moneda m, detalle_compra dc, producto pro
+WHERE  oc.id_usu = u.id_usu AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon AND oc.id_oco = dc.id_oco AND dc.id_pro = pro.id_pro AND (oc.num_oco = ?)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("num_oco", global::System.Data.Odbc.OdbcType.VarChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "num_oco", global::System.Data.DataRowVersion.Current, false, null));
         }
@@ -7948,13 +8548,14 @@ WHERE  oc.id_prv = p.id_prv AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon A
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Cliente";
-            tableMapping.ColumnMappings.Add("id_cli", "id_cli");
-            tableMapping.ColumnMappings.Add("doc_cli", "doc_cli");
-            tableMapping.ColumnMappings.Add("raz_cli", "raz_cli");
-            tableMapping.ColumnMappings.Add("dir_cli", "dir_cli");
-            tableMapping.ColumnMappings.Add("tel_cli", "tel_cli");
-            tableMapping.ColumnMappings.Add("cor_cli", "cor_cli");
-            tableMapping.ColumnMappings.Add("act_cli", "act_cli");
+            tableMapping.ColumnMappings.Add("id_usu", "id_usu");
+            tableMapping.ColumnMappings.Add("id_niv", "id_niv");
+            tableMapping.ColumnMappings.Add("doc_usu", "doc_usu");
+            tableMapping.ColumnMappings.Add("raz_usu", "raz_usu");
+            tableMapping.ColumnMappings.Add("dir_usu", "dir_usu");
+            tableMapping.ColumnMappings.Add("tel_usu", "tel_usu");
+            tableMapping.ColumnMappings.Add("cor_usu", "cor_usu");
+            tableMapping.ColumnMappings.Add("act_usu", "act_usu");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -7971,7 +8572,9 @@ WHERE  oc.id_prv = p.id_prv AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon A
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT * FROM cliente";
+            this._commandCollection[0].CommandText = "SELECT DISTINCT u.id_usu, u.id_niv, u.doc_usu, u.raz_usu, u.dir_usu, u.tel_usu, u" +
+                ".cor_usu, u.act_usu\r\nFROM     usuario u, orden_venta ov\r\nWHERE  u.id_usu = ov.id" +
+                "_usu";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8121,13 +8724,14 @@ WHERE  oc.id_prv = p.id_prv AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon A
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Proveedor";
-            tableMapping.ColumnMappings.Add("id_prv", "id_prv");
-            tableMapping.ColumnMappings.Add("doc_prv", "doc_prv");
-            tableMapping.ColumnMappings.Add("raz_prv", "raz_prv");
-            tableMapping.ColumnMappings.Add("dir_prv", "dir_prv");
-            tableMapping.ColumnMappings.Add("tel_prv", "tel_prv");
-            tableMapping.ColumnMappings.Add("cor_prv", "cor_prv");
-            tableMapping.ColumnMappings.Add("act_prv", "act_prv");
+            tableMapping.ColumnMappings.Add("id_usu", "id_usu");
+            tableMapping.ColumnMappings.Add("id_niv", "id_niv");
+            tableMapping.ColumnMappings.Add("doc_usu", "doc_usu");
+            tableMapping.ColumnMappings.Add("raz_usu", "raz_usu");
+            tableMapping.ColumnMappings.Add("dir_usu", "dir_usu");
+            tableMapping.ColumnMappings.Add("tel_usu", "tel_usu");
+            tableMapping.ColumnMappings.Add("cor_usu", "cor_usu");
+            tableMapping.ColumnMappings.Add("act_usu", "act_usu");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -8144,8 +8748,9 @@ WHERE  oc.id_prv = p.id_prv AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon A
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id_prv, doc_prv, raz_prv, dir_prv, tel_prv, cor_prv, act_prv\r\nFROM     pro" +
-                "veedor";
+            this._commandCollection[0].CommandText = "SELECT DISTINCT u.id_usu, u.id_niv, u.doc_usu, u.raz_usu, u.dir_usu, u.tel_usu, u" +
+                ".cor_usu, u.act_usu\r\nFROM     usuario u, orden_compra oc\r\nWHERE  u.id_usu = oc.i" +
+                "d_usu";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8820,6 +9425,10 @@ WHERE  oc.id_prv = p.id_prv AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon A
             tableMapping.ColumnMappings.Add("doc_cli", "doc_cli");
             tableMapping.ColumnMappings.Add("raz_cli", "raz_cli");
             tableMapping.ColumnMappings.Add("numero_ventas", "numero_ventas");
+            tableMapping.ColumnMappings.Add("id_usu", "id_usu");
+            tableMapping.ColumnMappings.Add("doc_usu", "doc_usu");
+            tableMapping.ColumnMappings.Add("raz_usu", "raz_usu");
+            tableMapping.ColumnMappings.Add("ventas", "ventas");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -8836,9 +9445,9 @@ WHERE  oc.id_prv = p.id_prv AND oc.id_tca = tc.id_tca AND tc.id_mon = m.id_mon A
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT c.id_cli, c.doc_cli, c.raz_cli, COUNT(ov.id_ove) AS numero_ventas\r\nFROM   " +
-                "  orden_venta ov, cliente c\r\nWHERE  ov.id_cli = c.id_cli\r\nGROUP BY c.raz_cli\r\nOR" +
-                "DER BY numero_ventas DESC";
+            this._commandCollection[0].CommandText = "SELECT u.id_usu, u.doc_usu, u.raz_usu, COUNT(u.id_usu) AS ventas\r\nFROM     usuari" +
+                "o u, orden_venta ov\r\nWHERE  u.id_usu = ov.id_usu\r\nGROUP BY u.id_usu\r\nORDER BY ve" +
+                "ntas DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9566,6 +10175,178 @@ WHERE  f.id_ven = v.id_ven AND f.id_ove = ov.id_ove AND f.id_mpa = mp.id_mpa AND
         public virtual DataSet_Reportes.VentasDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             DataSet_Reportes.VentasDataTable dataTable = new DataSet_Reportes.VentasDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class TOP10ClienteFrecuenteTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.Odbc.OdbcDataAdapter _adapter;
+        
+        private global::System.Data.Odbc.OdbcConnection _connection;
+        
+        private global::System.Data.Odbc.OdbcTransaction _transaction;
+        
+        private global::System.Data.Odbc.OdbcCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public TOP10ClienteFrecuenteTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.Odbc.OdbcDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.Odbc.OdbcConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.Odbc.OdbcCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.Odbc.OdbcTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.Odbc.OdbcCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.Odbc.OdbcDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "TOP10ClienteFrecuente";
+            tableMapping.ColumnMappings.Add("id_usu", "id_usu");
+            tableMapping.ColumnMappings.Add("doc_usu", "doc_usu");
+            tableMapping.ColumnMappings.Add("raz_usu", "raz_usu");
+            tableMapping.ColumnMappings.Add("ventas", "ventas");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.Odbc.OdbcConnection();
+            this._connection.ConnectionString = global::New_MasterTrade.Properties.Settings.Default.ConexionDevart;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
+            this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT u.id_usu, u.doc_usu, u.raz_usu, COUNT(u.id_usu) AS ventas\r\nFROM     usuari" +
+                "o u, orden_venta ov\r\nWHERE  u.id_usu = ov.id_usu\r\nGROUP BY u.id_usu\r\nORDER BY ve" +
+                "ntas DESC";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSet_Reportes.TOP10ClienteFrecuenteDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSet_Reportes.TOP10ClienteFrecuenteDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSet_Reportes.TOP10ClienteFrecuenteDataTable dataTable = new DataSet_Reportes.TOP10ClienteFrecuenteDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
