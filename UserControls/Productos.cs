@@ -21,6 +21,7 @@ namespace New_MasterTrade.UserControls
         private int total_paginas = 0;
         private int limite_registro = 20;
         CRUD_Productos crud;
+
         public Productos()
         {
             InitializeComponent();
@@ -47,6 +48,7 @@ namespace New_MasterTrade.UserControls
         public void ConfigComboPaginas()
         {
             if (comboPaginas.Items.Count > 0) comboPaginas.Items.Clear();
+
             for (int i = 0; i <= total_paginas; i++)
             {
                 comboPaginas.Items.Add(i + 1);

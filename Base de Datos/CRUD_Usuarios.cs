@@ -2,6 +2,7 @@
 using New_MasterTrade.Cache;
 using New_MasterTrade.Objetos;
 using New_MasterTrade.Servicios_de_Correo;
+using Org.BouncyCastle.Crypto.Macs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -354,15 +355,15 @@ namespace New_MasterTrade.Base_de_Datos
         {
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `usuario` WHERE `usr_usu` = '"+ parametro + "' OR `cor_usu` = '"+ parametro + "'", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM usuario U INNER JOIN credencial c ON c.id_usu = u.id_usu WHERE u.id_niv < 3 AND (c.nom_usu = '"+parametro+"' OR u.cor_usu = '"+parametro+"')", con);
                 con.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 if (reader.HasRows)
                 {
-                    string contrasegna = reader.GetString(2);
+                    string contrasegna = reader.GetString(10);
                     string nombre = reader.GetString(3);
-                    string correo = reader.GetString(5);
+                    string correo = reader.GetString(6);
 
                     SistemaSoporteCorreo servicioCorreo = new SistemaSoporteCorreo();
                     servicioCorreo.EnviarCorreo(asunto: "SOLICITUD PARA RECUPERAR CONTRASEÑA",

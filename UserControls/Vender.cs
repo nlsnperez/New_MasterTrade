@@ -143,7 +143,7 @@ namespace New_MasterTrade.UserControls
                 txtTelefono.Text = "";
                 txtCorreo.Text = "";
 
-                txtSubTotalBs.Text = "0.00";
+                txtSubTotalBs.Text = "0,00";
                 txtMoneda.Text = "";
             }
             catch (Exception ex)
@@ -168,7 +168,15 @@ namespace New_MasterTrade.UserControls
                 x = x + decimal.Parse(carrito.Rows[i]["P.Total"].ToString());
             }
             x = x / tasa_cambio;
-            txtSubTotalBs.Text = x.ToString("0.00");
+            if (comboMoneda.Text == "BOLÍVAR FUERTE (BS)")
+            {
+                txtSubTotalBs.Text = x.ToString("0.00").Replace('.', ',');
+            }
+            else
+            {
+                txtSubTotalBs.Text = x.ToString("0.00").Replace(',', '.');
+            }
+            
         }
 
 

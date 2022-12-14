@@ -59,7 +59,7 @@ namespace New_MasterTrade.Custom_Controls
             txtCantidad.Text = "1";
             if (Venta == null)
             {
-                txtPrecio.Text = x.Precio_Compra.ToString();
+                txtPrecio.Text = x.Precio_Compra.ToString().Replace('.',',');
             }else CalcPorcentaje(x.Precio_Compra);
 
         }
@@ -67,10 +67,10 @@ namespace New_MasterTrade.Custom_Controls
         public void CalcPorcentaje(decimal x)
         {
             decimal porcentaje = 30;
-            decimal drantotal = (x * porcentaje) / 100;
-            decimal total = x + drantotal;
+            decimal porcentaje_total = (x * porcentaje) / 100;
+            decimal total = x + porcentaje_total;
 
-            txtPrecio.Text = total.ToString("0.00");
+            txtPrecio.Text = total.ToString("0.00").Replace('.', ',');
         }
 
         private void txtCantidad_Enter(object sender, EventArgs e)

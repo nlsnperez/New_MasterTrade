@@ -238,8 +238,8 @@ namespace New_MasterTrade.UserControls
                 comboModelo.SelectedValue = producto.Modelo;
                 txtSerial.Text = producto.Serial.ToString();
                 txtDescripcion.Text = producto.Descripcion;
-                txtPrecioCompra.Text = producto.Precio_Compra.ToString();
-                txtPrecioVenta.Text = producto.Precio_Venta.ToString();
+                txtPrecioCompra.Text = producto.Precio_Compra.ToString().Replace('.', ',');
+                txtPrecioVenta.Text = producto.Precio_Venta.ToString().Replace('.',',');
                 txtCantidad.Text = cantidad.ToString();
                 IndexGarantia(producto.Garantia);
 
