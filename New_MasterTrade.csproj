@@ -179,6 +179,12 @@
       <DependentUpon>CategoriaMasVendida.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\VentasAlMes_Reporte.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VentasAlMes_Reporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\RecuperarContraseña.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -500,6 +506,10 @@
     <EmbeddedResource Include="Reportes\CategoriaMasVendida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CategoriaMasVendida.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\VentasAlMes_Reporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>VentasAlMes_Reporte.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RecuperarContraseña.resx">
       <DependentUpon>RecuperarContraseña.cs</DependentUpon>

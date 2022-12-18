@@ -107,8 +107,8 @@ namespace New_MasterTrade.Custom_Controls
                 {
                     if (Venta == null)
                     {
-                        decimal x = Convert.ToDecimal(txtPrecio.Text) * Convert.ToDecimal(txtCantidad.Text);
-                        string[] producto = {txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString("0.00") };
+                        decimal x = Convert.ToDecimal(txtPrecio.Text.Replace(',', '.')) * Convert.ToDecimal(txtCantidad.Text);
+                        string[] producto = {txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text.Replace(',', '.'), txtCantidad.Text, x.ToString("0.00") };
                         Compra.AddProduct(producto);
                     }
                     else
@@ -119,7 +119,7 @@ namespace New_MasterTrade.Custom_Controls
                             MessageBox.Show("La cantidad introducida excede a la cantidad de productos en stock por lo que ha sido ajustada automaticamente", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         decimal x = decimal.Parse(txtPrecio.Text.Replace(',', '.')) * decimal.Parse(txtCantidad.Text);
-                        string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString("0.00") };
+                        string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text.Replace(',','.'), txtCantidad.Text, x.ToString("0.00") };
                         Venta.AddProduct(producto, CantMax);
                     }
                     this.Close();
@@ -135,7 +135,7 @@ namespace New_MasterTrade.Custom_Controls
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }

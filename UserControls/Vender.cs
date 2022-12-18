@@ -312,8 +312,8 @@ namespace New_MasterTrade.UserControls
                                         IdVenta,
                                         Int32.Parse(tableCarrito.Rows[i].Cells["columnId"].Value.ToString()),
                                         Int32.Parse(tableCarrito.Rows[i].Cells["columnCantidad"].Value.ToString()),
-                                        decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioU"].Value.ToString()),
-                                        decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioT"].Value.ToString()));
+                                        Convert.ToDecimal(tableCarrito.Rows[i].Cells["columnPrecioU"].Value),
+                                        Convert.ToDecimal(tableCarrito.Rows[i].Cells["columnPrecioT"].Value));
                 detalle.Add(x);
             }
             return detalle;

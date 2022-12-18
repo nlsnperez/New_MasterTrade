@@ -42,6 +42,7 @@ namespace New_MasterTrade.Objetos
         VentasTableAdapter venta = new VentasTableAdapter();
         TOP10ClienteFrecuenteTableAdapter top_cliente_frecuente = new TOP10ClienteFrecuenteTableAdapter();
         CategoriaMasVendidaTableAdapter categoria_mas_vendida = new CategoriaMasVendidaTableAdapter();
+        VentasAlMesTableAdapter ventas_mes = new VentasAlMesTableAdapter();
         //TableAdapters
 
         public void Reporte_Orden_Compra(string numero_orden)
@@ -205,6 +206,24 @@ namespace New_MasterTrade.Objetos
             }
         }
 
+        public void Reporte_VentaByFecha(DateTime desde, DateTime hasta)
+        {
+            try
+            {
+                venta.FillByDate(dataset.Ventas, desde, hasta);
+                Venta_Reporte reporte = new Venta_Reporte();
+                string direccion = @"~\Reportes\Venta_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void Reporte_ProductoMasVendido()
         {
             try
@@ -302,6 +321,24 @@ namespace New_MasterTrade.Objetos
                 ventas_agno.Fill(dataset.VentasAlAgno, agno);
                 VentasPorAgno_Reporte reporte = new VentasPorAgno_Reporte();
                 string direccion = @"~\Reportes\VentasPorAgno_Reporte.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reporte_VentasPorMes(string mes, string agno)
+        {
+            try
+            {
+                ventas_mes.Fill(dataset.VentasAlMes, mes, agno);
+                VentasAlMes_Reporte reporte = new VentasAlMes_Reporte();
+                string direccion = @"~\Reportes\VentasAlMes_Reporte.rpt";
                 reporte.Load(direccion);
                 reporte.SetDataSource(dataset);
                 FormReportes ventana = new FormReportes(reporte);

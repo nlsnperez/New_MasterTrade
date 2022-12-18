@@ -34,19 +34,23 @@ namespace New_MasterTrade.UserControls
             //3
             comboReporte.Items.Add("VENTAS REGISTRADAS");
             //4
-            comboReporte.Items.Add("NÚMERO DE VENTAS REALIZADAS EN UN AÑO");
+            comboReporte.Items.Add("VENTAS REGISTRADAS EN UN RANGO DE FECHA");
             //5
-            comboReporte.Items.Add("DESEMPEÑO DE VENDEDORES");
+            comboReporte.Items.Add("NÚMERO DE VENTAS REALIZADAS EN UN MES");
             //6
-            comboReporte.Items.Add("TOP 10 CLIENTES FRECUENTES");
+            comboReporte.Items.Add("NÚMERO DE VENTAS REALIZADAS EN UN AÑO");
             //7
-            comboReporte.Items.Add("TOP 10 PROVEEDORES PRINCIPALES");
+            comboReporte.Items.Add("DESEMPEÑO DE VENDEDORES");
             //8
-            comboReporte.Items.Add("TOP 10 PRODUCTOS MÁS VENDIDOS");
+            comboReporte.Items.Add("TOP 10 CLIENTES FRECUENTES");
             //9
-            comboReporte.Items.Add("TOP 10 MARCAS MÁS VENDIDAS");
+            comboReporte.Items.Add("TOP 10 PROVEEDORES PRINCIPALES");
             //10
-            comboReporte.Items.Add("CATEGORÍA MÁS VENDIDA");
+            comboReporte.Items.Add("TOP 10 PRODUCTOS MÁS VENDIDOS");
+            //11
+            comboReporte.Items.Add("TOP 10 MARCAS MÁS VENDIDAS");
+            //12
+            comboReporte.Items.Add("TOP 10 CATEGORÍAS MÁS VENDIDAS");
             comboReporte.SelectedIndex = 0;
         }
 
@@ -71,12 +75,77 @@ namespace New_MasterTrade.UserControls
         {
             if (comboReporte.SelectedIndex == 4)
             {
+                dtpDesde.Enabled = true;
+                dtpHasta.Enabled = true;
+            }
+            else
+            {
+                dtpDesde.Enabled = false;
+                dtpHasta.Enabled = false;
+            }
+
+            if (comboReporte.SelectedIndex == 5)
+            {
+                comboMeses.Enabled = true;
+            }
+            else
+            {
+                comboMeses.Enabled = false;
+            }          
+            
+            if (comboReporte.SelectedIndex == 5 || comboReporte.SelectedIndex == 6)
+            {
                 txtAgno.Enabled = true;
             }
             else
             {
                 txtAgno.Enabled = false;
             }
+        }
+
+        public int Numero_Mes()
+        {
+            int x = 0;
+            switch (comboMeses.Text)
+            {
+                case "ENERO":
+                    x = 1;
+                    break;
+                case "FEBRERO":
+                    x = 2;
+                    break;
+                case "MARZO":
+                    x = 3;
+                    break;
+                case "ABRIL":
+                    x = 4;
+                    break;
+                case "MAYO":
+                    x = 5;
+                    break;
+                case "JUNIO":
+                    x = 6;
+                    break;
+                case "JULIO":
+                    x = 7;
+                    break;
+                case "AGOSTO":
+                    x = 8;
+                    break;
+                case "SEPTIEMBRE":
+                    x = 9;
+                    break;
+                case "OCTUBRE":
+                    x = 10;
+                    break;
+                case "NOVIEMBRE":
+                    x = 11;
+                    break;
+                case "DICIEMBRE":
+                    x = 12;
+                    break;                
+            }
+            return x;
         }
 
         private void bttnReporte_Click(object sender, EventArgs e)
@@ -94,6 +163,20 @@ namespace New_MasterTrade.UserControls
                     break;
                 case "VENTAS REGISTRADAS":
                     reporte.Reporte_Venta();
+                    break;
+                case "VENTAS REGISTRADAS EN UN RANGO DE FECHA":
+                    reporte.Reporte_VentaByFecha(dtpDesde.Value, dtpHasta.Value);
+                    break;
+                case "NÚMERO DE VENTAS REALIZADAS EN UN MES":
+                    if (txtAgno.Text == "")
+                    {
+                        MessageBox.Show("INGRESE UN AÑO PARA GENERAR EL REPORTE", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        int mes = Numero_Mes();
+                        reporte.Reporte_VentasPorMes(mes.ToString(), txtAgno.Text);
+                    }
                     break;
                 case "NÚMERO DE VENTAS REALIZADAS EN UN AÑO":
                     if (txtAgno.Text == "")
@@ -120,7 +203,7 @@ namespace New_MasterTrade.UserControls
                 case "TOP 10 MARCAS MÁS VENDIDAS":
                     reporte.Reporte_MarcasVendidas();
                     break;
-                case "CATEGORÍA MÁS VENDIDA":
+                case "TOP 10 CATEGORÍAS MÁS VENDIDAS":
                     reporte.Reporte_Categoria_Mas_Vendida();
                     break;
             }
