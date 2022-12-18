@@ -41,6 +41,7 @@ namespace New_MasterTrade.Objetos
         VentasAlAgnoTableAdapter ventas_agno = new VentasAlAgnoTableAdapter();
         VentasTableAdapter venta = new VentasTableAdapter();
         TOP10ClienteFrecuenteTableAdapter top_cliente_frecuente = new TOP10ClienteFrecuenteTableAdapter();
+        CategoriaMasVendidaTableAdapter categoria_mas_vendida = new CategoriaMasVendidaTableAdapter();
         //TableAdapters
 
         public void Reporte_Orden_Compra(string numero_orden)
@@ -78,7 +79,23 @@ namespace New_MasterTrade.Objetos
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        public void Reporte_Categoria_Mas_Vendida()
+        {
+            try
+            {
+                categoria_mas_vendida.Fill(dataset.CategoriaMasVendida);
+                CategoriaMasVendida reporte = new CategoriaMasVendida();
+                string direccion = @"~\Reportes\CategoriaMasVendida.rpt";
+                reporte.Load(direccion);
+                reporte.SetDataSource(dataset);
+                FormReportes ventana = new FormReportes(reporte);
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public void Reporte_Cliente()
         {
             try

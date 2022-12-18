@@ -156,6 +156,12 @@
       <DependentUpon>Credenciales.cs</DependentUpon>
     </Compile>
     <Compile Include="Objetos\Credencial.cs" />
+    <Compile Include="Reportes\CategoriaMasVendida.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CategoriaMasVendida.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\RecuperarContraseña.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -473,6 +479,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Credenciales.resx">
       <DependentUpon>Credenciales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\CategoriaMasVendida.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CategoriaMasVendida.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RecuperarContraseña.resx">
       <DependentUpon>RecuperarContraseña.cs</DependentUpon>

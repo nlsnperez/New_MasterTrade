@@ -45,6 +45,8 @@ namespace New_MasterTrade.UserControls
             comboReporte.Items.Add("TOP 10 PRODUCTOS MÁS VENDIDOS");
             //9
             comboReporte.Items.Add("TOP 10 MARCAS MÁS VENDIDAS");
+            //10
+            comboReporte.Items.Add("CATEGORÍA MÁS VENDIDA");
             comboReporte.SelectedIndex = 0;
         }
 
@@ -117,6 +119,9 @@ namespace New_MasterTrade.UserControls
                     break;
                 case "TOP 10 MARCAS MÁS VENDIDAS":
                     reporte.Reporte_MarcasVendidas();
+                    break;
+                case "CATEGORÍA MÁS VENDIDA":
+                    reporte.Reporte_Categoria_Mas_Vendida();
                     break;
             }
         }
