@@ -329,7 +329,7 @@ namespace New_MasterTrade.UserControls
             {
                 if (MessageBox.Show("¿Desea registrar esta venta?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), dias_garantia, Convert.ToDecimal(txtSubTotalBs.Text));
+                    ConfirmarFactura factura = new ConfirmarFactura(GetVenta(), GetDetalle(), dias_garantia, Convert.ToDecimal(txtSubTotalBs.Text.Replace(',', '.')));
                     SesionIniciada.Instancia.MostrarDialog(factura);
                     if (factura.VentaCompletada == true)
                     {

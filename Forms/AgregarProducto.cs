@@ -118,8 +118,8 @@ namespace New_MasterTrade.Custom_Controls
                             txtCantidad.Text = CantMax.ToString();
                             MessageBox.Show("La cantidad introducida excede a la cantidad de productos en stock por lo que ha sido ajustada automaticamente", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        decimal x = decimal.Parse(txtPrecio.Text) * decimal.Parse(txtCantidad.Text);
-                        string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString() };
+                        decimal x = decimal.Parse(txtPrecio.Text.Replace(',', '.')) * decimal.Parse(txtCantidad.Text);
+                        string[] producto = { txtId.Text, txtSerial.Text, txtDescripcion.Text, txtPrecio.Text, txtCantidad.Text, x.ToString("0.00") };
                         Venta.AddProduct(producto, CantMax);
                     }
                     this.Close();
