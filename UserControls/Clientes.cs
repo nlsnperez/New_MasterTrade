@@ -108,9 +108,28 @@ namespace New_MasterTrade.UserControls
             }
         }
 
+        public void ReiniciarPaginador()
+        {
+            total_filas = 0;
+            pagina = 0;
+            total_paginas = 0;
+            limite_registro = 20;
+        }
+
         private void txtBuscar_KeyUp_1(object sender, KeyEventArgs e)
         {
             //tablaPersonas.DataSource = crud.BuscarTabla((int)comboNivel.SelectedValue, txtBuscar.Text);
+            DataTable resultados = crud.BuscarTabla(0, txtBuscar.Text);
+            if (resultados.Rows.Count <= 0)
+            {
+                MessageBox.Show("No hay registros en la base de datos", "RESULTADOS NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                ReiniciarPaginador();
+                CargarDatos(resultados);
+                CargarCombos();
+            }
         }
 
         private void bttnAgregar_Click(object sender, EventArgs e)

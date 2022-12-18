@@ -248,6 +248,32 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
+        public DataTable BuscarUsuariosActivos(string filtro)
+        {
+            try
+            {
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM `usuario` WHERE act_usu = 1 AND (`id_usu` LIKE '%" + filtro + "%' OR `raz_usu` LIKE '%" + filtro + "%' OR `cor_usu` LIKE '%" + filtro + "%' OR `doc_usu` LIKE '%" + filtro + "%' OR `tel_usu` LIKE '%" + filtro + "%' OR `dir_usu` LIKE '%" + filtro + "%')", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla productos encontrada!");
+                return resultados;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return null;
+        }
+
         public bool VendedorRegistrado(int id)
         {
             try
@@ -283,7 +309,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM nivel n INNER JOIN usuario u ON u.id_niv = n.id_niv INNER JOIN credencial c ON c.id_usu = u.id_usu WHERE n.id_niv = "+nivel+" AND (u.`id_usu` LIKE '%" + filtro + "%' OR u.`raz_usu` LIKE '%" + filtro + "%' OR u.`cor_usu` LIKE '%" + filtro + "%' OR u.`doc_usu` LIKE '%" + filtro + "%' OR u.`tel_usu` LIKE '%" + filtro + "%' OR u.`dir_usu` LIKE '%" + filtro + "%') ORDER BY u.id_usu ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM nivel n INNER JOIN usuario u ON u.id_niv = n.id_niv INNER JOIN credencial c ON c.id_usu = u.id_usu WHERE u.`id_usu` LIKE '%" + filtro + "%' OR u.`raz_usu` LIKE '%" + filtro + "%' OR u.`cor_usu` LIKE '%" + filtro + "%' OR u.`doc_usu` LIKE '%" + filtro + "%' OR u.`tel_usu` LIKE '%" + filtro + "%' OR u.`dir_usu` LIKE '%" + filtro + "%' ORDER BY u.id_usu ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }

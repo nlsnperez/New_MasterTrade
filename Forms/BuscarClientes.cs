@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,6 +48,14 @@ namespace New_MasterTrade.Custom_Controls
         }
 
         //MÉTODOS PARA EL PAGINADOR
+        public void ReiniciarPaginador()
+        {
+            total_filas = 0;
+            pagina = 0;
+            total_paginas = 0;
+            limite_registro = 20;
+        }
+
         public void ConfigComboPaginas()
         {
             if (comboPaginas.Items.Count > 0) comboPaginas.Items.Clear();
@@ -143,6 +152,17 @@ namespace New_MasterTrade.Custom_Controls
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             //tablaPersonas.DataSource = crud.BuscarTablaActivos(txtBuscar.Text);
+            DataTable resultados = crud.BuscarUsuariosActivos(txtBuscar.Text);
+            if (resultados.Rows.Count <= 0)
+            {
+                MessageBox.Show("No hay registros en la base de datos", "RESULTADOS NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                ReiniciarPaginador();
+                CargarDatos(resultados);
+                ConfigComboPaginas();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

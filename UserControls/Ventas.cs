@@ -117,9 +117,17 @@ namespace New_MasterTrade.UserControls
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            ReiniciarPaginador();
-            CargarDatos(crud.BuscarFacuras(txtBuscar.Text));
-            ConfigComboPaginas();
+            DataTable resultados = crud.BuscarFacuras(txtBuscar.Text);
+            if (resultados.Rows.Count <= 0)
+            {
+                MessageBox.Show("No hay registros en la base de datos", "RESULTADOS NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                ReiniciarPaginador();
+                CargarDatos(resultados);
+                ConfigComboPaginas();
+            }
         }
 
         private void tablaVentas_CellClick(object sender, DataGridViewCellEventArgs e)

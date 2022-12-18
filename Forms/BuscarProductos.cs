@@ -270,10 +270,17 @@ namespace New_MasterTrade.Objetos
             if (comboMarca.SelectedIndex == 0) marca = "";
             if (comboModelo.SelectedIndex == 0) modelo = "";
 
-            ReiniciarPaginador();
-
-            CargarDatos(crud.BuscarProductosActivos(categoria, marca, modelo, serial, descripcion));
-            ConfigComboPaginas();
+            DataTable resultados = crud.BuscarProductosActivos(categoria, marca, modelo, serial, descripcion);
+            if (resultados.Rows.Count <= 0)
+            {
+                MessageBox.Show("No hay registros en la base de datos", "RESULTADOS NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                ReiniciarPaginador();
+                CargarDatos(resultados);
+                ConfigComboPaginas();
+            }
 
             comboCategoria.SelectedIndex = 0;
             comboMarca.SelectedIndex = 0;
