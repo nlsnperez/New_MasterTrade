@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,19 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `orden_venta`(`id_cli`, `num_ove`, `fec_ove`) VALUES (@cliente,@norden,@fecha)";
+                    command.CommandText = "INSERT INTO `orden_venta`(`id_ove`, `id_usu`, `id_tca`, `num_ove`, `fec_ove`, `hor_ove`) VALUES (@id, @cliente,@tasacambio,@norden,@fecha,@hora)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = venta.Cliente; 
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = venta.Id;
+                    command.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = venta.Cliente;
+                    command.Parameters.Add("@tasacambio", MySqlDbType.VarChar).Value = venta.Tasa_Cambio; 
                     command.Parameters.Add("@norden", MySqlDbType.VarChar).Value = venta.NumeroOrden;
-                    command.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = venta.Fecha;
+                    command.Parameters.Add("@fecha", MySqlDbType.Date).Value = System.DateTime.Now.Date.ToString("yyyy-MM-dd");
+                    command.Parameters.Add("@hora", MySqlDbType.Time).Value = System.DateTime.Now.TimeOfDay;
 
                     command.ExecuteNonQuery();
-                    MessageBox.Show("La orden de venta fue registrada con éxito.", "¡REGISTRO EXITOSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("La factura fue registrada con éxito.", "¡REGISTRO EXITOSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (MySqlException ex)
@@ -41,6 +45,37 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
+        public void RegistrarPrecioVenta(List<Detalle> detalle)
+        {
+            for (int i = 0; i <= detalle.Count - 1; i++)
+            {
+                try
+                {
+                    con.Open();
+                    using (MySqlCommand command = new MySqlCommand())
+                    {
+                        command.CommandText = "UPDATE `producto` SET `pve_pro`=@precioventa WHERE `id_pro` = @id";
+                        command.CommandType = CommandType.Text;
+                        command.Connection = con;
+
+                        command.Parameters.Add("@precioventa", MySqlDbType.Int32).Value = detalle[i].Precio;
+                        command.Parameters.Add("@id", MySqlDbType.Int32).Value = detalle[i].Producto;
+
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("Precio de venta actualizado " + i + "!");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+        }
+
         public void CrearDetalle(List<Detalle> detalle)
         {
             for (int i = 0; i <= detalle.Count - 1; i++)
@@ -50,7 +85,7 @@ namespace New_MasterTrade.Base_de_Datos
                     con.Open();
                     using (MySqlCommand command = new MySqlCommand())
                     {
-                        command.CommandText = "INSERT INTO `detalle_venta`(`id_ove`, `id_pro`, `can_dve`, `tbs_dve`, `tus_dve`) VALUES (@oventa,@producto,@cantidad,@totBs,@totUsd)";
+                        command.CommandText = "INSERT INTO `detalle_venta`(`id_ove`, `id_pro`, `can_dve`, `tot_dve`) VALUES (@oventa,@producto,@cantidad,@totBs)";
                         command.CommandType = CommandType.Text;
                         command.Connection = con;
 
@@ -58,7 +93,6 @@ namespace New_MasterTrade.Base_de_Datos
                         command.Parameters.Add("@producto", MySqlDbType.Int32).Value = detalle[i].Producto;
                         command.Parameters.Add("@cantidad", MySqlDbType.Int32).Value = detalle[i].Cantidad;
                         command.Parameters.Add("@totBs", MySqlDbType.Decimal).Value = detalle[i].TotalBs;
-                        command.Parameters.Add("@totUsd", MySqlDbType.Decimal).Value = detalle[i].TotalUSD;
 
                         command.ExecuteNonQuery();
                         Console.WriteLine("Detalle registrado "+i+"!");
@@ -82,15 +116,16 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "INSERT INTO `factura_venta`(`id_ven`, `id_ove`, `id_mpa`, `tbs_fve`, `tus_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@metodopago,@tbs,@tus,@activo)";
+                    command.CommandText = "INSERT INTO `factura_venta`(`id_usu`, `id_ove`, `id_imp`, `id_mpa`, `tim_fve`, `tot_fve`, `act_fve`) VALUES (@vendedor,@ordenventa,@impuesto,@metodopago,@totalimpuesto,@total,@activo)";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
                     command.Parameters.Add("@vendedor", MySqlDbType.Int32).Value = factura.Vendedor;
                     command.Parameters.Add("@ordenventa", MySqlDbType.Int32).Value = factura.OrdenVenta;
+                    command.Parameters.Add("@impuesto", MySqlDbType.Int32).Value = factura.Impuesto;
                     command.Parameters.Add("@metodopago", MySqlDbType.Int32).Value = factura.MetodoPago;
-                    command.Parameters.Add("@tbs", MySqlDbType.Decimal).Value = factura.Total_Bs;
-                    command.Parameters.Add("@tus", MySqlDbType.Decimal).Value = factura.Total_Us;
+                    command.Parameters.Add("@totalimpuesto", MySqlDbType.Decimal).Value = factura.TotalImpuesto;
+                    command.Parameters.Add("@total", MySqlDbType.Decimal).Value = factura.Total;
                     command.Parameters.Add("@activo", MySqlDbType.Int32).Value = 1;
 
                     command.ExecuteNonQuery();
@@ -190,7 +225,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable Impuestos()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `impuesto`";
+            String sql = "SELECT * FROM `impuesto` WHERE act_imp = 1";
             con.Open();
             try
             {
@@ -209,6 +244,29 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return categorias;
+        }
+
+        public decimal PorcentajeImpuesto(int id)
+        {
+            decimal x = 0;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM impuesto WHERE id_imp = "+id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = reader.GetDecimal(2);
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
         }
 
         public int CantidadMax(int id)
@@ -219,7 +277,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable MetodosPago()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `metodo_pago` ORDER BY des_mpa ASC";
+            String sql = "SELECT * FROM `metodo_pago` WHERE act_mpa = 1 ORDER BY des_mpa ASC";
             con.Open();
             try
             {
@@ -240,10 +298,81 @@ namespace New_MasterTrade.Base_de_Datos
             return categorias;
         }
 
+        public DataTable Moneda()
+        {
+            DataTable moneda = new DataTable();
+            String sql = "SELECT * FROM `moneda` WHERE act_mon = 1 ORDER BY id_mon ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(moneda);
+                return moneda;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return moneda;
+        }
+
+        public DataTable Tasa_Cambio(int id)
+        {
+            DataTable tasa_cambio = new DataTable();
+            String sql = "SELECT * FROM `tasa_cambio` WHERE act_tca = 1 AND id_mon = "+id;
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(tasa_cambio);
+                return tasa_cambio;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return tasa_cambio;
+        }
+
+        public decimal Valor_TasaCambio(int id)
+        {
+            decimal x = 0;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM tasa_cambio WHERE id_tca = " + id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows) x = reader.GetDecimal(3);
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return x;
+        }
+
         public DataTable Facturas()
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tbs_fve, fv.tus_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli ORDER BY id_fve ASC";
+            String sql = "SELECT fv.id_fve, ov.num_ove, u.raz_usu, m.nom_mon, fv.tot_fve FROM factura_venta fv INNER JOIN orden_venta ov ON ov.id_ove = fv.id_ove INNER JOIN usuario u ON u.id_usu = ov.id_usu INNER JOIN tasa_cambio tc ON ov.id_tca = tc.id_tca INNER JOIN moneda m ON tc.id_mon = m.id_mon ORDER BY id_fve ASC";
             con.Open();
             try
             {
@@ -267,7 +396,7 @@ namespace New_MasterTrade.Base_de_Datos
         public DataTable BuscarFacuras(string filtro)
         {
             DataTable facturas = new DataTable();
-            String sql = "SELECT fv.id_fve, ov.num_ove, c.raz_cli, mp.des_mpa, fv.tbs_fve, fv.tus_fve FROM factura_venta fv INNER JOIN orden_venta ov ON fv.id_ove = ov.id_ove INNER JOIN metodo_pago mp ON fv.id_mpa = mp.id_mpa INNER JOIN cliente c ON ov.id_cli = c.id_cli WHERE fv.id_fve LIKE '" + filtro + "%' OR ov.num_ove LIKE '" + filtro + "%' OR c.raz_cli LIKE '" + filtro+ "%' ORDER BY id_fve ASC";
+            String sql = "SELECT fv.id_fve, ov.num_ove, u.raz_usu, m.nom_mon, fv.tot_fve FROM factura_venta fv INNER JOIN orden_venta ov ON ov.id_ove = fv.id_ove INNER JOIN usuario u ON u.id_usu = ov.id_usu INNER JOIN tasa_cambio tc ON ov.id_tca = tc.id_tca INNER JOIN moneda m ON tc.id_mon = m.id_mon WHERE fv.id_fve LIKE '" + filtro + "%' OR ov.num_ove LIKE '" + filtro + "%' OR u.raz_usu LIKE '" + filtro+ "%' OR u.doc_usu LIKE '%" + filtro+ "%' ORDER BY id_fve ASC";
             con.Open();
             try
             {

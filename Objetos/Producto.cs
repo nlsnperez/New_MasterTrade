@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace New_MasterTrade.Objetos
 {
-    class Producto
+    public class Producto
     {
         public int Id { get; set; }
         public string Serial { get; set; }
@@ -33,13 +33,31 @@ namespace New_MasterTrade.Objetos
             Imagen = imagen;
         }
 
+        public bool TamagnoSerial()
+        {
+            if (this.Serial.Length < 10 || this.Serial.Length > 13)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public bool IsEmpty()
         {
-            if (this.Serial == "" || this.Descripcion == "" || this.Precio_Compra == 0 || this.Precio_Venta == 0)
+            if (this.Serial == "" || this.Descripcion == "")
             {
                 return true;
             }
             return false;
+        }
+
+        public bool PrecioCorrecto()
+        {
+            if (Precio_Compra < Precio_Venta)
+            {
+                return true;
+            }
+            return true;
         }
     }
 }

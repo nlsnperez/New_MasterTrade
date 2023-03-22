@@ -29,7 +29,6 @@ namespace New_MasterTrade.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.bttnEliminar2 = new System.Windows.Forms.Button();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
@@ -39,63 +38,57 @@ namespace New_MasterTrade.UserControls
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboOcupacion = new System.Windows.Forms.ComboBox();
+            this.comboNivel = new System.Windows.Forms.ComboBox();
             this.comboDocumento = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.bttnCredenciales = new System.Windows.Forms.Button();
+            this.bttnAtrás = new System.Windows.Forms.Button();
             this.bttnCancelar = new System.Windows.Forms.Button();
             this.bttnActualizar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // bttnEliminar2
-            // 
-            this.bttnEliminar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnEliminar2.Image = global::New_MasterTrade.Properties.Resources.trash_can;
-            this.bttnEliminar2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnEliminar2.Location = new System.Drawing.Point(224, 510);
-            this.bttnEliminar2.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnEliminar2.Name = "bttnEliminar2";
-            this.bttnEliminar2.Size = new System.Drawing.Size(100, 24);
-            this.bttnEliminar2.TabIndex = 38;
-            this.bttnEliminar2.Text = "ELIMINAR";
-            this.bttnEliminar2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnEliminar2.UseVisualStyleBackColor = true;
-            this.bttnEliminar2.Click += new System.EventHandler(this.bttnEliminar2_Click);
-            // 
             // txtDocumento
             // 
             this.txtDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDocumento.Location = new System.Drawing.Point(242, 106);
-            this.txtDocumento.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(559, 20);
             this.txtDocumento.TabIndex = 44;
+            this.txtDocumento.Enter += new System.EventHandler(this.txtDocumento_Enter);
             this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
+            this.txtDocumento.Leave += new System.EventHandler(this.txtDocumento_Leave);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(58, 73);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 43;
-            this.label2.Text = "OCUPACIÓN";
+            this.label2.Text = "NIVEL";
             // 
             // txtRazonSocial
             // 
             this.txtRazonSocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRazonSocial.Location = new System.Drawing.Point(162, 142);
-            this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRazonSocial.Name = "txtRazonSocial";
             this.txtRazonSocial.Size = new System.Drawing.Size(639, 20);
             this.txtRazonSocial.TabIndex = 48;
+            this.txtRazonSocial.Enter += new System.EventHandler(this.txtDocumento_Enter);
             this.txtRazonSocial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyLetters);
+            this.txtRazonSocial.Leave += new System.EventHandler(this.txtDocumento_Leave);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
             this.label4.Location = new System.Drawing.Point(58, 146);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
@@ -107,15 +100,18 @@ namespace New_MasterTrade.UserControls
             // 
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDireccion.Location = new System.Drawing.Point(162, 178);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(639, 219);
             this.txtDireccion.TabIndex = 50;
+            this.txtDireccion.Enter += new System.EventHandler(this.txtDocumento_Enter);
+            this.txtDireccion.Leave += new System.EventHandler(this.txtDocumento_Leave);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
             this.label5.Location = new System.Drawing.Point(58, 103);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
@@ -127,15 +123,18 @@ namespace New_MasterTrade.UserControls
             // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefono.Location = new System.Drawing.Point(162, 449);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(639, 20);
             this.txtTelefono.TabIndex = 52;
+            this.txtTelefono.Enter += new System.EventHandler(this.txtDocumento_Enter);
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
+            this.txtTelefono.Leave += new System.EventHandler(this.txtDocumento_Leave);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
             this.label6.Location = new System.Drawing.Point(58, 178);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
@@ -146,6 +145,7 @@ namespace New_MasterTrade.UserControls
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.Control;
             this.label7.Location = new System.Drawing.Point(58, 453);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
@@ -153,14 +153,14 @@ namespace New_MasterTrade.UserControls
             this.label7.TabIndex = 53;
             this.label7.Text = "TELÉFONO";
             // 
-            // comboOcupacion
+            // comboNivel
             // 
-            this.comboOcupacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboOcupacion.FormattingEnabled = true;
-            this.comboOcupacion.Location = new System.Drawing.Point(162, 69);
-            this.comboOcupacion.Name = "comboOcupacion";
-            this.comboOcupacion.Size = new System.Drawing.Size(639, 21);
-            this.comboOcupacion.TabIndex = 54;
+            this.comboNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboNivel.FormattingEnabled = true;
+            this.comboNivel.Location = new System.Drawing.Point(162, 69);
+            this.comboNivel.Name = "comboNivel";
+            this.comboNivel.Size = new System.Drawing.Size(605, 21);
+            this.comboNivel.TabIndex = 54;
             // 
             // comboDocumento
             // 
@@ -174,6 +174,7 @@ namespace New_MasterTrade.UserControls
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.Control;
             this.label8.Location = new System.Drawing.Point(58, 410);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
@@ -185,30 +186,78 @@ namespace New_MasterTrade.UserControls
             // 
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCorreo.Location = new System.Drawing.Point(162, 413);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(639, 20);
             this.txtCorreo.TabIndex = 56;
+            this.txtCorreo.Enter += new System.EventHandler(this.txtDocumento_Enter);
+            this.txtCorreo.Leave += new System.EventHandler(this.txtDocumento_Leave);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTitulo.Location = new System.Drawing.Point(268, 10);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(355, 31);
+            this.lblTitulo.TabIndex = 117;
+            this.lblTitulo.Text = "REGISTRAR PROVEEDOR";
+            // 
+            // bttnCredenciales
+            // 
+            this.bttnCredenciales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnCredenciales.FlatAppearance.BorderSize = 0;
+            this.bttnCredenciales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnCredenciales.Image = global::New_MasterTrade.Properties.Resources.tarjeta_de_identificacion;
+            this.bttnCredenciales.Location = new System.Drawing.Point(773, 68);
+            this.bttnCredenciales.Name = "bttnCredenciales";
+            this.bttnCredenciales.Size = new System.Drawing.Size(28, 23);
+            this.bttnCredenciales.TabIndex = 119;
+            this.bttnCredenciales.UseVisualStyleBackColor = false;
+            this.bttnCredenciales.Click += new System.EventHandler(this.bttnCredenciales_Click);
+            // 
+            // bttnAtrás
+            // 
+            this.bttnAtrás.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAtrás.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAtrás.Image = global::New_MasterTrade.Properties.Resources.atras;
+            this.bttnAtrás.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnAtrás.Location = new System.Drawing.Point(14, 10);
+            this.bttnAtrás.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAtrás.Name = "bttnAtrás";
+            this.bttnAtrás.Size = new System.Drawing.Size(80, 28);
+            this.bttnAtrás.TabIndex = 118;
+            this.bttnAtrás.Text = "ATRÁS";
+            this.bttnAtrás.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAtrás.UseVisualStyleBackColor = false;
+            this.bttnAtrás.Click += new System.EventHandler(this.bttnAtrás_Click);
             // 
             // bttnCancelar
             // 
+            this.bttnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(85)))), ((int)(((byte)(93)))));
             this.bttnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.forbidden;
+            this.bttnCancelar.Image = global::New_MasterTrade.Properties.Resources.cancel;
             this.bttnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnCancelar.Location = new System.Drawing.Point(329, 510);
+            this.bttnCancelar.Location = new System.Drawing.Point(223, 510);
             this.bttnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.bttnCancelar.Name = "bttnCancelar";
             this.bttnCancelar.Size = new System.Drawing.Size(100, 24);
             this.bttnCancelar.TabIndex = 39;
             this.bttnCancelar.Text = "CANCELAR";
             this.bttnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnCancelar.UseVisualStyleBackColor = true;
+            this.bttnCancelar.UseVisualStyleBackColor = false;
             this.bttnCancelar.Click += new System.EventHandler(this.bttnCancelar_Click);
             // 
             // bttnActualizar
             // 
+            this.bttnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(150)))), ((int)(((byte)(242)))));
             this.bttnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnActualizar.Image = global::New_MasterTrade.Properties.Resources.reload;
+            this.bttnActualizar.Image = global::New_MasterTrade.Properties.Resources.refresh;
             this.bttnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnActualizar.Location = new System.Drawing.Point(119, 510);
             this.bttnActualizar.Margin = new System.Windows.Forms.Padding(2);
@@ -217,13 +266,15 @@ namespace New_MasterTrade.UserControls
             this.bttnActualizar.TabIndex = 37;
             this.bttnActualizar.Text = "ACTUALIZAR";
             this.bttnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnActualizar.UseVisualStyleBackColor = true;
+            this.bttnActualizar.UseVisualStyleBackColor = false;
             this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
             // 
             // bttnGuardar
             // 
+            this.bttnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.bttnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk;
+            this.bttnGuardar.Image = global::New_MasterTrade.Properties.Resources.floppy_disk1;
             this.bttnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnGuardar.Location = new System.Drawing.Point(14, 510);
             this.bttnGuardar.Margin = new System.Windows.Forms.Padding(2);
@@ -232,17 +283,21 @@ namespace New_MasterTrade.UserControls
             this.bttnGuardar.TabIndex = 36;
             this.bttnGuardar.Text = "GUARDAR";
             this.bttnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnGuardar.UseVisualStyleBackColor = true;
+            this.bttnGuardar.UseVisualStyleBackColor = false;
             this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // FormularioPersonas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.bttnCredenciales);
+            this.Controls.Add(this.bttnAtrás);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.comboDocumento);
-            this.Controls.Add(this.comboOcupacion);
+            this.Controls.Add(this.comboNivel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label6);
@@ -253,7 +308,6 @@ namespace New_MasterTrade.UserControls
             this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.bttnCancelar);
-            this.Controls.Add(this.bttnEliminar2);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.bttnGuardar);
             this.Name = "FormularioPersonas";
@@ -264,9 +318,6 @@ namespace New_MasterTrade.UserControls
         }
 
         #endregion
-
-        private System.Windows.Forms.Button bttnCancelar;
-        private System.Windows.Forms.Button bttnEliminar2;
         private System.Windows.Forms.Button bttnActualizar;
         private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.TextBox txtDocumento;
@@ -278,9 +329,13 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboOcupacion;
+        private System.Windows.Forms.ComboBox comboNivel;
         private System.Windows.Forms.ComboBox comboDocumento;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.Button bttnCancelar;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Button bttnAtrás;
+        private System.Windows.Forms.Button bttnCredenciales;
     }
 }

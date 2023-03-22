@@ -58,5 +58,19 @@ namespace New_MasterTrade
             x.StartPosition = FormStartPosition.CenterScreen;
             x.ShowDialog();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                txtPassword.PasswordChar = (char)0;
+                checkBox1.Text = "Ocultar contraseña";
+            }
+            else
+            {
+                txtPassword.PasswordChar = '●';
+                checkBox1.Text = "Mostrar contraseña";
+            }
+        }
     }
 }

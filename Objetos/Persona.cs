@@ -10,14 +10,17 @@ namespace New_MasterTrade.Objetos
     public class Persona
     {
         public int Id{ get; set; }
+        public int Nivel{ get; set; }
         public string Documento{ get; set; }
         public string RazonSocial{ get; set; }
         public string Direccion{ get; set; }
         public string Telefono{ get; set; }
         public string Correo{ get; set; }
 
-        public Persona(string documento, string razonSocial, string direccion, string telefono, string correo)
+        public Persona(int id, int nivel, string documento, string razonSocial, string direccion, string telefono, string correo)
         {
+            Id = id;
+            Nivel = nivel;
             Documento = documento;
             RazonSocial = razonSocial;
             Direccion = direccion;

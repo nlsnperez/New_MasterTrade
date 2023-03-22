@@ -45,18 +45,18 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
-        public void Update(Producto producto, int id)
+        public void Update(Producto producto)
         {
             try
             {
                 con.Open();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    command.CommandText = "UPDATE `producto` SET `ser_pro`=@serial,`des_pro`=@descripcion,`id_mar`=@marca,`id_cat`=@categoria, `id_mod`=@modelo,`pco_pro`=@preciocompra,`pve_pro`=@precioventa,`est_pro`=@estado,`img_pro`=@imagen WHERE `id_pro`=@id";
+                    command.CommandText = "UPDATE `producto` SET `des_pro`=@descripcion,`id_mar`=@marca,`id_cat`=@categoria, `id_mod`=@modelo,`pco_pro`=@preciocompra,`pve_pro`=@precioventa, `img_pro`=@imagen WHERE `ser_pro`=@serial";
                     command.CommandType = CommandType.Text;
                     command.Connection = con;
 
-                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                    
                     command.Parameters.Add("@serial", MySqlDbType.VarChar).Value = producto.Serial;
                     command.Parameters.Add("@descripcion", MySqlDbType.VarChar).Value = producto.Descripcion;
                     command.Parameters.Add("@marca", MySqlDbType.Int32).Value = producto.Marca;
@@ -81,10 +81,73 @@ namespace New_MasterTrade.Base_de_Datos
             }
         }
 
+        public void Delete(int id, int x)
+        {
+            string mensaje = "";
+            try
+            {
+                con.Open();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE `producto` SET `act_pro`=@activo WHERE `id_pro` = @id";
+                    command.CommandType = CommandType.Text;
+                    command.Connection = con;
+
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                    command.Parameters.Add("@activo", MySqlDbType.Int32).Value = x;
+
+                    command.ExecuteNonQuery();
+                }
+
+                if (x == 0)
+                {
+                    mensaje = "El registro se eliminó de manera satisfactoria.";
+                }
+                else
+                {
+                    mensaje = "El registro se restauró de manera satisfactoria.";
+                }
+
+                MessageBox.Show(mensaje, "¡DATOS ACTUALIZADOS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public DataTable Categorias()
         {
             DataTable categorias = new DataTable();
             String sql = "SELECT * FROM `categoria` ORDER BY nom_cat ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
+        }
+
+        public DataTable CategoriasActivas()
+        {
+            DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `categoria` WHERE act_cat = 1 ORDER BY nom_cat ASC";
             con.Open();
             try
             {
@@ -129,6 +192,30 @@ namespace New_MasterTrade.Base_de_Datos
             return categorias;
         }
 
+        public DataTable MarcasActivas()
+        {
+            DataTable categorias = new DataTable();
+            String sql = "SELECT * FROM `marca` WHERE act_mar = 1 ORDER BY nom_mar ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(categorias);
+                return categorias;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return categorias;
+        }
+
         public DataTable Modelos()
         {
             DataTable categorias = new DataTable();
@@ -153,10 +240,10 @@ namespace New_MasterTrade.Base_de_Datos
             return categorias;
         }
 
-        public DataTable TablaProductos()
+        public DataTable ModelosActivos()
         {
             DataTable categorias = new DataTable();
-            String sql = "SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod ORDER BY id_pro ASC";
+            String sql = "SELECT * FROM `modelo` WHERE act_mod = 1 ORDER BY nom_mod ASC";
             con.Open();
             try
             {
@@ -177,7 +264,55 @@ namespace New_MasterTrade.Base_de_Datos
             return categorias;
         }
 
-        public DataTable BuscarProductos(String filtro)
+        public DataTable TablaProductos()
+        {
+            DataTable productos = new DataTable();
+            String sql = "SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod ORDER BY id_pro ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(productos);
+                return productos;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return productos;
+        }
+
+        public DataTable ProductosActivos()
+        {
+            DataTable productos = new DataTable();
+            String sql = "SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod WHERE act_pro = 1 ORDER BY id_pro ASC";
+            con.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(productos);
+                return productos;
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return productos;
+        }
+
+        public DataTable BuscarProductos(string categoria, string marca, string modelo, string serial, string descripcion)
         {
             try
             {
@@ -185,7 +320,7 @@ namespace New_MasterTrade.Base_de_Datos
                 DataTable resultados = new DataTable();
                 using (MySqlCommand command = new MySqlCommand())
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod WHERE `ser_pro` LIKE '" + filtro + "%' OR `des_pro` LIKE '%" + filtro + "%' ORDER BY id_pro ASC", con);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod WHERE c.nom_cat LIKE '"+categoria+"%' AND m.nom_mar LIKE '"+marca+ "%' AND mo.nom_mod LIKE '" +modelo+"%' AND p.des_pro LIKE '"+descripcion+"%' AND p.ser_pro LIKE '"+serial+"%' ORDER BY p.id_pro ASC", con);
                     adapter.Fill(resultados);
                     con.Close();
                 }
@@ -199,29 +334,62 @@ namespace New_MasterTrade.Base_de_Datos
             return null;
         }
 
-        public DataTable ProductoDatos(string filtro)
+        public DataTable BuscarProductosActivos(string categoria, string marca, string modelo, string serial, string descripcion)
         {
-            DataTable categorias = new DataTable();
-            String sql = "SELECT * FROM `producto` WHERE `ser_pro` LIKE '" + filtro + "%' OR `des_pro` LIKE '%" + filtro + "%'";
-            con.Open();
             try
             {
-                MySqlCommand comando = new MySqlCommand(sql, con);
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(categorias);
-                Console.WriteLine("¡Yei!");
-                return categorias;
+                con.Open();
+                DataTable resultados = new DataTable();
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT p.*, c.nom_cat AS categoria, m.nom_mar AS marca, mo.nom_mod as modelo FROM `producto` p INNER JOIN categoria c ON p.`id_cat` = c.id_cat INNER JOIN marca m ON p.`id_mar` = m.id_mar INNER JOIN modelo mo ON p.`id_mod` = mo.id_mod WHERE p.act_pro = 1 AND c.nom_cat LIKE '" + categoria + "%' AND m.nom_mar LIKE '" + marca + "%' AND mo.nom_mod LIKE '" + modelo + "%' AND p.des_pro LIKE '" + descripcion + "%' AND p.ser_pro LIKE '" + serial + "%' ORDER BY p.id_pro ASC", con);
+                    adapter.Fill(resultados);
+                    con.Close();
+                }
+                Console.WriteLine("Tabla productos encontrada!");
+                return resultados;
             }
             catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
 
+        public Producto ProductoDatos(string filtro)
+        {
+            Producto resultado = null;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `producto` WHERE `ser_pro` LIKE '" + filtro + "%' OR `des_pro` LIKE '%" + filtro + "%'", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    Producto producto = new Producto(reader.GetInt32(0),
+                                                  reader.GetString(4),
+                                                  reader.GetString(5),
+                                                  reader.GetInt32(2),
+                                                  reader.GetInt32(1),
+                                                  reader.GetInt32(3),
+                                                  reader.GetDecimal(6),
+                                                  reader.GetDecimal(7),
+                                                  reader.GetInt32(9),
+                                                  (byte[])reader.GetValue(8));
+                    resultado = producto;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 con.Close();
             }
-            return categorias;
+            return resultado;
         }
 
         public int GetLastID()
@@ -337,6 +505,75 @@ namespace New_MasterTrade.Base_de_Datos
                 con.Close();
             }
             return x;
+        }
+
+        public Producto Producto(int id)
+        {
+            Producto resultado = null;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM producto WHERE id_pro = " + id, con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    Producto producto = new Producto(reader.GetInt32(0),
+                                                  reader.GetString(4),
+                                                  reader.GetString(5),
+                                                  reader.GetInt32(2),
+                                                  reader.GetInt32(1),
+                                                  reader.GetInt32(3),
+                                                  reader.GetDecimal(6),
+                                                  reader.GetDecimal(7),
+                                                  reader.GetInt32(9),
+                                                  (byte[])reader.GetValue(8));
+                    resultado = producto;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return resultado;
+        }
+        public bool ProductoDuplicado(string serial)
+        {
+            bool duplicado = false;
+            try
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM producto WHERE ser_pro = '"+serial+"'", con);
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    duplicado = true;
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return duplicado;
+        }
+
+        public DataTable TablaSeleccionada(string filtro)
+        {
+            DataTable tablafiltrada = Categorias();
+            if (filtro == "MARCAS") tablafiltrada = Marcas();
+            if (filtro == "MODELOS") tablafiltrada = Modelos();
+            return tablafiltrada;
         }
     }
 }

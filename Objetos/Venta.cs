@@ -9,16 +9,18 @@ namespace New_MasterTrade.Objetos
     public class Venta
     {
         public int Id { get; set; }
-        public string NumeroOrden { get; set; }
         public int Cliente { get; set; }
-        public DateTime Fecha { get; set; }
+        public int Tasa_Cambio { get; set; }
+        public string NumeroOrden { get; set; }
+        public DateTime FechaYHora { get; set; }
 
-        public Venta(int id, string numeroOrden, int cliente, DateTime fecha)
+        public Venta(int id, int cliente, int tasa_cambio, string numeroOrden, DateTime fechaYHora)
         {
             Id = id;
-            NumeroOrden = numeroOrden;
             Cliente = cliente;
-            Fecha = fecha;
+            Tasa_Cambio = tasa_cambio;
+            NumeroOrden = numeroOrden;
+            FechaYHora = fechaYHora;
         }
 
         public bool IsEmpty()

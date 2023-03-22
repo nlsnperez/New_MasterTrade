@@ -31,11 +31,21 @@ namespace New_MasterTrade
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SesionIniciada));
             this.panelPapa = new System.Windows.Forms.Panel();
+            this.panelAjustes = new System.Windows.Forms.Panel();
+            this.bttnMetodosPago = new System.Windows.Forms.Button();
+            this.bttnImpuestos = new System.Windows.Forms.Button();
+            this.bttnMonedas = new System.Windows.Forms.Button();
+            this.panelReportes = new System.Windows.Forms.Panel();
+            this.bttnReportesCompra = new System.Windows.Forms.Button();
+            this.bttnReportesVenta = new System.Windows.Forms.Button();
+            this.bttnReportesProducto = new System.Windows.Forms.Button();
+            this.bttnReportesProveedor = new System.Windows.Forms.Button();
+            this.bttnReportesCliente = new System.Windows.Forms.Button();
             this.panelMantenimiento = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bttnRespaldo = new System.Windows.Forms.Button();
+            this.bttnVendedores = new System.Windows.Forms.Button();
             this.bttnBitacora = new System.Windows.Forms.Button();
             this.bttnUsuarios = new System.Windows.Forms.Button();
-            this.bttnPerfil = new System.Windows.Forms.Button();
             this.panelTransacciones = new System.Windows.Forms.Panel();
             this.bttnVender = new System.Windows.Forms.Button();
             this.bttnComprar = new System.Windows.Forms.Button();
@@ -54,57 +64,236 @@ namespace New_MasterTrade
             this.bttnMantenimiento = new System.Windows.Forms.Button();
             this.bttnReportes = new System.Windows.Forms.Button();
             this.bttnArchivo = new System.Windows.Forms.Button();
-            this.bttnRespaldo = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.bttnAjustes = new System.Windows.Forms.Button();
             this.panelPapa.SuspendLayout();
+            this.panelAjustes.SuspendLayout();
+            this.panelReportes.SuspendLayout();
             this.panelMantenimiento.SuspendLayout();
             this.panelTransacciones.SuspendLayout();
             this.panelArchivo.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelPapa
             // 
             this.panelPapa.BackColor = System.Drawing.Color.White;
+            this.panelPapa.Controls.Add(this.panelAjustes);
+            this.panelPapa.Controls.Add(this.panelReportes);
             this.panelPapa.Controls.Add(this.panelMantenimiento);
             this.panelPapa.Controls.Add(this.panelTransacciones);
             this.panelPapa.Controls.Add(this.panelArchivo);
             this.panelPapa.Controls.Add(this.panelContenedor);
             this.panelPapa.Location = new System.Drawing.Point(0, 0);
-            this.panelPapa.Margin = new System.Windows.Forms.Padding(5);
+            this.panelPapa.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panelPapa.Name = "panelPapa";
             this.panelPapa.Size = new System.Drawing.Size(858, 594);
             this.panelPapa.TabIndex = 0;
             // 
+            // panelAjustes
+            // 
+            this.panelAjustes.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelAjustes.Controls.Add(this.bttnMetodosPago);
+            this.panelAjustes.Controls.Add(this.bttnImpuestos);
+            this.panelAjustes.Controls.Add(this.bttnMonedas);
+            this.panelAjustes.Location = new System.Drawing.Point(688, 475);
+            this.panelAjustes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelAjustes.Name = "panelAjustes";
+            this.panelAjustes.Size = new System.Drawing.Size(160, 115);
+            this.panelAjustes.TabIndex = 0;
+            this.panelAjustes.Visible = false;
+            // 
+            // bttnMetodosPago
+            // 
+            this.bttnMetodosPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnMetodosPago.FlatAppearance.BorderSize = 0;
+            this.bttnMetodosPago.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnMetodosPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnMetodosPago.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnMetodosPago.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnMetodosPago.Location = new System.Drawing.Point(0, 0);
+            this.bttnMetodosPago.Name = "bttnMetodosPago";
+            this.bttnMetodosPago.Size = new System.Drawing.Size(160, 38);
+            this.bttnMetodosPago.TabIndex = 28;
+            this.bttnMetodosPago.Text = "METODOS DE\r\nPAGO";
+            this.bttnMetodosPago.UseVisualStyleBackColor = false;
+            this.bttnMetodosPago.Click += new System.EventHandler(this.bttnMetodosPago_Click);
+            // 
+            // bttnImpuestos
+            // 
+            this.bttnImpuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnImpuestos.FlatAppearance.BorderSize = 0;
+            this.bttnImpuestos.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnImpuestos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnImpuestos.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnImpuestos.Image = global::New_MasterTrade.Properties.Resources.estados_financieros;
+            this.bttnImpuestos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnImpuestos.Location = new System.Drawing.Point(0, 38);
+            this.bttnImpuestos.Name = "bttnImpuestos";
+            this.bttnImpuestos.Size = new System.Drawing.Size(160, 38);
+            this.bttnImpuestos.TabIndex = 27;
+            this.bttnImpuestos.Text = "IMPUESTOS";
+            this.bttnImpuestos.UseVisualStyleBackColor = false;
+            this.bttnImpuestos.Click += new System.EventHandler(this.bttnImpuestos_Click);
+            // 
+            // bttnMonedas
+            // 
+            this.bttnMonedas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnMonedas.FlatAppearance.BorderSize = 0;
+            this.bttnMonedas.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnMonedas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnMonedas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnMonedas.Image = global::New_MasterTrade.Properties.Resources.coin;
+            this.bttnMonedas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnMonedas.Location = new System.Drawing.Point(0, 76);
+            this.bttnMonedas.Name = "bttnMonedas";
+            this.bttnMonedas.Size = new System.Drawing.Size(160, 38);
+            this.bttnMonedas.TabIndex = 26;
+            this.bttnMonedas.Text = "MONEDAS";
+            this.bttnMonedas.UseVisualStyleBackColor = false;
+            this.bttnMonedas.Click += new System.EventHandler(this.bttnMonedas_Click);
+            // 
+            // panelReportes
+            // 
+            this.panelReportes.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelReportes.Controls.Add(this.bttnReportesCompra);
+            this.panelReportes.Controls.Add(this.bttnReportesVenta);
+            this.panelReportes.Controls.Add(this.bttnReportesProducto);
+            this.panelReportes.Controls.Add(this.bttnReportesProveedor);
+            this.panelReportes.Controls.Add(this.bttnReportesCliente);
+            this.panelReportes.Location = new System.Drawing.Point(420, 43);
+            this.panelReportes.Name = "panelReportes";
+            this.panelReportes.Size = new System.Drawing.Size(160, 190);
+            this.panelReportes.TabIndex = 18;
+            this.panelReportes.Visible = false;
+            // 
+            // bttnReportesCompra
+            // 
+            this.bttnReportesCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnReportesCompra.FlatAppearance.BorderSize = 0;
+            this.bttnReportesCompra.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnReportesCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnReportesCompra.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnReportesCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnReportesCompra.Location = new System.Drawing.Point(0, 152);
+            this.bttnReportesCompra.Name = "bttnReportesCompra";
+            this.bttnReportesCompra.Size = new System.Drawing.Size(160, 38);
+            this.bttnReportesCompra.TabIndex = 14;
+            this.bttnReportesCompra.Text = "COMPRAS";
+            this.bttnReportesCompra.UseVisualStyleBackColor = false;
+            this.bttnReportesCompra.Click += new System.EventHandler(this.bttnReportesCompra_Click);
+            // 
+            // bttnReportesVenta
+            // 
+            this.bttnReportesVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnReportesVenta.FlatAppearance.BorderSize = 0;
+            this.bttnReportesVenta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnReportesVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnReportesVenta.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnReportesVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnReportesVenta.Location = new System.Drawing.Point(0, 114);
+            this.bttnReportesVenta.Name = "bttnReportesVenta";
+            this.bttnReportesVenta.Size = new System.Drawing.Size(160, 38);
+            this.bttnReportesVenta.TabIndex = 13;
+            this.bttnReportesVenta.Text = "VENTAS";
+            this.bttnReportesVenta.UseVisualStyleBackColor = false;
+            this.bttnReportesVenta.Click += new System.EventHandler(this.bttnReportesVenta_Click);
+            // 
+            // bttnReportesProducto
+            // 
+            this.bttnReportesProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnReportesProducto.FlatAppearance.BorderSize = 0;
+            this.bttnReportesProducto.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnReportesProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnReportesProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnReportesProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnReportesProducto.Location = new System.Drawing.Point(0, 76);
+            this.bttnReportesProducto.Name = "bttnReportesProducto";
+            this.bttnReportesProducto.Size = new System.Drawing.Size(160, 38);
+            this.bttnReportesProducto.TabIndex = 12;
+            this.bttnReportesProducto.Text = "PRODUCTOS";
+            this.bttnReportesProducto.UseVisualStyleBackColor = false;
+            this.bttnReportesProducto.Click += new System.EventHandler(this.bttnReportesProducto_Click);
+            // 
+            // bttnReportesProveedor
+            // 
+            this.bttnReportesProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnReportesProveedor.FlatAppearance.BorderSize = 0;
+            this.bttnReportesProveedor.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnReportesProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnReportesProveedor.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnReportesProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnReportesProveedor.Location = new System.Drawing.Point(0, 38);
+            this.bttnReportesProveedor.Name = "bttnReportesProveedor";
+            this.bttnReportesProveedor.Size = new System.Drawing.Size(160, 38);
+            this.bttnReportesProveedor.TabIndex = 11;
+            this.bttnReportesProveedor.Text = "PROVEEDORES";
+            this.bttnReportesProveedor.UseVisualStyleBackColor = false;
+            this.bttnReportesProveedor.Click += new System.EventHandler(this.bttnReportesProveedor_Click);
+            // 
+            // bttnReportesCliente
+            // 
+            this.bttnReportesCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnReportesCliente.FlatAppearance.BorderSize = 0;
+            this.bttnReportesCliente.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnReportesCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnReportesCliente.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnReportesCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnReportesCliente.Location = new System.Drawing.Point(0, 0);
+            this.bttnReportesCliente.Name = "bttnReportesCliente";
+            this.bttnReportesCliente.Size = new System.Drawing.Size(160, 38);
+            this.bttnReportesCliente.TabIndex = 10;
+            this.bttnReportesCliente.Text = "CLIENTES";
+            this.bttnReportesCliente.UseVisualStyleBackColor = false;
+            this.bttnReportesCliente.Click += new System.EventHandler(this.bttnReportesCliente_Click);
+            // 
             // panelMantenimiento
             // 
             this.panelMantenimiento.Controls.Add(this.bttnRespaldo);
-            this.panelMantenimiento.Controls.Add(this.button1);
+            this.panelMantenimiento.Controls.Add(this.bttnVendedores);
             this.panelMantenimiento.Controls.Add(this.bttnBitacora);
             this.panelMantenimiento.Controls.Add(this.bttnUsuarios);
-            this.panelMantenimiento.Controls.Add(this.bttnPerfil);
             this.panelMantenimiento.Location = new System.Drawing.Point(580, 43);
-            this.panelMantenimiento.MinimumSize = new System.Drawing.Size(160, 152);
             this.panelMantenimiento.Name = "panelMantenimiento";
-            this.panelMantenimiento.Size = new System.Drawing.Size(160, 190);
+            this.panelMantenimiento.Size = new System.Drawing.Size(160, 38);
             this.panelMantenimiento.TabIndex = 15;
             this.panelMantenimiento.Visible = false;
             // 
-            // button1
+            // bttnRespaldo
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::New_MasterTrade.Properties.Resources.businessman;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(0, 38);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 38);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "VENDEDORES";
-            this.button1.UseVisualStyleBackColor = false;
+            this.bttnRespaldo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnRespaldo.FlatAppearance.BorderSize = 0;
+            this.bttnRespaldo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnRespaldo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnRespaldo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnRespaldo.Image = global::New_MasterTrade.Properties.Resources.cloud_backup_up_arrow;
+            this.bttnRespaldo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnRespaldo.Location = new System.Drawing.Point(0, 114);
+            this.bttnRespaldo.Name = "bttnRespaldo";
+            this.bttnRespaldo.Size = new System.Drawing.Size(160, 38);
+            this.bttnRespaldo.TabIndex = 22;
+            this.bttnRespaldo.Text = "RESPALDO";
+            this.bttnRespaldo.UseVisualStyleBackColor = false;
+            this.bttnRespaldo.Click += new System.EventHandler(this.bttnRespaldo_Click);
+            // 
+            // bttnVendedores
+            // 
+            this.bttnVendedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnVendedores.FlatAppearance.BorderSize = 0;
+            this.bttnVendedores.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.bttnVendedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnVendedores.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnVendedores.Image = global::New_MasterTrade.Properties.Resources.businessman;
+            this.bttnVendedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnVendedores.Location = new System.Drawing.Point(0, 38);
+            this.bttnVendedores.Name = "bttnVendedores";
+            this.bttnVendedores.Size = new System.Drawing.Size(160, 38);
+            this.bttnVendedores.TabIndex = 21;
+            this.bttnVendedores.Text = "VENDEDORES";
+            this.bttnVendedores.UseVisualStyleBackColor = false;
+            this.bttnVendedores.Click += new System.EventHandler(this.bttnVendedores_Click);
             // 
             // bttnBitacora
             // 
@@ -114,8 +303,8 @@ namespace New_MasterTrade
             this.bttnBitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnBitacora.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnBitacora.Image = global::New_MasterTrade.Properties.Resources.copy;
-            this.bttnBitacora.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnBitacora.Location = new System.Drawing.Point(0, 76);
+            this.bttnBitacora.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnBitacora.Location = new System.Drawing.Point(0, 0);
             this.bttnBitacora.Name = "bttnBitacora";
             this.bttnBitacora.Size = new System.Drawing.Size(160, 38);
             this.bttnBitacora.TabIndex = 20;
@@ -131,8 +320,8 @@ namespace New_MasterTrade
             this.bttnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnUsuarios.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnUsuarios.Image = global::New_MasterTrade.Properties.Resources.personal_data__1_;
-            this.bttnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnUsuarios.Location = new System.Drawing.Point(0, 0);
+            this.bttnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnUsuarios.Location = new System.Drawing.Point(0, 76);
             this.bttnUsuarios.Name = "bttnUsuarios";
             this.bttnUsuarios.Size = new System.Drawing.Size(160, 38);
             this.bttnUsuarios.TabIndex = 19;
@@ -140,28 +329,12 @@ namespace New_MasterTrade
             this.bttnUsuarios.UseVisualStyleBackColor = false;
             this.bttnUsuarios.Click += new System.EventHandler(this.bttnUsuarios_Click);
             // 
-            // bttnPerfil
-            // 
-            this.bttnPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnPerfil.FlatAppearance.BorderSize = 0;
-            this.bttnPerfil.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.bttnPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnPerfil.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnPerfil.Image = global::New_MasterTrade.Properties.Resources.personal_data;
-            this.bttnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnPerfil.Location = new System.Drawing.Point(0, 152);
-            this.bttnPerfil.Name = "bttnPerfil";
-            this.bttnPerfil.Size = new System.Drawing.Size(160, 38);
-            this.bttnPerfil.TabIndex = 18;
-            this.bttnPerfil.Text = "PERFIL";
-            this.bttnPerfil.UseVisualStyleBackColor = false;
-            // 
             // panelTransacciones
             // 
             this.panelTransacciones.Controls.Add(this.bttnVender);
             this.panelTransacciones.Controls.Add(this.bttnComprar);
             this.panelTransacciones.Location = new System.Drawing.Point(260, 43);
-            this.panelTransacciones.MinimumSize = new System.Drawing.Size(160, 76);
+            this.panelTransacciones.MinimumSize = new System.Drawing.Size(160, 38);
             this.panelTransacciones.Name = "panelTransacciones";
             this.panelTransacciones.Size = new System.Drawing.Size(160, 76);
             this.panelTransacciones.TabIndex = 16;
@@ -175,12 +348,12 @@ namespace New_MasterTrade
             this.bttnVender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnVender.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnVender.Image = global::New_MasterTrade.Properties.Resources.point_of_sale;
-            this.bttnVender.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnVender.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnVender.Location = new System.Drawing.Point(0, 0);
             this.bttnVender.Name = "bttnVender";
             this.bttnVender.Size = new System.Drawing.Size(160, 38);
             this.bttnVender.TabIndex = 9;
-            this.bttnVender.Text = "VENDER";
+            this.bttnVender.Text = "VENTA";
             this.bttnVender.UseVisualStyleBackColor = false;
             this.bttnVender.Click += new System.EventHandler(this.bttnVender_Click);
             // 
@@ -192,12 +365,12 @@ namespace New_MasterTrade
             this.bttnComprar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnComprar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnComprar.Image = global::New_MasterTrade.Properties.Resources.cart;
-            this.bttnComprar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnComprar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnComprar.Location = new System.Drawing.Point(0, 38);
             this.bttnComprar.Name = "bttnComprar";
             this.bttnComprar.Size = new System.Drawing.Size(160, 38);
             this.bttnComprar.TabIndex = 8;
-            this.bttnComprar.Text = "COMPRAR";
+            this.bttnComprar.Text = "COMPRA";
             this.bttnComprar.UseVisualStyleBackColor = false;
             this.bttnComprar.Click += new System.EventHandler(this.bttnComprar_Click);
             // 
@@ -213,7 +386,7 @@ namespace New_MasterTrade
             this.panelArchivo.Location = new System.Drawing.Point(100, 43);
             this.panelArchivo.MinimumSize = new System.Drawing.Size(160, 152);
             this.panelArchivo.Name = "panelArchivo";
-            this.panelArchivo.Size = new System.Drawing.Size(160, 190);
+            this.panelArchivo.Size = new System.Drawing.Size(160, 152);
             this.panelArchivo.TabIndex = 14;
             this.panelArchivo.Visible = false;
             // 
@@ -225,12 +398,12 @@ namespace New_MasterTrade
             this.bttnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnClientes.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnClientes.Image = global::New_MasterTrade.Properties.Resources.star;
-            this.bttnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bttnClientes.Location = new System.Drawing.Point(0, 0);
             this.bttnClientes.Name = "bttnClientes";
             this.bttnClientes.Size = new System.Drawing.Size(160, 38);
             this.bttnClientes.TabIndex = 18;
-            this.bttnClientes.Text = "CLIENTES";
+            this.bttnClientes.Text = "USUARIOS";
             this.bttnClientes.UseVisualStyleBackColor = false;
             this.bttnClientes.Click += new System.EventHandler(this.bttnClientes_Click);
             // 
@@ -242,8 +415,8 @@ namespace New_MasterTrade
             this.bttnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnVentas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnVentas.Image = global::New_MasterTrade.Properties.Resources.receipt;
-            this.bttnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnVentas.Location = new System.Drawing.Point(0, 114);
+            this.bttnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnVentas.Location = new System.Drawing.Point(0, 76);
             this.bttnVentas.Name = "bttnVentas";
             this.bttnVentas.Size = new System.Drawing.Size(160, 38);
             this.bttnVentas.TabIndex = 17;
@@ -259,8 +432,8 @@ namespace New_MasterTrade
             this.bttnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnCompras.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnCompras.Image = global::New_MasterTrade.Properties.Resources.shopping_bag;
-            this.bttnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnCompras.Location = new System.Drawing.Point(0, 152);
+            this.bttnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnCompras.Location = new System.Drawing.Point(0, 114);
             this.bttnCompras.Name = "bttnCompras";
             this.bttnCompras.Size = new System.Drawing.Size(160, 38);
             this.bttnCompras.TabIndex = 16;
@@ -276,8 +449,8 @@ namespace New_MasterTrade
             this.bttnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnProveedores.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnProveedores.Image = global::New_MasterTrade.Properties.Resources.parcel;
-            this.bttnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnProveedores.Location = new System.Drawing.Point(0, 38);
+            this.bttnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnProveedores.Location = new System.Drawing.Point(0, 153);
             this.bttnProveedores.Name = "bttnProveedores";
             this.bttnProveedores.Size = new System.Drawing.Size(160, 38);
             this.bttnProveedores.TabIndex = 11;
@@ -293,8 +466,8 @@ namespace New_MasterTrade
             this.bttnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnProductos.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnProductos.Image = global::New_MasterTrade.Properties.Resources.monitor;
-            this.bttnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnProductos.Location = new System.Drawing.Point(0, 76);
+            this.bttnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnProductos.Location = new System.Drawing.Point(0, 38);
             this.bttnProductos.Name = "bttnProductos";
             this.bttnProductos.Size = new System.Drawing.Size(160, 38);
             this.bttnProductos.TabIndex = 10;
@@ -379,7 +552,7 @@ namespace New_MasterTrade
             this.bttnTransacciones.Name = "bttnTransacciones";
             this.bttnTransacciones.Size = new System.Drawing.Size(160, 38);
             this.bttnTransacciones.TabIndex = 17;
-            this.bttnTransacciones.Text = "TRANSACCIONES";
+            this.bttnTransacciones.Text = "REGISTRAR";
             this.bttnTransacciones.UseVisualStyleBackColor = false;
             this.bttnTransacciones.Click += new System.EventHandler(this.bttnTransacciones_Click);
             this.bttnTransacciones.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
@@ -413,6 +586,7 @@ namespace New_MasterTrade
             this.bttnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnReportes.Font = new System.Drawing.Font("Arial", 9F);
             this.bttnReportes.ForeColor = System.Drawing.SystemColors.Control;
+            this.bttnReportes.Image = global::New_MasterTrade.Properties.Resources.FlechaAbajo;
             this.bttnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bttnReportes.Location = new System.Drawing.Point(420, 0);
             this.bttnReportes.Name = "bttnReportes";
@@ -420,6 +594,7 @@ namespace New_MasterTrade
             this.bttnReportes.TabIndex = 17;
             this.bttnReportes.Text = "REPORTES";
             this.bttnReportes.UseVisualStyleBackColor = false;
+            this.bttnReportes.Click += new System.EventHandler(this.bttnReportes_Click);
             this.bttnReportes.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
             this.bttnReportes.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
             // 
@@ -443,27 +618,42 @@ namespace New_MasterTrade
             this.bttnArchivo.MouseEnter += new System.EventHandler(this.bttnMouseEnter);
             this.bttnArchivo.MouseLeave += new System.EventHandler(this.bttnMouseLeave);
             // 
-            // bttnRespaldo
+            // panel1
             // 
-            this.bttnRespaldo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
-            this.bttnRespaldo.FlatAppearance.BorderSize = 0;
-            this.bttnRespaldo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.bttnRespaldo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnRespaldo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnRespaldo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnRespaldo.Location = new System.Drawing.Point(0, 114);
-            this.bttnRespaldo.Name = "bttnRespaldo";
-            this.bttnRespaldo.Size = new System.Drawing.Size(160, 38);
-            this.bttnRespaldo.TabIndex = 22;
-            this.bttnRespaldo.Text = "RESPALDO";
-            this.bttnRespaldo.UseVisualStyleBackColor = false;
-            this.bttnRespaldo.Click += new System.EventHandler(this.bttnRespaldo_Click);
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.bttnAjustes);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 590);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(858, 49);
+            this.panel1.TabIndex = 5;
+            // 
+            // bttnAjustes
+            // 
+            this.bttnAjustes.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bttnAjustes.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bttnAjustes.FlatAppearance.BorderSize = 0;
+            this.bttnAjustes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAjustes.Font = new System.Drawing.Font("Arial", 9F);
+            this.bttnAjustes.ForeColor = System.Drawing.Color.White;
+            this.bttnAjustes.Image = global::New_MasterTrade.Properties.Resources.settings;
+            this.bttnAjustes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAjustes.Location = new System.Drawing.Point(688, 2);
+            this.bttnAjustes.Name = "bttnAjustes";
+            this.bttnAjustes.Size = new System.Drawing.Size(160, 45);
+            this.bttnAjustes.TabIndex = 19;
+            this.bttnAjustes.Text = "AJUSTES";
+            this.bttnAjustes.UseVisualStyleBackColor = false;
+            this.bttnAjustes.Click += new System.EventHandler(this.bttnAjustes_Click_1);
             // 
             // SesionIniciada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 595);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(858, 639);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelPapa);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -472,11 +662,14 @@ namespace New_MasterTrade
             this.Text = "SesionIniciada";
             this.Load += new System.EventHandler(this.SesionIniciada_Load);
             this.panelPapa.ResumeLayout(false);
+            this.panelAjustes.ResumeLayout(false);
+            this.panelReportes.ResumeLayout(false);
             this.panelMantenimiento.ResumeLayout(false);
             this.panelTransacciones.ResumeLayout(false);
             this.panelArchivo.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -497,7 +690,6 @@ namespace New_MasterTrade
         private System.Windows.Forms.Button bttnCompras;
         private System.Windows.Forms.Panel panelMantenimiento;
         private System.Windows.Forms.Button bttnUsuarios;
-        private System.Windows.Forms.Button bttnPerfil;
         private System.Windows.Forms.Panel panelTransacciones;
         private System.Windows.Forms.Button bttnTransacciones;
         private System.Windows.Forms.Button bttnVentas;
@@ -506,7 +698,19 @@ namespace New_MasterTrade
         private System.Windows.Forms.Button bttnBitacora;
         private System.Windows.Forms.Panel panelContenedor;
         private System.Windows.Forms.Button bttnClientes;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bttnVendedores;
         private System.Windows.Forms.Button bttnRespaldo;
+        private System.Windows.Forms.Button bttnAjustes;
+        private System.Windows.Forms.Panel panelAjustes;
+        private System.Windows.Forms.Button bttnMonedas;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelReportes;
+        private System.Windows.Forms.Button bttnReportesProducto;
+        private System.Windows.Forms.Button bttnReportesProveedor;
+        private System.Windows.Forms.Button bttnReportesCliente;
+        private System.Windows.Forms.Button bttnImpuestos;
+        private System.Windows.Forms.Button bttnReportesCompra;
+        private System.Windows.Forms.Button bttnReportesVenta;
+        private System.Windows.Forms.Button bttnMetodosPago;
     }
 }

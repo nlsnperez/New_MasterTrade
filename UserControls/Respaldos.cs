@@ -27,7 +27,7 @@ namespace New_MasterTrade.UserControls
             {
                 SaveFileDialog guardar = new SaveFileDialog();
                 guardar.Filter = "Archivo SQL (*.sql)|*.slq";
-                guardar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                guardar.InitialDirectory = @"~\Base de Datos\Respaldos";
                 guardar.Title = "Guardar archivo de respaldo";
 
                 if (guardar.ShowDialog() == DialogResult.OK)

@@ -29,41 +29,80 @@ namespace New_MasterTrade.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaVentas = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.columnNFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnOVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnMPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnTBs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnTUs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label9 = new System.Windows.Forms.Label();
+            this.NFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOrdenVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalBs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Detalle = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.bttnSiguiente = new System.Windows.Forms.Button();
+            this.comboPaginas = new System.Windows.Forms.ComboBox();
+            this.bttnAnterior = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaVentas)).BeginInit();
             this.SuspendLayout();
             // 
             // tablaVentas
             // 
             this.tablaVentas.AllowUserToAddRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.tablaVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.tablaVentas.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.tablaVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tablaVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.tablaVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.tablaVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnNFactura,
-            this.columnOVenta,
-            this.columnCliente,
-            this.columnMPago,
-            this.columnTBs,
-            this.columnTUs,
-            this.columnDetalle});
-            this.tablaVentas.Location = new System.Drawing.Point(0, 0);
+            this.NFactura,
+            this.NOrdenVenta,
+            this.Cliente,
+            this.Moneda,
+            this.TotalBs,
+            this.Detalle});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaVentas.DefaultCellStyle = dataGridViewCellStyle6;
+            this.tablaVentas.EnableHeadersVisualStyles = false;
+            this.tablaVentas.Location = new System.Drawing.Point(0, 49);
             this.tablaVentas.Name = "tablaVentas";
-            this.tablaVentas.Size = new System.Drawing.Size(858, 494);
+            this.tablaVentas.RowHeadersVisible = false;
+            this.tablaVentas.RowHeadersWidth = 51;
+            this.tablaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaVentas.Size = new System.Drawing.Size(858, 445);
             this.tablaVentas.TabIndex = 0;
+            this.tablaVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaVentas_CellClick);
             // 
             // txtBuscar
             // 
+            this.txtBuscar.BackColor = System.Drawing.SystemColors.Control;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Location = new System.Drawing.Point(661, 512);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(185, 20);
             this.txtBuscar.TabIndex = 38;
@@ -72,6 +111,7 @@ namespace New_MasterTrade.UserControls
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(597, 516);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -79,67 +119,148 @@ namespace New_MasterTrade.UserControls
             this.label1.TabIndex = 37;
             this.label1.Text = "BUSCAR: ";
             // 
-            // columnNFactura
+            // dataGridViewImageColumn1
             // 
-            this.columnNFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnNFactura.DataPropertyName = "id_fve";
-            this.columnNFactura.HeaderText = "N. Factura";
-            this.columnNFactura.Name = "columnNFactura";
-            this.columnNFactura.ReadOnly = true;
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::New_MasterTrade.Properties.Resources.copy1;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // columnOVenta
+            // label9
             // 
-            this.columnOVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnOVenta.DataPropertyName = "num_ove";
-            this.columnOVenta.HeaderText = "N. Orden de venta";
-            this.columnOVenta.Name = "columnOVenta";
-            this.columnOVenta.ReadOnly = true;
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(281, 8);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(326, 31);
+            this.label9.TabIndex = 118;
+            this.label9.Text = "VENTAS REGISTRADAS";
             // 
-            // columnCliente
+            // NFactura
             // 
-            this.columnCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnCliente.DataPropertyName = "raz_cli";
-            this.columnCliente.HeaderText = "Cliente";
-            this.columnCliente.Name = "columnCliente";
-            this.columnCliente.ReadOnly = true;
+            this.NFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NFactura.DataPropertyName = "id_fve";
+            this.NFactura.HeaderText = "N. Factura";
+            this.NFactura.MinimumWidth = 6;
+            this.NFactura.Name = "NFactura";
+            this.NFactura.ReadOnly = true;
             // 
-            // columnMPago
+            // NOrdenVenta
             // 
-            this.columnMPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnMPago.DataPropertyName = "des_mpa";
-            this.columnMPago.HeaderText = "Método de pago";
-            this.columnMPago.Name = "columnMPago";
-            this.columnMPago.ReadOnly = true;
+            this.NOrdenVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOrdenVenta.DataPropertyName = "num_ove";
+            this.NOrdenVenta.HeaderText = "N. Orden de venta";
+            this.NOrdenVenta.MinimumWidth = 6;
+            this.NOrdenVenta.Name = "NOrdenVenta";
+            this.NOrdenVenta.ReadOnly = true;
             // 
-            // columnTBs
+            // Cliente
             // 
-            this.columnTBs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnTBs.DataPropertyName = "tbs_fve";
-            this.columnTBs.HeaderText = "T. Bolívares";
-            this.columnTBs.Name = "columnTBs";
-            this.columnTBs.ReadOnly = true;
+            this.Cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cliente.DataPropertyName = "raz_usu";
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.MinimumWidth = 6;
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
             // 
-            // columnTUs
+            // Moneda
             // 
-            this.columnTUs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnTUs.DataPropertyName = "tus_fve";
-            this.columnTUs.HeaderText = "T. Dólares";
-            this.columnTUs.Name = "columnTUs";
-            this.columnTUs.ReadOnly = true;
+            this.Moneda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Moneda.DataPropertyName = "nom_mon";
+            this.Moneda.HeaderText = "Método de pago";
+            this.Moneda.MinimumWidth = 6;
+            this.Moneda.Name = "Moneda";
+            this.Moneda.ReadOnly = true;
             // 
-            // columnDetalle
+            // TotalBs
             // 
-            this.columnDetalle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDetalle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.columnDetalle.HeaderText = "";
-            this.columnDetalle.Name = "columnDetalle";
-            this.columnDetalle.Text = "DETALLE";
-            this.columnDetalle.UseColumnTextForButtonValue = true;
+            this.TotalBs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TotalBs.DataPropertyName = "tot_fve";
+            this.TotalBs.HeaderText = "Total";
+            this.TotalBs.MinimumWidth = 6;
+            this.TotalBs.Name = "TotalBs";
+            this.TotalBs.ReadOnly = true;
+            // 
+            // Detalle
+            // 
+            this.Detalle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Detalle.HeaderText = "Detalle";
+            this.Detalle.Image = global::New_MasterTrade.Properties.Resources.copy1;
+            this.Detalle.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Detalle.MinimumWidth = 6;
+            this.Detalle.Name = "Detalle";
+            this.Detalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(372, 516);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 132;
+            this.label3.Text = "PÁGINA:";
+            // 
+            // bttnSiguiente
+            // 
+            this.bttnSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnSiguiente.FlatAppearance.BorderSize = 0;
+            this.bttnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnSiguiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnSiguiente.Location = new System.Drawing.Point(491, 510);
+            this.bttnSiguiente.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnSiguiente.Name = "bttnSiguiente";
+            this.bttnSiguiente.Size = new System.Drawing.Size(24, 24);
+            this.bttnSiguiente.TabIndex = 131;
+            this.bttnSiguiente.Text = ">";
+            this.bttnSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnSiguiente.UseVisualStyleBackColor = false;
+            this.bttnSiguiente.Click += new System.EventHandler(this.bttnSiguiente_Click);
+            // 
+            // comboPaginas
+            // 
+            this.comboPaginas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboPaginas.FormattingEnabled = true;
+            this.comboPaginas.Location = new System.Drawing.Point(426, 512);
+            this.comboPaginas.Margin = new System.Windows.Forms.Padding(2);
+            this.comboPaginas.Name = "comboPaginas";
+            this.comboPaginas.Size = new System.Drawing.Size(61, 21);
+            this.comboPaginas.TabIndex = 130;
+            this.comboPaginas.Click += new System.EventHandler(this.comboPaginas_SelectedIndexChanged_1);
+            // 
+            // bttnAnterior
+            // 
+            this.bttnAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(100)))));
+            this.bttnAnterior.FlatAppearance.BorderSize = 0;
+            this.bttnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bttnAnterior.Location = new System.Drawing.Point(344, 510);
+            this.bttnAnterior.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnAnterior.Name = "bttnAnterior";
+            this.bttnAnterior.Size = new System.Drawing.Size(24, 24);
+            this.bttnAnterior.TabIndex = 129;
+            this.bttnAnterior.Text = "<";
+            this.bttnAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bttnAnterior.UseVisualStyleBackColor = false;
+            this.bttnAnterior.Click += new System.EventHandler(this.bttnAnterior_Click);
             // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.bttnSiguiente);
+            this.Controls.Add(this.comboPaginas);
+            this.Controls.Add(this.bttnAnterior);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaVentas);
@@ -156,12 +277,17 @@ namespace New_MasterTrade.UserControls
         private System.Windows.Forms.DataGridView tablaVentas;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnNFactura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnOVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnMPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnTBs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnTUs;
-        private System.Windows.Forms.DataGridViewButtonColumn columnDetalle;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NFactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NOrdenVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Moneda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalBs;
+        private System.Windows.Forms.DataGridViewImageColumn Detalle;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button bttnSiguiente;
+        private System.Windows.Forms.ComboBox comboPaginas;
+        private System.Windows.Forms.Button bttnAnterior;
     }
 }

@@ -14,7 +14,7 @@ namespace New_MasterTrade.Base_de_Datos
         public Conexion()
         {
             string host = "localhost";
-            string db = "new_mastertrade";
+            string db = "new_master_trade";
             string port = "3306";
             string usuario = "root";
             string contrasegna = "";

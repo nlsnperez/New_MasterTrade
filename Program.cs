@@ -24,7 +24,7 @@ namespace New_MasterTrade
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message, "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se encontró una conexion a la base de datos\n" + ex.Message, "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

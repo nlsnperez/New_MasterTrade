@@ -1,4 +1,6 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
+using New_MasterTrade.Custom_Controls;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,19 @@ namespace New_MasterTrade.UserControls
 {
     public partial class FormularioProductos : UserControl
     {
+        static FormularioProductos f_productos;
+        public static FormularioProductos Instancia
+        {
+            get
+            {
+                if (f_productos == null)
+                {
+                    f_productos = new FormularioProductos();
+                }
+                return f_productos;
+            }
+        }
+
         CRUD_Productos crud;
 
         public FormularioProductos()
@@ -34,17 +49,17 @@ namespace New_MasterTrade.UserControls
             txtID.Text = crud.GetLastID().ToString();
             txtID.Enabled = false;
             comboCategoria.Focus();
-            txtCantidad.Enabled = false;
             bttnActualizar.Enabled = false;
-            bttnEliminar2.Enabled = false;
+            //bttnComprar.Visible = false;
+            //bttnVender.Visible = false;
             ConfigCombos();
             ConfigLongitud();
         }
 
         public void ConfigLongitud()
         {
-            txtSerial.MaxLength = 100;
-            txtDescripcion.MaxLength = 500;
+            txtSerial.MaxLength = 13;
+            txtDescripcion.MaxLength = 100;
             txtPrecioVenta.MaxLength = 13;
             txtPrecioCompra.MaxLength = 13;
         }
@@ -62,32 +77,39 @@ namespace New_MasterTrade.UserControls
         {
             if (pbImagen.Image != null)
             {
-                pbImagen.Image = Properties.Resources.descripcion_del_producto;
+                pbImagen.Image = Properties.Resources.ImagenPlaceHolder;
             }            
         }
 
         public void ConfigCombos()
         {
-            comboMarca.ValueMember = "id_mar";
-            comboMarca.DisplayMember = "nom_mar";
-            comboMarca.DataSource = crud.Marcas();
-            comboMarca.SelectedIndex = 0;
+            try
+            {
+                comboMarca.ValueMember = "id_mar";
+                comboMarca.DisplayMember = "nom_mar";
+                comboMarca.DataSource = crud.MarcasActivas();
+                comboMarca.SelectedIndex = 0;
 
-            comboCategoria.ValueMember = "id_cat";
-            comboCategoria.DisplayMember = "nom_cat";
-            comboCategoria.DataSource = crud.Categorias();
-            comboCategoria.SelectedIndex = 0;
+                comboCategoria.ValueMember = "id_cat";
+                comboCategoria.DisplayMember = "nom_cat";
+                comboCategoria.DataSource = crud.CategoriasActivas();
+                comboCategoria.SelectedIndex = 0;
 
-            comboModelo.ValueMember = "id_mod";
-            comboModelo.DisplayMember = "nom_mod";
-            comboModelo.DataSource = crud.Modelos();
-            comboModelo.SelectedIndex = 0;
+                comboModelo.ValueMember = "id_mod";
+                comboModelo.DisplayMember = "nom_mod";
+                comboModelo.DataSource = crud.ModelosActivos();
+                comboModelo.SelectedIndex = 0;
 
-            comboGarantia.Items.Add("3 DÍAS");
-            comboGarantia.Items.Add("1 SEMANA");
-            comboGarantia.Items.Add("1 MES");
-            comboGarantia.Items.Add("1 AÑO");
-            comboGarantia.SelectedIndex = 0;
+                comboGarantia.Items.Add("3 DÍAS");
+                comboGarantia.Items.Add("1 SEMANA");
+                comboGarantia.Items.Add("1 MES");
+                comboGarantia.Items.Add("1 AÑO");
+                comboGarantia.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private Producto GetProducto()
@@ -110,18 +132,55 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGuardar_Click(object sender, EventArgs e)
         {
-            if (GetProducto().IsEmpty())
+            if (ProcesoDeAprobacion(GetProducto()))
             {
-                MessageBox.Show("Complete todos los campos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                if (MessageBox.Show("¿Desea registrar el producto: " + txtSerial.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (crud.ProductoDuplicado(GetProducto().Serial))
                 {
-                    crud.Create(GetProducto());
-                    Limpiar();
+                    MessageBox.Show("Ya existe un producto registrado con el serial ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    if (MessageBox.Show("¿Desea registrar este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        crud.Create(GetProducto());
+                        if (UserData.Nivel == 1)
+                        {
+                            if (MessageBox.Show("¿Desea proseguir registrando una compra?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                SesionIniciada.Instancia.MostrarUserControl(new Comprar());
+                            }
+                            else
+                            {
+                                Limpiar();
+                            }
+                        }
+                        else
+                        {
+                            Limpiar();
+                        }                        
+                    }
                 }
             }
+        }
+
+        public bool ProcesoDeAprobacion(Producto producto)
+        {
+            if (!producto.TamagnoSerial())
+            {
+                MessageBox.Show("Debe introducir un serial con 10 dígitos mínimo y 13 dígitos máximo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (producto.IsEmpty())
+            {
+                MessageBox.Show("Complete todos los campos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!producto.PrecioCorrecto())
+            {
+                MessageBox.Show("El precio de venta no puede ser menor al precio de compra", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
 
         public int DiasDeGarantía()
@@ -129,7 +188,7 @@ namespace New_MasterTrade.UserControls
             switch (comboGarantia.SelectedIndex)
             {
                 case 0:
-                    return 5;
+                    return 3;
                 case 1:
                     return 7;
                 case 2:
@@ -142,46 +201,78 @@ namespace New_MasterTrade.UserControls
 
         private void bttnBuscar_Click(object sender, EventArgs e)
         {
-            if (crud.ProductoDatos(txtBuscar.Text).Rows.Count > 0)
-            {
-                SetDatos(crud.ProductoDatos(txtBuscar.Text));
-            }
-            else
-            {
-                MessageBox.Show("No se encontró ningún producto con el serial introducido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            SesionIniciada.Instancia.MostrarUserControl(new Productos());
+            //Producto producto = crud.ProductoDatos(txtBuscar.Text);
+            //if (producto != null)
+            //{
+            //    DatosProducto(producto);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No se encontró ningún producto", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
-        public void OpenProducto(string filtro)
+        public void DatosProducto(Producto producto)
         {
-            if (crud.ProductoDatos(filtro).Rows.Count > 0)
+            try
             {
-                Console.WriteLine("¡Yei2!");
-                SetDatos(crud.ProductoDatos(filtro));
+                int cantidad = crud.ProductosComprados(producto.Id) - crud.ProductosVendidos(producto.Id);
+                if (cantidad > 0)
+                {
+                    txtCantidad.BackColor = Color.FromArgb(149, 212, 90);
+                    //bttnVender.Visible = true;
+                }
+                else
+                {
+                    txtCantidad.BackColor = Color.FromArgb(255, 97, 116);
+                }
+
+                byte[] imagen = producto.Imagen;
+                MemoryStream ms = new MemoryStream(imagen);
+                pbImagen.Image = Image.FromStream(ms);
+
+                txtID.Text = producto.Id.ToString();
+                comboCategoria.SelectedValue = producto.Categoria;
+                comboMarca.SelectedValue = producto.Marca;
+                comboModelo.SelectedValue = producto.Modelo;
+                txtSerial.Text = producto.Serial.ToString();
+                txtDescripcion.Text = producto.Descripcion;
+                txtPrecioCompra.Text = producto.Precio_Compra.ToString().Replace('.', ',');
+                txtPrecioVenta.Text = producto.Precio_Venta.ToString().Replace('.',',');
+                txtCantidad.Text = cantidad.ToString();
+                IndexGarantia(producto.Garantia);
+
+                txtSerial.Enabled = false;
+                bttnGuardar.Enabled = false;
+                bttnActualizar.Enabled = true;
+                //bttnComprar.Visible = true;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
-        public void SetDatos(DataTable x)
+        public void IndexGarantia(int x)
         {
-            DataTable resultado = x;
-            byte[] imagen = (byte[])resultado.Rows[0][8];
-            MemoryStream ms = new MemoryStream(imagen);
-
-            txtID.Text = resultado.Rows[0][0].ToString();
-            comboCategoria.SelectedValue = Int32.Parse(resultado.Rows[0][1].ToString());
-            comboMarca.SelectedValue = Int32.Parse(resultado.Rows[0][2].ToString());
-            comboModelo.SelectedValue = Int32.Parse(resultado.Rows[0][3].ToString());
-            txtSerial.Text = resultado.Rows[0][4].ToString();
-            txtDescripcion.Text = resultado.Rows[0][5].ToString();
-            txtPrecioCompra.Text = resultado.Rows[0][6].ToString();
-            txtPrecioVenta.Text = resultado.Rows[0][7].ToString();
-            pbImagen.Image = Image.FromStream(ms);
-
-            txtBuscar.Text = "";
-            txtSerial.Enabled = false;
-            bttnGuardar.Enabled = false;
-            bttnActualizar.Enabled = true;
-            bttnEliminar2.Enabled = true;
+            int y = 0;
+            switch (x)
+            {
+                case 3:
+                    comboGarantia.Text = "3 DÍAS";
+                    break;
+                case 7:
+                    comboGarantia.Text = "1 SEMANA";
+                    break;
+                case 30:
+                    comboGarantia.Text = "1 MES";
+                    break;
+                case 365:
+                    comboGarantia.Text = "1 AÑO";
+                    break;
+            }
         }
 
         public void Limpiar()
@@ -193,15 +284,13 @@ namespace New_MasterTrade.UserControls
             txtPrecioCompra.Text = "0";
             txtPrecioVenta.Text = "0";
             txtCantidad.Text = "0";
-            txtBuscar.Text = "";
             comboMarca.SelectedIndex = 0;
             comboCategoria.SelectedIndex = 0;
             comboModelo.SelectedIndex = 0;
             comboGarantia.SelectedIndex = 0;
-            pbImagen.Image = Properties.Resources.descripcion_del_producto;
+            pbImagen.Image = Properties.Resources.ImagenPlaceHolder;
             bttnGuardar.Enabled = true;
             bttnActualizar.Enabled = false;
-            bttnEliminar2.Enabled = false;
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
@@ -215,6 +304,9 @@ namespace New_MasterTrade.UserControls
             {
                 txtPrecioVenta.Text = "";
             }
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
         }
 
         private void txtPrecioVenta_Leave(object sender, EventArgs e)
@@ -223,6 +315,9 @@ namespace New_MasterTrade.UserControls
             {
                 txtPrecioVenta.Text = "0";
             }
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = SystemColors.Window;
+            textBox.ForeColor = SystemColors.WindowText;
         }
 
         private void txtPrecioCompra_Enter(object sender, EventArgs e)
@@ -231,6 +326,9 @@ namespace New_MasterTrade.UserControls
             {
                 txtPrecioCompra.Text = "";
             }
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
         }
 
         private void txtPrecioCompra_Leave(object sender, EventArgs e)
@@ -239,14 +337,77 @@ namespace New_MasterTrade.UserControls
             {
                 txtPrecioCompra.Text = "0";
             }
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = SystemColors.Window;
+            textBox.ForeColor = SystemColors.WindowText;
         }
 
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea actualizar el producto: " + txtSerial.Text + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (ProcesoDeAprobacion(GetProducto()))
             {
-                crud.Update(GetProducto(), Int32.Parse(txtID.Text));
+                if (MessageBox.Show("¿Desea actualizar este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    crud.Update(GetProducto());
+                    Limpiar();
+                }
             }
+        }
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
+        }
+
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = SystemColors.Window;
+            textBox.ForeColor = SystemColors.WindowText;
+        }
+
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            TextBox objeto = sender as TextBox;
+            if (objeto.Name == "txtSerial")
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
+            }            
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bttnCategoria_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarDialog(new Categorias());
+            ConfigCombos();
+        }
+
+        private void bttnMarca_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarDialog(new Marcas());
+            ConfigCombos();
+        }
+
+        private void bttnModelo_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarDialog(new Modelos());
+            ConfigCombos();
         }
     }
 }

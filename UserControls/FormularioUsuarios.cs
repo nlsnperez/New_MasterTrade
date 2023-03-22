@@ -1,4 +1,5 @@
 ﻿using New_MasterTrade.Base_de_Datos;
+using New_MasterTrade.Cache;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,11 @@ namespace New_MasterTrade.UserControls
         public void Config()
         {
             crud = new CRUD_Usuarios();
+            user_id = crud.GetId();
             txtContrasegna.PasswordChar = '●';
             txtConfirmar.PasswordChar = '●';
             ConfigCombos();
             bttnActualizar.Enabled = false;
-            bttnEliminar2.Enabled = false;
         }
 
         public void Limpiar()
@@ -41,7 +42,8 @@ namespace New_MasterTrade.UserControls
             txtUsuario.Text = "";
             txtContrasegna.Text = "";
             txtConfirmar.Text = "";
-            comboNivel.SelectedIndex = 1;
+            txtCorreo.Text = "";
+            comboNivel.SelectedIndex = 0;
             chckMostrar.Checked = false;
         }
 
@@ -92,42 +94,69 @@ namespace New_MasterTrade.UserControls
 
         private void bttnGuardar_Click(object sender, EventArgs e)
         {
-            if (GetUsuario().IsEmpty())
+            if (ProcesoDeAdmicion(GetUsuario()))
             {
-                MessageBox.Show("Complete todo los campos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                if (!GetUsuario().ValidDocumento())
+                if (NoRegistrosDuplicados(GetUsuario()))
                 {
-                    MessageBox.Show("Ingrese un número de documento válido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    if (txtContrasegna.Text != txtConfirmar.Text)
+                    if (MessageBox.Show("¿Desea registrar este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        MessageBox.Show("Las contraseñas introducidas no coinciden", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        if (MessageBox.Show("¿Desea registrar este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        //crud.Create(GetUsuario());
+                        if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
                         {
-                            crud.Crear(GetUsuario());
-                            if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
-                            {
-                                crud.CrearVendedor(crud.GetId());
-                            }
-                            Limpiar();
+                            crud.CrearVendedor(user_id);
                         }
+                        Limpiar();
                     }
                 }
             }
         }
 
+        public bool ProcesoDeAdmicion(Usuario usuario)
+        {
+            if (usuario.IsEmpty())
+            {
+                MessageBox.Show("Complete todo los campos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!usuario.ValidDocumento())
+            {
+                MessageBox.Show("Ingrese un documento de identidad válido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!usuario.ValidEmail())
+            {
+                MessageBox.Show("Ingrese un correo electrónico válido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        public bool NoRegistrosDuplicados(Usuario usuario)
+        {
+            if (crud.CorreoDuplicado(usuario.Correo))
+            {
+                MessageBox.Show("Ya existe un usuario registrado con el correo electrónico ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (crud.DocumentoDuplicado(usuario.Documento))
+            {
+                MessageBox.Show("Ya existe un usuario registrado con documento de identidad ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (crud.UserNameDuplicado(usuario.UserName))
+            {
+                MessageBox.Show("Ya existe un usuario registrado con el nombre de usuario ingresado", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
         private Usuario GetUsuario()
         {
-            Usuario usuario = new Usuario(txtUsuario.Text,
+            Usuario usuario = new Usuario(0,
+                                          txtUsuario.Text,
                                           txtContrasegna.Text,
+                                          txtCorreo.Text,
                                           comboDocumento.Text+txtDocumento.Text,
                                           txtNombre.Text,
                                           Nivel(comboNivel.SelectedIndex));
@@ -144,18 +173,24 @@ namespace New_MasterTrade.UserControls
             this.ParentForm.Close();
         }
 
-        public void SetDatos(string id)
+        public void DatosUsuario(Usuario usuario)
         {
-            DataTable resultado = crud.UsuarioDatos(id);
+            user_id = usuario.ID;
+            if (crud.IsVendedor(user_id)) chckVendedor.Visible = false;
+            txtNombre.Text = usuario.Nombre;
+            txtUsuario.Text = usuario.UserName;
+            txtContrasegna.Text = usuario.Contrasegna;
+            comboDocumento.Text = usuario.Documento.Substring(0,1);
+            txtDocumento.Text = usuario.Documento.Remove(0,1);
+            txtCorreo.Text = usuario.Correo;
 
-            user_id = (int)resultado.Rows[0][0];
-            txtUsuario.Text = resultado.Rows[0][1].ToString();
-            txtContrasegna.Text = resultado.Rows[0][2].ToString();
-            comboDocumento.Text = resultado.Rows[0][4].ToString().Substring(0,1);
-            txtDocumento.Text = resultado.Rows[0][4].ToString().Remove(0,1);
-            txtNombre.Text = resultado.Rows[0][3].ToString();
-            if ((int)resultado.Rows[0][5] == 1)
+            if (usuario.Nivel == 1)
             {
+                if (UserData.NombreUsuario != txtUsuario.Text)
+                {
+                    txtContrasegna.Enabled = false;
+                    chckMostrar.Visible = false;
+                }
                 comboNivel.SelectedIndex = 0;
             }
             else
@@ -169,7 +204,6 @@ namespace New_MasterTrade.UserControls
             label5.Visible = false;
             bttnGuardar.Enabled = false;
             bttnActualizar.Enabled = true;
-            bttnEliminar2.Enabled = true;
             bttnCancelar.Enabled = false;
         }
 
@@ -177,14 +211,13 @@ namespace New_MasterTrade.UserControls
         {
             if (MessageBox.Show("¿Desea actualizar los datos de este usuario?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                crud.Actualizar(GetUsuario(), user_id);
+                //crud.Update(GetUsuario());
                 if (chckVendedor.Checked || comboNivel.SelectedIndex == 0)
                 {
-                    if (crud.VendedorRegistrado(user_id))
+                    if (!crud.VendedorRegistrado(user_id))
                     {
-
+                        crud.CrearVendedor(user_id);
                     }
-                    else crud.CrearVendedor(user_id);
                 }
             }
         }
@@ -193,6 +226,42 @@ namespace New_MasterTrade.UserControls
         {
             if (x == 0) return 1;
             else return 2;
+        }
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = Color.FromArgb(255, 212, 100);
+            textBox.ForeColor = Color.Black;
+        }
+
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.BackColor = SystemColors.Window;
+            textBox.ForeColor = SystemColors.WindowText;
+        }
+
+        private void comboNivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboNivel.SelectedIndex == 0)
+            {
+                chckVendedor.Visible = false;
+            }
+            else
+            {
+                chckVendedor.Visible = true;
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bttnAtrás_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarUserControl(new Usuarios());
         }
     }
 }

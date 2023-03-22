@@ -9,7 +9,21 @@ namespace New_MasterTrade
 {
     public partial class SesionIniciada : Form
     {
+        static SesionIniciada s_iniciada;
+        public static SesionIniciada Instancia
+        {
+            get
+            {
+                if(s_iniciada == null)
+                {
+                    s_iniciada = new SesionIniciada();
+                }
+                return s_iniciada;
+            }
+        }
+
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
+        CRUD_Usuarios usuario = new CRUD_Usuarios();
         Panel p = new Panel();
         public SesionIniciada()
         {
@@ -19,7 +33,42 @@ namespace New_MasterTrade
 
         private void SesionIniciada_Load(object sender, EventArgs e)
         {
+            s_iniciada = this;
             bttnClientes_Click(null, e);
+            Config();
+        }
+
+        public void Config()
+        {
+            if (UserData.Nivel == 2)
+            {
+                bttnReportes.Visible = false;
+                bttnMantenimiento.Visible = false;
+                bttnAjustes.Visible = false;
+                panelTransacciones.Size = new Size(160, 38);
+                //if (usuario.IsVendedor(UserData.Id))
+                //{
+                //    panelTransacciones.Size = new Size(160, 38);
+                //}
+                //else
+                //{
+                //    bttnTransacciones.Visible = false;
+                //}
+            }
+        }
+
+        public void CerrarPaneles()
+        {
+            panelArchivo.Visible = false;
+            panelTransacciones.Visible = false;
+            panelReportes.Visible = false;
+            panelMantenimiento.Visible = false;
+            panelAjustes.Visible = false;
+
+            bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+            bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+            bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+            bttnReportes.Image = Properties.Resources.FlechaAbajo;
         }
 
         private void bttnMouseEnter(object sender, EventArgs e)
@@ -31,7 +80,7 @@ namespace New_MasterTrade
             p.Location = new Point(bttn.Location.X, bttn.Location.Y + 38);
         }
 
-        private void MostrarUserControl(object pantalla)
+        public void MostrarUserControl(object pantalla)
         {
             if (panelContenedor.Controls.Count > 0) panelContenedor.Controls.Clear();
             UserControl control = pantalla as UserControl;
@@ -39,6 +88,26 @@ namespace New_MasterTrade
             this.panelContenedor.Controls.Add(control);
             this.panelContenedor.Tag = control;
             control.Show();
+        }
+
+        public void MostrarDialog(object pantalla)
+        {
+            Form x = new Form();
+            
+            x.StartPosition = FormStartPosition.CenterScreen;
+            x.FormBorderStyle = FormBorderStyle.None;
+            x.Opacity = .70d;
+            x.BackColor = Color.Black;
+            x.Size = this.Size;
+            x.ShowInTaskbar = false;
+            x.Show();
+
+            Form vetana_dialogo = pantalla as Form;
+            vetana_dialogo.StartPosition = FormStartPosition.CenterParent;
+            vetana_dialogo.FormBorderStyle = FormBorderStyle.None;
+            vetana_dialogo.Owner = x;
+            vetana_dialogo.ShowDialog();
+            x.Dispose();
         }
 
         private void bttnMouseLeave(object sender, EventArgs e)
@@ -66,19 +135,19 @@ namespace New_MasterTrade
         private void bttnProductos_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Productos());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnComprar_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Comprar());
-            panelTransacciones.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnUsuarios_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Usuarios());
-            panelMantenimiento.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnArchivo_Click(object sender, EventArgs e)
@@ -86,10 +155,18 @@ namespace New_MasterTrade
             if (panelArchivo.Visible == false)
             {
                 panelArchivo.Visible = true;
-                panelTransacciones.Visible = false;
-                panelMantenimiento.Visible = false;
                 bttnArchivo.Image = Properties.Resources.FlechaArriba;
-                panelArchivo.Focus();
+
+                panelTransacciones.Visible = false;
+                bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+
+                panelReportes.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaAbajo;
+
+                panelMantenimiento.Visible = false;
+                bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+
+                panelAjustes.Visible = false;
             }
             else
             {
@@ -103,9 +180,18 @@ namespace New_MasterTrade
             if (panelTransacciones.Visible == false)
             {
                 panelTransacciones.Visible = true;
-                panelArchivo.Visible = false;
-                panelMantenimiento.Visible = false;
                 bttnTransacciones.Image = Properties.Resources.FlechaArriba;
+
+                panelArchivo.Visible = false;
+                bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+
+                panelReportes.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaAbajo;
+
+                panelMantenimiento.Visible = false;
+                bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+
+                panelAjustes.Visible = false;
             }
             else
             {
@@ -119,9 +205,18 @@ namespace New_MasterTrade
             if (panelMantenimiento.Visible == false)
             {
                 panelMantenimiento.Visible = true;
-                panelTransacciones.Visible = false;
-                panelArchivo.Visible = false;
                 bttnMantenimiento.Image = Properties.Resources.FlechaArriba;
+
+                panelArchivo.Visible = false;
+                bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+
+                panelTransacciones.Visible = false;
+                bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+
+                panelReportes.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaAbajo;
+
+                panelAjustes.Visible = false;
             }
             else
             {
@@ -133,25 +228,25 @@ namespace New_MasterTrade
         private void bttnVender_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Vender());
-            panelTransacciones.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnCompras_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Compras());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnVentas_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Ventas());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnBitacora_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new RegistrosBitacora());
-            panelMantenimiento.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnAjustes_Click(object sender, EventArgs e)
@@ -162,19 +257,153 @@ namespace New_MasterTrade
         private void bttnProveedores_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Proveedores());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnClientes_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Clientes());
-            panelArchivo.Visible = false;
+            CerrarPaneles();
         }
 
         private void bttnRespaldo_Click(object sender, EventArgs e)
         {
             MostrarUserControl(new Respaldos());
-            panelMantenimiento.Visible = false;
+            CerrarPaneles();
+        }
+
+        private void bttnReportes_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new VentanaReportes());
+            CerrarPaneles();
+            //if (panelReportes.Visible == false)
+            //{
+            //    panelReportes.Visible = true;
+            //    bttnReportes.Image = Properties.Resources.FlechaArriba;
+
+            //    panelArchivo.Visible = false;
+            //    bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+
+            //    panelTransacciones.Visible = false;
+            //    bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+
+            //    panelMantenimiento.Visible = false;
+            //    bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+
+            //    panelAjustes.Visible = false;
+            //}
+            //else
+            //{
+            //    panelReportes.Visible = false;
+            //    bttnReportes.Image = Properties.Resources.FlechaAbajo;
+            //}
+        }
+
+        private void bttnAjustes_Click_1(object sender, EventArgs e)
+        {
+            if (panelAjustes.Visible == false)
+            {
+                panelAjustes.Visible = true;
+
+                panelArchivo.Visible = false;
+                bttnArchivo.Image = Properties.Resources.FlechaAbajo;
+
+                panelTransacciones.Visible = false;
+                bttnTransacciones.Image = Properties.Resources.FlechaAbajo;
+
+                panelReportes.Visible = false;
+                bttnReportes.Image = Properties.Resources.FlechaAbajo;
+
+                panelMantenimiento.Visible = false;
+                bttnMantenimiento.Image = Properties.Resources.FlechaAbajo;
+            }
+            else
+            {
+                panelAjustes.Visible = false;
+            }
+        }
+
+        private void bttnCategorias_Click(object sender, EventArgs e)
+        {
+            MostrarDialog(new Categorias());
+            CerrarPaneles();
+        }
+
+        private void bttnMarcas_Click(object sender, EventArgs e)
+        {
+            
+            MostrarDialog(new Marcas());
+            CerrarPaneles();
+        }
+
+        private void bttnModelos_Click(object sender, EventArgs e)
+        {
+            
+            MostrarDialog(new Modelos());
+            CerrarPaneles();
+        }
+
+        private void bttnReportesCliente_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new ReportesCliente());
+            CerrarPaneles();
+        }
+
+        private void bttnReportesProveedor_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new ReportesProveedor());
+            CerrarPaneles();
+        }
+
+        private void bttnReportesProducto_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new ReportesProducto());
+            CerrarPaneles();
+        }
+
+        private void bttnImpuestos_Click(object sender, EventArgs e)
+        {
+            MostrarDialog(new Impuestos());
+            CerrarPaneles();
+        }
+
+        private void bttnMonedas_Click(object sender, EventArgs e)
+        {
+            MostrarDialog(new Monedas());
+            CerrarPaneles();
+        }
+
+        private void bttnVendedores_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new Vendedores());
+            CerrarPaneles();
+        }
+
+        private void bttnGarantias_Click(object sender, EventArgs e)
+        {
+            MostrarUserControl(new Garantias());
+            CerrarPaneles();
+        }
+
+        private void bttnReportesVenta_Click(object sender, EventArgs e)
+        {
+            CerrarPaneles();
+        }
+
+        private void bttnReportesCompra_Click(object sender, EventArgs e)
+        {
+            CerrarPaneles();
+        }
+
+        private void bttnMetodosPago_Click(object sender, EventArgs e)
+        {
+            MostrarDialog(new MetodosDePago());
+            CerrarPaneles();
+        }
+
+        private void SesionIniciada_Deactivate(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

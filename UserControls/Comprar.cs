@@ -1,11 +1,13 @@
 ﻿using New_MasterTrade.Base_de_Datos;
 using New_MasterTrade.Cache;
+using New_MasterTrade.Custom_Controls;
 using New_MasterTrade.Objetos;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Management.Instrumentation;
 using System.Windows.Forms;
 
 namespace New_MasterTrade.UserControls
@@ -13,26 +15,48 @@ namespace New_MasterTrade.UserControls
     public partial class Comprar : UserControl
     {
         CRUD_Compras crud;
-        CRUD_Proveedores personas;
+        CRUD_Usuarios crud_usuarios = new CRUD_Usuarios();
         DataTable carrito = new DataTable();
         CRUD_Bitacora bitacora = new CRUD_Bitacora();
         int IdCompra = 0;
         int IdProveedor = 0;
-        
+        decimal tasa_cambio = 0;
+
+        static Comprar comprar;
+        public static Comprar Instancia
+        {
+            get
+            {
+                if (comprar == null)
+                {
+                    comprar = new Comprar();
+                }
+                return comprar;
+            }
+        }
+
         public Comprar()
         {
+            //comprar = this;
             InitializeComponent();
+            Comprar_Load(null, new EventArgs());
         }
 
         private void Comprar_Load(object sender, EventArgs e)
         {
             Config();
+            txtMoneda.Text = comboMoneda.Text;
+            bttnAtras.Visible = false;
+        }
+
+        public void CompraExterna()
+        {
+            bttnAtras.Visible = true;
         }
 
         public void Config() //CONFIGURACIÓN ESTANDAR DEL SISTEMA
         {
             crud = new CRUD_Compras();
-            personas = new CRUD_Proveedores();
             tableCarrito.AutoGenerateColumns = false;
             ConfigControles("OFF");
             ConfigCarrito();
@@ -47,9 +71,11 @@ namespace New_MasterTrade.UserControls
             {
                 if (carrito.Rows[x][0].ToString() == carrito.Rows[y][0].ToString())
                 {
-                    carrito.Rows[x][4] = int.Parse(carrito.Rows[x][4].ToString()) + int.Parse(carrito.Rows[y][4].ToString());
-                    carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][5].ToString()) + decimal.Parse(carrito.Rows[y][5].ToString());
-                    carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
+                    carrito.Rows.RemoveAt(x);
+                    GetSubTotal();
+                    //carrito.Rows[x][4] = int.Parse(carrito.Rows[x][4].ToString()) + int.Parse(carrito.Rows[y][4].ToString());
+                    //carrito.Rows[x][5] = decimal.Parse(carrito.Rows[x][5].ToString()) + decimal.Parse(carrito.Rows[y][5].ToString());
+                    //carrito.Rows.RemoveAt(carrito.Rows.Count - 1);
                     break;
                 }
             }
@@ -83,43 +109,39 @@ namespace New_MasterTrade.UserControls
                 case "ON":
                     txtProveedor.Enabled = true;
 
-                    bttnNuevaCompra.Enabled = false;
                     bttnBuscarProductos.Enabled = true;
                     bttnBuscar.Enabled = true;
-                    bttnCancelar.Enabled = true;                    
+                    bttnCancelar.Enabled = true;
+                    ConfigCombo();
+                    comboMoneda.Enabled = true;
+                    comboTasaCambio.Enabled = true;
                     break;
                 case "OFF":
                     txtNumeroOrden.Enabled = false;
-                    
+
                     txtProveedor.Enabled = false;
                     txtRazonSocial.Enabled = false;
                     txtDireccion.Enabled = false;
                     txtTelefono.Enabled = false;
                     txtCorreo.Enabled = false;
 
-                    comboImpuesto.Enabled = false;
-                    txtImpuesto.Enabled = false;
-                    txtSubTotalBs.Enabled = false;
-                    txtSubTotalUs.Enabled = false;
-                    txtTotalBs.Enabled = false;
-                    txtTotalUs.Enabled = false;
-
-                    bttnNuevaCompra.Enabled = true;
-                    bttnBuscarProductos.Enabled = false;
-                    bttnBuscar.Enabled = false;
-                    bttnCancelar.Enabled = false;
                     bttnGuardar.Enabled = false;
                     tableCarrito.DataSource = null;
                     carrito.Rows.Clear();
                     LimpiarCampos();
-                    comboImpuesto.DataSource = null;
                     break;
             }
         }
 
         public void LimpiarCampos()
         {
+            ConfigControles("ON");
+            txtProveedor.Focus();
+            IdCompra = crud.GetIdCompras();
             txtNumeroOrden.Text = "";
+            txtNumeroOrden.Text = IdCompra.ToString("000000000");
+            comboMoneda.SelectedIndex = 0;
+            txtMoneda.Text = comboMoneda.Text;
 
             txtProveedor.Text = "";
             txtRazonSocial.Text = "";
@@ -127,10 +149,8 @@ namespace New_MasterTrade.UserControls
             txtTelefono.Text = "";
             txtCorreo.Text = "";
 
-            txtSubTotalBs.Text = "0";
-            txtSubTotalUs.Text = "0";
-            txtTotalBs.Text = "0";
-            txtTotalUs.Text = "0";
+            txtSubTotalBs.Text = "0.00";
+            txtMoneda.Text = "";
         }
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e)//LIMITA LOS TEXBOXES PARA QUE ACEPTEN SÓLO NÚMEROS
@@ -143,22 +163,17 @@ namespace New_MasterTrade.UserControls
 
         public void ConfigCombo()
         {
-            comboImpuesto.DataSource = crud.Impuestos();
-            comboImpuesto.ValueMember = "id_imp";
-            comboImpuesto.DisplayMember = "por_imp";
-
-            CalcPorcentaje();
-        }
-
-        public void GetTotal()
-        {
-            decimal x = 0;
-            x = (decimal.Parse(txtSubTotalBs.Text) + decimal.Parse(txtImpuesto.Text));
-            txtTotalBs.Text = x.ToString("0.00");
-
-            x = 0;
-            x = decimal.Parse(txtSubTotalUs.Text) + (decimal.Parse(txtImpuesto.Text) / (decimal)8.40);
-            txtTotalUs.Text = x.ToString("0.00");
+            try
+            {
+                comboMoneda.ValueMember = "id_mon";
+                comboMoneda.DisplayMember = "nom_mon";
+                comboMoneda.DataSource = crud.Moneda();
+                comboTasaCambio.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void GetSubTotal()
@@ -168,11 +183,15 @@ namespace New_MasterTrade.UserControls
             {
                 x = x + decimal.Parse(carrito.Rows[i]["P.Total"].ToString());
             }
-            txtSubTotalBs.Text = x.ToString("0.00");
-
-            x = 0;
-            x = decimal.Parse(txtSubTotalBs.Text) / (decimal)8.40;
-            txtSubTotalUs.Text = x.ToString("0.00");
+            decimal total = x / tasa_cambio;
+            if (comboMoneda.Text == "BOLÍVAR FUERTE (BS)")
+            {
+                txtSubTotalBs.Text = x.ToString("0.00").Replace('.', ',');
+            }
+            else
+            {
+                txtSubTotalBs.Text = x.ToString("0.00").Replace(',', '.');
+            }
         }
 
 
@@ -181,7 +200,7 @@ namespace New_MasterTrade.UserControls
             ConfigControles("ON");
             txtProveedor.Focus();
             IdCompra = crud.GetIdCompras();
-            txtNumeroOrden.Text = "MT-C"+ IdCompra.ToString("00");
+            txtNumeroOrden.Text = IdCompra.ToString("000000000");
         }
 
         private void bttnCancelar_Click(object sender, EventArgs e)
@@ -192,32 +211,36 @@ namespace New_MasterTrade.UserControls
         public void AddProduct(string[] producto)
         {
             carrito.Rows.Add(producto);
-            comboImpuesto.Enabled = true;
             ConfigCombo();
             GetSubTotal();
-            CalcPorcentaje();
-            GetTotal();
             if (carrito.Rows.Count > 1) Check_Duplicado(carrito.Rows.Count - 1);
             tableCarrito.DataSource = carrito;
             bttnGuardar.Enabled = true;
+            comprar = this;
         }
 
         private void tableCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            if (tableCarrito.Columns[e.ColumnIndex].Name == "Remover")
             {
                 if (MessageBox.Show("¿Desea remover este producto?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     tableCarrito.Rows.RemoveAt(e.RowIndex);
                     GetSubTotal();
-                    CalcPorcentaje();
-                    GetTotal();
                     if (tableCarrito.Rows.Count < 1)
                     {
-                        comboImpuesto.DataSource = null;
-                        comboImpuesto.Enabled = false;
                         bttnGuardar.Enabled = false;
                     }
+                }
+            }
+            else
+            {
+                if (e.RowIndex >= 0)
+                {
+                    int id = Int32.Parse(tableCarrito.Rows[e.RowIndex].Cells["columnId"].Value.ToString());
+                    SesionIniciada.Instancia.MostrarDialog(new AgregarProducto(this, null, id));
+                    //AgregarProducto y = new AgregarProducto(this, null, id);
+                    //y.ShowDialog();
                 }
             }
         }
@@ -227,80 +250,69 @@ namespace New_MasterTrade.UserControls
             if (txtProveedor.Text == "")
             {
                 Form x = new Form();
-                BuscarPersonas y = new BuscarPersonas(1);
-                x.StartPosition = FormStartPosition.CenterScreen;
-                x.Size = new Size(y.Width + 15, y.Height + 30);
-                x.Controls.Add(y);
-                x.ShowDialog();
-                if (y.x != "")
+                BuscarClientes y = new BuscarClientes();
+                SesionIniciada.Instancia.MostrarDialog(y);
+                if (y.x != 0)
                 {
-                    SetDatos(personas.ProveedorDatos(y.x));
+                    SetDatos(crud_usuarios.Usuario(y.x, y.y));
                 }
             }
             else
             {
-                if (personas.ProveedorDatos(txtProveedor.Text).Rows.Count > 0)
+                Persona proveedor = crud_usuarios.Usuario(0, txtProveedor.Text);
+                if (proveedor != null)
                 {
-                    SetDatos(personas.ProveedorDatos(txtProveedor.Text));
+                    MessageBox.Show("Proveedor encontrado!", "PROVEEDOR ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SetDatos(proveedor);
                 }
                 else
                 {
                     if (MessageBox.Show("Proveedor no encontrado, ¿Desea registrarlo?", "PROVEEDOR NO ENCONTRADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         Form x = new Form();
-                        FormularioPersonas y = new FormularioPersonas();
-                        y.RegistroExterno(2);
+                        FormularioPersonas y = new FormularioPersonas(0);
+                        y.RegistroExterno(1, txtProveedor.Text);
                         x.StartPosition = FormStartPosition.CenterScreen;
                         x.Size = new Size(y.Width + 15, y.Height + 30);
                         x.Controls.Add(y);
                         x.ShowDialog();
-                        if (personas.ProveedorDatos(txtProveedor.Text).Rows.Count > 0)
+                        Persona nuevo_proveedor = crud_usuarios.Usuario(0, txtProveedor.Text);
+                        if (nuevo_proveedor != null)
                         {
-                            SetDatos(personas.ProveedorDatos(txtProveedor.Text));
+                            SetDatos(nuevo_proveedor);
                         }
-                        else 
+                        else
                         {
                             txtProveedor.Text = "";
                             txtRazonSocial.Text = "";
                             txtDireccion.Text = "";
                             txtTelefono.Text = "";
                             txtCorreo.Text = "";
-                        }                
+                        }
                     }
                 }
             }
         }
 
-        public void SetDatos(DataTable tabla)
+        public void SetDatos(Persona proveedor)
         {
-            DataTable resultado = tabla;
-
-            IdProveedor = Int32.Parse(resultado.Rows[0][0].ToString());
-            txtProveedor.Text = resultado.Rows[0][1].ToString();
-            txtRazonSocial.Text = resultado.Rows[0][2].ToString();
-            txtDireccion.Text = resultado.Rows[0][3].ToString();
-            txtTelefono.Text = resultado.Rows[0][4].ToString();
-            txtCorreo.Text = resultado.Rows[0][5].ToString();
+            IdProveedor = proveedor.Id;
+            txtProveedor.Text = proveedor.Documento;
+            txtRazonSocial.Text = proveedor.RazonSocial;
+            txtDireccion.Text = proveedor.Direccion;
+            txtTelefono.Text = proveedor.Telefono;
+            txtCorreo.Text = proveedor.Correo;
         }
 
         private void bttnBuscarProductos_Click(object sender, EventArgs e)
         {
-            Form x = new Form();
-            BuscarProductos y = new BuscarProductos(this, null);
-            x.StartPosition = FormStartPosition.CenterScreen;
-            x.Size = new Size(y.Width + 15, y.Height + 30);
-            x.Controls.Add(y);
-            x.ShowDialog();
-        }
-
-        public void CalcPorcentaje()
-        {
-            decimal porcentaje = decimal.Parse(comboImpuesto.Text);
-            decimal total = decimal.Parse(txtSubTotalBs.Text);
-
-            decimal drantotal = (total * porcentaje) / 100;
-
-            txtImpuesto.Text = drantotal.ToString("0.00");
+            SesionIniciada.Instancia.MostrarDialog(new BuscarProductos(this, null));
+            //Form x = new Form();
+            //BuscarProductos y = new BuscarProductos(this, null);
+            //x.StartPosition = FormStartPosition.CenterScreen;
+            //x.Size = new Size(y.Width + 15, y.Height + 38);
+            //x.Controls.Add(y);
+            //x.ShowDialog();
         }
 
         private Compra GetCompra()
@@ -308,6 +320,8 @@ namespace New_MasterTrade.UserControls
             Compra compra = new Compra(IdCompra,
                                        txtNumeroOrden.Text,
                                        IdProveedor,
+                                       (int)comboTasaCambio.SelectedValue,
+                                       Convert.ToDecimal(txtSubTotalBs.Text),
                                        System.DateTime.Now);
             return compra;
         }
@@ -318,11 +332,12 @@ namespace New_MasterTrade.UserControls
             
             for (int i = 0; i <= tableCarrito.Rows.Count - 1; i++)
             {
-                Detalle x = new Detalle(IdCompra,
-                                        Int32.Parse(tableCarrito.Rows[i].Cells[0].Value.ToString()),
-                                        Int32.Parse(tableCarrito.Rows[i].Cells[4].Value.ToString()),
-                                        decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()),
-                                        decimal.Parse(tableCarrito.Rows[i].Cells[5].Value.ToString()));
+                Detalle x = new Detalle(0,
+                                        IdCompra,
+                                        Int32.Parse(tableCarrito.Rows[i].Cells["columnId"].Value.ToString()),
+                                        Int32.Parse(tableCarrito.Rows[i].Cells["columnCantidad"].Value.ToString()),
+                                        decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioU"].Value.ToString()),
+                                        decimal.Parse(tableCarrito.Rows[i].Cells["columnPrecioT"].Value.ToString()));
                 detalle.Add(x);
             }
             return detalle;
@@ -338,12 +353,59 @@ namespace New_MasterTrade.UserControls
             {
                 if (MessageBox.Show("¿Desea registrar esta orden?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    crud.Crear(GetCompra());
-                    crud.CrearDetalle(GetDetalle());
-                    bitacora.Create(UserData.Id, Modulos.Comprar, Accion.NuevaCompra(UserData.NombreUsuario, txtNumeroOrden.Text));
-                    ConfigControles("OFF");
+                    try
+                    {
+                        crud.Crear(GetCompra());
+                        crud.RegistrarPrecioCompra(GetDetalle());
+                        crud.CrearDetalle(GetDetalle());
+                        Reporte reporte = new Reporte();
+                        reporte.Reporte_Orden_Compra(txtNumeroOrden.Text);
+                        bitacora.Create(UserData.Id, Modulos.Comprar, Accion.NuevaCompra(UserData.NombreUsuario, txtNumeroOrden.Text));
+                        ConfigControles("OFF");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }            
+        }
+
+        private void comboMoneda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txtMoneda.Text = comboMoneda.Text;
+                int id = (int)comboMoneda.SelectedValue;
+                comboTasaCambio.ValueMember = "id_tca";
+                comboTasaCambio.DisplayMember = "des_tca";
+                comboTasaCambio.DataSource = crud.TasaDeCambio(id);
+                comboTasaCambio.SelectedIndex = 0;                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void comboTasaCambio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = (int)comboTasaCambio.SelectedValue;
+                tasa_cambio = crud.Valor_TasaCambio(id);
+                txtValor.Text = tasa_cambio.ToString();
+                GetSubTotal();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void bttnAtras_Click(object sender, EventArgs e)
+        {
+            SesionIniciada.Instancia.MostrarUserControl(FormularioProductos.Instancia);
         }
         //CONFIGURACIONES
     }
